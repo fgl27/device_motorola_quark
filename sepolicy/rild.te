@@ -1,0 +1,7 @@
+allow rild sysfs_battery_supply:dir search;
+allow rild sysfs_battery_supply:file r_file_perms;
+allow rild sysfs_usb_supply:dir search;
+allow rild sysfs_usb_supply:file r_file_perms;
+allow rild sysfs_thermal:dir search;
+allow rild sysfs_thermal:file r_file_perms;
+allow rild system_data_file:sock_file { create unlink setattr };

@@ -1,0 +1,125 @@
+# Audio
+lpa.decode=true
+
+# System property for cabl
+ro.qualcomm.cabl=0
+
+ro.qc.sdk.audio.fluencetype=none
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=true
+ro.config.vc_call_vol_steps=7
+# FM maximum volume be between 0 and 8192 (0dB)
+ro.audio.fm_max_volume=5793
+
+#enable voice path for PCM VoIP by default
+use.voice.path.for.pcm.voip=true
+
+#Bluetooth
+bt.max.hfpclient.connections=1
+
+qcom.bluetooth.soc=rome
+qcom.bt.le_dev_pwr_class=1
+
+ro.bluetooth.dun=false
+ro.bluetooth.sap=false
+
+ro.qualcomm.bt.hci_transport=smd
+
+ro.qualcomm.bluetooth.ftp=true
+ro.qualcomm.bluetooth.hfp=true
+ro.qualcomm.bluetooth.hsp=true
+ro.qualcomm.bluetooth.map=true
+ro.qualcomm.bluetooth.nap=true
+ro.qualcomm.bluetooth.opp=true
+ro.qualcomm.bluetooth.pbap=true
+
+# Display
+debug.composition.type=c2d
+debug.mdpcomp.logs=0
+debug.sf.hw=1
+persist.hwc.mdpcomp.enable=true
+ro.opengles.version=196608
+ro.sf.lcd_density=640
+ro.sf.lcd_inverted=1
+
+# GLES doesn't support secure display, to allow google play movies
+# and other apps that require a secure display we need to enable this:
+persist.hwc.mdpcomp.enable=true
+
+# GPS
+persist.gps.qc_nlp_in_use=0
+ro.gps.agps_provider=1
+ro.qc.sdk.izat.premium.enabled=0
+ro.qc.sdk.izat.service_mask=0x4
+
+# Gps Smart Battery Savings (depends on sensor hub)
+persist.mot.gps.smart_battery=1
+
+# Camera
+camera2.portability.force_api=1
+
+# Media
+audio.offload.buffer.size.kb=32
+av.offload.enable=true
+av.streaming.offload.enable=true
+audio.offload.multiple.enabled=false
+audio.offload.gapless.enabled=true
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
+
+# NITZ
+rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
+rild.libargs=-d /dev/smd0
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+
+# Qualcomm
+ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
+
+# Radio
+persist.radio.no_wait_for_card=1
+persist.radio.apm_sim_not_pwdn=1
+persist.radio.dfr_mode_set=1
+persist.radio.relay_oprt_change=1
+persist.radio.msgtunnel.start=false
+persist.radio.oem_ind_to_both=false
+
+# Enable UIM VCC feature
+persist.qcril_uim_vcc_feature=1
+
+# SSR
+persist.sys.qc.sub.rdump.max=20
+persist.sys.qc.sub.rdump.on=1
+persist.sys.qc.sub.rstrtlvl=3
+persist.sys.ssr.restart_level=1
+
+# Time
+persist.timed.enable=true
+
+# USB
+ro.usb.mtp=2ea4
+ro.usb.mtp_adb=2ea5
+ro.usb.ptp=2ea6
+ro.usb.ptp_adb=2ea7
+ro.usb.bpt=2ea0
+ro.usb.bpt_adb=2ea1
+ro.usb.bpteth=2ea2
+ro.usb.bpteth_adb=2ea3
+
+# WLAN
+wifi.interface=wlan0
+
+# GSM
+ro.telephony.default_network=9
+telephony.lteOnGsmDevice=1
+
+# FSG ID
+ro.fsg-id=singlela

@@ -1,0 +1,6 @@
+binder_use(mm-qcamerad);
+binder_call(mm-qcamerad, servicemanager);
+binder_call(mm-qcamerad, system_server);
+allow mm-qcamerad mpdecision:unix_stream_socket connectto;
+allow mm-qcamerad socket_device:sock_file write;
+allow mm-qcamerad system_server:unix_stream_socket rw_socket_perms;

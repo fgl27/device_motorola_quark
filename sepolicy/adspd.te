@@ -1,0 +1,14 @@
+type adspd, domain;
+type adspd_exec, exec_type, file_type;
+init_daemon_domain(adspd)
+
+unix_socket_connect(adspd, property, init)
+allow adspd property_socket:sock_file write;
+
+allow adspd adspd_data_file:dir w_dir_perms;
+allow adspd adsp_serial_device:chr_file rw_file_perms;
+allow adspd input_device:chr_file r_file_perms;
+allow adspd input_device:dir search;
+allow adspd sysfs_adspd:dir search;
+allow adspd sysfs_adspd:file rw_file_perms;
+allow adspd system_prop:property_service set;
