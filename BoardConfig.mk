@@ -23,7 +23,7 @@ BOARD_VENDOR := motorola-qcom
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := quark_umts,xt1225,xt1250
+TARGET_OTA_ASSERT_DEVICE := quark,quark_umts,xt1225,xt1250
 BOARD_USES_QCOM_HARDWARE := true
 
 # Platform
