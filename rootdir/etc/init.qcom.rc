@@ -26,7 +26,6 @@
 #
 
 import init.qcom.usb.rc
-import init.target.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -311,26 +310,26 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
-    #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
+    # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
     #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
-    #Create directories for gpsone_daemon services
+    # Create directories for gpsone_daemon services
     mkdir /data/misc/gpsone_d 0770 system gps
 
-    #Create directories for QuIPS
+    # Create directories for QuIPS
     mkdir /data/misc/quipc 0770 gps system
 
-    #Create directories for Location services
+    # Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
     mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
 
-    #Create directory from IMS services
+    # Create directory from IMS services
     mkdir /data/shared 0755
     chown system system /data/shared
 
-    #Create directory for FOTA
+    # Create directory for FOTA
     mkdir /data/fota 0771
     chown system system /data/fota
 
@@ -389,7 +388,7 @@ on post-fs-data
     chmod 0660 /sys/devices/cycapsense_prog.1/cycapsense_fw
 
 on property:sys.boot_completed=1
-    write /dev/kmsg "Boot completed "
+    start qcom-post-boot
 
 # corefile limit and ETB enabling
 on property:persist.debug.trace=1
@@ -428,6 +427,12 @@ on property:bluetooth.startbtsnoop=true
 on property:bluetooth.startbtsnoop=false
     stop btsnoop
 
+service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
+    class late_start
+    user root
+    disabled
+    oneshot
+
 service qcom-c_main-sh /system/bin/sh /system/etc/init.class_main.sh
     class main
     user radio
@@ -459,28 +464,28 @@ service batt_health /system/bin/batt_health
     group mot_pwric net_admin log
 
 service thermal-engine /system/bin/thermal-engine
-   class main
-   user root
-   group root
+    class main
+    user root
+    group root
 
 service time_daemon /system/bin/time_daemon
-   class late_start
-   user root
-   group root
+    class late_start
+    user root
+    group root
 
 service qrngd /system/bin/qrngd -f
-   class main
-   user root
-   group root
+    class main
+    user root
+    group root
 
 service qseecomd /system/bin/qseecomd
-   class core
-   user root
-   group root
+    class core
+    user root
+    group root
 
 service mpdecision /system/bin/mpdecision --avg_comp --min_cores=4
-   user root
-   disabled
+    user root
+    disabled
 
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
@@ -583,11 +588,11 @@ on property:bluetooth.hciattach=false
     setprop bluetooth.status off
 
 service btsnoop /system/bin/btsnoop
-   user bluetooth
-   group bluetooth net_bt_admin sdcard_rw sdcard_r
-   class late_start
-   disabled
-   oneshot
+    user bluetooth
+    group bluetooth net_bt_admin sdcard_rw sdcard_r
+    class late_start
+    disabled
+    oneshot
 
 service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     class late_start
@@ -662,10 +667,10 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
     -O/data/misc/wifi/sockets -dd \
     -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
-    #   we will start as root and wpa_supplicant will switch to user wifi
-    #   after setting up the capabilities required for WEXT
-    #   user wifi
-    #   group wifi inet keystore
+#   we will start as root and wpa_supplicant will switch to user wifi
+#   after setting up the capabilities required for WEXT
+#   user wifi
+#   group wifi inet keystore
     class main
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
@@ -823,5 +828,3 @@ on property:sys.perf.profile=2
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "performance"
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "performance"
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "performance"
-
-
