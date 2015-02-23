@@ -203,6 +203,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     qcmediaplayer
 
+# QRNGD
+PRODUCT_PACKAGES += \
+    qrngd
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.crda.sh \
