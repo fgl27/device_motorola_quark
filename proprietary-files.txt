@@ -179,13 +179,18 @@ vendor/lib/libdrmdiag.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
+vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/lib-sec-disp.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
+vendor/lib/libStDrvInt.so
 vendor/lib/libWVStreamControlAPI_L1.so
+
+# DRM from victara
+vendor/lib/libsecureui.so
 
 # GPS
 -app/com.qualcomm.location/com.qualcomm.location.apk
@@ -204,6 +209,7 @@ lib/libloc_core.so
 lib/libloc_ds_api.so
 lib/libloc_eng.so
 vendor/lib/libalarmservice_jni.so
+vendor/lib/libdsnetutils.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so

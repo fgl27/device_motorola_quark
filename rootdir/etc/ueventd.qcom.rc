@@ -202,8 +202,8 @@
 /dev/vfsspi               0660   fingerp    fingerp
 
 # SECURITY
-/dev/qseecom              0660   system     mot_tpapi
-/dev/sec                  0660   system     mot_tpapi
+/dev/qseecom              0660   system     drmrpc
+/dev/sec                  0660   system     drmrpc
 
 # haptic
 /dev/drv2605              0660   system     system
