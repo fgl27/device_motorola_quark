@@ -210,7 +210,6 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.crda.sh \
-    init.class_main.sh \
     init.qcom.bt.sh \
     init.qcom.coex.sh \
     init.qcom.post_boot.sh \
@@ -220,9 +219,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.mmi.boot.sh \
+    init.mmi.touch.sh \
+    init.mmi.usb.sh \
     init.qcom.rc \
     init.qcom.usb.rc \
-    init.mmi.touch.sh \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
 
@@ -251,10 +251,17 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+PRODUCT_PACKAGES += \
+    WCNSS_qcom_cfg.ini \
+    WCNSS_qcom_wlan_nv.bin \
+    wlan_mac.bin \
+    wlan_mac_serial.bin
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 PRODUCT_COPY_FILES += \

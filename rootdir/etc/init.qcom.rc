@@ -170,7 +170,7 @@ on post-fs-data
     mkdir /data/fota 0771
     chown system system /data/fota
 
-    #Create directory for hostapd
+    # Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
 
     # Create /data/time folder for time-services
@@ -180,13 +180,13 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
-    #Create a folder for SRS to be able to create a usercfg file
+    # Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
 
     # Setup folder for native to transfer data to NativeDropBoxAgent
     mkdir /data/system/dropbox-add 0730 system diag
 
-    #Subsystem RAM-dumps
+    # Subsystem RAM-dumps
     mkdir /data/ss-ram-dumps 0750 radio log
     mkdir /data/ss-ram-dumps/bp-dumps 0750 radio log
 
@@ -196,7 +196,7 @@ on post-fs-data
     start batt_health
     exec /system/bin/sh /system/etc/moto_com.sh
 
-     # Permissions for Factory Test of Charging Paths
+    # Permissions for Factory Test of Charging Paths
     chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_auto_enable
     chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_ibatt
     chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_itrick
@@ -457,14 +457,7 @@ service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
     disabled
     oneshot
 
-service qcom-c_main-sh /system/bin/sh /system/etc/init.class_main.sh
-    class main
-    user radio
-    group radio
-    oneshot
-
 on property:vold.decrypt=trigger_restart_framework
-    start qcom-c_main-sh
     start config_bluetooth
 
 on property:persist.env.fastdorm.enabled=true
@@ -545,6 +538,11 @@ service stm401 /system/bin/stm401 boot
 
 on property:hw.touch.ready=1
     start stm401
+
+service mmi-usb-sh /system/bin/logwrapper /system/bin/sh /init.mmi.usb.sh
+    class core
+    user root
+    oneshot
 
 service mmi-boot-sh /system/bin/logwrapper /system/bin/sh /init.mmi.boot.sh
     class core
@@ -789,22 +787,6 @@ service hostapd /system/bin/hostapd -dd /data/misc/wifi/hostapd.conf
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
-service ril-daemon1 /system/bin/rild -c 1
-    class main
-    socket rild1 stream 660 root radio
-    socket rild-debug1 stream 660 radio system
-    user root
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
-
-service ril-daemon2 /system/bin/rild -c 2
-    class main
-    socket rild2 stream 660 root radio
-    socket rild-debug2 stream 660 radio system
-    user root
-    disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
 
 # SD card services
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated

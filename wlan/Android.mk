@@ -38,7 +38,7 @@ LOCAL_MODULE_CLASS := FAKE
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SYSTEM)/base_rules.mk
 $(LOCAL_BUILT_MODULE): TARGET := /persist/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/prima/$(LOCAL_MODULE)
+$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/$(LOCAL_MODULE)
 $(LOCAL_BUILT_MODULE):
 	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
 	$(hide) mkdir -p $(dir $@)
@@ -54,7 +54,7 @@ LOCAL_MODULE_CLASS := FAKE
 LOCAL_MODULE_TAGS := optional
 include $(BUILD_SYSTEM)/base_rules.mk
 $(LOCAL_BUILT_MODULE): TARGET := /persist/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/prima/$(LOCAL_MODULE)
+$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/$(LOCAL_MODULE)
 $(LOCAL_BUILT_MODULE):
 	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
 	$(hide) mkdir -p $(dir $@)

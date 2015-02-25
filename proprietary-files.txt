@@ -245,6 +245,16 @@ etc/firmware/a420_pm4.fw
 bin/imsdatadaemon
 bin/imsqmidaemon
 bin/ims_rtp_daemon
+lib/libdashplayer.so
+vendor/lib/libmmhttpstack.so
+vendor/lib/libmmiipstreammmihttp.so
+vendor/lib/libmmipstreamaal.so
+vendor/lib/libmmipstreamnetwork.so
+vendor/lib/libmmipstreamsourcehttp.so
+vendor/lib/libmmipstreamutils.so
+vendor/lib/libmmQSM.so
+vendor/lib/libmmQTA.so
+vendor/lib/libmmrtpdecoder.so
 vendor/lib/libmmrtpencoder.so
 vendor/lib/lib-dplmedia.so
 vendor/lib/lib-imsdpl.so
@@ -261,7 +271,6 @@ vendor/lib/lib-rtpdaemoninterface.so
 vendor/lib/lib-rtpsl.so
 
 # Media
-lib/libdashplayer.so
 vendor/lib/libDivxDrm.so
 vendor/lib/libExtendedExtractor.so
 vendor/lib/libI420colorconvert.so
