@@ -286,10 +286,6 @@ on boot
 
     setprop ro.telephony.call_ring.multiple false
 
-    #Remove SUID bit for iproute2 ip tool
-    chmod 0755 /system/bin/ip
-
-
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     #For bridgemgr daemon to inform the USB driver of the correct transport
@@ -504,6 +500,14 @@ service mpdecision /system/bin/mpdecision --avg_comp --min_cores=4
     user root
     disabled
 
+service mdm_helper /system/bin/mdm_helper
+    class core
+
+service mdm_helper_proxy /system/bin/mdm_helper_proxy
+    class core
+    user system
+    group system
+
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
@@ -623,22 +627,10 @@ service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
     disabled
     oneshot
 
-service bridgemgrd /system/bin/bridgemgrd
-    class late_start
-    user radio
-    group radio qcom_diag
-    disabled
-
 service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     class main
     user radio system
     group radio system inet
-    disabled
-
-service qmiproxy /system/bin/qmiproxy
-    class main
-    user radio
-    group radio qcom_diag
     disabled
 
 # QMUX must be in multiple groups to support external process connections
@@ -646,15 +638,9 @@ service qmuxd /system/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps qcom_diag
-    disabled
 
 service netmgrd /system/bin/netmgrd
     class main
-    disabled
-
-on property:ro.use_data_netmgrd=false
-    # netmgr not supported on specific target
-    stop netmgrd
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.
@@ -726,18 +712,6 @@ service dhcpcd_eth0 /system/bin/dhcpcd -G
 
 service iprenew_eth0 /system/bin/dhcpcd -nBK
     class late_start
-    disabled
-    oneshot
-
-service ptt_socket_app /system/bin/ptt_socket_app -d
-    class main
-    user system
-    group system
-    oneshot
-
-service ptt_ffbm /system/bin/ptt_socket_app -f -d
-    user system
-    group system
     disabled
     oneshot
 

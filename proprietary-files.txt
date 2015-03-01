@@ -38,9 +38,9 @@ vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcvirt.so
 vendor/lib/soundfx/libqcreverb.so
 
-# Audio from shamu
-lib/libdetectmodem.so
-lib/soundfx/libspeakerbundle.so
+# Audio (sourced from shamu)
+-lib/libdetectmodem.so
+-lib/soundfx/libspeakerbundle.so
 
 # Bluetooth
 bin/btnvtool
@@ -192,13 +192,10 @@ vendor/lib/libwvm.so
 vendor/lib/libStDrvInt.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
-# DRM from victara
-vendor/lib/libsecureui.so
+# DRM (sourced from victara)
+-vendor/lib/libsecureui.so
 
 # GPS
--app/com.qualcomm.location/com.qualcomm.location.apk
--app/com.qualcomm.services.location/com.qualcomm.services.location.apk
--app/MotGeoFenceSvc/MotGeoFenceSvc.apk
 bin/gpsone_daemon
 etc/permissions/com.qualcomm.location.xml
 etc/gps.conf
@@ -219,6 +216,11 @@ vendor/lib/libloc_ext.so
 vendor/lib/liblocationservice.so
 vendor/lib/libquipc_os_api.so
 vendor/lib/libulp2.so
+
+# GPS (sourced from msm8960dt-common)
+-app/com.qualcomm.location/com.qualcomm.location.apk
+-app/com.qualcomm.services.location/com.qualcomm.services.location.apk
+-app/MotGeoFenceSvc/MotGeoFenceSvc.apk
 
 # Graphics
 vendor/lib/egl/eglSubDriverAndroid.so
@@ -305,8 +307,11 @@ etc/firmware/BCM20795A1_001.002.012.0003.0078_Generic_I2C_NCD_Signed_configdata.
 
 # Postprocessing
 bin/mm-pp-daemon
+lib/libtinyxml.so
+vendor/lib/libdisp-aba.so
 vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
+vendor/lib/libsensor1.so
 
 # Qualcomm framework
 bin/irsc_util
@@ -330,13 +335,13 @@ vendor/lib/libqmi_encdec.so
 bin/efsks
 bin/ks
 bin/netmgrd
+bin/mdm_helper
+bin/mdm_helper_proxy
 bin/qcks
 bin/qmi_motext_hook
 bin/qmuxd
 bin/rfs_access
 bin/rmt_storage
-etc/permissions/org.simalliance.openmobileapi.xml
--framework/org.simalliance.openmobileapi.jar
 lib/libadropbox.so
 lib/libcnefeatureconfig.so
 lib/libmdmcutback.so
@@ -351,8 +356,8 @@ vendor/lib/libnetmgr.so
 vendor/lib/libril-qc-qmi-1.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/libsmemlog.so
+vendor/lib/libsystem_health_mon.so
 vendor/lib/librpmb.so
-vendor/lib/libtime_genoff.so
 vendor/lib/libxml.so
 
 # Sensors
@@ -364,8 +369,13 @@ etc/firmware/sensorhubver.txt
 lib/hw/sensorhub.apq8084.so
 lib/hw/sensors.apq8084.so
 
-# Time
+# Time services
 bin/time_daemon
+vendor/lib/libTimeService.so
+vendor/lib/libtime_genoff.so
+
+# Time services (source from msm8960dt-common)
+-app/TimeService/TimeService.apk
 
 # Touch frimware
 etc/firmware/atmel-a432-14102602-0103aa-quark.tdat
