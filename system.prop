@@ -1,16 +1,14 @@
+# Set ro.hw.device
+ro.hw.device=quark
+
 # Audio
 lpa.decode=true
-
-# System property for cabl
-ro.qualcomm.cabl=0
 
 ro.qc.sdk.audio.fluencetype=none
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
 ro.config.vc_call_vol_steps=7
-# FM maximum volume be between 0 and 8192 (0dB)
-ro.audio.fm_max_volume=5793
 
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
@@ -21,24 +19,11 @@ bt.max.hfpclient.connections=1
 qcom.bluetooth.soc=rome
 qcom.bt.le_dev_pwr_class=1
 
-ro.bluetooth.dun=false
-ro.bluetooth.sap=false
-
-ro.qualcomm.bt.hci_transport=smd
-
-ro.qualcomm.bluetooth.ftp=true
-ro.qualcomm.bluetooth.hfp=true
-ro.qualcomm.bluetooth.hsp=true
-ro.qualcomm.bluetooth.map=true
-ro.qualcomm.bluetooth.nap=true
-ro.qualcomm.bluetooth.opp=true
-ro.qualcomm.bluetooth.pbap=true
+ro.bluetooth.hfp.ver=1.6
+ro.qualcomm.bluetooth.sap=false
 
 # Display
-debug.composition.type=c2d
-debug.mdpcomp.logs=0
-debug.sf.hw=1
-persist.hwc.mdpcomp.enable=true
+ro.qualcomm.cabl=0
 ro.opengles.version=196608
 ro.sf.lcd_density=640
 ro.sf.hwrotation=180
@@ -51,7 +36,7 @@ persist.hwc.mdpcomp.enable=true
 persist.gps.qc_nlp_in_use=0
 ro.gps.agps_provider=1
 ro.qc.sdk.izat.premium.enabled=0
-ro.qc.sdk.izat.service_mask=0x4
+ro.qc.sdk.izat.service_mask=0x0
 
 # Gps Smart Battery Savings (depends on sensor hub)
 persist.mot.gps.smart_battery=1

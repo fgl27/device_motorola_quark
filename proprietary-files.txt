@@ -67,6 +67,9 @@ lib/libqomx_core.so
 vendor/lib/libactuator_lc898122_camcorder.so
 vendor/lib/libactuator_lc898122_camera.so
 vendor/lib/libactuator_lc898122.so
+vendor/lib/libactuator_rohm_bu64296gwx_camcorder.so
+vendor/lib/libactuator_rohm_bu64296gwx_camera.so
+vendor/lib/libactuator_rohm_bu64296gwx.so
 vendor/lib/libadsprpc.so
 vendor/lib/libC2D2.so
 vendor/lib/libfastcvadsp_stub.so
@@ -209,7 +212,6 @@ lib/libloc_core.so
 lib/libloc_ds_api.so
 lib/libloc_eng.so
 vendor/lib/libalarmservice_jni.so
-vendor/lib/libdsnetutils.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
@@ -219,7 +221,7 @@ vendor/lib/libquipc_os_api.so
 vendor/lib/libulp2.so
 
 # Graphics
-vendor/lib/egl/eglsubAndroid.so
+vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
@@ -229,12 +231,12 @@ vendor/lib/libC2D2.so
 vendor/lib/libc2d30-a3xx.so
 vendor/lib/libCB.so
 vendor/lib/libgsl.so
+vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
-vendor/lib/libsc-a3xx.so
 vendor/lib/libscale.so
 
 # Graphics firmware
@@ -299,7 +301,7 @@ bin/hardware_revisions.sh
 
 # NFC
 etc/firmware/BCM20795A0_001.001.023.0003.0022_Generic_I2C_NCD_Unsigned_configdata.ncd
-etc/firmware/BCM20795A1_001.002.012.0003.0050_Customers_I2CPLM_NCD_Signed_configdata.ncd
+etc/firmware/BCM20795A1_001.002.012.0003.0078_Generic_I2C_NCD_Signed_configdata.ncd
 
 # Postprocessing
 bin/mm-pp-daemon
@@ -336,15 +338,19 @@ bin/rmt_storage
 etc/permissions/org.simalliance.openmobileapi.xml
 -framework/org.simalliance.openmobileapi.jar
 lib/libadropbox.so
+lib/libcnefeatureconfig.so
 lib/libmdmcutback.so
 lib/libmdmdetect.so
 lib/libmotext_inf.so
+lib/librmnetctl.so
 lib/libqmimotext.so
+lib/libqsap_sdk.so:vendor/lib/libqsap_sdk.so
 vendor/lib/libconfigdb.so
+vendor/lib/libcneapiclient.so
 vendor/lib/libnetmgr.so
 vendor/lib/libril-qc-qmi-1.so
 vendor/lib/libril-qcril-hook-oem.so
-vendor/lib/librpm.so
+vendor/lib/libsmemlog.so
 vendor/lib/librpmb.so
 vendor/lib/libtime_genoff.so
 vendor/lib/libxml.so
@@ -362,98 +368,7 @@ lib/hw/sensors.apq8084.so
 bin/time_daemon
 
 # Touch frimware
-etc/firmware/atmel-a432-14090202-0103aa-quark.tdat
-
-# Voice recognition
-lib/libmotaudioutils.so
-lib/librecoglib.so
-lib/libtrainingcheck.so
-lib/hw/audio.motvr.default.so
-vendor/moto/audiomonitor/nuance/acmod4_2500_ena_gen_car_f16_v1_0_0.dat.zip
-vendor/moto/audiomonitor/nuance/acmod4_2500_eng_gen_car_f16_v1_0_1.dat.zip
-vendor/moto/audiomonitor/nuance/acmod4_2500_enu_gen_car_f16_v2_0_0.dat.zip
-vendor/moto/audiomonitor/nuance/acmod4_2500_frc_gen_car_f16_v1_0_0.dat.zip
-vendor/moto/audiomonitor/nuance/acmod4_2500_frf_gen_car_f16_v1_0_0.dat.zip
-vendor/moto/audiomonitor/nuance/acmod4_2500_ged_gen_car_f16_v1_0_1.dat.zip
-vendor/moto/audiomonitor/nuance/acmod4_2500_iti_gen_car_f16_v1_0_0.dat.zip
-vendor/moto/audiomonitor/nuance/acmod4_2500_ptb_gen_car_f16_v1_0_0.dat.zip
-vendor/moto/audiomonitor/nuance/acmod4_2500_spe_gen_car_f16_v1_0_1.dat.zip
-vendor/moto/audiomonitor/nuance/acmod4_2500_spm_gen_car_f16_v1_0_0.dat.zip
-vendor/moto/audiomonitor/nuance/clc_ena_cfg3_v6_0_3.dat.zip
-vendor/moto/audiomonitor/nuance/clc_eng_cfg3_v6_0_1.dat.zip
-vendor/moto/audiomonitor/nuance/clc_enu_cfg3_v6_0_2.dat.zip
-vendor/moto/audiomonitor/nuance/clc_frc_cfg3_v6_0_3.dat.zip
-vendor/moto/audiomonitor/nuance/clc_frf_cfg3_v6_0_2.dat.zip
-vendor/moto/audiomonitor/nuance/clc_ged_cfg3_v6_0_4.dat.zip
-vendor/moto/audiomonitor/nuance/clc_iti_cfg3_v6_0_2.dat.zip
-vendor/moto/audiomonitor/nuance/clc_ptb_cfg3_v6_0_2.dat.zip
-vendor/moto/audiomonitor/nuance/clc_spe_cfg3_v6_0_1.dat.zip
-vendor/moto/audiomonitor/nuance/clc_spm_cfg3_v6_0_2.dat.zip
-vendor/moto/audiomonitor/sensory/lts_en_us_9_5_2b.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_de_de_ma36_delivery1_am.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_de_de_ma36_delivery1_search_4.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_de_de_sfs12_delivery1_am.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_de_de_sfs12_delivery1_search_4.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_en_uk_adults_ma36_delivery2_am.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_en_uk_adults_ma36_delivery2_search_5.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_en_uk_adults_sfs12_delivery2_am.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_en_uk_adults_sfs12_delivery2_search_5.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_en_us_adults_ma36_delivery3_am.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_en_us_adults_ma36_delivery3_search_7.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_en_us_adults_sfs12_delivery3_am.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_en_us_adults_sfs12_delivery3_search_7.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_es_es_ma36_delivery1_am.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_es_es_ma36_delivery1_search_8.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_es_es_sfs12_delivery1_am.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_es_es_sfs12_delivery1_search_8.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_fr_fr_ma36_delivery3_am.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_fr_fr_ma36_delivery3_search_7.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_fr_fr_sfs12_delivery3_am.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_fr_fr_sfs12_delivery3_search_7.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_it_ma36_delivery1_am.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_it_ma36_delivery1_search_6.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_it_sfs12_delivery1_am.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_it_sfs12_delivery1_search_6.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_pt_ma36_delivery2_am.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_pt_ma36_delivery2_search_8.bin
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_pt_sfs12_delivery2_am.raw
-vendor/moto/audiomonitor/sensory/ma_1_okgooglenow_pt_sfs12_delivery2_search_8.raw
-vendor/moto/audiomonitor/sensory/nn_de_mfcc_16k_15_big_250_v3_4.raw
-vendor/moto/audiomonitor/sensory/nn_en_uk_mfcc_16k_15_big_250_v2_2.raw
-vendor/moto/audiomonitor/sensory/nn_en_us_mfcc_16k_15_big_250_v5_1_1.raw
-vendor/moto/audiomonitor/sensory/nn_es_es_mfcc_16k_15_big_250_v1_5.raw
-vendor/moto/audiomonitor/sensory/nn_es_us_mfcc_16k_15_big_250_v1_5.raw
-vendor/moto/audiomonitor/sensory/nn_fr_ca_mfcc_16k_15_big_250_v2_5.raw
-vendor/moto/audiomonitor/sensory/nn_fr_fr_mfcc_16k_15_big_250_v2_4.raw
-vendor/moto/audiomonitor/sensory/nn_it_mfcc_16k_15_big_250_v3_5.raw
-vendor/moto/audiomonitor/sensory/nn_pt_mfcc_16k_15_big_250_v1_1.raw
-vendor/moto/audiomonitor/sensory/phonemesearch_dede_1_1.raw.zip
-vendor/moto/audiomonitor/sensory/phonemesearch_enuk_1_1.raw.zip
-vendor/moto/audiomonitor/sensory/phonemesearch_enus_2_0.raw.zip
-vendor/moto/audiomonitor/sensory/phonemesearch_eses_1_2.raw.zip
-vendor/moto/audiomonitor/sensory/phonemesearch_esus_1_2.raw.zip
-vendor/moto/audiomonitor/sensory/phonemesearch_frca_prec1_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/phonemesearch_frfr_1_1.raw.zip
-vendor/moto/audiomonitor/sensory/phonemesearch_it_it_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/phonemesearch_ptbr_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/phonemesearchv2_enau_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_dede_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_enau_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_enuk_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_enus_2_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_eses_1_2.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_esus_1_2.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_frca_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_frfr_1_1.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_it_it_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_ptbr_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_triggerogn1_dede_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_triggerogn1_enuk_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_triggerogn1_eses_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_triggerogn1_itit_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_triggerogn_enus_3_1.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_triggerogn_frfr_1_0.raw.zip
-vendor/moto/audiomonitor/sensory/svsid_triggerogn_ptbr_2_1.raw.zip
+etc/firmware/atmel-a432-14102602-0103aa-quark.tdat
 
 # Video processing firmware
 etc/firmware/vpu.b00
