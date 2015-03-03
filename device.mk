@@ -103,8 +103,8 @@ PRODUCT_PACKAGES += \
     charger_res_images
 
 # CMActions
-# PRODUCT_PACKAGES += \
-#    CMActions
+ PRODUCT_PACKAGES += \
+    CMActions
 
 # CRDA
 PRODUCT_PACKAGES += \
