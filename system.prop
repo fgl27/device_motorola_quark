@@ -30,7 +30,7 @@ ro.sf.hwrotation=180
 
 # GLES doesn't support secure display, to allow google play movies
 # and other apps that require a secure display we need to enable this:
-persist.hwc.mdpcomp.enable=true
+persist.hwc.mdpcomp.enable=false
 
 # GPS
 persist.gps.qc_nlp_in_use=0
