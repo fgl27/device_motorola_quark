@@ -135,7 +135,8 @@ BOARD_SEPOLICY_UNION += \
     system_app.te \
     system_server.te \
     thermal-engine.te \
-    ueventd.te
+    ueventd.te \
+    vold.te
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
