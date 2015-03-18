@@ -196,6 +196,9 @@ vendor/lib/libWVStreamControlAPI_L1.so
 -vendor/lib/libsecureui.so
 
 # GPS
+-app/com.qualcomm.location/com.qualcomm.location.apk
+-app/com.qualcomm.services.location/com.qualcomm.services.location.apk
+-app/MotGeoFenceSvc/MotGeoFenceSvc.apk
 bin/gpsone_daemon
 etc/permissions/com.qualcomm.location.xml
 etc/gps.conf
@@ -208,6 +211,7 @@ lib/libloc_api_v02.so
 lib/libloc_core.so
 lib/libloc_ds_api.so
 lib/libloc_eng.so
+vendor/lib/hw/flp.default.so
 vendor/lib/libalarmservice_jni.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
@@ -216,11 +220,6 @@ vendor/lib/libloc_ext.so
 vendor/lib/liblocationservice.so
 vendor/lib/libquipc_os_api.so
 vendor/lib/libulp2.so
-
-# GPS (sourced from msm8960dt-common)
--app/com.qualcomm.location/com.qualcomm.location.apk
--app/com.qualcomm.services.location/com.qualcomm.services.location.apk
--app/MotGeoFenceSvc/MotGeoFenceSvc.apk
 
 # Graphics
 vendor/lib/egl/eglSubDriverAndroid.so
@@ -370,12 +369,10 @@ lib/hw/sensorhub.apq8084.so
 lib/hw/sensors.apq8084.so
 
 # Time services
+-app/TimeService/TimeService.apk
 bin/time_daemon
 vendor/lib/libTimeService.so
 vendor/lib/libtime_genoff.so
-
-# Time services (source from msm8960dt-common)
--app/TimeService/TimeService.apk
 
 # Touch frimware
 etc/firmware/atmel-a432-14102602-0103aa-quark.tdat
