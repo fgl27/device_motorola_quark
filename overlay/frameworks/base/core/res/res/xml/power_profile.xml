@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <device name="Android">
     <item name="none">0</item>
-    <item name="screen.on">120</item>
-    <item name="screen.full">300</item>
+    <item name="screen.on">135</item>
+    <item name="screen.full">340</item>
     <item name="bluetooth.active">30</item>
     <item name="bluetooth.on">3</item>
     <item name="wifi.on">10</item>
@@ -24,7 +24,7 @@
         <value>300000</value>
         <value>422400</value>
         <value>652800</value>
-        <value>729600 </value>
+        <value>729600</value>
         <value>883200</value>
         <value>960000</value>
         <value>1036800</value>
@@ -36,6 +36,8 @@
         <value>1958400</value>
         <value>2265600</value>
         <value>2457600</value>
+        <value>2572800</value>
+        <value>2649600</value>
     </array>
     <item name="cpu.idle">6</item>
     <item name="cpu.awake">30</item>
@@ -55,6 +57,8 @@
         <value>324</value>
         <value>377</value>
         <value>405</value>
+        <value>413</value>
+        <value>414</value>
     </array>
-    <item name="battery.capacity">2300</item>
+    <item name="battery.capacity">3900</item>
 </device>
