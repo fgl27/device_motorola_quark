@@ -106,6 +106,11 @@ static char *camera_fixup_getparams(int id __attribute__((unused)),
     params.dump();
 #endif
 
+    const char *pf = params.get(android::CameraParameters::KEY_PREVIEW_FORMAT);
+    if (pf && strcmp(pf, "nv12-venus") == 0) {
+        params.set(android::CameraParameters::KEY_PREVIEW_FORMAT, "yuv420sp");
+    }
+
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
     params.dump();
