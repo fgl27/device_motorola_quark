@@ -381,7 +381,7 @@ lib/hw/sensors.apq8084.so
 -app/TimeService/TimeService.apk
 bin/time_daemon
 vendor/lib/libTimeService.so
-vendor/lib/libtime_genoff.so
+-vendor/lib/libtime_genoff.so
 
 # Touch frimware
 etc/firmware/atmel-a432-14102602-0103aa-quark.tdat
