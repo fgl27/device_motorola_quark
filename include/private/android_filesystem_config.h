@@ -202,11 +202,15 @@ static const struct android_id_info android_ids[] = {
     { "net_admin",     AID_NET_ADMIN, },
     { "net_bw_stats",  AID_NET_BW_STATS, },
     { "qcom_diag", AID_QCOM_DIAG, },
+#if !defined(QCOM_LEGACY_UIDS)
     { "ims", AID_IMS, },
+#endif
     { "net_bw_acct",   AID_NET_BW_ACCT, },
     { "net_bt_stack",  AID_NET_BT_STACK, },
     { "qcom_diag", AID_QCOM_DIAG, },
+#if !defined(QCOM_LEGACY_UIDS)
     { "sensors",       AID_SENSORS, },
+#endif
     /* Motorola IDs */
     { "mot_accy",  AID_MOT_ACCY, },
     { "mot_pwric", AID_MOT_PWRIC, },
@@ -296,9 +300,10 @@ static const struct fs_path_config android_files[] = {
      * Do not change. */
     { 02750, AID_ROOT,      AID_INET,      0, "system/bin/netcfg" },
 
+    /* CM's daemonized su doesn't need the setuid bit */
+    { 00755, AID_ROOT,      AID_SHELL,     0, "system/xbin/su" },
     /* the following five files are INTENTIONALLY set-uid, but they
      * are NOT included on user builds. */
-    { 04750, AID_ROOT,      AID_SHELL,     0, "system/xbin/su" },
     { 06755, AID_ROOT,      AID_ROOT,      0, "system/xbin/librank" },
     { 06755, AID_ROOT,      AID_ROOT,      0, "system/xbin/procrank" },
     { 06755, AID_ROOT,      AID_ROOT,      0, "system/xbin/procmem" },
