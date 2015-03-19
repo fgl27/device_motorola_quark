@@ -103,14 +103,11 @@ config_bt ()
         setprop ro.qualcomm.bluetooth.map true
         setprop ro.qualcomm.bluetooth.nap true
         setprop ro.bluetooth.sap true
-        case $target in
-          "apq8084")
-              setprop ro.bluetooth.dun true
-              logi "Enabling BT-DUN for APQ8084"
-              ;;
-          *)
-              setprop ro.bluetooth.dun false
-              ;;
+        case  $soc_hwid in
+            "109")
+                logi "Enabling BT-DUN for Fusion3"
+                setprop ro.bluetooth.dun true
+            ;;
         esac
         ;;
     "msm")
@@ -120,8 +117,9 @@ config_bt ()
         setprop ro.qualcomm.bluetooth.pbap true
         setprop ro.qualcomm.bluetooth.ftp true
         setprop ro.qualcomm.bluetooth.nap true
-        setprop ro.bluetooth.sap true
-        setprop ro.bluetooth.dun true
+        setprop ro.bluetooth.sap false
+        setprop ro.bluetooth.dun false
+        setprop qcom.bt.le_dev_pwr_class 1
         case $btsoc in
           "ath3k")
               setprop ro.qualcomm.bluetooth.map false
@@ -167,6 +165,7 @@ config_bt ()
        elif [ "$btsoc" = "rome" ]
        then
            setprop ro.bluetooth.hfp.ver 1.6
+           setprop ro.bluetooth.dun true
        fi
        ;;
     *)
@@ -181,12 +180,6 @@ case "$stack" in
     "bluez")
 	   logi "Bluetooth stack is $stack"
 	   setprop ro.qc.bluetooth.stack $stack
-	   reason=`getprop vold.decrypt`
-	   case "$reason" in
-	       "trigger_restart_framework")
-	           start dbus
-	           ;;
-	   esac
         ;;
     *)
 	   logi "Bluetooth stack is Bluedroid"
@@ -216,6 +209,7 @@ logi "init.qcom.bt.sh config = $config"
 case "$config" in
     "onboot")
         program_bdaddr
+        config_bt
         exit 0
         ;;
     *)
