@@ -278,8 +278,6 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-    setprop wifi.interface wlan0
-
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.wifi    524288,6291456,8291456,524288,6291456,8291456
@@ -371,6 +369,15 @@ on boot
     chown audio audio /sys/devices/c55_ctrl/gpio_reset/value
     mkdir /data/adspd/ 0770 audio audio
     mkdir /data/adspd/1 0770 audio audio
+
+    # ACDB file path
+    setprop persist.audio.calfile0 /system//etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
+    setprop persist.audio.calfile1 /system//etc/acdbdata/MTP/MTP_General_cal.acdb
+    setprop persist.audio.calfile2 /system//etc/acdbdata/MTP/MTP_Global_cal.acdb
+    setprop persist.audio.calfile3 /system//etc/acdbdata/MTP/MTP_Handset_cal.acdb
+    setprop persist.audio.calfile4 /system//etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
+    setprop persist.audio.calfile5 /system//etc/acdbdata/MTP/MTP_Headset_cal.acdb
+    setprop persist.audio.calfile6 /system//etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
     # Change ownership and permission for led
     chown system system /sys/class/leds/charging/brightness
@@ -502,10 +509,6 @@ on property:persist.debug.trace=1
 on property:init.svc.wpa_supplicant=stopped
     stop dhcpcd
 
-on property:bluetooth.isEnabled=true
-    start btwlancoex
-    write /sys/class/bluetooth/hci0/idle_timeout 7000
-
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
 
@@ -631,18 +634,11 @@ service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
-    disabled
-
-on property:ro.boot.emmc=true
-    start rmt_storage
 
 service rfs_access /system/bin/rfs_access
    class core
    user system
    group system net_raw
-
-on property:ro.boot.emmc=true
-    start rfs_access
 
 on property:wc_transport.start_hci=true
     start start_hci_filter
@@ -708,13 +704,6 @@ service netmgrd /system/bin/netmgrd
 # but only if ro.data.large_tcp_window_size property is set.
 on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
-service btwlancoex /system/bin/sh /system/etc/init.qcom.coex.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin inet net_admin net_raw
-    disabled
-    oneshot
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
