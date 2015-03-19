@@ -16,8 +16,6 @@
      limitations under the License.
 -->
 <MediaCodecs>
-    <Include href="media_codecs_google_audio.xml" />
-    <Include href="media_codecs_google_telephony.xml" />
     <Encoders>
         <!-- Video Hardware  -->
         <MediaCodec name="OMX.qcom.video.encoder.avc" type="video/avc" >
@@ -65,15 +63,14 @@
             <Quirk name="requires-allocate-on-output-ports" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
-        <!-- Video Software  -->
-    </Decoders>
-    <Include href="media_codecs_google_video.xml" />
-    <Decoders>
-        <!-- Video HW to be below Software  -->
         <MediaCodec name="OMX.qcom.video.decoder.vp8" type="video/x-vnd.on2.vp8" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
             <Feature name="adaptive-playback" />
         </MediaCodec>
     </Decoders>
+    <Include href="media_codecs_google_audio.xml" />
+    <Include href="media_codecs_google_telephony.xml" />
+    <Include href="media_codecs_google_video.xml" />
+    <Include href="media_codecs_ffmpeg.xml" />
 </MediaCodecs>
