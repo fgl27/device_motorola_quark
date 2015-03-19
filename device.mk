@@ -149,6 +149,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     keystore.apq8084
 
+# Location
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/flp.conf:system/etc/flp.conf
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.apq8084
@@ -211,9 +215,7 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.crda.sh \
     init.qcom.bt.sh \
-    init.qcom.coex.sh \
     moto_com.sh
 
 PRODUCT_PACKAGES += \
