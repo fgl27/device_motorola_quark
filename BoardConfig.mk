@@ -95,7 +95,7 @@ TARGET_USES_MOTOROLA_LOG := true
 
 # Power HAL
 TARGET_POWERHAL_VARIANT := qcom
-TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/motorola/victara/power/power_ext.c
+TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(LOCAL_PATH)/power/power_ext.c
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
