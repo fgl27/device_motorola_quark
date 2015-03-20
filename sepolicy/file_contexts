@@ -16,6 +16,7 @@
 /sys/devices/f9924000.i2c/i2c-2/2-0048(/.*)?    u:object_r:sysfs_thermal:s0
 /sys/devices/fd510000.gpio/gpio/gpio144(/.*)?   u:object_r:sysfs_thermal:s0
 /sys/devices/qpnp-charger-ed24c400(/.*)?        u:object_r:sysfs_thermal:s0
+/sys/devices/virtual/graphics/fb0/rgb           u:object_r:display_sysfs:s0
 
 /system/bin/adspd                       u:object_r:adspd_exec:s0
 /system/bin/dbvc_atvc_property_set      u:object_r:atvc:s0

@@ -178,6 +178,10 @@ on post-fs-data
 
     mkdir /data/audio/ 0770 media audio
 
+    # Display calibration
+    chown system system /sys/devices/virtual/graphics/fb0/rgb
+    chmod 0660 /sys/devices/virtual/graphics/fb0/rgb
+
     setprop vold.post_fs_data_done 1
 
     # Create a folder for SRS to be able to create a usercfg file

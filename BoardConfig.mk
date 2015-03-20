@@ -78,6 +78,9 @@ QCOM_BT_USE_SMD_TTY := true
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
 
+# CMHW
+BOARD_HARDWARE_CLASS += device/motorola/quark/cmhw
+
 # Display
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
