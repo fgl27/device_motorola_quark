@@ -2,16 +2,19 @@
 ro.hw.device=quark
 
 # Audio
-lpa.decode=true
-
-ro.qc.sdk.audio.fluencetype=none
+ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
-ro.config.vc_call_vol_steps=7
-
-#enable voice path for PCM VoIP by default
-use.voice.path.for.pcm.voip=true
+use.voice.path.for.pcm.voip=false
+use.dedicated.device.for.voip=true
+audio.offload.buffer.size.kb=32
+av.offload.enable=true
+av.streaming.offload.enable=true
+audio.offload.multiple.enabled=false
+audio.offload.gapless.enabled=true
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
 
 #Bluetooth
 bt.max.hfpclient.connections=1

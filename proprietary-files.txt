@@ -10,6 +10,7 @@ vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
+vendor/lib/libcsd-client.so
 
 # ACDB
 etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
