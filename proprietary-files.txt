@@ -41,7 +41,6 @@ vendor/lib/soundfx/libqcreverb.so
 
 # Audio (sourced from shamu)
 lib/libdetectmodem.so
-lib/soundfx/libspeakerbundle.so
 
 # Bluetooth
 bin/btnvtool
