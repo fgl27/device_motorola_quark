@@ -45,6 +45,7 @@ lib/libdetectmodem.so
 # Bluetooth
 bin/btnvtool
 bin/hci_qcomm_init
+bin/wcnss_filter
 etc/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin
 etc/firmware/nvm_tlv_2.1.bin
