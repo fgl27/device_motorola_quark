@@ -1,0 +1,10 @@
+[
+  {
+    "repository": "android_device_qcom_common",
+    "target_path": "device/qcom/common"
+  },
+  {
+    "repository": "android_kernel_motorola_apq8084",
+    "target_path": "kernel/motorola/apq8084"
+  }
+]
