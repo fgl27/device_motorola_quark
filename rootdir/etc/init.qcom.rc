@@ -81,6 +81,9 @@ on init
     write /proc/sys/kernel/core_pattern "|/system/bin/coredump %e %p %t"
     write /proc/self/coredump_filter "0x7f"
 
+    # CM: We use our own ril-daemon service definition, see mmi-ril-daemon
+    stop ril-daemon
+
 on fs
     mount_all fstab.qcom
 
@@ -555,11 +558,6 @@ service time_daemon /system/bin/time_daemon
     user root
     group root
 
-service qrngd /system/bin/qrngd -f
-    class main
-    user root
-    group root
-
 service qseecomd /system/bin/qseecomd
     class core
     user root
@@ -612,25 +610,33 @@ service stm401 /system/bin/stm401 boot
 on property:hw.touch.ready=1
     start stm401
 
-service mmi-usb-sh /system/bin/logwrapper /system/bin/sh /init.mmi.usb.sh
+service mmi-usb-sh /system/bin/sh /init.mmi.usb.sh
     class core
     user root
     oneshot
 
-service mmi-boot-sh /system/bin/logwrapper /system/bin/sh /init.mmi.boot.sh
+service mmi-boot-sh /system/bin/sh /init.mmi.boot.sh
     class core
     user root
     oneshot
 
-service mmi-touch-sh /system/bin/logwrapper /system/bin/sh /init.mmi.touch.sh atmel
+service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
     class disabled
     user root
     oneshot
 
+service mmi-ril-daemon /system/bin/rild
+    class main
+    socket rild stream 660 root radio
+    socket rild-debug stream 660 radio system
+    socket cutback stream 660 media radio
+    user root
+    group radio cache inet misc audio sdcard_rw qcom_diag log
+
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
 
-service irsc_util /system/bin/logwrapper /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
@@ -681,19 +687,6 @@ service btsnoop /system/bin/btsnoop
     class late_start
     disabled
     oneshot
-
-service ftmd /system/bin/logwrapper /system/bin/ftmdaemon
-    class late_start
-    user system
-    group system bluetooth inet net_bt_admin misc net_admin net_bt_stack qcom_diag
-    disabled
-    oneshot
-
-service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
-    class main
-    user radio system
-    group radio system inet
-    disabled
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd

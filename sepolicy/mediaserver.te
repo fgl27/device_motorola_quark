@@ -2,3 +2,5 @@ allow mediaserver firmware_file:dir search;
 allow mediaserver firmware_file:file r_file_perms;
 allow mediaserver socket_device:sock_file write;
 allow mediaserver adspd:unix_stream_socket connectto;
+allow mediaserver camera_prop:property_service set;
+allow mediaserver adspd_socket:sock_file write;

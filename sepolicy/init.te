@@ -1,6 +1,10 @@
 allow init atvc:file x_file_perms;
-allow init block_device:blk_file setattr;
-allow init hob_block_device:blk_file setattr;
-allow init utags_block_device:blk_file setattr;
+allow init block_device:blk_file { create_file_perms setattr };
+allow init hob_block_device:blk_file { create_file_perms setattr };
+allow init utags_block_device:blk_file { create_file_perms setattr };
 allow init fuse:dir { relabelfrom read };
 allow init fuse:file getattr;
+allow init shell_data_file:fifo_file getattr;
+
+# Sometimes there are leftovers
+allow init init:file relabelfrom;

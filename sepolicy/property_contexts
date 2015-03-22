@@ -1,0 +1,2 @@
+# Motorola service properties
+persist.camera              u:object_r:camera_prop:s0

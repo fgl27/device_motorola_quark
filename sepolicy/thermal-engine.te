@@ -1,3 +1,7 @@
 allow thermal-engine sysfs_battery_supply:dir search;
 allow thermal-engine sysfs_battery_supply:file r_file_perms;
 allow thermal-engine sysfs_battery_supply:lnk_file read;
+
+# FIXME: Just use generic sysfs for now
+allow thermal-engine sysfs:dir search;
+allow thermal-engine sysfs:file read;
