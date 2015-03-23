@@ -1,3 +1,7 @@
 type atvc, domain;
 type atvc_exec, exec_type, file_type;
 init_daemon_domain(atvc)
+
+unix_socket_connect(atvc, property, init)
+allow atvc property_socket:sock_file write;
+allow atvc default_prop:property_service set;

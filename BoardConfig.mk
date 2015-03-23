@@ -119,6 +119,7 @@ BOARD_SEPOLICY_UNION += \
     adspd.te \
     atvc.te \
     batt_health.te \
+    bluetooth.te \
     device.te \
     file_contexts \
     file.te \
