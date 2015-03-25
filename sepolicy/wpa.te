@@ -1,0 +1,1 @@
+allow wpa wpa_socket:fifo_file { write unlink };
