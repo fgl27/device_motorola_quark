@@ -14,34 +14,33 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.cmactions;
+package com.cyanogenmod.settings.device;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.util.Log;
 
-public class StowSensor implements ActionableSensor, SensorEventListener {
-    private static final String TAG = "CMActions-StowSensor";
+public class FlatUpSensor implements ActionableSensor, SensorEventListener {
+    private static final String TAG = "CMActions-FlatUpSensor";
 
     private SensorHelper mSensorHelper;
     private State mState;
     private SensorAction mSensorAction;
+    private Sensor mSensor;
 
-    private Sensor sensor;
-
-    public StowSensor(SensorHelper sensorHelper, State state, SensorAction action) {
+    public FlatUpSensor(SensorHelper sensorHelper, State state, SensorAction sensorAction) {
         mSensorHelper = sensorHelper;
         mState = state;
-        mSensorAction = action;
+        mSensorAction = sensorAction;
 
-        sensor = sensorHelper.getStowSensor();
+        mSensor = sensorHelper.getFlatUpSensor();
     }
 
     @Override
     public void enable() {
         Log.d(TAG, "Enabling");
-        mSensorHelper.registerListener(sensor, this);
+        mSensorHelper.registerListener(mSensor, this);
     }
 
     @Override
@@ -52,9 +51,14 @@ public class StowSensor implements ActionableSensor, SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        boolean thisStowed = (event.values[0] != 0);
-        Log.d(TAG, "event: " + thisStowed);
-        if (mState.setIsStowed(thisStowed) && ! thisStowed) {
+        boolean thisFlatUp = (event.values[0] != 0);
+        boolean lastFlatUp = mState.setIsFlatUp(thisFlatUp);
+        boolean isStowed = mState.getIsStowed();
+
+        Log.d(TAG, "event: " + thisFlatUp + " lastFlatUp=" + lastFlatUp + " isStowed=" + isStowed);
+
+        // Only pulse when picked up:
+        if (lastFlatUp && ! thisFlatUp && !isStowed) {
             mSensorAction.action();
         }
     }

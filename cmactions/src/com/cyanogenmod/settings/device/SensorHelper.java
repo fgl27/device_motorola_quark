@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.cmactions;
+package com.cyanogenmod.settings.device;
 
 import java.util.List;
 import java.io.FileOutputStream;
@@ -34,7 +34,6 @@ public class SensorHelper {
     private static final int SENSOR_TYPE_MMI_CHOP_CHOP = 65546;
     private static final int SENSOR_TYPE_MMI_FLAT_UP = 65537;
     private static final int SENSOR_TYPE_MMI_IR_GESTURE = 65541;
-    private static final int SENSOR_TYPE_MMI_IR_OBJECT = 65543;
     private static final int SENSOR_TYPE_MMI_STOW = 65539;
 
     private static final int BATCH_LATENCY_IN_MS = 100;

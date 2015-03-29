@@ -14,32 +14,50 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.cmactions;
+package com.cyanogenmod.settings.device;
 
+import java.util.List;
+
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import android.provider.MediaStore;
 import android.util.Log;
 
-public class IrGestureSensor implements ActionableSensor, SensorEventListener {
-    private static final String TAG = "CMActions-IRGestureSensor";
+public class CameraActivationSensor implements ActionableSensor, SensorEventListener {
+    private static final String TAG = "CMActions-CameraSensor";
+
+    private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
 
     private SensorHelper mSensorHelper;
     private SensorAction mSensorAction;
 
-    private Sensor sensor;
+    private Sensor mCameraActivationSensor;
+    private Sensor mChopChopSensor;
 
-    public IrGestureSensor(SensorHelper sensorHelper, SensorAction action) {
+    private Context mContext;
+
+    public CameraActivationSensor(SensorHelper sensorHelper, SensorAction sensorAction) {
         mSensorHelper = sensorHelper;
-        mSensorAction = action;
-
-        sensor = sensorHelper.getIrGestureSensor();
+        mSensorAction = sensorAction;
+        mCameraActivationSensor = sensorHelper.getCameraActivationSensor();
+        mChopChopSensor = sensorHelper.getChopChopSensor();
     }
 
     @Override
     public void enable() {
         Log.d(TAG, "Enabling");
-        mSensorHelper.registerListener(sensor, this);
+        mSensorHelper.registerListener(mCameraActivationSensor, this);
+        mSensorHelper.registerListener(mChopChopSensor, this);
     }
 
     @Override
@@ -50,8 +68,7 @@ public class IrGestureSensor implements ActionableSensor, SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        Log.d(TAG, "event: [" + event.values.length + "]: " + event.values[0] + ", " +
-            event.values[1] + ", " + event.values[2]);
+        Log.d(TAG, "activate camera");
         mSensorAction.action();
     }
 

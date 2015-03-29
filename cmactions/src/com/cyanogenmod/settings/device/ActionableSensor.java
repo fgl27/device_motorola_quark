@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.cmactions;
+package com.cyanogenmod.settings.device;
 
-interface ScreenStateNotifier {
-    public void screenTurnedOn();
-    public void screenTurnedOff();
+interface ActionableSensor {
+    public void enable();
+    public void disable();
 }

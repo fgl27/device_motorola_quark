@@ -14,50 +14,33 @@
  * limitations under the License.
  */
 
-package org.cyanogenmod.cmactions;
+package com.cyanogenmod.settings.device;
 
-import java.util.List;
-
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
-import android.provider.MediaStore;
 import android.util.Log;
 
-public class CameraActivationSensor implements ActionableSensor, SensorEventListener {
-    private static final String TAG = "CMActions-CameraSensor";
-
-    private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
+public class StowSensor implements ActionableSensor, SensorEventListener {
+    private static final String TAG = "CMActions-StowSensor";
 
     private SensorHelper mSensorHelper;
+    private State mState;
     private SensorAction mSensorAction;
+    private Sensor mSensor;
 
-    private Sensor mCameraActivationSensor;
-    private Sensor mChopChopSensor;
-
-    private Context mContext;
-
-    public CameraActivationSensor(SensorHelper sensorHelper, SensorAction sensorAction) {
+    public StowSensor(SensorHelper sensorHelper, State state, SensorAction sensorAction) {
         mSensorHelper = sensorHelper;
+        mState = state;
         mSensorAction = sensorAction;
-        mCameraActivationSensor = sensorHelper.getCameraActivationSensor();
-        mChopChopSensor = sensorHelper.getChopChopSensor();
+
+        mSensor = sensorHelper.getStowSensor();
     }
 
     @Override
     public void enable() {
         Log.d(TAG, "Enabling");
-        mSensorHelper.registerListener(mCameraActivationSensor, this);
-        mSensorHelper.registerListener(mChopChopSensor, this);
+        mSensorHelper.registerListener(mSensor, this);
     }
 
     @Override
@@ -68,8 +51,11 @@ public class CameraActivationSensor implements ActionableSensor, SensorEventList
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        Log.d(TAG, "activate camera");
-        mSensorAction.action();
+        boolean thisStowed = (event.values[0] != 0);
+        Log.d(TAG, "event: " + thisStowed);
+        if (mState.setIsStowed(thisStowed) && ! thisStowed) {
+            mSensorAction.action();
+        }
     }
 
     @Override
