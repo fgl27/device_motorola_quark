@@ -246,7 +246,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
     hostapd \
-    libQWiFiSoftApCfg \
     wpa_supplicant \
     wpa_supplicant.conf
 
