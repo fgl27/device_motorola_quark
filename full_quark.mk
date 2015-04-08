@@ -24,5 +24,5 @@ $(call inherit-product, device/motorola/quark/device.mk)
 PRODUCT_DEVICE := quark
 PRODUCT_NAME := full_quark
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := Moto MAXX
+PRODUCT_MODEL := quark
 PRODUCT_MANUFACTURER := motorola

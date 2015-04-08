@@ -87,15 +87,18 @@ on init
 on fs
     mount_all fstab.qcom
 
+    # Run multiconfig
+    exec /system/bin/sh /moto_config.sh
+
     # Set correct permissions for CID Partitions and CLOGO Partitions
     exec /system/bin/chmod -L 660 /dev/block/platform/msm_sdcc.1/by-name/cid
     exec /system/bin/chmod -L 660 /dev/block/platform/msm_sdcc.1/by-name/clogo
     exec /system/bin/chown -L root:mot_dbvc /dev/block/platform/msm_sdcc.1/by-name/cid
-    exec /system/bin/chown -L root:mot_tcmd /dev/block/platform/msm_sdcc.1/by-name/clogo
+    exec /system/bin/chown -L root:system /dev/block/platform/msm_sdcc.1/by-name/clogo
 
     # Set correct permissions for UTAGS
     exec /system/bin/chmod -L 660 /dev/block/platform/msm_sdcc.1/by-name/utags
-    exec /system/bin/chown -L mot_tcmd:system /dev/block/platform/msm_sdcc.1/by-name/utags
+    exec /system/bin/chown -L system:system /dev/block/platform/msm_sdcc.1/by-name/utags
 
     restorecon_recursive /persist
 
@@ -103,6 +106,7 @@ on fs
 
 # msm specific files that need to be created on /data
 on post-fs-data
+
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -378,13 +382,13 @@ on boot
     mkdir /data/adspd/1 0770 audio audio
 
     # ACDB file path
-    setprop persist.audio.calfile0 /system//etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
-    setprop persist.audio.calfile1 /system//etc/acdbdata/MTP/MTP_General_cal.acdb
-    setprop persist.audio.calfile2 /system//etc/acdbdata/MTP/MTP_Global_cal.acdb
-    setprop persist.audio.calfile3 /system//etc/acdbdata/MTP/MTP_Handset_cal.acdb
-    setprop persist.audio.calfile4 /system//etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
-    setprop persist.audio.calfile5 /system//etc/acdbdata/MTP/MTP_Headset_cal.acdb
-    setprop persist.audio.calfile6 /system//etc/acdbdata/MTP/MTP_Speaker_cal.acdb
+    setprop persist.audio.calfile0 /system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
+    setprop persist.audio.calfile1 /system/etc/acdbdata/MTP/MTP_General_cal.acdb
+    setprop persist.audio.calfile2 /system/etc/acdbdata/MTP/MTP_Global_cal.acdb
+    setprop persist.audio.calfile3 /system/etc/acdbdata/MTP/MTP_Handset_cal.acdb
+    setprop persist.audio.calfile4 /system/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
+    setprop persist.audio.calfile5 /system/etc/acdbdata/MTP/MTP_Headset_cal.acdb
+    setprop persist.audio.calfile6 /system/etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
     # Change ownership and permission for led
     chown system system /sys/class/leds/charging/brightness

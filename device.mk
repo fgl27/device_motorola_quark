@@ -210,11 +210,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     qcmediaplayer
 
-# Ramdisk
+# ETC scripts
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh \
     moto_com.sh
 
+# Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.mmi.boot.sh \
@@ -223,6 +224,7 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
+    moto_config.sh \
     ueventd.qcom.rc
 
 # Support
