@@ -31,6 +31,7 @@ public class DozePulseAction implements SensorAction {
         mState = state;
     }
 
+    @Override
     public void action() {
          if (mState.mayDoze()) {
             Log.d(TAG, "Sending doze.pulse intent");

@@ -40,22 +40,31 @@ public class IrGestureSensor implements ActionableSensor, SensorEventListener {
     public static final int IR_GESTURE_PROXIMITY_NONE              = 9;
     public static final int IR_GESTURE_HOVER_FIST                  = 10;
 
+    public static final int IR_GESTURE_WAKE_ENABLED                = 1;
+    public static final int IR_GESTURE_SILENCE_ENABLED             = 2;
+
     private SensorHelper mSensorHelper;
-    private SensorAction mDozeAction;
+    private SensorAction mDozePulseAction;
+    private SensorAction mSilenceAction;
     private Sensor mSensor;
     private boolean mIsScreenOn;
 
     private int mLastEventId;
     private int mGesture = IR_GESTURE_GESTURE_OBJECT_NOT_DETECTED;
 
+    private boolean mWakeEnabled = false;
+    private boolean mSilenceEnabled = false;
+    private boolean mRegistered = false;
+
     static
     {
        System.load("/system/lib/libjni_CMActions.so");
     }
 
-    public IrGestureSensor(SensorHelper sensorHelper, SensorAction dozeAction) {
+    public IrGestureSensor(SensorHelper sensorHelper, SensorAction dozePulseAction, SensorAction silenceAction) {
         mSensorHelper = sensorHelper;
-        mDozeAction = dozeAction;
+        mDozePulseAction = dozePulseAction;
+        mSilenceAction = silenceAction;
 
         mSensor = sensorHelper.getIrGestureSensor();
         nativeSetIrDisabled(true);
@@ -68,17 +77,23 @@ public class IrGestureSensor implements ActionableSensor, SensorEventListener {
     public void setScreenOn(boolean isScreenOn) {
        mIsScreenOn = isScreenOn;
        Log.d(TAG, "mIsScreenOn: " + isScreenOn);
-       boolean success = false;
 
        // If screen is off, make some gestures wake the device
+       // IR will be disabled if waking is turned off, so it will not wake
        if (!mIsScreenOn) {
-           success = nativeSetIrWakeConfig((1 << IR_GESTURE_SWIPE) | (1 << IR_GESTURE_APPROACH));
+           nativeSetIrWakeConfig((1 << IR_GESTURE_SWIPE) | (1 << IR_GESTURE_APPROACH));
+           if (!mWakeEnabled) {
+               nativeSetIrDisabled(true);
+           } else {
+               nativeSetIrDisabled(false);
+           }
        } else {
-           success = nativeSetIrWakeConfig(0);
-       }
-
-       if (!success) {
-           Log.e(TAG, "Failed setting IR wake config!");
+           nativeSetIrWakeConfig(0);
+           if (!mSilenceEnabled) {
+               nativeSetIrDisabled(true);
+           } else {
+               nativeSetIrDisabled(false);
+           }
        }
     }
 
@@ -90,18 +105,72 @@ public class IrGestureSensor implements ActionableSensor, SensorEventListener {
     @Override
     public void enable() {
         Log.d(TAG, "Enabling");
+        mWakeEnabled = true;
+        mSilenceEnabled = true;
         mSensorHelper.registerListener(mSensor, this);
-        if (!nativeSetIrDisabled(false)) {
-            Log.e(TAG, "Failed enabling IR sensor!");
+        nativeSetIrDisabled(false);
+        mRegistered = true;
+    }
+
+    public void enable(int action) {
+       Log.d(TAG, "Enabling " + action);
+        switch(action) {
+            case IR_GESTURE_WAKE_ENABLED:
+                mWakeEnabled = true;
+                if (!mIsScreenOn) {
+                    nativeSetIrDisabled(false);
+                }
+                break;
+            case IR_GESTURE_SILENCE_ENABLED:
+                mSilenceEnabled = true;
+                if (mIsScreenOn) {
+                    nativeSetIrDisabled(false);
+                }
+                break;
+            default:
+                Log.e(TAG, "enable: invalid action " + action);
+                return;
+        }
+
+        if (!mRegistered && (mWakeEnabled || mSilenceEnabled)) {
+            mSensorHelper.registerListener(mSensor, this);
+            mRegistered = true;
         }
     }
 
     @Override
     public void disable() {
         Log.d(TAG, "Disabling");
+        mWakeEnabled = false;
+        mSilenceEnabled = false;
         mSensorHelper.unregisterListener(this);
-        if (!nativeSetIrDisabled(true)) {
-            Log.e(TAG, "Failed disabling IR sensor!");
+        nativeSetIrDisabled(true);
+        mRegistered = false;
+    }
+
+    public void disable(int action) {
+       Log.d(TAG, "Disabling " + action);
+        switch(action) {
+            case IR_GESTURE_WAKE_ENABLED:
+                mWakeEnabled = false;
+                if (!mIsScreenOn) {
+                    nativeSetIrDisabled(true);
+                }
+                break;
+            case IR_GESTURE_SILENCE_ENABLED:
+                mSilenceEnabled = false;
+                if (mIsScreenOn) {
+                    nativeSetIrDisabled(true);
+                }
+                break;
+            default:
+                Log.e(TAG, "disable: invalid action " + action);
+                return;
+        }
+
+        if (mRegistered && (!mWakeEnabled && !mSilenceEnabled)) {
+            mSensorHelper.unregisterListener(this);
+            mRegistered = false;
         }
     }
 
@@ -121,10 +190,13 @@ public class IrGestureSensor implements ActionableSensor, SensorEventListener {
 
         mGesture = (int)event.values[1];
 
-        if (!mIsScreenOn && newEvent &&
+        if (!mIsScreenOn && mWakeEnabled && newEvent &&
             (mGesture == IR_GESTURE_SWIPE || mGesture == IR_GESTURE_APPROACH) ) {
-            Log.d(TAG, "mGesture: " + mGesture);
-            mDozeAction.action();
+            Log.d(TAG, "mGesture: " + mGesture + ", sending doze");
+            mDozePulseAction.action();
+        } else if (mIsScreenOn && mSilenceEnabled && newEvent && (mGesture == IR_GESTURE_SWIPE)) {
+            Log.d(TAG, "mGesture: " + mGesture + ", sending silence");
+            mSilenceAction.action();
         }
     }
 

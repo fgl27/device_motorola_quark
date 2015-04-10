@@ -28,15 +28,17 @@ import android.util.Log;
 public class CMActionsService extends IntentService implements ScreenStateNotifier {
     private static final String TAG = "CMActions";
 
-    private static final String GESTURE_IR_KEY = "gesture_ir";
+    private static final String GESTURE_IR_WAKE_KEY = "gesture_ir_wake";
+    private static final String GESTURE_IR_SILENCE_KEY = "gesture_ir_silence";
     private static final String GESTURE_CAMERA_KEY = "gesture_camera";
-    
+
     private State mState;
     private SensorHelper mSensorHelper;
     private ScreenReceiver mScreenReceiver;
 
     private CameraActivationAction mCameraActivationAction;
     private DozePulseAction mDozePulseAction;
+    private SilenceAction mSilenceAction;
 
     private CameraActivationSensor mCameraActivationSensor;
     private FlatUpSensor mFlatUpSensor;
@@ -45,7 +47,8 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
 
     private Context mContext;
 
-    private boolean mGestureIrEnabled;
+    private boolean mGestureIrWakeEnabled;
+    private boolean mGestureIrSilenceEnabled;
     private boolean mGestureCameraEnabled;
 
     public CMActionsService(Context context) {
@@ -60,10 +63,11 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
 
         mCameraActivationAction = new CameraActivationAction(context);
         mDozePulseAction = new DozePulseAction(context, mState);
+        mSilenceAction = new SilenceAction(context);
 
         mCameraActivationSensor = new CameraActivationSensor(mSensorHelper, mCameraActivationAction);
         mFlatUpSensor = new FlatUpSensor(mSensorHelper, mState, mDozePulseAction);
-        mIrGestureSensor = new IrGestureSensor(mSensorHelper, mDozePulseAction);
+        mIrGestureSensor = new IrGestureSensor(mSensorHelper, mDozePulseAction, mSilenceAction);
         mStowSensor = new StowSensor(mSensorHelper, mState, mDozePulseAction);
 
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
@@ -73,8 +77,11 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
         if (mGestureCameraEnabled) {
             mCameraActivationSensor.enable();
         }
-        if (mGestureIrEnabled) {
-            mIrGestureSensor.enable();
+        if (mGestureIrWakeEnabled) {
+            mIrGestureSensor.enable(IrGestureSensor.IR_GESTURE_WAKE_ENABLED);
+        }
+        if (mGestureIrSilenceEnabled) {
+            mIrGestureSensor.enable(IrGestureSensor.IR_GESTURE_SILENCE_ENABLED);
         }
 
         PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
@@ -113,7 +120,8 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
     }
 
     private void loadPreferences(SharedPreferences sharedPreferences) {
-        mGestureIrEnabled = sharedPreferences.getBoolean(GESTURE_IR_KEY, true);
+        mGestureIrWakeEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKE_KEY, true);
+        mGestureIrSilenceEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCE_KEY, true);
         mGestureCameraEnabled = sharedPreferences.getBoolean(GESTURE_CAMERA_KEY, true);
     }
 
@@ -121,12 +129,19 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
             new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            if (GESTURE_IR_KEY.equals(key)) {
-                mGestureIrEnabled = sharedPreferences.getBoolean(GESTURE_IR_KEY, true);
-                if (mGestureIrEnabled) {
-                    mIrGestureSensor.enable();
+            if (GESTURE_IR_WAKE_KEY.equals(key)) {
+                mGestureIrWakeEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKE_KEY, true);
+                if (mGestureIrWakeEnabled) {
+                    mIrGestureSensor.enable(IrGestureSensor.IR_GESTURE_WAKE_ENABLED);
                 } else {
-                    mIrGestureSensor.disable();
+                    mIrGestureSensor.disable(IrGestureSensor.IR_GESTURE_WAKE_ENABLED);
+                }
+            } else if (GESTURE_IR_SILENCE_KEY.equals(key)) {
+                mGestureIrSilenceEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCE_KEY, true);
+                if (mGestureIrSilenceEnabled) {
+                    mIrGestureSensor.enable(IrGestureSensor.IR_GESTURE_SILENCE_ENABLED);
+                } else {
+                    mIrGestureSensor.disable(IrGestureSensor.IR_GESTURE_SILENCE_ENABLED);
                 }
             } else if (GESTURE_CAMERA_KEY.equals(key)) {
                 mGestureCameraEnabled = sharedPreferences.getBoolean(GESTURE_CAMERA_KEY, true);

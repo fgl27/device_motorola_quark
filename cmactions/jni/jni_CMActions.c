@@ -35,10 +35,11 @@
 #define PACKED __attribute__((__packed__))
 #define UNUSED __attribute__((__unused__))
 
-#define STM401_DEVICE                  "/dev/stm401"
-#define STM401_IR_WAKE_CONFIG_MASK      0x000007FE
-#define STM401_IR_CONTROL_DISABLE       0x00000001
-#define STM401_IR_CONFIG_TUNING_NUMBER 7
+#define STM401_DEVICE                       "/dev/stm401"
+#define STM401_IR_WAKE_CONFIG_MASK          0x000007FE
+#define STM401_IR_CONTROL_DISABLE           0x00000001
+#define STM401_IR_CONFIG_MIN_TUNING_NUMBER  6
+#define STM401_IR_CONFIG_MAX_TUNING_NUMBER  7
 
 struct PACKED stm401_ir_led_config
 {
@@ -135,8 +136,8 @@ int read_ir_config(struct stm401_ir_config* config, int check_version)
         return 1;
     }
 
-    if (check_version && config->tuning_number != STM401_IR_CONFIG_TUNING_NUMBER) {
-        ALOGE("%s: Found tuning number %d, but expected %d!\n", __func__, config->tuning_number, STM401_IR_CONFIG_TUNING_NUMBER);
+    if (check_version && ((config->tuning_number < STM401_IR_CONFIG_MIN_TUNING_NUMBER) || (config->tuning_number > STM401_IR_CONFIG_MAX_TUNING_NUMBER)) ) {
+        ALOGE("%s: Found tuning number %d, but expected %d to %d!\n", __func__, config->tuning_number, STM401_IR_CONFIG_MIN_TUNING_NUMBER, STM401_IR_CONFIG_MAX_TUNING_NUMBER);
         return 1;
     }
 
@@ -151,6 +152,7 @@ int write_ir_config(struct stm401_ir_config* config)
 int set_ir_disabled(int disabled)
 {
     struct stm401_ir_config config;
+    int current_disabled;
 
     pthread_mutex_lock(&ioctl_mutex);
 
@@ -158,21 +160,27 @@ int set_ir_disabled(int disabled)
         goto err;
     }
 
-    if (disabled) {
-        config.cmd_control |= STM401_IR_CONTROL_DISABLE;
-    } else {
-        config.cmd_control &= ~STM401_IR_CONTROL_DISABLE;
-    }
+    current_disabled = ((config.cmd_control & STM401_IR_CONTROL_DISABLE) != 0);
+    disabled = (disabled != 0);
+    if (current_disabled != disabled) {
+        if (disabled) {
+            config.cmd_control |= STM401_IR_CONTROL_DISABLE;
+        } else {
+            config.cmd_control &= ~STM401_IR_CONTROL_DISABLE;
+        }
 
-    if (write_ir_config(&config)) {
-        goto err;
+        if (write_ir_config(&config)) {
+            goto err;
+        }
+        ALOGD("%s: set ir disabled to %d\n", __func__, disabled);
+    } else {
+        ALOGD("%s: ir disabled already set to %d\n", __func__, disabled);
     }
 
     pthread_mutex_unlock(&ioctl_mutex);
-
-    ALOGD("%s: set ir disabled to %d\n", __func__, (disabled != 0));
     return 0;
 err:
+    ALOGE("%s: failed to set ir disabled to %d\n", __func__, disabled);
     pthread_mutex_unlock(&ioctl_mutex);
     return 1;
 }
@@ -193,11 +201,11 @@ int set_ir_wake_config(int wake_config)
         goto err;
     }
 
-     pthread_mutex_unlock(&ioctl_mutex);
-
     ALOGD("%s: set ir wake config to 0x%x\n", __func__, config.cmd_config);
+    pthread_mutex_unlock(&ioctl_mutex);
     return 0;
 err:
+    ALOGE("%s: failed to set ir wake config to 0x%x\n", __func__, config.cmd_config);
     pthread_mutex_unlock(&ioctl_mutex);
     return 1;
 }

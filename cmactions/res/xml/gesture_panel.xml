@@ -17,10 +17,16 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <SwitchPreference
-        android:key="gesture_ir"
+        android:key="gesture_ir_wake"
         android:defaultValue="true"
-        android:title="@string/gesture_ir_title"
-        android:summary="@string/gesture_ir_summary" />
+        android:title="@string/gesture_ir_wake_title"
+        android:summary="@string/gesture_ir_wake_summary" />
+
+    <SwitchPreference
+        android:key="gesture_ir_silence"
+        android:defaultValue="true"
+        android:title="@string/gesture_ir_silence_title"
+        android:summary="@string/gesture_ir_silence_summary" />
 
     <SwitchPreference
         android:key="gesture_camera"

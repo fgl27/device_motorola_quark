@@ -17,11 +17,14 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Gesture shortcuts -->
-    <string name="screen_gestures_panel_title">Gesture shortcuts</string>
+    <string name="screen_gestures_panel_title">Gestures</string>
     <string name="screen_gestures_panel_summary">Use gestures to perform actions</string>
 
-    <string name="gesture_ir_title">Approach For Display</string>
-    <string name="gesture_ir_summary">Reach for your device to trigger display</string>
+    <string name="gesture_ir_wake_title">Approach for display</string>
+    <string name="gesture_ir_wake_summary">Reach for your device to trigger display</string>
+
+    <string name="gesture_ir_silence_title">Wave to silence</string>
+    <string name="gesture_ir_silence_summary">Wave to silence calls</string>
 
     <string name="camera_gesture_title">Camera</string>
     <string name="camera_gesture_summary">Twist phone to activate camera</string>
