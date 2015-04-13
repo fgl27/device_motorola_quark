@@ -18,6 +18,7 @@ package com.cyanogenmod.settings.device;
 
 import java.util.List;
 
+import android.app.KeyguardManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -40,12 +41,14 @@ public class CameraActivationAction implements SensorAction {
     private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
 
     private PowerManager mPowerManager;
+    private KeyguardManager mKeyguardManager;
     private PackageManager mPackageManager;
 
     private Context mContext;
 
     public CameraActivationAction(Context context) {
         mContext = context;
+        mKeyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         mPackageManager = context.getPackageManager();
     }
@@ -54,7 +57,11 @@ public class CameraActivationAction implements SensorAction {
     public void action() {
         vibrate();
         turnScreenOn();
-        launchCameraIntent();
+        if (mKeyguardManager.inKeyguardRestrictedInputMode()) {
+             launchCameraIntent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA_SECURE);
+        } else {
+             launchCameraIntent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
+        }
     }
 
     private void vibrate() {
@@ -68,8 +75,8 @@ public class CameraActivationAction implements SensorAction {
         wl.acquire(TURN_SCREEN_ON_WAKE_LOCK_MS);
     }
 
-    private void launchCameraIntent() {
-        Intent intent = new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA_SECURE);
+    private void launchCameraIntent(String intentName) {
+        Intent intent = new Intent(intentName);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_FROM_BACKGROUND);
         List <ResolveInfo> activities = mPackageManager.queryIntentActivities(intent, 0);
