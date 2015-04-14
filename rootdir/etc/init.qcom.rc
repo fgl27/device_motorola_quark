@@ -637,7 +637,7 @@ service mmi-ril-daemon /system/bin/rild
     socket rild-debug stream 660 radio system
     socket cutback stream 660 media radio
     user root
-    group radio cache inet misc audio sdcard_rw qcom_diag log
+    group radio cache inet misc audio sdcard_rw log qcom_diag net_raw diag wifi
 
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
