@@ -74,6 +74,9 @@ PRODUCT_PACKAGES += \\
     TimeService \\
     libtime_genoff
 
+PRODUCT_PACKAGES += \\
+    org.simalliance.openmobileapi
+
 \$(call inherit-product, vendor/$VENDOR/$DEVICE/$DEVICE-vendor-blobs.mk)
 EOF
 
@@ -164,6 +167,15 @@ LOCAL_SRC_FILES := proprietary/vendor/lib/libtime_genoff.so
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_SUFFIX := .so
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+include \$(BUILD_PREBUILT)
+
+include \$(CLEAR_VARS)
+LOCAL_MODULE := org.simalliance.openmobileapi
+LOCAL_MODULE_OWNER := $VENDOR
+LOCAL_MODULE_TAGS := optional
+LOCAL_SRC_FILES := proprietary/framework/org.simalliance.openmobileapi.jar
+LOCAL_MODULE_CLASS := JAVA_LIBRARIES
+LOCAL_MODULE_SUFFIX := \$(COMMON_JAVA_PACKAGE_SUFFIX)
 include \$(BUILD_PREBUILT)
 
 endif

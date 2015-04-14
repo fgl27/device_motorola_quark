@@ -10,6 +10,7 @@ vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
+vendor/lib/libaudioalsa.so
 vendor/lib/libcsd-client.so
 
 # ACDB
@@ -259,6 +260,7 @@ bin/imsdatadaemon
 bin/imsqmidaemon
 bin/ims_rtp_daemon
 lib/libdashplayer.so
+lib/libmm-omxcore.so
 vendor/lib/libmmhttpstack.so
 vendor/lib/libmmiipstreammmihttp.so
 vendor/lib/libmmipstreamaal.so
@@ -270,6 +272,7 @@ vendor/lib/libmmQTA.so
 vendor/lib/libmmrtpdecoder.so
 vendor/lib/libmmrtpencoder.so
 vendor/lib/lib-dplmedia.so
+vendor/lib/lib-imscamera.so
 vendor/lib/lib-imsdpl.so
 vendor/lib/lib-imsqimf.so
 vendor/lib/lib-imsrcs.so
@@ -282,6 +285,8 @@ vendor/lib/lib-rtpcommon.so
 vendor/lib/lib-rtpcore.so
 vendor/lib/lib-rtpdaemoninterface.so
 vendor/lib/lib-rtpsl.so
+vendor/lib/libvcel.so
+vendor/lib/libwfdcommonutils.so
 
 # Media
 vendor/lib/libDivxDrm.so
@@ -358,7 +363,6 @@ lib/libmdmdetect.so
 lib/libmotext_inf.so
 lib/librmnetctl.so
 lib/libqmimotext.so
-lib/libqsap_sdk.so:vendor/lib/libqsap_sdk.so
 vendor/lib/libconfigdb.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libnetmgr.so
@@ -403,3 +407,6 @@ etc/firmware/vpu.b11
 etc/firmware/vpu.b12
 etc/firmware/vpu.mbn
 etc/firmware/vpu.mdt
+
+# Frameworks
+-framework/org.simalliance.openmobileapi.jar
