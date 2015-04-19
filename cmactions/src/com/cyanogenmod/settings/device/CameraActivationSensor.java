@@ -18,6 +18,7 @@ package com.cyanogenmod.settings.device;
 
 import java.util.List;
 
+import android.app.KeyguardManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -30,49 +31,69 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.util.Log;
 
-public class CameraActivationSensor implements ActionableSensor, SensorEventListener {
-    private static final String TAG = "CMActions-CameraSensor";
-
+public class CameraActivationSensor extends SensorBase {
+    private static final String TAG = "CMActions-CameraActivationSensor";
     private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
+    private static final int VIBRATE_MS = 500;
 
-    private SensorHelper mSensorHelper;
-    private SensorAction mSensorAction;
+    private PowerManager mPowerManager;
+    private KeyguardManager mKeyguardManager;
+    private PackageManager mPackageManager;
 
-    private Sensor mCameraActivationSensor;
-    private Sensor mChopChopSensor;
-
-    private Context mContext;
-
-    public CameraActivationSensor(SensorHelper sensorHelper, SensorAction sensorAction) {
-        mSensorHelper = sensorHelper;
-        mSensorAction = sensorAction;
-        mCameraActivationSensor = sensorHelper.getCameraActivationSensor();
-        mChopChopSensor = sensorHelper.getChopChopSensor();
+    public CameraActivationSensor(Context context) {
+        super(context);
+        mSensorId = SensorBase.SENSOR_TYPE_MMI_CAMERA_ACTIVATION;
+        mKeyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+        mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        mPackageManager = context.getPackageManager();
     }
 
-    @Override
-    public void enable() {
-        Log.d(TAG, "Enabling");
-        mSensorHelper.registerListener(mCameraActivationSensor, this);
-        mSensorHelper.registerListener(mChopChopSensor, this);
+    private void vibrate() {
+        Vibrator v = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(VIBRATE_MS);
     }
 
-    @Override
-    public void disable() {
-        Log.d(TAG, "Disabling");
-        mSensorHelper.unregisterListener(this);
+    private void turnScreenOn() {
+        PowerManager.WakeLock wl = mPowerManager.newWakeLock(
+            PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, TAG);
+        wl.acquire(TURN_SCREEN_ON_WAKE_LOCK_MS);
+    }
+
+    private void launchCameraIntent(String intentName) {
+        Intent intent = new Intent(intentName);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_FROM_BACKGROUND);
+        List <ResolveInfo> activities = mPackageManager.queryIntentActivities(intent, 0);
+        if (activities.size() > 0) {
+            ActivityInfo activity = activities.get(0).activityInfo;
+            ComponentName componentName = new ComponentName(activity.applicationInfo.packageName,
+                activity.name);
+            intent.setComponent(componentName);
+        }
+        mContext.startActivity(intent);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         Log.d(TAG, "activate camera");
-        mSensorAction.action();
+        vibrate();
+        turnScreenOn();
+        if (mKeyguardManager.inKeyguardRestrictedInputMode()) {
+             launchCameraIntent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA_SECURE);
+        } else {
+             launchCameraIntent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
+        }
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+    
+    @Override
+    public void setScreenOn(boolean isScreenOn) {
     }
 }

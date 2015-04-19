@@ -16,54 +16,46 @@
 
 package com.cyanogenmod.settings.device;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.util.Log;
 
-public class FlatUpSensor implements ActionableSensor, SensorEventListener {
+public class FlatUpSensor extends SensorBase {
     private static final String TAG = "CMActions-FlatUpSensor";
+    private DozeManager mDozeManager;
+    private boolean mLastFlatUp;
 
-    private SensorHelper mSensorHelper;
-    private State mState;
-    private SensorAction mSensorAction;
-    private Sensor mSensor;
-
-    public FlatUpSensor(SensorHelper sensorHelper, State state, SensorAction sensorAction) {
-        mSensorHelper = sensorHelper;
-        mState = state;
-        mSensorAction = sensorAction;
-
-        mSensor = sensorHelper.getFlatUpSensor();
-    }
-
-    @Override
-    public void enable() {
-        Log.d(TAG, "Enabling");
-        mSensorHelper.registerListener(mSensor, this);
-    }
-
-    @Override
-    public void disable() {
-        Log.d(TAG, "Disabling");
-        mSensorHelper.unregisterListener(this);
+    public FlatUpSensor(Context context, DozeManager dozeManager) {
+        super(context);
+        mDozeManager = dozeManager;
+        mSensorId = SensorBase.SENSOR_TYPE_MMI_FLAT_UP;
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        boolean thisFlatUp = (event.values[0] != 0);
-        boolean lastFlatUp = mState.setIsFlatUp(thisFlatUp);
-        boolean isStowed = mState.getIsStowed();
+        boolean flatUp = (event.values[0] != 0);
+        Log.d(TAG, "flatUp: " + flatUp + ", mLastFlatUp=" + mLastFlatUp);
 
-        Log.d(TAG, "event: " + thisFlatUp + " lastFlatUp=" + lastFlatUp + " isStowed=" + isStowed);
-
-        // Only pulse when picked up:
-        if (lastFlatUp && ! thisFlatUp && !isStowed) {
-            mSensorAction.action();
+        // Only pulse when picked up
+        if (flatUp && !mLastFlatUp) {
+            mDozeManager.maybeSendDoze();
         }
+
+        mLastFlatUp = flatUp;
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    @Override
+    public void setScreenOn(boolean isScreenOn) {
+        if (isScreenOn) {
+            unregister();
+        } else if (mDozeManager.isDozeEnabled()) {
+            register();
+        }
     }
 }

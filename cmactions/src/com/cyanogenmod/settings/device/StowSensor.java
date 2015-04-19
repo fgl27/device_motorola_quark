@@ -16,49 +16,35 @@
 
 package com.cyanogenmod.settings.device;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.util.Log;
 
-public class StowSensor implements ActionableSensor, SensorEventListener {
+public class StowSensor extends SensorBase {
     private static final String TAG = "CMActions-StowSensor";
+    private DozeManager mDozeManager;
 
-    private SensorHelper mSensorHelper;
-    private State mState;
-    private SensorAction mSensorAction;
-    private Sensor mSensor;
-
-    public StowSensor(SensorHelper sensorHelper, State state, SensorAction sensorAction) {
-        mSensorHelper = sensorHelper;
-        mState = state;
-        mSensorAction = sensorAction;
-
-        mSensor = sensorHelper.getStowSensor();
-    }
-
-    @Override
-    public void enable() {
-        Log.d(TAG, "Enabling");
-        mSensorHelper.registerListener(mSensor, this);
-    }
-
-    @Override
-    public void disable() {
-        Log.d(TAG, "Disabling");
-        mSensorHelper.unregisterListener(this);
+    public StowSensor(Context context, DozeManager dozeManager) {
+        super(context);
+        mDozeManager = dozeManager;
+        mSensorId = SensorBase.SENSOR_TYPE_MMI_STOW;
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        boolean thisStowed = (event.values[0] != 0);
-        Log.d(TAG, "event: " + thisStowed);
-        if (mState.setIsStowed(thisStowed) && ! thisStowed) {
-            mSensorAction.action();
-        }
+        boolean stowed = (event.values[0] != 0);
+        Log.d(TAG, "stowed: " + stowed);
+        mDozeManager.setIsStowed(stowed);
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    @Override
+    public void setScreenOn(boolean isScreenOn) {
+        // Nothing - we can get stowed / unstowed regardless of screen on or off
     }
 }
