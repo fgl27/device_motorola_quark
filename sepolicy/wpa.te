@@ -1,1 +1,7 @@
 allow wpa wpa_socket:fifo_file { write unlink };
+allow wpa cutback_data_file:dir r_dir_perms;
+allow wpa cutback_socket:sock_file write;
+
+allow wpa system_data_file:sock_file write;
+allow wpa init:unix_dgram_socket sendto;
+allow wpa rild:unix_dgram_socket sendto;

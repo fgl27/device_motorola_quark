@@ -45,6 +45,8 @@
 /dev/smd6                 0660   system     system
 /dev/smd7                 0660   bluetooth  bluetooth
 
+/dev/block/platform/msm_sdcc.1/by-name/frp 0600 system system
+
 #permissions for CSVT
 /dev/smd11                0660   radio      radio
 
@@ -177,6 +179,17 @@
 /sys/devices/virtual/optical_sensors/lightsensor    ls_poll_delay  0660    input    system
 /sys/devices/virtual/input/input*                   poll           0660    input    system
 /sys/devices/virtual/input/input*                   pollrate_ms    0660    input    system
+/sys/devices/virtual/input/input*                   delay          0660    root     input
+/sys/devices/virtual/input/input*                   op_mode        0660    root     input
+/sys/devices/virtual/input/input*                   offset_x       0664    root     input
+/sys/devices/virtual/input/input*                   offset_y       0664    root     input
+/sys/devices/virtual/input/input*                   offset_z       0664    root     input
+/sys/devices/virtual/input/input*                   rept_xy        0664    root     input
+/sys/devices/virtual/input/input*                   rept_z         0664    root     input
+/sys/devices/virtual/input/input*                   bandwidth      0664    root     input
+/sys/devices/virtual/input/input*                   range          0664    root     input
+/sys/devices/virtual/input/input*                   driver/enable  0660    root     input
+/sys/devices/virtual/input/input*                   driver/delay   0660    root     input
 
 # wlan
 /dev/wcnss_wlan           0660   system     system
@@ -195,6 +208,18 @@
 /dev/stm401               0660   system     compass
 /dev/stm401_as            0660   compass    compass
 /dev/stm401_ms            0660   compass    compass
+
+# SSR
+/dev/coredump_modem       0660   radio      radio
+/dev/ramdump_adsp         0660   radio      radio
+/dev/ramdump_modem        0660   radio      radio
+/dev/ramdump_smem-modem   0660   radio      radio
+/dev/ramdump_smem-smd     0660   radio      radio
+/dev/ramdump_venus        0660   radio      radio
+/dev/ramdump_pronto       0660   radio      radio
+
+# ACDB
+/dev/msm_acdb             0660   system     audio
 
 # I2C
 /dev/i2c-*                0660   root       system

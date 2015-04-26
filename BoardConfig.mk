@@ -135,6 +135,7 @@ BOARD_SEPOLICY_UNION += \
     mediaserver.te \
     mm-qcamerad.te \
     mpdecision.te \
+    netd.te \
     property.te \
     property_contexts \
     rild.te \

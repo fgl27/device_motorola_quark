@@ -7,3 +7,14 @@ allow rild sysfs_thermal:file r_file_perms;
 
 allow rild system_data_file:sock_file { create unlink setattr };
 allow rild esoc_device:chr_file { open read };
+
+allow rild audio_cutback_data_file:dir rw_dir_perms;
+allow rild audio_cutback_data_file:sock_file { create setattr getattr write unlink };
+
+allow rild cutback_data_file:dir rw_dir_perms;
+allow rild cutback_data_file:file rw_file_perms;
+
+allow rild cutback_socket:sock_file { create setattr getattr write unlink };
+
+allow rild wpa_socket:sock_file write;
+allow rild wpa:unix_dgram_socket sendto;
