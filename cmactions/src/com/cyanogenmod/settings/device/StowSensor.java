@@ -25,6 +25,7 @@ import android.util.Log;
 public class StowSensor extends SensorBase {
     private static final String TAG = "CMActions-StowSensor";
     private DozeManager mDozeManager;
+    private boolean mLastStowed;
 
     public StowSensor(Context context, DozeManager dozeManager) {
         super(context);
@@ -35,8 +36,17 @@ public class StowSensor extends SensorBase {
     @Override
     public void onSensorChanged(SensorEvent event) {
         boolean stowed = (event.values[0] != 0);
-        Log.d(TAG, "stowed: " + stowed);
+        Log.d(TAG, "stowed: " + stowed + ", mLastStowed: " + mLastStowed);
+        // Tell DozeManager that we're unstowed first
+        // so that it would not deny doze
         mDozeManager.setIsStowed(stowed);
+
+        // Only pulse when unstowed
+        if (!stowed && mLastStowed) {
+            mDozeManager.maybeSendDoze();
+        }
+
+        mLastStowed = stowed;
     }
 
     @Override
