@@ -23,7 +23,7 @@ import android.util.Log;
 
 public class DozeManager {
     private static final String TAG = "CMActions";
-    private static final int DELAY_BETWEEN_DOZES_IN_MS = 1500;
+    private static final int DELAY_BETWEEN_DOZES_IN_MS = 2500;
 
     private Context mContext;
     private long mLastDoze;
@@ -48,7 +48,7 @@ public class DozeManager {
     public boolean getIsStowed() {
         return mIsStowed;
     }
-    
+
     public void setIsStowed(boolean isStowed) {
         mIsStowed = isStowed;
     }
@@ -56,11 +56,15 @@ public class DozeManager {
     public boolean getScreenOn() {
         return mIsScreenOn;
     }
-    
+
     public void setScreenOn(boolean isScreenOn) {
+        if (mIsScreenOn && !isScreenOn) {
+            // Do not doze immediatelly after screen off
+            mLastDoze = System.currentTimeMillis();
+        }
         mIsScreenOn = isScreenOn;
     }
-    
+
     public boolean mayDoze() {
         // No dozing if stowed or screen on
         if (!isDozeEnabled() || mIsStowed || mIsScreenOn) {
