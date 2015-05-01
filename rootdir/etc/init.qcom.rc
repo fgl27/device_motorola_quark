@@ -830,3 +830,8 @@ service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023  -w 1023 -d /mnt/media_r
 on property:init.svc.sdcard=running
     wait /mnt/shell/emulated/0
     mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
+
+service atfwd /system/bin/ATFWD-daemon
+    class late_start
+    user system
+    group system radio

@@ -223,6 +223,7 @@ lib/libloc_api_v02.so
 lib/libloc_core.so
 lib/libloc_ds_api.so
 lib/libloc_eng.so
+vendor/etc/gnss/gnss-fsh.bin
 vendor/lib/hw/flp.default.so
 vendor/lib/libalarmservice_jni.so
 vendor/lib/libgeofence.so
@@ -257,12 +258,16 @@ vendor/lib/libscale.so
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
-# IMS - currently unused but have dependencies to qmi
+# IMS (not used yet)
+-app/atfwd/atfwd.apk
+bin/ATFWD-daemon
 bin/imsdatadaemon
 bin/imsqmidaemon
 bin/ims_rtp_daemon
 lib/libdashplayer.so
 lib/libmm-omxcore.so
+-framework/rcsimssettings.jar
+-framework/rcsservice.jar
 vendor/lib/libmmhttpstack.so
 vendor/lib/libmmiipstreammmihttp.so
 vendor/lib/libmmipstreamaal.so
@@ -282,6 +287,7 @@ vendor/lib/lib-imss.so
 vendor/lib/lib-imsSDP.so
 vendor/lib/lib-imsvt.so
 vendor/lib/lib-imsxml.so
+vendor/lib/lib-rcsjni.so
 vendor/lib/lib-rcsimssjni.so
 vendor/lib/lib-rtpcommon.so
 vendor/lib/lib-rtpcore.so
@@ -348,6 +354,7 @@ vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_encdec.so
 
 # Radio
+-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/efsks
 bin/ks
 bin/netmgrd
@@ -358,6 +365,10 @@ bin/qmi_motext_hook
 bin/qmuxd
 bin/rfs_access
 bin/rmt_storage
+etc/permissions/qcnvitems.xml
+etc/permissions/qcrilhook.xml
+-framework/qcnvitems.jar
+-framework/qcrilhook.jar
 lib/libadropbox.so
 lib/libcnefeatureconfig.so
 lib/libmdmcutback.so
@@ -377,6 +388,7 @@ vendor/lib/libxml.so
 
 # Sensors
 bin/stm401
+etc/firmware/cy8c20247_24lkxi.hex
 etc/firmware/sensorhubfw.bin
 etc/firmware/sensorhubfw_p1.bin
 etc/firmware/sensorhubver_p1.txt
