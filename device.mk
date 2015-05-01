@@ -258,6 +258,8 @@ PRODUCT_PACKAGES += \
     wlan_mac_serial.bin
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    $(LOCAL_PATH)/configs/hostapd.deny:system/etc/hostapd/hostapd.deny \
     $(LOCAL_PATH)/configs/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
 
 PRODUCT_COPY_FILES += \
