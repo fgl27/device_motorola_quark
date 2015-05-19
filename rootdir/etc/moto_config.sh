@@ -3,8 +3,8 @@ PATH=/sbin:/system/sbin:/system/bin:/system/xbin
 export PATH
 
 # These are the common values
-setprop "ro.build.device" "quark"
 setprop "ro.build.product" "quark"
+setprop "ro.product.device" "quark"
 
 # Check fsg to determine the model
 

@@ -1,7 +1,7 @@
 on early-init
     # Set multiconfig for recovery (Use XT1225 SINGLELA)
-    setprop ro.build.device quark
     setprop ro.build.product quark
+    setprop ro.product.device quark
     setprop ro.fsg-id singlela
     setprop ro.product.model Moto\ MAXX
     setprop ro.build.description quark_retbr-user\ 5.0.2\ LXG22.33-12.13 13\ release-keys
