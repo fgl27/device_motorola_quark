@@ -141,7 +141,7 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
                 } else {
                     mCameraActivationSensor.unregister();
                 }
-            } 
+            }
         }
     };
 }

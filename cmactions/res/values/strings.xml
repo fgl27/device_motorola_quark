@@ -26,7 +26,7 @@
     <string name="gesture_ir_silence_title">Wave to silence</string>
     <string name="gesture_ir_silence_summary">Wave to silence calls</string>
 
-    <string name="camera_gesture_title">Camera</string>
-    <string name="camera_gesture_summary">Twist phone to activate camera</string>
+    <string name="gesture_camera_title">Twist to launch camera</string>
+    <string name="gesture_camera_summary">Twist phone two times to launch camera</string>
 
 </resources>

@@ -41,7 +41,11 @@ public class DozeManager {
     }
 
     public boolean isDozeEnabled() {
-        return Settings.Secure.getInt(mContext.getContentResolver(),
+        return isDozeEnabled(mContext);
+    }
+
+    public static boolean isDozeEnabled(Context context) {
+        return Settings.Secure.getInt(context.getContentResolver(),
             Settings.Secure.DOZE_ENABLED, 1) != 0;
     }
 
