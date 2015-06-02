@@ -24,7 +24,7 @@
     <string name="gesture_ir_wake_summary">Reach for your device to trigger display</string>
 
     <string name="gesture_ir_silence_title">Wave to silence</string>
-    <string name="gesture_ir_silence_summary">Wave to silence calls</string>
+    <string name="gesture_ir_silence_summary">Wave to silence calls and snooze alarms</string>
 
     <string name="gesture_camera_title">Twist to launch camera</string>
     <string name="gesture_camera_summary">Twist phone two times to launch camera</string>

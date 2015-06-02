@@ -16,7 +16,10 @@
 
 package com.cyanogenmod.settings.device;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -49,6 +52,12 @@ public class IrGestureSensor extends SensorBase {
     public static final int IR_GESTURE_WAKE_ENABLED        = 1;
     public static final int IR_GESTURE_SILENCE_ENABLED     = 2;
 
+    // Alarm snoozing
+    private static final String ALARM_ALERT_ACTION = "com.android.deskclock.ALARM_ALERT";
+    private static final String ALARM_DISMISS_ACTION = "com.android.deskclock.ALARM_DISMISS";
+    private static final String ALARM_SNOOZE_ACTION = "com.android.deskclock.ALARM_SNOOZE";
+    private static final String ALARM_DONE_ACTION = "com.android.deskclock.ALARM_DONE";
+
     private boolean mIsScreenOn = false;
 
     private int mLastEventId = -1;
@@ -57,7 +66,8 @@ public class IrGestureSensor extends SensorBase {
 
     private boolean mWakeEnabled = false;
     private boolean mSilenceEnabled = false;
-    private boolean mIsRinging = false;
+    private boolean mPhoneRinging = false;
+    private boolean mAlarmRinging = false;
 
     private TelecomManager mTelecomManager;
     private DozeManager mDozeManager;
@@ -79,15 +89,22 @@ public class IrGestureSensor extends SensorBase {
             @Override
             public synchronized void onCallStateChanged(int state, String incomingNumber) {
                 if (state == CALL_STATE_RINGING) {
-                    mIsRinging = true;
+                    mPhoneRinging = true;
                 } else {
-                    mIsRinging = false;
+                    mPhoneRinging = false;
                 }
 
                 // Toggle IR as necessary
                 updateNativeState();
             }
         }, PhoneStateListener.LISTEN_CALL_STATE);
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(ALARM_ALERT_ACTION);
+        intentFilter.addAction(ALARM_DISMISS_ACTION);
+        intentFilter.addAction(ALARM_SNOOZE_ACTION);
+        intentFilter.addAction(ALARM_DONE_ACTION);
+        mContext.registerReceiver(mAlarmStateReceiver, intentFilter);
     }
 
     private final native boolean nativeSetIrDisabled(boolean disabled);
@@ -95,12 +112,14 @@ public class IrGestureSensor extends SensorBase {
     private final native boolean nativeSetIrWakeConfig(int wakeConfig);
 
     private synchronized void updateNativeState() {
-        // state variables are: mWakeEnabled, mSilenceEnabled, mIsScreenOn, mIsRinging
+        // state variables are: mWakeEnabled, mSilenceEnabled, mIsScreenOn, mPhoneRinging, mAlarmRinging
         boolean canDisableIr = true;
 
         if (mDozeManager.isDozeEnabled() && mWakeEnabled && !mIsScreenOn) {
             canDisableIr = false;
-        } else if (mSilenceEnabled && mIsScreenOn && mIsRinging) {
+        } else if (mSilenceEnabled && mIsScreenOn && mPhoneRinging) {
+            canDisableIr = false;
+        } else if (mSilenceEnabled && mAlarmRinging) {
             canDisableIr = false;
         }
 
@@ -189,10 +208,15 @@ public class IrGestureSensor extends SensorBase {
             Log.d(TAG, "mGesture: " + mGesture + ", sending doze");
             mDozeManager.maybeSendDoze();
             mLastEventWithAction = eventId;
-        } else if (mIsScreenOn && mSilenceEnabled && mIsRinging && newEvent &&
+        } else if (mIsScreenOn && mSilenceEnabled && mPhoneRinging && newEvent &&
             !actedOnEvent && (mGesture == IR_GESTURE_SWIPE) ) {
-            Log.d(TAG, "mGesture: " + mGesture + ", sending silence");
+            Log.d(TAG, "mGesture: " + mGesture + ", silencing ringer");
             mTelecomManager.silenceRinger();
+            mLastEventWithAction = eventId;
+        } else if (mSilenceEnabled && mAlarmRinging && newEvent &&
+            !actedOnEvent && (mGesture == IR_GESTURE_SWIPE) ) {
+            Log.d(TAG, "mGesture: " + mGesture + ", silencing alarm");
+            mContext.sendBroadcast(new Intent(ALARM_SNOOZE_ACTION));
             mLastEventWithAction = eventId;
         }
     }
@@ -200,4 +224,18 @@ public class IrGestureSensor extends SensorBase {
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
+
+    private BroadcastReceiver mAlarmStateReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+           String action = intent.getAction();
+           if (ALARM_ALERT_ACTION.equals(action)) {
+               mAlarmRinging = true;
+           } else {
+               mAlarmRinging = false;
+           }
+           updateNativeState();
+        }
+    };
 }
