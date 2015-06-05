@@ -744,7 +744,7 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -G
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
     class late_start
     disabled
     oneshot
@@ -765,12 +765,12 @@ service iprenew_p2p /system/bin/dhcpcd -n
     oneshot
 
 # DHCP service for Ethernet
-service dhcpcd_eth0 /system/bin/dhcpcd -G
+service dhcpcd_eth0 /system/bin/dhcpcd -aABDKL
     class late_start
     disabled
     oneshot
 
-service iprenew_eth0 /system/bin/dhcpcd -nBK
+service iprenew_eth0 /system/bin/dhcpcd -n
     class late_start
     disabled
     oneshot
@@ -785,7 +785,7 @@ service iprenew_bt-pan /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service dhcpcd_bnep0 /system/bin/dhcpcd -G
+service dhcpcd_bnep0 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
 
