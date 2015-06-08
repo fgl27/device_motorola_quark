@@ -102,6 +102,9 @@ on fs
 
     restorecon_recursive /persist
 
+    # use /persist as phony PDS partition
+    symlink /persist /pds
+
     setprop ro.crypto.fuse_sdcard true
 
 # msm specific files that need to be created on /data
@@ -420,12 +423,27 @@ on boot
     # Change ownership for HBM control
     chown system system /sys/class/graphics/fb0/hbm
 
-    # Change the ownership of touch screen files for tcmd
-    chown mot_tcmd mot_tcmd /sys/bus/i2c/drivers/atmel_mxt_ts/1-004a/drv_irq
-    chown mot_tcmd mot_tcmd /sys/bus/i2c/drivers/atmel_mxt_ts/1-004a/reset
+    # Change the ownership of touch screen files for system
+    chown system system /sys/bus/i2c/drivers/atmel_mxt_ts/1-004a/drv_irq
+    chown system system /sys/bus/i2c/drivers/atmel_mxt_ts/1-004a/reset
 
     # Setup folder for aplogd
     mkdir /data/aplogd 0750 log log
+
+    # create the necessary data dirs for tpapi with proper permission
+    mkdir /dev/tpapi 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi/etc 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi/etc/tpa 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi/etc/tpa/persistent 02770 mot_tpapi mot_tpapi
+
+    # Quiet binder logs
+    write /sys/module/binder/parameters/debug_mask 0x5
+
+    write  /sys/bus/msm_subsys/devices/subsys3/restart_level related
+    write  /sys/bus/msm_subsys/devices/subsys4/restart_level related
+
+    insmod /system/lib/modules/touchx.ko
 
     # ESDFS
     chown system system /proc/fs/esdfs/packages

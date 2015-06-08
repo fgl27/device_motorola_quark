@@ -14,3 +14,6 @@ allow batt_health battery_data_file:dir w_dir_perms;
 
 allow batt_health self:capability net_admin;
 allow batt_health self:netlink_kobject_uevent_socket { read bind create setopt };
+
+allow batt_health persist_file:file rw_file_perms;
+allow batt_health persist_file:dir rw_dir_perms;
