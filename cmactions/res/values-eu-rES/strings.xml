@@ -21,7 +21,7 @@
   <string name="gesture_ir_wake_title">Hurbildu pantaila pizteko</string>
   <string name="gesture_ir_wake_summary">Hartu gailua pantaila pizteko</string>
   <string name="gesture_ir_silence_title">Eskuarekin agurtu isilarazteko</string>
-  <string name="gesture_ir_silence_summary">Eskuarekin agurtu deiak isilarazteko</string>
+  <string name="gesture_ir_silence_summary">Agurtu eskuarekin deiak isilarazteko eta alarmak atzeratzeko</string>
   <string name="gesture_camera_title">Biratu kamera abiatzeko</string>
   <string name="gesture_camera_summary">Biratu telefonoa birritan kamera abiatzeko</string>
 </resources>

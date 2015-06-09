@@ -21,7 +21,7 @@
   <string name="gesture_ir_wake_title">Приступ приказу</string>
   <string name="gesture_ir_wake_summary">Посегни за уређајем да активираш екран</string>
   <string name="gesture_ir_silence_title">Махни за тишину</string>
-  <string name="gesture_ir_silence_summary">Махни да утишаш позив</string>
+  <string name="gesture_ir_silence_summary">Махни да утишаш позив или одложиш аларме</string>
   <string name="gesture_camera_title">Ротирај да активираш камеру</string>
   <string name="gesture_camera_summary">Ротирај телефон два пута да активираш камеру</string>
 </resources>

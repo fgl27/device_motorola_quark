@@ -21,7 +21,7 @@
   <string name="gesture_ir_wake_title">Προσέγγιση για αφύπνιση</string>
   <string name="gesture_ir_wake_summary">Σηκώστε και πλησιάστε τη συσκευή σας για ενεργοποίηση της οθόνης</string>
   <string name="gesture_ir_silence_title">Αιώρηση για σίγαση</string>
-  <string name="gesture_ir_silence_summary">Ενεργοποίηση σίγασης κατά την αιώρηση του χεριού</string>
+  <string name="gesture_ir_silence_summary">Αιώρηση για σίγαση κλήσεων και ξυπνητηριών</string>
   <string name="gesture_camera_title">Συστροφή για άνοιγμα φωτογρ. μηχανής</string>
   <string name="gesture_camera_summary">Στρίψτε τηλέφωνο δύο φορές για άνοιγμα της φωτογρ. μηχανής</string>
 </resources>

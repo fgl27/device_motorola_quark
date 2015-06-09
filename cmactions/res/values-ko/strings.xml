@@ -16,12 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Gestá</string>
-  <string name="screen_gestures_panel_summary">Používať gestá na vykonávanie akcií</string>
-  <string name="gesture_ir_wake_title">Priblíženie k displeju</string>
-  <string name="gesture_ir_wake_summary">Priblíženie k zariadeniu zapne displej</string>
-  <string name="gesture_ir_silence_title">Stíšiť mávnutím</string>
-  <string name="gesture_ir_silence_summary">Mávnutím stíšiť hovory a odložiť budíky</string>
-  <string name="gesture_camera_title">Otočením spustiť fotoaparátom</string>
-  <string name="gesture_camera_summary">Dvojitým otočením telefónu spustiť fotoaparát</string>
+  <string name="screen_gestures_panel_title">제스처</string>
+  <string name="screen_gestures_panel_summary">제스처를 사용하여 작업 수행</string>
+  <string name="gesture_ir_wake_title">가까이하여 화면 켜기</string>
+  <string name="gesture_ir_wake_summary">화면에 가까이하여 화면 켜기</string>
+  <string name="gesture_ir_silence_title">흔들어서 무음</string>
+  <string name="gesture_ir_silence_summary">흔들어서 전화 벨소리를 끄고 알람을 해제</string>
+  <string name="gesture_camera_title">비틀어서 카메라 실행</string>
+  <string name="gesture_camera_summary">휴대전화를 두번 비틀어 카메라 실행</string>
 </resources>

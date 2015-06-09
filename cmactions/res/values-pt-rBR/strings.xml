@@ -16,12 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Gestá</string>
-  <string name="screen_gestures_panel_summary">Používať gestá na vykonávanie akcií</string>
-  <string name="gesture_ir_wake_title">Priblíženie k displeju</string>
-  <string name="gesture_ir_wake_summary">Priblíženie k zariadeniu zapne displej</string>
-  <string name="gesture_ir_silence_title">Stíšiť mávnutím</string>
-  <string name="gesture_ir_silence_summary">Mávnutím stíšiť hovory a odložiť budíky</string>
-  <string name="gesture_camera_title">Otočením spustiť fotoaparátom</string>
-  <string name="gesture_camera_summary">Dvojitým otočením telefónu spustiť fotoaparát</string>
+  <string name="screen_gestures_panel_title">Gestos</string>
+  <string name="screen_gestures_panel_summary">Utilize gestos para executar ações</string>
+  <string name="gesture_ir_wake_title">Pegar para exibir</string>
+  <string name="gesture_ir_wake_summary">Pegar o dispositivo para acender a tela</string>
+  <string name="gesture_ir_silence_title">Agitar para silenciar</string>
+  <string name="gesture_ir_silence_summary">Acenar para silenciar chamadas e alarmes</string>
+  <string name="gesture_camera_title">Torcer para ativar a câmera</string>
+  <string name="gesture_camera_summary">Torcer o telefone duas vezes para ativar a câmera</string>
 </resources>
