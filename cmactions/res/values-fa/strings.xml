@@ -16,6 +16,5 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Gesten</string>
-  <string name="screen_gestures_panel_summary">Gesten verwenden, um Aktionen auszuführen</string>
+  <string name="screen_gestures_panel_title">حرکات</string>
 </resources>

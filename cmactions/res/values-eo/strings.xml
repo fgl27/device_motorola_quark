@@ -16,6 +16,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Gesten</string>
-  <string name="screen_gestures_panel_summary">Gesten verwenden, um Aktionen auszuführen</string>
+  <string name="screen_gestures_panel_title">Gestoj</string>
+  <string name="screen_gestures_panel_summary">Uzi gestojn por agi</string>
+  <string name="gesture_ir_silence_title">Svingi por silentigi</string>
+  <string name="gesture_ir_silence_summary">Svingi por silentigi alvokojn kaj prokrasti alarmojn</string>
+  <string name="gesture_camera_title">Turni por lanĉi la fotilon</string>
+  <string name="gesture_camera_summary">Turni la telefonon dufoje por lanĉi la fotilon</string>
 </resources>
