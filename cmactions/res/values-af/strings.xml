@@ -16,12 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Gesture</string>
-  <string name="screen_gestures_panel_summary">Utilizza le gesture per compiere azioni</string>
-  <string name="gesture_ir_wake_title">Avvicina per visualizzare</string>
-  <string name="gesture_ir_wake_summary">Avvicina il dispositivo per attivare il display</string>
-  <string name="gesture_ir_silence_title">Scorri la mano per silenziare</string>
-  <string name="gesture_ir_silence_summary">Scuoti il telefono per silenziare chiamate e sveglie</string>
-  <string name="gesture_camera_title">Scuoti per aprire la fotocamera</string>
-  <string name="gesture_camera_summary">Scuoti il telefono due volte per aprire la fotocamera</string>
+  <string name="screen_gestures_panel_title">Gebare</string>
+  <string name="screen_gestures_panel_summary">Gebruik gebare om aksies uit te oefen</string>
+  <string name="gesture_ir_wake_title">Benader jou skerm</string>
+  <string name="gesture_ir_wake_summary">Uitruik na toestel sal skerm aktiveer</string>
+  <string name="gesture_ir_silence_title">Waai vir stilte</string>
+  <string name="gesture_ir_silence_summary">Waai jou hand om oproepe en alarms stil te maak</string>
+  <string name="gesture_camera_title">Draai om die kamera te begin</string>
+  <string name="gesture_camera_summary">Draai toestel twee keer om kamera te begin</string>
 </resources>

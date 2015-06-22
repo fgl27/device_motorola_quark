@@ -17,4 +17,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="screen_gestures_panel_title">حرکات</string>
+  <string name="screen_gestures_panel_summary">استفاده از حرکات برای انجام عملیات</string>
+  <string name="gesture_ir_wake_title">روش برای نمایش</string>
+  <string name="gesture_ir_wake_summary">رسیدن به دستگاه برای راه‌اندازی صفحه</string>
+  <string name="gesture_ir_silence_title">حرکت برای سکوت</string>
+  <string name="gesture_ir_silence_summary">حرکت برای ساکت کردن تماس‌ها و چرت هشدارها</string>
+  <string name="gesture_camera_title">پیچاندن برای اجرای دوربین</string>
+  <string name="gesture_camera_summary">دوبار پیچاندن تلفن برای اجرای دوربین</string>
 </resources>

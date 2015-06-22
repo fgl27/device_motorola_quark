@@ -18,6 +18,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="screen_gestures_panel_title">Gestoj</string>
   <string name="screen_gestures_panel_summary">Uzi gestojn por agi</string>
+  <string name="gesture_ir_wake_title">Agordoj de la ekrano</string>
+  <string name="gesture_ir_wake_summary">Celi vian aparaton por eklumigi vian ekranon</string>
   <string name="gesture_ir_silence_title">Svingi por silentigi</string>
   <string name="gesture_ir_silence_summary">Svingi por silentigi alvokojn kaj prokrasti alarmojn</string>
   <string name="gesture_camera_title">Turni por lanĉi la fotilon</string>

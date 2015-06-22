@@ -18,4 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="screen_gestures_panel_title">Gesty</string>
   <string name="screen_gestures_panel_summary">Używaj gestów do wykonywania czynności</string>
+  <string name="gesture_ir_silence_title">Potrząśnij, aby wyciszyć</string>
+  <string name="gesture_ir_silence_summary">Potrząśnij, aby wyciszyć połączenia i budzik</string>
 </resources>
