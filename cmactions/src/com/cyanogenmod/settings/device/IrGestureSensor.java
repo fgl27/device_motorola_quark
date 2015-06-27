@@ -27,6 +27,7 @@ import android.telecom.TelecomManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.os.SystemProperties;
 
 import static android.telephony.TelephonyManager.*;
 
@@ -58,6 +59,8 @@ public class IrGestureSensor extends SensorBase {
     private static final String ALARM_SNOOZE_ACTION = "com.android.deskclock.ALARM_SNOOZE";
     private static final String ALARM_DONE_ACTION = "com.android.deskclock.ALARM_DONE";
 
+    private static boolean IR_NO_DISABLE_WHEN_UNUSED = SystemProperties.getBoolean("persist.sys.cmactions.ir_nooff", false);
+
     private boolean mIsScreenOn = false;
 
     private int mLastEventId = -1;
@@ -81,7 +84,7 @@ public class IrGestureSensor extends SensorBase {
         super(context);
         mDozeManager = dozeManager;
         mSensorId = SensorBase.SENSOR_TYPE_MMI_IR_GESTURE;
-        nativeSetIrDisabled(true);
+        nativeSetIrDisabled(!IR_NO_DISABLE_WHEN_UNUSED);
 
         mTelecomManager = (TelecomManager) context.getSystemService(Context.TELECOM_SERVICE);
         TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
@@ -115,7 +118,9 @@ public class IrGestureSensor extends SensorBase {
         // state variables are: mWakeEnabled, mSilenceEnabled, mIsScreenOn, mPhoneRinging, mAlarmRinging
         boolean canDisableIr = true;
 
-        if (mDozeManager.isDozeEnabled() && mWakeEnabled && !mIsScreenOn) {
+        if (IR_NO_DISABLE_WHEN_UNUSED) {
+            canDisableIr = false;
+        } else if (mDozeManager.isDozeEnabled() && mWakeEnabled && !mIsScreenOn) {
             canDisableIr = false;
         } else if (mSilenceEnabled && mIsScreenOn && mPhoneRinging) {
             canDisableIr = false;

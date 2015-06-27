@@ -226,6 +226,7 @@ PRODUCT_PACKAGES += \
     init.mmi.touch.sh \
     init.mmi.usb.sh \
     init.qcom.rc \
+    init.qcom.power.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
     moto_config.sh \
