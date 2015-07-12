@@ -16,12 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Bevægelser</string>
-  <string name="screen_gestures_panel_summary">Anvend bevægelser til at udføre handlinger</string>
-  <string name="gesture_ir_wake_title">Tilgang til visning</string>
-  <string name="gesture_ir_wake_summary">Ræk ud efter din enhed for at tænde skærmen</string>
-  <string name="gesture_ir_silence_title">Vink for lydløs</string>
-  <string name="gesture_ir_silence_summary">Vink for at gøre opkald lydløse og udsætte alarmer</string>
-  <string name="gesture_camera_title">Drej for at åbne kamera</string>
-  <string name="gesture_camera_summary">Drej telefonen frem og tilbage for at åbne kamera</string>
+  <string name="screen_gestures_panel_title">Gestos</string>
+  <string name="screen_gestures_panel_summary">Utilizar gestos para realizar acciones</string>
+  <string name="gesture_ir_wake_title">Acercarse al dispositivo</string>
+  <string name="gesture_ir_wake_summary">Acercarse al dispositivo para encender la pantalla</string>
+  <string name="gesture_ir_silence_title">Pasar la mano para silenciar</string>
+  <string name="gesture_ir_silence_summary">Pasar la mano por el dispositivo para silenciar llamadas o posponer alarmas</string>
+  <string name="gesture_camera_title">Girar para lanzar la cámara</string>
+  <string name="gesture_camera_summary">Girar dos veces para lanzar la cámara</string>
 </resources>

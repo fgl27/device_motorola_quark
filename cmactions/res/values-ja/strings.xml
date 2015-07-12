@@ -16,12 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Bevægelser</string>
-  <string name="screen_gestures_panel_summary">Anvend bevægelser til at udføre handlinger</string>
-  <string name="gesture_ir_wake_title">Tilgang til visning</string>
-  <string name="gesture_ir_wake_summary">Ræk ud efter din enhed for at tænde skærmen</string>
-  <string name="gesture_ir_silence_title">Vink for lydløs</string>
-  <string name="gesture_ir_silence_summary">Vink for at gøre opkald lydløse og udsætte alarmer</string>
-  <string name="gesture_camera_title">Drej for at åbne kamera</string>
-  <string name="gesture_camera_summary">Drej telefonen frem og tilbage for at åbne kamera</string>
+  <string name="screen_gestures_panel_title">ジェスチャー</string>
+  <string name="screen_gestures_panel_summary">ジェスチャを使用してアクションを実行する</string>
+  <string name="gesture_ir_wake_title">ディスプレイへの接近</string>
+  <string name="gesture_ir_wake_summary">端末に手を伸ばしたときにディスプレイを点灯させる</string>
+  <string name="gesture_ir_silence_title">手を振ってサイレント</string>
+  <string name="gesture_ir_silence_summary">手を振って着信とアラームをサイレントにする</string>
+  <string name="gesture_camera_title">ひねってカメラを起動</string>
+  <string name="gesture_camera_summary">携帯電話を2回ひねってカメラを起動する</string>
 </resources>

@@ -19,7 +19,9 @@
   <string name="screen_gestures_panel_title">Gebaren</string>
   <string name="screen_gestures_panel_summary">Gebaren gebruiken om acties uit te voeren</string>
   <string name="gesture_ir_wake_title">Benaderen voor scherm aan</string>
+  <string name="gesture_ir_wake_summary">Naar apparaat reiken om scherm te activeren</string>
   <string name="gesture_ir_silence_title">Handgebaar voor stil</string>
+  <string name="gesture_ir_silence_summary">Oproepen en alarmen dempen bij handgebaar</string>
   <string name="gesture_camera_title">Draaien om camera te openen</string>
   <string name="gesture_camera_summary">Draai de telefoon twee keer om de camera te openen</string>
 </resources>
