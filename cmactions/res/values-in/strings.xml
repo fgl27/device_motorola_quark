@@ -16,8 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Gestes</string>
-  <string name="screen_gestures_panel_summary">Utiliser des gestes pour effectuer des actions</string>
-  <string name="gesture_ir_wake_title">Approcher pour l\'affichage</string>
-  <string name="gesture_ir_wake_summary">Saisissez votre téléphone pour activer l\'affichage</string>
+  <string name="screen_gestures_panel_title">Gerakan</string>
+  <string name="screen_gestures_panel_summary">Gunakan gerakan untuk melakukan sesuatu</string>
+  <string name="gesture_ir_wake_title">Pendekatan untuk Layar</string>
+  <string name="gesture_ir_wake_summary">Raih perangkat anda untuk menyalakan layar</string>
+  <string name="gesture_ir_silence_title">Guncang untuk senyap</string>
+  <string name="gesture_ir_silence_summary">Guncang untuk men-diamkan telepon dan menunda alarm</string>
+  <string name="gesture_camera_title">Putar untuk meluncurkan Kamera</string>
+  <string name="gesture_camera_summary">Putar ponsel dua kali untuk meluncurkan kamera</string>
 </resources>

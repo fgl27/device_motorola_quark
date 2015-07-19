@@ -16,8 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Gestes</string>
-  <string name="screen_gestures_panel_summary">Utiliser des gestes pour effectuer des actions</string>
-  <string name="gesture_ir_wake_title">Approcher pour l\'affichage</string>
-  <string name="gesture_ir_wake_summary">Saisissez votre téléphone pour activer l\'affichage</string>
+  <string name="screen_gestures_panel_title">Žestid</string>
+  <string name="screen_gestures_panel_summary">Kasuta žeste toimingute sooritamiseks</string>
+  <string name="gesture_ir_wake_title">Lähene kuvale</string>
+  <string name="gesture_ir_wake_summary">Haara seadme järele, et aktiveerida kuva</string>
+  <string name="gesture_ir_silence_title">Viipa vaigistamiseks</string>
+  <string name="gesture_ir_silence_summary">Viipa kõnede ja kordus alarmide vaigistamiseks</string>
+  <string name="gesture_camera_title">Keera kaamera aktiveerimiseks</string>
+  <string name="gesture_camera_summary">Keerake telefoni kaks korda kaamera kävitamiseks</string>
 </resources>

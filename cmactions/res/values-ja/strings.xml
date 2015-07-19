@@ -17,7 +17,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="screen_gestures_panel_title">ジェスチャー</string>
-  <string name="screen_gestures_panel_summary">ジェスチャを使用してアクションを実行する</string>
+  <string name="screen_gestures_panel_summary">ジェスチャーを使用してアクションを実行する</string>
   <string name="gesture_ir_wake_title">ディスプレイへの接近</string>
   <string name="gesture_ir_wake_summary">端末に手を伸ばしたときにディスプレイを点灯させる</string>
   <string name="gesture_ir_silence_title">手を振ってサイレント</string>
