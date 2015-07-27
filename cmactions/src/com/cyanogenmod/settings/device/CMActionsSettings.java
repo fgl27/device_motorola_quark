@@ -52,7 +52,15 @@ public class CMActionsSettings {
 
     public CMActionsSettings(Context context, UpdatedStateNotifier updatedStateNotifier) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        loadPreferences(sharedPrefs);
+        try
+        {
+            loadPreferences(sharedPrefs);
+        }
+        catch (RuntimeException ex)
+        {
+            Log.e(TAG, "Failed reading preferences, resetting!");
+            setDefaultPreferences(sharedPrefs);
+        }
         sharedPrefs.registerOnSharedPreferenceChangeListener(mPrefListener);
         mContext = context;
         mUpdatedStateNotifier = updatedStateNotifier;
@@ -106,6 +114,14 @@ public class CMActionsSettings {
         mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, false);
         mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, false);
         mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
+    }
+
+    private void setDefaultPreferences(SharedPreferences sharedPreferences)
+    {
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.commit();
+        loadPreferences(sharedPreferences);
     }
 
     private int getIntPreference(SharedPreferences sharedPreferences, String key) {

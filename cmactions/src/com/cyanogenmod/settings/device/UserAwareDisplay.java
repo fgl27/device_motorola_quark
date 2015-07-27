@@ -37,7 +37,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private static final int KEYGUARD_POLL_MS = 1000;
 
     private static final int IR_GESTURES_FOR_SCREEN_ON = (1 << IR_GESTURE_OBJECT_DETECTED) |
-            (1 << IR_GESTURE_GESTURE_OBJECT_NOT_DETECTED);
+            (1 << IR_GESTURE_OBJECT_NOT_DETECTED);
     private static final int IR_GESTURES_FOR_SCREEN_OFF = 0;
 
     private final CMActionsSettings mCMActionsSettings;
@@ -174,7 +174,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
             if (gesture == IR_GESTURE_OBJECT_DETECTED) {
                 setObjectIsDetected(true);
-            } else if (gesture == IR_GESTURE_GESTURE_OBJECT_NOT_DETECTED) {
+            } else if (gesture == IR_GESTURE_OBJECT_NOT_DETECTED) {
                 setObjectIsDetected(false);
             }
         }
