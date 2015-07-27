@@ -18,5 +18,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="screen_gestures_panel_title">Жесты</string>
   <string name="screen_gestures_panel_summary">Использовать жесты для действий</string>
+  <string name="gesture_ir_wake_title">Приближение к экрану</string>
+  <string name="gesture_ir_wake_summary">Поднесите руку к устройству для включения экрана</string>
+  <string name="gesture_ir_silence_title">Взмах для отключения звука</string>
   <string name="gesture_ir_silence_summary">Проведите рукой над экраном, чтобы приглушить звук будильника или входящего звонка</string>
+  <string name="gesture_camera_title">Встряхнуть для запуска камеры</string>
+  <string name="gesture_camera_summary">Встряхните телефон два раза для запуска камеры</string>
 </resources>

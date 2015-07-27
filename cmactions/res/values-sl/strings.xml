@@ -16,12 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Gesten</string>
-  <string name="screen_gestures_panel_summary">Gesten verwenden, um Aktionen auszuführen</string>
-  <string name="gesture_ir_wake_title">Annäherung für Anzeige</string>
-  <string name="gesture_ir_wake_summary">Greifen Sie nach Ihrem Gerät, um die Anzeige zu aktivieren</string>
-  <string name="gesture_ir_silence_title">Winken zum Stummschalten</string>
-  <string name="gesture_ir_silence_summary">Winken, um Anrufe stummzuschalten und Alarme in den Schlummermodus zu versetzen</string>
-  <string name="gesture_camera_title">Drehen, um die Kamera zu starten</string>
-  <string name="gesture_camera_summary">Drehen Sie das Telefon zwei Mal, um die Kamera zu starten</string>
+  <string name="screen_gestures_panel_title">Poteze</string>
+  <string name="screen_gestures_panel_summary">Uporabi poteze za opravljanje dejanj</string>
+  <string name="gesture_ir_wake_title">Pristop do zaslona</string>
+  <string name="gesture_ir_wake_summary">Zgrabite napravo, da sprožite zaslon</string>
+  <string name="gesture_ir_silence_title">Mahaj za utišanje</string>
+  <string name="gesture_ir_silence_summary">Mahajte, da utišate klice in date budilko v dremež</string>
+  <string name="gesture_camera_title">Zvij za zagon fotoaparata</string>
+  <string name="gesture_camera_summary">Zvijte telefon dvakrat, da zaženete fotoaparat</string>
 </resources>

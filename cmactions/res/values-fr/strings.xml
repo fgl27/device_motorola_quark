@@ -20,4 +20,8 @@
   <string name="screen_gestures_panel_summary">Utiliser des gestes pour effectuer des actions</string>
   <string name="gesture_ir_wake_title">Approcher pour l\'affichage</string>
   <string name="gesture_ir_wake_summary">Saisissez votre téléphone pour activer l\'affichage</string>
+  <string name="gesture_ir_silence_title">Secouer pour silence</string>
+  <string name="gesture_ir_silence_summary">Secouer pour silence et répéter l\'alarme</string>
+  <string name="gesture_camera_title">Tourner pour activer la caméra</string>
+  <string name="gesture_camera_summary">Tourner deux fois le téléphone pour activer la caméra</string>
 </resources>

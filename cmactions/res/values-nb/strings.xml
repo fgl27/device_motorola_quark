@@ -16,12 +16,12 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Gesten</string>
-  <string name="screen_gestures_panel_summary">Gesten verwenden, um Aktionen auszuführen</string>
-  <string name="gesture_ir_wake_title">Annäherung für Anzeige</string>
-  <string name="gesture_ir_wake_summary">Greifen Sie nach Ihrem Gerät, um die Anzeige zu aktivieren</string>
-  <string name="gesture_ir_silence_title">Winken zum Stummschalten</string>
-  <string name="gesture_ir_silence_summary">Winken, um Anrufe stummzuschalten und Alarme in den Schlummermodus zu versetzen</string>
-  <string name="gesture_camera_title">Drehen, um die Kamera zu starten</string>
-  <string name="gesture_camera_summary">Drehen Sie das Telefon zwei Mal, um die Kamera zu starten</string>
+  <string name="screen_gestures_panel_title">Bevegelser</string>
+  <string name="screen_gestures_panel_summary">Bruk bevegelser til å utføre handlinger</string>
+  <string name="gesture_ir_wake_title">Tilnærming for skjerm</string>
+  <string name="gesture_ir_wake_summary">Grip tak i enheten for å slå på skjermen</string>
+  <string name="gesture_ir_silence_title">Vink for å dempe lyden</string>
+  <string name="gesture_ir_silence_summary">Vink for å dempe samtaler og slumre alarmer</string>
+  <string name="gesture_camera_title">Vri for å starte kameraet</string>
+  <string name="gesture_camera_summary">Vri telefonen to ganger for å starte kameraet</string>
 </resources>
