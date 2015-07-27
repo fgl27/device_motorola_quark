@@ -35,11 +35,12 @@
 #define PACKED __attribute__((__packed__))
 #define UNUSED __attribute__((__unused__))
 
-#define STM401_DEVICE                       "/dev/stm401"
-#define STM401_IR_WAKE_CONFIG_MASK          0x000007FE
-#define STM401_IR_CONTROL_DISABLE           0x00000001
-#define STM401_IR_CONFIG_MIN_TUNING_NUMBER  6
-#define STM401_IR_CONFIG_MAX_TUNING_NUMBER  7
+#define STM401_DEVICE                  "/dev/stm401"
+#define STM401_IR_WAKE_CONFIG_MASK      0x000007FE
+#define STM401_IR_CONTROL_DISABLE       0x00000001
+
+#define STM401_IR_CONFIG_TUNING_NUMBER_MIN 6
+#define STM401_IR_CONFIG_TUNING_NUMBER_MAX 7
 
 struct PACKED stm401_ir_led_config
 {
@@ -136,8 +137,11 @@ int read_ir_config(struct stm401_ir_config* config, int check_version)
         return 1;
     }
 
-    if (check_version && ((config->tuning_number < STM401_IR_CONFIG_MIN_TUNING_NUMBER) || (config->tuning_number > STM401_IR_CONFIG_MAX_TUNING_NUMBER)) ) {
-        ALOGE("%s: Found tuning number %d, but expected %d to %d!\n", __func__, config->tuning_number, STM401_IR_CONFIG_MIN_TUNING_NUMBER, STM401_IR_CONFIG_MAX_TUNING_NUMBER);
+    if (check_version && (config->tuning_number < STM401_IR_CONFIG_TUNING_NUMBER_MIN ||
+        config->tuning_number > STM401_IR_CONFIG_TUNING_NUMBER_MAX)) {
+        ALOGE("%s: Found tuning number %d, but expected %d..%d!\n", __func__,
+                config->tuning_number, STM401_IR_CONFIG_TUNING_NUMBER_MIN,
+                STM401_IR_CONFIG_TUNING_NUMBER_MAX);
         return 1;
     }
 
@@ -152,7 +156,6 @@ int write_ir_config(struct stm401_ir_config* config)
 int set_ir_disabled(int disabled)
 {
     struct stm401_ir_config config;
-    int current_disabled;
 
     pthread_mutex_lock(&ioctl_mutex);
 
@@ -160,27 +163,20 @@ int set_ir_disabled(int disabled)
         goto err;
     }
 
-    current_disabled = ((config.cmd_control & STM401_IR_CONTROL_DISABLE) != 0);
-    disabled = (disabled != 0);
-    if (current_disabled != disabled) {
-        if (disabled) {
-            config.cmd_control |= STM401_IR_CONTROL_DISABLE;
-        } else {
-            config.cmd_control &= ~STM401_IR_CONTROL_DISABLE;
-        }
-
-        if (write_ir_config(&config)) {
-            goto err;
-        }
-        ALOGD("%s: set ir disabled to %d\n", __func__, disabled);
+    if (disabled) {
+        config.cmd_control |= STM401_IR_CONTROL_DISABLE;
     } else {
-        ALOGD("%s: ir disabled already set to %d\n", __func__, disabled);
+        config.cmd_control &= ~STM401_IR_CONTROL_DISABLE;
+    }
+
+    if (write_ir_config(&config)) {
+        goto err;
     }
 
     pthread_mutex_unlock(&ioctl_mutex);
+
     return 0;
 err:
-    ALOGE("%s: failed to set ir disabled to %d\n", __func__, disabled);
     pthread_mutex_unlock(&ioctl_mutex);
     return 1;
 }
@@ -201,22 +197,21 @@ int set_ir_wake_config(int wake_config)
         goto err;
     }
 
-    ALOGD("%s: set ir wake config to 0x%x\n", __func__, config.cmd_config);
-    pthread_mutex_unlock(&ioctl_mutex);
+     pthread_mutex_unlock(&ioctl_mutex);
+
     return 0;
 err:
-    ALOGE("%s: failed to set ir wake config to 0x%x\n", __func__, config.cmd_config);
     pthread_mutex_unlock(&ioctl_mutex);
     return 1;
 }
 
-JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_settings_device_IrGestureSensor_nativeSetIrDisabled(
+JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_settings_device_IrGestureManager_nativeSetIrDisabled(
      UNUSED JNIEnv *env, UNUSED jclass thiz, jboolean disabled)
 {
     return set_ir_disabled(disabled == JNI_TRUE) ? JNI_FALSE : JNI_TRUE;
 }
 
-JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_settings_device_IrGestureSensor_nativeSetIrWakeConfig(
+JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_settings_device_IrGestureManager_nativeSetIrWakeConfig(
      UNUSED JNIEnv *env, UNUSED jclass thiz, jint wakeConfig)
 {
     return set_ir_wake_config((int)wakeConfig) ? JNI_FALSE : JNI_TRUE;

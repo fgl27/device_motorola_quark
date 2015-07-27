@@ -16,7 +16,21 @@
 
 package com.cyanogenmod.settings.device;
 
-interface ScreenStateNotifier {
-    public void screenTurnedOn();
-    public void screenTurnedOff();
+public class IrGestureVote {
+    private final IrGestureManager mIrGestureManager;
+
+    private int mLastFlags;
+
+    public IrGestureVote(IrGestureManager irGestureManager) {
+        mIrGestureManager = irGestureManager;
+    }
+
+    public void voteForSensors(int flags) {
+        mIrGestureManager.updateState(mLastFlags, flags);
+        mLastFlags = flags;
+    }
+
+    protected void finalize() {
+        voteForSensors(0);
+    }
 }

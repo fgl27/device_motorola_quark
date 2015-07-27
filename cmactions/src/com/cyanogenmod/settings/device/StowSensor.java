@@ -16,45 +16,60 @@
 
 package com.cyanogenmod.settings.device;
 
-import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.util.Log;
 
-public class StowSensor extends SensorBase {
+public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     private static final String TAG = "CMActions-StowSensor";
-    private DozeManager mDozeManager;
+
+    private final CMActionsSettings mCMActionsSettings;
+    private final SensorHelper mSensorHelper;
+    private final SensorAction mSensorAction;
+    private final Sensor mSensor;
+
+    private boolean mEnabled;
     private boolean mLastStowed;
 
-    public StowSensor(Context context, DozeManager dozeManager) {
-        super(context);
-        mDozeManager = dozeManager;
-        mSensorId = SensorBase.SENSOR_TYPE_MMI_STOW;
+    public StowSensor(CMActionsSettings cmActionsSettings, SensorHelper sensorHelper,
+                SensorAction action) {
+        mCMActionsSettings = cmActionsSettings;
+        mSensorHelper = sensorHelper;
+        mSensorAction = action;
+
+        mSensor = sensorHelper.getStowSensor();
+    }
+
+    @Override
+    public void screenTurnedOn() {
+        if (mEnabled) {
+            Log.d(TAG, "Disabling");
+            mSensorHelper.unregisterListener(this);
+            mEnabled = false;
+        }
+    }
+
+    @Override
+    public void screenTurnedOff() {
+        if (mCMActionsSettings.isPickUpEnabled() && !mEnabled) {
+            Log.d(TAG, "Enabling");
+            mSensorHelper.registerListener(mSensor, this);
+            mEnabled = true;
+        }
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        boolean stowed = (event.values[0] != 0);
-        Log.d(TAG, "stowed: " + stowed + ", mLastStowed: " + mLastStowed);
-        // Tell DozeManager that we're unstowed first
-        // so that it would not deny doze
-        mDozeManager.setIsStowed(stowed);
-
-        // Only pulse when unstowed
-        if (!stowed && mLastStowed) {
-            mDozeManager.maybeSendDoze();
+        boolean thisStowed = (event.values[0] != 0);
+        Log.d(TAG, "event: " + thisStowed);
+        if (mLastStowed && ! thisStowed) {
+            mSensorAction.action();
         }
-
-        mLastStowed = stowed;
+        mLastStowed = thisStowed;
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
-    @Override
-    public void setScreenOn(boolean isScreenOn) {
-        // Nothing - we can get stowed / unstowed regardless of screen on or off
     }
 }

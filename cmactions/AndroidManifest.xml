@@ -3,27 +3,27 @@
     package="com.cyanogenmod.settings.device"
     android:versionCode="1"
     android:versionName="1.0"
-    android:sharedUserId="android.uid.system">
+    android:sharedUserId="android.uid.system"
+    >
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <uses-sdk
         android:minSdkVersion="21"
-        android:targetSdkVersion="21"/>
+        android:targetSdkVersion="21" />
 
     <application
         android:allowBackup="true"
         android:label="CMActions"
         android:persistent="true"
-        android:theme="@android:style/Theme.Material">
+        android:theme="@android:style/Theme.Material.Settings" >
 
         <receiver android:name="com.cyanogenmod.settings.device.BootCompletedReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </receiver>
 
@@ -34,10 +34,12 @@
         </service>
 
         <activity
-            android:excludeFromRecents="true"
-            android:name="CMActions"
-            android:label="CMActions"
-            android:launchMode="singleInstance">
+                  android:excludeFromRecents="true"
+                  android:name="CMActions"
+                  android:label="CMActions"
+                  android:launchMode="singleInstance"
+                  android:screenOrientation="portrait"
+                  android:windowAnimationStyle="@null">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
@@ -45,8 +47,7 @@
 
         <activity
             android:name=".TouchscreenGestureSettings"
-            android:label="@string/screen_gestures_panel_title"
-            android:theme="@android:style/Theme.Material.Settings">
+            android:label="@string/screen_gestures_panel_title">
             <intent-filter>
                 <action android:name="com.cyanogenmod.action.LAUNCH_TOUCHSCREEN_GESTURE_SETTINGS" />
             </intent-filter>

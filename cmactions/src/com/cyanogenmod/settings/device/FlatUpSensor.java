@@ -16,46 +16,81 @@
 
 package com.cyanogenmod.settings.device;
 
-import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.util.Log;
 
-public class FlatUpSensor extends SensorBase {
+public class FlatUpSensor implements ScreenStateNotifier {
     private static final String TAG = "CMActions-FlatUpSensor";
-    private DozeManager mDozeManager;
+
+    private final CMActionsSettings mCMActionsSettings;
+    private final SensorHelper mSensorHelper;
+    private final SensorAction mSensorAction;
+    private final Sensor mFlatUpSensor;
+    private final Sensor mStowSensor;
+
+    private boolean mEnabled;
+    private boolean mIsStowed;
     private boolean mLastFlatUp;
 
-    public FlatUpSensor(Context context, DozeManager dozeManager) {
-        super(context);
-        mDozeManager = dozeManager;
-        mSensorId = SensorBase.SENSOR_TYPE_MMI_FLAT_UP;
+    public FlatUpSensor(CMActionsSettings cmActionsSettings, SensorHelper sensorHelper,
+                SensorAction action) {
+        mCMActionsSettings = cmActionsSettings;
+        mSensorHelper = sensorHelper;
+        mSensorAction = action;
+
+        mFlatUpSensor = sensorHelper.getFlatUpSensor();
+        mStowSensor = sensorHelper.getStowSensor();
     }
 
     @Override
-    public void onSensorChanged(SensorEvent event) {
-        boolean flatUp = (event.values[0] != 0);
-        Log.d(TAG, "flatUp: " + flatUp + ", mLastFlatUp=" + mLastFlatUp);
-
-        // Only pulse when picked up
-        if (flatUp && !mLastFlatUp) {
-            mDozeManager.maybeSendDoze();
-        }
-
-        mLastFlatUp = flatUp;
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
-    @Override
-    public void setScreenOn(boolean isScreenOn) {
-        if (isScreenOn) {
-            unregister();
-        } else if (mDozeManager.isDozeEnabled()) {
-            register();
+    public void screenTurnedOn() {
+        if (mEnabled) {
+            Log.d(TAG, "Disabling");
+            mSensorHelper.unregisterListener(mFlatUpListener);
+            mSensorHelper.unregisterListener(mStowListener);
+            mEnabled = false;
         }
     }
+
+    @Override
+    public void screenTurnedOff() {
+        if (mCMActionsSettings.isPickUpEnabled() && !mEnabled) {
+            Log.d(TAG, "Enabling");
+            mSensorHelper.registerListener(mFlatUpSensor, mFlatUpListener);
+            mSensorHelper.registerListener(mStowSensor, mStowListener);
+            mEnabled = true;
+        }
+    }
+
+    private SensorEventListener mFlatUpListener = new SensorEventListener() {
+        @Override
+        public synchronized void onSensorChanged(SensorEvent event) {
+            boolean thisFlatUp = (event.values[0] != 0);
+
+            Log.d(TAG, "event: " + thisFlatUp + " mLastFlatUp=" + mLastFlatUp + " mIsStowed=" +
+                mIsStowed);
+
+            if (mLastFlatUp && ! thisFlatUp && ! mIsStowed) {
+                mSensorAction.action();
+            }
+            mLastFlatUp = thisFlatUp;
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
+        }
+    };
+
+    private SensorEventListener mStowListener = new SensorEventListener() {
+        @Override
+        public synchronized void onSensorChanged(SensorEvent event) {
+            mIsStowed = (event.values[0] != 0);
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
+        }
+    };
 }

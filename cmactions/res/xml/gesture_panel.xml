@@ -16,22 +16,70 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreference
-        android:key="gesture_ir_wake"
-        android:defaultValue="true"
-        android:title="@string/gesture_ir_wake_title"
-        android:summary="@string/gesture_ir_wake_summary" />
+    <PreferenceCategory
+        android:key="user_aware_display_key"
+        android:title="@string/user_aware_display_title" >
 
-    <SwitchPreference
-        android:key="gesture_ir_silence"
-        android:defaultValue="true"
-        android:title="@string/gesture_ir_silence_title"
-        android:summary="@string/gesture_ir_silence_summary" />
+        <SwitchPreference
+            android:key="gesture_user_aware_display"
+            android:defaultValue="false"
+            android:title="@string/user_aware_display_title"
+            android:summary="@string/user_aware_display_summary" />
+    </PreferenceCategory>
 
-    <SwitchPreference
-        android:key="gesture_camera"
-        android:defaultValue="true"
-        android:title="@string/gesture_camera_title"
-        android:summary="@string/gesture_camera_summary" />
+    <PreferenceCategory
+        android:key="ambient_display_key"
+        android:title="@string/ambient_display_title" >
+
+        <SwitchPreference
+            android:key="gesture_pick_up"
+            android:defaultValue="true"
+            android:title="@string/pick_up_gesture_title"
+            android:summary="@string/pick_up_gesture_summary" />
+
+        <SwitchPreference
+            android:key="gesture_ir_wake_up"
+            android:defaultValue="true"
+            android:title="@string/ir_wake_up_title"
+            android:summary="@string/ir_wake_up_summary" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="actions_key"
+        android:title="@string/actions_title" >
+
+        <ListPreference
+            android:key="gesture_camera_action"
+            android:defaultValue="1"
+            android:title="@string/camera_gesture_title"
+            android:dialogTitle="@string/camera_gesture_title"
+            android:summary="@string/camera_gesture_summary"
+            android:entries="@array/action_entries"
+            android:entryValues="@array/action_values" />
+
+        <ListPreference
+            android:key="gesture_chop_chop"
+            android:defaultValue="2"
+            android:title="@string/chop_chop_gesture_title"
+            android:dialogTitle="@string/chop_chop_gesture_title"
+            android:summary="@string/chop_chop_gesture_summary"
+            android:entries="@array/action_entries"
+            android:entryValues="@array/action_values" />
+
+        <ListPreference
+            android:key="gesture_feedback_intensity"
+            android:defaultValue="2"
+            android:title="@string/feedback_intensity_title"
+            android:dialogTitle="@string/feedback_intensity_title"
+            android:summary="@string/feedback_intensity_summary"
+            android:entries="@array/feedback_intensity_entries"
+            android:entryValues="@array/feedback_intensity_values" />
+
+        <SwitchPreference
+            android:key="gesture_ir_silencer"
+            android:defaultValue="true"
+            android:title="@string/ir_silencer_title"
+            android:summary="@string/ir_silencer_summary" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

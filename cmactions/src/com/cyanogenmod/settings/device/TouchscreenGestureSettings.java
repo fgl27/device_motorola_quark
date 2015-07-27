@@ -20,18 +20,23 @@ import com.android.internal.util.cm.ScreenType;
 
 import android.app.ActionBar;
 import android.os.Bundle;
-import android.preference.Preference;
 import android.preference.PreferenceActivity;
+import android.preference.PreferenceCategory;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class TouchscreenGestureSettings extends PreferenceActivity {
-    private static final String GESTURE_IR_WAKE = "gesture_ir_wake";
+    private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.gesture_panel);
+        PreferenceCategory ambientDisplayCat = (PreferenceCategory)
+                findPreference(CATEGORY_AMBIENT_DISPLAY);
+        if (ambientDisplayCat != null) {
+            ambientDisplayCat.setEnabled(CMActionsSettings.isDozeEnabled(getContentResolver()));
+        }
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
     }
@@ -44,12 +49,6 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         if (!ScreenType.isTablet(this)) {
             getListView().setPadding(0, 0, 0, 0);
         }
-
-        // Disable IR wake preference if dozing is disabled
-        Preference preferenceIrWake = getPreferenceManager().findPreference(GESTURE_IR_WAKE);
-        if (preferenceIrWake != null) {
-            preferenceIrWake.setEnabled(DozeManager.isDozeEnabled(getPreferenceScreen().getContext()));
-        }
     }
 
     @Override
@@ -60,5 +59,4 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         }
         return false;
     }
-
 }

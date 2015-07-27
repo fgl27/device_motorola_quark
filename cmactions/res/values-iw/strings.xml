@@ -16,12 +16,29 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">מחוות</string>
+  <string name="user_aware_display_title">תצוגה מודעת-משתמש</string>
+  <string name="user_aware_display_summary">השאר את המסך פעיל כאשר המשתמש נמצא מולו</string>
+  <string name="screen_gestures_panel_title">קיצורי מחוות</string>
   <string name="screen_gestures_panel_summary">השתמש במחוות לביצוע פעולות</string>
-  <string name="gesture_ir_wake_title">קרב להפעלת המסך</string>
-  <string name="gesture_ir_wake_summary">קרב את מכשירך להפעלת התצוגה</string>
-  <string name="gesture_ir_silence_title">נפנוף להשתקה</string>
-  <string name="gesture_ir_silence_summary">נפנף בידך על מנת להשתיק שיחות ולנמנם שעונים מעוררים</string>
-  <string name="gesture_camera_title">סיבוב להפעלת המצלמה</string>
-  <string name="gesture_camera_summary">סובב את המכשיר פעמיים להפעלת המצלמה</string>
+  <string name="ambient_display_title">תצוגה מותאמת</string>
+  <string name="pick_up_gesture_title">הרמה</string>
+  <string name="pick_up_gesture_summary">הצג התראות בעת הרמה או הוצאה מאחסון</string>
+  <string name="ir_wake_up_title">נפנוף</string>
+  <string name="ir_wake_up_summary">הצג התראות בעת נפנוף היד מול המסך</string>
+  <string name="actions_title">פעולות</string>
+  <string name="camera_gesture_title">סיבוב כפול</string>
+  <string name="camera_gesture_summary">פעולה לביצוע בעת שימוש במחוות הסיבוב הכפול</string>
+  <string name="chop_chop_gesture_title">ניעור כפול</string>
+  <string name="chop_chop_gesture_summary">פעולה לביצוע בעת שימוש במחוות הניעור הכפול</string>
+  <string name="ir_silencer_title">נפנוף להשתקה</string>
+  <string name="ir_silencer_summary">השתק שיחות נכנסות באמצעות נפנוף היד מול המסך</string>
+  <string name="action_none">השבת</string>
+  <string name="action_launch_camera">הפעל מצלמה</string>
+  <string name="action_torch">הפעל/כבה פנס</string>
+  <string name="feedback_intensity_title">עוצמת רטט משוב</string>
+  <string name="feedback_intensity_summary">עוצמת רטט המשוב בעת שימוש בפעולות הסיבוב הכפול או הניעור הכפול</string>
+  <string name="feedback_intensity_none">מושבת</string>
+  <string name="feedback_intensity_low">נמוך</string>
+  <string name="feedback_intensity_medium">בינוני</string>
+  <string name="feedback_intensity_high">גבוה</string>
 </resources>

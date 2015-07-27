@@ -16,12 +16,29 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">ジェスチャー</string>
+  <string name="user_aware_display_title">使用認識ディスプレイ</string>
+  <string name="user_aware_display_summary">ユーザーがディスプレイの前にいる間は画面を点灯し続ける</string>
+  <string name="screen_gestures_panel_title">ジェスチャーショートカット</string>
   <string name="screen_gestures_panel_summary">ジェスチャーを使用してアクションを実行する</string>
-  <string name="gesture_ir_wake_title">ディスプレイへの接近</string>
-  <string name="gesture_ir_wake_summary">端末に手を伸ばしたときにディスプレイを点灯させる</string>
-  <string name="gesture_ir_silence_title">手を振ってサイレント</string>
-  <string name="gesture_ir_silence_summary">手を振って着信とアラームをサイレントにする</string>
-  <string name="gesture_camera_title">ひねってカメラを起動</string>
-  <string name="gesture_camera_summary">携帯電話を2回ひねってカメラを起動する</string>
+  <string name="ambient_display_title">常時オンディスプレイ</string>
+  <string name="pick_up_gesture_title">持ち上げ</string>
+  <string name="pick_up_gesture_summary">端末を持ち上げたり取り出したときに通知を表示する</string>
+  <string name="ir_wake_up_title">手を振る</string>
+  <string name="ir_wake_up_summary">画面上で手を降ったときに通知を表示する</string>
+  <string name="actions_title">動作</string>
+  <string name="camera_gesture_title">2回ひねり</string>
+  <string name="camera_gesture_summary">2回ひねりのジェスチャーを行ったときの動作</string>
+  <string name="chop_chop_gesture_title">2回チョップ</string>
+  <string name="chop_chop_gesture_summary">2回チョップのジェスチャーを行ったときの動作</string>
+  <string name="ir_silencer_title">手を振ってサイレント</string>
+  <string name="ir_silencer_summary">画面上で手を振って着信をサイレントにする</string>
+  <string name="action_none">無効</string>
+  <string name="action_launch_camera">カメラを起動</string>
+  <string name="action_torch">トーチを切り替える</string>
+  <string name="feedback_intensity_title">タッチ操作バイブの強さ</string>
+  <string name="feedback_intensity_summary">2回ひねりと2回チョップの動作のタッチ操作バイブの強さ</string>
+  <string name="feedback_intensity_none">無効</string>
+  <string name="feedback_intensity_low">弱い</string>
+  <string name="feedback_intensity_medium">標準</string>
+  <string name="feedback_intensity_high">強い</string>
 </resources>

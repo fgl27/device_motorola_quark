@@ -16,10 +16,25 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="screen_gestures_panel_title">Gesty</string>
+  <string name="user_aware_display_summary">Utrzymuj ekran włączony, gdy użytkownik spogląda na ekran</string>
+  <string name="screen_gestures_panel_title">Gesty skrótów</string>
   <string name="screen_gestures_panel_summary">Używaj gestów do wykonywania czynności</string>
-  <string name="gesture_ir_silence_title">Potrząśnij, aby wyciszyć</string>
-  <string name="gesture_ir_silence_summary">Potrząśnij, aby wyciszyć połączenia i budzik</string>
-  <string name="gesture_camera_title">Potrząśnij, aby uruchomić aparat</string>
-  <string name="gesture_camera_summary">Potrząśnij telefonem dwa razy, aby uruchomić aparat</string>
+  <string name="ambient_display_title">Aktywny wyświetlacz</string>
+  <string name="pick_up_gesture_title">Odbierz</string>
+  <string name="pick_up_gesture_summary">Pulsujące powiadomienia podczas podnoszenia lub kładzenia</string>
+  <string name="ir_wake_up_title">Potrząśnij</string>
+  <string name="ir_wake_up_summary">Pulsujące powiadomienia, gdy machniesz ręką przed ekranem</string>
+  <string name="actions_title">Akcje</string>
+  <string name="camera_gesture_title">Podwójne potrząśnięcie</string>
+  <string name="camera_gesture_summary">Akcja, kiedy użyto gestu ósemki</string>
+  <string name="ir_silencer_title">Potrząśnij, aby wyciszyć</string>
+  <string name="ir_silencer_summary">Wycisz połączenia przychodzące machając ręką przed ekranem</string>
+  <string name="action_none">Wyłączone</string>
+  <string name="action_launch_camera">Uruchom aparat</string>
+  <string name="action_torch">Przełącznik latarki</string>
+  <string name="feedback_intensity_title">Intensywność wibracji</string>
+  <string name="feedback_intensity_none">Wyłączona</string>
+  <string name="feedback_intensity_low">Niska</string>
+  <string name="feedback_intensity_medium">Średnia</string>
+  <string name="feedback_intensity_high">Wysoka</string>
 </resources>

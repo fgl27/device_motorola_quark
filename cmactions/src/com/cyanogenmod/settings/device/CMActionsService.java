@@ -19,30 +19,28 @@ package com.cyanogenmod.settings.device;
 import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.os.PowerManager;
+import android.provider.Settings;
 import android.util.Log;
 
-public class CMActionsService extends IntentService implements ScreenStateNotifier {
+import java.util.List;
+import java.util.LinkedList;
+
+public class CMActionsService extends IntentService implements ScreenStateNotifier,
+        UpdatedStateNotifier {
     private static final String TAG = "CMActions";
 
-    private static final String GESTURE_IR_WAKE_KEY = "gesture_ir_wake";
-    private static final String GESTURE_IR_SILENCE_KEY = "gesture_ir_silence";
-    private static final String GESTURE_CAMERA_KEY = "gesture_camera";
+    private final Context mContext;
 
-    private DozeManager mDozeManager;
-    private ScreenReceiver mScreenReceiver;
+    private final DozePulseAction mDozePulseAction;
+    private final IrGestureManager mIrGestureManager;
+    private final PowerManager mPowerManager;
+    private final ScreenReceiver mScreenReceiver;
+    private final SensorHelper mSensorHelper;
 
-    private CameraActivationSensor mCameraActivationSensor;
-    private IrGestureSensor mIrGestureSensor;
-    private SensorBase[] mAllSensors;
-
-    private Context mContext;
-
-    private boolean mGestureIrWakeEnabled;
-    private boolean mGestureIrSilenceEnabled;
-    private boolean mGestureCameraEnabled;
+    private final List<ScreenStateNotifier> mScreenStateNotifiers = new LinkedList<ScreenStateNotifier>();
+    private final List<UpdatedStateNotifier> mUpdatedStateNotifiers =
+                        new LinkedList<UpdatedStateNotifier>();
 
     public CMActionsService(Context context) {
         super("CMActionService");
@@ -50,44 +48,32 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
 
         Log.d(TAG, "Starting");
 
-        mDozeManager = new DozeManager(context);
+        CMActionsSettings cmActionsSettings = new CMActionsSettings(context, this);
+        mSensorHelper = new SensorHelper(context);
         mScreenReceiver = new ScreenReceiver(context, this);
-        mAllSensors = new SensorBase[4];
+        mIrGestureManager = new IrGestureManager();
 
-        mCameraActivationSensor = new CameraActivationSensor(mContext);
-        mAllSensors[0] = mCameraActivationSensor;
+        mDozePulseAction = new DozePulseAction(context);
+        mScreenStateNotifiers.add(mDozePulseAction);
 
-        mIrGestureSensor = new IrGestureSensor(mContext, mDozeManager);
-        mAllSensors[1] = mIrGestureSensor;
+        // Actionable sensors get screen on/off notifications
+        mScreenStateNotifiers.add(new FlatUpSensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
+        mScreenStateNotifiers.add(new IrGestureSensor(cmActionsSettings, mSensorHelper, mDozePulseAction, mIrGestureManager));
+        mScreenStateNotifiers.add(new StowSensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
+        mScreenStateNotifiers.add(new UserAwareDisplay(cmActionsSettings, mSensorHelper, mIrGestureManager, context));
 
-        FlatUpSensor flatUpSensor = new FlatUpSensor(mContext, mDozeManager);
-        mAllSensors[2] = flatUpSensor;
+        // Other actions that are always enabled
 
-        StowSensor stowSensor = new StowSensor(mContext, mDozeManager);
-        mAllSensors[3] = stowSensor;
+        SensorAction cameraAction = cmActionsSettings.newCameraActivationAction();
+        SensorAction chopChopAction = cmActionsSettings.newChopChopAction();
 
-        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-        loadPreferences(sharedPrefs);
-        sharedPrefs.registerOnSharedPreferenceChangeListener(mPrefListener);
+        mUpdatedStateNotifiers.add(new CameraActivationSensor(cmActionsSettings, cameraAction, mSensorHelper));
+        mUpdatedStateNotifiers.add(new ChopChopSensor(cmActionsSettings, chopChopAction, mSensorHelper));
+        mUpdatedStateNotifiers.add(new IrSilencer(cmActionsSettings, context, mSensorHelper,
+                mIrGestureManager));
 
-        if (mGestureCameraEnabled) {
-            mCameraActivationSensor.register();
-        }
-        if (mGestureIrWakeEnabled) {
-            mIrGestureSensor.enable(IrGestureSensor.IR_GESTURE_WAKE_ENABLED);
-        }
-        if (mGestureIrSilenceEnabled) {
-            mIrGestureSensor.enable(IrGestureSensor.IR_GESTURE_SILENCE_ENABLED);
-        }
-
-        stowSensor.register();
-
-        PowerManager powerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-        if (powerManager.isInteractive()) {
-            screenTurnedOn();
-        } else {
-            screenTurnedOff();
-        }
+        mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        updateState();
     }
 
     @Override
@@ -96,52 +82,26 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
 
     @Override
     public void screenTurnedOn() {
-        mDozeManager.setScreenOn(true);
-        for (int i = 0; i < mAllSensors.length; i++) {
-            mAllSensors[i].setScreenOn(true);
+        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
+            screenStateNotifier.screenTurnedOn();
         }
     }
 
     @Override
     public void screenTurnedOff() {
-        mDozeManager.setScreenOn(false);
-        for (int i = 0; i < mAllSensors.length; i++) {
-            mAllSensors[i].setScreenOn(false);
+        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
+            screenStateNotifier.screenTurnedOff();
         }
     }
 
-    private void loadPreferences(SharedPreferences sharedPreferences) {
-        mGestureIrWakeEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKE_KEY, true);
-        mGestureIrSilenceEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCE_KEY, true);
-        mGestureCameraEnabled = sharedPreferences.getBoolean(GESTURE_CAMERA_KEY, true);
-    }
-
-    private SharedPreferences.OnSharedPreferenceChangeListener mPrefListener =
-            new SharedPreferences.OnSharedPreferenceChangeListener() {
-        @Override
-        public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            if (GESTURE_IR_WAKE_KEY.equals(key)) {
-                mGestureIrWakeEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKE_KEY, true);
-                if (mGestureIrWakeEnabled) {
-                    mIrGestureSensor.enable(IrGestureSensor.IR_GESTURE_WAKE_ENABLED);
-                } else {
-                    mIrGestureSensor.disable(IrGestureSensor.IR_GESTURE_WAKE_ENABLED);
-                }
-            } else if (GESTURE_IR_SILENCE_KEY.equals(key)) {
-                mGestureIrSilenceEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCE_KEY, true);
-                if (mGestureIrSilenceEnabled) {
-                    mIrGestureSensor.enable(IrGestureSensor.IR_GESTURE_SILENCE_ENABLED);
-                } else {
-                    mIrGestureSensor.disable(IrGestureSensor.IR_GESTURE_SILENCE_ENABLED);
-                }
-            } else if (GESTURE_CAMERA_KEY.equals(key)) {
-                mGestureCameraEnabled = sharedPreferences.getBoolean(GESTURE_CAMERA_KEY, true);
-                if (mGestureCameraEnabled) {
-                    mCameraActivationSensor.register();
-                } else {
-                    mCameraActivationSensor.unregister();
-                }
-            }
+    public void updateState() {
+        if (mPowerManager.isInteractive()) {
+            screenTurnedOn();
+        } else {
+            screenTurnedOff();
         }
-    };
+        for (UpdatedStateNotifier notifier : mUpdatedStateNotifiers) {
+            notifier.updateState();
+        }
+    }
 }
