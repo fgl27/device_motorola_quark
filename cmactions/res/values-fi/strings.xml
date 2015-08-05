@@ -31,10 +31,10 @@
   <string name="chop_chop_gesture_title">Leikkaa</string>
   <string name="chop_chop_gesture_summary">Toiminto \"leikatessa\" laitteella kahdesti</string>
   <string name="ir_silencer_title">Hiljennä heilauttamalla</string>
-  <string name="ir_silencer_summary">Hiljennä tulevat puhelut heilauttamalla kättä ruudun yli</string>
+  <string name="ir_silencer_summary">Hiljennä tulevat puhelut ja torkuta hälytykset heiluttamalla kättäsi ruudun poikki</string>
   <string name="action_none">Poista käytöstä</string>
   <string name="action_launch_camera">Käynnistä kamera</string>
-  <string name="action_torch">Käynnistä taskulamppu</string>
+  <string name="action_torch">Lamppu</string>
   <string name="feedback_intensity_title">Haptisen palautteen intensiteetti</string>
   <string name="feedback_intensity_summary">Haptisen palautuksen voimakkuus tuplakierre- ja leikkauseleillä</string>
   <string name="feedback_intensity_none">Pois käytöstä</string>

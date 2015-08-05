@@ -31,14 +31,14 @@
   <string name="chop_chop_gesture_title">Hak-hak</string>
   <string name="chop_chop_gesture_summary">Handling når du bruger hak-hak bevægelsen</string>
   <string name="ir_silencer_title">Vink for lydløs</string>
-  <string name="ir_silencer_summary">Gør indgående opkald lydløse ved at vinke med din hånd over skærmen</string>
-  <string name="action_none">Slå fra</string>
+  <string name="ir_silencer_summary">Dæmp indgående opkald og udsæt alarmer ved at vinke med hånden hen over skærmen</string>
+  <string name="action_none">Deaktivér</string>
   <string name="action_launch_camera">Start kamera</string>
   <string name="action_torch">Tænd/sluk lommelygte</string>
   <string name="feedback_intensity_title">Berøringsfølsomhed</string>
   <string name="feedback_intensity_summary">Styrken på berøringsfølsomheden for dobbelt-drej og hak-hak handlingerne</string>
-  <string name="feedback_intensity_none">Fra</string>
+  <string name="feedback_intensity_none">Deaktiveret</string>
   <string name="feedback_intensity_low">Lav</string>
-  <string name="feedback_intensity_medium">Normal</string>
+  <string name="feedback_intensity_medium">Medium</string>
   <string name="feedback_intensity_high">Høj</string>
 </resources>

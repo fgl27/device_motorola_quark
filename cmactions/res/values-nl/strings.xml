@@ -31,8 +31,8 @@
   <string name="chop_chop_gesture_title">Chop-chop</string>
   <string name="chop_chop_gesture_summary">Actie bij \'chop-chop\'-gebaar (twee hakkende bewegingen met uw apparaat)</string>
   <string name="ir_silencer_title">Handgebaar voor stil</string>
-  <string name="ir_silencer_summary">Inkomende oproepen dempen bij handgebaar over het scherm</string>
-  <string name="action_none">Uitschakelen</string>
+  <string name="ir_silencer_summary">Inkomende oproepen dempen en alarmen snoozen bij handgebaar over het scherm</string>
+  <string name="action_none">Uitgeschakeld</string>
   <string name="action_launch_camera">Camera openen</string>
   <string name="action_torch">Zaklamp aan/uit</string>
   <string name="feedback_intensity_title">Trilintensiteit</string>

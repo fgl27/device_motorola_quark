@@ -31,13 +31,13 @@
   <string name="chop_chop_gesture_title">Chop-chop</string>
   <string name="chop_chop_gesture_summary">Acció quan s\'utilitzi el gest chop-chop</string>
   <string name="ir_silencer_title">Agita per silenciar</string>
-  <string name="ir_silencer_summary">Silencia les trucades entrants quan s\'agiti la ma per davant de la pantalla</string>
+  <string name="ir_silencer_summary">Silencia les trucades entrants i postposa les alarmes agitant la mà dant de la pantalla</string>
   <string name="action_none">Desactiva</string>
   <string name="action_launch_camera">Obre la càmera</string>
-  <string name="action_torch">Torxa</string>
+  <string name="action_torch">Interruptor Torxa</string>
   <string name="feedback_intensity_title">Intensitat de la resposta hàptica</string>
   <string name="feedback_intensity_summary">Intensitat de la resposta hàptica per a les accions de doble-gir i chop-chop</string>
-  <string name="feedback_intensity_none">Desactivat</string>
+  <string name="feedback_intensity_none">Desactivada</string>
   <string name="feedback_intensity_low">Baixa</string>
   <string name="feedback_intensity_medium">Mitja</string>
   <string name="feedback_intensity_high">Alta</string>
