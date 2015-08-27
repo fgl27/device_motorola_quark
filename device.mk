@@ -329,3 +329,7 @@ PRODUCT_PACKAGES += \
 # ro.product.first_api_level indicates the first api level the device has commercially launched on.
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.first_api_level=19
+
+# low audio flinger standby delay to reduce power consumption
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.audio.flinger_standbytime_ms=300
