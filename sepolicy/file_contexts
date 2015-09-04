@@ -52,4 +52,3 @@
 /system/bin/batt_health                 u:object_r:batt_health_exec:s0
 /system/bin/dbvc_atvc_property_set      u:object_r:atvc_exec:s0
 /system/bin/stm401                      u:object_r:stm401_exec:s0
-/system/bin/wcnss_filter                u:object_r:wcnss_filter_exec:s0
