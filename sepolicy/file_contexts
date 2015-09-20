@@ -13,7 +13,7 @@
 /dev/ttyHS0                             u:object_r:hci_attach_dev:s0
 
 # Display
-/sys/devices/virtual/graphics/fb0/hbm   u:object_r:display_sysfs:s0
+/sys/devices/virtual/graphics/fb0/hbm   u:object_r:livedisplay_sysfs:s0
 
 # Vibrator
 /sys/vibrator/pwmvalue                  u:object_r:vib_sysfs:s0
