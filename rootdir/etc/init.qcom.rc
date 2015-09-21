@@ -75,6 +75,20 @@ on init
 
     # CM: We use our own ril-daemon service definition, see mmi-ril-daemon
     stop ril-daemon
+	
+on charger
+    trigger early-fs
+    trigger fs
+    trigger post-fs
+    trigger post-fs-data
+    trigger moto-charger
+    class_stop main
+
+on moto-charger
+    setprop ro.board.platform apq8084
+    start qcom-post-boot
+    start thermal-com
+    start charge_only_mode
 
 on fs
     mount_all fstab.qcom

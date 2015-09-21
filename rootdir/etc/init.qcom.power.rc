@@ -71,3 +71,9 @@ on property:sys.boot_completed=1
     # Configure the cpu-boost module
     write /sys/module/cpu_boost/parameters/input_boost_freq 1497600
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
+
+on property:ro.bootmode=normal
+    rm /dev/diag
+
+on property:ro.bootmode=mot-charger
+    rm /dev/diag
