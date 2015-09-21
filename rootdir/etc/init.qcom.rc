@@ -437,8 +437,8 @@ on boot
     # ESDFS
     chown system system /proc/fs/esdfs/packages
 
-on property:sys.boot_completed=1
-    setprop sys.io.scheduler bfq
+#on property:sys.boot_completed=1
+#    setprop sys.io.scheduler bfq
 
     # Post boot services
     setprop ro.qualcomm.perf.cores_online 2
