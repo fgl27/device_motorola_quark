@@ -189,7 +189,7 @@ WITH_LZMA_OTA:= true
 #RR Optimizations
 TARGET_TC_ROM := 4.9
 
-TARGET_TC_KERNEL := 4.8
+TARGET_TC_KERNEL := 4.8.5
 
 RROPTI := true
 
