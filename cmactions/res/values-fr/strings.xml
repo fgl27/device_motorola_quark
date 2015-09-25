@@ -16,5 +16,29 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="user_aware_display_title">Affichage avisé de l\'utilisateur</string>
+  <string name="user_aware_display_summary">Maintient l\'écran allumé tant qu\'un utilisateur fait face à l\'affichage</string>
+  <string name="screen_gestures_panel_title">Raccourcis gestuels</string>
   <string name="screen_gestures_panel_summary">Utiliser des gestes pour effectuer des actions</string>
+  <string name="ambient_display_title">Affichage ambiant</string>
+  <string name="pick_up_gesture_title">Prise en main</string>
+  <string name="pick_up_gesture_summary">Afficher les notifications à la prise en main ou en sortie de poche</string>
+  <string name="ir_wake_up_title">Passage</string>
+  <string name="ir_wake_up_summary">Afficher les notifications lorsque vous balayez l\'écran de la main</string>
+  <string name="actions_title">Actions</string>
+  <string name="camera_gesture_title">Double-tour</string>
+  <string name="camera_gesture_summary">Action lors du geste double-tour</string>
+  <string name="chop_chop_gesture_title">Double tranchage</string>
+  <string name="chop_chop_gesture_summary">Action lors du geste double tranchage</string>
+  <string name="ir_silencer_title">Passage pour rendre silencieux</string>
+  <string name="ir_silencer_summary">Rendre silencieux les appels entrants et les alarmes récurrentes en balayant l\'écran de la main</string>
+  <string name="action_none">Désactiver</string>
+  <string name="action_launch_camera">Démarrer l\'appareil photo</string>
+  <string name="action_torch">Activer la lampe torche</string>
+  <string name="feedback_intensity_title">Intensité du retour haptique</string>
+  <string name="feedback_intensity_summary">Intensité du retour haptique pour le double-tour et le double-tranchage</string>
+  <string name="feedback_intensity_none">Désactivée</string>
+  <string name="feedback_intensity_low">Faible</string>
+  <string name="feedback_intensity_medium">Moyenne</string>
+  <string name="feedback_intensity_high">Élevée</string>
 </resources>
