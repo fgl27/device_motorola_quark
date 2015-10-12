@@ -363,6 +363,7 @@ bin/mdm_helper_proxy
 bin/qcks
 bin/qmi_motext_hook
 bin/qmuxd
+bin/radish
 bin/rfs_access
 bin/rmt_storage
 etc/permissions/qcnvitems.xml
