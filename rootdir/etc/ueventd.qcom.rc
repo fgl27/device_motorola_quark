@@ -190,6 +190,9 @@
 /sys/devices/virtual/input/input*                   range          0664    root     input
 /sys/devices/virtual/input/input*                   driver/enable  0660    root     input
 /sys/devices/virtual/input/input*                   driver/delay   0660    root     input
+/sys/devices/virtual/stm401/stm401_as*              timestamp_time_ns      0440 compass compass
+/sys/devices/virtual/stm401/stm401_as*              rv_6axis_update_rate   0660 compass compass
+/sys/devices/virtual/stm401/stm401_as*              rv_9axis_update_rate   0660 compass compass
 
 # wlan
 /dev/wcnss_wlan           0660   system     system
