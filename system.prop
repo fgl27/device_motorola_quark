@@ -28,7 +28,7 @@ ro.qualcomm.bluetooth.sap=false
 # Display
 ro.qualcomm.cabl=0
 ro.opengles.version=196608
-ro.sf.lcd_density=640
+ro.sf.lcd_density=560
 persist.panel.inversemounted=1
 
 # GLES doesn't support secure display, to allow google play movies
@@ -132,10 +132,6 @@ telephony.lteOnGsmDevice=1
 
 # BHB improvements
 
-# Radio
-ro.ril.telephony.mqanelements=5
-persist.radio.add_power_save=1
-
 # start from verizon su39
 # system props for the MM modules
 # Increase Quality Of Media Streaming
@@ -173,6 +169,11 @@ audio.dolby.ds2.hardbypass=true
 
 # end from verizon su39
 
+# Radio
+ro.ril.telephony.mqanelements=5
+persist.radio.add_power_save=1
+ro.ril.def.preferred.network=9
+
 # Enable Quick Power-On mode to reduce boot-time 
 
 ro.config.hw_quickpoweron=true
@@ -186,6 +187,7 @@ persist.sys.usb.config=mtp,ad
 # Reduce dial-out time 
 ro.telephony.call_ring.delay=0
 ring.delay=0
+ro.config.vc_call_vol_steps=20
 
 # Increase jpg quality to 100%
 ro.media.enc.jpeg.quality=100
