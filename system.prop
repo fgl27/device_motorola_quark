@@ -5,7 +5,7 @@ ro.hw.device=quark
 ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
+persist.audio.fluence.speaker=false
 use.voice.path.for.pcm.voip=false
 use.dedicated.device.for.voip=false
 audio.offload.buffer.size.kb=32
@@ -129,3 +129,85 @@ wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
 # GSM
 ro.telephony.default_network=9
 telephony.lteOnGsmDevice=1
+
+# BHB improvements
+
+# Radio
+ro.ril.telephony.mqanelements=5
+persist.radio.add_power_save=1
+
+# start from verizon su39
+# system props for the MM modules
+# Increase Quality Of Media Streaming
+
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
+mmp.enable.3g2=true
+media.aac_51_output_enabled=true
+# Motorola disable smooth streaming
+#mm.enable.smoothstreaming=true
+#3183219 is decimal sum of supported codecs in AAL
+#codecs: DivX DivXHD AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
+mm.enable.qcom_parser=3183219
+persist.mm.enable.prefetch=true
+
+#
+#snapdragon value add features
+#
+ro.qc.sdk.audio.ssr=false
+
+#
+# Dual-mic config: "endfire" or "broadside" or "none"
+#
+persist.audio.dualmic.config=endfire
+
+#Enable property to enable ds2
+audio.dolby.ds2.enabled=true
+
+#enable property for hard bypass
+audio.dolby.ds2.hardbypass=true
+
+# end from verizon su39
+
+# Enable Quick Power-On mode to reduce boot-time 
+
+ro.config.hw_quickpoweron=true
+
+# Fast Reboot
+persist.sys.purgeable_assets=1
+
+#Enable ADB Debugging By Default & Disable USB Debugging Popup
+
+persist.adb.notify=0
+persist.service.adb.enable=1 persist.service.debuggable=1
+persist.sys.usb.config=mtp,ad
+
+# Reduce dial-out time 
+ro.telephony.call_ring.delay=0
+ring.delay=0
+
+# Increase jpg quality to 100%
+ro.media.enc.jpeg.quality=100
+
+# Better internet browsing & download speed
+net.tcp.buffersize.default=6144,87380,1048576,6144,87380,524288
+net.tcp.buffersize.wifi=524288,1048576,2097152,524288,1048576,2097152
+net.tcp.buffersize.umts=6144,87380,1048576,6144,87380,524288
+net.tcp.buffersize.gprs=6144,87380,1048576,6144,87380,524288
+net.tcp.buffersize.edge=6144,87380,524288,6144,16384,262144
+net.tcp.buffersize.hspa=6144,87380,524288,6144,16384,262144
+net.tcp.buffersize.lte=524288,1048576,2097152,524288,1048576,2097152
+net.tcp.buffersize.hsdpa=6144,87380,1048576,6144,87380,1048576
+net.tcp.buffersize.evdo_b=6144,87380,1048576,6144,87380,1048576
+
+# Google DNS Tweak
+# if if you have problems with DNS or want to use Google DNS
+# remove all the # to the start of each of the next 3 lines save and reboot
+#net.rmnet0.dns1=8.8.8.8
+#net.rmnet0.dns2=8.8.4.4
+#net.dns1=8.8.8.8
+#net.dns2=8.8.4.4
