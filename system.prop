@@ -177,9 +177,6 @@ audio.dolby.ds2.hardbypass=true
 
 ro.config.hw_quickpoweron=true
 
-# Fast Reboot
-persist.sys.purgeable_assets=1
-
 #Enable ADB Debugging By Default & Disable USB Debugging Popup
 
 persist.adb.notify=0
@@ -211,3 +208,7 @@ net.tcp.buffersize.evdo_b=6144,87380,1048576,6144,87380,1048576
 #net.rmnet0.dns2=8.8.4.4
 #net.dns1=8.8.8.8
 #net.dns2=8.8.4.4
+
+# No boot animation
+# remove the next # to disable boot animation
+#debug.sf.nobootanimation=1  
