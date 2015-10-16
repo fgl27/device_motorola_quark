@@ -127,7 +127,7 @@ wlan.driver.ath=0
 wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
 
 # GSM
-ro.telephony.default_network=9
+ro.telephony.default_network=10
 telephony.lteOnGsmDevice=1
 
 # BHB improvements
@@ -181,7 +181,9 @@ audio.offload.gapless.enabled=true
 # Radio
 ro.ril.telephony.mqanelements=5
 persist.radio.add_power_save=1
-ro.ril.def.preferred.network=9
+
+# GSM LTE
+ro.ril.def.preferred.network=10
 
 # Enable Quick Power-On mode to reduce boot-time 
 
