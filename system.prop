@@ -226,7 +226,4 @@ net.tcp.buffersize.evdo_b=6144,87380,1048576,6144,87380,1048576
 # remove the next # to disable boot animation
 #debug.sf.nobootanimation=1  
 
-# Disable Kernel Error Checking
-ro.kernel.android.checkjni=0
-ro.kernel.checkjni=0 
-
+# End BHB improvements
