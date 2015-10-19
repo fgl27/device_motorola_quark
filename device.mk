@@ -217,8 +217,7 @@ PRODUCT_BOOT_JARS += \
 
 # ETC scripts
 PRODUCT_PACKAGES += \
-    init.qcom.bt.sh \
-    moto_com.sh
+    init.qcom.bt.sh
 
 # Ramdisk
 PRODUCT_PACKAGES += \
