@@ -5,7 +5,7 @@ ro.hw.device=quark
 ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=false
+persist.audio.fluence.speaker=true
 use.voice.path.for.pcm.voip=false
 use.dedicated.device.for.voip=false
 audio.offload.buffer.size.kb=32
@@ -94,7 +94,7 @@ persist.radio.dfr_mode_set=1
 persist.radio.relay_oprt_change=1
 persist.radio.msgtunnel.start=false
 persist.radio.oem_ind_to_both=false
-persist.data.netmgrd.qos.enable=true
+persist.data.netmgrd.qos.enable=truepersist.radio.apn_delay=5000
 
 ro.use_data_netmgrd=true
 ro.data.large_tcp_window_size=true
@@ -127,70 +127,5 @@ wlan.driver.ath=0
 wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
 
 # GSM
-ro.telephony.default_network=10
+ro.telephony.default_network=9
 telephony.lteOnGsmDevice=1
-
-# BHB improvements
-
-# start from verizon su39
-# system props for the MM modules
-# Increase Quality Of Media Streaming
-
-media.stagefright.enable-player=true
-media.stagefright.enable-http=true
-media.stagefright.enable-aac=true
-media.stagefright.enable-qcp=true
-media.stagefright.enable-fma2dp=true
-media.stagefright.enable-scan=true
-mmp.enable.3g2=true
-media.aac_51_output_enabled=true
-# Motorola disable smooth streaming
-#mm.enable.smoothstreaming=true
-#3183219 is decimal sum of supported codecs in AAL
-#codecs: DivX DivXHD AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
-mm.enable.qcom_parser=3183219
-persist.mm.enable.prefetch=true
-
-#
-#snapdragon value add features
-#
-ro.qc.sdk.audio.ssr=false
-
-#
-# Dual-mic config: "endfire" or "broadside" or "none"
-#
-persist.audio.dualmic.config=endfire
-
-#Enable property to enable ds2
-audio.dolby.ds2.enabled=true
-
-#enable property for hard bypass
-audio.dolby.ds2.hardbypass=true
-
-#property to enable user to access Google WFD settings
-persist.debug.wfd.enable=1
-##property to choose between virtual/external wfd display
-persist.sys.wfd.virtual=0
-
-#enable dsp gapless mode by default
-audio.offload.gapless.enabled=true
-
-
-# end from verizon su39
-
-# Radio
-ro.ril.telephony.mqanelements=5
-persist.radio.add_power_save=1
-
-# GSM LTE
-ro.ril.def.preferred.network=10
-
-# Reduce dial-out time 
-ro.telephony.call_ring.delay=0
-ring.delay=0
-
-# Increase jpg quality to 100%
-ro.media.enc.jpeg.quality=100
- 
-
-# End BHB improvements
