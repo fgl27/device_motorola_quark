@@ -73,8 +73,19 @@ on init
     write /proc/sys/kernel/core_pattern "|/system/bin/coredump %e %p %t"
     write /proc/self/coredump_filter "0x7f"
 
-    # CM: We use our own ril-daemon service definition, see mmi-ril-daemon
-    stop ril-daemon
+on charger
+    trigger early-fs
+    trigger fs
+    trigger post-fs
+    trigger post-fs-data
+    trigger moto-charger
+    class_stop main
+
+on moto-charger
+    setprop ro.board.platform apq8084
+    start qcom-post-boot
+    start thermal-com
+    start charge_only_mode
 
 on fs
     mount_all fstab.qcom
@@ -578,7 +589,7 @@ service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
     user root
     oneshot
 
-service mmi-ril-daemon /system/bin/rild
+service_redefine ril-daemon /system/bin/rild
     class main
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system

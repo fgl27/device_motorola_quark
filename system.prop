@@ -94,7 +94,8 @@ persist.radio.dfr_mode_set=1
 persist.radio.relay_oprt_change=1
 persist.radio.msgtunnel.start=false
 persist.radio.oem_ind_to_both=false
-persist.data.netmgrd.qos.enable=truepersist.radio.apn_delay=5000
+persist.data.netmgrd.qos.enable=true
+persist.radio.apn_delay=5000
 
 ro.use_data_netmgrd=true
 ro.data.large_tcp_window_size=true
@@ -125,7 +126,3 @@ ro.usb.bpteth_adb=2ea3
 wifi.interface=wlan0
 wlan.driver.ath=0
 wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
-
-# GSM
-ro.telephony.default_network=9
-telephony.lteOnGsmDevice=1
