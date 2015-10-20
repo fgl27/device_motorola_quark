@@ -92,7 +92,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -108,12 +108,20 @@ PRODUCT_PACKAGES += \
     libjni_CMActions \
     CMActions
 
+# CNE
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/andsfCne.xml:system/etc/cne/andsfCne.xml \
+    $(LOCAL_PATH)/configs/SwimConfig.xml:system/etc/cne/SwimConfig.xml
+
 # CRDA
 PRODUCT_PACKAGES += \
     crda \
     linville.key.pub.pem \
     regdbdump \
     regulatory.bin
+
+# Dexopt
+$(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
 
 # Display
 PRODUCT_PACKAGES += \
@@ -171,10 +179,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
-
-# Motorola
-PRODUCT_PACKAGES += \
-    charge_only_mode
 
 # NFC
 PRODUCT_PACKAGES += \

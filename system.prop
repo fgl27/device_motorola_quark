@@ -1,6 +1,3 @@
-# Set ro.hw.device
-ro.hw.device=quark
-
 # Audio
 ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
@@ -16,7 +13,7 @@ audio.offload.gapless.enabled=true
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
 
-#Bluetooth
+# Bluetooth
 bt.max.hfpclient.connections=1
 
 qcom.bluetooth.soc=rome
@@ -31,6 +28,9 @@ ro.opengles.version=196608
 ro.sf.lcd_density=640
 persist.panel.inversemounted=1
 
+# FRP
+ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
+
 # GLES doesn't support secure display, to allow google play movies
 # and other apps that require a secure display we need to enable this:
 persist.hwc.mdpcomp.enable=false
@@ -43,9 +43,6 @@ ro.qc.sdk.izat.service_mask=0x0
 
 # Gps Smart Battery Savings (depends on sensor hub)
 persist.mot.gps.smart_battery=1
-
-# Camera
-camera2.portability.force_api=1
 
 # Media
 audio.offload.buffer.size.kb=32
@@ -83,6 +80,8 @@ persist.data.df.iwlan_mux=9
 persist.data.df.dev_name=rmnet_usb0
 persist.data.llf.enable=true
 
+persist.rmnet.mux=enabled
+
 # Qualcomm
 ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
 
@@ -92,10 +91,11 @@ persist.radio.apm_sim_not_pwdn=1
 persist.radio.apn_delay=5000
 persist.radio.dfr_mode_set=1
 persist.radio.relay_oprt_change=1
-persist.radio.msgtunnel.start=false
+persist.radio.msgtunnel.start=true
 persist.radio.oem_ind_to_both=false
 persist.data.netmgrd.qos.enable=true
 persist.radio.apn_delay=5000
+persist.radio.VT_USE_MDM_TIME=1
 
 ro.use_data_netmgrd=true
 ro.data.large_tcp_window_size=true
@@ -121,6 +121,8 @@ ro.usb.bpt=2ea0
 ro.usb.bpt_adb=2ea1
 ro.usb.bpteth=2ea2
 ro.usb.bpteth_adb=2ea3
+
+persist.sys.isUsbOtgEnabled=1
 
 # WLAN
 wifi.interface=wlan0

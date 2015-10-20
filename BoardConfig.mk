@@ -23,7 +23,7 @@ BOARD_VENDOR := motorola-qcom
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := quark,quark_umts,xt1225,xt1250
+TARGET_OTA_ASSERT_DEVICE := quark,quark_umts,quark_verizon,xt1225,xt1250,xt1254
 BOARD_USES_QCOM_HARDWARE := true
 
 # Platform
@@ -60,6 +60,8 @@ WLAN_MODULES:
 TARGET_KERNEL_MODULES += WLAN_MODULES
 
 # Init
+TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_quark.c
 TARGET_NR_SVC_SUPP_GIDS := 28
 TARGET_UNIFIED_DEVICE := true
 
@@ -84,7 +86,6 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_HARDWARE_CLASS += device/motorola/quark/cmhw
 
 # Display
-BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 USE_OPENGL_RENDERER := true
@@ -129,6 +130,7 @@ BOARD_SEPOLICY_UNION += \
     atvc.te \
     batt_health.te \
     bluetooth.te \
+    cnd.te \
     device.te \
     file_contexts \
     file.te \

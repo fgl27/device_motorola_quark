@@ -1,9 +1,11 @@
 # ADSP
 bin/adspd
-lib/libadspd-jni.so
+lib/libadspd-jni-c55.so
+lib/libadspd.so
 
 # ADSP (soudced from shamu)
-lib/libadspd.so
+# sourced from lib/libadspd.so
+lib/libadsp2.so
 
 # Audio
 bin/adsprpcd
@@ -16,25 +18,33 @@ vendor/lib/libaudioalsa.so
 vendor/lib/libcsd-client.so
 
 # ACDB
-etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
-etc/acdbdata/MTP/MTP_General_cal.acdb
-etc/acdbdata/MTP/MTP_Global_cal.acdb
-etc/acdbdata/MTP/MTP_Handset_cal.acdb
-etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
-etc/acdbdata/MTP/MTP_Headset_cal.acdb
-etc/acdbdata/MTP/MTP_Speaker_cal.acdb
+etc/acdbdata/Bluetooth_cal.acdb
+etc/acdbdata/General_cal.acdb
+etc/acdbdata/Global_cal.acdb
+etc/acdbdata/Handset_cal.acdb
+etc/acdbdata/Hdmi_cal.acdb
+etc/acdbdata/Headset_cal.acdb
+etc/acdbdata/Speaker_cal.acdb
+
+# ATFWD
+-app/atfwd/atfwd.apk
+bin/ATFWD-daemon
 
 # Audio firmware
 etc/firmware/aonvr1.bin
 etc/firmware/aonvr2.bin
-etc/firmware/tfa9890.config
-etc/firmware/tfa9890.eq
-etc/firmware/tfa9890.speaker
-etc/firmware/tfa9890_music_table.preset
-etc/firmware/tfa9890_n1b12.patch
-etc/firmware/tfa9890_n1c2.patch
-etc/firmware/tfa9890_ringtone_table.preset
-etc/firmware/tfa9890_voice_table.preset
+etc/firmware/left.tfa9890.music.config
+etc/firmware/left.tfa9890.music.eq
+etc/firmware/left.tfa9890.ringtone.config
+etc/firmware/left.tfa9890.ringtone.eq
+etc/firmware/left.tfa9890.speaker
+etc/firmware/left.tfa9890.voice.config
+etc/firmware/left.tfa9890.voice.eq
+etc/firmware/left.tfa9890_music_table.preset
+etc/firmware/left.tfa9890_n1b12.patch
+etc/firmware/left.tfa9890_n1c2.patch
+etc/firmware/left.tfa9890_ringtone_table.preset
+etc/firmware/left.tfa9890_voice_table.preset
 etc/firmware/VRGain.bin
 
 # Offloaded audio effects
@@ -44,6 +54,9 @@ vendor/lib/soundfx/libqcreverb.so
 
 # Audio (sourced from shamu)
 lib/libdetectmodem.so
+
+# Battery
+bin/charge_only_mode
 
 # Bluetooth
 bin/btnvtool
@@ -181,6 +194,18 @@ vendor/lib/libchromatix_imx220_snapshot_cpp.so
 vendor/lib/libchromatix_imx220_video_uhd.so
 vendor/lib/libchromatix_imx220_video_uhd_cpp.so
 
+# CNE
+bin/cnd
+-priv-app/CNEService/CNEService.apk
+etc/permissions/cneapiclient.xml
+etc/permissions/com.quicinc.cne.xml
+-framework/cneapiclient.jar
+-framework/com.quicinc.cne.jar
+lib/libcnefeatureconfig.so
+vendor/lib/libcne.so
+vendor/lib/libcneapiclient.so
+vendor/lib/libcneqmiutils.so
+
 # CPU
 bin/mpdecision
 bin/thermal-engine
@@ -204,12 +229,18 @@ vendor/lib/libwvm.so
 vendor/lib/libStDrvInt.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
-# DRM (sourced from victara)
-vendor/lib/libsecureui.so
+# DRM firmware
+vendor/firmware/widevine.b00
+vendor/firmware/widevine.b01
+vendor/firmware/widevine.b02
+vendor/firmware/widevine.b03
+vendor/firmware/widevine.mdt
+
+# Frameworks
+etc/permissions/org.simalliance.openmobileapi.xml
+-framework/org.simalliance.openmobileapi.jar
 
 # GPS
--app/com.qualcomm.location/com.qualcomm.location.apk
--app/com.qualcomm.services.location/com.qualcomm.services.location.apk
 -app/MotGeoFenceSvc/MotGeoFenceSvc.apk
 bin/gpsone_daemon
 etc/permissions/com.qualcomm.location.xml
@@ -223,6 +254,8 @@ lib/libloc_api_v02.so
 lib/libloc_core.so
 lib/libloc_ds_api.so
 lib/libloc_eng.so
+-priv-app/com.qualcomm.location/com.qualcomm.location.apk
+-priv-app/com.qualcomm.services.location/com.qualcomm.services.location.apk
 vendor/etc/gnss/gnss-fsh.bin
 vendor/lib/hw/flp.default.so
 vendor/lib/libalarmservice_jni.so
@@ -257,44 +290,6 @@ vendor/lib/libscale.so
 # Graphics firmware
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
-
-# IMS (not used yet)
--app/atfwd/atfwd.apk
-bin/ATFWD-daemon
-bin/imsdatadaemon
-bin/imsqmidaemon
-bin/ims_rtp_daemon
-lib/libdashplayer.so
-lib/libmm-omxcore.so
--framework/rcsimssettings.jar
--framework/rcsservice.jar
-vendor/lib/libmmhttpstack.so
-vendor/lib/libmmiipstreammmihttp.so
-vendor/lib/libmmipstreamaal.so
-vendor/lib/libmmipstreamnetwork.so
-vendor/lib/libmmipstreamsourcehttp.so
-vendor/lib/libmmipstreamutils.so
-vendor/lib/libmmQSM.so
-vendor/lib/libmmQTA.so
-vendor/lib/libmmrtpdecoder.so
-vendor/lib/libmmrtpencoder.so
-vendor/lib/lib-dplmedia.so
-vendor/lib/lib-imscamera.so
-vendor/lib/lib-imsdpl.so
-vendor/lib/lib-imsqimf.so
-vendor/lib/lib-imsrcs.so
-vendor/lib/lib-imss.so
-vendor/lib/lib-imsSDP.so
-vendor/lib/lib-imsvt.so
-vendor/lib/lib-imsxml.so
-vendor/lib/lib-rcsjni.so
-vendor/lib/lib-rcsimssjni.so
-vendor/lib/lib-rtpcommon.so
-vendor/lib/lib-rtpcore.so
-vendor/lib/lib-rtpdaemoninterface.so
-vendor/lib/lib-rtpsl.so
-vendor/lib/libvcel.so
-vendor/lib/libwfdcommonutils.so
 
 # Media
 vendor/lib/libDivxDrm.so
@@ -370,14 +365,13 @@ etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
-lib/libcnefeatureconfig.so
+lib/libadropbox.so
 lib/libmdmcutback.so
 lib/libmdmdetect.so
 lib/libmotext_inf.so
 lib/librmnetctl.so
 lib/libqmimotext.so
 vendor/lib/libconfigdb.so
-vendor/lib/libcneapiclient.so
 vendor/lib/libnetmgr.so
 vendor/lib/libril-qc-qmi-1.so
 vendor/lib/libril-qcril-hook-oem.so
@@ -385,6 +379,23 @@ vendor/lib/libsmemlog.so
 vendor/lib/libsystem_health_mon.so
 vendor/lib/librpmb.so
 vendor/lib/libxml.so
+
+# Radio dependencies
+vendor/lib/lib-dplmedia.so
+vendor/lib/lib-imscamera.so
+vendor/lib/lib-imsdpl.so
+vendor/lib/lib-imsqimf.so
+vendor/lib/lib-imsrcs.so
+vendor/lib/lib-imss.so
+vendor/lib/lib-imsSDP.so
+vendor/lib/lib-imsvt.so
+vendor/lib/lib-imsxml.so
+vendor/lib/lib-rtpcommon.so
+vendor/lib/lib-rtpcore.so
+vendor/lib/lib-rtpdaemoninterface.so
+vendor/lib/lib-rtpsl.so
+vendor/lib/libvcel.so
+vendor/lib/libwfdcommonutils.so
 
 # Sensors
 bin/stm401
@@ -422,9 +433,15 @@ etc/firmware/vpu.b12
 etc/firmware/vpu.mbn
 etc/firmware/vpu.mdt
 
-# Frameworks
-etc/permissions/org.simalliance.openmobileapi.xml
--framework/org.simalliance.openmobileapi.jar
+# Verizon
+-app/appdirectedsmspermission/appdirectedsmspermission.apk
+-app/vzwapnpermission/vzwapnpermission.apk
+-app/VZWAPNLib/VZWAPNLib.apk
+-priv-app/VZWAPNService/VZWAPNService.apk
+
+# Verizon (sourced from shamu)
+-app/MotoSignatureApp/MotoSignatureApp.apk
+-priv-app/BuaContactAdapter/BuaContactAdapter.apk
 
 # Voice recognition
 lib/hw/audio.motvr.default.so
@@ -474,3 +491,6 @@ vendor/moto/audiomonitor/sensory/svsid_triggerogn1_itit_1_0.raw
 vendor/moto/audiomonitor/sensory/svsid_triggerogn_enus_3_1.raw
 vendor/moto/audiomonitor/sensory/svsid_triggerogn_frfr_1_0.raw
 vendor/moto/audiomonitor/sensory/svsid_triggerogn_ptbr_2_1.raw
+
+# These binaries were patched
+# lib/hw/sound_trigger.primary.apq8084.so (dependency)

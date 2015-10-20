@@ -28,6 +28,36 @@ if [ $? -eq 0 ]; then
     exit 0
 fi
 
+# XT1254 - Verizon
+ls /fsg | grep quark_verizon > /dev/null 2> /dev/null
+if [ $? -eq 0 ]; then
+    setprop "ro.fsg-id" "verizon"
+    setprop "ro.product.model" "DROID Turbo"
+    setprop "ro.build.description" "quark_verizon-user 5.1 SU4TL-44 44 release-keys"
+    setprop "ro.build.fingerprint" "motorola/quark_verizon/quark:5.1/SU4TL-44/44:user/release-keys"
+    setprop "ro.telephony.default_cdma_sub" "0"
+    setprop "ro.cdma.home.operator.numeric" "311480"
+    setprop "ro.cdma.home.operator.alpha" "Verizon"
+    setprop "ro.ril.force_eri_from_xml" "true"
+    setprop "ro.telephony.get_imsi_from_sim" "true"
+    setprop "ro.cdma.data_retry_config" "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000"
+    setprop "ro.gsm.data_retry_config" "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000"
+    setprop "ro.telephony.get_imsi_from_sim" "true"
+    setprop "persist.radio.0x9e_not_callname" "1"
+    setprop "persist.ril.max.crit.qmi.fails" "4"
+    setprop "ril.subscription.types" "NV,RUIM"
+    setprop "ro.cdma.subscribe_on_ruim_ready" "true"
+    setprop "ro.mot.ignore_csim_appid" "true"
+    setprop "ro.ril.svdo" "true"
+    setprop "ro.telephony.default_network" "10"
+    setprop "telephony.lteOnCdmaDevice" "1"
+    setprop "telephony.rilV7NeedCDMALTEPhone" "true"
+    setprop "ro.com.google.clientidbase.ms" "android-verizon"
+    setprop "ro.com.google.clientidbase.am" "android-verizon"
+    setprop "ro.com.google.clientidbase.yt" "android-verizon"
+    exit 0
+fi
+
 # XT1225 - SINGLELA
 ls /fsg | grep quark_singlela > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then

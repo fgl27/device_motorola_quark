@@ -17,7 +17,27 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "Moto MAXX"
+#include <cutils/properties.h>
+#include <string.h>
+
+inline const char* BtmGetDefaultName()
+{
+	char fsg[PROPERTY_VALUE_MAX];
+	property_get("ro.fsg-id", fsg, "");
+
+	if (!strcmp("lra", fsg))
+		return "Moto MAXX";
+	if (!strcmp("verizon", fsg))
+		return "DROID Turbo";
+	if (!strcmp("singlela", fsg))
+		return "Moto MAXX";
+	if (!strcmp("emea", fsg))
+		return "Moto Turbo";
+
+	return "";
+}
+
+#define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
 #define BLUETOOTH_QTI_SW                TRUE
 // skips conn update at conn completion
 #define BTA_BLE_SKIP_CONN_UPD  TRUE
