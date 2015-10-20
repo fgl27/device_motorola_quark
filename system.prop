@@ -95,6 +95,7 @@ persist.radio.relay_oprt_change=1
 persist.radio.msgtunnel.start=false
 persist.radio.oem_ind_to_both=false
 persist.data.netmgrd.qos.enable=true
+persist.radio.apn_delay=5000
 
 ro.use_data_netmgrd=true
 ro.data.large_tcp_window_size=true
