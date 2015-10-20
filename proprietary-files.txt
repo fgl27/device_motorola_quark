@@ -1,6 +1,8 @@
 # ADSP
 bin/adspd
 lib/libadspd-jni.so
+
+# ADSP (soudced from shamu)
 lib/libadspd.so
 
 # Audio
@@ -10,6 +12,7 @@ vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
+vendor/lib/libaudioalsa.so
 vendor/lib/libcsd-client.so
 
 # ACDB
@@ -20,6 +23,14 @@ etc/acdbdata/MTP/MTP_Handset_cal.acdb
 etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
 etc/acdbdata/MTP/MTP_Headset_cal.acdb
 etc/acdbdata/MTP/MTP_Speaker_cal.acdb
+etc/acdbdata/Bluetooth_cal.acdb
+etc/acdbdata/General_cal.acdb
+etc/acdbdata/Global_cal.acdb
+etc/acdbdata/Handset_cal.acdb
+etc/acdbdata/Hdmi_cal.acdb
+etc/acdbdata/Headset_cal.acdb
+etc/acdbdata/Speaker_cal.acdb
+
 
 # Audio firmware
 etc/firmware/aonvr1.bin
@@ -33,6 +44,18 @@ etc/firmware/tfa9890_n1c2.patch
 etc/firmware/tfa9890_ringtone_table.preset
 etc/firmware/tfa9890_voice_table.preset
 etc/firmware/VRGain.bin
+etc/firmware/left.tfa9890.music.config
+etc/firmware/left.tfa9890.music.eq
+etc/firmware/left.tfa9890.ringtone.config
+etc/firmware/left.tfa9890.ringtone.eq
+etc/firmware/left.tfa9890.speaker
+etc/firmware/left.tfa9890.voice.config
+etc/firmware/left.tfa9890.voice.eq
+etc/firmware/left.tfa9890_music_table.preset
+etc/firmware/left.tfa9890_n1b12.patch
+etc/firmware/left.tfa9890_n1c2.patch
+etc/firmware/left.tfa9890_ringtone_table.preset
+etc/firmware/left.tfa9890_voice_table.preset
 
 # Offloaded audio effects
 vendor/lib/soundfx/libqcbassboost.so
@@ -220,6 +243,7 @@ lib/libloc_api_v02.so
 lib/libloc_core.so
 lib/libloc_ds_api.so
 lib/libloc_eng.so
+vendor/etc/gnss/gnss-fsh.bin
 vendor/lib/hw/flp.default.so
 vendor/lib/libalarmservice_jni.so
 vendor/lib/libgeofence.so
@@ -254,11 +278,16 @@ vendor/lib/libscale.so
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
-# IMS - currently unused but have dependencies to qmi
+# IMS (not used yet)
+-app/atfwd/atfwd.apk
+bin/ATFWD-daemon
 bin/imsdatadaemon
 bin/imsqmidaemon
 bin/ims_rtp_daemon
 lib/libdashplayer.so
+lib/libmm-omxcore.so
+-framework/rcsimssettings.jar
+-framework/rcsservice.jar
 vendor/lib/libmmhttpstack.so
 vendor/lib/libmmiipstreammmihttp.so
 vendor/lib/libmmipstreamaal.so
@@ -270,6 +299,7 @@ vendor/lib/libmmQTA.so
 vendor/lib/libmmrtpdecoder.so
 vendor/lib/libmmrtpencoder.so
 vendor/lib/lib-dplmedia.so
+vendor/lib/lib-imscamera.so
 vendor/lib/lib-imsdpl.so
 vendor/lib/lib-imsqimf.so
 vendor/lib/lib-imsrcs.so
@@ -277,11 +307,14 @@ vendor/lib/lib-imss.so
 vendor/lib/lib-imsSDP.so
 vendor/lib/lib-imsvt.so
 vendor/lib/lib-imsxml.so
+vendor/lib/lib-rcsjni.so
 vendor/lib/lib-rcsimssjni.so
 vendor/lib/lib-rtpcommon.so
 vendor/lib/lib-rtpcore.so
 vendor/lib/lib-rtpdaemoninterface.so
 vendor/lib/lib-rtpsl.so
+vendor/lib/libvcel.so
+vendor/lib/libwfdcommonutils.so
 
 # Media
 vendor/lib/libDivxDrm.so
@@ -341,6 +374,7 @@ vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_encdec.so
 
 # Radio
+-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/efsks
 bin/ks
 bin/netmgrd
@@ -349,16 +383,19 @@ bin/mdm_helper_proxy
 bin/qcks
 bin/qmi_motext_hook
 bin/qmuxd
+bin/radish
 bin/rfs_access
 bin/rmt_storage
-lib/libadropbox.so
+etc/permissions/qcnvitems.xml
+etc/permissions/qcrilhook.xml
+-framework/qcnvitems.jar
+-framework/qcrilhook.jar
 lib/libcnefeatureconfig.so
 lib/libmdmcutback.so
 lib/libmdmdetect.so
 lib/libmotext_inf.so
 lib/librmnetctl.so
 lib/libqmimotext.so
-lib/libqsap_sdk.so:vendor/lib/libqsap_sdk.so
 vendor/lib/libconfigdb.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libnetmgr.so
@@ -371,6 +408,7 @@ vendor/lib/libxml.so
 
 # Sensors
 bin/stm401
+etc/firmware/cy8c20247_24lkxi.hex
 etc/firmware/sensorhubfw.bin
 etc/firmware/sensorhubfw_p1.bin
 etc/firmware/sensorhubver_p1.txt
@@ -403,3 +441,56 @@ etc/firmware/vpu.b11
 etc/firmware/vpu.b12
 etc/firmware/vpu.mbn
 etc/firmware/vpu.mdt
+
+# Frameworks
+etc/permissions/org.simalliance.openmobileapi.xml
+-framework/org.simalliance.openmobileapi.jar
+
+# Voice recognition
+lib/hw/audio.motvr.default.so
+lib/libspeakerbundle.so:lib/soundfx/libspeakerbundle.so
+lib/libmotaudioutils.so
+lib/librecoglib.so
+lib/libtrainingcheck.so
+
+# Voice recognition (sourced from shamu)
+etc/permissions/com.motorola.triggerenroll.xml
+-priv-app/TriggerEnroll/TriggerEnroll.apk
+-priv-app/TriggerTrainingService/TriggerTrainingService.apk
+lib/hw/sound_trigger.primary.apq8084.so
+lib/libsupermodel.so
+vendor/moto/audiomonitor/sensory/lts_en_us_9_5_2b.raw
+vendor/moto/audiomonitor/sensory/nn_de_mfcc_16k_15_big_250_v3_4.raw
+vendor/moto/audiomonitor/sensory/nn_en_uk_mfcc_16k_15_big_250_v2_2.raw
+vendor/moto/audiomonitor/sensory/nn_en_us_mfcc_16k_15_big_250_v5_1_1.raw
+vendor/moto/audiomonitor/sensory/nn_es_es_mfcc_16k_15_big_250_v1_5.raw
+vendor/moto/audiomonitor/sensory/nn_es_us_mfcc_16k_15_big_250_v1_5.raw
+vendor/moto/audiomonitor/sensory/nn_fr_ca_mfcc_16k_15_big_250_v2_5.raw
+vendor/moto/audiomonitor/sensory/nn_fr_fr_mfcc_16k_15_big_250_v2_4.raw
+vendor/moto/audiomonitor/sensory/nn_it_mfcc_16k_15_big_250_v3_5.raw
+vendor/moto/audiomonitor/sensory/nn_pt_mfcc_16k_15_big_250_v1_1.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_dede_1_1.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_enuk_1_1.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_enus_2_0.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_eses_1_2.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_esus_1_2.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_frca_prec1_1_0.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_frfr_1_1.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_it_it_1_0.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_ptbr_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_dede_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_enuk_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_enus_2_0.raw
+vendor/moto/audiomonitor/sensory/svsid_eses_1_2.raw
+vendor/moto/audiomonitor/sensory/svsid_esus_1_2.raw
+vendor/moto/audiomonitor/sensory/svsid_frca_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_frfr_1_1.raw
+vendor/moto/audiomonitor/sensory/svsid_it_it_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_ptbr_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn1_dede_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn1_enuk_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn1_eses_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn1_itit_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn_enus_3_1.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn_frfr_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn_ptbr_2_1.raw
