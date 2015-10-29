@@ -236,6 +236,10 @@ PRODUCT_PACKAGES += \
     moto_config.sh \
     ueventd.qcom.rc
 
+# RIL
+PRODUCT_COPY_FILES += \
+   $(LOCAL_PATH)/configs/qcril.db:system/etc/ril/qcril.db
+
 # Support
 PRODUCT_PACKAGES += \
     libcurl \
