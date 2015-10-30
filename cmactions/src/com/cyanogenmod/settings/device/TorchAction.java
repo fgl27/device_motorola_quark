@@ -17,7 +17,9 @@
 package com.cyanogenmod.settings.device;
 
 import android.content.Context;
-import android.hardware.TorchManager;
+import android.hardware.camera2.CameraManager;
+import android.hardware.camera2.CameraCharacteristics;
+import android.hardware.camera2.CameraAccessException;
 import android.os.Vibrator;
 import android.util.Log;
 
@@ -26,19 +28,55 @@ public class TorchAction implements SensorAction {
 
     private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
 
-    private final TorchManager mTorchManager;
-    private final Vibrator mVibrator;
+    private CameraManager mCameraManager;
     private final int mVibratorPeriod;
+    private final Vibrator mVibrator;
+    private String mRearCameraId;
+    private static boolean mTorchEnabled;;
 
-    public TorchAction(Context context, int vibratorPeriod) {
-        mTorchManager = (TorchManager) context.getSystemService(Context.TORCH_SERVICE);
-        mVibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+    public TorchAction(Context mContext, int vibratorPeriod) {
+        mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
+        mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
         mVibratorPeriod = vibratorPeriod;
+        try {
+            for (final String cameraId : mCameraManager.getCameraIdList()) {
+                CameraCharacteristics characteristics =
+                        mCameraManager.getCameraCharacteristics(cameraId);
+                int cOrientation = characteristics.get(CameraCharacteristics.LENS_FACING);
+                if (cOrientation == CameraCharacteristics.LENS_FACING_BACK) {
+                    mRearCameraId = cameraId;
+                    break;
+                }
+            }
+        } catch (CameraAccessException e) {
+        }
     }
 
     @Override
     public void action() {
         mVibrator.vibrate(mVibratorPeriod);
-        mTorchManager.toggleTorch();
+        if (mRearCameraId != null) {
+            try {
+                mCameraManager.setTorchMode(mRearCameraId, !mTorchEnabled);
+                mTorchEnabled = !mTorchEnabled;
+            } catch (CameraAccessException e) {
+            }
+        }
+    }
+
+    private class MyTorchCallback extends CameraManager.TorchCallback {
+        @Override
+        public void onTorchModeChanged(String cameraId, boolean enabled) {
+            if (!cameraId.equals(mRearCameraId))
+                return;
+            mTorchEnabled = enabled;
+        }
+
+        @Override
+        public void onTorchModeUnavailable(String cameraId) {
+            if (!cameraId.equals(mRearCameraId))
+                return;
+            mTorchEnabled = false;
+        }
     }
 }
