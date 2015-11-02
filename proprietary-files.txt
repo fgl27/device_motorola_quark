@@ -85,10 +85,12 @@ lib/libAlAisTune.so
 lib/libAlAisWrap.so
 lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
+lib/libjni_mot_mosaic.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmot_sensorlistener.so
 lib/libqomx_core.so
+lib/libslowmotionconverter.so
 vendor/lib/libactuator_lc898122_camcorder.so
 vendor/lib/libactuator_lc898122_camera.so
 vendor/lib/libactuator_lc898122.so
