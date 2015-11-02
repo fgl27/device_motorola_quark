@@ -62,6 +62,37 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
 
+# Motorola-specific permissions
+PRODUCT_COPY_FILES += \
+    device/motorola/quark/permissions/com.motorola.actions.xml:system/etc/permissions/com.motorola.actions.xml \
+    device/motorola/quark/permissions/com.motorola.android.dm.service.xml:system/etc/permissions/com.motorola.android.dm.service.xml \
+    device/motorola/quark/permissions/com.motorola.android.encryption_library.xml:system/etc/permissions/com.motorola.android.encryption_library.xml \
+    device/motorola/quark/permissions/com.motorola.android.settings.shared.xml:system/etc/permissions/com.motorola.android.settings.shared.xml \
+	device/motorola/quark/permissions/com.motorola.android.tcmd.xml:system/etc/permissions/com.motorola.android.tcmd.xml \
+    device/motorola/quark/permissions/com.motorola.aon.quickpeek.xml:system/etc/permissions/com.motorola.aon.quickpeek.xml \
+    device/motorola/quark/permissions/com.motorola.aov.xml:system/etc/permissions/com.motorola.aov.xml \
+    device/motorola/quark/permissions/com.motorola.camera.xml:system/etc/permissions/com.motorola.camera.xml \
+    device/motorola/quark/permissions/com.motorola.camerabgproc_library.xml:system/etc/permissions/com.motorola.camerabgproc_library.xml \
+	device/motorola/quark/permissions/com.motorola.commandcenter.library.xml:system/etc/permissions/com.motorola.commandcenter.library.xml \
+	device/motorola/quark/permissions/com.motorola.device.xml:system/etc/permissions/com.motorola.device.xml \
+	device/motorola/quark/permissions/com.motorola.email.xml:system/etc/permissions/com.motorola.email.xml \
+    device/motorola/quark/permissions/com.motorola.frameworks.core.addon.xml:system/etc/permissions/com.motorola.frameworks.core.addon.xml \
+    device/motorola/quark/permissions/com.motorola.gallery.xml:system/etc/permissions/com.motorola.gallery.xml \
+    device/motorola/quark/permissions/com.motorola.haptic.xml:system/etc/permissions/com.motorola.haptic.xml \
+    device/motorola/quark/permissions/com.motorola.ims.rcsmanager.xml:system/etc/permissions/com.motorola.ims.rcsmanager.xml \
+	device/motorola/quark/permissions/com.motorola.moto.xml:system/etc/permissions/com.motorola.moto.xml \
+    device/motorola/quark/permissions/com.motorola.motodisplay.pd.screenoff.xml:system/etc/permissions/com.motorola.motodisplay.pd.screenoff.xml \
+    device/motorola/quark/permissions/com.motorola.motosignature.xml:system/etc/permissions/com.motorola.motosignature.xml \
+	device/motorola/quark/permissions/com.motorola.sensorhub.stm401.xml:system/etc/permissions/com.motorola.sensorhub.stm401.xml \
+    device/motorola/quark/permissions/com.motorola.slpc.xml:system/etc/permissions/com.motorola.slpc.xml \
+    device/motorola/quark/permissions/com.motorola.software.bodyguard.xml:system/etc/permissions/com.motorola.software.bodyguard.xml \
+    device/motorola/quark/permissions/com.motorola.software.droid_line.xml:system/etc/permissions/com.motorola.software.droid_line.xml \
+    device/motorola/quark/permissions/com.motorola.software.folio.xml:system/etc/permissions/com.motorola.software.folio.xml \
+	device/motorola/quark/permissions/com.motorola.software.guideme.xml:system/etc/permissions/com.motorola.software.guideme.xml \
+    device/motorola/quark/permissions/com.motorola.software.smartnotifications.xml:system/etc/permissions/com.motorola.software.smartnotifications.xml \
+    device/motorola/quark/permissions/com.motorola.targetnotif.xml:system/etc/permissions/com.motorola.targetnotif.xml \
+    device/motorola/quark/permissions/com.motorola.zap.xml:system/etc/permissions/com.motorola.zap.xml
+
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
