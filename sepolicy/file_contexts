@@ -15,6 +15,9 @@
 # Display
 /sys/devices/virtual/graphics/fb0/hbm   u:object_r:livedisplay_sysfs:s0
 
+# TapToWake
+/sys/devices/f9966000.i2c/i2c-1/1-004a/tsp               u:object_r:tap2wake_dev:s0
+
 # Vibrator
 /sys/vibrator/pwmvalue                  u:object_r:vib_sysfs:s0
 
