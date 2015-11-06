@@ -422,5 +422,10 @@
      <string name="config_perf_profile_prop">powerhal</string>
      <string name="config_perf_profile_default_entry">1</string>
 
+    <!-- Config determines whether to update phone object when voice registration
+         state changes. Voice radio tech change will always trigger an update of
+         phone object irrespective of this config -->
+    <bool name="config_switch_phone_on_voice_reg_state_change">false</bool>
+
 </resources>
 
