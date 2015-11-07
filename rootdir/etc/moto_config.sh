@@ -12,7 +12,8 @@ setprop "ro.product.device" "quark"
 ls /fsg | grep quark_lra > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
     setprop "ro.fsg-id" "lra"
-    setprop "ro.product.model" "Moto MAXX"
+    setprop "ro.product.model" "XT1250"
+    setprop "ro.product.display" "Moto Maxx"
     setprop "ro.build.description" "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys"
     setprop "ro.build.fingerprint" "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys"
     setprop "ro.cdma.home.operator.isnan" "1"
@@ -22,7 +23,7 @@ if [ $? -eq 0 ]; then
     setprop "ro.cdma.subscribe_on_ruim_ready" "true"
     setprop "ro.mot.ignore_csim_appid" "true"
     setprop "ro.ril.svdo" "true"
-    setprop "ro.telephony.default_network" "10"
+    setprop "ro.telephony.default_network" "8"
     setprop "telephony.lteOnCdmaDevice" "1"
     setprop "telephony.rilV7NeedCDMALTEPhone" "true"
     exit 0
@@ -32,7 +33,8 @@ fi
 ls /fsg | grep quark_verizon > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
     setprop "ro.fsg-id" "verizon"
-    setprop "ro.product.model" "DROID Turbo"
+    setprop "ro.product.model" "XT1254"
+    setprop "ro.product.display" "DROID TURBO"
     setprop "ro.build.description" "quark_verizon-user 5.1 SU4TL-44 44 release-keys"
     setprop "ro.build.fingerprint" "motorola/quark_verizon/quark:5.1/SU4TL-44/44:user/release-keys"
     setprop "ro.telephony.default_cdma_sub" "0"
@@ -62,7 +64,8 @@ fi
 ls /fsg | grep quark_singlela > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
     setprop "ro.fsg-id" "singlela"
-    setprop "ro.product.model" "Moto MAXX"
+    setprop "ro.product.model" "XT1225"
+    setprop "ro.product.display" "Moto Maxx"
     setprop "ro.build.description" "quark_retla-user 5.0.2 LXG22.33-12.16 16 release-keys"
     setprop "ro.build.fingerprint" "motorola/quark_retla/quark_umts:5.0.2/LXG22.33-12.16/16:user/release-keys"
     setprop "ro.telephony.default_network" "9"
@@ -74,7 +77,8 @@ fi
 ls /fsg | grep quark_emea > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
     setprop "ro.fsg-id" "emea"
-    setprop "ro.product.model" "Moto Turbo"
+    setprop "ro.product.model" "XT1225"
+    setprop "ro.product.display" "Moto Turbo"
     setprop "ro.build.description" "quark_reteu-user 5.0.2 LXG22.33-12.16 16 release-keys"
     setprop "ro.build.fingerprint" "motorola/quark_reteu/quark_umts:5.0.2/LXG22.33-12.16/16:user/release-keys"
     setprop "ro.telephony.default_network" "9"
@@ -87,6 +91,7 @@ CARRIER=$(getprop "ro.boot.carrier")
 
 setprop "ro.fsg-id" "$CARRIER"
 setprop "ro.product.model" "Moto XT1225 ($CARRIER)"
+setprop "ro.product.display" "Moto Maxx"
 setprop "ro.build.description" "quark_retla-user 5.0.2 LXG22.33-12.16 16 release-keys"
 setprop "ro.build.fingerprint" "motorola/quark_retla/quark_umts:5.0.2/LXG22.33-12.16/16:user/release-keys"
 exit 1
