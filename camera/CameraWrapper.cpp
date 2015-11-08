@@ -44,27 +44,27 @@ static int camera_get_number_of_cameras(void);
 static int camera_get_camera_info(int camera_id, struct camera_info *info);
 
 static struct hw_module_methods_t camera_module_methods = {
-    .open = camera_device_open,
+    open: camera_device_open
 };
 
 camera_module_t HAL_MODULE_INFO_SYM = {
-    .common = {
-         .tag = HARDWARE_MODULE_TAG,
-         .module_api_version = CAMERA_MODULE_API_VERSION_1_0,
-         .hal_api_version = HARDWARE_HAL_API_VERSION,
-         .id = CAMERA_HARDWARE_MODULE_ID,
-         .name = "Moto MAXX Camera Wrapper",
-         .author = "The CyanogenMod Project",
-         .methods = &camera_module_methods,
-         .dso = NULL, /* remove compilation warnings */
-         .reserved = {0}, /* remove compilation warnings */
+    common: {
+         tag: HARDWARE_MODULE_TAG,
+         version_major: 1,
+         version_minor: 0,
+         id: CAMERA_HARDWARE_MODULE_ID,
+         name: "Moto MAXX Camera Wrapper",
+         author: "The CyanogenMod Project",
+         methods: &camera_module_methods,
+         dso: NULL, /* remove compilation warnings */
+         reserved: {0}, /* remove compilation warnings */
     },
-    .get_number_of_cameras = camera_get_number_of_cameras,
-    .get_camera_info = camera_get_camera_info,
-    .set_callbacks = NULL, /* remove compilation warnings */
-    .get_vendor_tag_ops = NULL, /* remove compilation warnings */
-    .open_legacy = NULL, /* remove compilation warnings */
-    .reserved = {0}, /* remove compilation warnings */
+    get_number_of_cameras: camera_get_number_of_cameras,
+    get_camera_info: camera_get_camera_info,
+    set_callbacks: NULL, /* remove compilation warnings */
+    get_vendor_tag_ops: NULL, /* remove compilation warnings */
+    open_legacy: NULL, /* remove compilation warnings */
+    reserved: {0}, /* remove compilation warnings */
 };
 
 typedef struct wrapper_camera_device {
@@ -95,8 +95,7 @@ static int check_vendor_module()
     return rv;
 }
 
-static char *camera_fixup_getparams(int id __attribute__((unused)),
-        const char *settings)
+static char *camera_fixup_getparams(int id, const char *settings)
 {
     android::CameraParameters params;
     params.unflatten(android::String8(settings));
@@ -131,6 +130,8 @@ static char *camera_fixup_setparams(int id, const char *settings)
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
 #endif
+
+    params.set(android::CameraParameters::KEY_VIDEO_STABILIZATION, "false");
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
@@ -535,7 +536,7 @@ static int camera_device_open(const hw_module_t *module, const char *name,
         memset(camera_ops, 0, sizeof(*camera_ops));
 
         camera_device->base.common.tag = HARDWARE_DEVICE_TAG;
-        camera_device->base.common.version = CAMERA_DEVICE_API_VERSION_1_0;
+        camera_device->base.common.version = 0;
         camera_device->base.common.module = (hw_module_t *)(module);
         camera_device->base.common.close = camera_device_close;
         camera_device->base.ops = camera_ops;
