@@ -4,7 +4,6 @@ export PATH
 
 # These are the common values
 setprop "ro.build.product" "quark"
-setprop "ro.product.device" "quark"
 
 # Check fsg to determine the model
 
@@ -12,6 +11,7 @@ setprop "ro.product.device" "quark"
 ls /fsg | grep quark_lra > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
     setprop "ro.fsg-id" "lra"
+    setprop "ro.product.device" "quark_lra"
     setprop "ro.product.model" "XT1250"
     setprop "ro.product.display" "Moto Maxx"
     setprop "ro.build.description" "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys"
@@ -33,6 +33,7 @@ fi
 ls /fsg | grep quark_verizon > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
     setprop "ro.fsg-id" "verizon"
+    setprop "ro.product.device" "quark"
     setprop "ro.product.model" "XT1254"
     setprop "ro.product.display" "DROID TURBO"
     setprop "ro.build.description" "quark_verizon-user 5.1 SU4TL-44 44 release-keys"
@@ -64,6 +65,7 @@ fi
 ls /fsg | grep quark_singlela > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
     setprop "ro.fsg-id" "singlela"
+    setprop "ro.product.device" "quark_umts"
     setprop "ro.product.model" "XT1225"
     setprop "ro.product.display" "Moto Maxx"
     setprop "ro.build.description" "quark_retla-user 5.0.2 LXG22.33-12.16 16 release-keys"
@@ -77,6 +79,7 @@ fi
 ls /fsg | grep quark_emea > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
     setprop "ro.fsg-id" "emea"
+    setprop "ro.product.device" "quark_umts"
     setprop "ro.product.model" "XT1225"
     setprop "ro.product.display" "Moto Turbo"
     setprop "ro.build.description" "quark_reteu-user 5.0.2 LXG22.33-12.16 16 release-keys"
@@ -90,6 +93,7 @@ fi
 CARRIER=$(getprop "ro.boot.carrier")
 
 setprop "ro.fsg-id" "$CARRIER"
+setprop "ro.product.device" "quark_umts"
 setprop "ro.product.model" "Moto XT1225 ($CARRIER)"
 setprop "ro.product.display" "Moto Maxx"
 setprop "ro.build.description" "quark_retla-user 5.0.2 LXG22.33-12.16 16 release-keys"
