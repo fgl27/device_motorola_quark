@@ -94,7 +94,6 @@ persist.radio.relay_oprt_change=1
 persist.radio.msgtunnel.start=true
 persist.radio.oem_ind_to_both=false
 persist.data.netmgrd.qos.enable=true
-persist.radio.add_power_save=1
 persist.radio.VT_USE_MDM_TIME=1
 
 ro.use_data_netmgrd=true
