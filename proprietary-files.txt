@@ -86,12 +86,10 @@ lib/libAlAisTune.so
 lib/libAlAisWrap.so
 lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
-lib/libjni_mot_mosaic.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
 lib/libmot_sensorlistener.so
 lib/libqomx_core.so
-lib/libslowmotionconverter.so
 vendor/lib/libactuator_lc898122_camcorder.so
 vendor/lib/libactuator_lc898122_camera.so
 vendor/lib/libactuator_lc898122.so
@@ -462,3 +460,84 @@ lib/libsupermodel.so
 
 # These binaries were patched
 # lib/hw/sound_trigger.primary.apq8084.so (dependency)
+
+# changes made by BHB27 below
+# removed all vendor/moto/audiomonitor/sensory/
+# add this files
+# 02/11
+lib/libjni_mot_mosaic.so
+lib/libslowmotionconverter.so
+# 24/11
+etc/firmware/dxhdcp2.b00
+etc/firmware/dxhdcp2.b01
+etc/firmware/dxhdcp2.b02
+etc/firmware/dxhdcp2.b03
+etc/firmware/dxhdcp2.mdt
+etc/firmware/emmc_ffu_45_01_SDW32G.fw
+etc/firmware/emmc_ffu_45_01_SDW64G.fw
+etc/firmware/leia_pfp_470.fw
+etc/firmware/leia_pm4_470.fw
+vendor/bin/qti
+vendor/lib/drm/libdrmprplugin.so
+vendor/lib/egl/libq3dtools_esx.so
+vendor/lib/egl/libQTapGLES.so
+vendor/lib/libbt-vendor.so
+vendor/lib/libc2d30-a3xx.so
+vendor/lib/libcneconn.so
+vendor/lib/libdsucsd.so
+vendor/lib/libepdsp.so
+vendor/lib/libFileMux.so
+vendor/lib/libimscamera_jni.so
+vendor/lib/libimsmedia_jni.so
+vendor/lib/libjpegdhw.so
+vendor/lib/liblistensoundmodel.so
+vendor/lib/liblistensoundmodel2.so
+vendor/lib/liblowi_client.so
+vendor/lib/libmm-hdcpmgr.so
+vendor/lib/libmmQSM.so
+vendor/lib/libmmrtpdecoder.so
+vendor/lib/libmmrtpencoder.so
+vendor/lib/libNimsWrap.so
+vendor/lib/libois_lc898122.so
+vendor/lib/libppl.so
+vendor/lib/libprdrmdecrypt.so
+vendor/lib/libpvr.so
+vendor/lib/libqcgesture.so
+vendor/lib/libqmiservices_ext.so
+vendor/lib/libquipc_ulp_adapter.so
+vendor/lib/lib-rcsimssjni.so
+vendor/lib/lib-rcsjni.so
+vendor/lib/librmp.so
+vendor/lib/libscve.so
+vendor/lib/libscve_stub.so
+vendor/lib/libSHIMDivxDrm.so
+vendor/lib/libsubsystem_control.so
+vendor/lib/libSubSystemShutdown.so
+vendor/lib/libtzdrmgenprov.so
+vendor/lib/libtzplayready.so
+vendor/lib/libusutils.so
+vendor/lib/libvendorconn.so
+vendor/lib/libwifiscanner.so
+vendor/lib/libxt_native.so
+vendor/lib/libxtadapter.so
+vendor/lib/libxtwifi_ulp_adaptor.so
+vendor/lib/libxtwifi_zpp_adaptor.so
+vendor/lib/rfsa/adsp/libapps_mem_heap.so
+vendor/lib/rfsa/adsp/libdspCV_skel.so
+vendor/lib/rfsa/adsp/libfastcvadsp.so
+vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
+vendor/lib/rfsa/adsp/libscveT2T_skel.so
+vendor/lib/soundfx/libmmieffectswrapper.so
+vendor/media/LMspeed_508.emd
+vendor/media/PFFprec_600.emd
+vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/landmark_group_meta_data.bin
+vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/left_eye-y0-yi45-p0-pi45-r0-ri20.lg_32-tree7-wmd.bin
+vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/nose_base-y0-yi45-p0-pi45-r0-ri20.lg_32-tree7-wmd.bin
+vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/right_eye-y0-yi45-p0-pi45-r0-ri20.lg_32-3-tree7-wmd.bin
+vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/head-y0-yi45-p0-pi45-r0-ri30.4a-v24-tree7-2-wmd.bin
+vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/head-y0-yi45-p0-pi45-rn30-ri30.5-v24-tree7-2-wmd.bin
+vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/head-y0-yi45-p0-pi45-rp30-ri30.5-v24-tree7-2-wmd.bin
+vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/pose-r.8.1.bin
+vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/pose-y-r.8.1.bin
+vendor/pittpatt/models/recognition/face.face.y0-y0-71-N-tree_7-wmd.bin
+
