@@ -642,7 +642,7 @@ service start_hci_filter /system/bin/wcnss_filter
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps oem_2950 log
+    group radio audio bluetooth wakelock gps oem_2950 log
 
 service netmgrd /system/bin/netmgrd
     class main
