@@ -16,6 +16,7 @@ vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
 vendor/lib/libaudioalsa.so
 vendor/lib/libcsd-client.so
+vendor/lib/soundfx/libmmieffectswrapper.so
 
 # ACDB
 etc/acdbdata/Bluetooth_cal.acdb
