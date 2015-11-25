@@ -11,7 +11,7 @@ setprop "ro.build.product" "quark"
 ls /fsg | grep quark_lra > /dev/null 2> /dev/null
 if [ $? -eq 0 ]; then
     setprop "ro.fsg-id" "lra"
-    setprop "ro.product.device" "quark_lra"
+    setprop "ro.product.device" "quark"
     setprop "ro.product.model" "XT1250"
     setprop "ro.product.display" "Moto Maxx"
     setprop "ro.build.description" "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys"
