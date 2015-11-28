@@ -1,3 +1,2 @@
 type adsp_serial_device, dev_type;
 type hob_block_device, dev_type;
-type utags_block_device, dev_type;

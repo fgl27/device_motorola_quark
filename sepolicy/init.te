@@ -1,7 +1,6 @@
 allow init atvc:file x_file_perms;
 allow init block_device:blk_file { create_file_perms setattr };
 allow init hob_block_device:blk_file { create_file_perms setattr };
-allow init utags_block_device:blk_file { create_file_perms setattr };
 allow init shell_data_file:fifo_file getattr;
 
 # Sometimes there are leftovers from recovery, allow init to fix those

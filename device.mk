@@ -268,7 +268,6 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
-    moto_config.sh \
     ueventd.qcom.rc
 
 # RIL

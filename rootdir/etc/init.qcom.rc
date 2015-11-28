@@ -90,18 +90,11 @@ on moto-charger
 on fs
     mount_all fstab.qcom
 
-    # Run multiconfig
-    exec /system/bin/sh /moto_config.sh
-
     # Set correct permissions for CID Partitions and CLOGO Partitions
     exec /system/bin/chmod -L 660 /dev/block/platform/msm_sdcc.1/by-name/cid
     exec /system/bin/chmod -L 660 /dev/block/platform/msm_sdcc.1/by-name/clogo
     exec /system/bin/chown -L root:mot_dbvc /dev/block/platform/msm_sdcc.1/by-name/cid
     exec /system/bin/chown -L root:system /dev/block/platform/msm_sdcc.1/by-name/clogo
-
-    # Set correct permissions for UTAGS
-    exec /system/bin/chmod -L 660 /dev/block/platform/msm_sdcc.1/by-name/utags
-    exec /system/bin/chown -L system:system /dev/block/platform/msm_sdcc.1/by-name/utags
 
     restorecon_recursive /persist
 

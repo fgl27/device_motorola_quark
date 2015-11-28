@@ -40,9 +40,6 @@
 /dev/stm401_as                          u:object_r:sensors_device:s0
 /dev/stm401_ms                          u:object_r:sensors_device:s0
 
-# Utags
-/dev/block/mmcblk0p8                    u:object_r:utags_block_device:s0
-
 #
 ## Executables
 #
