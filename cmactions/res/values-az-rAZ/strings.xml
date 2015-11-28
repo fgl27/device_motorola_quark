@@ -35,6 +35,8 @@
   <string name="action_none">Ləğv et</string>
   <string name="action_launch_camera">Kameranı başlat</string>
   <string name="action_torch">Fənəri aç/bağla</string>
+  <string name="feedback_intensity_title">Sensor geri bildiriş gərginliyi</string>
+  <string name="feedback_intensity_summary">Cüt yelləmə və doğrama hərəkətləri üçün sensor geri bildiriş gücü</string>
   <string name="feedback_intensity_none">Ləğv edildi</string>
   <string name="feedback_intensity_low">Aşağı</string>
   <string name="feedback_intensity_medium">Orta</string>
