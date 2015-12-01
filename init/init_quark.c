@@ -105,7 +105,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
             } else {
                 fsgid_value = "singlela";
             }
-        } else if (ISMATCH(cid, "0x2")) {
+        } else if ((ISMATCH(cid, "0x2"))||(ISMATCH(cid, "0x0"))) {
             fsgid_value = "verizon";
         }
         INFO("Determined fsg-id: %s\n", fsgid_value);
