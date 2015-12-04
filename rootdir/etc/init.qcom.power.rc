@@ -55,11 +55,8 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
-    # only for stock kernel
-#   write /sys/module/msm_thermal/core_control/enabled 1
+    write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/devices/system/cpu/cpufreq/interactive/io_is_busy 1
-    # only for bhb kernel
-    write /sys/module/msm_thermal/parameters/enabled Y
 
     # Configure the CPU governor
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
@@ -74,3 +71,8 @@ on property:sys.boot_completed=1
     # Configure the cpu-boost module
     write /sys/module/cpu_boost/parameters/input_boost_freq 1497600
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
+
+    # only for bhb kernel
+    write /sys/module/msm_thermal/parameters/enabled Y
+    write /sys/module/msm_thermal/parameters/limit_temp_degC 60
+    write /sys/module/msm_thermal/core_control/enabled 0
