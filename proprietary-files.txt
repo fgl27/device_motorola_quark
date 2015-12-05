@@ -435,13 +435,13 @@ etc/firmware/vpu.mbn
 etc/firmware/vpu.mdt
 
 # Verizon
--app/appdirectedsmspermission/appdirectedsmspermission.apk
+-priv-app/appdirectedsmspermission/appdirectedsmspermission.apk
 -app/vzwapnpermission/vzwapnpermission.apk
 -app/VZWAPNLib/VZWAPNLib.apk
 -priv-app/VZWAPNService/VZWAPNService.apk
 
 # Verizon (sourced from shamu)
--app/MotoSignatureApp/MotoSignatureApp.apk
+-priv-app/MotoSignatureApp/MotoSignatureApp.apk
 -priv-app/BuaContactAdapter/BuaContactAdapter.apk
 
 # Voice recognition
@@ -540,4 +540,10 @@ vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/head-y0-yi45-p0-pi4
 vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/pose-r.8.1.bin
 vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/pose-y-r.8.1.bin
 vendor/pittpatt/models/recognition/face.face.y0-y0-71-N-tree_7-wmd.bin
-
+#12/05
+#move appdirectedsmspermission.apk and MotoSignatureApp.apk to priv
+# add
+etc/permissions/com.motorola.DirectedSMSProxy.xml
+etc/permissions/com.vzw.vzwapnlib.xml
+-priv-app/AppDirectedSMSProxy/AppDirectedSMSProxy.apk
+lib/libflacencoder.so
