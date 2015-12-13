@@ -115,8 +115,6 @@ ro.usb.bpt_adb=2ea1
 ro.usb.bpteth=2ea2
 ro.usb.bpteth_adb=2ea3
 
-persist.sys.isUsbOtgEnabled=1
-
 # WLAN
 wifi.interface=wlan0
 wlan.driver.ath=0
