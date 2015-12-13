@@ -125,38 +125,6 @@ TARGET_USERIMAGES_USE_F2FS := true
 BOARD_SEPOLICY_DIRS += \
     device/motorola/quark/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-    adspd.te \
-    atfwd.te \
-    atvc.te \
-    batt_health.te \
-    bluetooth.te \
-    cnd.te \
-    device.te \
-    file_contexts \
-    file.te \
-    healthd.te \
-    init_shell.te \
-    init.te \
-    installd.te \
-    keystore.te \
-    mdm_helper.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    mpdecision.te \
-    netd.te \
-    property.te \
-    property_contexts \
-    rild.te \
-    rmt_storage.te \
-    stm401.te \
-    system_app.te \
-    system_server.te \
-    thermal-engine.te \
-    vold.te \
-    wcnss_filter.te \
-    wpa.te
-
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
