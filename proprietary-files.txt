@@ -92,7 +92,6 @@ vendor/lib/libactuator_rohm_bu64296gwx_camcorder.so
 vendor/lib/libactuator_rohm_bu64296gwx_camera.so
 vendor/lib/libactuator_rohm_bu64296gwx.so
 vendor/lib/libadsprpc.so
-vendor/lib/libC2D2.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libfastcvopt.so
 vendor/lib/libjpegehw.so
