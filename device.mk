@@ -258,6 +258,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/configs/qcril.db:system/etc/ril/qcril.db
 
+# SSL Compat
+PRODUCT_PACKAGES += \
+    libboringssl-compat
+
 # Support
 PRODUCT_PACKAGES += \
     libcurl \

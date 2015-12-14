@@ -45,6 +45,9 @@ on early-init
     mkdir /firmware 0771 system system
 
 on init
+    # Symbols required for motorola blobs
+    export LD_SHIM_LIBS /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/vendor/lib/egl/libEGL_adreno.so|libboringssl-compat.so:/system/vendor/lib/egl/libGLESv2_adreno.so|libboringssl-compat.so
+
     # Support legacy paths
     symlink /sdcard /sdcard
     symlink /sdcard /storage/sdcard0
