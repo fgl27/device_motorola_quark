@@ -213,7 +213,6 @@ lib/libdrmdecrypt.so
 vendor/lib/libdrmdiag.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
-vendor/lib/liboemcrypto.so
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/lib-sec-disp.so
@@ -280,24 +279,14 @@ vendor/lib/libOpenCL.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
-vendor/lib/libscale.so
 
 # Graphics firmware
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
 # Media
-vendor/lib/libDivxDrm.so
-vendor/lib/libExtendedExtractor.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-color-convertor.so
-vendor/lib/libmmosal.so
-vendor/lib/libmmparser.so
-vendor/lib/libOmxAacDec.so
-vendor/lib/libOmxAmrwbplusDec.so
-vendor/lib/libOmxEvrcDec.so
-vendor/lib/libOmxQcelp13Dec.so
-vendor/lib/libOmxWmaDec.so
 
 # Media firmware
 etc/firmware/venus.b00
@@ -316,14 +305,6 @@ bin/hardware_revisions.sh
 # NFC
 etc/firmware/BCM20795A0_001.001.023.0003.0022_Generic_I2C_NCD_Unsigned_configdata.ncd
 etc/firmware/BCM20795A1_001.002.012.0003.0078_Generic_I2C_NCD_Signed_configdata.ncd
-
-# Postprocessing
-bin/mm-pp-daemon
-lib/libtinyxml.so
-vendor/lib/libdisp-aba.so
-vendor/lib/libmm-abl.so
-vendor/lib/libmm-abl-oem.so
-vendor/lib/libsensor1.so
 
 # Qualcomm framework
 bin/irsc_util
@@ -401,6 +382,7 @@ etc/firmware/sensorhubver_p1.txt
 etc/firmware/sensorhubver.txt
 lib/hw/sensorhub.apq8084.so
 lib/hw/sensors.apq8084.so
+vendor/lib/libsensor1.so
 
 # Time services
 -app/TimeService/TimeService.apk
