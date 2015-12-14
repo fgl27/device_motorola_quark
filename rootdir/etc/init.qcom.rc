@@ -45,25 +45,9 @@ on early-init
     mkdir /firmware 0771 system system
 
 on init
-    # See storage config details at http://source.android.com/tech/storage/
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage/emulated 0555 root root
-
-    # External storage directories
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0700 root root
-
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
-
     # Support legacy paths
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
-    symlink /mnt/shell/emulated/0 /storage/emulated/legacy
-    symlink /storage/usbdisk /usbdisk
-    symlink /storage/usbdisk /mnt/usbdisk
+    symlink /sdcard /sdcard
+    symlink /sdcard /storage/sdcard0
 
     # pstore
     chown system log /sys/fs/pstore/annotate-ramoops
@@ -101,8 +85,6 @@ on fs
     # use /persist as phony PDS partition
     symlink /persist /pds
 
-    setprop ro.crypto.fuse_sdcard true
-
 # msm specific files that need to be created on /data
 on post-fs-data
 
@@ -111,10 +93,6 @@ on post-fs-data
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
-
-    # we will remap this as /mnt/sdcard with the sdcard fuse tool
-    mkdir /data/media 0770 media_rw media_rw
-    chown media_rw media_rw /data/media
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
@@ -767,19 +745,6 @@ service hostapd /system/bin/hostapd -dd /data/misc/wifi/hostapd.conf
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
-# SD card services
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
-    class late_start
-
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023  -w 1023 -d /mnt/media_rw/usbdisk /storage/usbdisk
-    class late_start
-    disabled
-
-# Binding fuse mount point to /storage/emulated/legacy
-on property:init.svc.sdcard=running
-    wait /mnt/shell/emulated/0
-    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
