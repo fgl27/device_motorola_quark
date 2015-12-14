@@ -257,9 +257,6 @@
     -->
     <bool name="config_wifiDisplaySupportsProtectedBuffers">false</bool>
 
-    <!-- We dont have different firmware for wifi modes, prevent reloading it -->
-    <bool name="config_wifiApFirmwareReload">false</bool>
-
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
                   autodetected from the Configuration. -->
     <bool name="config_showNavigationBar">false</bool>
