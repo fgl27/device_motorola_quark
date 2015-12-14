@@ -170,8 +170,7 @@ PRODUCT_PACKAGES += \
     fsck.f2fs \
     make_ext4fs \
     mkfs.f2fs \
-    resize2fs \
-    setup_fs
+    resize2fs
 
 # IDC
 PRODUCT_COPY_FILES += \
