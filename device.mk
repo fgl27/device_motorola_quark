@@ -163,15 +163,6 @@ PRODUCT_PACKAGES += \
     libgenlock \
     memtrack.apq8084
 
-# Filesystem
-PRODUCT_PACKAGES += \
-    e2fsck \
-    fibmap.f2fs \
-    fsck.f2fs \
-    make_ext4fs \
-    mkfs.f2fs \
-    resize2fs
-
 # IDC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/atmel_mxt_ts.idc:system/usr/idc/atmel_mxt_ts.idc
@@ -286,10 +277,6 @@ PRODUCT_COPY_FILES += \
 # Torch
 PRODUCT_PACKAGES += \
     Torch
-
-# USB
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
 
 # Wifi
 PRODUCT_PACKAGES += \
