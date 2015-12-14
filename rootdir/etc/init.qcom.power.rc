@@ -66,7 +66,7 @@ on property:sys.boot_completed=1
     write /sys/devices/system/cpu/cpufreq/interactive/min_sample_time 40000
     write /sys/devices/system/cpu/cpufreq/interactive/timer_rate 30000
     write /sys/devices/system/cpu/cpufreq/interactive/sampling_down_factor 100000
-    write /dev/cpuctl/apps/cpu.notify_on_migrate 0
+    write /dev/cpuctl/cpu.notify_on_migrate 0
 
     # Configure the cpu-boost module
     write /sys/module/cpu_boost/parameters/input_boost_freq 1497600
