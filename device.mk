@@ -93,9 +93,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/quark/permissions/com.motorola.targetnotif.xml:system/etc/permissions/com.motorola.targetnotif.xml \
     device/motorola/quark/permissions/com.motorola.zap.xml:system/etc/permissions/com.motorola.zap.xml
 
-PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
 $(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxxhdpi-3072-hwui-memory.mk)
