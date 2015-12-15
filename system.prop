@@ -119,6 +119,7 @@ ro.usb.bpteth_adb=2ea3
 wifi.interface=wlan0
 wlan.driver.ath=0
 wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
+ro.disableWifiApFirmwareReload=true
 
 # Play store
 ro.com.google.clientidbase.gmm=android-motorola
