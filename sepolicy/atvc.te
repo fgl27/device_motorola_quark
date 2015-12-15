@@ -2,9 +2,5 @@ type atvc, domain;
 type atvc_exec, exec_type, file_type;
 init_daemon_domain(atvc)
 
-unix_socket_connect(atvc, property, init)
-allow atvc property_socket:sock_file write;
-allow atvc default_prop:property_service set;
-
 allow atvc persist_file:file r_file_perms;
 allow atvc persist_file:dir r_dir_perms;
