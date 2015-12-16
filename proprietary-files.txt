@@ -207,20 +207,18 @@ bin/thermal-engine
 vendor/lib/libqc-opt.so
 vendor/lib/libthermalioctl.so
 
-# DRM
+# DRM (sourced from shamu)
 bin/qseecomd
-lib/libdrmdecrypt.so
-vendor/lib/libdrmdiag.so
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/libdrmdecrypt.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
-vendor/lib/lib-sec-disp.so
-vendor/lib/drm/libdrmwvmplugin.so
-vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
-vendor/lib/libStDrvInt.so
+vendor/lib/libWVphoneAPI.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
 # DRM firmware
