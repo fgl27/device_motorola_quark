@@ -141,18 +141,6 @@ $(CMN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(CMN_SYMLINKS)
 
-WV_IMAGES := \
-    widevine.b00 widevine.b01 widevine.b02 widevine.b03 widevine.mdt
-
-WV_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(WV_IMAGES)))
-$(WV_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "Widevine firmware link: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /firmware/image/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(WV_SYMLINKS)
-
 # Create links for audcal data files
 $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wcd9320; \
 	ln -sf /data/misc/audio/wcd9320_anc.bin \
