@@ -287,6 +287,9 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
+# Low Brightness at boot
+    write /sys/class/leds/lcd-backlight/brightness 63
+
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.wifi    524288,6291456,8291456,524288,6291456,8291456
