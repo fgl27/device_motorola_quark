@@ -68,7 +68,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         char *board_type)
 {
     char platform[PROP_VALUE_MAX];
-    char cid[PROP_VALUE_MAX];
+    char sku[PROP_VALUE_MAX];
     char carrier[PROP_VALUE_MAX];
     char fsgid[PROP_VALUE_MAX];
     const char *fsgid_value;
@@ -85,9 +85,9 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
     set_cmdline_properties();
 
     // Defaults go to Latin America XT1225
-    rc = property_get("ro.boot.cid", cid);
+    rc = property_get("ro.boot.hardware.sku", sku);
     if (rc < 0) {
-        cid[0] = '\0';
+        sku[0] = '\0';
     }
     rc = property_get("ro.boot.carrier", carrier);
     if (rc < 0) {
@@ -99,13 +99,15 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
     }
 
     if (fsgid[0] == '\0') {
-        if (ISMATCH(cid, "0xC")) {
+        if (ISMATCH(sku, "XT1225")) {
             if (ISMATCH(carrier, "reteu")) {
                 fsgid_value = "emea";
             } else {
                 fsgid_value = "singlela";
             }
-        } else if ((ISMATCH(cid, "0x2"))||(ISMATCH(cid, "0x0"))) {
+        } else if (ISMATCH(sku, "XT1250")) {
+            fsgid_value = "lra";
+        } else if (ISMATCH(sku, "XT1254")) {
             fsgid_value = "verizon";
         }
         INFO("Determined fsg-id: %s\n", fsgid_value);
