@@ -16,5 +16,5 @@ PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=quark_retbr \
-    BUILD_DISPLAY_ID='rr_quark-userdebug 5.1.1 $(BUILD_ID) $(BUILD_NUMBER) test-keys' \
+    BUILD_DISPLAY_ID='rr_quark-userdebug $(PLATFORM_VERSION) $(BUILD_ID) $(BUILD_NUMBER) test-keys' \
     TARGET_BUILD_FLAVOR=rr_quark-userdebug
