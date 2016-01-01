@@ -130,3 +130,6 @@ wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
 
 # Play store
 ro.com.google.clientidbase.gmm=android-motorola
+
+# Allow tethering without provisioning app
+net.tethering.noprovisioning=true
