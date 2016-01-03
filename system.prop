@@ -98,6 +98,7 @@ persist.radio.VT_USE_MDM_TIME=1
 
 ro.use_data_netmgrd=true
 ro.data.large_tcp_window_size=true
+persist.data.qmi.adb_logmask=0
 
 # Enable UIM VCC feature
 persist.qcril_uim_vcc_feature=1
