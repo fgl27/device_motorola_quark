@@ -26,29 +26,29 @@
 	<ctl name="LINEOUT4 Volume" value="0" />
 	<ctl name="HPHL Volume" value="20" />
 	<ctl name="HPHR Volume" value="20" />
-	<ctl name="RX1 Digital Volume" value="84" />
-	<ctl name="RX2 Digital Volume" value="84" />
-	<ctl name="RX3 Digital Volume" value="84" />
-	<ctl name="RX4 Digital Volume" value="84" />
-	<ctl name="RX5 Digital Volume" value="84" />
-	<ctl name="RX6 Digital Volume" value="84" />
-	<ctl name="RX7 Digital Volume" value="84" />
+	<ctl name="RX1 Digital Volume" value="90" />
+	<ctl name="RX2 Digital Volume" value="90" />
+	<ctl name="RX3 Digital Volume" value="90" />
+	<ctl name="RX4 Digital Volume" value="90" />
+	<ctl name="RX5 Digital Volume" value="90" />
+	<ctl name="RX6 Digital Volume" value="90" />
+	<ctl name="RX7 Digital Volume" value="90" />
 	<ctl name="ADC1 Volume" value="0" />
 	<ctl name="ADC2 Volume" value="0" />
 	<ctl name="ADC3 Volume" value="0" />
 	<ctl name="ADC4 Volume" value="0" />
 	<ctl name="ADC5 Volume" value="0" />
 	<ctl name="ADC6 Volume" value="0" />
-	<ctl name="DEC1 Volume" value="84" />
-	<ctl name="DEC2 Volume" value="84" />
-	<ctl name="DEC3 Volume" value="84" />
-	<ctl name="DEC4 Volume" value="84" />
-	<ctl name="DEC5 Volume" value="84" />
-	<ctl name="DEC6 Volume" value="84" />
-	<ctl name="DEC7 Volume" value="84" />
-	<ctl name="DEC8 Volume" value="84" />
-	<ctl name="DEC9 Volume" value="84" />
-	<ctl name="DEC10 Volume" value="84" />
+	<ctl name="DEC1 Volume" value="90" />
+	<ctl name="DEC2 Volume" value="90" />
+	<ctl name="DEC3 Volume" value="90" />
+	<ctl name="DEC4 Volume" value="90" />
+	<ctl name="DEC5 Volume" value="90" />
+	<ctl name="DEC6 Volume" value="90" />
+	<ctl name="DEC7 Volume" value="90" />
+	<ctl name="DEC8 Volume" value="90" />
+	<ctl name="DEC9 Volume" value="90" />
+	<ctl name="DEC10 Volume" value="90" />
 	<ctl name="TX1 HPF cut off" value="MIN_3DB_4Hz" />
 	<ctl name="TX2 HPF cut off" value="MIN_3DB_4Hz" />
 	<ctl name="TX3 HPF cut off" value="MIN_3DB_4Hz" />
