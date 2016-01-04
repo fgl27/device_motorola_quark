@@ -1,17 +1,10 @@
 # Audio
-ro.qc.sdk.audio.fluencetype=fluence
+ro.qc.sdk.audio.fluencetype=none
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
+persist.audio.fluence.speaker=false
 use.voice.path.for.pcm.voip=false
 use.dedicated.device.for.voip=false
-audio.offload.buffer.size.kb=32
-av.offload.enable=true
-av.streaming.offload.enable=true
-audio.offload.multiple.enabled=false
-audio.offload.gapless.enabled=true
-audio.offload.pcm.16bit.enable=true
-audio.offload.pcm.24bit.enable=true
 
 # Bluetooth
 bt.max.hfpclient.connections=1
@@ -43,15 +36,6 @@ ro.qc.sdk.izat.service_mask=0x0
 
 # Gps Smart Battery Savings (depends on sensor hub)
 persist.mot.gps.smart_battery=1
-
-# Media
-audio.offload.buffer.size.kb=32
-av.offload.enable=true
-av.streaming.offload.enable=true
-audio.offload.multiple.enabled=false
-audio.offload.gapless.enabled=true
-audio.offload.pcm.16bit.enable=true
-audio.offload.pcm.24bit.enable=true
 
 # NITZ
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
@@ -144,3 +128,14 @@ ro.facelock.rec_timeout=2500
 ro.facelock.lively_timeout=2500
 ro.facelock.est_max_time=600
 ro.facelock.use_intro_anim=false
+
+#Enable property to enable ds2
+audio.dolby.ds2.enabled=true
+
+#enable property for hard bypass
+audio.dolby.ds2.hardbypass=true
+
+#
+# Dual-mic config: "endfire" or "broadside" or "none"
+#
+persist.audio.dualmic.config=endfire
