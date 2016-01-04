@@ -37,6 +37,15 @@ ro.qc.sdk.izat.service_mask=0x0
 # Gps Smart Battery Savings (depends on sensor hub)
 persist.mot.gps.smart_battery=1
 
+# Media
+audio.offload.buffer.size.kb=32
+av.offload.enable=true
+av.streaming.offload.enable=true
+audio.offload.multiple.enabled=false
+audio.offload.gapless.enabled=true
+audio.offload.pcm.16bit.enable=true
+audio.offload.pcm.24bit.enable=true
+
 # NITZ
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
 #rild.libargs=-d /dev/smd0
