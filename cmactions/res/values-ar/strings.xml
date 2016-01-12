@@ -17,5 +17,28 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="user_aware_display_title">العرض المتعرف عليه بواسطة المستخدم</string>
+  <string name="user_aware_display_summary">حافظ على الشاشة قيد التشغيل عندما يكون المستخدم أمام شاشة العرض</string>
+  <string name="screen_gestures_panel_title">اختصارات الإيماءات</string>
   <string name="screen_gestures_panel_summary">استخدام الإيماءات لتنفيذ الإجراءات</string>
+  <string name="ambient_display_title">العرض المحيط</string>
+  <string name="pick_up_gesture_title">انتقاء</string>
+  <string name="pick_up_gesture_summary">إشعارات متذبذبة عند الانتقاء أو التفريغ</string>
+  <string name="ir_wake_up_title">تلويح</string>
+  <string name="ir_wake_up_summary">إشعارات متذبذبة عند التلويح بيديك عبر الشاشة</string>
+  <string name="actions_title">الاجراءات</string>
+  <string name="camera_gesture_title">التواء-مزدوج</string>
+  <string name="camera_gesture_summary">الإجراء عند استخدام إيماءة الالتواء المزدوج</string>
+  <string name="chop_chop_gesture_title">تشوب تشوب</string>
+  <string name="chop_chop_gesture_summary">الإجراء في حالة إيماءة تشوب تشوب</string>
+  <string name="ir_silencer_title">قم بالتلويح للإسكات</string>
+  <string name="ir_silencer_summary">إسكات المكالمات الواردة وتنبيهات الغفوة من خلال التلويح بيدك عبر الشاشة</string>
+  <string name="action_none">تعطيل</string>
+  <string name="action_launch_camera">انطلاق الكاميرا</string>
+  <string name="action_torch">التبديل بين المشعل</string>
+  <string name="feedback_intensity_title">شدة الاستجابة اللمسية</string>
+  <string name="feedback_intensity_summary">قوة التعليقات اللمسية الخاصة بإجراءات الالتفاف المزدوج وتشوب تشوب</string>
+  <string name="feedback_intensity_none">تعطيل</string>
+  <string name="feedback_intensity_low">منخفض</string>
+  <string name="feedback_intensity_medium">متوسط</string>
+  <string name="feedback_intensity_high">عالية</string>
 </resources>
