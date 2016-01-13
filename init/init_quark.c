@@ -136,6 +136,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("ro.com.google.clientidbase.ms", "android-verizon");
         property_set("ro.com.google.clientidbase.am", "android-verizon");
         property_set("ro.com.google.clientidbase.yt", "android-verizon");
+        property_set("persist.radio.VT_ENABLE", "1");
         INFO("Set properties for \"verizon\"!\n");
     } else if (ISMATCH(fsgid_value, "verizon_gsm")) {
         // XT1254 - Droid Turbo, but set as gsm phone
@@ -146,6 +147,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("ro.fsg-id", "verizon");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnGsmDevice", "1");
+        property_set("persist.radio.VT_ENABLE", "0");
         property_set("ro.build.description", "quark_verizon-user 5.1 SU4TL-44 44 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_verizon/quark:5.1/SU4TL-44/44:user/release-keys");
         INFO("Set properties for \"verizon_gsm\"!\n");
@@ -158,6 +160,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("ro.fsg-id", "lra");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnCdmaDevice", "1");
+        property_set("persist.radio.VT_ENABLE", "0");
         property_set("ro.build.description", "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys");
         property_set("ro.telephony.default_cdma_sub", "0");
@@ -175,6 +178,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("ro.fsg-id", "lra");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
+        property_set("persist.radio.VT_ENABLE", "0");
         property_set("ro.build.description", "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys");
         INFO("Set properties for \"lra_gsm\"!\n");
@@ -186,6 +190,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
 	property_set("ro.product.display", "Moto Turbo");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
+        property_set("persist.radio.VT_ENABLE", "0");
         property_set("ro.fsg-id", "emea");
         property_set("ro.build.description", "quark_reteu-user 5.0.2 LXG22.33-12.16 16 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_reteu/quark_umts:5.0.2/LXG22.33-12.16/16:user/release-keys");
@@ -198,6 +203,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
 	property_set("ro.product.display", "Moto Maxx");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
+        property_set("persist.radio.VT_ENABLE", "0");
         property_set("ro.fsg-id", "singlela");
         property_set("ro.build.description", "quark_retbr-user 5.0.2 LXG22.33-12.16 16 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_retbr/quark_umts:5.0.2/LXG22.33-12.16/16:user/release-keys");

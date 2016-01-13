@@ -262,6 +262,7 @@ PRODUCT_PACKAGES += \
     init.mmi.boot.sh \
     init.mmi.touch.sh \
     init.mmi.usb.sh \
+    init.mmi.volte.rc \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \
@@ -301,6 +302,24 @@ PRODUCT_PACKAGES += \
     WCNSS_qcom_wlan_nv.bin \
     wlan_mac.bin \
     wlan_mac_serial.bin
+
+# Include IMSEnabler
+PRODUCT_PACKAGES += \
+    IMSEnabler
+
+# WiFi calling
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.data.iwlan.enable=true \
+    persist.radio.ignore_ims_wlan=1 \
+    persist.radio.data_con_rprt=1
+
+# Rich Communications Service is disabled in 5.1
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.rcs.supported=0
+
+#Reduce IMS logging
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.ims.disableDebugLogs=1
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd.accept:system/etc/hostapd/hostapd.accept \
