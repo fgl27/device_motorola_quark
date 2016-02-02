@@ -29,9 +29,14 @@
   <string name="camera_gesture_title">Dvostruki zaokret</string>
   <string name="camera_gesture_summary">Akcija za gestu duplog zaokreta</string>
   <string name="chop_chop_gesture_title">Sjeći</string>
+  <string name="chop_chop_gesture_summary">Akcija kada se koristi gesta požuri</string>
+  <string name="ir_silencer_title">Mahni za tišinu</string>
+  <string name="ir_silencer_summary">Utišaj dolazni poziv i odgodi alarme mahanjem preko ekrana</string>
   <string name="action_none">Onemogući</string>
   <string name="action_launch_camera">Pokreni kameru</string>
   <string name="action_torch">Prekidač svjetiljke</string>
+  <string name="feedback_intensity_title">Intenzitet odgovora dodira</string>
+  <string name="feedback_intensity_summary">Jakost povratne informacije za duplu rotaciju i požuri akciju</string>
   <string name="feedback_intensity_none">Onemogućeno</string>
   <string name="feedback_intensity_low">Niska</string>
   <string name="feedback_intensity_medium">Srednje</string>

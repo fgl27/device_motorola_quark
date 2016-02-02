@@ -16,6 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="user_aware_display_title">Ecran reactiv la gesturi utilizator</string>
   <string name="user_aware_display_summary">Menține ecranul aprins cât timp utilizatorul este în dreptul afișajului</string>
   <string name="screen_gestures_panel_title">Scurtături gesturi</string>
   <string name="screen_gestures_panel_summary">Utilizați gesturi pentru a efectua acțiuni</string>
@@ -28,6 +29,7 @@
   <string name="action_none">Dezactivare</string>
   <string name="action_launch_camera">Lansare Cameră foto</string>
   <string name="action_torch">Comutare lanternă</string>
+  <string name="feedback_intensity_title">Intensitate răspuns haptic</string>
   <string name="feedback_intensity_none">Dezactivat</string>
   <string name="feedback_intensity_low">Redusă</string>
   <string name="feedback_intensity_medium">Medie</string>

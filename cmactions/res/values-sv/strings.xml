@@ -16,8 +16,21 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="user_aware_display_title">Användarmedveten display</string>
+  <string name="user_aware_display_summary">Håll skärmen på medan en användare är framför displayen</string>
+  <string name="screen_gestures_panel_title">Genvägar för gester</string>
+  <string name="screen_gestures_panel_summary">Använd gester för att utföra åtgärder</string>
+  <string name="ambient_display_title">Ambient display</string>
+  <string name="pick_up_gesture_title">Plocka upp</string>
+  <string name="pick_up_gesture_summary">Pulsera aviseringar när enheten plockas upp</string>
+  <string name="ir_wake_up_title">Vifta</string>
+  <string name="ir_wake_up_summary">Pulsera aviseringar när du rör handen över skärmen</string>
   <string name="actions_title">Åtgärder</string>
+  <string name="camera_gesture_title">Dubbel vridning</string>
+  <string name="ir_silencer_title">Vifta för att tysta</string>
   <string name="action_none">Inaktivera</string>
+  <string name="action_launch_camera">Starta kamera</string>
+  <string name="action_torch">Växla ficklampa</string>
   <string name="feedback_intensity_none">Inaktiv</string>
   <string name="feedback_intensity_low">Låg</string>
   <string name="feedback_intensity_medium">Medel</string>
