@@ -270,6 +270,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/configs/qcril.db:system/etc/ril/qcril.db
 
+# Shims
+PRODUCT_PACKAGES += \
+    libshim_log \
+    libshim_mdmcutback
+
 # SSL Compat
 PRODUCT_PACKAGES += \
     libboringssl-compat
