@@ -264,6 +264,9 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc
 
 # RIL
+PRODUCT_PACKAGES += \
+    librmnetctl
+
 PRODUCT_COPY_FILES += \
    $(LOCAL_PATH)/configs/qcril.db:system/etc/ril/qcril.db
 

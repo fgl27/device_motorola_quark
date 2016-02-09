@@ -345,7 +345,6 @@ lib/libadropbox.so
 lib/libmdmcutback.so
 lib/libmdmdetect.so
 lib/libmotext_inf.so
-lib/librmnetctl.so
 lib/libqmimotext.so
 vendor/lib/libconfigdb.so
 vendor/lib/libnetmgr.so
