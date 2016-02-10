@@ -20,8 +20,7 @@
     <string name="user_aware_display_title">User-aware display</string>
     <string name="user_aware_display_summary">Keep the screen on while a user is in front of the display</string>
 
-    <string name="screen_gestures_panel_title">Gesture shortcuts</string>
-    <string name="screen_gestures_panel_summary">Use gestures to perform actions</string>
+    <string name="screen_gestures_panel_title">Gestures</string>
 
     <string name="ambient_display_title">Ambient display</string>
 
