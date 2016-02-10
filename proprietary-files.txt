@@ -233,7 +233,6 @@ etc/permissions/org.simalliance.openmobileapi.xml
 -framework/org.simalliance.openmobileapi.jar
 
 # GPS
--app/MotGeoFenceSvc/MotGeoFenceSvc.apk
 bin/gpsone_daemon
 etc/permissions/com.qualcomm.location.xml
 etc/gps.conf
