@@ -171,27 +171,27 @@ ifeq ($(HOST_OS),linux)
 endif
 
 #LZMA compression
-WITH_LZMA_OTA:= true
+#WITH_LZMA_OTA:= true
 
 #RR Optimizations
-TARGET_TC_ROM := 4.9
+#TARGET_TC_ROM := 4.9
 
-TARGET_TC_KERNEL := 4.8.4
+#TARGET_TC_KERNEL := 4.8.4
 
-RROPTI := true
+#RROPTI := true
 
-RR_O3 := true
+#RR_O3 := true
 
-RR_STRICT := true
+#RR_STRICT := true
 
-RR_GRAPHITE := true
+#RR_GRAPHITE := true
 
-RR_KRAIT := true
+#RR_KRAIT := true
 
-RR_PIPE := true
+#RR_PIPE := true
 
-RR_GCC_VERSION_EXP := $(TARGET_TC_ROM)
+#RR_GCC_VERSION_EXP := $(TARGET_TC_ROM)
 
-RR_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
+#RR_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
 
--include vendor/cm/config/opti.mk
+#-include vendor/cm/config/opti.mk
