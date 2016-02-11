@@ -135,6 +135,11 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("ro.com.google.clientidbase.ms", "android-verizon");
         property_set("ro.com.google.clientidbase.am", "android-verizon");
         property_set("ro.com.google.clientidbase.yt", "android-verizon");
+	// IMS VoLTE
+        property_set("persist.data.iwlan.enable", "true");
+        property_set("persist.radio.ignore_ims_wlan", "1");
+        property_set("persist.radio.data_con_rprt", "1");
+        property_set("persist.rcs.supported", "0");
         INFO("Set properties for \"verizon\"!\n");
     } else if (ISMATCH(fsgid_value, "verizon_gsm")) {
         // XT1254 - Droid Turbo, but set as gsm phone
