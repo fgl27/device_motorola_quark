@@ -92,8 +92,6 @@ vendor/lib/libactuator_rohm_bu64296gwx_camcorder.so
 vendor/lib/libactuator_rohm_bu64296gwx_camera.so
 vendor/lib/libactuator_rohm_bu64296gwx.so
 vendor/lib/libadsprpc.so
-vendor/lib/libfastcvadsp_stub.so
-vendor/lib/libfastcvopt.so
 vendor/lib/libjpegehw.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
@@ -110,7 +108,6 @@ vendor/lib/libmmcamera2_vpe_module.so
 vendor/lib/libmmcamera2_wnr_module.so
 vendor/lib/libmmcamera_ar0261.so
 vendor/lib/libmmcamera_faceproc.so
-vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_hdr_lib.so
 vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imx214.so
@@ -368,7 +365,6 @@ vendor/lib/lib-rtpcore.so
 vendor/lib/lib-rtpdaemoninterface.so
 vendor/lib/lib-rtpsl.so
 vendor/lib/libvcel.so
-vendor/lib/libwfdcommonutils.so
 
 # Sensors
 bin/stm401
