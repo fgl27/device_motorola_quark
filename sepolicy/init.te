@@ -2,8 +2,19 @@ allow init atvc:file x_file_perms;
 allow init block_device:blk_file { create_file_perms setattr };
 allow init hob_block_device:blk_file { create_file_perms setattr };
 allow init shell_data_file:fifo_file getattr;
+allow init sysfs_mpdecision:file getattr;
 
 # Sometimes there are leftovers from recovery, allow init to fix those
 allow init init:file relabelfrom;
 allow init fuse:dir { relabelfrom read };
 allow init fuse:file { relabelfrom getattr };
+
+# Additional permissions
+allow init qmuxd:unix_stream_socket connectto;
+allow init qmuxd_socket:sock_file write;
+
+allow init smem_log_device:chr_file { write ioctl };
+allow init thermal_device:chr_file { write ioctl };
+
+allow init self:socket { read write create ioctl };
+allow init socket_device:sock_file { create setattr };

@@ -3,3 +3,4 @@ allow system_server system_ndebug_socket:fifo_file { getattr unlink };
 allow system_server system_wpa_socket:fifo_file unlink;
 allow system_server wpa_socket:fifo_file unlink;
 allow system_server esoc_device:chr_file { open read };
+allow system_server frp_block_device:blk_file { read write ioctl open };

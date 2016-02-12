@@ -24,6 +24,12 @@
 # Radio/modem devices
 /dev/subsys_esoc0                       u:object_r:esoc_device:s0
 
+# CID
+/dev/block/bootdevice/by-name/cid       u:object_r:cid_block_device:s0
+
+# FRP
+/dev/block/bootdevice/by-name/frp       u:object_r:frp_block_device:s0
+
 # HOB
 /dev/block/bootdevice/by-name/mdm1hob  u:object_r:hob_block_device:s0
 /dev/block/bootdevice/by-name/mdm1dhob u:object_r:hob_block_device:s0
@@ -48,3 +54,4 @@
 /system/bin/batt_health                 u:object_r:batt_health_exec:s0
 /system/bin/dbvc_atvc_property_set      u:object_r:atvc_exec:s0
 /system/bin/stm401                      u:object_r:stm401_exec:s0
+/system/bin/thermal-engine              u:object_r:thermal-engine_exec:s0

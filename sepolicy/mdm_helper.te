@@ -1,4 +1,4 @@
 allow mdm_helper self:capability dac_override;
 allow mdm_helper hob_block_device:blk_file { open read write getattr };
 allow mdm_helper persist_file:dir { open read getattr search };
-allow mdm_helper persist_file:file { open read getattr };
+allow mdm_helper persist_file:file { open read write getattr };

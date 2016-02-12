@@ -1,0 +1,1 @@
+allow toolbox cid_block_device:blk_file { getattr setattr };

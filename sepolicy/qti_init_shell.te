@@ -1,0 +1,2 @@
+allow qti_init_shell btnvtool_exec:file rx_file_perms;
+set_prop(qti_init_shell, mmi_prop)

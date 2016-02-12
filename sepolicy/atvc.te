@@ -4,3 +4,7 @@ init_daemon_domain(atvc)
 
 allow atvc persist_file:file r_file_perms;
 allow atvc persist_file:dir r_dir_perms;
+
+allow atvc atvc_prop:property_service set;
+allow atvc init:unix_stream_socket connectto;
+allow atvc property_socket:sock_file write;
