@@ -36,3 +36,14 @@ LOCAL_MODULE := libshim_mdmcutback
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
+# sensors
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := gui/SensorManager.cpp
+LOCAL_SHARED_LIBRARIES := libutils libgui liblog libbinder
+LOCAL_MODULE := libshim_sensors
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)

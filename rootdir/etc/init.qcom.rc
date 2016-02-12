@@ -47,7 +47,7 @@ on early-init
 on init
     # Symbols required for motorola blobs
     export LD_PRELOAD /system/lib/libshim_log.so
-    export LD_SHIM_LIBS /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/lib/libmdmcutback.so|/system/lib/libshim_mdmcutback.so
+    export LD_SHIM_LIBS /system/vendor/lib/libqomx_jpegenc.so|libboringssl-compat.so:/system/lib/libmdmcutback.so|/system/lib/libshim_mdmcutback.so:/system/lib/soundfx/libspeakerbundle.so|libshim_sensors.so:/system/lib/libmot_sensorlistener.so|libshim_sensors.so
 
     # Support legacy paths
     symlink /sdcard /sdcard
