@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="user_aware_display_title">Màn hình nhận biết người dùng</string>
   <string name="user_aware_display_summary">Giữ màn hình sáng khi người dùng còn nhìn vào màn hình</string>
-  <string name="screen_gestures_panel_title">Phím tắt cử chỉ</string>
-  <string name="screen_gestures_panel_summary">Sử dụng cử chỉ để thực hiện hành động</string>
   <string name="ambient_display_title">Hiển thị môi trường xung quanh</string>
   <string name="pick_up_gesture_title">Nhấc lên</string>
   <string name="pick_up_gesture_summary">Hiện thông báo khi nhấc máy lên</string>

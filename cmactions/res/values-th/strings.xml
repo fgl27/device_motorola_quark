@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="user_aware_display_title">ผู้ใช้อยู่หน้าจอ</string>
   <string name="user_aware_display_summary">เปิดจอค้างไว้เมื่อผู้ใช้อยู่หน้าจอ</string>
-  <string name="screen_gestures_panel_title">ทางลัดท่าทาง</string>
-  <string name="screen_gestures_panel_summary">ใช้ท่าทางเพื่อเรียกใช้งาน</string>
   <string name="ambient_display_title">หน้าจอแวดล้อม</string>
   <string name="pick_up_gesture_title">หยิบขึ้น</string>
   <string name="pick_up_gesture_summary">เช็คการแจ้งเตือนเมื่อหยิบ</string>

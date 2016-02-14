@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="user_aware_display_title">İstifadəçini xəbərdar edən ekran</string>
   <string name="user_aware_display_summary">İstifadəçi ekranın qarşısında olanda ekranı açıq saxlayar</string>
-  <string name="screen_gestures_panel_title">Jest qısayolları</string>
-  <string name="screen_gestures_panel_summary">Əməliyyatı həyata keçirmək üçün jestlərdən istifadə edin</string>
   <string name="ambient_display_title">Ekran mühiti</string>
   <string name="pick_up_gesture_title">Telefonu tut</string>
   <string name="pick_up_gesture_summary">Telefonu tutanda bildirişləri at</string>

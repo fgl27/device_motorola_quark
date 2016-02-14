@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="user_aware_display_title">Brukerbevisst skjerm</string>
   <string name="user_aware_display_summary">Hold skjermen påslått når en bruker er foran skjermen</string>
-  <string name="screen_gestures_panel_title">Bevegelsessnarveier</string>
-  <string name="screen_gestures_panel_summary">Bruk bevegelser til å utføre handlinger</string>
   <string name="ambient_display_title">Omgivelsesskjerm</string>
   <string name="pick_up_gesture_title">Løfte opp</string>
   <string name="ir_wake_up_title">Vink</string>

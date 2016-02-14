@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="user_aware_display_title">Pantalla en función de la presencia del usuario</string>
   <string name="user_aware_display_summary">Mantener la pantalla encendida mientras el usuario esté frente a ella</string>
-  <string name="screen_gestures_panel_title">Atajos gestuales</string>
-  <string name="screen_gestures_panel_summary">Utilizar gestos para realizar acciones</string>
   <string name="ambient_display_title">Pantalla ambiente</string>
   <string name="pick_up_gesture_title">Contestar</string>
   <string name="pick_up_gesture_summary">Mostrar notificaciones al contestar o colgar</string>

@@ -18,8 +18,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="user_aware_display_title">العرض المتعرف عليه بواسطة المستخدم</string>
   <string name="user_aware_display_summary">حافظ على الشاشة قيد التشغيل عندما يكون المستخدم أمام شاشة العرض</string>
-  <string name="screen_gestures_panel_title">اختصارات الإيماءات</string>
-  <string name="screen_gestures_panel_summary">استخدام الإيماءات لتنفيذ الإجراءات</string>
   <string name="ambient_display_title">العرض المحيط</string>
   <string name="pick_up_gesture_title">انتقاء</string>
   <string name="pick_up_gesture_summary">إشعارات متذبذبة عند الانتقاء أو التفريغ</string>

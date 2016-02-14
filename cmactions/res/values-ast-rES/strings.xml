@@ -17,8 +17,6 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="user_aware_display_summary">Caltién la pantalla encesa entrín heba un usuariu enfrente d\'ella</string>
-  <string name="screen_gestures_panel_title">Atayos xestuales</string>
-  <string name="screen_gestures_panel_summary">Usa xestos pa facer aiciones</string>
   <string name="ambient_display_title">Pantalla ambiente</string>
   <string name="actions_title">Aiciones</string>
   <string name="camera_gesture_title">Xiru doblu</string>
