@@ -1,7 +1,1 @@
 allow bluetooth wcnss_filter:unix_stream_socket connectto;
-
-allow bluetooth log_device:dir { search };
-allow bluetooth log_device:chr_file { write open };
-
-allow bluetooth sysfs:file { write };
-allow bluetooth wifi_data_file:file { read open };
