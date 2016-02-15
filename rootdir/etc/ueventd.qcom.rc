@@ -45,7 +45,9 @@
 /dev/smd6                 0660   system     system
 /dev/smd7                 0660   bluetooth  bluetooth
 
-/dev/block/platform/msm_sdcc.1/by-name/frp 0600 system system
+/dev/block/platform/msm_sdcc.1/by-name/cid   0660 root mot_dbvc
+/dev/block/platform/msm_sdcc.1/by-name/clogo 0660 root system
+/dev/block/platform/msm_sdcc.1/by-name/frp   0600 system system
 
 #permissions for CSVT
 /dev/smd11                0660   radio      radio

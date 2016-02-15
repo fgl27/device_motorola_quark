@@ -1,3 +1,4 @@
 type adsp_serial_device, dev_type;
 type hob_block_device, dev_type;
 type cid_block_device, dev_type;
+type logo_block_device, dev_type;

@@ -5,34 +5,33 @@
 # Audio DSP devices
 /dev/ttyHS3                             u:object_r:adsp_serial_device:s0
 
+# Bluetooth
+/dev/ttyHS0                             u:object_r:hci_attach_dev:s0
+
+# Block devices
+/dev/block/bootdevice/by-name/cid       u:object_r:cid_block_device:s0
+/dev/block/bootdevice/by-name/clogo     u:object_r:logo_block_device:s0
+/dev/block/bootdevice/by-name/frp       u:object_r:frp_block_device:s0
+/dev/block/bootdevice/by-name/logo      u:object_r:logo_block_device:s0
+/dev/block/bootdevice/by-name/persist   u:object_r:persist_block_device:s0
+/dev/block/bootdevice/by-name/mdm1dhob  u:object_r:hob_block_device:s0
+/dev/block/bootdevice/by-name/mdm1hob   u:object_r:hob_block_device:s0
+
+# Charge only mode
+/data/chargeonlymode(/.*)?              u:object_r:chargeonly_data_file:s0
+
 # Cutback
 /data/misc/cutback(/.*)?                u:object_r:cutback_data_file:s0
 /data/misc/audio_cutback(/.*)?          u:object_r:audio_cutback_data_file:s0
 
-# Bluetooth
-/dev/ttyHS0                             u:object_r:hci_attach_dev:s0
-
 # Display
 /sys/devices/virtual/graphics/fb0/hbm   u:object_r:livedisplay_sysfs:s0
-
-# Vibrator
-/sys/vibrator/pwmvalue                  u:object_r:vib_sysfs:s0
 
 # NFC
 /dev/bcm2079x-i2c                       u:object_r:nfc_device:s0
 
 # Radio/modem devices
 /dev/subsys_esoc0                       u:object_r:esoc_device:s0
-
-# CID
-/dev/block/bootdevice/by-name/cid       u:object_r:cid_block_device:s0
-
-# FRP
-/dev/block/bootdevice/by-name/frp       u:object_r:frp_block_device:s0
-
-# HOB
-/dev/block/bootdevice/by-name/mdm1hob  u:object_r:hob_block_device:s0
-/dev/block/bootdevice/by-name/mdm1dhob u:object_r:hob_block_device:s0
 
 # Sockets
 /data/cam_socket([0-9])*                u:object_r:camera_socket:s0
@@ -46,12 +45,15 @@
 /dev/stm401_as                          u:object_r:sensors_device:s0
 /dev/stm401_ms                          u:object_r:sensors_device:s0
 
+# Vibrator
+/sys/vibrator/pwmvalue                  u:object_r:vib_sysfs:s0
+
 #
 ## Executables
 #
 
 /system/bin/adspd                       u:object_r:adspd_exec:s0
 /system/bin/batt_health                 u:object_r:batt_health_exec:s0
+/system/bin/charge_only_mode            u:object_r:charge_only_mode_exec:s0
 /system/bin/dbvc_atvc_property_set      u:object_r:atvc_exec:s0
 /system/bin/stm401                      u:object_r:stm401_exec:s0
-/system/bin/thermal-engine              u:object_r:thermal-engine_exec:s0

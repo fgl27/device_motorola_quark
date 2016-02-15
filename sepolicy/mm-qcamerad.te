@@ -8,3 +8,5 @@ allow mm-qcamerad system_server:unix_stream_socket rw_socket_perms;
 
 type_transition mm-qcamerad system_data_file:sock_file camera_socket "cam_socket3";
 allow mm-qcamerad camera_socket:fifo_file unlink;
+
+allow mm-qcamerad system_data_file:dir { write remove_name add_name };

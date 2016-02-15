@@ -1,0 +1,21 @@
+type charge_only_mode, domain;
+type charge_only_mode_exec, exec_type, file_type;
+init_daemon_domain(charge_only_mode)
+
+allow charge_only_mode self:capability { sys_boot dac_override sys_tty_config net_admin };
+
+allow charge_only_mode self:netlink_kobject_uevent_socket create_socket_perms;
+
+allow charge_only_mode chargeonly_data_file:dir rw_dir_perms;
+allow charge_only_mode chargeonly_data_file:file rw_file_perms;
+allow charge_only_mode graphics_device:dir search;
+allow charge_only_mode graphics_device:chr_file rw_file_perms;
+allow charge_only_mode input_device:dir search;
+allow charge_only_mode input_device:chr_file { read open };
+allow charge_only_mode tty_device:chr_file { read write open ioctl };
+allow charge_only_mode sysfs:file { read write open };
+allow charge_only_mode sysfs_wake_lock:file { read write open };
+allow charge_only_mode sysfs_battery_supply:dir search;
+allow charge_only_mode sysfs_battery_supply:file { read open };
+allow charge_only_mode sysfs_usb_supply:dir search;
+allow charge_only_mode sysfs_usb_supply:file { read open };

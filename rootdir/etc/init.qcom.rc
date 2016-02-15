@@ -77,13 +77,6 @@ on moto-charger
 
 on fs
     mount_all fstab.qcom
-
-    # Set correct permissions for CID Partitions and CLOGO Partitions
-    exec /system/bin/chmod -L 660 /dev/block/platform/msm_sdcc.1/by-name/cid
-    exec /system/bin/chmod -L 660 /dev/block/platform/msm_sdcc.1/by-name/clogo
-    exec /system/bin/chown -L root:mot_dbvc /dev/block/platform/msm_sdcc.1/by-name/cid
-    exec /system/bin/chown -L root:system /dev/block/platform/msm_sdcc.1/by-name/clogo
-
     restorecon_recursive /persist
 
     # use /persist as phony PDS partition

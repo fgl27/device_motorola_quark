@@ -1,0 +1,4 @@
+# This contains SELinux permissions exceptions for proprietaries (cannot be fixed properly until 6.0 libraries arrive)
+
+allow mm-qcamerad system_file:file execmod;
+allow mediaserver system_file:file execmod;
