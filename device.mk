@@ -277,7 +277,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libshim_log \
     libshim_mdmcutback \
-    libshim_sensors
+    libshim_sensors \
+    libshim_ril
 
 # SSL Compat
 PRODUCT_PACKAGES += \
