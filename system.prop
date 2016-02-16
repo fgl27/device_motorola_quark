@@ -114,6 +114,7 @@ ro.usb.bpt=2ea0
 ro.usb.bpt_adb=2ea1
 ro.usb.bpteth=2ea2
 ro.usb.bpteth_adb=2ea3
+ro.usb.mtp_cdrom=2ea8
 
 persist.sys.isUsbOtgEnabled=1
 
