@@ -36,7 +36,7 @@
         <device name="SND_DEVICE_IN_VOICE_DMIC" acdb_id="6" />
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="11" />
         <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="47" />
-        <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="61" />
+        <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="50" />
         <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="61" />
         <device name="SND_DEVICE_IN_VOICE_REC_MIC_NS" acdb_id="107"/>
         <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" acdb_id="34"/>
