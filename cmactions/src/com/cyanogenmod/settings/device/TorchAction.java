@@ -49,6 +49,7 @@ public class TorchAction implements SensorAction {
                 }
             }
         } catch (CameraAccessException e) {
+            Log.e(TAG, "Could not enumerate camera!");
         }
     }
 
@@ -60,6 +61,9 @@ public class TorchAction implements SensorAction {
                 mCameraManager.setTorchMode(mRearCameraId, !mTorchEnabled);
                 mTorchEnabled = !mTorchEnabled;
             } catch (CameraAccessException e) {
+                Log.e(TAG, "No permission to set camera " + mRearCameraId + " torch mode!");
+            } catch (IllegalArgumentException e) {
+                Log.e(TAG, "Failed to set camera " + mRearCameraId + " torch mode!");
             }
         }
     }
