@@ -73,9 +73,10 @@
         <item>"mobile_ims,11,0,2,60000,true"</item>
         <item>"mobile_cbs,12,0,2,60000,true"</item>
         <item>"wifi_p2p,13,1,0,-1,true"</item>
-        <item>ethernet,9,9,3,-1,true</item>
-        <item>bluetooth,7,7,1,-1,true</item>
-        <item>mobile_800apn,37,0,2,60000,true</item>
+        <item>"ethernet,9,9,9,-1,true"</item>
+        <item>"bluetooth,7,7,2,-1,true"</item>
+        <item>"mobile_800apn,37,0,2,60000,true"</item>
+	<item>"mobile_emergency,15,0,2,-1,true</item>
     </string-array>
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
@@ -291,6 +292,7 @@
         <item>"1,1"</item>
         <item>"0,1"</item>
         <item>"7,1"</item>
+        <item>"9,1"</item>
     </string-array>
 
     <!-- Configure mobile tcp buffer sizes in the form:
