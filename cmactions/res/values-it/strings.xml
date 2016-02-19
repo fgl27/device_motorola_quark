@@ -32,7 +32,7 @@
   <string name="chop_chop_gesture_summary">Azione quando si utilizza la gesture chop-chop</string>
   <string name="ir_silencer_title">Scorri la mano per silenziare</string>
   <string name="ir_silencer_summary">Silenza le chiamate in arrivo e gli allarmi agitando la mano sopra lo schermo</string>
-  <string name="action_none">Disattivato</string>
+  <string name="action_none">Disattiva</string>
   <string name="action_launch_camera">Avvia fotocamera</string>
   <string name="action_torch">Attiva torcia</string>
   <string name="feedback_intensity_title">Intensità feedback tattile</string>
