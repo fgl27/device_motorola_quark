@@ -128,27 +128,3 @@ ro.com.google.clientidbase.gmm=android-motorola
 
 # Allow tethering without provisioning app
 net.tethering.noprovisioning=true
-
-# extras DRM
-ro.audio.monitorRotation=true
-drm.service.enabled=true
-ro.facelock.black_timeout=400
-ro.facelock.det_timeout=1500
-ro.facelock.rec_timeout=2500
-ro.facelock.lively_timeout=2500
-ro.facelock.est_max_time=600
-ro.facelock.use_intro_anim=false
-
-#Enable property to enable ds2
-audio.dolby.ds2.enabled=true
-
-#enable property for hard bypass
-audio.dolby.ds2.hardbypass=true
-
-#
-# Dual-mic config: "endfire" or "broadside" or "none"
-#
-persist.audio.dualmic.config=endfire
-
-# Verizon only flag for better roaming
-persist.radio.sib16_support=1
