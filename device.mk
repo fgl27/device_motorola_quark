@@ -306,9 +306,11 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     WCNSS_qcom_cfg.ini \
+    WCNSS_qcom_cfg.usb.ini \
     WCNSS_qcom_wlan_nv.bin \
     wlan_mac.bin \
     wlan_mac_serial.bin
+
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd.accept:system/etc/hostapd/hostapd.accept \
