@@ -17,6 +17,22 @@ $(LOCAL_BUILT_MODULE):
 	$(hide) touch $@
 
 include $(CLEAR_VARS)
+LOCAL_MODULE := WCNSS_qcom_cfg.usb.ini
+LOCAL_MODULE_CLASS := FAKE
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SYSTEM)/base_rules.mk
+$(LOCAL_BUILT_MODULE): TARGET := /system/etc/wifi/$(LOCAL_MODULE)
+$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/$(LOCAL_MODULE)
+$(LOCAL_BUILT_MODULE):
+	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
+	$(hide) mkdir -p $(dir $@)
+	$(hide) mkdir -p $(dir $(SYMLINK))
+	$(hide) rm -rf $@
+	$(hide) rm -rf $(SYMLINK)
+	$(hide) ln -sf $(TARGET) $(SYMLINK)
+	$(hide) touch $@
+
+include $(CLEAR_VARS)
 LOCAL_MODULE := WCNSS_qcom_wlan_nv.bin
 LOCAL_MODULE_CLASS := FAKE
 LOCAL_MODULE_TAGS := optional
