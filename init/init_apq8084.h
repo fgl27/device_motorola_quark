@@ -31,5 +31,6 @@
 #define __INIT_APQ8084__H__
 
 void init_target_properties();
+void property_override(char const prop[], char const value[]);
 
 #endif /* __INIT_APQ8084__H__ */
