@@ -18,6 +18,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="user_aware_display_title">Erabiltzailea aintzakotzat duen pantaila</string>
   <string name="user_aware_display_summary">Mantendu pantaila piztuta erabiltzailea begira dagoen bitartean</string>
+  <string name="screen_gestures_panel_title">Keinuak</string>
   <string name="ambient_display_title">Ambient display</string>
   <string name="pick_up_gesture_title">Hartu</string>
   <string name="pick_up_gesture_summary">Jakinarazpen argia hartzean edo poltsikotik ateratzean</string>

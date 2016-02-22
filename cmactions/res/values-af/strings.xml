@@ -18,6 +18,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="user_aware_display_title">Gebruiker bewus skerm</string>
   <string name="user_aware_display_summary">Hou skerm aan terwyl gebruiker voor skerm is</string>
+  <string name="screen_gestures_panel_title">Gebare</string>
   <string name="ambient_display_title">Omgewings temperatuur skerm</string>
   <string name="pick_up_gesture_title">Optel</string>
   <string name="pick_up_gesture_summary">Pols kennisgewings met optel van toestel</string>
