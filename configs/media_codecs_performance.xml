@@ -112,5 +112,4 @@
             <Limit name="measured-frame-rate-1920x1080" range="114-114" />
         </MediaCodec>
     </Decoders>
-</MediaCodecs>
-
+</MediaCodecs> 
