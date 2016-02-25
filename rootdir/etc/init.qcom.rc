@@ -79,6 +79,10 @@ on moto-charger
     start charge_only_mode
 
 on fs
+
+    wait /dev/block/platform/${ro.boot.bootdevice}
+    symlink /dev/block/platform/${ro.boot.bootdevice} /dev/block/bootdevice
+
     mount_all fstab.qcom
     restorecon_recursive /persist
 
