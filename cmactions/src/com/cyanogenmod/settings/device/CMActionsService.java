@@ -35,6 +35,7 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
     private final DozePulseAction mDozePulseAction;
     private final IrGestureManager mIrGestureManager;
     private final PowerManager mPowerManager;
+    private final PowerManager.WakeLock mWakeLock;
     private final ScreenReceiver mScreenReceiver;
     private final SensorHelper mSensorHelper;
 
@@ -73,6 +74,7 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
                 mIrGestureManager));
 
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CMActionsWakeLock");
         updateState();
     }
 
@@ -96,8 +98,14 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
 
     public void updateState() {
         if (mPowerManager.isInteractive()) {
+            if (!mWakeLock.isHeld()) {
+                mWakeLock.acquire();
+            }
             screenTurnedOn();
         } else {
+            if (mWakeLock.isHeld()) {
+                mWakeLock.release();
+            }
             screenTurnedOff();
         }
         for (UpdatedStateNotifier notifier : mUpdatedStateNotifiers) {
