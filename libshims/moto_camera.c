@@ -14,9 +14,7 @@
  * limitations under the License.
  */
 
-extern int _ZN7android5Fence4waitEi(int timeout);
-
-int _ZN7android5Fence4waitEj(unsigned int timeout)
-{
-    return _ZN7android5Fence4waitEj(timeout);
-}
+void _ZN7android5Fence4waitEj() {}
+void _ZN7android8AMessageC1Eji() {}
+void _ZN7android10MediaCodec12CreateByTypeERKNS_2spINS_7ALooperEEEPKcbPi() {}
+void _ZN7android11AudioSourceC1E14audio_source_tjj() {}

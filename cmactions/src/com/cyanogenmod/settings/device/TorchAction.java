@@ -32,7 +32,7 @@ public class TorchAction implements SensorAction {
     private final int mVibratorPeriod;
     private final Vibrator mVibrator;
     private String mRearCameraId;
-    private static boolean mTorchEnabled;;
+    private static boolean mTorchEnabled;
 
     public TorchAction(Context mContext, int vibratorPeriod) {
         mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);

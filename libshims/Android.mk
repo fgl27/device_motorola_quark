@@ -21,8 +21,11 @@ include $(CLEAR_VARS)
 
 include $(CLEAR_VARS)
 
-LOCAL_SRC_FILES := moto_camera.c
-LOCAL_SHARED_LIBRARIES := libui
+LOCAL_SRC_FILES := \
+    gui/SensorManager.cpp \
+    moto_camera.c
+
+LOCAL_SHARED_LIBRARIES := libui libutils libgui liblog libbinder
 LOCAL_MODULE := libshim_camera
 LOCAL_MODULE_TAGS := optional
 
