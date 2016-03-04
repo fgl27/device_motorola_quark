@@ -16,6 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Gesture shortcuts -->
   <string name="user_aware_display_title">نمایش کاربرآگاه</string>
   <string name="user_aware_display_summary">روشن نگه داشتن صفحه زمانی که کاربری جلوی صفحه نمایش است</string>
   <string name="ambient_display_title">نمایش حساس به محیط</string>

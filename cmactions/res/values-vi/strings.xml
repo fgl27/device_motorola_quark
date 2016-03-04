@@ -16,6 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Gesture shortcuts -->
   <string name="user_aware_display_title">Màn hình nhận biết người dùng</string>
   <string name="user_aware_display_summary">Giữ màn hình sáng khi người dùng còn nhìn vào màn hình</string>
   <string name="ambient_display_title">Hiển thị môi trường xung quanh</string>

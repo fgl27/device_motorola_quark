@@ -16,8 +16,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Gesture shortcuts -->
   <string name="user_aware_display_title">사용자 인식 화면</string>
   <string name="user_aware_display_summary">사용자가 화면 앞에 있는 동안 화면 켜기</string>
+  <string name="screen_gestures_panel_title">제스처</string>
   <string name="ambient_display_title">절전 모드 자동 해제</string>
   <string name="pick_up_gesture_title">기기 들기</string>
   <string name="pick_up_gesture_summary">기기를 들거나 꺼낼 때 알림 표시</string>

@@ -16,6 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Gesture shortcuts -->
   <string name="user_aware_display_title">Benotzerbewosst Uweis</string>
   <string name="user_aware_display_summary">De Schierm waakreghalen, soulaang e virun engem Benutzer ass</string>
   <string name="ambient_display_title">Ambiente Schierm</string>

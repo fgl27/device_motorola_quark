@@ -16,6 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Gesture shortcuts -->
   <string name="user_aware_display_title">Потребителски дисплей</string>
   <string name="user_aware_display_summary">Задръж екрана включен, докато потребителят е пред дисплея</string>
   <string name="screen_gestures_panel_title">Жестове</string>
@@ -34,10 +35,10 @@
   <string name="action_none">Изключи</string>
   <string name="action_launch_camera">Стартиране на камерата</string>
   <string name="action_torch">Фенерче</string>
-  <string name="feedback_intensity_title">Сила на вибрацията</string>
+  <string name="feedback_intensity_title">Мощност на вибрацията</string>
   <string name="feedback_intensity_summary">Сила на вибрацията при използване на жестовете двойно-завъртане или тръскане</string>
-  <string name="feedback_intensity_none">Изключено</string>
-  <string name="feedback_intensity_low">Ниско</string>
-  <string name="feedback_intensity_medium">Средно</string>
-  <string name="feedback_intensity_high">Високо</string>
+  <string name="feedback_intensity_none">Изключена</string>
+  <string name="feedback_intensity_low">Ниска</string>
+  <string name="feedback_intensity_medium">Средна</string>
+  <string name="feedback_intensity_high">Висока</string>
 </resources>

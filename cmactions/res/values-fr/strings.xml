@@ -16,20 +16,21 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="user_aware_display_title">Affichage avisé de l\'utilisateur</string>
-  <string name="user_aware_display_summary">Maintient l\'écran allumé tant qu\'un utilisateur fait face à l\'affichage</string>
+  <!-- Gesture shortcuts -->
+  <string name="user_aware_display_title">Affichage selon l\'utilisateur</string>
+  <string name="user_aware_display_summary">Maintenir l\'écran allumé tant qu\'un utilisateur lui fait face</string>
   <string name="ambient_display_title">Affichage en mode veille</string>
   <string name="pick_up_gesture_title">Prise en main</string>
-  <string name="pick_up_gesture_summary">Afficher les notifications à la prise en main ou en sortie de poche</string>
-  <string name="ir_wake_up_title">Passage</string>
-  <string name="ir_wake_up_summary">Afficher les notifications lorsque vous balayez l\'écran de la main</string>
+  <string name="pick_up_gesture_summary">Le voyant des notifications clignote lorsque pris en main, désancré, débranché ou sorti du boîtier</string>
+  <string name="ir_wake_up_title">Agiter</string>
+  <string name="ir_wake_up_summary">Le voyant des notifications clignote lorsque vous passez votre main sur l\'écran</string>
   <string name="actions_title">Actions</string>
   <string name="camera_gesture_title">Double-tour</string>
   <string name="camera_gesture_summary">Action lors du geste double-tour</string>
   <string name="chop_chop_gesture_title">Double tranchage</string>
   <string name="chop_chop_gesture_summary">Action lors du geste double tranchage</string>
-  <string name="ir_silencer_title">Passage pour rendre silencieux</string>
-  <string name="ir_silencer_summary">Rendre silencieux les appels entrants et les alarmes récurrentes en balayant l\'écran de la main</string>
+  <string name="ir_silencer_title">Agiter pour couper le son</string>
+  <string name="ir_silencer_summary">Couper la sonnerie des appels entrants et le son des alarmes en balayant l\'écran de la main</string>
   <string name="action_none">Désactiver</string>
   <string name="action_launch_camera">Démarrer l\'appareil photo</string>
   <string name="action_torch">Activer la lampe torche</string>

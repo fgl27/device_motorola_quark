@@ -16,6 +16,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Gesture shortcuts -->
   <string name="user_aware_display_title">用户感知显示</string>
   <string name="user_aware_display_summary">当使用者在屏幕前时保持屏幕开启</string>
   <string name="screen_gestures_panel_title">手势</string>
