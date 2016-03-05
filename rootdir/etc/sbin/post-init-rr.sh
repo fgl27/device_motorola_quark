@@ -6,14 +6,18 @@ mount -o remount,rw /;
 mount -o rw,remount /system
 
 # Make tmp folder
+if [ -e /tmp]; then
+	echo "tmp already exist"
+else
 mkdir /tmp;
+fi
 
 # Give permissions to execute
 chown -R root:system /tmp/;
 chmod -R 777 /tmp/;
 chmod 6755 /sbin/*;
 chmod 6755 /system/xbin/*;
-echo "RR Boot initiated on $(date)" > /tmp/bootcheck;
+echo "RR Boot initiated on $(date)" > /tmp/bootcheck-rr;
 
 # Install Busybox
 /sbin/busybox --install -s /sbin

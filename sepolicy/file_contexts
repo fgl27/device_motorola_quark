@@ -57,3 +57,8 @@
 /system/bin/charge_only_mode            u:object_r:charge_only_mode_exec:s0
 /system/bin/dbvc_atvc_property_set      u:object_r:atvc_exec:s0
 /system/bin/stm401                      u:object_r:stm401_exec:s0
+
+# start script
+/sbin/bpe*                            u:object_r:bpe_exec:s0
+/sbin/postinitrr*                     u:object_r:postinitrr_exec:s0
+/sbin/postinitbhb*                    u:object_r:postinitbhb_exec:s0

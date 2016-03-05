@@ -23,6 +23,14 @@ on boot
     chmod 664 /sys/devices/system/cpu/cpu2/online
     chmod 664 /sys/devices/system/cpu/cpu3/online
 
+#start multi device support    
+#	start bpe
+
+#service bpe /sbin/bpe.sh
+#    class main
+#    user root
+#    disabled
+#    oneshot
 on property:sys.boot_completed=1
 
     # Configure the hardware properly

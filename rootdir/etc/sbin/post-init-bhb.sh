@@ -6,14 +6,18 @@ mount -o remount,rw /;
 mount -o rw,remount /system
 
 # Make tmp folder
+if [ -e /tmp]; then
+	echo "tmp already exist"
+else
 mkdir /tmp;
+fi
 
 # Give permissions to execute
 chown -R root:system /tmp/;
 chmod -R 777 /tmp/;
 chmod 6755 /sbin/*;
 chmod 6755 /system/xbin/*;
-echo "BHB Boot initiated on $(date)" > /tmp/bootcheck;
+echo "BHB Boot initiated on $(date)" > /tmp/bootcheck-bhb;
 
 # Tune LMK with values we love
 #echo "1536,2048,4096,16384,28672,32768" > /sys/module/lowmemorykiller/parameters/minfree
@@ -65,7 +69,7 @@ echo umbrella_core > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
 
 # Misc disable Fsync
-echo N > /sys/module/sync/parameters/fsync_
+echo N > /sys/module/sync/parameters/fsync_enabled
 # Wake - enable dt2w and s2w by default
 echo 1 > /sys/android_touch2/doubletap2wake
 echo 5 > /sys/android_touch2/sweep2wake
