@@ -1,0 +1,3 @@
+allow zygote user_service:service_manager { find };
+allow zygote package_service:service_manager { find };
+allow zygote activity_service:service_manager { find };
