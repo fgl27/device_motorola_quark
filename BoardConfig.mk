@@ -202,7 +202,11 @@ WITH_LZMA_OTA:= true
 #RR Optimizations
 TARGET_TC_ROM := 4.9
 
-TARGET_TC_KERNEL := 4.8.4
+TARGET_TC_KERNEL := 4.8.5
+#TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-linux-androideabi-
+#KERNEL_TOOLCHAIN := /home/fella/RR/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8.5/bin
+#KERNEL_TOOLCHAIN_PATH=/home/fella/RR/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8.5/bin/arm-linux-androideabi-
+#KERNEL_CROSS_COMPILE=CROSS_COMPILE="/home/fella/RR/prebuilts/misc/linux-x86/ccache/ccache /home/fella/RR/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.8.5/bin/arm-linux-androideabi-"
 
 RROPTI := true
 

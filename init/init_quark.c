@@ -120,8 +120,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         // XT1254 - Droid Turbo
         property_set("ro.build.product", "quark");
         property_set("ro.product.device", "quark");
-        property_set("ro.product.model", "XT1254");
-	property_set("ro.product.display", "DROID TURBO");
+        property_set("ro.product.model", "DROID Turbo");
         property_set("ro.fsg-id", "verizon");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnCdmaDevice", "1");
@@ -141,8 +140,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         // XT1254 - Droid Turbo, but set as gsm phone
         property_set("ro.build.product", "quark");
         property_set("ro.product.device", "quark");
-        property_set("ro.product.model", "XT1254");
-	property_set("ro.product.display", "DROID TURBO");
+        property_set("ro.product.model", "DROID Turbo");
         property_set("ro.fsg-id", "verizon");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnGsmDevice", "1");
@@ -153,8 +151,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         // XT1250 - Moto MAXX
         property_set("ro.build.product", "quark");
         property_set("ro.product.device", "quark");
-        property_set("ro.product.model", "XT1250");
-	property_set("ro.product.display", "Moto Maxx");
+        property_set("ro.product.model", "Moto MAXX");
         property_set("ro.fsg-id", "lra");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnCdmaDevice", "1");
@@ -170,8 +167,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         // XT1250 - Moto MAXX, but set as gsm phone
         property_set("ro.build.product", "quark");
         property_set("ro.product.device", "quark");
-        property_set("ro.product.model", "XT1250");
-	property_set("ro.product.display", "Moto Maxx");
+        property_set("ro.product.model", "Moto MAXX");
         property_set("ro.fsg-id", "lra");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
@@ -182,8 +178,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         // XT1225 - Moto Turbo
         property_set("ro.build.product", "quark_umts");
         property_set("ro.product.device", "quark_umts");
-        property_set("ro.product.model", "XT1225");
-	property_set("ro.product.display", "Moto Turbo");
+        property_set("ro.product.model", "Moto Turbo");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
         property_set("ro.fsg-id", "emea");
@@ -194,13 +189,12 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         // XT1225 - Moto MAXX (default)
         property_set("ro.build.product", "quark_umts");
         property_set("ro.product.device", "quark_umts");
-        property_set("ro.product.model", "XT1225");
-	property_set("ro.product.display", "Moto Maxx");
+        property_set("ro.product.model", "Moto MAXX");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
         property_set("ro.fsg-id", "singlela");
-        property_set("ro.build.description", "quark_retbr-user 5.0.2 LXG22.33-12.16 16 release-keys");
-        property_set("ro.build.fingerprint", "motorola/quark_retbr/quark_umts:5.0.2/LXG22.33-12.16/16:user/release-keys");
+        property_set("ro.build.description", "quark_retla-user 5.0.2 LXG22.33-12.16 16 release-keys");
+        property_set("ro.build.fingerprint", "motorola/quark_retla/quark_umts:5.0.2/LXG22.33-12.16/16:user/release-keys");
         INFO("Set properties for \"singlela\"!\n");
     }
 }
