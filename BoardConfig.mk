@@ -146,6 +146,7 @@ BOARD_SEPOLICY_UNION += \
     mm-qcamerad.te \
     mpdecision.te \
     netd.te \
+    post-init.te \
     property.te \
     property_contexts \
     rild.te \
