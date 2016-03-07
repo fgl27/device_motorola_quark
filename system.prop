@@ -84,6 +84,7 @@ persist.radio.apm_sim_not_pwdn=1
 persist.radio.apn_delay=5000
 persist.radio.dfr_mode_set=1
 persist.radio.relay_oprt_change=1
+persist.data.qmi.adb_logmask=0
 persist.radio.msgtunnel.start=true
 persist.radio.oem_ind_to_both=false
 persist.data.netmgrd.qos.enable=true
@@ -97,9 +98,9 @@ persist.data.qmi.adb_logmask=0
 persist.qcril_uim_vcc_feature=1
 
 # SSR
-persist.sys.qc.sub.rdump.max=20
-persist.sys.qc.sub.rdump.on=1
-persist.sys.qc.sub.rstrtlvl=3
+persist.sys.qc.sub.rdump.max=0
+#persist.sys.qc.sub.rdump.on=1
+#persist.sys.qc.sub.rstrtlvl=3
 persist.sys.ssr.restart_level=1
 
 # Time
@@ -108,20 +109,19 @@ persist.timed.enable=true
 # USB
 ro.usb.mtp=2ea4
 ro.usb.mtp_adb=2ea5
+ro.usb.mtp_cdrom=2ea8
 ro.usb.ptp=2ea6
 ro.usb.ptp_adb=2ea7
 ro.usb.bpt=2ea0
 ro.usb.bpt_adb=2ea1
 ro.usb.bpteth=2ea2
 ro.usb.bpteth_adb=2ea3
-ro.usb.mtp_cdrom=2ea8
-
-persist.sys.isUsbOtgEnabled=1
 
 # WLAN
 wifi.interface=wlan0
 wlan.driver.ath=0
 wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
+ro.disableWifiApFirmwareReload=true
 
 # Play store
 ro.com.google.clientidbase.gmm=android-motorola
@@ -129,26 +129,20 @@ ro.com.google.clientidbase.gmm=android-motorola
 # Allow tethering without provisioning app
 net.tethering.noprovisioning=true
 
-# extras DRM
-ro.audio.monitorRotation=true
-drm.service.enabled=true
-ro.facelock.black_timeout=400
-ro.facelock.det_timeout=1500
-ro.facelock.rec_timeout=2500
-ro.facelock.lively_timeout=2500
-ro.facelock.est_max_time=600
-ro.facelock.use_intro_anim=false
+# system props for the cne module
+persist.cne.feature=0
 
-#Enable property to enable ds2
-audio.dolby.ds2.enabled=true
+# Disable airplane mode shutdown feature
+persist.radio.apm_mdm_not_pwdn=1
 
-#enable property for hard bypass
-audio.dolby.ds2.hardbypass=true
+# Extra Radio
+persist.radio.plmn_name_cmp=1
 
-#
-# Dual-mic config: "endfire" or "broadside" or "none"
-#
-persist.audio.dualmic.config=endfire
+# Enable dsp gapless mode by default
+audio.offload.gapless.enabled=true
 
-# Verizon only flag for better roaming
-persist.radio.sib16_support=1
+# Allow bypass of first start setup
+ro.setupwizard.mode=OPTIONAL
+
+# Initialize QCA1530 detection
+sys.qca1530=no

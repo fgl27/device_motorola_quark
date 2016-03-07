@@ -129,12 +129,24 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("ro.telephony.default_cdma_sub", "0");
         property_set("ro.cdma.home.operator.numeric", "311480");
         property_set("ro.cdma.home.operator.alpha", "Verizon");
+        property_set("ro.cdma.homesystem", "64,65,76,77,78,79,80,81,82,83");
         property_set("ro.ril.force_eri_from_xml", "true");
         property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
         property_set("ro.com.google.clientidbase.ms", "android-verizon");
         property_set("ro.com.google.clientidbase.am", "android-verizon");
         property_set("ro.com.google.clientidbase.yt", "android-verizon");
+        property_set("persist.radio.0x9e_not_callname", "1");
+        property_set("persist.radio.sib16_support", "1");
+        property_set("persist.radio.eri64_as_home", "1");
+        property_set("persist.radio.mode_pref_nv10", "1");
+        property_set("ro.cdma.nbpcd", "1");
+        property_set("ro.cdma.disableVzwNbpcd", "true");
+        property_set("ro.cdma.home.operator.isnan", "1");
+        property_set("ro.telephony.gsm-routes-us-smsc", "1");
+        property_set("persist.data.iwlan.enable", "true");
+        property_set("persist.radio.ignore_ims_wlan", "1");
+        property_set("persist.radio.data_con_rprt", "1");
         INFO("Set properties for \"verizon\"!\n");
     } else if (ISMATCH(fsgid_value, "verizon_gsm")) {
         // XT1254 - Droid Turbo, but set as gsm phone
@@ -144,6 +156,10 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("ro.fsg-id", "verizon");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnGsmDevice", "1");
+        property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
+        property_set("ro.com.google.clientidbase.ms", "android-verizon");
+        property_set("ro.com.google.clientidbase.am", "android-verizon");
+        property_set("ro.com.google.clientidbase.yt", "android-verizon");
         property_set("ro.build.description", "quark_verizon-user 5.1 SU4TL-44 44 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_verizon/quark:5.1/SU4TL-44/44:user/release-keys");
         INFO("Set properties for \"verizon_gsm\"!\n");
@@ -171,6 +187,11 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("ro.fsg-id", "lra");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
+        property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
+	property_set("ro.com.google.clientidbase.ms", "android-motorola");
+	property_set("ro.com.google.clientidbase.am", "android-motorola");
+	property_set("ro.com.google.clientidbase.yt", "android-motorola");
+	property_set("persist.radio.redir_party_num", "0");
         property_set("ro.build.description", "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys");
         INFO("Set properties for \"lra_gsm\"!\n");
@@ -182,6 +203,11 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
         property_set("ro.fsg-id", "emea");
+        property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
+	property_set("ro.com.google.clientidbase.ms", "android-motorola");
+	property_set("ro.com.google.clientidbase.am", "android-motorola");
+	property_set("ro.com.google.clientidbase.yt", "android-motorola");
+	property_set("persist.radio.redir_party_num", "0");
         property_set("ro.build.description", "quark_reteu-user 5.0.2 LXG22.33-12.16 16 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_reteu/quark_umts:5.0.2/LXG22.33-12.16/16:user/release-keys");
         INFO("Set properties for \"emea\"!\n");
@@ -193,6 +219,11 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
         property_set("ro.fsg-id", "singlela");
+        property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
+	property_set("ro.com.google.clientidbase.ms", "android-motorola");
+	property_set("ro.com.google.clientidbase.am", "android-motorola");
+	property_set("ro.com.google.clientidbase.yt", "android-motorola");
+	property_set("persist.radio.redir_party_num", "0");
         property_set("ro.build.description", "quark_retla-user 5.0.2 LXG22.33-12.16 16 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_retla/quark_umts:5.0.2/LXG22.33-12.16/16:user/release-keys");
         INFO("Set properties for \"singlela\"!\n");
