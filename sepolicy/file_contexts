@@ -59,6 +59,5 @@
 /system/bin/stm401                      u:object_r:stm401_exec:s0
 
 # start script
-/sbin/bpe*                            u:object_r:bpe_exec:s0
 /sbin/postinitrr*                     u:object_r:postinitrr_exec:s0
 /sbin/postinitbhb*                    u:object_r:postinitbhb_exec:s0
