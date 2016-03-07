@@ -74,9 +74,9 @@ echo N > /sys/module/sync/parameters/fsync_enabled
 echo 1 > /sys/android_touch2/doubletap2wake
 echo 5 > /sys/android_touch2/sweep2wake
 
-# GPU max clock to sotck value, enable simple gpu algorithm
+# GPU max clock to sotck value, enable adreno_idler
 echo 600000000 > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk
-echo 1 > /sys/module/simple_gpu_algorithm/parameters/simple_gpu_activate
+echo Y > /sys/module/adreno_idler/parameters/adreno_idler_active
 
 # LMK -  enable Adaptive LMK
 echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
