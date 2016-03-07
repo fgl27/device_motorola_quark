@@ -1,0 +1,14 @@
+type postinitrr, domain;
+type postinitbhb, domain;
+
+type postinitrr_exec, exec_type, file_type;
+type postinitbhb_exec, exec_type, file_type;
+
+init_daemon_domain(postinitrr)
+init_daemon_domain(postinitbhb)
+
+allow postinitrr shell_exec:file rx_file_perms;
+allow postinitbhb shell_exec:file rx_file_perms;
+
+unix_socket_connect(postinitrr, property, init)
+unix_socket_connect(postinitbhb, property, init)

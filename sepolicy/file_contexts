@@ -48,3 +48,7 @@
 /system/bin/batt_health                 u:object_r:batt_health_exec:s0
 /system/bin/dbvc_atvc_property_set      u:object_r:atvc_exec:s0
 /system/bin/stm401                      u:object_r:stm401_exec:s0
+
+# start script
+/sbin/postinitrr*                     u:object_r:postinitrr_exec:s0
+/sbin/postinitbhb*                    u:object_r:postinitbhb_exec:s0

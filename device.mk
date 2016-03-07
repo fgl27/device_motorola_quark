@@ -257,6 +257,7 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
+    busybox \
     fstab.qcom \
     init.mmi.boot.sh \
     init.mmi.touch.sh \
@@ -265,6 +266,8 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
+    post-init-bhb.sh \
+    post-init-rr.sh \
     ueventd.qcom.rc
 
 # RIL
