@@ -68,8 +68,6 @@ chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
 echo umbrella_core > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
 chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor
 
-# Misc disable Fsync
-echo N > /sys/module/sync/parameters/fsync_enabled
 # Wake - enable dt2w and s2w by default
 echo 1 > /sys/android_touch2/doubletap2wake
 echo 5 > /sys/android_touch2/sweep2wake
@@ -77,18 +75,5 @@ echo 5 > /sys/android_touch2/sweep2wake
 # GPU max clock to sotck value, enable adreno_idler
 echo 600000000 > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk
 echo Y > /sys/module/adreno_idler/parameters/adreno_idler_active
-
-# LMK -  enable Adaptive LMK
-echo 1 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
-echo 53059 > /sys/module/lowmemorykiller/parameters/vmpressure_file_min
-echo 1 > /sys/module/process_reclaim/parameters/enable_process_reclaim
-echo 100 > /sys/module/process_reclaim/parameters/pressure_max
-
-# Virtual memory - Tweak VM
-echo 20 > /proc/sys/vm/dirty_background_ratio
-echo 200 > /proc/sys/vm/dirty_expire_centisecs
-echo 40 > /proc/sys/vm/dirty_ratio
-echo 0 > /proc/sys/vm/swappiness
-echo 80 > /proc/sys/vm/vfs_cache_pressure
 
 exit;
