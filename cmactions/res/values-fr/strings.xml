@@ -19,6 +19,7 @@
   <!-- Gesture shortcuts -->
   <string name="user_aware_display_title">Affichage selon l\'utilisateur</string>
   <string name="user_aware_display_summary">Maintenir l\'écran allumé tant qu\'un utilisateur lui fait face</string>
+  <string name="screen_gestures_panel_title">Gestes</string>
   <string name="ambient_display_title">Affichage en mode veille</string>
   <string name="pick_up_gesture_title">Prise en main</string>
   <string name="pick_up_gesture_summary">Le voyant des notifications clignote lorsque pris en main, désancré, débranché ou sorti du boîtier</string>

@@ -17,7 +17,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Gesture shortcuts -->
-  <string name="user_aware_display_title">Reconhecer a tela do usuário</string>
+  <string name="user_aware_display_title">Tela que reconhece o usuário</string>
   <string name="user_aware_display_summary">Manter a tela ligada enquanto o usuário estiver na frente dela</string>
   <string name="screen_gestures_panel_title">Gestos</string>
   <string name="ambient_display_title">Tela ambiente</string>
