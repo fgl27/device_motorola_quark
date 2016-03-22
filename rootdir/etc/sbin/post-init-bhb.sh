@@ -45,8 +45,8 @@ echo 2649600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
 
 # Wake - enable dt2w and s2w by default
-echo 1 > /sys/android_touch2/doubletap2wake
-echo 5 > /sys/android_touch2/sweep2wake
+#echo 1 > /sys/android_touch/doubletap2wake
+#echo 15 > /sys/android_touch/sweep2wake
 
 # GPU max clock to sotck value, enable adreno_idler
 echo 600000000 > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk
