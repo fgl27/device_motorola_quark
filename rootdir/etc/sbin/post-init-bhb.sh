@@ -48,8 +48,11 @@ chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
 #echo 1 > /sys/android_touch/doubletap2wake
 #echo 15 > /sys/android_touch/sweep2wake
 
-# GPU max clock to sotck value, enable adreno_idler
+# GPU max clock to stock value, enable adreno_idler
 echo 600000000 > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk
 echo Y > /sys/module/adreno_idler/parameters/adreno_idler_active
+
+# Disabled BCL by default
+# echo disabled /sys/devices/qcom,bcl.38/mode
 
 exit;
