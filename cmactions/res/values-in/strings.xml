@@ -18,24 +18,9 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Gesture shortcuts -->
   <string name="user_aware_display_title">Tampilan sadar pengguna</string>
-  <string name="user_aware_display_summary">Biarkan layar menyala selama pengguna berada di depan layar</string>
-  <string name="ambient_display_title">Tampilan ruangan</string>
-  <string name="pick_up_gesture_title">Ambil</string>
-  <string name="pick_up_gesture_summary">Pemberitahuan berkedip saat mengambil atau mengangkat</string>
-  <string name="ir_wake_up_title">Lambai</string>
-  <string name="ir_wake_up_summary">Pemberitahuan berkedip saat Anda melambaikan tangan di depan layar</string>
   <string name="actions_title">Tindakan</string>
-  <string name="camera_gesture_title">Dwi-putar</string>
-  <string name="camera_gesture_summary">Tindakan saat menggunakan gerakan dwi-putar</string>
-  <string name="chop_chop_gesture_title">Penggal</string>
-  <string name="chop_chop_gesture_summary">Tindakan saat menggunakan gerakan penggal</string>
-  <string name="ir_silencer_title">Lambai untuk senyap</string>
-  <string name="ir_silencer_summary">Senyapkan panggilan masuk dan tunda alarm dengan melambaikan tangan Anda di depan layar</string>
   <string name="action_none">Nonaktifkan</string>
-  <string name="action_launch_camera">Luncurkan Kamera</string>
-  <string name="action_torch">Nyala/matikan senter</string>
   <string name="feedback_intensity_title">Intensitas tanggapan sentuhan</string>
-  <string name="feedback_intensity_summary">Kuatnya tanggapan sentuhan untuk tindakan penggal dan dwi-putar</string>
   <string name="feedback_intensity_none">Dinonaktifkan</string>
   <string name="feedback_intensity_low">Rendah</string>
   <string name="feedback_intensity_medium">Sedang</string>

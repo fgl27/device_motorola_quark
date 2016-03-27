@@ -19,6 +19,7 @@
   <!-- Gesture shortcuts -->
   <string name="user_aware_display_title">Etkileşimli ekran</string>
   <string name="user_aware_display_summary">Kullanıcı ekranın önündeyken ekranı açık tutun</string>
+  <string name="screen_gestures_panel_title">Hareketler</string>
   <string name="ambient_display_title">Bildirim ekranı</string>
   <string name="pick_up_gesture_title">Telefonu tut</string>
   <string name="pick_up_gesture_summary">Telefon ele alındığında bildirimleri at</string>
