@@ -251,10 +251,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     qcmediaplayer
 
-# ETC scripts
-PRODUCT_PACKAGES += \
-    init.qcom.bt.sh
-
 # Ramdisk
 PRODUCT_PACKAGES += \
     busybox \
@@ -320,3 +316,7 @@ PRODUCT_COPY_FILES += \
 
 # never dexopt the MotoSignature
 $(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
+
+# ETC scripts
+PRODUCT_PACKAGES += \
+    init.qcom.bt.sh
