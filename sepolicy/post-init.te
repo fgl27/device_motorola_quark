@@ -12,3 +12,9 @@ allow postinitbhb shell_exec:file rx_file_perms;
 
 unix_socket_connect(postinitrr, property, init)
 unix_socket_connect(postinitbhb, property, init)
+
+allow postinitrr device:file open;
+allow postinitrr init:unix_stream_socket { getattr listen };
+
+allow postinitbhb device:file open;
+allow postinitbhb init:unix_stream_socket { getattr listen };
