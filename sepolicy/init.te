@@ -20,3 +20,6 @@ allow init self:socket { read write create ioctl };
 allow init socket_device:sock_file { create setattr };
 allow init user_service:service_manager { find };
 allow init package_service:service_manager { find };
+allow init sysfs_light:file setattr;
+allow init sysfs_power:file setattr;
+allow init sysfs_dt2w:file setattr;

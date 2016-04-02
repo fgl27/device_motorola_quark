@@ -438,9 +438,8 @@
     <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">9000</integer>
 
-    <!-- enable doze powersaving mode -->
+    <!-- Enable doze powersaving mode -->
     <bool name="config_enableAutoPowerModes">true</bool>
-
 
     <!-- The RadioAccessFamilies supported by the device.
          Empty is viewed as "all".  Only used on devices which
