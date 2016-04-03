@@ -163,18 +163,6 @@
              channels="2" />
     </EncoderProfile>
 
-    <EncoderProfile quality="2160p" fileFormat="mp4" duration="30">
-            <Video codec="h264"
-                   bitRate="30000000"
-                   width="3840"
-                   height="2160"
-                   frameRate="30" />
-            <Audio codec="aac"
-                   bitRate="156000"
-                   sampleRate="48000"
-                   channels="2" />
-    </EncoderProfile>
-
     <EncoderProfile quality="timelapselow" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="512000"
@@ -511,5 +499,4 @@
     <!-- IKVPREL2KK-2424 Disable WMV and WMA support -->
     <VideoDecoderCap name="wmv" enabled="false"/>
     <AudioDecoderCap name="wma" enabled="false"/>
-
 </MediaSettings>
