@@ -16,7 +16,6 @@ vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
 vendor/lib/libaudioalsa.so
 vendor/lib/libcsd-client.so
-vendor/lib/soundfx/libmmieffectswrapper.so
 
 # Audio (sourced from shamu)
 lib/libdetectmodem.so
@@ -31,7 +30,7 @@ etc/acdbdata/Headset_cal.acdb
 etc/acdbdata/Speaker_cal.acdb
 
 # ATFWD
--app/atfwd/atfwd.apk
+-priv-app/atfwd/atfwd.apk
 bin/ATFWD-daemon
 
 # Audio firmware
@@ -204,18 +203,17 @@ bin/thermal-engine:vendor/bin/thermal-engine
 vendor/lib/libqc-opt.so
 vendor/lib/libthermalioctl.so
 
-# DRM (sourced from shamu)
+# DRM
 bin/qseecomd
+lib/libdrmdecrypt.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
-vendor/lib/libdrmdecrypt.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
-vendor/lib/libWVphoneAPI.so
 vendor/lib/libWVStreamControlAPI_L1.so
 
 # DRM firmware
@@ -255,7 +253,7 @@ vendor/lib/liblocationservice.so
 vendor/lib/libquipc_os_api.so
 vendor/lib/libulp2.so
 
-# Graphics (sourced from trlte)
+# Graphics
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -277,16 +275,14 @@ vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
 vendor/lib/libscale.so
 
-# Graphics firmware (sourced from trlte)
+# Graphics firmware
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
 # Media
+vendor/lib/libDivxDrm.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-color-convertor.so
-
-# Media (sourced from trlte)
-vendor/lib/libDivxDrm.so
 vendor/lib/libmmosal.so
 
 # Media firmware
@@ -304,7 +300,6 @@ bin/dbvc_atvc_property_set
 bin/hardware_revisions.sh
 
 # NFC
-etc/firmware/BCM20795A0_001.001.023.0003.0022_Generic_I2C_NCD_Unsigned_configdata.ncd
 etc/firmware/BCM20795A1_001.002.012.0003.0078_Generic_I2C_NCD_Signed_configdata.ncd
 
 # Qualcomm framework
@@ -356,22 +351,6 @@ vendor/lib/libsystem_health_mon.so
 vendor/lib/librpmb.so
 vendor/lib/libxml.so
 
-# Radio dependencies
-vendor/lib/lib-dplmedia.so
-vendor/lib/lib-imscamera.so
-vendor/lib/lib-imsdpl.so
-vendor/lib/lib-imsqimf.so
-vendor/lib/lib-imsrcs.so
-vendor/lib/lib-imss.so
-vendor/lib/lib-imsSDP.so
-vendor/lib/lib-imsvt.so
-vendor/lib/lib-imsxml.so
-vendor/lib/lib-rtpcommon.so
-vendor/lib/lib-rtpcore.so
-vendor/lib/lib-rtpdaemoninterface.so
-vendor/lib/lib-rtpsl.so
-vendor/lib/libvcel.so
-
 # Sensors
 bin/stm401
 etc/firmware/cy8c20247_24lkxi.hex
@@ -409,16 +388,6 @@ etc/firmware/vpu.b12
 etc/firmware/vpu.mbn
 etc/firmware/vpu.mdt
 
-# Verizon
--priv-app/appdirectedsmspermission/appdirectedsmspermission.apk
--app/vzwapnpermission/vzwapnpermission.apk
--app/VZWAPNLib/VZWAPNLib.apk
--priv-app/VZWAPNService/VZWAPNService.apk
-
-# Verizon (sourced from shamu)
--priv-app/MotoSignatureApp/MotoSignatureApp.apk
--priv-app/BuaContactAdapter/BuaContactAdapter.apk
-
 # Voice recognition
 lib/hw/audio.motvr.default.so
 lib/libspeakerbundle.so:lib/soundfx/libspeakerbundle.so
@@ -432,93 +401,50 @@ etc/permissions/com.motorola.triggerenroll.xml
 -priv-app/TriggerTrainingService/TriggerTrainingService.apk
 lib/hw/sound_trigger.primary.apq8084.so
 lib/libsupermodel.so
+vendor/moto/audiomonitor/sensory/lts_en_us_9_5_2b.raw
+vendor/moto/audiomonitor/sensory/nn_de_mfcc_16k_15_big_250_v3_4.raw
+vendor/moto/audiomonitor/sensory/nn_en_uk_mfcc_16k_15_big_250_v2_2.raw
+vendor/moto/audiomonitor/sensory/nn_en_us_mfcc_16k_15_big_250_v5_1_1.raw
+vendor/moto/audiomonitor/sensory/nn_es_es_mfcc_16k_15_big_250_v1_5.raw
+vendor/moto/audiomonitor/sensory/nn_es_us_mfcc_16k_15_big_250_v1_5.raw
+vendor/moto/audiomonitor/sensory/nn_fr_ca_mfcc_16k_15_big_250_v2_5.raw
+vendor/moto/audiomonitor/sensory/nn_fr_fr_mfcc_16k_15_big_250_v2_4.raw
+vendor/moto/audiomonitor/sensory/nn_it_mfcc_16k_15_big_250_v3_5.raw
+vendor/moto/audiomonitor/sensory/nn_pt_mfcc_16k_15_big_250_v1_1.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_dede_1_1.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_enuk_1_1.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_enus_2_0.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_eses_1_2.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_esus_1_2.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_frca_prec1_1_0.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_frfr_1_1.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_it_it_1_0.raw
+vendor/moto/audiomonitor/sensory/phonemesearch_ptbr_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_dede_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_enuk_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_enus_2_0.raw
+vendor/moto/audiomonitor/sensory/svsid_eses_1_2.raw
+vendor/moto/audiomonitor/sensory/svsid_esus_1_2.raw
+vendor/moto/audiomonitor/sensory/svsid_frca_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_frfr_1_1.raw
+vendor/moto/audiomonitor/sensory/svsid_it_it_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_ptbr_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn1_dede_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn1_enuk_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn1_eses_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn1_itit_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn_enus_3_1.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn_frfr_1_0.raw
+vendor/moto/audiomonitor/sensory/svsid_triggerogn_ptbr_2_1.raw
 
 # These binaries were patched
 # lib/hw/sound_trigger.primary.apq8084.so (dependency)
 
-# changes made by BHB27 below
-# removed all vendor/moto/audiomonitor/sensory/
-# add this files
-# 02/11
-lib/libjni_mot_mosaic.so
-lib/libslowmotionconverter.so
-# 24/11
-etc/firmware/dxhdcp2.b00
-etc/firmware/dxhdcp2.b01
-etc/firmware/dxhdcp2.b02
-etc/firmware/dxhdcp2.b03
-etc/firmware/dxhdcp2.mdt
-etc/firmware/emmc_ffu_45_01_SDW32G.fw
-etc/firmware/emmc_ffu_45_01_SDW64G.fw
-etc/firmware/leia_pfp_470.fw
-etc/firmware/leia_pm4_470.fw
-vendor/bin/qti
-vendor/lib/drm/libdrmprplugin.so
-vendor/lib/egl/libq3dtools_esx.so
-vendor/lib/egl/libQTapGLES.so
-vendor/lib/libbt-vendor.so
-vendor/lib/libc2d30-a3xx.so
-vendor/lib/libcneconn.so
-vendor/lib/libdsucsd.so
-vendor/lib/libepdsp.so
-vendor/lib/libFileMux.so
-vendor/lib/libimscamera_jni.so
-vendor/lib/libimsmedia_jni.so
-vendor/lib/libjpegdhw.so
-vendor/lib/liblistensoundmodel.so
-vendor/lib/liblistensoundmodel2.so
-vendor/lib/liblowi_client.so
-vendor/lib/libmm-hdcpmgr.so
-vendor/lib/libmmQSM.so
-vendor/lib/libmmrtpdecoder.so
-vendor/lib/libmmrtpencoder.so
-vendor/lib/libNimsWrap.so
-vendor/lib/libois_lc898122.so
-vendor/lib/libppl.so
-vendor/lib/libprdrmdecrypt.so
-vendor/lib/libpvr.so
-vendor/lib/libqcgesture.so
-vendor/lib/libqmiservices_ext.so
-vendor/lib/libquipc_ulp_adapter.so
-vendor/lib/lib-rcsimssjni.so
-vendor/lib/lib-rcsjni.so
-vendor/lib/librmp.so
-vendor/lib/libscve.so
-vendor/lib/libscve_stub.so
-vendor/lib/libSHIMDivxDrm.so
-vendor/lib/libsubsystem_control.so
-vendor/lib/libSubSystemShutdown.so
-vendor/lib/libtzdrmgenprov.so
-vendor/lib/libtzplayready.so
-vendor/lib/libusutils.so
-vendor/lib/libvendorconn.so
-vendor/lib/libwifiscanner.so
-vendor/lib/libxt_native.so
-vendor/lib/libxtadapter.so
-vendor/lib/libxtwifi_ulp_adaptor.so
-vendor/lib/libxtwifi_zpp_adaptor.so
-vendor/lib/rfsa/adsp/libapps_mem_heap.so
-vendor/lib/rfsa/adsp/libdspCV_skel.so
-vendor/lib/rfsa/adsp/libfastcvadsp.so
-vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
-vendor/lib/rfsa/adsp/libscveT2T_skel.so
-vendor/lib/soundfx/libmmieffectswrapper.so
-vendor/media/LMspeed_508.emd
-vendor/media/PFFprec_600.emd
-vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/landmark_group_meta_data.bin
-vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/left_eye-y0-yi45-p0-pi45-r0-ri20.lg_32-tree7-wmd.bin
-vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/nose_base-y0-yi45-p0-pi45-r0-ri20.lg_32-tree7-wmd.bin
-vendor/pittpatt/models/detection/multi_pose_face_landmark_detectors.8/right_eye-y0-yi45-p0-pi45-r0-ri20.lg_32-3-tree7-wmd.bin
-vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/head-y0-yi45-p0-pi45-r0-ri30.4a-v24-tree7-2-wmd.bin
-vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/head-y0-yi45-p0-pi45-rn30-ri30.5-v24-tree7-2-wmd.bin
-vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/head-y0-yi45-p0-pi45-rp30-ri30.5-v24-tree7-2-wmd.bin
-vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/pose-r.8.1.bin
-vendor/pittpatt/models/detection/yaw_roll_face_detectors.7.1/pose-y-r.8.1.bin
-vendor/pittpatt/models/recognition/face.face.y0-y0-71-N-tree_7-wmd.bin
-#12/05
-#move appdirectedsmspermission.apk and MotoSignatureApp.apk to priv
-# add
-etc/permissions/com.motorola.DirectedSMSProxy.xml
-etc/permissions/com.vzw.vzwapnlib.xml
+# Carrier related (sourced from shamu)
+-app/VZWAPNLib/VZWAPNLib.apk
+-framework/com.verizon.hardware.telephony.ehrpd.jar
+-framework/com.verizon.hardware.telephony.lte.jar
 -priv-app/AppDirectedSMSProxy/AppDirectedSMSProxy.apk
-lib/libflacencoder.so
+-priv-app/BuaContactAdapter/BuaContactAdapter.apk
+-priv-app/MotoSignatureApp/MotoSignatureApp.apk
+-priv-app/VZWAPNService/VZWAPNService.apk

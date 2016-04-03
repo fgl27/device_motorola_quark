@@ -268,14 +268,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librmnetctl
 
-# Shims
-PRODUCT_PACKAGES += \
-    libshim_camera \
-    libshim_log \
-    libshim_mdmcutback \
-    libshim_sensors \
-    libshim_ril
-
 # SSL Compat
 PRODUCT_PACKAGES += \
     libboringssl-compat
