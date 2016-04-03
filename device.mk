@@ -268,14 +268,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librmnetctl
 
-# SSL Compat
-PRODUCT_PACKAGES += \
-    libboringssl-compat
-
-# Stlport
-PRODUCT_PACKAGES += \
-    libstlport
-
 # Support
 PRODUCT_PACKAGES += \
     libcurl \
