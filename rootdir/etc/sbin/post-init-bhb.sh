@@ -13,11 +13,10 @@ mkdir /tmp;
 fi
 
 # Give permissions to execute
-chown -R root:system /tmp/;
 chmod -R 777 /tmp/;
 chmod 6755 /sbin/*;
 chmod 6755 /system/xbin/*;
-echo "BHB Boot initiated on $(date)" > /tmp/bootcheck-bhb;
+echo "BHB27-Kernel Boot initiated on $(date)" > /tmp/bootcheck-bhb;
 
 #enable, disable and tweak some features of the kernel by default for better performance vs battery
 
@@ -33,26 +32,19 @@ echo 2649600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
 chmod 644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
-echo 2649600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 2649600 > /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
 chmod 444 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq
 
 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
-echo 2649600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 2649600 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
 chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
 
 chmod 644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
-echo 2649600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 2649600 > /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
 chmod 444 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq
-
-# Wake - enable dt2w and s2w by default
-#echo 1 > /sys/android_touch/doubletap2wake
-#echo 15 > /sys/android_touch/sweep2wake
 
 # GPU max clock to stock value, enable adreno_idler
 echo 600000000 > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk
 echo Y > /sys/module/adreno_idler/parameters/adreno_idler_active
-
-# Disabled BCL by default
-# echo disabled /sys/devices/qcom,bcl.38/mode
 
 exit;

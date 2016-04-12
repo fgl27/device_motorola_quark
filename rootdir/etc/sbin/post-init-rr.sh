@@ -13,11 +13,10 @@ mkdir /tmp;
 fi
 
 # Give permissions to execute
-chown -R root:system /tmp/;
 chmod -R 777 /tmp/;
 chmod 6755 /sbin/*;
 chmod 6755 /system/xbin/*;
-echo "RR Boot initiated on $(date)" > /tmp/bootcheck-rr;
+echo "RR-ROM Boot initiated on $(date)" > /tmp/bootcheck-rr;
 
 # Install Busybox
 /sbin/busybox --install -s /sbin
