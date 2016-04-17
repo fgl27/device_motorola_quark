@@ -12,4 +12,4 @@
 /dev/block/platform/msm_sdcc.1/by-name/boot         /boot            emmc    defaults                                                                              recoveryonly
 /dev/block/platform/msm_sdcc.1/by-name/recovery     /recovery        emmc    defaults                                                                              recoveryonly
 
-/devices/*/xhci-hcd.0.auto/usb*                     auto             auto    defaults                                                                              voldmanaged=usbdisk:auto
+/devices/*/xhci-hcd.0.auto/usb*                     auto             auto    defaults                                                                              voldmanaged=usb:auto

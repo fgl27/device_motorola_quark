@@ -468,9 +468,13 @@ service atvc /system/bin/dbvc_atvc_property_set
     oneshot
 
 service batt_health /system/bin/batt_health
-    class main
+    class late_start
     user mot_pwric
-    group mot_pwric net_admin log
+    group log mot_pwric cache net_admin
+    disabled
+
+on property:sys.boot_completed=1
+   start batt_health
 
 service thermal-engine /system/bin/thermal-engine
     class main
@@ -522,7 +526,7 @@ service adspd /system/bin/adspd /dev/ttyHS3
 
 #start Sensor daemon
 service stm401 /system/bin/stm401 boot
-    class disabled
+    disabled
     user compass
     group compass misc input
     oneshot

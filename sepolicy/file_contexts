@@ -66,3 +66,5 @@
 /sys/power/autosleep                     u:object_r:sysfs_power:s0
 /sys/android_touch/doubletap2wake        u:object_r:sysfs_dt2w:s0
 /sys/vibrator/pwmvalue                   u:object_r:vib_sysfs:s0
+
+/system/bin/app_process	        u:object_r:zygote_exec:s0
