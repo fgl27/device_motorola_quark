@@ -6,9 +6,5 @@
   {
     "repository": "android_kernel_motorola_apq8084",
     "target_path": "kernel/motorola/apq8084"
-  },
-  {
-    "repository": "android_external_connectivity",
-    "target_path": "external/connectivity"
   }
 ]
