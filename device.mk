@@ -231,12 +231,16 @@ endif
 
 # OMX
 PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
     libdivxdrmdecrypt \
     libextmedia_jni \
     libOmxAacEnc \
     libOmxAmrEnc \
+    libOmxCore \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
+    libOmxVdec \
+    libOmxVenc \
     libOmxVidcCommon \
     libstagefrighthw
 
