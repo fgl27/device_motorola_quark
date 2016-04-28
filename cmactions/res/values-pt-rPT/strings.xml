@@ -36,9 +36,9 @@
   <string name="action_launch_camera">Iniciar a câmara</string>
   <string name="action_torch">Ativar/desativar lanterna</string>
   <string name="feedback_intensity_title">Intensidade da reação tátil</string>
-  <string name="feedback_intensity_summary">Força da reação tátil para o gesto de torcer duas vezes e duplo corte</string>
-  <string name="feedback_intensity_none">Inactivo</string>
-  <string name="feedback_intensity_low">Baixo</string>
-  <string name="feedback_intensity_medium">Médio</string>
-  <string name="feedback_intensity_high">Alto</string>
+  <string name="feedback_intensity_summary">Intensidade da reação tátil para o gesto de torcer duas vezes e duplo corte</string>
+  <string name="feedback_intensity_none">Desativada</string>
+  <string name="feedback_intensity_low">Baixa</string>
+  <string name="feedback_intensity_medium">Média</string>
+  <string name="feedback_intensity_high">Alta</string>
 </resources>
