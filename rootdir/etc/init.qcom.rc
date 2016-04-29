@@ -60,10 +60,6 @@ on init
     # Enable thermal control at init to prevent overheat during boot process
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/module/msm_thermal/core_control/enabled 1
-    #enable intellitermal # it out on stock cm kernel
-#    write /sys/module/msm_thermal/core_control/enabled 0
-#    write /sys/module/msm_thermal/parameters/enabled Y
-#    write /sys/module/msm_thermal/parameters/limit_temp_degC 65
 
 on charger
     trigger early-fs

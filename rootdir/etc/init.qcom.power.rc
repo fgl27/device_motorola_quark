@@ -80,12 +80,7 @@ on property:sys.boot_completed=1
     write /sys/block/mmcblk0/queue/read_ahead_kb 1024
     write /sys/module/cpu_boost/parameters/sync_threshold 300000
 
-    # The below with a # is only for bhb kernel remove all the below # on custom BHB27 kernel build
-#    write /sys/module/msm_thermal/core_control/enabled 0
-#    setprop sys.io.scheduler bfq
-
     # Start script
-#    start postinitbhb
     start postinitrr
 
 service postinitrr /sbin/post-init-rr.sh
@@ -93,9 +88,3 @@ service postinitrr /sbin/post-init-rr.sh
     user root
     disabled
     oneshot
-
-#service postinitbhb /sbin/post-init-bhb.sh
-#    class main
-#    user root
-#    disabled
-#    oneshot
