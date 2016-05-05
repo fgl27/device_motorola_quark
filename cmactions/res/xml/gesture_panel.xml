@@ -59,15 +59,6 @@
             android:entryValues="@array/action_values" />
 
         <ListPreference
-            android:key="gesture_chop_chop"
-            android:defaultValue="2"
-            android:title="@string/chop_chop_gesture_title"
-            android:dialogTitle="@string/chop_chop_gesture_title"
-            android:summary="@string/chop_chop_gesture_summary"
-            android:entries="@array/action_entries"
-            android:entryValues="@array/action_values" />
-
-        <ListPreference
             android:key="gesture_feedback_intensity"
             android:defaultValue="2"
             android:title="@string/feedback_intensity_title"
