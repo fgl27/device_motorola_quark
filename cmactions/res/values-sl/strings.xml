@@ -22,7 +22,7 @@
   <string name="screen_gestures_panel_title">Poteze</string>
   <string name="ambient_display_title">Okoliški zaslon</string>
   <string name="pick_up_gesture_title">Dvig</string>
-  <string name="pick_up_gesture_summary">Utripaj obvestila ob dvigu ali odstranitvi</string>
+  <string name="pick_up_gesture_summary">Utripaj obvestila ob dvigu ali odstranitvi iz stojala</string>
   <string name="ir_wake_up_title">Mahanje</string>
   <string name="ir_wake_up_summary">Utripaj obvestila ob mahanju z roko preko zaslona</string>
   <string name="actions_title">Dejanja</string>
