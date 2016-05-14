@@ -28,8 +28,6 @@
   <string name="actions_title">ક્રિયા</string>
   <string name="camera_gesture_title">ડબલ-ટ્વિસ્ટ</string>
   <string name="camera_gesture_summary">ડબલ-ટ્વીસ્ટ અંગસ્થિતિનો ઉપયોગ કરો ત્યારે થતી ક્રિયા</string>
-  <string name="chop_chop_gesture_title">ચોપ-ચોપ</string>
-  <string name="chop_chop_gesture_summary">ચૉપ-ચૉપ અંગસ્થિતિનો ઉપયોગ કરો ત્યારે થતી ક્રિયા</string>
   <string name="ir_silencer_title">શાંત પાડવા હાથ હલાવવો</string>
   <string name="ir_silencer_summary">સ્ક્રીન પરથી હાથ હલાવીને ઇનકમિંગ કોલ શાંત કરો અને ઍલાર્મ સ્નૂઝ કરો</string>
   <string name="action_none">અક્ષમ કરો</string>

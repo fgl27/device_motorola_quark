@@ -27,8 +27,6 @@
   <string name="actions_title">اقدامات</string>
   <string name="camera_gesture_title">دوبار پیچش</string>
   <string name="camera_gesture_summary">عمل هنگام استفاده از دوبار پیچش</string>
-  <string name="chop_chop_gesture_title">حرکت چاپ چاپ</string>
-  <string name="chop_chop_gesture_summary">عمل هنگام استفاده از حرکت چاپ چاپ</string>
   <string name="ir_silencer_title">حرکت برای سکوت</string>
   <string name="ir_silencer_summary">ساکت کردن تماس‌های دریافتی و تعویق هشدارها با تکان دادن دست خود روی صفحه نمایش</string>
   <string name="action_none">غیر فعال کردن</string>

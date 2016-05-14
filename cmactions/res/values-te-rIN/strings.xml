@@ -28,8 +28,6 @@
   <string name="actions_title">ఆక్షన్స్</string>
   <string name="camera_gesture_title">డబుల్ ట్విస్ట్</string>
   <string name="camera_gesture_summary">డబుల్ ట్విస్ట్ చేసినప్పుడు కావాల్సిన ఆక్షన్</string>
-  <string name="chop_chop_gesture_title">చాప్-చాప్</string>
-  <string name="chop_chop_gesture_summary">చాప్-చాప్ చేసినప్పుడు కావాల్సిన ఆక్షన్</string>
   <string name="ir_silencer_title">చేతు వేవ్ చేసినప్పుడు సైలెంట్ గా వెళ్ళు</string>
   <string name="ir_silencer_summary">చేతు వేవ్ చేసినప్పుడు ఇన్కమింగ్ కాల్స్ ని మరియు అలారం ని సైలెంట్ చేయు</string>
   <string name="action_none">డిసెబుల్ </string>

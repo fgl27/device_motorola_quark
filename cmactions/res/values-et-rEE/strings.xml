@@ -27,8 +27,6 @@
   <string name="actions_title">Tegevused</string>
   <string name="camera_gesture_title">Topelt-vääne</string>
   <string name="camera_gesture_summary">Toiming topelt-vääne žesti kasutamisel</string>
-  <string name="chop_chop_gesture_title">Ruttu-ruttu</string>
-  <string name="chop_chop_gesture_summary">Toiming ruttu-ruttu žesti kasutamisel</string>
   <string name="ir_silencer_title">Viipa vaigistamiseks</string>
   <string name="ir_silencer_summary">Vaigista sissetulevad kõned ja lükka edasi alarmid viibates käega üle ekraani</string>
   <string name="action_none">Keela</string>

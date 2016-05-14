@@ -28,8 +28,6 @@
   <string name="actions_title">Åtgärder</string>
   <string name="camera_gesture_title">Dubbel vridning</string>
   <string name="camera_gesture_summary">Åtgärd när du använder en dubbel vridningsgest</string>
-  <string name="chop_chop_gesture_title">Hacka-hacka</string>
-  <string name="chop_chop_gesture_summary">Åtgärd när du använder hacka-hacka gesten</string>
   <string name="ir_silencer_title">Vifta för att tysta</string>
   <string name="ir_silencer_summary">Tysta samtal och snooza alarm genom att vifta med handen över skärmen</string>
   <string name="action_none">Inaktivera</string>

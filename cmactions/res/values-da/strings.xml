@@ -28,8 +28,6 @@
   <string name="actions_title">Handlinger</string>
   <string name="camera_gesture_title">Dobbelt-drej</string>
   <string name="camera_gesture_summary">Handling når du bruger dobbelt-drej bevægelsen</string>
-  <string name="chop_chop_gesture_title">Hak-hak</string>
-  <string name="chop_chop_gesture_summary">Handling når du bruger hak-hak bevægelsen</string>
   <string name="ir_silencer_title">Vink for lydløs</string>
   <string name="ir_silencer_summary">Dæmp indgående opkald og udsæt alarmer ved at vinke med hånden hen over skærmen</string>
   <string name="action_none">Deaktivér</string>

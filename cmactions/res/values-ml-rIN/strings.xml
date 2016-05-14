@@ -28,8 +28,6 @@
   <string name="actions_title">പ്രവർത്തികൾ</string>
   <string name="camera_gesture_title">ഇരട്ട ട്വിസ്റ്റ്‌</string>
   <string name="camera_gesture_summary">ഇരട്ട ട്വിസ്റ്റ്‌ ആംഗ്യ പ്രവൃത്തീ</string>
-  <string name="chop_chop_gesture_title">വെട്ടി നുറുക്കുന്ന ആംഗ്യം</string>
-  <string name="chop_chop_gesture_summary">വെട്ടി നുറുക്കുന്ന ആംഗ്യ പ്രവൃത്തി</string>
   <string name="ir_silencer_title">നിശബ്ദമാകാന്‍ വീശുക</string>
   <string name="ir_silencer_summary">കോളുകളും അലാറമുകളും കൈ വീശി കാണിച്ചുകൊണ്ട് നിസ്സബ്ദമാക്കുക</string>
   <string name="action_none">ഉപയോഗരഹിതമാക്കുക</string>

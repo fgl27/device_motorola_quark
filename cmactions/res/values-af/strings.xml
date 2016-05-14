@@ -28,8 +28,6 @@
   <string name="actions_title">Aksies</string>
   <string name="camera_gesture_title">Dubbel-draai</string>
   <string name="camera_gesture_summary">Voer aksie uit wanneer die dubbel-draai gebaar gedoen word</string>
-  <string name="chop_chop_gesture_title">Kap-kap</string>
-  <string name="chop_chop_gesture_summary">Voer aksie uit wanneer die kap-kap gebaar gedoen word</string>
   <string name="ir_silencer_title">Waai vir stilte</string>
   <string name="ir_silencer_summary">Maak inkomende oproepe stil en sluimer alarms deur die waai van jou hand oor die skerm</string>
   <string name="action_none">Deaktiveer</string>

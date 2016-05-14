@@ -28,8 +28,6 @@
   <string name="actions_title">Actions</string>
   <string name="camera_gesture_title">Double-tour</string>
   <string name="camera_gesture_summary">Action lors du geste double-tour</string>
-  <string name="chop_chop_gesture_title">Double tranchage</string>
-  <string name="chop_chop_gesture_summary">Action lors du geste double tranchage</string>
   <string name="ir_silencer_title">Agiter pour couper le son</string>
   <string name="ir_silencer_summary">Couper la sonnerie des appels entrants et le son des alarmes en balayant l\'écran de la main</string>
   <string name="action_none">Désactiver</string>

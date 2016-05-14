@@ -28,8 +28,6 @@
   <string name="actions_title">ಕಾರ್ಯಗಳು</string>
   <string name="camera_gesture_title">ದ್ವಿಗುಣ-ಟ್ವಿಸ್ಟ್</string>
   <string name="camera_gesture_summary">ದ್ವಿಗುಣ ಟ್ವಿಸ್ಟ್ ಸನ್ನೆಯನ್ನು ಉಪಯೋಗಿಸುವಾಗಿನ ಕ್ರಿಯೆ</string>
-  <string name="chop_chop_gesture_title">ಚಾಪ್-ಚಾಪ್</string>
-  <string name="chop_chop_gesture_summary">ಚಾಪ್-ಚಾಪ್ ಸನ್ನೆಯನ್ನು ಉಪಯೋಗಿಸುವಾಗಿನ ಕ್ರಿಯೆ</string>
   <string name="ir_silencer_title">ನಿಶ್ಯಬ್ಧಿಸಲು ವೇವ್</string>
   <string name="ir_silencer_summary">ಪರದೆಯ ಮೇಲೆ ನಿಮ್ಮ ಹಸ್ತವನ್ನು ವೇವ್ ಮಾಡುವುದರ ಮೂಲಕ ಒಳಬರುವ ಕರೆಗಳನ್ನು ನಿಶ್ಯಬ್ಧಗೊಳಿಸಿ ಮತ್ತು ಅಲಾರಂಗಳನ್ನು ಸ್ನೂಜ್ ಮಾಡಿ</string>
   <string name="action_none">ನಿಷ್ಕ್ರಿಯಗೊಂಡಿದೆ</string>

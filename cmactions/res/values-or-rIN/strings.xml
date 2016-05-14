@@ -28,8 +28,6 @@
   <string name="actions_title">କ୍ରିୟାଗୁଡିକ</string>
   <string name="camera_gesture_title">ଡବଲ୍‍-ଟ୍ୱିଷ୍ଟ</string>
   <string name="camera_gesture_summary">ଡବଲ୍‍ ଟ୍ୱିଷ୍ଟ ଅଙ୍ଗଭଙ୍ଗୀ୍‍ ବ୍ୟବହାର କରିବା ସମୟରେ କ୍ରିୟା</string>
-  <string name="chop_chop_gesture_title">ଚପ୍‍-ଚପ୍‍</string>
-  <string name="chop_chop_gesture_summary">ଚପ୍‍-ଚପ୍‍ ଅଙ୍ଗଭଙ୍ଗୀ୍‍ ବ୍ୟବହାର କରି ସଂଚାଳନ</string>
   <string name="ir_silencer_title">ମୌନ କରିବା ପାଇଁ ୱେଭ୍‍</string>
   <string name="ir_silencer_summary">ସ୍କ୍ରିନ୍‍ରେ ଆପଣଙ୍କ ହାତ ହଲାଇ ଆସୁଥିବା କଲ୍‍କୁ ମୌନ କରନ୍ତୁ ଓ ଆଲାର୍ମ୍‍ ସ୍ନୁଜ୍‍ କରନ୍ତୁ</string>
   <string name="action_none">ଅକ୍ଷମ</string>

@@ -27,8 +27,6 @@
   <string name="actions_title">操作</string>
   <string name="camera_gesture_title">雙重扭動</string>
   <string name="camera_gesture_summary">雙重扭動手勢時所執行的操作</string>
-  <string name="chop_chop_gesture_title">迅速動作</string>
-  <string name="chop_chop_gesture_summary">迅速動作手勢時所執行的操作</string>
   <string name="ir_silencer_title">揮手以靜音</string>
   <string name="ir_silencer_summary">在螢幕上揮手以將來電靜音和延遲鬧鐘</string>
   <string name="action_none">停用</string>

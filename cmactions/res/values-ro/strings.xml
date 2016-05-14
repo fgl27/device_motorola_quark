@@ -25,7 +25,6 @@
   <string name="ir_wake_up_title">Unduire</string>
   <string name="ir_wake_up_summary">Pulsează notificările când unduiți mâna peste ecran</string>
   <string name="actions_title">Acțiuni</string>
-  <string name="chop_chop_gesture_title">Chop-Chop</string>
   <string name="ir_silencer_title">Unduire pentru silențios</string>
   <string name="ir_silencer_summary">Trece pe silențios apelurile primite și amână alarmele prin unduirea palmei de-a lungul ecranului</string>
   <string name="action_none">Dezactivare</string>

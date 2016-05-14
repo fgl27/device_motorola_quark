@@ -28,8 +28,6 @@
   <string name="actions_title">Dejanja</string>
   <string name="camera_gesture_title">Dvojno zvijanje</string>
   <string name="camera_gesture_summary">Dejanje ob potezi dvojnega zvijanja</string>
-  <string name="chop_chop_gesture_title">Dvakratno navpično tresenje</string>
-  <string name="chop_chop_gesture_summary">Dejanje on uporabi poteze dvakratnega navpičnega tresenja</string>
   <string name="ir_silencer_title">Mahaj za utišanje</string>
   <string name="ir_silencer_summary">Utišaj dohodne klice in daj budilko v dremež z mahanjem roke preko zaslona</string>
   <string name="action_none">Onemogoči</string>

@@ -28,8 +28,6 @@
   <string name="actions_title">পদক্ষেপসমূহ</string>
   <string name="camera_gesture_title">ডাবল-টুইষ্ট</string>
   <string name="camera_gesture_summary">ডাবল-টুইষ্ট ভঙ্গিমা ব্যৱহাৰ কৰা সময়ৰ ক্ৰিয়া</string>
-  <string name="chop_chop_gesture_title">চপ-চপ</string>
-  <string name="chop_chop_gesture_summary">চপ-চপ ভঙ্গিমা ব্যৱহাৰ কৰা সময়ৰ ক্ৰিয়া</string>
   <string name="ir_silencer_title">নীৰৱ কৰিবলৈ হাত বাউলি দিয়া</string>
   <string name="ir_silencer_summary">স্ক্ৰীণৰ ওপৰেৰে আপোনাৰ হাত বাউলি দি ইনকামিং কল নীৰৱ কৰক আৰু এলাৰ্ম স্নুজ কৰক</string>
   <string name="action_none">নিস্ক্ৰিয়</string>

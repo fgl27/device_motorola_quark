@@ -28,8 +28,6 @@
   <string name="actions_title">الإجراءات</string>
   <string name="camera_gesture_title">تدوير مزدوج</string>
   <string name="camera_gesture_summary">الإجراء في حالة إيماءة التدوير المزدوج </string>
-  <string name="chop_chop_gesture_title">إيماءة التقطيع</string>
-  <string name="chop_chop_gesture_summary">الإجراء عند استخدام إيماءة التقطيع المزدوج</string>
   <string name="ir_silencer_title">التلويح باليد للإسكات</string>
   <string name="ir_silencer_summary">إسكات المكالمات الواردة وتنبيهات الغفوة من خلال التلويح بيدك عبر الشاشة</string>
   <string name="action_none">تعطيل</string>

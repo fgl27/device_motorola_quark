@@ -27,8 +27,6 @@
   <string name="actions_title">Hərəkətlər</string>
   <string name="camera_gesture_title">Cüt yellə</string>
   <string name="camera_gesture_summary">Cüt yelləmə jest hərəkəti</string>
-  <string name="chop_chop_gesture_title">Doğrama</string>
-  <string name="chop_chop_gesture_summary">Doğramaq jestindən istifadə hərəkəti</string>
   <string name="ir_silencer_title">Səssizə almaq üçün yelləyin</string>
   <string name="ir_silencer_summary">Əlinizi ekran qarşısında yelləyəndə gələn zəngləri səssizə alar və zəngli saatı təxirə salar</string>
   <string name="action_none">Ləğv et</string>

@@ -28,8 +28,6 @@
   <string name="actions_title">Handlinger</string>
   <string name="camera_gesture_title">Dobbel-vri</string>
   <string name="camera_gesture_summary">Handling når du bruker dobbelvridningsgesten</string>
-  <string name="chop_chop_gesture_title">Hakk-hakk</string>
-  <string name="chop_chop_gesture_summary">Handling når du bruker hakk-hakk-gesten</string>
   <string name="ir_silencer_title">Vink for å dempe lyden</string>
   <string name="ir_silencer_summary">Demp innkommende samtaler og slumre alarmer ved å vinke med hånden over skjermen</string>
   <string name="action_none">Deaktiver</string>
