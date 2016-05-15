@@ -10,7 +10,8 @@ alias br='/home/fella/m/device/motorola/quark/rootdir/etc/sbin/build_rom.sh'
 alias qq='cd ~/m/device/motorola/quark/'
 alias kk='cd ~/m/kernel1/motorola/apq8084/'
 alias vv='cd ~/m/vendor/motorola/quark/'
-
+alias tt='cd ~/om/device/motorola/quark/'
+alias bt='/home/fella/m/device/motorola/quark/rootdir/etc/sbin/build_TWRP.sh'
 romservice quark MM also tool for kernel build...
 
 <?xml version="1.0" encoding="UTF-8"?>
