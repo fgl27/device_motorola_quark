@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
     package="com.cyanogenmod.settings.device"
-    android:versionCode="1"
-    android:versionName="1.0"
-    android:sharedUserId="android.uid.system"
-    >
+    coreApp="true"
+    android:sharedUserId="android.uid.system" >
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <uses-sdk
-        android:minSdkVersion="21"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="21" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:label="CMActions"
         android:persistent="true"
+        android:restoreAnyVersion="true"
+        android:supportsRtl="true"
         android:theme="@android:style/Theme.Material.Settings" >
 
         <receiver android:name="com.cyanogenmod.settings.device.BootCompletedReceiver">
