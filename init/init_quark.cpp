@@ -147,6 +147,17 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
         property_set("persist.data.iwlan.enable", "true");
         property_set("persist.radio.ignore_ims_wlan", "1");
         property_set("persist.radio.data_con_rprt", "1");
+        // XT1254 - IMS Volte related
+        property_set("ro.telephony.get_imsi_from_sim", "true");
+        property_set("persist.data.iwlan.enable", "true");
+        property_set("persist.radio.ignore_ims_wlan", "1");
+        property_set("persist.radio.data_con_rprt", "1");
+        // Reduce IMS logging
+        property_set("persist.ims.disableDebugLogs", "1");
+        property_set("persist.ims.disableADBLogs", "2");
+        property_set("persist.ims.disableDebugLogs", "0");
+        property_set("persist.ims.disableQXDMLogs", "0");
+        property_set("persist.ims.disableIMSLogs", "1");;
         INFO("Set properties for \"verizon\"!\n");
     } else if (ISMATCH(fsgid_value, "verizon_gsm")) {
         // XT1254 - Droid Turbo, but set as gsm phone
