@@ -169,6 +169,10 @@ PRODUCT_PACKAGES += \
     libgenlock \
     memtrack.apq8084
 
+# Gello
+PRODUCT_PACKAGES += \
+    Gello
+
 # IDC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/atmel_mxt_ts.idc:system/usr/idc/atmel_mxt_ts.idc
