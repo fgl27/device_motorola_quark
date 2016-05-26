@@ -65,8 +65,10 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
         // Other actions that are always enabled
 
         SensorAction cameraAction = cmActionsSettings.newCameraActivationAction();
+        SensorAction chopChopAction = cmActionsSettings.newChopChopAction();
 
         mUpdatedStateNotifiers.add(new CameraActivationSensor(cmActionsSettings, cameraAction, mSensorHelper));
+        mUpdatedStateNotifiers.add(new ChopChopSensor(cmActionsSettings, chopChopAction, mSensorHelper));
         mUpdatedStateNotifiers.add(new IrSilencer(cmActionsSettings, context, mSensorHelper,
                 mIrGestureManager));
 
