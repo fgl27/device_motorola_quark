@@ -26,13 +26,13 @@ import android.util.Log;
 
 public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier {
     private static final String TAG = "CMActions-ChopChopSensor";
-
-    private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
+    private static final int DELAY_BETWEEN_CHOP_CHOP_IN_MS = 1500;
 
     private final CMActionsSettings mCMActionsSettings;
     private final SensorAction mAction;
     private final SensorHelper mSensorHelper;
     private final Sensor mSensor;
+    private long mLastAction;
 
     private boolean mIsEnabled;
 
@@ -42,6 +42,7 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
         mAction = action;
         mSensorHelper = sensorHelper;
         mSensor = sensorHelper.getChopChopSensor();
+        mLastAction = System.currentTimeMillis();
     }
 
     @Override
@@ -59,8 +60,15 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        Log.d(TAG, "chop chop triggered");
-        mAction.action();
+
+        long now = System.currentTimeMillis();
+        if (now - mLastAction > DELAY_BETWEEN_CHOP_CHOP_IN_MS) {
+            Log.d(TAG, "Allowing chop chop");
+            mLastAction = now;
+            mAction.action();
+        } else {
+            Log.d(TAG, "Denying chop chop");
+        }
     }
 
     @Override

@@ -22,11 +22,10 @@ import android.util.Log;
 
 public class DozePulseAction implements SensorAction, ScreenStateNotifier {
     private static final String TAG = "CMActions";
-
     private static final int DELAY_BETWEEN_DOZES_IN_MS = 1500;
 
+    private static boolean sCanDoze = true;
     private final Context mContext;
-
     private long mLastDoze;
 
     public DozePulseAction(Context context) {
@@ -49,14 +48,27 @@ public class DozePulseAction implements SensorAction, ScreenStateNotifier {
         }
     }
 
+    public static boolean getCanDoze() {
+        return sCanDoze;
+    }
+
+    public static void setCanDoze(boolean canDoze) {
+        sCanDoze = canDoze;
+    }
+
     public synchronized boolean mayDoze() {
+        if (!sCanDoze) {
+            Log.d(TAG, "Denying doze (stowed)");
+            return false;
+        }
+
         long now = System.currentTimeMillis();
         if (now - mLastDoze > DELAY_BETWEEN_DOZES_IN_MS) {
             Log.d(TAG, "Allowing doze");
             mLastDoze = now;
             return true;
         } else {
-            Log.d(TAG, "Denying doze");
+            Log.d(TAG, "Denying doze (time)");
             return false;
         }
     }
