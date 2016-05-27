@@ -28,6 +28,8 @@
   <string name="actions_title">Thao tác</string>
   <string name="camera_gesture_title">Xoay hai lần</string>
   <string name="camera_gesture_summary">Thao tác khi sử dụng cử chỉ xoay hai lần</string>
+  <string name="chop_chop_gesture_title">Lắc 2 lần</string>
+  <string name="chop_chop_gesture_summary">Thao tác khi sử dụng cử chỉ lắc hai lần</string>
   <string name="ir_silencer_title">Vẫy để im lặng</string>
   <string name="ir_silencer_summary">Tắt tiếng cuộc gọi đến và tạm dừng báo thức bằng cách vẫy tay qua màn hình</string>
   <string name="action_none">Tắt</string>

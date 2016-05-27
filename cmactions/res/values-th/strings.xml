@@ -28,6 +28,8 @@
   <string name="actions_title">การกระทำ</string>
   <string name="camera_gesture_title">บิดสองครั้ง</string>
   <string name="camera_gesture_summary">การกระทำเมื่อใช้ท่าทางการบิดสองครั้ง</string>
+  <string name="chop_chop_gesture_title">เลื่อนอย่างเร็ว</string>
+  <string name="chop_chop_gesture_summary">การกระทำเมื่อใช้การเลื่อนอย่างรวดเร็ว</string>
   <string name="ir_silencer_title">แกว่งเพื่อปิดเสียง</string>
   <string name="ir_silencer_summary">ปิดเสียงการโทรเข้าและการปลุกเตือนโดยแกว่งมือผ่านหน้าจอ</string>
   <string name="action_none">ปิด</string>

@@ -27,6 +27,8 @@
   <string name="actions_title">Accións</string>
   <string name="camera_gesture_title">Dobre xiro</string>
   <string name="camera_gesture_summary">Acción ao utilizar o xesto de dobre xiro</string>
+  <string name="chop_chop_gesture_title">Dobre toque rápido</string>
+  <string name="chop_chop_gesture_summary">Acción ao utilizar o xesto de dobre toque rápido</string>
   <string name="ir_silencer_title">Pasar a man para silenciar</string>
   <string name="ir_silencer_summary">Silenciar as chamadas e pospor as alarmas movendo a man pola pantalla</string>
   <string name="action_none">Desactivar</string>

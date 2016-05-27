@@ -27,6 +27,8 @@
   <string name="actions_title">Akcie</string>
   <string name="camera_gesture_title">Dvojité otočenie</string>
   <string name="camera_gesture_summary">Akcia pri použití gesta dvojitého otočenia</string>
+  <string name="chop_chop_gesture_title">Dvojité seknutie</string>
+  <string name="chop_chop_gesture_summary">Akcia pri použití gesta dvojitého seknutia</string>
   <string name="ir_silencer_title">Stíšiť mávnutím</string>
   <string name="ir_silencer_summary">Stíšiť prichádzajúce hovory a odložiť budíky mávnutím rukou nad obrazovkou</string>
   <string name="action_none">Zakázať</string>

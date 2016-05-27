@@ -28,6 +28,8 @@
   <string name="actions_title">कृती</string>
   <string name="camera_gesture_title">दुहेरी-ट्विस्ट</string>
   <string name="camera_gesture_summary">दुहेरी-ट्विस्ट गेश्चर वापरतानाची क्रिया</string>
+  <string name="chop_chop_gesture_title">चॉप-चॉप</string>
+  <string name="chop_chop_gesture_summary">चॉप-चॉप गेश्चर वापरताना क्रिया</string>
   <string name="ir_silencer_title">मूक करण्यासाठी हलवा</string>
   <string name="ir_silencer_summary">तुमचा हात स्क्रीनवर तिरका हलवून इनकमिंग कॉल्स मूक करा आणि अलार्म्स स्नूझ करा</string>
   <string name="action_none">अक्षम करा</string>

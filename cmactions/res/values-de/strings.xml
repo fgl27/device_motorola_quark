@@ -28,6 +28,8 @@
   <string name="actions_title">Aktionen</string>
   <string name="camera_gesture_title">Doppel-Drehung</string>
   <string name="camera_gesture_summary">Aktion bei Verwendung der Geste Doppeldrehung</string>
+  <string name="chop_chop_gesture_title">Schwenken</string>
+  <string name="chop_chop_gesture_summary">Aktion bei Verwendung der Schwenk-Geste</string>
   <string name="ir_silencer_title">Winken zum Stummschalten</string>
   <string name="ir_silencer_summary">Einkommende Anrufe stummschalten und bei Alarmen den Schlummermodus aktivieren, wenn Sie mit Ihrer Hand über den Bildschirm winken</string>
   <string name="action_none">Deaktivieren</string>

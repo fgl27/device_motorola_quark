@@ -28,6 +28,8 @@
   <string name="actions_title">مەشغۇلاتلار</string>
   <string name="camera_gesture_title">ئىككى قېتىم تەۋرىتىش</string>
   <string name="camera_gesture_summary">ئىككى قېتىم تەۋرەتكەندە ئىجرا بۇلدىغان ھەرىكەت</string>
+  <string name="chop_chop_gesture_title">دەرھال</string>
+  <string name="chop_chop_gesture_summary">\"دەرھال\"نى ئىشلەتكەندە ئىجرا بۇلدىغان ھەرىكەت</string>
   <string name="ir_silencer_title">تەۋرىتىپ ئاۋازسىز قىلىش</string>
   <string name="ir_silencer_summary">قول ئېكراندىن ئۆتكەندە، تېلېفون كېلىش مۇزىكىسى ۋە قوڭغۇراق ئاۋازى سايراشتىن توختىسۇن</string>
   <string name="action_none">چەكلەش</string>

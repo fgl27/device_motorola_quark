@@ -28,6 +28,8 @@
   <string name="actions_title">செயல்கள்</string>
   <string name="camera_gesture_title">இரு-திருப்பம்</string>
   <string name="camera_gesture_summary">இரு திருப்ப குறிப்புணர்வை பயன்படுத்தும்போதுள்ள செயல்</string>
+  <string name="chop_chop_gesture_title">சாப்-சாப்</string>
+  <string name="chop_chop_gesture_summary">சாப்-சாப் குறிப்புணர்வின்போது செயல்</string>
   <string name="ir_silencer_title">நிசப்தத்திற்கு அசை</string>
   <string name="ir_silencer_summary">உங்கள் கையை திரைக்கு குறிக்கே அசைப்பதன் மூலம் உள்வரும் அழைப்புகளை நிசப்தமாக்குங்கள் மற்றும் அலாரங்களை ஒத்திவையுங்கள்</string>
   <string name="action_none">முடக்கு</string>

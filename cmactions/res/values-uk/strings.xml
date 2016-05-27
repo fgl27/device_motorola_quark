@@ -27,6 +27,8 @@
   <string name="actions_title">Дії</string>
   <string name="camera_gesture_title">Подвійний поворот</string>
   <string name="camera_gesture_summary">Дія при подвійному повороті пристрою</string>
+  <string name="chop_chop_gesture_title">Струс</string>
+  <string name="chop_chop_gesture_summary">Дія при струсі пристрою</string>
   <string name="ir_silencer_title">Жест рукою для вимикання звуку</string>
   <string name="ir_silencer_summary">Вимикання вхідних викликів відкладення тривог проводячи рукою над екраном</string>
   <string name="action_none">Вимкнути</string>

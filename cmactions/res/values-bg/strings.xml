@@ -28,6 +28,8 @@
   <string name="actions_title">Действия</string>
   <string name="camera_gesture_title">Двойно завъртане</string>
   <string name="camera_gesture_summary">Ефект на жеста двукратно-завъртане</string>
+  <string name="chop_chop_gesture_title">Двукратно тръскане</string>
+  <string name="chop_chop_gesture_summary">Ефект на жеста двукратно-тръскане</string>
   <string name="ir_silencer_title">Размахване за преминаване в тих режим</string>
   <string name="ir_silencer_summary">Изключване на сигнала за входящо повикване или аларма чрез прекарване на ръка пред екрана</string>
   <string name="action_none">Изключи</string>

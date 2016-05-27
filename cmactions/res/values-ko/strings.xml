@@ -28,6 +28,8 @@
   <string name="actions_title">동작</string>
   <string name="camera_gesture_title">두 번 비틀기</string>
   <string name="camera_gesture_summary">두 번 비틀기 제스처를 사용할 때 동작</string>
+  <string name="chop_chop_gesture_title">위 아래로 흔들기</string>
+  <string name="chop_chop_gesture_summary">위 아래로 흔들기 제스처를 사용할 때 동작</string>
   <string name="ir_silencer_title">흔들어서 무음</string>
   <string name="ir_silencer_summary">손을 화면 위에서 흔들어 수신 전화 음소거와 알람 일시중지</string>
   <string name="action_none">사용 안 함</string>

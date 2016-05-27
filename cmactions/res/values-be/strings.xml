@@ -28,6 +28,8 @@
   <string name="actions_title">Дзеянні</string>
   <string name="camera_gesture_title">Кручэнне</string>
   <string name="camera_gesture_summary">Дзеянне, выкананае пры падвойным кручэнні</string>
+  <string name="chop_chop_gesture_title">Пастукванне</string>
+  <string name="chop_chop_gesture_summary">Дзеянне, выкананае пры пастукванні</string>
   <string name="ir_silencer_title">Узмах для адключэння гуку</string>
   <string name="ir_silencer_summary">Адключаць выклік і адкладаць будзільнік узмахам над экранам</string>
   <string name="action_none">Выключыць</string>

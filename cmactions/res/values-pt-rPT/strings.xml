@@ -28,6 +28,8 @@
   <string name="actions_title">Ações</string>
   <string name="camera_gesture_title">Torcer duas vezes</string>
   <string name="camera_gesture_summary">Ação ao utilizar o gesto de torcer duas vezes</string>
+  <string name="chop_chop_gesture_title">Duplo corte</string>
+  <string name="chop_chop_gesture_summary">Ação quando utilizar o gesto de duplo corte</string>
   <string name="ir_silencer_title">Passar a mão para silenciar</string>
   <string name="ir_silencer_summary">Silenciar as chamadas e adiar os alarmes ao passar a mão através do ecrã</string>
   <string name="action_none">Desativar</string>

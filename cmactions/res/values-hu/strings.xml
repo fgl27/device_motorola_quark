@@ -28,6 +28,8 @@
   <string name="actions_title">Események</string>
   <string name="camera_gesture_title">Dupla megforgatás</string>
   <string name="camera_gesture_summary">Művelet a dupla megforgatási mozdulatra</string>
+  <string name="chop_chop_gesture_title">Tak-tak</string>
+  <string name="chop_chop_gesture_summary">Művelet a tak-tak mozdulatra</string>
   <string name="ir_silencer_title">Némítás simítással</string>
   <string name="ir_silencer_summary">Bejövő hívások és szundik némítása a kijelzőn való végigsimÍtással</string>
   <string name="action_none">Letilt</string>

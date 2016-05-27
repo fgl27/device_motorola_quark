@@ -28,6 +28,8 @@
   <string name="actions_title">Eylemler</string>
   <string name="camera_gesture_title">Çift-salla</string>
   <string name="camera_gesture_summary">Çift sallama etkinliği eylemi</string>
+  <string name="chop_chop_gesture_title">Tak-tak</string>
+  <string name="chop_chop_gesture_summary">Tak-tak etkinliği eylemi</string>
   <string name="ir_silencer_title">Sessize almak için sallayın</string>
   <string name="ir_silencer_summary">Elinizi ekranın önünde salladığınızda gelen çağrıları susturur ve alarmları erteler</string>
   <string name="action_none">Devre dışı</string>

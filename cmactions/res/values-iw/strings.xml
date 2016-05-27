@@ -28,6 +28,8 @@
   <string name="actions_title">פעולות</string>
   <string name="camera_gesture_title">סיבוב כפול</string>
   <string name="camera_gesture_summary">פעולה בעת השימוש במחוות הסיבוב הכפול</string>
+  <string name="chop_chop_gesture_title">ניעור כפול</string>
+  <string name="chop_chop_gesture_summary">פעולה בעת השימוש במחוות הניעור הכפול</string>
   <string name="ir_silencer_title">נפנף להשתקה</string>
   <string name="ir_silencer_summary">השתק שיחות נכנסות ונמנם שעונים מעוררים בנפנוף יד מול המסך</string>
   <string name="action_none">השבתה</string>

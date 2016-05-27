@@ -27,6 +27,8 @@
   <string name="actions_title">Aktiounen</string>
   <string name="camera_gesture_title">Duebel-Dréinung</string>
   <string name="camera_gesture_summary">Aktioun wann den Duebel-Dréinung-Gest benotzt gëtt</string>
+  <string name="chop_chop_gesture_title">Schwenken</string>
+  <string name="chop_chop_gesture_summary">Aktioun wann de Schwenk-Gest benotzt gëtt</string>
   <string name="ir_silencer_title">Wénke fir roueg ze schalten</string>
   <string name="ir_silencer_summary">Eragoend Uriff roueg schalten a bei Wecker den Näipmodus aktivéieren, wann s du mat denger Hand iwwer de Schierm wénks</string>
   <string name="action_none">Desaktivéieren</string>

@@ -28,6 +28,8 @@
   <string name="actions_title">動作</string>
   <string name="camera_gesture_title">2回ひねり</string>
   <string name="camera_gesture_summary">2回ひねりのジェスチャーを行ったときの動作</string>
+  <string name="chop_chop_gesture_title">2回チョップ</string>
+  <string name="chop_chop_gesture_summary">2回チョップのジェスチャーを行ったときの動作</string>
   <string name="ir_silencer_title">手を振ってサイレント</string>
   <string name="ir_silencer_summary">画面の上で手を振って着信をサイレントにしたりアラームをスヌーズしたりする</string>
   <string name="action_none">無効</string>
