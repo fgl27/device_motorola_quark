@@ -16,16 +16,14 @@
 
 package org.cyanogenmod.hardware;
 
-import java.io.File;
+import org.cyanogenmod.internal.util.FileUtils;
 import java.util.Scanner;
-import org.cyanogenmod.hardware.util.FileUtils;
 
 public class DisplayColorCalibration {
     private static final String COLOR_FILE = "/sys/class/graphics/fb0/rgb";
 
     public static boolean isSupported() {
-        File f = new File(COLOR_FILE);
-        return f.exists();
+        return FileUtils.isFileWritable(COLOR_FILE);
     }
 
     public static int getMaxValue()  {
