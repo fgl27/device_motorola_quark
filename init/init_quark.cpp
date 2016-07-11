@@ -235,8 +235,8 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
 	property_set("ro.com.google.clientidbase.am", "android-motorola");
 	property_set("ro.com.google.clientidbase.yt", "android-motorola");
 	property_set("persist.radio.redir_party_num", "0");
-        property_set("ro.build.description", "quark_retla-user 5.0.2 LXG22.33-12.16 16 release-keys");
-        property_set("ro.build.fingerprint", "motorola/quark_retla/quark_umts:5.0.2/LXG22.33-12.16/16:user/release-keys");
+        property_set("ro.build.description", "quark_retbr-user 6.0.1 MPG24.107-70.2 2 release-keys");
+        property_set("ro.build.fingerprint", "motorola/quark_retbr/quark_umts:6.0.1/MPG24.107-70.2/2:user/release-keys");
         INFO("Set properties for \"singlela\"!\n");
     }
 }
