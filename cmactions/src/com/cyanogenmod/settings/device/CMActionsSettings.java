@@ -111,9 +111,9 @@ public class CMActionsSettings {
         mCameraGestureAction = getIntPreference(sharedPreferences, GESTURE_CAMERA_ACTION_KEY);
         mChopChopAction = getIntPreference(sharedPreferences, GESTURE_CHOP_CHOP_KEY);
         mFeedbackIntensity = getIntPreference(sharedPreferences, GESTURE_FEEDBACK_INTENSITY_KEY);
-        mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, false);
-        mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, false);
-        mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
+        mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, true);
+        mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, true);
+        mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, true);
     }
 
     private void setDefaultPreferences(SharedPreferences sharedPreferences)
@@ -144,11 +144,11 @@ public class CMActionsSettings {
             } else if (GESTURE_FEEDBACK_INTENSITY_KEY.equals(key)) {
                 mFeedbackIntensity = getIntPreference(sharedPreferences, GESTURE_FEEDBACK_INTENSITY_KEY);
             } else if (GESTURE_IR_WAKEUP_KEY.equals(key)) {
-                mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, false);
+                mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, true);
             } else if (GESTURE_PICK_UP_KEY.equals(key)) {
-                mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, false);
+                mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, true);
             } else if (GESTURE_IR_SILENCER_KEY.equals(key)) {
-                mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
+                mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, true);
             } else {
                 updated = false;
             }
