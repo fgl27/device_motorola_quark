@@ -250,7 +250,6 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    busybox \
     fstab.qcom \
     init.mmi.boot.sh \
     init.mmi.touch.sh \
