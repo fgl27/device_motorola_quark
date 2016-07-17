@@ -34,7 +34,7 @@
 #include "log.h"
 #include "util.h"
 
-#include "init_msm.h"
+#define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
 
 #define ARRAY_SIZE(x) (sizeof(x)/sizeof(x[0]))
 
@@ -64,8 +64,7 @@ static void set_cmdline_properties()
     }
 }
 
-void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
-        char *board_type)
+void vendor_load_properties()
 {
     char platform[PROP_VALUE_MAX];
     char sku[PROP_VALUE_MAX];
@@ -73,10 +72,6 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver,
     char fsgid[PROP_VALUE_MAX];
     const char *fsgid_value;
     int rc;
-
-    UNUSED(msm_id);
-    UNUSED(msm_ver);
-    UNUSED(board_type);
 
     rc = property_get("ro.board.platform", platform);
     if (!rc || !ISMATCH(platform, ANDROID_TARGET))
