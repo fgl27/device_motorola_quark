@@ -9,21 +9,21 @@ echo -e "\n build start $(date)\n";
 
 #source tree folder yours machine source folder
 #main source foludes
-FOLDER=/home/fella/om;
+#FOLDER=/home/bhb27/android/om;
 #other source folder on the same machine, because of cacche gcc tool is connected
-FOLDER2=/home/fella/m;
+FOLDER2=/home/bhb27/android/m;
 
-cd ~/om
-. build/envsetup.sh
-make clean
+#cd ~/om
+#. build/envsetup.sh
+#make clean
 
 #mv toolchain as I use none stock one, move on RR and Omni source because my cacche 
 mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g
 mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1 $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
-mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g
-mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1 $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
+#mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g
+#mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1 $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
 
-cd ~/m
+cd $FOLDER2
 . build/envsetup.sh 
 make clean 
 lunch cm_quark-userdebug
@@ -32,8 +32,8 @@ time mka bacon -j4 2>&1 | tee quark.txt
 #mv toolchain back
 mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1
 mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
-mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1
-mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
+#mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1
+#mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
 
 # final time display *cosmetic...
 END2="$(date)";

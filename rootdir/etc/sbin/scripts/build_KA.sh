@@ -8,8 +8,8 @@ echo -e "\n Script start $(date)\n";
 
 #Folders Folder= you app folder SDK_Folder android sdk folder Download it if you don't have it, don't remove the sdk.dir= from the line
 
-FOLDER=/home/fella/KA27;
-SDK_FOLDER="sdk.dir=/home/fella/sdk";
+FOLDER=/home/bhb27/android/KA27;
+SDK_FOLDER="sdk.dir=/home/bhb27/android/sdk";
 
 # Export Java path in some machines is necessary put your java path
 
@@ -19,7 +19,7 @@ export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64/"
 # https://www.androidfilehost.com/?fid=24588232905720654
 
 SIGN=1;
-SIGN_FOLDER=/home/fella/ZipScriptSign;
+SIGN_FOLDER=/home/bhb27/android/ZipScriptSign;
 
 # out app folder and out app name
 
