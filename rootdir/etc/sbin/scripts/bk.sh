@@ -2,7 +2,7 @@
 # simple build sh ... alias br='/home/user/source_folder/device/motorola/quark/rootdir/etc/sbin/build.sh'
 
 # kernel folder:
-FOLDER=/home/fella/apq8084
+FOLDER=/home/bhb27/android/apq8084
 cd $FOLDER
 
 echo -e "\nAvailable branch to build: \n"

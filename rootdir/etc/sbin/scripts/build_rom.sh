@@ -18,8 +18,8 @@ FOLDER2=/home/bhb27/android/m;
 #make clean
 
 #mv toolchain as I use none stock one, move on RR and Omni source because my cacche 
-mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g
-mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1 $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
+#mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g
+#mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1 $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
 #mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g
 #mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1 $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
 
@@ -30,8 +30,8 @@ lunch cm_quark-userdebug
 time mka bacon -j4 2>&1 | tee quark.txt
 
 #mv toolchain back
-mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1
-mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
+#mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1
+#mv $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g $FOLDER2/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
 #mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8 $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.1
 #mv $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8.g $FOLDER/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8
 
