@@ -292,7 +292,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     WCNSS_qcom_cfg.ini \
-    WCNSS_qcom_cfg.usb.ini \
     WCNSS_qcom_wlan_nv.bin \
     wlan_mac.bin \
     wlan_mac_serial.bin
@@ -310,7 +309,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_cfg.usb.ini:system/etc/wifi/WCNSS_qcom_cfg.usb.ini \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
 
 # never dexopt the MotoSignature
