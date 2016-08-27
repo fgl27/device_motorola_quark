@@ -169,7 +169,7 @@ ifeq ($(HOST_OS),linux)
 endif
 
 #LZMA compression
-#WITH_LZMA_OTA:= true
+WITH_LZMA_OTA:= true
 
 #RR Optimizations
 #TARGET_TC_ROM := 4.9
@@ -186,7 +186,7 @@ endif
 
 #RR_KRAIT := true
 
-#RR_PIPE := true
+RR_PIPE := true
 
 #RR_GCC_VERSION_EXP := $(TARGET_TC_ROM)
 
