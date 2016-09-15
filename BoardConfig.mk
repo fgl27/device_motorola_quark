@@ -168,6 +168,9 @@ ifeq ($(HOST_OS),linux)
   endif
 endif
 
+TARGET_GLOBAL_CFLAGS += -ffast-math -fweb
+TARGET_GLOBAL_CPPFLAGS += -ffast-math -fweb
+
 #LZMA compression
 WITH_LZMA_OTA:= true
 
