@@ -1,5 +1,5 @@
 /*
-   Copyright (c) 2013, The Linux Foundation. All rights reserved.
+   Copyright (c) 2016, The Linux Foundation. All rights reserved.
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -143,13 +143,13 @@ void vendor_load_properties()
         property_set("persist.data.iwlan.enable", "true");
         property_set("persist.radio.ignore_ims_wlan", "1");
         property_set("persist.radio.data_con_rprt", "1");
-        property_set("persist.radio.calls.on.ims", "true");
-        property_set("persist.radio.jbims", "1");
-        property_set("persist.radio.VT_ENABLE", "1");
-        property_set("persist.radio.VT_HYBRID_ENABLE", "1");
-        property_set("persist.radio.ROTATION_ENABLE", "1");
-        property_set("persist.radio.RATE_ADAPT_ENABLE", "1");
-        property_set("persist.rcs.supported", "1");
+        //property_set("persist.radio.calls.on.ims", "true");
+        //property_set("persist.radio.jbims", "1");
+        //property_set("persist.radio.VT_ENABLE", "1");
+        //property_set("persist.radio.VT_HYBRID_ENABLE", "1");
+        //property_set("persist.radio.ROTATION_ENABLE", "1");
+        //property_set("persist.radio.RATE_ADAPT_ENABLE", "1");
+        //property_set("persist.rcs.supported", "1");
         property_set("persist.ims.enableADBLogs", "1");
         property_set("persist.ims.enableDebugLogs", "1");
 
