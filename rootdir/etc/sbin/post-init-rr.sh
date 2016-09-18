@@ -30,15 +30,16 @@ if [ -e /system/app/Adaway/lib/arm/libtcpdump_exec.so ]; then
 fi
 
 fsgid=`getprop ro.boot.fsg-id`;
+device=`getprop ro.boot.hardware.sku`
 
-if  [ "$fsgid" != verizon ]; then
+if  [ "$fsgid" != verizon ] && [ "$device" != XT1254 ]; then
 	# stop IMS services Not need for others then VZW users
 	stop imsqmidaemon;
 	stop imsdatadaemon;
-	echo "services stop okay device fsgid = $fsgid" >> /tmp/bootcheck.txt;
+	echo "services stop okay device = $device fsgid = $fsgid" >> /tmp/bootcheck.txt;
 
 else
-	echo "services not stoped for fsgid = $fsgid" >> /tmp/bootcheck.txt;
+	echo "services not stoped for device = $device fsgid = $fsgid" >> /tmp/bootcheck.txt;
 fi;
 
 echo "post-init-ROM Boot initiated on $(date)" >> /tmp/bootcheck.txt
