@@ -32,7 +32,7 @@ fi
 fsgid=`getprop ro.boot.fsg-id`;
 device=`getprop ro.boot.hardware.sku`
 
-if  [ "$fsgid" != verizon ] && [ "$device" != XT1254 ]; then
+if  [ "$device" == XT1225 ] ||  [ "$fsgid" == emea ] || [ "$fsgid" == singlela ]; then
 	# stop IMS services Not need for others then VZW users
 	stop imsqmidaemon;
 	stop imsdatadaemon;

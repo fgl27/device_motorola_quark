@@ -14,7 +14,7 @@ fsgid=`getprop ro.boot.fsg-id`;
 device=`getprop ro.boot.hardware.sku`
 
 ## Clean Verizon blobs on others devices
-if  [ "$fsgid" != verizon ] && [ "$device" != XT1254 ]; then
+if  [ "$device" == XT1225 ] ||  [ "$fsgid" == emea ] || [ "$fsgid" == singlela ]; then
 
 	# delete main folders
 	app="system/app";
@@ -76,7 +76,6 @@ if  [ "$fsgid" != verizon ] && [ "$device" != XT1254 ]; then
 	rm -rf $vendor_lib/lib-rtpsl.so;
 	rm -rf $vendor_lib/libvcel.so;
 	echo "init.clean_devices file deleted for device = $device fsgid = $fsgid" >> /tmp/bootcheck.txt;
-
 else
 	echo "init.clean_devices bn file deleted for device = $device fsgid = $fsgid" >> /tmp/bootcheck.txt;
 fi;
