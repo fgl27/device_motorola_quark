@@ -19,6 +19,7 @@
   <!-- Gesture shortcuts -->
   <string name="user_aware_display_title">Visualización en función da presencia do usuario</string>
   <string name="user_aware_display_summary">Manter a pantalla acesa mentes o usuario estea diante dela</string>
+  <string name="screen_gestures_panel_title">Xestos</string>
   <string name="ambient_display_title">Visualización ambiente</string>
   <string name="pick_up_gesture_title">Escoller</string>
   <string name="pick_up_gesture_summary">Amosar notificacións ao escoller ou deixar</string>
