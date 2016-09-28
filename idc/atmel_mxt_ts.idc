@@ -20,5 +20,17 @@
 # Refer to the input device calibration documentation for more details.
 #
 
-touch.deviceType = touchScreen
+device.internal = 1
 
+touch.deviceType = touchScreen
+touch.orientationAware = 1
+
+touch.size.calibration = area
+touch.size.scale = 86.016
+touch.size.bias = -44.539
+touch.size.isSummed = 0
+
+touch.pressure.calibration = amplitude
+touch.pressure.scale = 0.0125
+
+touch.orientation.calibration = none
