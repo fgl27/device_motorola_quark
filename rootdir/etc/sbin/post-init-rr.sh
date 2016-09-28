@@ -36,6 +36,7 @@ if  [ "$device" == XT1225 ] ||  [ "$fsgid" == emea ] || [ "$fsgid" == singlela ]
 	# stop IMS services Not need for others then VZW users
 	stop imsqmidaemon;
 	stop imsdatadaemon;
+	setprop net.lte.volte_call_capable false
 	echo "services stop okay device = $device fsgid = $fsgid" >> /tmp/bootcheck.txt;
 
 else

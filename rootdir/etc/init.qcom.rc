@@ -622,6 +622,7 @@ service imsdatadaemon /system/bin/imsdatadaemon
 
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
+    setprop net.lte.volte_call_capable true
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.
