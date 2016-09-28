@@ -42,6 +42,13 @@
     <!-- Use ERI text for network name on CDMA LTE -->
     <bool name="config_LTE_eri_for_network_name">false</bool>
 
+    <!-- extra from vzw frameworks -->
+    <bool name="imsServiceAllowTurnOff">false</bool>
+    <bool name="config_carrier_volte_available">true</bool>
+    <bool name="config_carrier_volte_provisioned">true</bool>
+    <integer name="config_mobile_mtu">1428</integer>
+    <integer name="config_LTE_RSRP_threshold_type">0</integer>
+
     <!-- MMS user agent string -->
     <string name="config_mms_user_agent" translatable="false">motoxt1254</string>
 

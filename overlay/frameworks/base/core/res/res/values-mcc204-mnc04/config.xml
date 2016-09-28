@@ -25,5 +25,16 @@
         <item>*86;BAE0000000000000</item>
     </string-array>
 
+    <!-- extra from vzw frameworks -->
+    <integer name="config_mobile_mtu">1358</integer>
+    <integer name="config_LTE_RSRP_threshold_type">0</integer>
+    <bool name="read_gid_from_usim_for_ruim">true</bool>
+
+    <!-- MMS user agent string -->
+    <string name="config_mms_user_agent" translatable="false">motoxt1254</string>
+
+    <!-- MMS user agent prolfile url -->
+    <string name="config_mms_user_agent_profile_url" translatable="false">http://uaprof.vtext.com/mot/xt1254/xt1254.xml</string>
+
     <bool name="config_LTE_eri_for_network_name">false</bool>
 </resources>

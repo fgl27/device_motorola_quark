@@ -39,6 +39,9 @@
         <item>9</item>
     </integer-array>
 
+    <!-- extra from vzw frameworks -->
+    <integer name="config_mobile_mtu">1428</integer>
+
     <!-- Use ERI text for network name on CDMA LTE -->
     <bool name="config_LTE_eri_for_network_name">false</bool>
 
