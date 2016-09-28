@@ -17,6 +17,7 @@
     <InterfaceManager>
       <T_BLACKLIST_BQE units="secs">900</T_BLACKLIST_BQE>
       <T_BLACKLIST_ICD units="secs">900</T_BLACKLIST_ICD>
+      <T_BLACKLIST_CQE units="secs">900</T_BLACKLIST_CQE>
       <BQE>
         <T_passiveBQE units="s">5</T_passiveBQE>
       </BQE>
