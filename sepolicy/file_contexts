@@ -46,6 +46,7 @@
 /dev/stm401_ms                          u:object_r:sensors_device:s0
 
 # Vibrator
+/sys/vibrator/pwmvalue                  u:object_r:vib_sysfs:s0
 
 #
 ## Executables
@@ -56,16 +57,3 @@
 /system/bin/charge_only_mode            u:object_r:charge_only_mode_exec:s0
 /system/bin/dbvc_atvc_property_set      u:object_r:atvc_exec:s0
 /system/bin/stm401                      u:object_r:stm401_exec:s0
-/system/bin/thermal-engine              u:object_r:thermal-engine_exec:s0
-
-# start script
-/sbin/postinitrr                        u:object_r:postinitrr_exec:s0
-/sbin/postinitbhb                       u:object_r:postinitbhb_exec:s0
-
-#CMHW
-/sys/class/leds/lcd-backlight/brightness u:object_r:sysfs_light:s0
-/sys/power/autosleep                     u:object_r:sysfs_power:s0
-/sys/android_touch/doubletap2wake        u:object_r:sysfs_dt2w:s0
-/sys/vibrator/pwmvalue                   u:object_r:vib_sysfs:s0
-
-/system/bin/app_process	        u:object_r:zygote_exec:s0

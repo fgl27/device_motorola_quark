@@ -7,6 +7,3 @@ type cutback_data_file, file_type, data_file_type;
 type cutback_socket, file_type;
 type display_sysfs, sysfs_type, file_type;
 type vib_sysfs, sysfs_type, file_type;
-type sysfs_light, sysfs_type;
-type sysfs_power, sysfs_type;
-type sysfs_dt2w, sysfs_type;
