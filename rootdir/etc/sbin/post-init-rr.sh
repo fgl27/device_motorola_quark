@@ -1,12 +1,7 @@
 #!/system/bin/sh
-#script init pull from neobuddy89 github
 
-# give su root:root to adb su work
-if [ -e /system/xbin/su ]; then
-	mount -o rw,remount /system
-	chown root:root /system/xbin/su
-	umount /system;
-fi
+mount -o rw,remount /system
+
 
 # Make tmp folder
 if [ -e /data/tmp ]; then
@@ -17,15 +12,34 @@ fi
 
 # only present on RR this need to be 755 to execute...
 if [ -e /system/app/Adaway/lib/arm/libblank_webserver_exec.so ]; then
-	mount -o rw,remount /system
+	
 	chmod 755 /system/app/Adaway/lib/arm/libblank_webserver_exec.so
-	umount /system;
+
 fi
 
 if [ -e /system/app/Adaway/lib/arm/libtcpdump_exec.so ]; then
-	mount -o rw,remount /system
+	
 	chmod 755 /system/app/Adaway/lib/arm/libtcpdump_exec.so
-	umount /system;
+
+fi
+
+if [ -e /system/bin/isu ]; then
+	
+	mv /system/bin/isu /system/bin/su
+
+fi
+
+if [ -e /system/xbin/isu ]; then
+	
+	mv /system/xbin/isu /system/xbin/su
+
+fi
+
+# give su root:root to adb su work
+if [ -e /system/xbin/su ]; then
+	
+	chown root:root /system/xbin/su
+
 fi
 
 fsgid=`getprop ro.boot.fsg-id`;
@@ -43,6 +57,6 @@ else
 fi;
 
 echo "post-init-ROM Boot initiated on $(date)" >> /data/tmp/bootcheck.txt
-
+umount /system;
 exit
 
