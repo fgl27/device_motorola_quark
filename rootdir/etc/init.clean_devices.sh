@@ -22,56 +22,14 @@ if  [ "$device" == XT1225 ] ||  [ "$fsgid" == emea ] || [ "$fsgid" == singlela ]
 	priv_app="system/priv-app";
 	vendor_lib="system/vendor/lib";
 
-	##delete:
-	#apps
-	rm -rf $app/ims;
-	rm -rf $app/VZWAPNLib;
-	rm -rf $priv_app/AppDirectedSMSProxy;
-	rm -rf $priv_app/BuaContactAdapter;
-	rm -rf $priv_app/VZWAPNService;
+	for FILE in $app/ims $app/VZWAPNLib $priv_app/AppDirectedSMSProxy $priv_app/BuaContactAdapter $priv_app/VZWAPNService  $bin/imsdatadaemon $bin/imsqmidaemon $etc/com.verizon.hardware.telephony.ehrpd.xml $etc/com.verizon.hardware.telephony.lte.xml $etc/com.verizon.ims.xml  $etc/rcsservice.xml $etc/rcsimssettings.xml $etc/com.motorola.DirectedSMSProxy.xml $etc/com.vzw.vzwapnlib.xml $frameworks/com.verizon.hardware.telephony.ehrpd.jar $frameworks/com.verizon.hardware.telephony.lte.jar $frameworks/com.verizon.ims.jar $frameworks/rcsimssettings.jar $frameworks/rcsservice.jar $lib/libimscamera_jni.so $lib/libimsmedia_jni.so $vendor_lib/lib-dplmedia.so $vendor_lib/lib-ims-setting-jni.so $vendor_lib/lib-ims-settings.so $vendor_lib/lib-imsSDP.so $vendor_lib/lib-imsdpl.so $vendor_lib/lib-imsqimf.so $vendor_lib/lib-imsrcs.so $vendor_lib/lib-imss.so $vendor_lib/lib-imsvt.so $vendor_lib/lib-imsxml.so $vendor_lib/lib-rcsimssjni.so $vendor_lib/lib-rcsjni.so $vendor_lib/lib-rtpcommon.so $vendor_lib/lib-rtpcore.so $vendor_lib/lib-rtpdaemoninterface.so $vendor_lib/lib-rtpsl.so $vendor_lib/libvcel.so; do
 
-	#bin
-	rm -rf $bin/imsdatadaemon;
-	rm -rf $bin/imsqmidaemon;
+		if [ -e "$FILE" ]; then 
+			rm -rf $FILE;
+		fi;
 
-	#etc
-	rm -rf $etc/com.verizon.hardware.telephony.ehrpd.xml;
-	rm -rf $etc/com.verizon.hardware.telephony.lte.xml;
-	rm -rf $etc/com.verizon.ims.xml;
-	rm -rf $etc/rcsimssettings.xml;
-	rm -rf $etc/rcsservice.xml;
-	rm -rf $etc/com.motorola.DirectedSMSProxy.xml
-	rm -rf $etc/com.vzw.vzwapnlib.xml
+	done
 
-	#frameworks
-	rm -rf $frameworks/com.verizon.hardware.telephony.ehrpd.jar;
-	rm -rf $frameworks/com.verizon.hardware.telephony.lte.jar;
-	rm -rf $frameworks/com.verizon.ims.jar;
-	rm -rf $frameworks/rcsimssettings.jar;
-	rm -rf $frameworks/rcsservice.jar;
-
-	#libs
-	rm -rf $lib/libimscamera_jni.so;
-	rm -rf $lib/libimsmedia_jni.so;
-
-	# vendor/lib
-	rm -rf $vendor_lib/lib-dplmedia.so;
-	rm -rf $vendor_lib/lib-ims-setting-jni.so;
-	rm -rf $vendor_lib/lib-ims-settings.so;
-	rm -rf $vendor_lib/lib-imsSDP.so;
-	rm -rf $vendor_lib/lib-imsdpl.so;
-	rm -rf $vendor_lib/lib-imsqimf.so;
-	rm -rf $vendor_lib/lib-imsrcs.so;
-	rm -rf $vendor_lib/lib-imss.so;
-	rm -rf $vendor_lib/lib-imsvt.so;
-	rm -rf $vendor_lib/lib-imsxml.so;
-	rm -rf $vendor_lib/lib-rcsimssjni.so;
-	rm -rf $vendor_lib/lib-rcsjni.so;
-	rm -rf $vendor_lib/lib-rtpcommon.so;
-	rm -rf $vendor_lib/lib-rtpcore.so;
-	rm -rf $vendor_lib/lib-rtpdaemoninterface.so;
-	rm -rf $vendor_lib/lib-rtpsl.so;
-	rm -rf $vendor_lib/libvcel.so;
 	umount /system;
 	echo "init.clean_devices file deleted for device = $device fsgid = $fsgid" >> /data/tmp/bootcheck.txt;
 else

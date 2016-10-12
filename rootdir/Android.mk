@@ -116,12 +116,3 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/sbin/post-init-rr.sh
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
 include $(BUILD_PREBUILT)
-
-#bhb kernel
-include $(CLEAR_VARS)
-LOCAL_MODULE       := post-init-bhb.sh
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/sbin/post-init-bhb.sh
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
-include $(BUILD_PREBUILT)
