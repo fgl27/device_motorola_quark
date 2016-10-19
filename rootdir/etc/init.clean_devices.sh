@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 if [ -e /data/tmp ]; then
-	echo "tmp folder already exist";
+	echo "init clean on $(date)" > /data/tmp/bootcheck.txt;
 else
 mkdir /data/tmp;
 fi;
