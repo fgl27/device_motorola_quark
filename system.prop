@@ -101,11 +101,17 @@ persist.data.qmi.adb_logmask=0
 # Enable UIM VCC feature
 persist.qcril_uim_vcc_feature=1
 
+# Play store
+ro.com.google.clientidbase.gmm=android-motorola
+
 # SSR
 persist.sys.qc.sub.rdump.max=20
 persist.sys.qc.sub.rdump.on=1
 persist.sys.qc.sub.rstrtlvl=3
 persist.sys.ssr.restart_level=1
+
+# Storage
+ro.sys.sdcardfs=true
 
 # Time
 persist.timed.enable=true
@@ -126,9 +132,6 @@ wifi.interface=wlan0
 wlan.driver.ath=0
 wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
 ro.disableWifiApFirmwareReload=true
-
-# Play store
-ro.com.google.clientidbase.gmm=android-motorola
 
 # Allow tethering without provisioning app
 net.tethering.noprovisioning=true

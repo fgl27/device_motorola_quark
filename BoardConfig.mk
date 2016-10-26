@@ -34,8 +34,6 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno420
 TARGET_BOOTLOADER_BOARD_NAME := APQ8084
 TARGET_NO_BOOTLOADER := true
 
-USE_CLANG_PLATFORM_BUILD := true
-
 # Architecture
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -52,6 +50,8 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 TARGET_KERNEL_SOURCE := kernel/motorola/apq8084
 TARGET_KERNEL_CONFIG := quark_defconfig
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
 WLAN_MODULES:
 	mkdir -p $(KERNEL_MODULES_OUT)/qca_cld
@@ -85,7 +85,8 @@ BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_HAS_QCA_BT_ROME := true
 
 # Camera
-COMMON_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
+BOARD_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # CMHW
@@ -159,44 +160,6 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 57185009664
 BOARD_CACHEIMAGE_PARTITION_SIZE := 3539992576
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
-
-# Enable dex-preoptimization to speed up first boot sequence
-ifeq ($(HOST_OS),linux)
-  ifeq ($(TARGET_BUILD_VARIANT),user)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-    endif
-  endif
-endif
-
-TARGET_GLOBAL_CFLAGS += -ffast-math -fweb
-TARGET_GLOBAL_CPPFLAGS += -ffast-math -fweb
-
-#LZMA compression
-WITH_LZMA_OTA:= true
-
-#RR Optimizations
-#TARGET_TC_ROM := 4.9
-
-#TARGET_TC_KERNEL := 4.8.4
-
-#RROPTI := true
-
-#RR_O3 := true
-
-#RR_STRICT := true
-
-#RR_GRAPHITE := true
-
-#RR_KRAIT := true
-
-RR_PIPE := true
-
-#RR_GCC_VERSION_EXP := $(TARGET_TC_ROM)
-
-#RR_KERNEL_CUSTOM_TOOLCHAIN := $(TARGET_TC_KERNEL)
-
-#-include vendor/cm/config/opti.mk
 
 # Bootanimation
 TARGET_BOOTANIMATION_MULTITHREAD_DECODE := true

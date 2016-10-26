@@ -51,6 +51,6 @@ fi;
 
 echo "post-init-ROM Boot initiated on $(date)" >> /data/tmp/bootcheck.txt
 umount /system;
-setenforce 1
+
 exit
 

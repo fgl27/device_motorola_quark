@@ -34,95 +34,46 @@
 #include "log.h"
 #include "util.h"
 
-#define ISMATCH(a,b)    (!strncmp(a,b,PROP_VALUE_MAX))
-
-#define ARRAY_SIZE(x) (sizeof(x)/sizeof(x[0]))
-
-static void set_cmdline_properties()
-{
-    int i, rc;
-    char prop[PROP_VALUE_MAX];
-
-    struct {
-        const char *src_prop;
-        const char *dest_prop;
-        const char *def_val;
-    } prop_map[] = {
-        { "ro.boot.device", "ro.hw.device", "quark", },
-        { "ro.boot.hwrev", "ro.hw.hwrev", "0x84A0", },
-        { "ro.boot.radio", "ro.hw.radio", "0x5", },
-    };
-
-    for (i = 0; i < (int)ARRAY_SIZE(prop_map); i++) {
-        memset(prop, 0, PROP_VALUE_MAX);
-        rc = property_get(prop_map[i].src_prop, prop);
-        if (rc > 0) {
-            property_set(prop_map[i].dest_prop, prop);
-        } else {
-            property_set(prop_map[i].dest_prop, prop_map[i].def_val);
-        }
-    }
-}
-
 void vendor_load_properties()
 {
-    char platform[PROP_VALUE_MAX];
-    char sku[PROP_VALUE_MAX];
-    char carrier[PROP_VALUE_MAX];
-    char fsgid[PROP_VALUE_MAX];
-    char camera_enable_vpu[PROP_VALUE_MAX];
-    const char *fsgid_value;
-    int rc;
+    std::string platform;
+    std::string sku;
+    std::string carrier;
+    std::string fsgid;
+    std::string camera_enable_vpu;
 
-    rc = property_get("ro.board.platform", platform);
-    if (!rc || !ISMATCH(platform, ANDROID_TARGET))
+    platform = property_get("ro.board.platform");
+    if (platform != ANDROID_TARGET)
         return;
-
-    set_cmdline_properties();
 
     // Moto camera app hidden settings "Temporal Noise Reduction" when enable set /data/persist/persist.camera.enable_vpu to 1
     // and that breaks camera support in CM after a reboot, void that during init to prevent camera start bugs
-    rc = property_get("persist.camera.enable_vpu", camera_enable_vpu);
-    if (rc < 0) {
-        camera_enable_vpu[0] = '\0';
-    }
+    camera_enable_vpu = property_get("persist.camera.enable_vpu");
 
-    if (ISMATCH(camera_enable_vpu, "1"))
+    if (camera_enable_vpu == "1")
 	property_set("persist.camera.enable_vpu", "0");
 
-    // Defaults go to Latin America XT1225
-    rc = property_get("ro.boot.hardware.sku", sku);
-    if (rc < 0) {
-        sku[0] = '\0';
-    }
-    rc = property_get("ro.boot.carrier", carrier);
-    if (rc < 0) {
-        carrier[0] = '\0';
-    }
-    rc = property_get("ro.boot.fsg-id", fsgid);
-    if (rc < 0) {
-        fsgid[0] = '\0';
-    }
+    // Multi device support
+    fsgid = property_get("ro.boot.fsg-id");
+    carrier = property_get("ro.boot.carrier");
+    sku = property_get("ro.boot.hardware.sku");
 
-    if (fsgid[0] == '\0') {
-        if (ISMATCH(sku, "XT1225")) {
-            if (ISMATCH(carrier, "reteu")) {
-                fsgid_value = "emea";
+
+    if (fsgid != "emea" && fsgid != "singlela" && fsgid != "lra" && fsgid != "lra_gsm" && fsgid != "verizon" && fsgid != "verizon_gsm") {
+        if (sku == "XT1225") {
+            if (carrier == "reteu") {
+                fsgid = "emea";
             } else {
-                fsgid_value = "singlela";
+                fsgid = "singlela";
             }
-        } else if (ISMATCH(sku, "XT1250")) {
-            fsgid_value = "lra";
-        } else if (ISMATCH(sku, "XT1254")) {
-            fsgid_value = "verizon";
+        } else if (sku == "XT1250") {
+            fsgid = "lra";
+        } else if (sku == "XT1254") {
+            fsgid = "verizon";
         }
-        INFO("Determined fsg-id: %s\n", fsgid_value);
-    } else {
-        fsgid_value = fsgid;
-        INFO("Configured fsg-id: %s\n", fsgid_value);
     }
 
-    if (ISMATCH(fsgid_value, "verizon")) {
+    if (fsgid =="verizon") {
         // XT1254 - Droid Turbo
         property_set("ro.build.product", "quark");
         property_set("ro.product.device", "quark");
@@ -171,7 +122,7 @@ void vendor_load_properties()
         //property_set("persist.ims.disableQXDMLogs", "0");
         //property_set("persist.ims.disableIMSLogs", "1");
         INFO("Set properties for \"verizon\"!\n");
-    } else if (ISMATCH(fsgid_value, "verizon_gsm")) {
+    } else if (fsgid =="verizon_gsm") {
         // XT1254 - Droid Turbo, but set as gsm phone
         property_set("ro.build.product", "quark");
         property_set("ro.product.device", "quark");
@@ -186,7 +137,7 @@ void vendor_load_properties()
         property_set("ro.build.description", "quark_verizon-user 5.1 SU4TL-44 44 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_verizon/quark:5.1/SU4TL-44/44:user/release-keys");
         INFO("Set properties for \"verizon_gsm\"!\n");
-    } else if (ISMATCH(fsgid_value, "lra")) {
+    } else if (fsgid =="lra") {
         // XT1250 - Moto MAXX
         property_set("ro.build.product", "quark");
         property_set("ro.product.device", "quark");
@@ -202,7 +153,7 @@ void vendor_load_properties()
         property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
         INFO("Set properties for \"lra\"!\n");
-    } else if (ISMATCH(fsgid_value, "lra_gsm")) {
+    } else if (fsgid =="lra_gsm") {
         // XT1250 - Moto MAXX, but set as gsm phone
         property_set("ro.build.product", "quark");
         property_set("ro.product.device", "quark");
@@ -218,7 +169,7 @@ void vendor_load_properties()
         property_set("ro.build.description", "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys");
         INFO("Set properties for \"lra_gsm\"!\n");
-    } else if (ISMATCH(fsgid_value, "emea")) {
+    } else if (fsgid =="emea") {
         // XT1225 - Moto Turbo
         property_set("ro.build.product", "quark_umts");
         property_set("ro.product.device", "quark_umts");

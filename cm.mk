@@ -15,5 +15,5 @@ PRODUCT_NAME := cm_quark
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_DISPLAY_ID='rr_quark-userdebug $(PLATFORM_VERSION) $(BUILD_ID) $(BUILD_NUMBER) test-keys' \
-    TARGET_BUILD_FLAVOR=rr_quark-userdebug
+    BUILD_DISPLAY_ID='cr_quark-userdebug $(PLATFORM_VERSION) $(BUILD_ID) $(BUILD_NUMBER) test-keys' \
+    TARGET_BUILD_FLAVOR=cr_quark-userdebug
