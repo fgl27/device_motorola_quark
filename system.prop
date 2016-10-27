@@ -135,3 +135,11 @@ ro.disableWifiApFirmwareReload=true
 
 # Allow tethering without provisioning app
 net.tethering.noprovisioning=true
+
+# Motorola Moto MAXX Hardware Info
+ro.device.chipset=Qualcomm Snapdragon 805
+ro.device.cpu=Quad-core 2.7 GHz Krait 450
+ro.device.gpu=Qualcomm Adreno 420
+ro.device.rear_cam=21 MP
+ro.device.front_cam=2 MP
+ro.device.screen_res=1440x2560 pixels (~565 ppi)
