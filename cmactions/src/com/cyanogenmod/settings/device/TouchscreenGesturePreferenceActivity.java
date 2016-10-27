@@ -29,4 +29,3 @@ public class TouchscreenGesturePreferenceActivity extends SettingsDrawerActivity
                 .replace(R.id.content_frame, new TouchscreenGesturePreferenceFragment()).commit();
     }
 }
-

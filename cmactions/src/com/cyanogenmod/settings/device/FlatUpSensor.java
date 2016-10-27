@@ -28,8 +28,10 @@ public class FlatUpSensor implements ScreenStateNotifier {
     private final SensorHelper mSensorHelper;
     private final SensorAction mSensorAction;
     private final Sensor mFlatUpSensor;
+    private final Sensor mStowSensor;
 
     private boolean mEnabled;
+    private boolean mIsStowed;
     private boolean mLastFlatUp;
 
     public FlatUpSensor(CMActionsSettings cmActionsSettings, SensorHelper sensorHelper,
@@ -39,6 +41,7 @@ public class FlatUpSensor implements ScreenStateNotifier {
         mSensorAction = action;
 
         mFlatUpSensor = sensorHelper.getFlatUpSensor();
+        mStowSensor = sensorHelper.getStowSensor();
     }
 
     @Override
@@ -46,6 +49,7 @@ public class FlatUpSensor implements ScreenStateNotifier {
         if (mEnabled) {
             Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(mFlatUpListener);
+            mSensorHelper.unregisterListener(mStowListener);
             mEnabled = false;
         }
     }
@@ -55,6 +59,7 @@ public class FlatUpSensor implements ScreenStateNotifier {
         if (mCMActionsSettings.isPickUpEnabled() && !mEnabled) {
             Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mFlatUpSensor, mFlatUpListener);
+            mSensorHelper.registerListener(mStowSensor, mStowListener);
             mEnabled = true;
         }
     }
@@ -64,12 +69,24 @@ public class FlatUpSensor implements ScreenStateNotifier {
         public synchronized void onSensorChanged(SensorEvent event) {
             boolean thisFlatUp = (event.values[0] != 0);
 
-            Log.d(TAG, "event: " + thisFlatUp + " mLastFlatUp=" + mLastFlatUp);
+            Log.d(TAG, "event: " + thisFlatUp + " mLastFlatUp=" + mLastFlatUp + " mIsStowed=" +
+                mIsStowed);
 
-            if (mLastFlatUp && !thisFlatUp) {
+            if (mLastFlatUp && ! thisFlatUp && ! mIsStowed) {
                 mSensorAction.action();
             }
             mLastFlatUp = thisFlatUp;
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
+        }
+    };
+
+    private SensorEventListener mStowListener = new SensorEventListener() {
+        @Override
+        public synchronized void onSensorChanged(SensorEvent event) {
+            mIsStowed = (event.values[0] != 0);
         }
 
         @Override

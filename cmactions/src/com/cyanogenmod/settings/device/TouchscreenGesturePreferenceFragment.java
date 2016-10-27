@@ -29,8 +29,7 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
         PreferenceCategory ambientDisplayCat = (PreferenceCategory)
                 findPreference(CATEGORY_AMBIENT_DISPLAY);
         if (ambientDisplayCat != null) {
-           ambientDisplayCat.setEnabled(CMActionsSettings.isDozeEnabled(getActivity().getContentResolver()));
+            ambientDisplayCat.setEnabled(CMActionsSettings.isDozeEnabled(getActivity().getContentResolver()));
         }
     }
-
 }

@@ -63,7 +63,6 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
         boolean thisStowed = (event.values[0] != 0);
         Log.d(TAG, "event: " + thisStowed);
-        DozePulseAction.setCanDoze(!thisStowed);
         if (mLastStowed && ! thisStowed) {
             mSensorAction.action();
         }
