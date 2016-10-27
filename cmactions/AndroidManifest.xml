@@ -18,8 +18,7 @@
         android:hardwareAccelerated="true"
         android:label="CMActions"
         android:persistent="true"
-        android:restoreAnyVersion="true"
-        android:persistent="true" >
+        android:restoreAnyVersion="true" >
 
         <receiver android:name="com.cyanogenmod.settings.device.BootCompletedReceiver">
             <intent-filter>
