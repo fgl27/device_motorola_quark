@@ -145,8 +145,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.apq8084 \
-    libshim_camera
+    camera.apq8084
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -290,9 +289,6 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-quark.conf:system/etc/thermal-engine-quark.conf
-
-PRODUCT_PACKAGES += \
-    libshims_thermal
 
 # Torch
 PRODUCT_PACKAGES += \

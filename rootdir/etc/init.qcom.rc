@@ -45,7 +45,6 @@ on early-init
     mkdir /firmware 0771 system system
 
 on init
-    export LD_SHIM_LIBS /system/bin/thermal-engine|libshims_thermal.so:/system/lib/libjustshoot.so|libshim_camera.so:/system/lib/libjscore.so|libshim_camera.so 
 
     symlink /sdcard /storage/sdcard0
 
