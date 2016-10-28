@@ -319,9 +319,6 @@ PRODUCT_COPY_FILES += \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
 
-# never dexopt the MotoSignature
-$(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
-
 # ETC scripts
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh
