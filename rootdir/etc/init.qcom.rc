@@ -440,7 +440,7 @@ service batt_health /system/bin/batt_health
 on property:sys.boot_completed=1
    start batt_health
 
-service thermal-engine /system/bin/thermal-engine
+service thermal-engine /system/vendor/bin/thermal-engine
     class main
     user root
     group root
