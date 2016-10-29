@@ -89,6 +89,9 @@ on property:sys.boot_completed=1
     #Set io ahead for better performance,
     write /sys/block/mmcblk0/queue/read_ahead_kb 1536
 
+    # enable adreno_idler
+    write /sys/module/adreno_idler/parameters/adreno_idler_active Y
+
     # Start script
     start postinitrr
 
