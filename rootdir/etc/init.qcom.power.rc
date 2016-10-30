@@ -98,6 +98,8 @@ on property:sys.boot_completed=1
     # Tune LMK
     write /sys/module/lowmemorykiller/parameters/minfree 44032,48640,53248,57856,62464,71680
 
+    # Ena state notifier
+    write /sys/module/state_notifier/parameters/enabled 1
 
     # Start script
     start postinitrr
