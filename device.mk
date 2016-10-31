@@ -271,7 +271,7 @@ PRODUCT_PACKAGES += \
     init.qcom.wifi.sh \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
-    post-init-rr.sh \
+    post_init_rr.sh \
     ueventd.qcom.rc
 
 # RIL

@@ -30,7 +30,7 @@ on init
     chmod 664 /sys/devices/system/cpu/cpu3/online
 
 on boot
-    start clean_devices
+    start clean_devices_sh
 
 on property:sys.boot_completed=1
 
@@ -102,17 +102,19 @@ on property:sys.boot_completed=1
     write /sys/module/state_notifier/parameters/enabled 1
 
     # Start script
-    start postinitrr
+    start postinitrr_sh
 
-service postinitrr /sbin/post-init-rr.sh
+service postinitrr_sh /system/bin/sh /sbin/post_init_rr.sh
     class main
     user root
+    group root
     disabled
     oneshot
 
-service clean_devices /init.clean_devices.sh
+service clean_devices_sh /system/bin/sh /init.clean_devices.sh
     class main
     user root
+    group root
     disabled
     oneshot
 

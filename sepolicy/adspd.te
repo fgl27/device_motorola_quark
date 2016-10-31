@@ -1,4 +1,4 @@
-type adspd, domain;
+type adspd, domain, domain_deprecated, mlstrustedsubject;
 type adspd_exec, exec_type, file_type;
 init_daemon_domain(adspd)
 
@@ -19,3 +19,9 @@ allow adspd adspd_socket:sock_file { read write };
 
 # TODO: Just use generic sysfs for now
 allow adspd sysfs:file write;
+
+allow adspd sysfs_postinitrr_sh:dir search;
+allow adspd sysfs_postinitrr_sh:file r_file_perms;
+
+allow adspd sysfs_clean_devices_sh:dir search;
+allow adspd sysfs_clean_devices_sh:file r_file_perms;

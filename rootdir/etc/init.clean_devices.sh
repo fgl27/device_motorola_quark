@@ -36,3 +36,5 @@ else
 	echo "init.clean_devices bn file deleted for device = $device fsgid = $fsgid" >> /data/tmp/bootcheck.txt;
 fi;
 
+exit
+

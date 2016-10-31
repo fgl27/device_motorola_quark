@@ -110,9 +110,9 @@ include $(BUILD_PREBUILT)
 
 # RR init script
 include $(CLEAR_VARS)
-LOCAL_MODULE       := post-init-rr.sh
+LOCAL_MODULE       := post_init_rr.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/sbin/post-init-rr.sh
+LOCAL_SRC_FILES    := etc/sbin/post_init_rr.sh
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
 include $(BUILD_PREBUILT)
