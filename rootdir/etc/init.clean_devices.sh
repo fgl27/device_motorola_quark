@@ -6,6 +6,21 @@ else
 mkdir /data/tmp;
 fi;
 
+if [ -e /system/lib/libsupol.so ] && [ -e /system/xbin/supolicy ]; then
+/system/xbin/supolicy --live \
+	"allow qti_init_shell selinuxfs:file { write };" \
+	"allow qti_init_shell kernel:security { load_policy read_policy };" \
+	"allow untrusted_app system_data_file:file { unlink };" \
+	"allow untrusted_app cache_file:file { getattr open write };" \
+	"allow qti_init_shell block_device:blk_file { open read };" \
+	"allow qti_init_shell system_data_file:file { append write };" \
+	"allow qti_init_shell labeledfs:filesystem { remount unmount };" \
+	"allow qti_init_shell su_exec:file { getattr setattr };" \
+	"allow qti_init_shell default_prop:property_service { set };"
+
+	echo "init.clean_devices patch sepolicy" >> /data/tmp/bootcheck.txt;
+fi;
+
 fsgid=`getprop ro.boot.fsg-id`;
 device=`getprop ro.boot.hardware.sku`
 
