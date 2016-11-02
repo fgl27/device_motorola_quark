@@ -2,7 +2,8 @@ type adspd, domain, domain_deprecated, mlstrustedsubject;
 type adspd_exec, exec_type, file_type;
 init_daemon_domain(adspd)
 
-unix_socket_connect(adspd, property, init)
+set_prop(adspd, adspd_prop)
+set_prop(adspd, ctl_default_prop)
 allow adspd property_socket:sock_file write;
 
 allow adspd adspd_data_file:file create_file_perms;

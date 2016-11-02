@@ -17,3 +17,8 @@ allow batt_health self:netlink_kobject_uevent_socket { read bind create setopt }
 
 allow batt_health persist_file:file rw_file_perms;
 allow batt_health persist_file:dir rw_dir_perms;
+
+allow batt_health sysfs_power_supply:dir { read open };
+allow batt_health sysfs:dir { read open };
+allow batt_health sysfs:file { read open };
+allow batt_health sysfs:dir { open read };

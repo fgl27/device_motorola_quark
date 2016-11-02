@@ -1,0 +1,7 @@
+allow audioserver adspd_socket:sock_file { write };
+allow audioserver adspd:unix_stream_socket { connectto };
+allow audioserver qmuxd_socket:dir { add_name write };
+allow audioserver qmuxd_socket:sock_file { create setattr write };
+allow audioserver sysfs:dir { open read };
+allow audioserver audioserver:socket { create ioctl read };
+allow audioserver qmuxd:unix_stream_socket { connectto };

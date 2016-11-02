@@ -9,3 +9,4 @@ type display_sysfs, sysfs_type, file_type;
 type vib_sysfs, sysfs_type, file_type;
 type sysfs_postinitrr_sh, fs_type, sysfs_type;
 type sysfs_clean_devices_sh, fs_type, sysfs_type;
+type sysfs_power_supply, file_type, sysfs_type;

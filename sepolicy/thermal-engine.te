@@ -5,3 +5,4 @@ allow thermal-engine sysfs_battery_supply:lnk_file read;
 # FIXME: Just use generic sysfs for now
 allow thermal-engine sysfs:dir search;
 allow thermal-engine sysfs:file read;
+allow thermal-engine thermal-engine:capability { chown };

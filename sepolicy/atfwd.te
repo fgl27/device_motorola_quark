@@ -1,3 +1,4 @@
 unix_socket_connect(atfwd, property, init)
 allow atfwd property_socket:sock_file write;
 allow atfwd ctl_default_prop:property_service set;
+allow atfwd diag_device:chr_file { ioctl read write open };

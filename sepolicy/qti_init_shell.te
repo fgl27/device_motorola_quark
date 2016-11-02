@@ -1,2 +1,8 @@
 allow qti_init_shell btnvtool_exec:file rx_file_perms;
 set_prop(qti_init_shell, mmi_prop)
+allow qti_init_shell block_device:blk_file { ioctl };
+allow qti_init_shell ctl_default_prop:property_service  { set };
+allow qti_init_shell net_radio_prop:property_service  { set };
+allow qti_init_shell storage_file:dir { getattr };
+allow qti_init_shell system_data_file:file { open };
+allow qti_init_shell kernel:process { setsched };

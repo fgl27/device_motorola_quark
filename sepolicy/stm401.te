@@ -1,4 +1,4 @@
-type stm401, domain;
+type stm401, domain, domain_deprecated, mlstrustedsubject;
 type stm401_exec, exec_type, file_type;
 init_daemon_domain(stm401)
 

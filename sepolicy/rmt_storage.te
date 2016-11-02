@@ -1,4 +1,4 @@
-unix_socket_connect(rmt_storage, property, init)
+set_prop(rmt_storage, rmtfs_prop)
 allow rmt_storage property_socket:sock_file write;
 
 allow rmt_storage ssd_device:blk_file rw_file_perms;
