@@ -19,6 +19,11 @@ qcom.bt.le_dev_pwr_class=1
 ro.bluetooth.hfp.ver=1.6
 ro.qualcomm.bluetooth.sap=false
 
+# Camera
+camera2.portability.force_api=1
+media.stagefright.legacyencoder=true
+media.stagefright.less-secure=true
+
 # Display
 ro.qualcomm.cabl=0
 ro.opengles.version=196610
