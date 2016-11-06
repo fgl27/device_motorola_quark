@@ -480,4 +480,5 @@
          so that applications can still use their own mechanisms. -->
     <bool name="config_enableAutoPowerModes">true</bool>
 
+    <bool name="config_volte_preferred">true</bool>
 </resources>
