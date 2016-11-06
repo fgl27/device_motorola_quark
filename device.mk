@@ -271,6 +271,7 @@ PRODUCT_PACKAGES += \
     init.qcom.wifi.sh \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
+    init.mmi.volte.rc \
     post_init_rr.sh \
     ueventd.qcom.rc
 

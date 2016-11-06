@@ -99,16 +99,15 @@ LOCAL_SRC_FILES    := etc/ueventd.qcom.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
-# Multi Device support
-#include $(CLEAR_VARS)
-#LOCAL_MODULE       := bpe.sh
-#LOCAL_MODULE_TAGS  := optional eng
-#LOCAL_MODULE_CLASS := ETC
-#LOCAL_SRC_FILES    := etc/sbin/bpe.sh
-#LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
-#include $(BUILD_PREBUILT)
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.mmi.volte.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := etc/init.mmi.volte.rc
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
 
-# RR init script
+# Rom init script
 include $(CLEAR_VARS)
 LOCAL_MODULE       := post_init_rr.sh
 LOCAL_MODULE_TAGS  := optional eng
