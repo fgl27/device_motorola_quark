@@ -41,6 +41,7 @@ on init
 
 on boot
     start clean_devices_sh
+    start postinitrr_sh
 
 on property:sys.boot_completed=1
 
@@ -113,9 +114,6 @@ on property:sys.boot_completed=1
 
     # GPU max clock to stock value
     write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 600000000
-
-    # Start script
-    start postinitrr_sh
 
 service postinitrr_sh /system/bin/sh /sbin/post_init_rr.sh
     class main
