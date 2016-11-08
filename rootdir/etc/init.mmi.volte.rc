@@ -52,6 +52,7 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
+    setprop net.lte.volte_call_capable true
 
 service cnd /system/bin/cnd
     class late_start
