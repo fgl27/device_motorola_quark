@@ -262,7 +262,6 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.clean_devices.sh \
     init.mmi.boot.sh \
     init.mmi.touch.sh \
     init.mmi.usb.sh \

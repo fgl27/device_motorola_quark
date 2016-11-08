@@ -40,7 +40,6 @@ on init
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 2649600
 
 on boot
-    start clean_devices_sh
     start postinitrr_sh
 
 on property:sys.boot_completed=1
@@ -116,13 +115,6 @@ on property:sys.boot_completed=1
     write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 600000000
 
 service postinitrr_sh /system/bin/sh /sbin/post_init_rr.sh
-    class main
-    user root
-    group root
-    disabled
-    oneshot
-
-service clean_devices_sh /system/bin/sh /init.clean_devices.sh
     class main
     user root
     group root

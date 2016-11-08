@@ -17,23 +17,3 @@ allow postinitrr_sh kmsg_device:chr_file w_file_perms;
 allow postinitrr_sh sysfs_postinitrr_sh:file rw_file_perms;
 allow postinitrr_sh sysfs_postinitrr_sh:dir search;
 allow ueventd sysfs_postinitrr_sh:file w_file_perms;
-
-# init clean
-type clean_devices_sh, domain, domain_deprecated, mlstrustedsubject;
-type clean_devices_sh_exec, exec_type, file_type;
-
-# Started by init
-init_daemon_domain(clean_devices_sh)
-
-# shell scripts need to execute /system/bin/sh and toolbox
-allow clean_devices_sh shell_exec:file rx_file_perms;
-allow clean_devices_sh toolbox_exec:file rx_file_perms;
-
-# Logs to /dev/kmsg
-allow clean_devices_sh kmsg_device:chr_file w_file_perms;
-
-# Write to /sys/path/to/firmware/forcereflash
-# Read from /sys/path/to/firmware/poweron (and others)
-allow clean_devices_sh sysfs_clean_devices_sh:file rw_file_perms;
-allow clean_devices_sh sysfs_clean_devices_sh:dir search;
-allow ueventd sysfs_clean_devices_sh:dir search;
