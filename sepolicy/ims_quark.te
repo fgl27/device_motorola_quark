@@ -1,0 +1,20 @@
+# imsqmidaemon daemon
+type imsqmidaemon, domain, domain_deprecated;
+type imsqmidaemon_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(imsqmidaemon)
+
+# imsdatadaemon daemon
+type imsdatadaemon, domain, domain_deprecated;
+type imsdatadaemon_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(imsdatadaemon)
+
+# ims_rtp_daemon daemon
+type ims_rtp_daemon, domain, domain_deprecated;
+type ims_rtp_daemon_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(ims_rtp_daemon)

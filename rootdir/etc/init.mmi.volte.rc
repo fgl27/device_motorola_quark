@@ -42,6 +42,7 @@ service imsdatadaemon /system/bin/imsdatadaemon
 
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
+    setprop net.lte.volte_call_capable true
 
 service ims_rtp_daemon /system/bin/ims_rtp_daemon
    class main
@@ -52,7 +53,6 @@ service ims_rtp_daemon /system/bin/ims_rtp_daemon
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
-    setprop net.lte.volte_call_capable true
 
 service cnd /system/bin/cnd
     class late_start
@@ -77,8 +77,6 @@ on property:sys.ims.rcs=1
     setprop persist.data.iwlan.enable true
     setprop persist.sys.cnd.iwlan 1
     setprop persist.cne.logging.qxdm 3974
-    pm enable com.qualcomm.qti.rcsbootstraputil
-    pm enable com.qualcomm.qti.rcsimsbootstraputil
 
 on property:sys.ims.rcs=0
     setprop persist.radio.calls.on.ims false
@@ -99,8 +97,6 @@ on property:sys.ims.rcs=0
     setprop persist.data.iwlan.enable false
     setprop persist.sys.cnd.iwlan 0
     setprop persist.cne.logging.qxdm 0
-    pm disable com.qualcomm.qti.rcsbootstraputil
-    pm disable com.qualcomm.qti.rcsimsbootstraputil
 
 on property:persist.radio.VT_ENABLE=1
    start imsqmidaemon
