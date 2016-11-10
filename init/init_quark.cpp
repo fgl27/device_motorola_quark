@@ -40,6 +40,8 @@ void vendor_load_properties()
     std::string sku;
     std::string carrier;
     std::string fsgid;
+    std::string radio;
+    std::string cid;
     std::string camera_enable_vpu;
 
     platform = property_get("ro.board.platform");
@@ -57,7 +59,8 @@ void vendor_load_properties()
     fsgid = property_get("ro.boot.fsg-id");
     carrier = property_get("ro.boot.carrier");
     sku = property_get("ro.boot.hardware.sku");
-
+    radio = property_get("ro.boot.radio");
+    cid = property_get("ro.boot.cid");
 
     if (fsgid != "emea" && fsgid != "singlela" && fsgid != "lra" && fsgid != "lra_gsm" && fsgid != "verizon" && fsgid != "verizon_gsm") {
         if (sku == "XT1225") {
@@ -68,7 +71,7 @@ void vendor_load_properties()
             }
         } else if (sku == "XT1250") {
             fsgid = "lra";
-        } else if (sku == "XT1254") {
+        } else if (sku == "XT1254" || (radio == "0x4" && (cid == "0x2" || cid == "0x0"))) {
             fsgid = "verizon";
         }
     }
