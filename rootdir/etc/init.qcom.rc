@@ -519,6 +519,10 @@ service ril-daemon /system/bin/rild
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
 
+service cnd /system/bin/cnd
+    class late_start
+    socket cnd stream 660 root inet
+
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
