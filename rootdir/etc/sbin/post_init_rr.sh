@@ -9,9 +9,12 @@ else
 mkdir /data/tmp
 fi
 
-#patch sepolicy need for N for now
-if [ -e /system/lib/libsupol.so ] && [ -e /system/xbin/supolicy ]; then
-/system/xbin/supolicy --live \
+#patch sepolicy need for N for now, use a cp and name change workaround to prevent security breach
+if [ -e /system/etc/sp/sp_lib ] && [ -e /system/etc/sp/sp_bin ]; then
+cp /system/etc/sp/sp_lib /system/etc/sp/libsupol.so
+chmod 755 /system/etc/sp/libsupol.so
+chmod 755 /system/etc/sp/sp_bin
+LD_LIBRARY_PATH=/system/etc/sp/libsupol.so /system/etc/sp/sp_bin --live \
 	"allow qti_init_shell selinuxfs:file { write };" \
 	"allow qti_init_shell kernel:security { load_policy read_policy };" \
 	"allow untrusted_app system_data_file:file { unlink };" \
@@ -20,12 +23,25 @@ if [ -e /system/lib/libsupol.so ] && [ -e /system/xbin/supolicy ]; then
 	"allow qti_init_shell system_data_file:file { append write };" \
 	"allow qti_init_shell labeledfs:filesystem { remount unmount };" \
 	"allow qti_init_shell su_exec:file { getattr setattr };" \
-	"allow qti_init_shell default_prop:property_service { set };"
+	"allow qti_init_shell default_prop:property_service { set };" \
+	"allow untrusted_app superuser_device:sock_file { write };" \
+	"allow priv_app superuser_device:sock_file { write };" \
+	"allow priv_app sudaemon:unix_stream_socket { connectto };" \
+	"allow untrusted_app sudaemon:unix_stream_socket { connectto };" \
+	"allow untrusted_app anr_data_file:dir { read };" \
+	"allow priv_app anr_data_file:dir { read };" \
+	"allow priv_app su_exec:file { execute write getattr setattr execute_no_trans };" \
+	"allow priv_app system_data_file:file { getattr open read };" \
+	"allow untrusted_app system_data_file:file { getattr open read };" \
+	"allow untrusted_app su_exec:file { execute write getattr setattr execute_no_trans };"
 
 	echo "post init patch sepolicy" >> /data/tmp/bootcheck.txt;
+
+rm -rf /system/etc/sp/libsupol.so
+chmod 444 /system/etc/sp/sp_bin
 fi;
 
-# only present in my ROM this need to be 755 to execute...
+# Adaway only present in some ROM this need to be 755 to execute it libs...
 if [ -e /system/app/Adaway/lib/arm/libblank_webserver_exec.so ]; then
 	chmod 755 /system/app/Adaway/lib/arm/libblank_webserver_exec.so
 fi
@@ -53,7 +69,6 @@ if [ -e /system/xbin/su ]; then
 fi
 
 # Init clean start
-
 fsgid=`getprop ro.boot.fsg-id`;
 device=`getprop ro.boot.hardware.sku`
 
