@@ -20,7 +20,17 @@ if [ -e /system/lib/libsupol.so ] && [ -e /system/xbin/supolicy ]; then
 	"allow qti_init_shell system_data_file:file { append write };" \
 	"allow qti_init_shell labeledfs:filesystem { remount unmount };" \
 	"allow qti_init_shell su_exec:file { getattr setattr };" \
-	"allow qti_init_shell default_prop:property_service { set };"
+	"allow qti_init_shell default_prop:property_service { set };" \
+	"allow untrusted_app superuser_device:sock_file { write };" \
+	"allow priv_app superuser_device:sock_file { write };" \
+	"allow priv_app sudaemon:unix_stream_socket { connectto };" \
+	"allow untrusted_app sudaemon:unix_stream_socket { connectto };" \
+	"allow untrusted_app anr_data_file:dir { read };" \
+	"allow priv_app anr_data_file:dir { read };" \
+	"allow priv_app su_exec:file { execute write getattr setattr execute_no_trans };" \
+	"allow priv_app system_data_file:file { getattr open read };" \
+	"allow untrusted_app system_data_file:file { getattr open read };" \
+	"allow untrusted_app su_exec:file { execute write getattr setattr execute_no_trans };"
 
 	echo "post init patch sepolicy" >> /data/tmp/bootcheck.txt;
 fi;
