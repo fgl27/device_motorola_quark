@@ -103,6 +103,7 @@ if  [ "$device" == XT1225 ] ||  [ "$fsgid" == emea ] || [ "$fsgid" == singlela ]
 else
 	echo "post init bn file deleted for device = $device fsgid = $fsgid" >> /data/tmp/bootcheck.txt;
 fi;
+/system/bin/log -t post_init -p i "post init start ok"
 
 umount /system;
 

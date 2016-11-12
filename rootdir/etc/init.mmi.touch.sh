@@ -2,7 +2,7 @@
 
 PATH=/sbin:/system/sbin:/system/bin:/system/xbin
 export PATH
-
+/system/bin/log -t init.mmi.touch -p i "init.mmi.touch run"
 while getopts d op;
 do
 	case $op in

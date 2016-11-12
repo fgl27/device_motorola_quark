@@ -2,7 +2,7 @@
 
 PATH=/sbin:/system/sbin:/system/bin:/system/xbin
 export PATH
-
+/system/bin/log -t init.mmi.usb.sh -p i "init.mmi.usb.sh run"
 # Init USB
 serialno=`getprop persist.usb.serialno`
 case "$serialno" in

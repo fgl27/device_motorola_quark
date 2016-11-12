@@ -28,7 +28,7 @@
 
 #Read the arguments passed to the script
 config="$1"
-
+/system/bin/log -t init.qcom.bt.sh -p i "init.qcom.bt.sh run"
 BLUETOOTH_SLEEP_PATH=/proc/bluetooth/sleep/proto
 LOG_TAG="qcom-bluetooth"
 LOG_NAME="${0}:"
