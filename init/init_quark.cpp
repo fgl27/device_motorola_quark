@@ -55,7 +55,17 @@ void vendor_load_properties()
     if (camera_enable_vpu == "1")
 	property_set("persist.camera.enable_vpu", "0");
 
-    // Multi device support
+    // Multi device support, list of radios and cid probably complete
+    // Radio: XT1225 Retail = 0x5
+    // Radio: XT1250 Verizon = 0x4
+    // Radio: XT1254 Verizon = 0x4
+    // Cid:   XT1225 Retail = 0xC
+    // Cid:   XT1250 Verizon = 0x9
+    // Cid:   XT1254 Verizon = 0x2 and 0x0
+    // Fsgid: XT1225 Retail = singlela (latino america), emea (euro and india)
+    // Fsgid: XT1250 Verizon = lra (america verizon), lra_gsm (america gsm)
+    // Fsgid: XT1254 Verizon = verizon (america verizon), verizon_gsm (america gsm)
+
     fsgid = property_get("ro.boot.fsg-id");
     carrier = property_get("ro.boot.carrier");
     sku = property_get("ro.boot.hardware.sku");
@@ -63,13 +73,13 @@ void vendor_load_properties()
     cid = property_get("ro.boot.cid");
 
     if (fsgid != "emea" && fsgid != "singlela" && fsgid != "lra" && fsgid != "lra_gsm" && fsgid != "verizon" && fsgid != "verizon_gsm") {
-        if (sku == "XT1225") {
+        if (sku == "XT1225" || (radio == "0x5" && cid == "0xC")) {
             if (carrier == "reteu") {
                 fsgid = "emea";
             } else {
                 fsgid = "singlela";
             }
-        } else if (sku == "XT1250") {
+        } else if (sku == "XT1250" || (radio == "0x4" && cid == "0x9")) {
             fsgid = "lra";
         } else if (sku == "XT1254" || (radio == "0x4" && (cid == "0x2" || cid == "0x0"))) {
             fsgid = "verizon";
