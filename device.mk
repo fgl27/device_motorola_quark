@@ -25,6 +25,10 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
 PRODUCT_AAPT_PREBUILT_DPI := 560dpi xxhdpi xhdpi hdpi
 
+# Bin scripts
+PRODUCT_PACKAGES += \
+    rcs_config.sh
+
 # ETC scripts
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh
@@ -103,11 +107,11 @@ PRODUCT_COPY_FILES += \
     device/motorola/quark/permissions/com.motorola.zap.xml:system/etc/permissions/com.motorola.zap.xml
 
 #$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
-# Dalvik size for 3GB xxxhdpi frameworks is not good for quark
+# Dalvik size for 3GB xxxhdpi frameworks may change I prefer setting it here
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=8m \
-    dalvik.vm.heapgrowthlimit=256m \
-    dalvik.vm.heapsize=512m \
+    dalvik.vm.heapgrowthlimit=288m \
+    dalvik.vm.heapsize=768m \
     dalvik.vm.heaptargetutilization=0.75 \
     dalvik.vm.heapminfree=2m \
     dalvik.vm.heapmaxfree=8m
@@ -272,7 +276,6 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.mmi.volte.rc \
     post_init_rr.sh \
-    rcs_config.sh \
     ueventd.qcom.rc
 
 # RIL

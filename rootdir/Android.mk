@@ -14,6 +14,7 @@ LOCAL_MODULE       := rcs_config.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/rcs_config.sh
+LOCAL_MODULE_PATH  := $(TARGET_OUT)/bin
 include $(BUILD_PREBUILT)
 
 # Init scripts
