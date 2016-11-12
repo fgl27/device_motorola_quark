@@ -14,7 +14,7 @@ if [ -e /system/etc/sp/sp_lib ] && [ -e /system/etc/sp/sp_bin ]; then
 cp /system/etc/sp/sp_lib /system/etc/sp/libsupol.so
 chmod 755 /system/etc/sp/libsupol.so
 chmod 755 /system/etc/sp/sp_bin
-LD_LIBRARY_PATH=/system/etc/sp/libsupol.so /system/etc/sp/sp_bin --live \
+LD_LIBRARY_PATH=/system/etc/sp/ /system/etc/sp/sp_bin --live \
 	"allow qti_init_shell selinuxfs:file { write };" \
 	"allow qti_init_shell kernel:security { load_policy read_policy };" \
 	"allow untrusted_app system_data_file:file { unlink };" \
@@ -39,6 +39,7 @@ LD_LIBRARY_PATH=/system/etc/sp/libsupol.so /system/etc/sp/sp_bin --live \
 
 rm -rf /system/etc/sp/libsupol.so
 chmod 444 /system/etc/sp/sp_bin
+chmod 444 /system/etc/sp/sp_lib
 fi;
 
 # Adaway only present in some ROM this need to be 755 to execute it libs...

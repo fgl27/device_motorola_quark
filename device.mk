@@ -272,6 +272,7 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.mmi.volte.rc \
     post_init_rr.sh \
+    rcs_config.sh \
     ueventd.qcom.rc
 
 # RIL

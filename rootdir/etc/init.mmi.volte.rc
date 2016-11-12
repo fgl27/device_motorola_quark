@@ -28,6 +28,7 @@
 service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
+    seclabel u:r:init:s0
     socket ims_qmid stream 0660 system radio
     group radio net_raw log qcom_diag
     disabled
@@ -36,6 +37,7 @@ service imsqmidaemon /system/bin/imsqmidaemon
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
+    seclabel u:r:init:s0
     socket ims_datad stream 0660 system radio
     group system wifi radio inet net_raw log qcom_diag net_admin
     disabled
@@ -45,14 +47,28 @@ on property:sys.ims.QMI_DAEMON_STATUS=1
     setprop net.lte.volte_call_capable true
 
 service ims_rtp_daemon /system/bin/ims_rtp_daemon
-   class main
-   user system
-   socket ims_rtpd stream 0660 system radio
-   group radio net_raw diag qcom_diag log
-   disabled
+    class main
+    user system
+    seclabel u:r:init:s0
+    socket ims_rtpd stream 0660 system radio
+    group radio net_raw diag qcom_diag log
+    disabled
 
 on property:sys.ims.DATA_DAEMON_STATUS=1
     start ims_rtp_daemon
+
+# Config volte related prioperties
+service rcs_config_on /system/bin/sh /system/bin/rcs_config.sh  on
+    user root
+    seclabel u:r:init:s0
+    oneshot
+    disabled
+
+service rcs_config_off /system/bin/sh /system/bin/rcs_config.sh  off
+    user root
+    seclabel u:r:init:s0
+    oneshot
+    disabled
 
 service cnd /system/bin/cnd
     class late_start
@@ -77,6 +93,7 @@ on property:sys.ims.rcs=1
     setprop persist.data.iwlan.enable true
     setprop persist.sys.cnd.iwlan 1
     setprop persist.cne.logging.qxdm 3974
+    start rcs_config_on
 
 on property:sys.ims.rcs=0
     setprop persist.radio.calls.on.ims false
@@ -97,6 +114,7 @@ on property:sys.ims.rcs=0
     setprop persist.data.iwlan.enable false
     setprop persist.sys.cnd.iwlan 0
     setprop persist.cne.logging.qxdm 0
+    start rcs_config_off
 
 on property:persist.radio.VT_ENABLE=1
    start imsqmidaemon
