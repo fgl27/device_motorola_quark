@@ -2,13 +2,6 @@
 
 mount -o rw,remount /system
 
-# Make tmp folder
-if [ -e /data/tmp ]; then
-	echo "post init start  $(date)" > /data/tmp/bootcheck.txt;
-else
-mkdir /data/tmp
-fi
-
 #patch sepolicy need for N for now, use a cp and name change workaround to prevent security breach
 if [ -e /system/etc/sp/sp_lib ] && [ -e /system/etc/sp/sp_bin ]; then
 cp /system/etc/sp/sp_lib /system/etc/sp/libsupol.so
@@ -35,7 +28,7 @@ LD_LIBRARY_PATH=/system/etc/sp/ /system/etc/sp/sp_bin --live \
 	"allow untrusted_app system_data_file:file { getattr open read };" \
 	"allow untrusted_app su_exec:file { execute write getattr setattr execute_no_trans };"
 
-	echo "post init patch sepolicy" >> /data/tmp/bootcheck.txt;
+	echo 'post_init: patch sepolicy ok' > /dev/kmsg;
 
 rm -rf /system/etc/sp/libsupol.so
 chmod 444 /system/etc/sp/sp_bin
@@ -70,11 +63,20 @@ if [ -e /system/xbin/su ]; then
 fi
 
 # Init clean start
-fsgid=`getprop ro.boot.fsg-id`;
+fsgid=`getprop ro.boot.fsg-id`
 device=`getprop ro.boot.hardware.sku`
+radio=`getprop ro.boot.radio`
+cid=`getprop ro.boot.cid`
+clean=0
+
+if  [ "$device" == XT1225 ] || [ "$fsgid" == emea ] || [ "$fsgid" == singlela ]; then
+	clean=1
+elif  [ "$radio" == 0x5 ] && [ "$cid" == 0xC ]; then
+	clean=1
+fi
 
 ## Clean Verizon blobs on others devices
-if  [ "$device" == XT1225 ] ||  [ "$fsgid" == emea ] || [ "$fsgid" == singlela ]; then
+if [ "$clean" == 1 ]; then
 
 	# stop IMS services Not need for others then VZW users
 	stop imsqmidaemon;
@@ -99,12 +101,14 @@ if  [ "$device" == XT1225 ] ||  [ "$fsgid" == emea ] || [ "$fsgid" == singlela ]
 
 	done
 
-	echo "post init file deleted for device = $device fsgid = $fsgid" >> /data/tmp/bootcheck.txt;
+	echo 'post_init: file deleted for device =' $device '- fsgid =' $fsgid '- radio =' $radio '- cid =' $cid > /dev/kmsg;
 else
-	echo "post init bn file deleted for device = $device fsgid = $fsgid" >> /data/tmp/bootcheck.txt;
+	echo 'post_init: file not deleted for device =' $device '- fsgid =' $fsgid '- radio =' $radio '- cid =' $cid > /dev/kmsg;
 fi;
-/system/bin/log -t post_init -p i "post init start ok"
 
+echo 'post_init: run OK for device =' $device '- fsgid =' $fsgid '- radio =' $radio '- cid =' $cid > /dev/kmsg;
+
+mount -o ro,remount /system;
 umount /system;
 
 exit
