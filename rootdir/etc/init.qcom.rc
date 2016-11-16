@@ -440,7 +440,14 @@ on property:sys.boot_completed=1
 service thermal-engine /system/vendor/bin/thermal-engine
     class main
     user root
+    seclabel u:r:init:s0
     group root
+
+service thermal-com /system/vendor/bin/thermal-engine --minimode
+    class main
+    user root
+    seclabel u:r:init:s0
+    disabled
 
 service time_daemon /system/bin/time_daemon
     class late_start
@@ -496,16 +503,19 @@ on property:hw.touch.ready=1
 service mmi-usb-sh /system/bin/sh /init.mmi.usb.sh
     class core
     user root
+    seclabel u:r:init:s0
     oneshot
 
 service mmi-boot-sh /system/bin/sh /init.mmi.boot.sh
     class core
     user root
+    seclabel u:r:init:s0
     oneshot
 
 service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
     class disabled
     user root
+    seclabel u:r:init:s0
     oneshot
 
 service ril-daemon /system/bin/rild
