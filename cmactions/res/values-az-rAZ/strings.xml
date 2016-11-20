@@ -40,4 +40,5 @@
   <string name="feedback_intensity_low">Aşağı</string>
   <string name="feedback_intensity_medium">Orta</string>
   <string name="feedback_intensity_high">Yüksək</string>
+  <string name="enable_in_setting_display">(Aktivləşdirin ilə Ayarlar/Göstər)</string>
 </resources>

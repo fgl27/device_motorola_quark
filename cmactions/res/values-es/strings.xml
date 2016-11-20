@@ -41,4 +41,5 @@
   <string name="feedback_intensity_low">Baja</string>
   <string name="feedback_intensity_medium">Media</string>
   <string name="feedback_intensity_high">Alta</string>
+  <string name="enable_in_setting_display">(Habilitar en Ajustes/Pantalla)</string>
 </resources>

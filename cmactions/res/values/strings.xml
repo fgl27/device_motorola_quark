@@ -51,5 +51,7 @@
     <string name="feedback_intensity_low">Low</string>
     <string name="feedback_intensity_medium">Medium</string>
     <string name="feedback_intensity_high">High</string>
+
+    <string name="enable_in_setting_display">(Enable in Setting/Display)</string>
 </resources>
 
