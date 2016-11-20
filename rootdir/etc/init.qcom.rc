@@ -443,7 +443,14 @@ on property:sys.boot_completed=1
 service thermal-engine /system/vendor/bin/thermal-engine
     class main
     user root
+    seclabel u:r:init:s0
     group root
+
+service thermal-com /system/vendor/bin/thermal-engine --minimode
+    class main
+    user root
+    seclabel u:r:init:s0
+    disabled
 
 service time_daemon /system/bin/time_daemon
     class late_start
@@ -522,6 +529,10 @@ service_redefine ril-daemon /system/bin/rild
 
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
+
+service cnd /system/bin/cnd
+    class late_start
+    socket cnd stream 660 root inet
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main

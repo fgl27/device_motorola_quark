@@ -100,8 +100,8 @@ PRODUCT_COPY_FILES += \
 # Dalvik size for 3GB xxxhdpi frameworks is not good for quark
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=8m \
-    dalvik.vm.heapgrowthlimit=256m \
-    dalvik.vm.heapsize=512m \
+    dalvik.vm.heapgrowthlimit=288m \
+    dalvik.vm.heapsize=768m \
     dalvik.vm.heaptargetutilization=0.75 \
     dalvik.vm.heapminfree=2m \
     dalvik.vm.heapmaxfree=8m
@@ -259,7 +259,6 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.clean_devices.sh \
     init.mmi.boot.sh \
     init.mmi.touch.sh \
     init.mmi.usb.sh \
@@ -273,7 +272,10 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_COPY_FILES += \
-   $(LOCAL_PATH)/configs/qcril.db:system/etc/ril/qcril.db
+    $(LOCAL_PATH)/configs/dsi_config.xml:system/etc/data/dsi_config.xml \
+    $(LOCAL_PATH)/configs/netmgr_config.xml:system/etc/data/netmgr_config.xml \
+    $(LOCAL_PATH)/configs/qcril.db:system/etc/motorola/qcril.db \
+    $(LOCAL_PATH)/configs/qmi_config.xml:system/etc/data/qmi_config.xml
 
 PRODUCT_PACKAGES += \
     librmnetctl

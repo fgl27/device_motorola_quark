@@ -70,6 +70,8 @@ void vendor_load_properties()
     char sku[PROP_VALUE_MAX];
     char carrier[PROP_VALUE_MAX];
     char fsgid[PROP_VALUE_MAX];
+    char radio[PROP_VALUE_MAX];
+    char cid[PROP_VALUE_MAX];
     char camera_enable_vpu[PROP_VALUE_MAX];
     const char *fsgid_value;
     int rc;
@@ -103,17 +105,25 @@ void vendor_load_properties()
     if (rc < 0) {
         fsgid[0] = '\0';
     }
+    rc = property_get("ro.boot.radio", radio);
+    if (rc < 0) {
+        radio[0] = '\0';
+    }
+    rc = property_get("ro.boot.cid", cid);
+    if (rc < 0) {
+        cid[0] = '\0';
+    }
 
     if (fsgid[0] == '\0') {
-        if (ISMATCH(sku, "XT1225")) {
+        if ((ISMATCH(sku, "XT1225")) || ((ISMATCH(radio, "0x5")) && (ISMATCH(cid, "0xC")))) {
             if (ISMATCH(carrier, "reteu")) {
                 fsgid_value = "emea";
             } else {
                 fsgid_value = "singlela";
             }
-        } else if (ISMATCH(sku, "XT1250")) {
+        } else if ((ISMATCH(sku, "XT1250")) || ((ISMATCH(radio, "0x4")) && (ISMATCH(cid, "0x9")))) {
             fsgid_value = "lra";
-        } else if (ISMATCH(sku, "XT1254")) {
+        } else if ((ISMATCH(sku, "XT1254")) || ((ISMATCH(radio, "0x4")) && ((ISMATCH(cid, "0x2")) || (ISMATCH(cid, "0x0"))))) {
             fsgid_value = "verizon";
         }
         INFO("Determined fsg-id: %s\n", fsgid_value);

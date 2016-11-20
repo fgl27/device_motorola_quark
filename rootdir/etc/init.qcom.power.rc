@@ -30,7 +30,7 @@ on init
     chmod 664 /sys/devices/system/cpu/cpu3/online
 
 on boot
-    start clean_devices
+    start postinitrr
 
 on property:sys.boot_completed=1
 
@@ -95,12 +95,7 @@ on property:sys.boot_completed=1
 service postinitrr /sbin/post-init-rr.sh
     class main
     user root
-    disabled
-    oneshot
-
-service clean_devices /init.clean_devices.sh
-    class main
-    user root
+    seclabel u:r:init:s0
     disabled
     oneshot
 

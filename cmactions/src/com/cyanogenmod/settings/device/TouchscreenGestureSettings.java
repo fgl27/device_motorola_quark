@@ -36,6 +36,8 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
                 findPreference(CATEGORY_AMBIENT_DISPLAY);
         if (ambientDisplayCat != null) {
             ambientDisplayCat.setEnabled(CMActionsSettings.isDozeEnabled(getContentResolver()));
+            if (!CMActionsSettings.isDozeEnabled(getContentResolver()))
+                ambientDisplayCat.setTitle(getString(R.string.ambient_display_title) + " " + getString(R.string.feedback_intensity_none) + " " + getString(R.string.enable_in_setting_display));
         }
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
