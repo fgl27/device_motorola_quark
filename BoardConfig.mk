@@ -172,3 +172,6 @@ TARGET_BOOTANIMATION_USE_RGB565 := true
 
 # Snapdragon LLVM Compiler
 TARGET_USE_SDCLANG := true
+
+# Time
+BOARD_USES_QC_TIME_SERVICES := true
