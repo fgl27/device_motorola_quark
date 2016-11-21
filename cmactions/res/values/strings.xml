@@ -52,6 +52,7 @@
     <string name="feedback_intensity_medium">Medium</string>
     <string name="feedback_intensity_high">High</string>
 
-    <string name="enable_in_setting_display">(Enable in Setting/Display)</string>
+    <string name="enable_in_setting_display">(Enable in Setting/%s/Display)</string>
+    <string name="crdroid_settings">crDroid Settings</string>
 </resources>
 

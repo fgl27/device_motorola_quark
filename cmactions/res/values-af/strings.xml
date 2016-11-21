@@ -41,5 +41,5 @@
   <string name="feedback_intensity_low">Laag</string>
   <string name="feedback_intensity_medium">Gemiddeld</string>
   <string name="feedback_intensity_high">Hoog</string>
-  <string name="enable_in_setting_display">(Aktiveer in Instellings/Skerm)</string>
+  <string name="enable_in_setting_display">(Aktiveer in Instellings/%s/Skerm)</string>
 </resources>
