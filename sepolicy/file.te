@@ -35,3 +35,5 @@ type mediadrm_vendor_data_file,  file_type, data_file_type;
 type proc_swap, fs_type;
 type sysfs_timekeep, fs_type, sysfs_type;
 type sysfs_input, sysfs_type, fs_type;
+#type for devstart
+type sysfs_audio, sysfs_type, fs_type;

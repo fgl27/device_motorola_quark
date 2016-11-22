@@ -66,6 +66,7 @@
 /sys/bus/esoc/devices/esoc0/esoc_name                                                       u:object_r:sysfs_esoc:s0
 /sys/bus/msm_subsys/devices/subsys2/name                                                    u:object_r:sysfs_ssr:s0
 /sys/devices/qpnp-rtc-[a-z0-9]+/rtc/rtc0(/.*)?                                              u:object_r:sysfs_rtc:s0
+/sys/kernel/boot_adsp/boot                                                                  u:object_r:sysfs_audio:s0
 
 ###################################
 # System files
@@ -75,6 +76,8 @@
 ###################################
 # vendor files
 #
+/(vendor|system/vendor)/bin/init\.qcom\.devstart\.sh    u:object_r:init-qcom-devstart-sh_exec:s0
+/(vendor|system/vendor)/bin/init\.qcom\.devwait\.sh     u:object_r:init-qcom-devwait-sh_exec:s0
 /(vendor|system/vendor)/bin/init\.mmi\.touch\.sh        u:object_r:mmi-touch-sh_exec:s0
 /(vendor|system/vendor)/bin/init\.mmi\.boot\.sh         u:object_r:mmi-boot-sh_exec:s0
 /(vendor|system/vendor)/bin/init\.mmi\.usb\.sh          u:object_r:mmi-usb-sh_exec:s0
