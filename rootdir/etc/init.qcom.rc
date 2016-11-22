@@ -105,6 +105,9 @@ on late-fs
 # msm specific files that need to be created on /data
 on post-fs-data
 
+    # Start devices by sysfs trigger
+    start devstart_sh
+
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -279,17 +282,12 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
-    # Allow subsystem (modem etc) debugging
-    write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
-    write /sys/kernel/boot_adsp/boot 1
-
     # Annotate panics with helpful information
     chmod 640 /proc/apanic_annotate
     chown log log /proc/apanic_annotate
 
-    # Boot the audio
-    write /sys/kernel/boot_adsp/boot 1
-    setprop qcom.audio.init complete
+    # Busy loop to wait for devices booted by devstart_sh just in case device not ready
+    exec - root root system -- /vendor/bin/init.qcom.devwait.sh
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -458,6 +456,9 @@ on boot
 
     mkdir /persist/alarm 0770 system system
     mkdir /persist/time 0770 system system
+
+    # Allow subsystem (modem etc) debugging
+    write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
 
 on property:sys.boot_completed=1
 
@@ -699,3 +700,10 @@ service atfwd /system/bin/ATFWD-daemon
 service cnd /system/bin/cnd
     class late_start
     socket cnd stream 660 root inet
+
+service devstart_sh /vendor/bin/init.qcom.devstart.sh
+    class main
+    user root
+    group root system
+    disabled
+    oneshot
