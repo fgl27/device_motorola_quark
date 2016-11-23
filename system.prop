@@ -141,6 +141,9 @@ ro.disableWifiApFirmwareReload=true
 # Allow tethering without provisioning app
 net.tethering.noprovisioning=true
 
+# Disable mobile data by default (only affect first boot once user enable it in settings this is not used anymore)
+ro.com.android.mobiledata=false
+
 # Motorola Moto MAXX Hardware Info
 ro.device.chipset=Qualcomm Snapdragon 805
 ro.device.cpu=Quad-core 2.7 GHz Krait 450
