@@ -70,9 +70,9 @@ service rcs_config_off /system/bin/sh /system/bin/rcs_config.sh  off
     oneshot
     disabled
 
-service cnd /system/bin/cnd
-    class late_start
-    socket cnd stream 660 root inet
+#service cnd /system/bin/cnd
+#    class late_start
+#    socket cnd stream 660 root inet
 
 on property:sys.ims.rcs=1
     setprop persist.radio.calls.on.ims true
