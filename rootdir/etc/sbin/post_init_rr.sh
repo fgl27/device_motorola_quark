@@ -78,10 +78,10 @@ fi
 ## Clean Verizon blobs on others devices
 if [ "$clean" == 1 ]; then
 
-	# stop IMS services Not need for others then VZW users
-	stop imsqmidaemon;
-	stop imsdatadaemon;
-	setprop net.lte.volte_call_capable false
+	# stop IMS services Not need for others then VZW users * have disable volte.rc when they are enable remove the #
+#	stop imsqmidaemon;
+#	stop imsdatadaemon;
+#	setprop net.lte.volte_call_capable false
 
 	# delete main folders
 	app="system/app";
