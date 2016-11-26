@@ -545,7 +545,7 @@ service qseecomd /vendor/bin/qseecomd
     shutdown critical
     writepid /dev/cpuset/system-background/tasks
 
-service mpdecision /vendor/bin/mpdecision --avg_comp
+service mpdecision /vendor/bin/mpdecision --avg_comp --Nw=1:1.99 --Nw=2:2.99 --Nw=3:3.99 --Tw=2:140 --Tw=3:140 --Ts=2:190 --Ts=3:190
     class main
     user root
     group root system readproc diag
@@ -703,7 +703,7 @@ service gpsone_daemon /vendor/bin/gpsone_daemon
 
 on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
-    write /proc/sys/net/ipv4/tcp_adv_win_scale  2
+    write /proc/sys/net/ipv4/tcp_adv_win_scale 2
 
 service cnd /vendor/bin/cnd
     class late_start
