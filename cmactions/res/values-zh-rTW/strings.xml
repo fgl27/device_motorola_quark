@@ -17,4 +17,28 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Gesture shortcuts -->
+  <string name="user_aware_display_title">使用者感知顯示</string>
+  <string name="user_aware_display_summary">當使用者使用時保持螢幕開啟</string>
+  <string name="screen_gestures_panel_title">手勢</string>
+  <string name="ambient_display_title">環境顯示</string>
+  <string name="pick_up_gesture_title">拿起</string>
+  <string name="pick_up_gesture_summary">拿起或放下時發出震動通知</string>
+  <string name="ir_wake_up_title">揮手</string>
+  <string name="ir_wake_up_summary">在螢幕前揮手時發出震動通知</string>
+  <string name="actions_title">操作</string>
+  <string name="camera_gesture_title">扭動兩次</string>
+  <string name="camera_gesture_summary">扭動兩次手勢時所執行的操作</string>
+  <string name="chop_chop_gesture_title">迅速動作</string>
+  <string name="chop_chop_gesture_summary">迅速動作手勢時所執行的操作</string>
+  <string name="ir_silencer_title">揮動即可靜音</string>
+  <string name="ir_silencer_summary">在螢幕上揮手即可將來電靜音和延遲鬧鐘</string>
+  <string name="action_none">停用</string>
+  <string name="action_launch_camera">啟動相機</string>
+  <string name="action_torch">切換至手電筒</string>
+  <string name="feedback_intensity_title">觸覺回饋強度</string>
+  <string name="feedback_intensity_summary">對於雙重扭動和迅速動作的觸覺回饋強度</string>
+  <string name="feedback_intensity_none">已停用</string>
+  <string name="feedback_intensity_low">低</string>
+  <string name="feedback_intensity_medium">中</string>
+  <string name="feedback_intensity_high">高</string>
 </resources>
