@@ -3,7 +3,7 @@ Device configuration for Moto MAXX (Quark)
 Copyright 2016 - The CyanogenMod Project
 
 **I use this tree to build in Nougat cm-14.x and cm-14.x base source**
-This tree works prefect in crDroid Nougat, may need some minor cosmetic Strings changes in **cm.mk**  BUILD_DISPLAY_ID and in **cmactions/src/com/cyanogenmod/settings/device/TouchscreenGesturePreferenceFragment.java** crdroid_settings
+This tree works prefect in ResurrectionRemix Nougat, may need some minor cosmetic Strings changes in **cm.mk**  BUILD_DISPLAY_ID and in **cmactions/src/com/cyanogenmod/settings/device/TouchscreenGesturePreferenceFragment.java** crdroid_settings
 
 How to build this...
 The below may be out of data check XDA thread to make shore the descrived tree below are the one be used today...
@@ -16,8 +16,8 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <project name="CyanogenMod/android_device_qcom_common" path="device/qcom/common" remote="github" revision="cm-14.1" />
 
 	  <!-- Device/kernel/vendor-->
-	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="CR-N" />
-	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="CR-N" />
+	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="RR-N" />
+	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="cm-14.1" />
 	  <project name="bhb27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="CR-N" />
 
 	  <!-- Some CM project are out of date I update they here-->
