@@ -41,6 +41,4 @@
   <string name="feedback_intensity_low">Низкая</string>
   <string name="feedback_intensity_medium">Средняя</string>
   <string name="feedback_intensity_high">Высокая</string>
-  <string name="enable_in_setting_display">(Включить в Настройки/%s/Экран)</string>
-  <string name="crdroid_settings">Настройки crDroid</string>
 </resources>

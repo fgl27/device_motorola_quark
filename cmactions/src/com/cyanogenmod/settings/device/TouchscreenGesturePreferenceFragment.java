@@ -29,10 +29,9 @@ public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
         PreferenceCategory ambientDisplayCat = (PreferenceCategory)
                 findPreference(CATEGORY_AMBIENT_DISPLAY);
         if (ambientDisplayCat != null) {
-            String crdroid_settings = getString(R.string.crdroid_settings);
             ambientDisplayCat.setEnabled(CMActionsSettings.isDozeEnabled(getActivity().getContentResolver()));
-            if (!CMActionsSettings.isDozeEnabled(getActivity().getContentResolver()))
-                ambientDisplayCat.setTitle(getString(R.string.ambient_display_title) + " " + getString(R.string.feedback_intensity_none) + " " + getString(R.string.enable_in_setting_display, crdroid_settings));
+            if (!CMActionsSettings.isDozeEnabled(getActivity().getContentResolver())) 
+                ambientDisplayCat.setTitle(getString(R.string.ambient_display_title) + " " + getString(R.string.feedback_intensity_none) + " " + getString(R.string.enable_in_setting_display));
         }
     }
 }

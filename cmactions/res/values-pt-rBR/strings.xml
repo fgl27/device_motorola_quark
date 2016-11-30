@@ -20,7 +20,7 @@
   <string name="user_aware_display_title">Tela que reconhece o usuário</string>
   <string name="user_aware_display_summary">Manter a tela ligada enquanto houver um usuário na frente dela</string>
   <string name="screen_gestures_panel_title">Gestos</string>
-  <string name="ambient_display_title">Exibicão Ambiente</string>
+  <string name="ambient_display_title">Tela ambiente</string>
   <string name="pick_up_gesture_title">Pegar</string>
   <string name="pick_up_gesture_summary">Pulsar notificações quando o dispositivo for pego ou tirado do case/carregador/dock</string>
   <string name="ir_wake_up_title">Acenar</string>
@@ -37,9 +37,8 @@
   <string name="action_torch">Lig/Desl. lanterna</string>
   <string name="feedback_intensity_title">Intensidade da resposta tátil</string>
   <string name="feedback_intensity_summary">Intensidade da resposta tátil nas ações de torcer duas vezes e duas sacudidas rápidas</string>
-  <string name="feedback_intensity_none">Desativada</string>
+  <string name="feedback_intensity_none">Desativado</string>
   <string name="feedback_intensity_low">Baixa</string>
   <string name="feedback_intensity_medium">Média</string>
   <string name="feedback_intensity_high">Alta</string>
-  <string name="enable_in_setting_display">(Ative em Configurar/%s/Tela)</string>
 </resources>

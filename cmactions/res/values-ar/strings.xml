@@ -41,5 +41,4 @@
   <string name="feedback_intensity_low">منخفض</string>
   <string name="feedback_intensity_medium">متوسط</string>
   <string name="feedback_intensity_high">مرتفع</string>
-  <string name="enable_in_setting_display">(تمكين الإعدادات/%s/عرض)</string>
 </resources>

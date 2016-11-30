@@ -41,5 +41,4 @@
   <string name="feedback_intensity_low">Baixa</string>
   <string name="feedback_intensity_medium">Média</string>
   <string name="feedback_intensity_high">Alta</string>
-  <string name="enable_in_setting_display">(Ative em Configurar/%s/Tela)</string>
 </resources>
