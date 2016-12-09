@@ -151,3 +151,6 @@ ro.device.gpu=Qualcomm Adreno 420
 ro.device.rear_cam=21 MP
 ro.device.front_cam=2 MP
 ro.device.screen_res=1440x2560 pixels (~565 ppi)
+
+# wi-fi call
+persist.dbg.wfc_avail_ovr=1
