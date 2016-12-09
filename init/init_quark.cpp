@@ -94,8 +94,8 @@ void vendor_load_properties()
         property_set("ro.fsg-id", "verizon");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnCdmaDevice", "1");
-        property_set("ro.build.description", "quark_verizon-user 6.0.1 MCG24.251-5 9 release-keys");
-        property_set("ro.build.fingerprint", "motorola/quark_verizon/quark:6.0.1/MCG24.251-5/9:user/release-keys");
+        property_set("ro.build.description", "quark_verizon-user 5.1 SU4TL-44 44 release-keys");
+        property_set("ro.build.fingerprint", "motorola/quark_verizon/quark:5.1/SU4TL-44/44:user/release-keys");
         property_set("ro.telephony.default_cdma_sub", "0");
         property_set("ro.cdma.home.operator.numeric", "311480");
         property_set("ro.cdma.home.operator.alpha", "Verizon");
@@ -116,18 +116,17 @@ void vendor_load_properties()
         property_set("ro.telephony.gsm-routes-us-smsc", "1");
         // XT1254 - IMS Volte related
         property_set("persist.data.iwlan.enable", "true");
-        property_set("persist.sys.cnd.iwlan", "1");
         property_set("persist.radio.ignore_ims_wlan", "1");
-        property_set("persist.radio.calls.on.ims", "true");
-        property_set("persist.radio.jbims", "1");
-        property_set("persist.radio.VT_ENABLE", "1");
-        property_set("persist.radio.VT_HYBRID_ENABLE", "1");
-        property_set("persist.radio.ROTATION_ENABLE", "1");
-        property_set("persist.radio.RATE_ADAPT_ENABLE", "1");
-        property_set("persist.ims.rcs", "1");
-        property_set("persist.ims.enableADBLogs", "1");
-        property_set("persist.ims.enableDebugLogs", "1");
-	property_set("net.lte.volte_call_capable", "1");
+        property_set("persist.radio.data_con_rprt", "1");
+        //property_set("persist.radio.calls.on.ims", "true");
+        //property_set("persist.radio.jbims", "1");
+        //property_set("persist.radio.VT_ENABLE", "1");
+        //property_set("persist.radio.VT_HYBRID_ENABLE", "1");
+        //property_set("persist.radio.ROTATION_ENABLE", "1");
+        //property_set("persist.radio.RATE_ADAPT_ENABLE", "1");
+        //property_set("persist.rcs.supported", "1");
+        //property_set("persist.ims.enableADBLogs", "1");
+        //property_set("persist.ims.enableDebugLogs", "1");
 
         // Reduce IMS logging
         //property_set("persist.ims.disableDebugLogs", "1");
@@ -148,8 +147,8 @@ void vendor_load_properties()
         property_set("ro.com.google.clientidbase.ms", "android-verizon");
         property_set("ro.com.google.clientidbase.am", "android-verizon");
         property_set("ro.com.google.clientidbase.yt", "android-verizon");
-        property_set("ro.build.description", "quark_verizon-user 6.0.1 MCG24.251-5 9 release-keys");
-        property_set("ro.build.fingerprint", "motorola/quark_verizon/quark:6.0.1/MCG24.251-5/9:user/release-keys");
+        property_set("ro.build.description", "quark_verizon-user 5.1 SU4TL-44 44 release-keys");
+        property_set("ro.build.fingerprint", "motorola/quark_verizon/quark:5.1/SU4TL-44/44:user/release-keys");
         INFO("Set properties for \"verizon_gsm\"!\n");
     } else if (fsgid =="lra") {
         // XT1250 - Moto MAXX
@@ -212,8 +211,8 @@ void vendor_load_properties()
 	property_set("ro.com.google.clientidbase.am", "android-motorola");
 	property_set("ro.com.google.clientidbase.yt", "android-motorola");
 	property_set("persist.radio.redir_party_num", "0");
-        property_set("ro.build.description", "quark_retbr-user 6.0.1 MPGS24.107-70.2-2 2 release-keys");
-        property_set("ro.build.fingerprint", "motorola/quark_retbr/quark_umts:6.0.1/MPGS24.107-70.2-2/2:user/release-keys");
+        property_set("ro.build.description", "quark_retbr-user 6.0.1 MPG24.107-70.2 2 release-keys");
+        property_set("ro.build.fingerprint", "motorola/quark_retbr/quark_umts:6.0.1/MPG24.107-70.2/2:user/release-keys");
         INFO("Set properties for \"singlela\"!\n");
     }
 }
