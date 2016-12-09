@@ -41,6 +41,14 @@
         <device name="SND_DEVICE_IN_VOICE_REC_MIC_NS" acdb_id="107"/>
         <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" acdb_id="34"/>
         <device name="SND_DEVICE_IN_VOICE_REC_DMIC_FLUENCE" acdb_id="41"/>
+
+	<device name="SND_DEVICE_OUT_VOLTE_NB_ANC_HANDSET" acdb_id="7"/>
+	<device name="SND_DEVICE_OUT_VOLTE_NB_HANDSET" acdb_id="7"/>
+	<device name="SND_DEVICE_OUT_VOLTE_NB_HANDSET_TMUS" acdb_id="7"/>
+	<device name="SND_DEVICE_OUT_VOLTE_NB_HEADPHONES" acdb_id="10"/>
+	<device name="SND_DEVICE_OUT_VOLTE_NB_HAC_HANDSET" acdb_id="53"/>
+	<device name="SND_DEVICE_OUT_VOLTE_NB_SPEAKER" acdb_id="66"/>
+	<device name="SND_DEVICE_OUT_VOLTE_NB_LINE" acdb_id="77"/>
     </acdb_ids>
 
     <backend_names>
@@ -48,6 +56,7 @@
         <device name="SND_DEVICE_OUT_SPEAKER_REVERSE" backend="mi2s" />
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="mi2s-and-slim" />
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="mi2s" />
+	<device name="SND_DEVICE_OUT_VOLTE_NB_SPEAKER" backend="speaker"/>
     </backend_names>
 
     <pcm_ids>

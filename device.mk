@@ -92,7 +92,6 @@ PRODUCT_COPY_FILES += \
     device/motorola/quark/permissions/com.motorola.frameworks.core.addon.xml:system/etc/permissions/com.motorola.frameworks.core.addon.xml \
     device/motorola/quark/permissions/com.motorola.gallery.xml:system/etc/permissions/com.motorola.gallery.xml \
     device/motorola/quark/permissions/com.motorola.haptic.xml:system/etc/permissions/com.motorola.haptic.xml \
-    device/motorola/quark/permissions/com.motorola.ims.rcsmanager.xml:system/etc/permissions/com.motorola.ims.rcsmanager.xml \
 	device/motorola/quark/permissions/com.motorola.moto.xml:system/etc/permissions/com.motorola.moto.xml \
     device/motorola/quark/permissions/com.motorola.motodisplay.pd.screenoff.xml:system/etc/permissions/com.motorola.motodisplay.pd.screenoff.xml \
     device/motorola/quark/permissions/com.motorola.motosignature.xml:system/etc/permissions/com.motorola.motosignature.xml \
