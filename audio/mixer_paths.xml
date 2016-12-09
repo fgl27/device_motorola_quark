@@ -871,7 +871,7 @@
 	</path>
 
 	<path name="stereo-mic23">
-		<path name="camcorder-mic" />
+		<path name="stereo-mic13" />
 	</path>
 
 	<path name="bt-sco-headset">
