@@ -370,9 +370,6 @@ on boot
 
     insmod /system/lib/modules/touchx.ko
 
-    # ESDFS
-    chown system system /proc/fs/esdfs/packages
-
 on property:sys.boot_completed=1
 
     # Post boot services
