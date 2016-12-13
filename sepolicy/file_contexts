@@ -24,9 +24,6 @@
 /data/misc/cutback(/.*)?                u:object_r:cutback_data_file:s0
 /data/misc/audio_cutback(/.*)?          u:object_r:audio_cutback_data_file:s0
 
-# Display
-/sys/devices/virtual/graphics/fb0/hbm   u:object_r:livedisplay_sysfs:s0
-
 # NFC
 /dev/bcm2079x-i2c                       u:object_r:nfc_device:s0
 

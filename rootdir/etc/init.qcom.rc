@@ -345,9 +345,6 @@ on boot
     chmod 0440 /sys/class/graphics/fb0/frame_counter
     chown system system /sys/class/graphics/fb0/frame_counter
 
-    # Change ownership for HBM control
-    chown system system /sys/class/graphics/fb0/hbm
-
     # Change the ownership of touch screen files for system
     chown system system /sys/bus/i2c/drivers/atmel_mxt_ts/1-004a/drv_irq
     chown system system /sys/bus/i2c/drivers/atmel_mxt_ts/1-004a/reset
