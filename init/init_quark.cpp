@@ -100,7 +100,6 @@ void vendor_load_properties()
         property_set("ro.cdma.home.operator.numeric", "311480");
         property_set("ro.cdma.home.operator.alpha", "Verizon");
         property_set("ro.cdma.homesystem", "64,65,76,77,78,79,80,81,82,83");
-        property_set("ro.ril.force_eri_from_xml", "true");
         property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
         property_set("ro.com.google.clientidbase.ms", "android-verizon");
@@ -162,7 +161,6 @@ void vendor_load_properties()
         property_set("ro.build.fingerprint", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys");
         property_set("ro.telephony.default_cdma_sub", "0");
         property_set("ro.cdma.home.operator.isnan", "1");
-        property_set("ro.ril.force_eri_from_xml", "true");
         property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
         INFO("Set properties for \"lra\"!\n");
