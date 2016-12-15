@@ -584,6 +584,7 @@ service qmuxd /system/bin/qmuxd
 
 service netmgrd /system/bin/netmgrd
     class main
+    user root
     group radio
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
