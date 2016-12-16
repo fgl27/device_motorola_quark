@@ -42,9 +42,6 @@
 /dev/stm401_as                          u:object_r:sensors_device:s0
 /dev/stm401_ms                          u:object_r:sensors_device:s0
 
-# Vibrator
-/sys/vibrator/pwmvalue                  u:object_r:vib_sysfs:s0
-
 #
 ## Executables
 #

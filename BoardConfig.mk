@@ -90,7 +90,7 @@ TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # CMHW
-BOARD_HARDWARE_CLASS += device/motorola/quark/cmhw
+BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
