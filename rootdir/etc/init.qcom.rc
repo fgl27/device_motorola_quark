@@ -57,6 +57,9 @@ on init
     write /proc/sys/kernel/core_pattern "|/system/bin/coredump %e %p %t"
     write /proc/self/coredump_filter "0x7f"
 
+    # Symbols required for motorola blobs
+    export LD_SHIM_LIBS /system/bin/thermal-engine|libshims_thermal.so:/system/vendor/lib/libwvm.so|libshims_wvm.so
+
 on charger
     trigger early-fs
     trigger fs
