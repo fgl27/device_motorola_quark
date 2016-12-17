@@ -41,6 +41,25 @@ chmod 444 /system/etc/sp/sp_bin
 chmod 444 /system/etc/sp/sp_lib
 fi;
 
+#dirty flash checker
+romVersion=`getprop ro.modversion`' '`getprop ro.build.user`;
+if [ ! -e /data/temprom/ ]; then
+	mkdir /data/temprom/;
+	echo "$romVersion" > /data/temprom/buildTemp;
+fi
+buildTemp=`cat /data/temprom/buildTemp`;
+if [ "$romVersion" == "$buildTemp" ]; then
+	setprop rom.modversionuser clean;
+else
+	sed -i "s/$romVersion//g" /data/temprom/buildTemp
+	sed 's/ *$//' /data/temprom/buildTemp;
+	buildTemp=`cat /data/temprom/buildTemp`;
+	echo "$buildTemp $romVersion" > /data/temprom/buildTemp;
+	echo "$buildTemp" > /dev/kmsg;
+	setprop rom.modversionuser dirty;
+fi
+#dirty flash checker - END
+
 # Adaway only present in some ROM this need to be 755 to execute it libs...
 if [ -e /system/app/Adaway/lib/arm/libblank_webserver_exec.so ]; then
 	chmod 755 /system/app/Adaway/lib/arm/libblank_webserver_exec.so
