@@ -43,7 +43,5 @@ inline const char* BtmGetDefaultName()
 #define BTA_BLE_SKIP_CONN_UPD  TRUE
 // Enables interleaved scan
 #define BTA_HOST_INTERLEAVE_SEARCH TRUE
-/* Enable A2DP sink */
-#define BTA_AV_SINK_INCLUDED TRUE
 
 #endif
