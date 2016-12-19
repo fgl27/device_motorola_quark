@@ -1,14 +1,10 @@
 # Audio
-persist.audio.dualmic.config=endfire
 ro.qc.sdk.audio.fluencetype=fluence
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=false
-persist.audio.fluence.voicecomm=false
-use.voice.path.for.pcm.voip=true
+persist.audio.fluence.speaker=true
+use.voice.path.for.pcm.voip=false
 use.dedicated.device.for.voip=false
-af.fast_track_multiplier=1
-audio_hal.period_size=192
 
 # Bluetooth
 bt.max.hfpclient.connections=1
