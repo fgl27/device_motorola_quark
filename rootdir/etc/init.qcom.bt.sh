@@ -164,7 +164,7 @@ config_bt ()
            setprop ro.qualcomm.bt.hci_transport smd
        elif [ "$btsoc" = "rome" ]
        then
-           setprop ro.bluetooth.hfp.ver 1.6
+#          setprop ro.bluetooth.hfp.ver 1.6
            setprop ro.bluetooth.dun true
        fi
        ;;
