@@ -18,7 +18,7 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:label="CMActions"
+        android:label="@string/device_settings_app_name"
         android:persistent="true"
         android:restoreAnyVersion="true"
         android:supportsRtl="true"

@@ -12,7 +12,8 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 
 	  <!-- Common qcom to build dtb and some etc lib-->
 	  <project name="CyanogenMod/android_device_qcom_common" path="device/qcom/common" remote="github" revision="cm-13.0" />
-
+	  <!-- Strings for CMActions-->
+	  <project name="CyanogenMod/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="github" revision="cm-14.1" />
 	  <!-- Device/kernel/vendor-->
 	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="RR-M" />
 	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="cm-13.0" />
