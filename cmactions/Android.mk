@@ -20,6 +20,7 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/res \
+    $(ANDROID_BUILD_TOP)/packages/resources/devicesettings/res \
     frameworks/support/v14/preference/res \
     frameworks/support/v7/appcompat/res \
     frameworks/support/v7/preference/res \

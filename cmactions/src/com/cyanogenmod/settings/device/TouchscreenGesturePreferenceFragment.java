@@ -13,25 +13,69 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package com.cyanogenmod.settings.device;
 
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.PreferenceFragment;
+import android.support.v14.preference.SwitchPreference;
 
-public class TouchscreenGesturePreferenceFragment extends PreferenceFragment {
+public class TouchscreenGesturePreferenceFragment extends PreferenceFragment implements
+Preference.OnPreferenceChangeListener {
+
     private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
+    private static final String SWITCH_AMBIENT_DISPLAY = "ambient_display_switch";
+    private static final String SWITCH_GESTURE_PICKUP = "gesture_pick_up";
+    private static final String SWITCH_GESTURE_IR = "gesture_ir_wake_up";
+
+    private SwitchPreference mSwitchAmbientDisplay, mSwitchGestureIr, mSwitchGesturePick;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.gesture_panel);
         PreferenceCategory ambientDisplayCat = (PreferenceCategory)
-                findPreference(CATEGORY_AMBIENT_DISPLAY);
+        findPreference(CATEGORY_AMBIENT_DISPLAY);
+
+        mSwitchAmbientDisplay = (SwitchPreference) findPreference(SWITCH_AMBIENT_DISPLAY);
+        mSwitchAmbientDisplay.setOnPreferenceChangeListener(this);
+
+        mSwitchGestureIr = (SwitchPreference) findPreference(SWITCH_GESTURE_PICKUP);
+        mSwitchGesturePick = (SwitchPreference) findPreference(SWITCH_GESTURE_IR);
+
         if (ambientDisplayCat != null) {
-            ambientDisplayCat.setEnabled(CMActionsSettings.isDozeEnabled(getActivity().getContentResolver()));
-            if (!CMActionsSettings.isDozeEnabled(getActivity().getContentResolver())) 
-                ambientDisplayCat.setTitle(getString(R.string.ambient_display_title) + " " + getString(R.string.feedback_intensity_none) + " " + getString(R.string.enable_in_setting_display));
+            boolean DozeValue = CMActionsSettings.isDozeEnabled(getActivity().getContentResolver());
+            mSwitchGestureIr.setEnabled(DozeValue);
+            mSwitchGesturePick.setEnabled(DozeValue);
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateState();
+    }
+
+    private void updateState() {
+        if (mSwitchAmbientDisplay != null) {
+            int DozeValue = Settings.Secure.getInt(getActivity().getContentResolver(), Settings.Secure.DOZE_ENABLED,
+                getActivity().getResources().getBoolean(
+                    com.android.internal.R.bool.config_doze_enabled_by_default) ? 1 : 0);
+            mSwitchAmbientDisplay.setChecked(DozeValue != 0);
+        }
+    }
+
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        final String key = preference.getKey();
+        if (preference == mSwitchAmbientDisplay) {
+            boolean DozeValue = (Boolean) objValue;
+            Settings.Secure.putInt(getActivity().getContentResolver(), Settings.Secure.DOZE_ENABLED, DozeValue ? 1 : 0);
+            mSwitchGestureIr.setEnabled(DozeValue);
+            mSwitchGesturePick.setEnabled(DozeValue);
+        }
+        return true;
     }
 }

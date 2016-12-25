@@ -19,7 +19,7 @@
 
     <application
         android:allowBackup="true"
-        android:label="CMActions"
+        android:label="@string/device_settings_app_name"
         android:persistent="true" >
 
         <receiver android:name="com.cyanogenmod.settings.device.BootCompletedReceiver">
