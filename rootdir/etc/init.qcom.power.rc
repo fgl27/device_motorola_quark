@@ -100,7 +100,7 @@ on property:sys.boot_completed=1
     write /sys/block/mmcblk0/queue/read_ahead_kb 512
 
     # Set io ahead for better performance
-    setprop sys.io.scheduler noop
+    setprop sys.io.scheduler bfq
 
     # Tune LMK
     write /sys/module/lowmemorykiller/parameters/minfree 44032,48640,53248,57856,62464,71680
