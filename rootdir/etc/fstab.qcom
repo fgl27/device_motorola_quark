@@ -12,5 +12,6 @@
 /dev/block/platform/msm_sdcc.1/by-name/persist      /persist         ext4    rw,nosuid,nodev,barrier=1,defcontext=u:object_r:persist_file:s0                       wait,check,notrim
 /dev/block/platform/msm_sdcc.1/by-name/boot         /boot            emmc    defaults                                                                              recoveryonly
 /dev/block/platform/msm_sdcc.1/by-name/recovery     /recovery        emmc    defaults                                                                              recoveryonly
+/dev/block/platform/msm_sdcc.1/by-name/misc         /misc            emmc    defaults                                                                              defaults 
 
 /devices/*/xhci-hcd.0.auto/usb*                     auto             auto    defaults                                                                              voldmanaged=usb:auto
