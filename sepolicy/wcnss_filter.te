@@ -1,5 +1,4 @@
 allow wcnss_filter hci_attach_dev:chr_file rw_file_perms;
 
-unix_socket_connect(wcnss_filter, property, init)
+set_prop(wcnss_filter, bluetooth_prop)
 allow wcnss_filter property_socket:sock_file write;
-allow wcnss_filter bluetooth_prop:property_service set;
