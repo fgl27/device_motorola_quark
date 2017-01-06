@@ -83,9 +83,20 @@
 
         <SwitchPreference
             android:key="gesture_ir_silencer"
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:title="@string/hand_wave_silencer_title"
             android:summary="@string/hand_wave_silencer_summary" />
+        <SwitchPreference
+            android:key="gesture_flip_to_mute"
+            android:defaultValue="false"
+            android:title="@string/flip_to_mute_title"
+            android:summary="@string/flip_to_mute_summary" />
+
+        <SwitchPreference
+            android:key="gesture_lift_to_silence"
+            android:defaultValue="false"
+            android:title="@string/lift_to_silence_title"
+            android:summary="@string/lift_to_silence_summary" />
     </PreferenceCategory>
 
 </PreferenceScreen>

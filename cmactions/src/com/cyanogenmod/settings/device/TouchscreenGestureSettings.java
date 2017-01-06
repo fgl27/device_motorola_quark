@@ -19,7 +19,10 @@ package com.cyanogenmod.settings.device;
 import android.app.ActionBar;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.preference.Preference;
++import android.content.Context;
++import android.content.DialogInterface;
++import android.content.Intent;
++import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener; 
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
@@ -35,6 +38,9 @@ Preference.OnPreferenceChangeListener {
     private static final String SWITCH_AMBIENT_DISPLAY = "ambient_display_switch";
     private static final String SWITCH_GESTURE_PICKUP = "gesture_pick_up";
     private static final String SWITCH_GESTURE_IR = "gesture_ir_wake_up";
+    private SwitchPreference mFlipPref;
+    private NotificationManager mNotificationManager;
+    private boolean mFlipClick = false;
 
     private SwitchPreference mSwitchAmbientDisplay, mSwitchGestureIr, mSwitchGesturePick;
 
@@ -55,6 +61,32 @@ Preference.OnPreferenceChangeListener {
             boolean DozeValue = CMActionsSettings.isDozeEnabled(getActivity().getContentResolver());
             mSwitchGestureIr.setEnabled(DozeValue);
             mSwitchGesturePick.setEnabled(DozeValue);
+        }
+        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        mFlipPref = (SwitchPreference) findPreference("gesture_flip_to_mute");
+        mFlipPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            public boolean onPreferenceClick(Preference preference) {
+                if (!mNotificationManager.isNotificationPolicyAccessGranted()) {
+                    mFlipPref.setChecked(false);
+                    new AlertDialog.Builder(TouchscreenGestureSettings.this)
+                        .setTitle(getString(R.string.flip_to_mute_title))
+                        .setMessage(getString(R.string.dnd_access))
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                mFlipClick = true;
+                                startActivity(new Intent(
+                                   android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS));
+                            }
+                        }).show();
+                }
+                return true;
+            }
+        });
+
+        //Users may deny DND access after giving it
+        if (!mNotificationManager.isNotificationPolicyAccessGranted()) {
+            mFlipPref.setChecked(false);
         }
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -85,6 +117,9 @@ Preference.OnPreferenceChangeListener {
                 getActivity().getResources().getBoolean(
                     com.android.internal.R.bool.config_doze_enabled_by_default) ? 1 : 0);
             mSwitchAmbientDisplay.setChecked(DozeValue != 0);
+        }
+        if (mNotificationManager.isNotificationPolicyAccessGranted() && mFlipClick) {
+            mFlipPref.setChecked(true);
         }
     }
 
