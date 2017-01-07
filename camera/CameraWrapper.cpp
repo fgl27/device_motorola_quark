@@ -33,7 +33,9 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
-static android::Mutex gCameraWrapperLock;
+using namespace android;
+
+static Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
 static int camera_device_open(const hw_module_t *module, const char *name,
@@ -100,8 +102,8 @@ static int check_vendor_module()
 
 static char *camera_fixup_getparams(int id __attribute__((unused)), const char *settings)
 {
-    android::CameraParameters params;
-    params.unflatten(android::String8(settings));
+    CameraParameters params;
+    params.unflatten(String8(settings));
 
 #if !LOG_NDEBUG
     ALOGV("%s: original parameters:", __FUNCTION__);
@@ -109,9 +111,9 @@ static char *camera_fixup_getparams(int id __attribute__((unused)), const char *
 #endif
 
     // HDR support
-    const char *pf = params.get(android::CameraParameters::KEY_PREVIEW_FORMAT);
+    const char *pf = params.get(CameraParameters::KEY_PREVIEW_FORMAT);
     if (pf && strcmp(pf, "nv12-venus") == 0) {
-        params.set(android::CameraParameters::KEY_PREVIEW_FORMAT, "yuv420sp");
+        params.set(CameraParameters::KEY_PREVIEW_FORMAT, "yuv420sp");
     }
 
 #if !LOG_NDEBUG
@@ -119,7 +121,7 @@ static char *camera_fixup_getparams(int id __attribute__((unused)), const char *
     params.dump();
 #endif
 
-    android::String8 strParams = params.flatten();
+    String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
 
     return ret;
@@ -374,7 +376,7 @@ static int camera_device_close(hw_device_t *device)
 
     ALOGV("%s", __FUNCTION__);
 
-    android::Mutex::Autolock lock(gCameraWrapperLock);
+    Mutex::Autolock lock(gCameraWrapperLock);
 
     if (!device)
     {
@@ -413,7 +415,7 @@ static int camera_device_open(const hw_module_t *module, const char *name, hw_de
     wrapper_camera_device_t *camera_device = NULL;
     camera_device_ops_t *camera_ops = NULL;
 
-    android::Mutex::Autolock lock(gCameraWrapperLock);
+    Mutex::Autolock lock(gCameraWrapperLock);
 
     ALOGV("%s", __FUNCTION__);
 
