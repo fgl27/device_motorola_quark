@@ -33,3 +33,4 @@ allow system_server unlabeled:chr_file { unlink };
 allow system_server unlabeled:file { unlink };
 allow untrusted_app debugfs:dir { getattr open read };
 allow mm-qcamerad permission_service:service_manager { find };
+allow shell su:process { signal };
