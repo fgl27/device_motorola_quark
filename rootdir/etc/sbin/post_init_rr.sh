@@ -60,6 +60,14 @@ else
 fi
 #dirty flash checker - END
 
+# Moto camera app hidden settings "Temporal Noise Reduction" when enable set /data/persist/persist.camera.enable_vpu to 1
+# and that breaks camera support in CM after a reboot, void that during init to prevent camera start bugs
+CameraNoiseReduction=`getprop persist.camera.enable_vpu`
+if [ $CameraNoiseReduction == "1" ]; then
+	echo 'post_init: Camera Noise reduction =' $CameraNoiseReduction > /dev/kmsg;
+	setprop persist.camera.enable_vpu 0
+fi
+
 # Adaway only present in some ROM this need to be 755 to execute it libs...
 if [ -e /system/app/Adaway/lib/arm/libblank_webserver_exec.so ]; then
 	chmod 755 /system/app/Adaway/lib/arm/libblank_webserver_exec.so
