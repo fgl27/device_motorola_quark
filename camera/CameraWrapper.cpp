@@ -116,6 +116,9 @@ static char *camera_fixup_getparams(int id __attribute__((unused)), const char *
         params.set(CameraParameters::KEY_PREVIEW_FORMAT, "yuv420sp");
     }
 
+    params.set("face-detection-values", "off,on");
+    params.set("denoise-values", "denoise-off,denoise-on");
+
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
     params.dump();
