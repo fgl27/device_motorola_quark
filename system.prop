@@ -132,3 +132,6 @@ ro.com.google.clientidbase.gmm=android-motorola
 
 # Allow tethering without provisioning app
 net.tethering.noprovisioning=true
+
+# Disable mobile data by default (only affect first boot once user enable it in settings this is not used anymore)
+ro.com.android.mobiledata=false
