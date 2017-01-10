@@ -29,6 +29,33 @@ if [ -e /system/xbin/su ]; then
 	chown root:root /system/xbin/su
 fi
 
+#dirty flash checker
+romVersion=`getprop ro.modversion`' '`getprop ro.build.user`;
+if [ ! -e /data/temprom/ ]; then
+	mkdir /data/temprom/;
+	echo "$romVersion" > /data/temprom/buildTemp;
+fi
+buildTemp=`cat /data/temprom/buildTemp`;
+if [ "$romVersion" == "$buildTemp" ]; then
+	setprop rom.modversionuser clean;
+else
+	sed -i "s/$romVersion//g" /data/temprom/buildTemp
+	sed 's/ *$//' /data/temprom/buildTemp;
+	buildTemp=`cat /data/temprom/buildTemp`;
+	echo "$buildTemp $romVersion" > /data/temprom/buildTemp;
+	echo "$buildTemp" > /dev/kmsg;
+	setprop rom.modversionuser dirty;
+fi
+#dirty flash checker - END
+
+# Moto camera app hidden settings "Temporal Noise Reduction" when enable set /data/persist/persist.camera.enable_vpu to 1
+# and that breaks camera support in CM after a reboot, void that during init to prevent camera start bugs
+CameraNoiseReduction=`getprop persist.camera.enable_vpu`
+if [ $CameraNoiseReduction == "1" ]; then
+	echo 'post_init: Camera Noise reduction =' $CameraNoiseReduction > /dev/kmsg;
+	setprop persist.camera.enable_vpu 0
+fi
+
 # Init clean start
 fsgid=`getprop ro.boot.fsg-id`
 device=`getprop ro.boot.hardware.sku`
