@@ -18,6 +18,8 @@ LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/res \
     $(ANDROID_BUILD_TOP)/packages/resources/devicesettings/res
 
+LOCAL_AAPT_FLAGS := --auto-add-overlay
+
 include $(BUILD_PACKAGE)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))

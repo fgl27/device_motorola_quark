@@ -17,12 +17,14 @@
 package com.cyanogenmod.settings.device;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.app.NotificationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-+import android.content.Context;
-+import android.content.DialogInterface;
-+import android.content.Intent;
-+import android.preference.Preference;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener; 
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
@@ -58,10 +60,12 @@ Preference.OnPreferenceChangeListener {
         mSwitchGesturePick = (SwitchPreference) findPreference(SWITCH_GESTURE_IR);
 
         if (ambientDisplayCat != null) {
-            boolean DozeValue = CMActionsSettings.isDozeEnabled(getActivity().getContentResolver());
+            boolean DozeValue = CMActionsSettings.isDozeEnabled(this.getContentResolver());
             mSwitchGestureIr.setEnabled(DozeValue);
             mSwitchGesturePick.setEnabled(DozeValue);
         }
+        final ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         mFlipPref = (SwitchPreference) findPreference("gesture_flip_to_mute");
         mFlipPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -88,8 +92,6 @@ Preference.OnPreferenceChangeListener {
         if (!mNotificationManager.isNotificationPolicyAccessGranted()) {
             mFlipPref.setChecked(false);
         }
-        final ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -113,10 +115,7 @@ Preference.OnPreferenceChangeListener {
 
     private void updateState() {
         if (mSwitchAmbientDisplay != null) {
-            int DozeValue = Settings.Secure.getInt(getActivity().getContentResolver(), Settings.Secure.DOZE_ENABLED,
-                getActivity().getResources().getBoolean(
-                    com.android.internal.R.bool.config_doze_enabled_by_default) ? 1 : 0);
-            mSwitchAmbientDisplay.setChecked(DozeValue != 0);
+            mSwitchAmbientDisplay.setChecked(CMActionsSettings.isDozeEnabled(this.getContentResolver()));
         }
         if (mNotificationManager.isNotificationPolicyAccessGranted() && mFlipClick) {
             mFlipPref.setChecked(true);
@@ -128,7 +127,7 @@ Preference.OnPreferenceChangeListener {
         final String key = preference.getKey();
         if (preference == mSwitchAmbientDisplay) {
             boolean DozeValue = (Boolean) objValue;
-            Settings.Secure.putInt(getActivity().getContentResolver(), Settings.Secure.DOZE_ENABLED, DozeValue ? 1 : 0);
+            Settings.Secure.putInt(this.getContentResolver(), Settings.Secure.DOZE_ENABLED, DozeValue ? 1 : 0);
             mSwitchGestureIr.setEnabled(DozeValue);
             mSwitchGesturePick.setEnabled(DozeValue);
          }
