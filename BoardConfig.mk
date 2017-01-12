@@ -13,9 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# inherit from the proprietary version
--include vendor/motorola/quark/BoardConfigVendor.mk 
-
 LOCAL_PATH := device/motorola/quark
 
 BOARD_VENDOR := motorola-qcom
@@ -52,13 +49,6 @@ TARGET_KERNEL_SOURCE := kernel/motorola/apq8084
 TARGET_KERNEL_CONFIG := quark_defconfig
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
-
-WLAN_MODULES:
-	mkdir -p $(KERNEL_MODULES_OUT)/qca_cld
-	mv $(KERNEL_MODULES_OUT)/wlan.ko $(KERNEL_MODULES_OUT)/qca_cld/qca_cld_wlan.ko
-	ln -sf /system/lib/modules/qca_cld/qca_cld_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
-
-TARGET_KERNEL_MODULES += WLAN_MODULES
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_quark
@@ -170,3 +160,29 @@ TARGET_USE_SDCLANG := true
 
 # Time
 BOARD_USES_QC_TIME_SERVICES := true
+
+# TWRP
+TW_THEME := portrait_hdpi
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_SCREEN_BLANK_ON_BOOT := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
+BOARD_SUPPRESS_SECURE_ERASE := true
+BOARD_SUPPRESS_EMMC_WIPE := true
+#BOARD_NO_SECURE_DISCARD := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/f9200000.ssusb/f9200000.dwc3/gadget/lun%d/file"
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := 63
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TW_NO_EXFAT_FUSE := true
+TW_EXTRA_LANGUAGES := true
+TW_EXCLUDE_SUPERSU := true
+TW_INCLUDE_NTFS_3G := true
+TW_IGNORE_MISC_WIPE_DATA := true
+
+# Encryption
+#TARGET_CRYPTFS_HW_PATH := device/motorola/quark/cryptfs_hw
+TARGET_HW_DISK_ENCRYPTION := true
+TW_INCLUDE_CRYPTO := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true

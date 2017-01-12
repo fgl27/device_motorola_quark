@@ -1,0 +1,93 @@
+on init
+    # dencryption files from device
+    mkdir /firmware
+    mkdir /vendor/firmware
+    mkdir /vendor/firmware/keymaster
+    wait /dev/block/platform/msm_sdcc.1/by-name/modem
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/modem /firmware
+    symlink /firmware/image/keymaster.b00 /vendor/firmware/keymaster/keymaster.b00
+    symlink /firmware/image/keymaster.b01 /vendor/firmware/keymaster/keymaster.b01
+    symlink /firmware/image/keymaster.b02 /vendor/firmware/keymaster/keymaster.b02
+    symlink /firmware/image/keymaster.b03 /vendor/firmware/keymaster/keymaster.b03
+    symlink /firmware/image/keymaster.mdt /vendor/firmware/keymaster/keymaster.mdt
+    symlink /firmware/image/cmnlib.b00 /vendor/firmware/cmnlib.b00
+    symlink /firmware/image/cmnlib.b01 /vendor/firmware/cmnlib.b01
+    symlink /firmware/image/cmnlib.b02 /vendor/firmware/cmnlib.b02
+    symlink /firmware/image/cmnlib.b03 /vendor/firmware/cmnlib.b03
+    symlink /firmware/image/cmnlib.mdt /vendor/firmware/cmnlib.mdt
+    symlink /sbin/libQSEEComAPI.so /vendor/lib/libQSEEComAPI.so
+
+    # low Brightness durring boot 25% of max
+    write /sys/class/leds/lcd-backlight/brightness 63
+
+    # enable DT2W and S2W
+    write /sys/android_touch/doubletap2wake 1
+    write /sys/android_touch/sweep2wake 15
+
+    #GPU max clock at 400Mhz enable adreno idler
+    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 400000000
+    write /sys/module/adreno_idler/parameters/adreno_idler_active Y
+
+    # I-O/fsync/crc for better read/write performance
+    write /sys/block/mmcblk0/queue/scheduler maple
+    write /sys/module/sync/parameters/fsync_enabled N
+    write /sys/module/mmc_core/parameters/crc 0
+
+    # Configure the cpu-boost module
+    write /sys/module/cpu_boost/parameters/input_boost_freq 1728000
+    write /sys/module/cpu_boost/parameters/boost_ms 20
+    write /sys/module/cpu_boost/parameters/input_boost_ms 800
+
+    #sync_threshold use stock value
+    write /sys/module/cpu_boost/parameters/sync_threshold 1728000
+
+    #ena thermal driver
+    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/module/msm_thermal/parameters/limit_temp_degC 65
+    write /sys/module/msm_thermal/parameters/enabled Y
+
+    #set stock freq
+    chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2649600
+    chmod 0644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 2649600
+    chmod 0644 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2649600
+    chmod 0644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 2649600
+
+    # Set interactive and state
+    write /sys/module/state_notifier/parameters/enabled 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+
+    # Enable Power modes and set the CPU Freq Sampling rates
+    write /sys/module/lpm_levels/enable_low_power/l2 4
+    write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/power_collapse/suspend_enabled 1
+    write /sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu1/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu2/power_collapse/idle_enabled 1
+    write /sys/module/msm_pm/modes/cpu3/power_collapse/idle_enabled 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 300000
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_min_freq 300000
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 300000
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
+
+    #Hot plug as mpdecision is a bin this is need to enable
+    write /sys/module/blu_plug/parameters/enabled 1
+    write /sys/module/cpu_boost/parameters/hotplug_boost 0
+
+# encryption support
+service qseecomd /sbin/qseecomd
+    class core
+    seclabel u:r:init:s0
+    disabled
+    user root
+
+on property:ro.crypto.state=encrypted
+    start qseecomd
