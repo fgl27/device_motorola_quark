@@ -39,13 +39,13 @@
 
         <SwitchPreference
             android:key="gesture_pick_up"
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:title="@string/pick_up_gesture_title"
             android:summary="@string/pick_up_gesture_summary" />
 
         <SwitchPreference
             android:key="gesture_ir_wake_up"
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:title="@string/hand_wave_gesture_title"
             android:summary="@string/hand_wave_gesture_summary" />
     </PreferenceCategory>
@@ -56,7 +56,7 @@
 
         <ListPreference
             android:key="gesture_camera_action"
-            android:defaultValue="1"
+            android:defaultValue="0"
             android:title="@string/camera_gesture_title"
             android:dialogTitle="@string/camera_gesture_title"
             android:summary="@string/camera_gesture_summary"
@@ -65,7 +65,7 @@
 
         <ListPreference
             android:key="gesture_chop_chop"
-            android:defaultValue="2"
+            android:defaultValue="0"
             android:title="@string/chop_chop_gesture_title"
             android:dialogTitle="@string/chop_chop_gesture_title"
             android:summary="@string/chop_chop_gesture_summary"
@@ -74,7 +74,7 @@
 
         <ListPreference
             android:key="gesture_feedback_intensity"
-            android:defaultValue="2"
+            android:defaultValue="0"
             android:title="@string/feedback_intensity_title"
             android:dialogTitle="@string/feedback_intensity_title"
             android:summary="@string/feedback_intensity_summary"
