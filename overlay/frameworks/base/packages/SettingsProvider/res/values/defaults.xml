@@ -32,7 +32,7 @@
     <bool name="def_install_non_market_apps">true</bool>
 
     <!-- Default for Settings.Global.WIFI_SCAN_ALWAYS_AVAILABLE -->
-    <integer name="def_wifi_scan_always_available">1</integer>
+    <integer name="def_wifi_scan_always_available">0</integer>
 
     <!-- Default state of tap to wake -->
     <bool name="def_double_tap_to_wake">false</bool>

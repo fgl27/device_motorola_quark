@@ -22,7 +22,7 @@
     <!-- <bool name="doze_display_state_supported">true</bool> -->
 
     <!-- Doze: when to pulse after a buzzworthy notification arrives -->
-    <string name="doze_pulse_schedule" translatable="false">1s,10s,30s,60s,120s</string>
+    <string name="doze_pulse_schedule" translatable="false">10s,30s,60s,120s</string>
 
     <!-- Control whether status bar should distinguish HSPA data icon from UMTS
     data icon on devices -->
