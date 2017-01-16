@@ -29,9 +29,11 @@ ro.panel.mountflip=3
 # FRP
 ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
 
-# GLES doesn't support secure display, to allow google play movies
+# Quark GLES doesn't support secure display, to allow google play movies
 # and other apps that require a secure display we need to enable this:
-persist.hwc.mdpcomp.enable=false
+# Using Shamu GLES that has the support
+persist.hwc.mdpcomp.enable=true
+persist.mdpcomp.4k2kSplit=1
 
 # GPS
 persist.gps.qc_nlp_in_use=0
