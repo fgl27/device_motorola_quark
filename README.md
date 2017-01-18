@@ -4,7 +4,7 @@ Copyright 2016 - The CyanogenMod Project
 Copyright 2017 - The LineageOS   Project
 
 **I use this tree to build TWRP in Nougat cm-14.x and cm-14.x base source**
-**Do not use this to build a ROM**
+**Do not use this tree to build a ROM**
 This tree works prefect in ResurrectionRemix Nougat, may need some minor cosmetic Strings changes in **cm.mk**  BUILD_DISPLAY_ID
 
 How to build this...
@@ -16,22 +16,16 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 
 	  <!-- Common qcom to build dtb and some etc lib-->
 	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="cm-14.1" />
-	  <!-- Strings for CMActions-->
-	  <project name="LineageOS/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="github" revision="cm-14.1" />
+
 	  <!-- Device/kernel/vendor-->
 	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_7.1" />
 	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="NEW_TWRP_7.1" />
 
 	  <!-- Need to build TWRP-->
-	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-7.1" />
 	  <remove-project path="bootable/recovery" name="LineageOS/android_bootable_recovery" groups="pdk" />
 	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-7.1" groups="pdk-cw-fs"/>
 
-	  <!-- Some CM project are out of date I update they here-->
-	  <remove-project name="LineageOS/android_hardware_qcom_display" groups="pdk,qcom,qcom_display" revision="cm-14.1-caf-8084" />
-	  <project path="hardware/qcom/display-caf/apq8084" name="bhb27/android_hardware_qcom_display" remote="github" revision="cm-14.1-caf-8084" />
-	  <remove-project name="LineageOS/android_hardware_qcom_media" groups="pdk,qcom,qcom_media" revision="cm-14.1-caf-8084" />
-	  <project path="hardware/qcom/media-caf/apq8084" name="bhb27/android_hardware_qcom_media" remote="github" revision="cm-14.1-caf-8084" />
+	  <!-- Some CM project are out of date I update and are relevant-->
 	  <remove-project path="device/qcom/sepolicy" name="LineageOS/android_device_qcom_sepolicy" />
 	  <project path="device/qcom/sepolicy" name="bhb27/android_device_qcom_sepolicy" remote="github" revision="cm-14.1" />
 
