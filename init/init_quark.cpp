@@ -152,34 +152,6 @@ void vendor_load_properties()
         property_set("ro.com.google.clientidbase.ms", "android-verizon");
         property_set("ro.com.google.clientidbase.am", "android-verizon");
         property_set("ro.com.google.clientidbase.yt", "android-verizon");
-        property_set("persist.radio.0x9e_not_callname", "1");
-        property_set("persist.radio.sib16_support", "1");
-        property_set("persist.radio.eri64_as_home", "1");
-        property_set("persist.radio.mode_pref_nv10", "1");
-        property_set("ro.cdma.nbpcd", "1");
-        property_set("ro.cdma.disableVzwNbpcd", "true");
-        property_set("ro.cdma.home.operator.isnan", "1");
-        property_set("ro.telephony.gsm-routes-us-smsc", "1");
-        // XT1254 - IMS Volte related
-        property_set("persist.data.iwlan.enable", "true");
-        property_set("persist.radio.ignore_ims_wlan", "1");
-        property_set("persist.radio.data_con_rprt", "1");
-        //property_set("persist.radio.calls.on.ims", "true");
-        //property_set("persist.radio.jbims", "1");
-        //property_set("persist.radio.VT_ENABLE", "1");
-        //property_set("persist.radio.VT_HYBRID_ENABLE", "1");
-        //property_set("persist.radio.ROTATION_ENABLE", "1");
-        //property_set("persist.radio.RATE_ADAPT_ENABLE", "1");
-        //property_set("persist.rcs.supported", "1");
-        //property_set("persist.ims.enableADBLogs", "1");
-        //property_set("persist.ims.enableDebugLogs", "1");
-
-        // Reduce IMS logging
-        //property_set("persist.ims.disableDebugLogs", "1");
-        //property_set("persist.ims.disableADBLogs", "2");
-        //property_set("persist.ims.disableDebugLogs", "0");
-        //property_set("persist.ims.disableQXDMLogs", "0");
-        //property_set("persist.ims.disableIMSLogs", "1");
         INFO("Set properties for \"verizon\"!\n");
     } else if (ISMATCH(fsgid_value, "verizon_gsm")) {
         // XT1254 - Droid Turbo, but set as gsm phone
@@ -224,7 +196,6 @@ void vendor_load_properties()
 	property_set("ro.com.google.clientidbase.ms", "android-motorola");
 	property_set("ro.com.google.clientidbase.am", "android-motorola");
 	property_set("ro.com.google.clientidbase.yt", "android-motorola");
-	property_set("persist.radio.redir_party_num", "0");
         property_set("ro.build.description", "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys");
         INFO("Set properties for \"lra_gsm\"!\n");
@@ -240,7 +211,6 @@ void vendor_load_properties()
 	property_set("ro.com.google.clientidbase.ms", "android-motorola");
 	property_set("ro.com.google.clientidbase.am", "android-motorola");
 	property_set("ro.com.google.clientidbase.yt", "android-motorola");
-	property_set("persist.radio.redir_party_num", "0");
         property_set("ro.build.description", "quark_reteu-user 6.0.1 MPG24.107-70.2 2 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_reteu/quark_umts:6.0.1/MPG24.107-70.2/2:user/release-keys");
         INFO("Set properties for \"emea\"!\n");
@@ -256,7 +226,6 @@ void vendor_load_properties()
 	property_set("ro.com.google.clientidbase.ms", "android-motorola");
 	property_set("ro.com.google.clientidbase.am", "android-motorola");
 	property_set("ro.com.google.clientidbase.yt", "android-motorola");
-	property_set("persist.radio.redir_party_num", "0");
         property_set("ro.build.description", "quark_retbr-user 6.0.1 MPGS24.107-70.2-2 2 release-keys");
         property_set("ro.build.fingerprint", "motorola/quark_retbr/quark_umts:6.0.1/MPGS24.107-70.2-2/2:user/release-keys");
         INFO("Set properties for \"singlela\"!\n");
