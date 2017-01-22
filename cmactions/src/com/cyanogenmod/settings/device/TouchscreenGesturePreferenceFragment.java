@@ -33,31 +33,17 @@ Preference.OnPreferenceChangeListener {
 
     private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
     private static final String SWITCH_AMBIENT_DISPLAY = "ambient_display_switch";
-    private static final String SWITCH_GESTURE_PICKUP = "gesture_pick_up";
-    private static final String SWITCH_GESTURE_IR = "gesture_ir_wake_up";
-    private SwitchPreference mFlipPref;
+    private SwitchPreference mFlipPref, mSwitchAmbientDisplay;
     private NotificationManager mNotificationManager;
     private boolean mFlipClick = false;
-
-    private SwitchPreference mSwitchAmbientDisplay, mSwitchGestureIr, mSwitchGesturePick;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.gesture_panel);
-        PreferenceCategory ambientDisplayCat = (PreferenceCategory)
-        findPreference(CATEGORY_AMBIENT_DISPLAY);
 
         mSwitchAmbientDisplay = (SwitchPreference) findPreference(SWITCH_AMBIENT_DISPLAY);
         mSwitchAmbientDisplay.setOnPreferenceChangeListener(this);
 
-        mSwitchGestureIr = (SwitchPreference) findPreference(SWITCH_GESTURE_PICKUP);
-        mSwitchGesturePick = (SwitchPreference) findPreference(SWITCH_GESTURE_IR);
-
-        if (ambientDisplayCat != null) {
-            boolean DozeValue = CMActionsSettings.isDozeEnabled(getActivity().getContentResolver());
-            mSwitchGestureIr.setEnabled(DozeValue);
-            mSwitchGesturePick.setEnabled(DozeValue);
-        }
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         mFlipPref = (SwitchPreference) findPreference("gesture_flip_to_mute");
         mFlipPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -106,12 +92,9 @@ Preference.OnPreferenceChangeListener {
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        final String key = preference.getKey();
         if (preference == mSwitchAmbientDisplay) {
             boolean DozeValue = (Boolean) objValue;
             Settings.Secure.putInt(getActivity().getContentResolver(), Settings.Secure.DOZE_ENABLED, DozeValue ? 1 : 0);
-            mSwitchGestureIr.setEnabled(DozeValue);
-            mSwitchGesturePick.setEnabled(DozeValue);
         }
         return true;
     }
