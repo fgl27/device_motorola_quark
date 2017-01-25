@@ -452,7 +452,7 @@ service qseecomd /system/bin/qseecomd
     user root
     group root
 
-service mpdecision /system/bin/mpdecision --avg_comp --min_cores=1
+service mpdecision /system/bin/mpdecision --avg_comp --min_cores=4
     user root
     disabled
 
