@@ -40,6 +40,8 @@ persist.mot.gps.smart_battery=1
 # Media
 audio.offload.buffer.size.kb=32
 av.offload.enable=true
+#Disable offload audio video playback by default
+av.offload.enable=false
 av.streaming.offload.enable=true
 audio.offload.multiple.enabled=false
 audio.offload.gapless.enabled=true

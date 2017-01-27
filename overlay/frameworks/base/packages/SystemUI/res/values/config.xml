@@ -24,9 +24,13 @@
     <!-- Doze: when to pulse after a buzzworthy notification arrives -->
     <string name="doze_pulse_schedule" translatable="false">10s,30s,60s,120s</string>
 
-    <!-- Doze: pulse parameter - delay to wait for the screen to wake up -->
-    <integer name="doze_pulse_delay_in">1500</integer>
+    <!-- Doze: pulse parameter - how long does it take to fade in? -->
+    <integer name="doze_pulse_duration_in">0</integer>
 
-    <!-- Doze: pulse parameter - delay to wait for the screen to wake up after an intent -->
-    <integer name="doze_pulse_delay_in_intent">1500</integer>
+    <!-- Doze: pulse parameter - how long does it take to fade out? -->
+    <integer name="doze_pulse_duration_out">750</integer>
+
+    <!-- Doze: pulse parameter - once faded in, how long does it stay visible? -->
+    <integer name="doze_pulse_duration_visible">4500</integer>
+
 </resources>
