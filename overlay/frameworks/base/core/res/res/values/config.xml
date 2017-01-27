@@ -529,4 +529,7 @@
          so that applications can still use their own mechanisms. -->
     <bool name="config_enableAutoPowerModes">true</bool>
 
+    <!-- From stock ROM-->
+    <integer name="config_bluetooth_operating_voltage_mv">3300</integer>
+
 </resources>
