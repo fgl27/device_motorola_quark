@@ -506,4 +506,8 @@
 
     <!-- From stock ROM-->
     <integer name="config_bluetooth_operating_voltage_mv">3300</integer>
+
+    <!-- Control whether Night display is available. This should only be enabled on devices
+         with HWC 2.0 or higher. -->
+    <bool name="config_nightDisplayAvailable">true</bool>
 </resources>
