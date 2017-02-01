@@ -169,3 +169,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Snapdragon LLVM Compiler
 TARGET_USE_SDCLANG := true
+
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
