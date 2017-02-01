@@ -17,13 +17,6 @@
  */
 -->
 <resources>
-    <!-- Bitmask of allowed display rotation angles:
-           ROTATION_0_MODE: 1
-           ROTATION_90_MODE: 2
-           ROTATION_180_MODE: 4
-           ROTATION_270_MODE: 8
-         Default to 0, 90, 270. -->
-    <integer name="def_accelerometer_rotation_angles">15</integer>
     <!-- Default screen brightness, from 0 to 255.  102 is 40%. -->
     <integer name="def_screen_brightness">90</integer>
     <fraction name="def_window_animation_scale">50%</fraction>
