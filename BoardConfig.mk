@@ -39,9 +39,9 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
 
 # Kernel
-BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M androidboot.selinux=permissive androidboot.verifiedbootstate=green androidboot.bl_state=0 androidboot.flash.locked=1
 BOARD_KERNEL_BASE := 0x00000000
+BOARD_KERNEL_LZ4C_DT := true
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
@@ -55,7 +55,6 @@ TARGET_INIT_VENDOR_LIB := libinit_quark
 TARGET_RECOVERY_DEVICE_MODULES := libinit_quark
 TARGET_NR_SVC_SUPP_GIDS := 28
 TARGET_UNIFIED_DEVICE := true
-TARGET_RECOVERY_DENSITY := xhdpi
 
 # Audio
 AUDIO_FEATURE_ENABLED_ANC_HEADSET := true
@@ -121,6 +120,7 @@ TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+TARGET_RECOVERY_DENSITY := xhdpi
 
 # SELinux
 -include device/qcom/sepolicy/sepolicy.mk
