@@ -107,6 +107,8 @@ TARGET_PROVIDES_LIBLIGHT := true
 
 # Media
 TARGET_USES_ION := true
+# Fix video autoscaling on old OMX decoders
+TARGET_OMX_LEGACY_RESCALING := true
 
 # Radio
 BOARD_USES_CUTBACK_IN_RILD := true
@@ -156,7 +158,7 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Snapdragon LLVM Compiler
-TARGET_USE_SDCLANG := true
+#TARGET_USE_SDCLANG := true
 
 # Time
 BOARD_USES_QC_TIME_SERVICES := true

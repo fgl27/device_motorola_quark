@@ -29,9 +29,10 @@ ro.panel.mountflip=3
 # FRP
 ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
 
-# GLES doesn't support secure display, to allow google play movies
-# and other apps that require a secure display we need to enable this:
+# Quark GLES doesn't support secure display persist.hwc.mdpcomp.enable need to be false
+# to allow google play movies and other apps that require a secure display we need to enable this:
 persist.hwc.mdpcomp.enable=false
+persist.mdpcomp.4k2kSplit=1
 
 # GPS
 persist.gps.qc_nlp_in_use=0
@@ -44,7 +45,8 @@ persist.mot.gps.smart_battery=1
 
 # Media
 audio.offload.buffer.size.kb=32
-av.offload.enable=true
+#Disable offload audio video playback by default
+av.offload.enable=false
 av.streaming.offload.enable=true
 audio.offload.multiple.enabled=false
 audio.offload.gapless.enabled=true
@@ -149,4 +151,9 @@ ro.device.front_cam=2 MP
 ro.device.screen_res=1440x2560 pixels (~565 ppi)
 
 # wi-fi call
-persist.dbg.wfc_avail_ovr=1
+#persist.dbg.wfc_avail_ovr=1
+
+# Dalvik
+dalvik.vm.boot-dex2oat-threads=4
+dalvik.vm.dex2oat-threads=4
+dalvik.vm.image-dex2oat-threads=4
