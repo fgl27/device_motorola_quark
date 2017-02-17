@@ -12,5 +12,15 @@ PRODUCT_NAME := cm_quark
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_DISPLAY_ID='rr_quark-userdebug $(PLATFORM_VERSION) $(BUILD_ID) $(BUILD_NUMBER) test-keys' \
-    TARGET_BUILD_FLAVOR=rr_quark-userdebug
+    TARGET_BUILD_FLAVOR=quark-$(TARGET_BUILD_VARIANT)
+
+ifneq ($(rom),)
+ifeq ($(rom),r)
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BUILD_DISPLAY_ID=RR-N-v$(ROM_VVV)-$(shell date -u +%Y%m%d)-$(CM_BUILD)-$(RR_BUILDTYPE)
+endif
+ifeq ($(rom),c)
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BUILD_DISPLAY_ID=crDroidAndroid-7.1.1-$(shell date -u +%Y%m%d)-$(CM_BUILD)-v$(ROM_VVV)
+endif
+endif
