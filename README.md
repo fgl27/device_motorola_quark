@@ -4,10 +4,10 @@ Copyright 2016 - The CyanogenMod Project
 Copyright 2017 - The LineageOS   Project
 
 **I use this tree to build in Nougat cm-14.x and cm-14.x base source**
-This tree works prefect in ResurrectionRemix Nougat, may need some minor cosmetic Strings changes in **cm.mk**  BUILD_DISPLAY_ID and in **cmactions/src/com/cyanogenmod/settings/device/TouchscreenGesturePreferenceFragment.java** crdroid_settings
+This tree works prefect in crDroid or ResurrectionRemix Nougat
 
 How to build this...
-The below may be out of data check XDA thread to make shore the descrived tree below are the one be used today...
+The below may be out of data check XDA thread to make shore the described tree below are the one be used today...
 Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 
 	<?xml version="1.0" encoding="UTF-8"?>
@@ -18,9 +18,9 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <!-- Strings for CMActions-->
 	  <project name="LineageOS/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="github" revision="cm-14.1" />
 	  <!-- Device/kernel/vendor-->
-	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="RR-N" />
-	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="cm-14.1" />
-	  <project name="bhb27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="CR-N" />
+	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="N" />
+	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="N" />
+	  <project name="bhb27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="N" />
 
 	  <!-- Some CM project are out of date I update they here-->
 	  <remove-project name="LineageOS/android_hardware_qcom_display" groups="pdk,qcom,qcom_display" revision="cm-14.1-caf-8084" />

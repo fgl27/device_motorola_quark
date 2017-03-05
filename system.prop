@@ -153,6 +153,9 @@ ro.device.screen_res=1440x2560 pixels (~565 ppi)
 # wi-fi call
 #persist.dbg.wfc_avail_ovr=1
 
+# ena root by default app only
+persist.sys.root_access=1
+
 # Dalvik
 dalvik.vm.boot-dex2oat-threads=4
 dalvik.vm.dex2oat-threads=4
