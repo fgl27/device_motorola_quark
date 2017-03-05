@@ -5,7 +5,7 @@ Copyright 2017 - The LineageOS   Project
 
 **I use this tree to build TWRP in Nougat cm-14.x and cm-14.x base source**
 **Do not use this tree to build a ROM**
-This tree works prefect in ResurrectionRemix Nougat, may need some minor cosmetic Strings changes in **cm.mk**  BUILD_DISPLAY_ID
+This tree works prefect in ResurrectionRemix Nougat
 
 How to build this...
 The below may be out of data check XDA thread to make shore the descrived tree below are the one be used today...
@@ -18,8 +18,8 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="cm-14.1" />
 
 	  <!-- Device/kernel/vendor-->
-	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_7.1" />
-	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="NEW_TWRP_7.1" />
+	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_N" />
+	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="TWRP_N" />
 
 	  <!-- Need to build TWRP-->
 	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-7.1" />
