@@ -15,9 +15,9 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <!-- Strings for CMActions-->
 	  <project name="CyanogenMod/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="github" revision="cm-14.1" />
 	  <!-- Device/kernel/vendor-->
-	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="RR-M" />
-	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="cm-13.0" />
-	  <project name="bhb27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="RR-M" />
+	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="M" />
+	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="M" />
+	  <project name="bhb27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="M" />
 
 	  <!-- Some CM project are out of date I update they here-->
 	  <remove-project name="CyanogenMod/android_hardware_qcom_display" groups="pdk,qcom,qcom_display" revision="cm-13.0-caf-8084" />
