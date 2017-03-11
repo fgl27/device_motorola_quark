@@ -514,6 +514,12 @@
     <!-- Default list of files pinned by the Pinner Service -->
     <string-array translatable="false" name="config_defaultPinnerServiceFiles">
         <item>"/data/dalvik-cache/arm/system@framework@boot.oat"</item>
+        <item>"/data/dalvik-cache/arm/system@framework@boot.art"</item>
         <item>"/data/dalvik-cache/arm/system@framework@services.jar@classes.dex"</item>
+        <item>"/data/dalvik-cache/arm/system@priv-app@SystemUI@SystemUI.apk@classes.dex"</item>
+        <item>"/data/dalvik-cache/arm/system@priv-app@Settings@Settings.apk@classes.dex"</item>
    </string-array>
+
+    <!-- True if camera app should be pinned via Pinner Service -->
+    <bool name="config_pinnerCameraApp">true</bool>
 </resources>
