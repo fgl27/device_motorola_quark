@@ -160,3 +160,6 @@ persist.sys.root_access=1
 dalvik.vm.boot-dex2oat-threads=4
 dalvik.vm.dex2oat-threads=4
 dalvik.vm.image-dex2oat-threads=4
+
+# Reboot Shutdown timeout
+ro.build.shutdown_timeout=7
