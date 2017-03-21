@@ -117,7 +117,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 # Media
 TARGET_USES_ION := true
 # Fix video autoscaling on old OMX decoders
-#TARGET_OMX_LEGACY_RESCALING := true
+TARGET_OMX_LEGACY_RESCALING := true
 
 # Radio
 BOARD_USES_CUTBACK_IN_RILD := true
