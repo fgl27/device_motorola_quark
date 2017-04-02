@@ -32,7 +32,9 @@ LD_LIBRARY_PATH=/system/etc/sp/ /system/etc/sp/sp_bin --live \
 	"allow untrusted_app su_exec:file { execute write getattr setattr execute_no_trans };" \
 	"allow untrusted_app sudaemon:unix_stream_socket { connectto };" \
 	"allow untrusted_app superuser_device:sock_file { write };" \
-	"allow untrusted_app system_data_file:file { getattr open read unlink };"
+	"allow untrusted_app system_data_file:file { getattr open read unlink };" \
+	"allow shell sudaemon:unix_stream_socket { connectto };" \
+	"allow shell superuser_device:sock_file { write };"
 
 	echo 'post_init: patch sepolicy ok' > /dev/kmsg;
 
