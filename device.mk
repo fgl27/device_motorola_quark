@@ -327,7 +327,3 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libshims_thermal \
     libshim_qcopt
-
-#su
-PRODUCT_PACKAGES += \
-    su
