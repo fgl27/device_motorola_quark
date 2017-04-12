@@ -114,20 +114,3 @@ service postinitrr_sh /system/bin/sh /sbin/post_init_rr.sh
     seclabel u:r:init:s0
     disabled
     oneshot
-
-# isu daemon
-service isu_daemon /system/xbin/isu --daemon
-    seclabel u:r:sudaemon:s0
-
-on property:persist.sys.root_access=0
-    stop isu_daemon
-
-on property:persist.sys.root_access=2
-    start isu_daemon
-
-on property:persist.sys.root_access=1
-    start isu_daemon
-
-on property:persist.sys.root_access=3
-    start isu_daemon
-# isu daemon end
