@@ -31,18 +31,6 @@
         </service>
 
         <activity
-                  android:excludeFromRecents="true"
-                  android:name="CMActions"
-                  android:label="CMActions"
-                  android:launchMode="singleInstance"
-                  android:screenOrientation="portrait"
-                  android:windowAnimationStyle="@null">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
-        <activity
             android:name=".TouchscreenGesturePreferenceActivity"
             android:label="@string/screen_gestures_panel_title"
             android:theme="@style/CMActions" >

@@ -27,7 +27,7 @@ public class IrGestureManager {
     // Something occludes the sensor
     public static final int IR_GESTURE_OBJECT_DETECTED             = 1;
     // No occlusion
-    public static final int IR_GESTURE_GESTURE_OBJECT_NOT_DETECTED = 2;
+    public static final int IR_GESTURE_OBJECT_NOT_DETECTED         = 2;
     // Swiping above the phone (send doze)
     public static final int IR_GESTURE_SWIPE                       = 3;
     // Hand wave in front of the phone (send doze)
