@@ -10,3 +10,5 @@ type_transition mm-qcamerad system_data_file:sock_file camera_socket "cam_socket
 allow mm-qcamerad camera_socket:fifo_file unlink;
 
 allow mm-qcamerad system_data_file:dir { write remove_name add_name };
+allow mm-qcamerad system_file:file { execmod };
+allow mm-qcamerad permission_service:service_manager { find };

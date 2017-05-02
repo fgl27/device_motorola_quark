@@ -19,6 +19,7 @@ ro.qualcomm.bluetooth.sap=false
 camera2.portability.force_api=1
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
+persist.camera.enable_vpu=0
 
 # Display
 ro.qualcomm.cabl=0
@@ -141,17 +142,6 @@ net.tethering.noprovisioning=true
 
 # Disable mobile data by default (only affect first boot once user enable it in settings this is not used anymore)
 ro.com.android.mobiledata=false
-
-# Motorola Moto MAXX Hardware Info
-ro.device.chipset=Qualcomm Snapdragon 805
-ro.device.cpu=Quad-core 2.7 GHz Krait 450
-ro.device.gpu=Qualcomm Adreno 420
-ro.device.rear_cam=21 MP
-ro.device.front_cam=2 MP
-ro.device.screen_res=1440x2560 pixels (~565 ppi)
-
-# wi-fi call
-#persist.dbg.wfc_avail_ovr=1
 
 # ena root by default app only
 persist.sys.root_access=1

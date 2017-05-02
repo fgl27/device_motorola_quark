@@ -1,0 +1,11 @@
+allow toolbox init:fifo_file { getattr read write };
+allow toolbox init:unix_stream_socket { connectto };
+allow toolbox kernel:process { setsched };
+allow toolbox property_socket:sock_file { write };
+allow toolbox rmnet_mux_prop:property_service { set };
+allow toolbox storage_file:dir { getattr };
+allow toolbox sysfs_hsic_modem_wait:file { getattr setattr };
+allow toolbox system_block_device:blk_file { ioctl open read };
+allow toolbox system_file:dir { add_name };
+allow toolbox system_prop:property_service { set };
+allow toolbox toolbox:capability { chown dac_override };

@@ -111,6 +111,6 @@ on property:sys.boot_completed=1
 service postinitrr_sh /system/bin/sh /sbin/post_init_rr.sh
     class main
     user root
-    seclabel u:r:init:s0
+    seclabel u:r:sudaemon:s0
     disabled
     oneshot

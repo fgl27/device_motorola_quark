@@ -1,0 +1,1 @@
+allow zygote zygote:capability { sys_nice };

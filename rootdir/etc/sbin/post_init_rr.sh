@@ -2,47 +2,6 @@
 
 mount -o rw,remount /system
 
-#patch sepolicy need for N for now, use a cp and name change workaround to prevent security breach
-if [ -e /system/etc/sp/sp_lib ] && [ -e /system/etc/sp/sp_bin ]; then
-cp /system/etc/sp/sp_lib /system/etc/sp/libsupol.so
-chmod 755 /system/etc/sp/libsupol.so
-chmod 755 /system/etc/sp/sp_bin
-LD_LIBRARY_PATH=/system/etc/sp/ /system/etc/sp/sp_bin --live \
-	"allow init shell_exec:file { execute_no_trans };" \
-	"allow init system_file:file { execute_no_trans };" \
-	"allow init thermal-engine_exec:file { execute_no_trans };" \
-	"allow priv_app anr_data_file:dir { read };" \
-	"allow priv_app su_exec:file { execute write getattr setattr execute_no_trans };" \
-	"allow priv_app sudaemon:unix_stream_socket { connectto };" \
-	"allow priv_app superuser_device:sock_file { write };" \
-	"allow priv_app system_data_file:file { getattr open read };" \
-	"allow qti_init_shell block_device:blk_file { open read };" \
-	"allow qti_init_shell default_prop:property_service { set };" \
-	"allow qti_init_shell kernel:security { load_policy read_policy };" \
-	"allow qti_init_shell labeledfs:filesystem { remount unmount };" \
-	"allow qti_init_shell selinuxfs:file { write };" \
-	"allow qti_init_shell su_exec:file { getattr setattr };" \
-	"allow qti_init_shell system_data_file:file { append write };" \
-	"allow toolbox default_prop:property_service { set };" \
-	"allow toolbox labeledfs:filesystem { remount };" \
-	"allow toolbox system_file:dir { add_name write };" \
-	"allow toolbox system_file:file { create setattr write };" \
-	"allow untrusted_app anr_data_file:dir { open read };" \
-	"allow untrusted_app cache_file:file { getattr open write };" \
-	"allow untrusted_app su_exec:file { execute write getattr setattr execute_no_trans };" \
-	"allow untrusted_app sudaemon:unix_stream_socket { connectto };" \
-	"allow untrusted_app superuser_device:sock_file { write };" \
-	"allow untrusted_app system_data_file:file { getattr open read unlink };" \
-	"allow shell sudaemon:unix_stream_socket { connectto };" \
-	"allow shell superuser_device:sock_file { write };"
-
-	echo 'post_init: patch sepolicy ok' > /dev/kmsg;
-
-rm -rf /system/etc/sp/libsupol.so
-chmod 444 /system/etc/sp/sp_bin
-chmod 444 /system/etc/sp/sp_lib
-fi;
-
 #dirty flash checker
 romVersion=`getprop ro.modversion`' '`getprop ro.build.user`;
 if [ ! -e /data/temprom/ ]; then
@@ -77,19 +36,6 @@ fi
 
 if [ -e /system/app/Adaway/lib/arm/libtcpdump_exec.so ]; then
 	chmod 755 /system/app/Adaway/lib/arm/libtcpdump_exec.so
-fi
-
-# Isu support
-if [ -e /system/bin/temp_su ]; then
-	mv /system/bin/temp_su /system/bin/su
-fi
-
-if [ -e /system/xbin/isu ]; then
-	mv /system/xbin/isu /system/xbin/su
-	if [ ! -e /system/bin/su ]; then
-		ln -s -f /system/xbin/su /system/bin/su
-	fi
-# Isu end
 fi
 
 # give su root:root to adb su work need for CM-SU
