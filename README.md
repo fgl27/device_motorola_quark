@@ -1,6 +1,7 @@
 Device configuration for Moto MAXX (Quark)
 ==============================
 Copyright 2016 - The CyanogenMod Project
+
 Copyright 2017 - The LineageOS   Project
 
 **I use this tree to build in Nougat cm-14.x and cm-14.x base source**
@@ -49,4 +50,4 @@ Display | 1440 x 2560 pixels, 5.2 inches (~565 ppi pixel density)
 Camera  | 21 MP (5248 x 3936), autofocus, dual-LED flash
 
 
-![MAXX](https://dl.dropboxusercontent.com/u/281742759/maxx/novo-moto-maxx-1.jpg "MAXX")
+![MOTO MAXX](https://raw.githubusercontent.com/bhb27/scripts/f45458e4bc40dcc6d71ed933d49dad01a3b63f4b/etc/images/moto-maxx.jpg "MOTO MAXX")
