@@ -4,9 +4,6 @@ allow mediaserver socket_device:sock_file write;
 allow mediaserver adspd:unix_stream_socket connectto;
 allow mediaserver camera_prop:property_service set;
 allow mediaserver adspd_socket:sock_file write;
-
 allow mediaserver audio_cutback_data_file:dir search;
 allow mediaserver audio_cutback_data_file:sock_file write;
 allow mediaserver cutback_socket:sock_file write;
-allow mediaserver system_file:file { execmod };
-allow mediadrmserver rootfs:lnk_file { getattr };

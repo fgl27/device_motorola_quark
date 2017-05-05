@@ -1,1 +1,0 @@
-allow mediacodec rootfs:lnk_file { getattr };

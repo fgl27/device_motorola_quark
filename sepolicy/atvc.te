@@ -8,5 +8,3 @@ allow atvc persist_file:dir r_dir_perms;
 allow atvc atvc_prop:property_service set;
 allow atvc init:unix_stream_socket connectto;
 allow atvc property_socket:sock_file write;
-allow atvc rootfs:lnk_file { getattr };
-allow atvc rootfs:lnk_file { getattr };

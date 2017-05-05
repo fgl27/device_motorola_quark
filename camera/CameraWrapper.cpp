@@ -110,7 +110,8 @@ static char *camera_fixup_getparams(int id __attribute__((unused)), const char *
     params.dump();
 #endif
 
-    // HDR support
+    params.set(CameraParameters::KEY_SCENE_MODE, "auto");
+    params.remove("hdr-need-1x");
     const char *pf = params.get(CameraParameters::KEY_PREVIEW_FORMAT);
     if (pf && strcmp(pf, "nv12-venus") == 0) {
         params.set(CameraParameters::KEY_PREVIEW_FORMAT, "yuv420sp");

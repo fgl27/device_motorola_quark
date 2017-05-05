@@ -22,4 +22,3 @@ allow batt_health sysfs_power_supply:dir { read open };
 allow batt_health sysfs:dir { read open };
 allow batt_health sysfs:file { read open };
 allow batt_health sysfs:dir { open read };
-allow batt_health rootfs:lnk_file { getattr };

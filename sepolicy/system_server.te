@@ -6,7 +6,3 @@ allow system_server wpa_socket:fifo_file unlink;
 allow system_server esoc_device:chr_file { open read };
 allow system_server frp_block_device:blk_file { read write ioctl open };
 allow system_server rild:unix_dgram_socket sendto;
-allow system_server sysfs_postinitrr_sh:file rw_file_perms;
-allow system_server sysfs_postinitrr_sh:dir search;
-allow system_server unlabeled:chr_file { unlink };
-allow system_server unlabeled:file { unlink };

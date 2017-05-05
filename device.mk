@@ -174,6 +174,9 @@ PRODUCT_PACKAGES += \
     regdbdump \
     regulatory.bin
 
+# Dexopt
+$(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.apq8084 \

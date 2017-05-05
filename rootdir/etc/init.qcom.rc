@@ -27,13 +27,12 @@
 
 import init.qcom.usb.rc
 import init.qcom.power.rc
-# import init.mmi.volte.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
     chown system system /sys/kernel/debug/kgsl/proc
 
-    # Set boot up stage I/O scheduler		
+    # Set boot up stage I/O scheduler
     write /sys/block/mmcblk0/queue/scheduler noop
 
     # Set permissions for persist partition
@@ -46,7 +45,6 @@ on early-init
     mkdir /firmware 0771 system system
 
 on init
-
     symlink /sdcard /storage/sdcard0
 
     # pstore
@@ -344,6 +342,9 @@ on boot
     chmod 0440 /sys/class/graphics/fb0/frame_counter
     chown system system /sys/class/graphics/fb0/frame_counter
 
+    # Change ownership for HBM control
+    chown system system /sys/class/graphics/fb0/hbm
+
     # Change the ownership of touch screen files for system
     chown system system /sys/bus/i2c/drivers/atmel_mxt_ts/1-004a/drv_irq
     chown system system /sys/bus/i2c/drivers/atmel_mxt_ts/1-004a/reset
@@ -366,15 +367,15 @@ on boot
 
     insmod /system/lib/modules/touchx.ko
 
-on persist.camera.enable_vpu=1
-    setprop persist.camera.enable_vpu 0
+    # ESDFS
+    chown system system /proc/fs/esdfs/packages
 
 on property:sys.boot_completed=1
 
     # Post boot services
-    setprop ro.qualcomm.perf.cores_online 2
     rm /data/system/default_values
     start mpdecision
+    start batt_health
 
 # corefile limit and ETB enabling
 on property:persist.debug.trace=1
@@ -429,9 +430,6 @@ service batt_health /system/bin/batt_health
     user mot_pwric
     group log mot_pwric cache net_admin
     disabled
-
-on property:sys.boot_completed=1
-   start batt_health
 
 service thermal-engine /system/vendor/bin/thermal-engine
     class main
@@ -529,6 +527,11 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
+
+service rfs_access /system/bin/rfs_access
+   class core
+   user system
+   group system net_raw
 
 on property:wc_transport.start_hci=true
     start start_hci_filter

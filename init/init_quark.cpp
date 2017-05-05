@@ -115,23 +115,16 @@ void vendor_load_properties()
     if (platform != ANDROID_TARGET)
         return;
 
-    // Moto camera app hidden settings "Temporal Noise Reduction" when enable set /data/persist/persist.camera.enable_vpu to 1
-    // and that breaks camera support in CM after a reboot, void that during init to prevent camera start bugs
-    camera_enable_vpu = property_get("persist.camera.enable_vpu");
-
-    if (camera_enable_vpu == "1")
-	property_set("persist.camera.enable_vpu", "0");
-
-    // Multi device support, list of radios and cid probably complete
-    // Radio: XT1225 Retail = 0x5
-    // Radio: XT1250 Verizon = 0x4
+    // Multi device support, list of known radios, cid and fsgid:
+    // Radio: XT1225 Retail  = 0x5
+    // Radio: XT1250 America = 0x4
     // Radio: XT1254 Verizon = 0x4
-    // Cid:   XT1225 Retail = 0xC
-    // Cid:   XT1250 Verizon = 0x9
+    // Cid:   XT1225 Retail  = 0xC
+    // Cid:   XT1250 America = 0x9
     // Cid:   XT1254 Verizon = 0x2 and 0x0
-    // Fsgid: XT1225 Retail = singlela (latino america), emea (euro and india)
-    // Fsgid: XT1250 Verizon = lra (america verizon), lra_gsm (america gsm)
-    // Fsgid: XT1254 Verizon = verizon (america verizon), verizon_gsm (america gsm)
+    // Fsgid: XT1225 Retail  = singlela (latino america), emea (euro and india)
+    // Fsgid: XT1250 America = lra (america for verizon), lra_gsm (america for gsm network)
+    // Fsgid: XT1254 Verizon = verizon (america verizon), verizon_gsm (america for gsm network)
 
     fsgid = property_get("ro.boot.fsg-id");
     carrier = property_get("ro.boot.carrier");

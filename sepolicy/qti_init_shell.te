@@ -6,7 +6,6 @@ allow qti_init_shell block_device:blk_file { ioctl };
 allow qti_init_shell ctl_default_prop:property_service  { set };
 allow qti_init_shell net_radio_prop:property_service  { set };
 allow qti_init_shell storage_file:dir { getattr };
-allow qti_init_shell system_data_file:file { open };
 allow qti_init_shell kernel:process { setsched };
 allow qti_init_shell bluetooth_data_file:file { getattr };
 allow qti_init_shell bluetooth_loader_exec:file { open read };
