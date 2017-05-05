@@ -33,7 +33,7 @@ import static com.cyanogenmod.settings.device.IrGestureManager.*;
 public class UserAwareDisplay implements ScreenStateNotifier {
     private static final String TAG = "CMActions-UAD";
 
-    private static final int DELAYED_OFF_MS = 3000;
+    private static final int DELAYED_OFF_MS = 6000;
     private static final int KEYGUARD_POLL_MS = 1000;
 
     private static final int IR_GESTURES_FOR_SCREEN_ON = (1 << IR_GESTURE_OBJECT_DETECTED) |
@@ -66,7 +66,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
         mKeyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
 
         mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
-        mDelayedOffWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, TAG);
+        mDelayedOffWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
         mHandler = new Handler();
 
         mIrGestureSensor = sensorHelper.getIrGestureSensor();
