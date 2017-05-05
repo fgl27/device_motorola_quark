@@ -23,8 +23,8 @@ import android.util.Log;
 public class DozePulseAction implements SensorAction, ScreenStateNotifier {
     private static final String TAG = "CMActions";
     private static boolean sCanDoze = true;
-    private static final int DELAY_BEFORE_FIRST_DOZE_IN_MS = 3000;
-    private static final int DELAY_BETWEEN_DOZES_IN_MS = 10000;
+    private static final int DELAY_BEFORE_FIRST_DOZE_IN_MS = 1500;
+    private static final int DELAY_BETWEEN_DOZES_IN_MS = 100;
     private final Context mContext;
 
     private long mLastDoze;
