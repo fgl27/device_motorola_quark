@@ -70,7 +70,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
         mKeyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
 
         mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
-        mDelayedOffWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
+        mDelayedOffWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, TAG);
         mHandler = new Handler();
 
         mIrGestureSensor = sensorHelper.getIrGestureSensor();
