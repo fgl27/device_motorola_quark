@@ -23,6 +23,7 @@ import android.content.IntentFilter;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.os.UserHandle;
 import android.telephony.PhoneStateListener;
 import android.telecom.TelecomManager;
 import android.telephony.TelephonyManager;
@@ -107,7 +108,8 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
                 long now = System.currentTimeMillis();
                 if (now - mAlarmRingStartedMs >= SILENCE_DELAY_MS) {
                     Log.d(TAG, "Snoozing alarm");
-                    mContext.sendBroadcast(new Intent(ALARM_SNOOZE_ACTION));
+                    mContext.sendBroadcastAsUser(new Intent(ALARM_SNOOZE_ACTION),
+                        new UserHandle(UserHandle.USER_CURRENT));
                 } else {
                     Log.d(TAG, "Ignoring silence gesture: " + now + " is too close to " +
                             mAlarmRingStartedMs + ", delay=" + SILENCE_DELAY_MS);

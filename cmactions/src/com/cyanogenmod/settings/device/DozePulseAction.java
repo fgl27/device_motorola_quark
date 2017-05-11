@@ -18,6 +18,7 @@ package com.cyanogenmod.settings.device;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.UserHandle;
 import android.util.Log;
 
 public class DozePulseAction implements SensorAction, ScreenStateNotifier {
@@ -44,7 +45,8 @@ public class DozePulseAction implements SensorAction, ScreenStateNotifier {
     public void action() {
          if (mayDoze()) {
             Log.d(TAG, "Sending doze.pulse intent");
-            mContext.sendBroadcast(new Intent("com.android.systemui.doze.pulse"));
+            mContext.sendBroadcastAsUser(new Intent("com.android.systemui.doze.pulse"),
+                new UserHandle(UserHandle.USER_CURRENT));
         }
     }
 
