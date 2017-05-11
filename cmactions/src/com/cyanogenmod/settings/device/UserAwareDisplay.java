@@ -152,18 +152,27 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
     private synchronized void enableScreenLock() {
         if (! mScreenIsLocked) {
-            Log.d(TAG, "Acquiring screen wakelock");
             mScreenIsLocked = true;
-            mWakeLock.acquire();
+            if (mWakeLock != null && !mWakeLock.isHeld()) {
+                mWakeLock.setReferenceCounted(false);
+                mWakeLock.acquire();
+                Log.d(TAG, "Acquiring screen wakelock");
+            }
         }
     }
 
     private synchronized void disableScreenLock() {
         if (mScreenIsLocked) {
             mScreenIsLocked = false;
-            mDelayedOffWakeLock.acquire(DELAYED_OFF_MS);
-            mWakeLock.release();
-            Log.d(TAG, "Released screen wakelock");
+            if (mDelayedOffWakeLock != null && !mDelayedOffWakeLock.isHeld()) {
+                mDelayedOffWakeLock.setReferenceCounted(false);
+                mDelayedOffWakeLock.acquire(DELAYED_OFF_MS);
+                Log.d(TAG, " Acquiring screen DelayedOffWakeLock");
+            }
+            if (mWakeLock != null && mWakeLock.isHeld()) {
+                mWakeLock.release();
+                Log.d(TAG, "Released screen wakelock");
+            }
         }
     }
 
