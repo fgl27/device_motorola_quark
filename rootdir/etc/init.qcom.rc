@@ -68,6 +68,7 @@ on charger
 
 on moto-charger
     setprop ro.board.platform apq8084
+    write /sys/class/leds/charging/trigger "battery-full"
     start qcom-post-boot
     start thermal-com
     start charge_only_mode
