@@ -39,12 +39,16 @@ static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 static int g_lcd_brightness = 0;
 static int g_button_on = 0;
+static struct light_state_t g_notification;
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
 
 char const*const BUTTON_FILE
         = "/sys/class/leds/button-backlight/brightness";
+
+char const*const LED_FILE
+        = "/sys/class/leds/charging/blink";
 
 /**
  * device methods
@@ -74,6 +78,28 @@ write_int(char const* path, int value)
     } else {
         if (already_warned == 0) {
             ALOGE("write_int failed to open %s\n", path);
+            already_warned = 1;
+        }
+        return -errno;
+    }
+}
+
+static int
+write_str(char const* path, char *value)
+{
+    int fd;
+    static int already_warned = 0;
+
+    fd = open(path, O_RDWR);
+    if (fd >= 0) {
+        char buffer[PAGE_SIZE];
+        int bytes = sprintf(buffer, "%s\n", value);
+        int amt = write(fd, buffer, bytes);
+        close(fd);
+        return amt == -1 ? -errno : 0;
+    } else {
+        if (already_warned == 0) {
+            ALOGE("write_str failed to open %s\n", path);
             already_warned = 1;
         }
         return -errno;
@@ -115,6 +141,21 @@ set_light_backlight(struct light_device_t* dev,
 }
 
 static int
+handle_speaker_battery_locked()
+{
+    int err = 0;
+    //We want to see the notifications if there is any
+    if (is_lit(&g_notification)) {
+        //set blinking 1000ms ON and 1000ms OFF as default
+        err = write_str(LED_FILE, "1000,1000");
+    }else {
+        //Nothing to notify.turning led off
+        err = write_str(LED_FILE, "0,0");
+    }
+    return err;
+}
+
+static int
 set_light_buttons(struct light_device_t* dev,
         struct light_state_t const* state)
 {
@@ -131,6 +172,18 @@ set_light_buttons(struct light_device_t* dev,
     }
 
     g_button_on = on;
+    pthread_mutex_unlock(&g_lock);
+    return err;
+}
+
+static int
+set_light_notifications(__attribute__((unused)) struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    int err = 0;
+    pthread_mutex_lock(&g_lock);
+    g_notification = *state;
+    err = handle_speaker_battery_locked();
     pthread_mutex_unlock(&g_lock);
     return err;
 }
@@ -163,6 +216,8 @@ static int open_lights(const struct hw_module_t* module, char const* name,
         set_light = set_light_backlight;
     else if (0 == strcmp(LIGHT_ID_BUTTONS, name))
         set_light = set_light_buttons;
+    else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
+        set_light = set_light_notifications;
     else
         return -EINVAL;
 

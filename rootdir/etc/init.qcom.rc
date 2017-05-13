@@ -256,7 +256,7 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
-# Low Brightness at boot
+    # Low Brightness at boot
     write /sys/class/leds/lcd-backlight/brightness 63
 
     setprop ro.telephony.call_ring.multiple false
@@ -324,6 +324,8 @@ on boot
     # Change ownership and permission for led
     chown system system /sys/class/leds/charging/brightness
     chmod 0664 /sys/class/leds/charging/brightness
+    chown system system /sys/class/leds/charging/blink
+    chmod 0664 /sys/class/leds/charging/blink
     chown system system /sys/class/leds/button-backlight/brightness
     chmod 0664 /sys/class/leds/button-backlight/brightness
     chown system system /sys/class/leds/red/brightness
@@ -332,6 +334,7 @@ on boot
     chmod 0664 /sys/class/leds/green/brightness
     chown system system /sys/class/leds/blue/brightness
     chmod 0664 /sys/class/leds/blue/brightness
+    write /sys/class/leds/charging/trigger "battery-full"
 
     # STM401 driver parameter permissions
     chmod 0660 /sys/module/stm401/parameters/irq_disable
