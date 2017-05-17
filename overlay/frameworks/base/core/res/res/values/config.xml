@@ -507,19 +507,4 @@
     <!-- From stock ROM-->
     <integer name="config_bluetooth_operating_voltage_mv">3300</integer>
 
-    <!-- Control whether Night display is available. This should only be enabled on devices
-         with HWC 2.0 or higher. -->
-    <bool name="config_nightDisplayAvailable">true</bool>
-
-    <!-- Default list of files pinned by the Pinner Service -->
-    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
-        <item>"/data/dalvik-cache/arm/system@framework@boot.oat"</item>
-        <item>"/data/dalvik-cache/arm/system@framework@boot.art"</item>
-        <item>"/data/dalvik-cache/arm/system@framework@services.jar@classes.dex"</item>
-        <item>"/data/dalvik-cache/arm/system@priv-app@SystemUI@SystemUI.apk@classes.dex"</item>
-        <item>"/data/dalvik-cache/arm/system@priv-app@Settings@Settings.apk@classes.dex"</item>
-   </string-array>
-
-    <!-- True if camera app should be pinned via Pinner Service -->
-    <bool name="config_pinnerCameraApp">true</bool>
 </resources>
