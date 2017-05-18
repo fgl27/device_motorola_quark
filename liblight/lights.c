@@ -141,13 +141,12 @@ set_light_backlight(struct light_device_t* dev,
 }
 
 static int
-handle_speaker_battery_locked()
+handle_speaker_battery_locked(char *value)
 {
     int err = 0;
     //We want to see the notifications if there is any
     if (is_lit(&g_notification)) {
-        //set blinking 1000ms ON and 1000ms OFF as default
-        err = write_str(LED_FILE, "1000,1000");
+        err = write_str(LED_FILE, value);
     }else {
         //Nothing to notify.turning led off
         err = write_str(LED_FILE, "0,0");
@@ -180,10 +179,27 @@ static int
 set_light_notifications(__attribute__((unused)) struct light_device_t* dev,
         struct light_state_t const* state)
 {
+    char blink_string[PAGE_SIZE];
+    unsigned long ledON = 0, ledOFF = 0;
     int err = 0;
     pthread_mutex_lock(&g_lock);
     g_notification = *state;
-    err = handle_speaker_battery_locked();
+
+    switch (state->flashMode) {
+        case LIGHT_FLASH_TIMED:
+            ledON = state->flashOnMS;
+            ledOFF = state->flashOffMS;
+            break;
+        case LIGHT_FLASH_NONE:
+        default:
+            ledON = 0;
+            ledOFF = 0;
+            break;
+    }
+
+    sprintf(blink_string, "%lu,%lu", ledON, ledOFF);
+
+    err = handle_speaker_battery_locked(blink_string);
     pthread_mutex_unlock(&g_lock);
     return err;
 }
