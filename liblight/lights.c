@@ -41,6 +41,7 @@ static int g_lcd_brightness = 0;
 static int g_button_on = 0;
 static struct light_state_t g_notification;
 static struct light_state_t g_battery;
+static struct light_state_t g_attention;
 
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
@@ -48,8 +49,11 @@ char const*const LCD_FILE
 char const*const BUTTON_FILE
         = "/sys/class/leds/button-backlight/brightness";
 
-char const*const LED_FILE
+char const*const LED_BLINK
         = "/sys/class/leds/charging/blink";
+
+char const*const LED_BRIGHTNESS
+        = "/sys/class/leds/charging/brightness";
 
 /**
  * device methods
@@ -61,6 +65,9 @@ void init_globals(void)
     pthread_mutex_init(&g_lock, NULL);
     g_lcd_brightness = -1;
     g_button_on = -1;
+    memset(&g_battery, 0, sizeof(g_battery));
+    memset(&g_notification, 0, sizeof(g_notification));
+    memset(&g_attention, 0, sizeof(g_attention));
 }
 
 static int
@@ -142,20 +149,43 @@ set_light_backlight(struct light_device_t* dev,
 }
 
 static int
-handle_speaker_battery_locked(char *value)
+set_speaker_light_locked(struct light_device_t* dev,
+        struct light_state_t const* state)
 {
-    int err = 0;
-    //We want to see the notifications if there is any
-    if (is_lit(&g_notification)) {
-        err = write_str(LED_FILE, value);
-    }else if (is_lit(&g_battery)) {
-        //Turn off the led
-        err = write_str(LED_FILE, value);
-    }else {
-        //Nothing to notify.turning led off
-        err = write_str(LED_FILE, "0,0");
+    unsigned long onMS, offMS;
+    char blink_string[PAGE_SIZE];
+
+    switch (state->flashMode) {
+        case LIGHT_FLASH_TIMED:
+            onMS = state->flashOnMS;
+            offMS = state->flashOffMS;
+            break;
+        case LIGHT_FLASH_NONE:
+        default:
+            onMS = 0;
+            offMS = 0;
+            break;
     }
-    return err;
+
+    if (!(onMS == 1 && offMS == 0)) {
+        // Prevent Led on all the time
+        sprintf(blink_string, "%lu,%lu", onMS, offMS);
+        write_str(LED_BLINK, blink_string);
+    }
+
+    int brightness = rgb_to_brightness(state);
+    write_int(LED_BRIGHTNESS, brightness);
+    return 0;
+}
+
+static void
+handle_speaker_battery_locked(struct light_device_t* dev)
+{
+    if (is_lit(&g_battery)) {
+        set_speaker_light_locked(dev, &g_battery);
+    } else {
+        set_speaker_light_locked(dev, &g_notification);
+    }
 }
 
 static int
@@ -179,45 +209,26 @@ set_light_buttons(struct light_device_t* dev,
     return err;
 }
 
-static int
-set_light_battery(__attribute__((unused)) struct light_device_t* dev,
-        struct light_state_t const* state)
-{
-    int err = 0;
-    pthread_mutex_lock(&g_lock);
-    g_battery = *state;
-    err = handle_speaker_battery_locked("0,0");
-    pthread_mutex_unlock(&g_lock);
-    return err;
-}
-
-static int
+static int	
 set_light_notifications(__attribute__((unused)) struct light_device_t* dev,
         struct light_state_t const* state)
 {
-    char blink_string[PAGE_SIZE];
-    unsigned long ledON = 0, ledOFF = 0;
-    int err = 0;
     pthread_mutex_lock(&g_lock);
     g_notification = *state;
-
-    switch (state->flashMode) {
-        case LIGHT_FLASH_TIMED:
-            ledON = state->flashOnMS;
-            ledOFF = state->flashOffMS;
-            break;
-        case LIGHT_FLASH_NONE:
-        default:
-            ledON = 0;
-            ledOFF = 0;
-            break;
-    }
-
-    sprintf(blink_string, "%lu,%lu", ledON, ledOFF);
-
-    err = handle_speaker_battery_locked(blink_string);
+    handle_speaker_battery_locked(dev);
     pthread_mutex_unlock(&g_lock);
-    return err;
+    return 0;
+}
+
+static int
+set_light_attention(struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    pthread_mutex_lock(&g_lock);
+    g_attention = *state;
+    handle_speaker_battery_locked(dev);
+    pthread_mutex_unlock(&g_lock);
+    return 0;
 }
 
 /** Close the lights device */
@@ -248,8 +259,8 @@ static int open_lights(const struct hw_module_t* module, char const* name,
         set_light = set_light_backlight;
     else if (0 == strcmp(LIGHT_ID_BUTTONS, name))
         set_light = set_light_buttons;
-     else if (0 == strcmp(LIGHT_ID_BATTERY, name))
-         set_light = set_light_battery;
+    else if (0 == strcmp(LIGHT_ID_ATTENTION, name))
+        set_light = set_light_attention;
     else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
         set_light = set_light_notifications;
     else
