@@ -111,7 +111,7 @@ ro.build.shutdown_timeout=7
 persist.qcril_uim_vcc_feature=1
 
 # Storage
-ro.sys.sdcardfs=true
+ro.sys.sdcardfs=false
 
 # SSR
 persist.sys.qc.sub.rdump.max=20
