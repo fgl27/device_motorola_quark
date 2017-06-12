@@ -23,14 +23,6 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="N" />
 	  <project name="bhb27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="N" />
 
-	  <!-- Some CM project are out of date I update they here-->
-	  <remove-project name="LineageOS/android_hardware_qcom_display" groups="pdk,qcom,qcom_display" revision="cm-14.1-caf-8084" />
-	  <project path="hardware/qcom/display-caf/apq8084" name="bhb27/android_hardware_qcom_display" remote="github" revision="cm-14.1-caf-8084" />
-	  <remove-project name="LineageOS/android_hardware_qcom_media" groups="pdk,qcom,qcom_media" revision="cm-14.1-caf-8084" />
-	  <project path="hardware/qcom/media-caf/apq8084" name="bhb27/android_hardware_qcom_media" remote="github" revision="cm-14.1-caf-8084" />
-	  <remove-project path="device/qcom/sepolicy" name="LineageOS/android_device_qcom_sepolicy" />
-	  <project path="device/qcom/sepolicy" name="bhb27/android_device_qcom_sepolicy" remote="github" revision="cm-14.1" />
-
 	</manifest>
 
 The Motorola Moto Maxx (codenamed _"quark"_) is a high-end smartphone from Motorola mobility.
