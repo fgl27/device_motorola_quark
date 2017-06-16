@@ -32,11 +32,9 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
     private final SensorAction mAction;
     private final SensorHelper mSensorHelper;
     private final Sensor mSensor;
-    private final Sensor mProx;
     private long mLastAction;
 
     private boolean mIsEnabled;
-    private boolean mProxIsCovered;
 
     public ChopChopSensor(CMActionsSettings cmActionsSettings, SensorAction action,
         SensorHelper sensorHelper) {
@@ -44,7 +42,6 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
         mAction = action;
         mSensorHelper = sensorHelper;
         mSensor = sensorHelper.getChopChopSensor();
-        mProx = sensorHelper.getProximitySensor();
         mLastAction = System.currentTimeMillis();
     }
 
@@ -53,22 +50,16 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
         if (mCMActionsSettings.isChopChopGestureEnabled() && !mIsEnabled) {
             Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mSensor, this);
-            mSensorHelper.registerListener(mProx, mProxListener);
             mIsEnabled = true;
         } else if (! mCMActionsSettings.isChopChopGestureEnabled() && mIsEnabled) {
             Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(this);
-            mSensorHelper.unregisterListener(mProxListener);
             mIsEnabled = false;
         }
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (mProxIsCovered) {
-            Log.d(TAG, "proximity sensor covered, ignoring chop-chop");
-            return;
-        }
         long now = System.currentTimeMillis();
         if (now - mLastAction > DELAY_BETWEEN_CHOP_CHOP_IN_MS) {
             Log.d(TAG, "Allowing chop chop");
@@ -82,15 +73,4 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
     }
-
-    private SensorEventListener mProxListener = new SensorEventListener() {
-        @Override
-        public synchronized void onSensorChanged(SensorEvent event) {
-            mProxIsCovered = event.values[0] < mProx.getMaximumRange();
-        }
-
-        @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
-    };
 }
