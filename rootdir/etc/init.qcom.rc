@@ -334,7 +334,6 @@ on boot
     chmod 0664 /sys/class/leds/green/brightness
     chown system system /sys/class/leds/blue/brightness
     chmod 0664 /sys/class/leds/blue/brightness
-    write /sys/class/leds/charging/trigger "battery-full"
 
     # STM401 driver parameter permissions
     chmod 0660 /sys/module/stm401/parameters/irq_disable
