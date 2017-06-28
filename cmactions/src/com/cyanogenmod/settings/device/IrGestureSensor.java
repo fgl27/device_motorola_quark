@@ -34,7 +34,7 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     private final IrGestureVote mIrGestureVote;
     private final Sensor mSensor;
 
-    private boolean mEnabled;
+    private boolean mEnabled, mScreenOn;
 
     public IrGestureSensor(CMActionsSettings cmActionsSettings, SensorHelper sensorHelper,
                 SensorAction action, IrGestureManager irGestureManager) {
@@ -49,7 +49,18 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
 
     @Override
     public void screenTurnedOn() {
-        if (mEnabled) {
+        mScreenOn = true;
+    }
+
+    @Override
+    public void screenTurnedOff() {
+        mScreenOn = false;
+        if (mCMActionsSettings.isIrWakeupEnabled() && !mEnabled) {
+            Log.d(TAG, "Enabling");
+            mSensorHelper.registerListener(mSensor, this);
+            mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_OFF);
+            mEnabled = true;
+        } else if (!mCMActionsSettings.isIrWakeupEnabled() && mEnabled) {
             Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(this);
             mIrGestureVote.voteForSensors(0);
@@ -58,24 +69,15 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     }
 
     @Override
-    public void screenTurnedOff() {
-        if (mCMActionsSettings.isIrWakeupEnabled() && !mEnabled) {
-            Log.d(TAG, "Enabling");
-            mSensorHelper.registerListener(mSensor, this);
-            mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_OFF);
-            mEnabled = true;
-        }
-    }
-
-    @Override
     public void onSensorChanged(SensorEvent event) {
         int gesture = (int) event.values[1];
 
-        if (gesture == IR_GESTURE_SWIPE || gesture == IR_GESTURE_APPROACH)
+        if (!mScreenOn && (gesture == IR_GESTURE_SWIPE || gesture == IR_GESTURE_APPROACH))
             mSensorAction.action();
     }
 
     @Override
     public void onAccuracyChanged(Sensor mSensor, int accuracy) {
     }
+
 }
