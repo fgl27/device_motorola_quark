@@ -47,8 +47,8 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private final KeyguardManager mKeyguardManager;
     private final Sensor mIrGestureSensor;
     private final Sensor mStowSensor;
-    private final WakeLock mWakeLock;
-    private final WakeLock mDelayedOffWakeLock;
+    private WakeLock mWakeLock;
+    private WakeLock mDelayedOffWakeLock;
     private Handler mHandler;
 
     private boolean mEnabled;
@@ -153,7 +153,9 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private synchronized void enableScreenLock() {
         if (! mScreenIsLocked) {
             mScreenIsLocked = true;
-            if (mWakeLock != null && !mWakeLock.isHeld()) {
+            if (mWakeLock == null)
+                mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
+            else if (!mWakeLock.isHeld()) {
                 mWakeLock.setReferenceCounted(false);
                 mWakeLock.acquire();
                 Log.d(TAG, "Acquiring screen wakelock");
@@ -164,12 +166,16 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private synchronized void disableScreenLock() {
         if (mScreenIsLocked) {
             mScreenIsLocked = false;
-            if (mDelayedOffWakeLock != null && !mDelayedOffWakeLock.isHeld()) {
+            if (mDelayedOffWakeLock == null)
+                mDelayedOffWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, TAG);
+            else if (!mDelayedOffWakeLock.isHeld()) {
                 mDelayedOffWakeLock.setReferenceCounted(false);
                 mDelayedOffWakeLock.acquire(DELAYED_OFF_MS);
                 Log.d(TAG, " Acquiring screen DelayedOffWakeLock");
             }
-            if (mWakeLock != null && mWakeLock.isHeld()) {
+            if (mWakeLock == null)
+                mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
+            else if (mWakeLock.isHeld()) {
                 mWakeLock.release();
                 Log.d(TAG, "Released screen wakelock");
             }
