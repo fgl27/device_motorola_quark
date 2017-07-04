@@ -33,7 +33,7 @@ import static com.cyanogenmod.settings.device.IrGestureManager.*;
 public class UserAwareDisplay implements ScreenStateNotifier {
     private static final String TAG = "CMActions-UAD";
 
-    private static final int DELAYED_OFF_MS = 3000;
+    private static final int DELAYED_OFF_MS = 9000;
     private static final int KEYGUARD_POLL_MS = 1000;
 
     private static final int IR_GESTURES_FOR_SCREEN_ON = (1 << IR_GESTURE_OBJECT_DETECTED) |
