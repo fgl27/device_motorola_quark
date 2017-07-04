@@ -55,6 +55,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private boolean mScreenIsLocked;
     private boolean mObjectIsDetected;
     private boolean mIsStowed;
+    private boolean mScreenOn;
 
     public UserAwareDisplay(CMActionsSettings cmActionsSettings, SensorHelper sensorHelper,
                 IrGestureManager irGestureManager, Context context) {
@@ -76,6 +77,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
     @Override
     public void screenTurnedOn() {
+        mScreenOn = true;
         if (mCMActionsSettings.isUserAwareDisplayEnabled()) {
             if (mKeyguardManager.inKeyguardRestrictedInputMode()) {
                 scheduleKeyguardPoll();
@@ -91,8 +93,9 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
     @Override
     public void screenTurnedOff() {
+        mScreenOn = false;
         disableKeyguardPolling();
-        disableSensors();
+        if (!mCMActionsSettings.isUserAwareDisplayEnabled()) disableSensors();
         disableScreenLock();
     }
 
@@ -105,7 +108,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     }
 
     private void enableSensors() {
-        if (! mEnabled) {
+        if (!mEnabled) {
             Log.d(TAG, "Enabling");
 
             mEnabled = true;
@@ -187,10 +190,12 @@ public class UserAwareDisplay implements ScreenStateNotifier {
         public void onSensorChanged(SensorEvent event) {
             int gesture = (int) event.values[1];
 
-            if (gesture == IR_GESTURE_OBJECT_DETECTED) {
-                setObjectIsDetected(true);
-            } else if (gesture == IR_GESTURE_OBJECT_NOT_DETECTED) {
-                setObjectIsDetected(false);
+            if (mScreenOn) {
+                if (gesture == IR_GESTURE_OBJECT_DETECTED) {
+                    setObjectIsDetected(true);
+                } else if (gesture == IR_GESTURE_OBJECT_NOT_DETECTED) {
+                    setObjectIsDetected(false);
+                }
             }
         }
 
@@ -202,7 +207,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private SensorEventListener mStowListener = new SensorEventListener() {
         @Override
         public void onSensorChanged(SensorEvent event) {
-            setIsStowed(event.values[0] != 0);
+            if (mScreenOn) setIsStowed(event.values[0] != 0);
         }
 
         @Override
