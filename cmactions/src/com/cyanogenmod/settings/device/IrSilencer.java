@@ -35,7 +35,7 @@ import static android.telephony.TelephonyManager.*;
 public class IrSilencer extends PhoneStateListener implements SensorEventListener, UpdatedStateNotifier {
     private static final String TAG = "CMActions-IRSilencer";
 
-    private static final int IR_GESTURES_FOR_RINGING = (1 << IR_GESTURE_SWIPE);
+    private static final int IR_GESTURES_FOR_RINGING = (1 << IR_GESTURE_SWIPE) | (1 << IR_GESTURE_APPROACH);
     private static final int SILENCE_DELAY_MS = 500;
 
     private final Context mContext;
@@ -94,7 +94,7 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
     public synchronized void onSensorChanged(SensorEvent event) {
         int gesture = (int) event.values[1];
 
-        if (gesture == IR_GESTURE_SWIPE) {
+        if (gesture == IR_GESTURE_SWIPE || gesture == IR_GESTURE_APPROACH) {
             if (mPhoneRinging) {
                 long now = System.currentTimeMillis();
                 if (now - mPhoneRingStartedMs >= SILENCE_DELAY_MS) {
