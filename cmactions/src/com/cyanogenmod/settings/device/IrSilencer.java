@@ -46,6 +46,8 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
     private final Sensor mSensor;
     private final IrGestureVote mIrGestureVote;
 
+    private boolean irEnable;
+
     private boolean mPhoneRinging;
     private long mPhoneRingStartedMs;
 
@@ -122,14 +124,12 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
     public synchronized void onCallStateChanged(int state, String incomingNumber) {
         if (state == CALL_STATE_RINGING && !mPhoneRinging) {
             Log.d(TAG, "Phone ringing started");
-            mSensorHelper.registerListener(mSensor, this);
-            mIrGestureVote.voteForSensors(IR_GESTURES_FOR_RINGING);
+            irEnabler(true);
             mPhoneRinging = true;
             mPhoneRingStartedMs = System.currentTimeMillis();
         } else if (state != CALL_STATE_RINGING && mPhoneRinging) {
             Log.d(TAG, "Phone ringing stopped");
-            mSensorHelper.unregisterListener(this);
-            mIrGestureVote.voteForSensors(0);
+            irEnabler(false);
             mPhoneRinging = false;
         }
     }
@@ -148,16 +148,26 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
            String action = intent.getAction();
            if (ALARM_ALERT_ACTION.equals(action)) {
                Log.d(TAG, "Alarm ringing started");
-               mSensorHelper.registerListener(mSensor, IrSilencer.this);
-               mIrGestureVote.voteForSensors(IR_GESTURES_FOR_RINGING);
+               irEnabler(true);
                mAlarmRinging = true;
                mAlarmRingStartedMs = System.currentTimeMillis();
            } else {
                Log.d(TAG, "Alarm ringing stopped");
-               mSensorHelper.unregisterListener(IrSilencer.this);
-               mIrGestureVote.voteForSensors(0);
+               irEnabler(false);
                mAlarmRinging = false;
            }
         }
     };
+
+    public void irEnabler(boolean enable) {
+        if (enable && !irEnable) {
+            mSensorHelper.registerListener(mSensor, this);
+            mIrGestureVote.voteForSensors(IR_GESTURES_FOR_RINGING);
+            irEnable = true;
+        } else if (!enable && irEnable) {
+            mSensorHelper.registerListener(mSensor, this);
+            mIrGestureVote.voteForSensors(0);
+            irEnable = false;
+        }
+    }
 }
