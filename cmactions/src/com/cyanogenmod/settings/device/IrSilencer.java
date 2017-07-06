@@ -35,7 +35,7 @@ import static android.telephony.TelephonyManager.*;
 public class IrSilencer extends PhoneStateListener implements SensorEventListener, UpdatedStateNotifier {
     private static final String TAG = "CMActions-IRSilencer";
 
-    private static final int IR_GESTURES_FOR_RINGING = (1 << IR_GESTURE_SWIPE) | (1 << IR_GESTURE_APPROACH);
+    private static final int IR_GESTURES_FOR_RINGING = (1 << IR_GESTURE_SWIPE);
     private static final int SILENCE_DELAY_MS = 500;
 
     private final Context mContext;
@@ -46,7 +46,7 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
     private final Sensor mSensor;
     private final IrGestureVote mIrGestureVote;
 
-    private boolean mPhoneRinging, irEnable;
+    private boolean mPhoneRinging;
     private long mPhoneRingStartedMs;
 
     private boolean mAlarmRinging;
@@ -80,7 +80,6 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
 
     @Override
     public void updateState() {
-        irEnabler(mCMActionsSettings.isIrSilencerEnabled());
         if (mCMActionsSettings.isIrSilencerEnabled()) {
             mTelephonyManager.listen(this, LISTEN_CALL_STATE);
         } else {
@@ -95,7 +94,7 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
     public synchronized void onSensorChanged(SensorEvent event) {
         int gesture = (int) event.values[1];
 
-        if (gesture == IR_GESTURE_SWIPE || gesture == IR_GESTURE_APPROACH) {
+        if (gesture == IR_GESTURE_SWIPE) {
             if (mPhoneRinging) {
                 long now = System.currentTimeMillis();
                 if (now - mPhoneRingStartedMs >= SILENCE_DELAY_MS) {
@@ -123,10 +122,14 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
     public synchronized void onCallStateChanged(int state, String incomingNumber) {
         if (state == CALL_STATE_RINGING && !mPhoneRinging) {
             Log.d(TAG, "Phone ringing started");
+            mSensorHelper.registerListener(mSensor, this);
+            mIrGestureVote.voteForSensors(IR_GESTURES_FOR_RINGING);
             mPhoneRinging = true;
             mPhoneRingStartedMs = System.currentTimeMillis();
         } else if (state != CALL_STATE_RINGING && mPhoneRinging) {
             Log.d(TAG, "Phone ringing stopped");
+            mSensorHelper.unregisterListener(this);
+            mIrGestureVote.voteForSensors(0);
             mPhoneRinging = false;
         }
     }
@@ -145,25 +148,16 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
            String action = intent.getAction();
            if (ALARM_ALERT_ACTION.equals(action)) {
                Log.d(TAG, "Alarm ringing started");
+               mSensorHelper.registerListener(mSensor, IrSilencer.this);
+               mIrGestureVote.voteForSensors(IR_GESTURES_FOR_RINGING);
                mAlarmRinging = true;
                mAlarmRingStartedMs = System.currentTimeMillis();
            } else {
                Log.d(TAG, "Alarm ringing stopped");
-
+               mSensorHelper.unregisterListener(IrSilencer.this);
+               mIrGestureVote.voteForSensors(0);
                mAlarmRinging = false;
            }
         }
     };
-
-    public void irEnabler(boolean enable) {
-        if (enable && !irEnable) {
-            mSensorHelper.registerListener(mSensor, this);
-            mIrGestureVote.voteForSensors(IR_GESTURES_FOR_RINGING);
-            irEnable = true;
-        } else if (!enable && irEnable) {
-            mSensorHelper.unregisterListener(IrSilencer.this);
-            mIrGestureVote.voteForSensors(0);
-            irEnable = false;
-        }
-    }
 }
