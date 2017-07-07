@@ -21,6 +21,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.util.Log;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import static com.cyanogenmod.settings.device.IrGestureManager.*;
 
 public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener {
@@ -33,7 +36,6 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     private final SensorAction mSensorAction;
     private final IrGestureVote mIrGestureVote;
     private final Sensor mSensor;
-    private long time;
 
     private boolean mEnabled, mScreenOn;
 
@@ -50,8 +52,21 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
 
     @Override
     public void screenTurnedOn() {
-        time = System.currentTimeMillis();
         mScreenOn = true;
+        new Timer().schedule(
+            new TimerTask() {
+                @Override
+                public void run() {
+                    if (mEnabled && mScreenOn) {
+                        Log.d(TAG, "Disabling");
+                        mSensorHelper.unregisterListener(IrGestureSensor.this);
+                        mIrGestureVote.voteForSensors(0);
+                        mEnabled = false;
+                    }
+                }
+            },
+            2000
+        );
     }
 
     @Override
@@ -68,13 +83,6 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     @Override
     public void onSensorChanged(SensorEvent event) {
         int gesture = (int) event.values[1];
-
-        if (mEnabled && mScreenOn && ((System.currentTimeMillis() - 3000) > time)) {
-             Log.d(TAG, "Disabling");
-             mSensorHelper.unregisterListener(this);
-             mIrGestureVote.voteForSensors(0);
-             mEnabled = false;
-        }
 
         if (!mScreenOn && (gesture == IR_GESTURE_SWIPE || gesture == IR_GESTURE_APPROACH))
             mSensorAction.action();
