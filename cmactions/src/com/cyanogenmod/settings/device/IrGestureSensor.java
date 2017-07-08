@@ -16,9 +16,11 @@
 
 package com.cyanogenmod.settings.device;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.os.PowerManager;
 import android.util.Log;
 
 import java.util.Timer;
@@ -37,10 +39,13 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     private final IrGestureVote mIrGestureVote;
     private final Sensor mSensor;
 
-    private boolean mEnabled, mScreenOn;
+    private final PowerManager mPowerManager;
+    private PowerManager.WakeLock mWakeLock;
+
+    private boolean mEnabled, mScreenOn, mtempOn, mtempOff;
 
     public IrGestureSensor(CMActionsSettings cmActionsSettings, SensorHelper sensorHelper,
-                SensorAction action, IrGestureManager irGestureManager) {
+                SensorAction action, IrGestureManager irGestureManager, Context context) {
         mCMActionsSettings = cmActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
@@ -48,35 +53,61 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
 
         mSensor = sensorHelper.getIrGestureSensor();
         mIrGestureVote.voteForSensors(0);
+
+        mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CMActionsWakeLock");
     }
 
     @Override
     public void screenTurnedOn() {
         mScreenOn = true;
-        new Timer().schedule(
-            new TimerTask() {
-                @Override
-                public void run() {
-                    if (mEnabled && mScreenOn) {
-                        Log.d(TAG, "Disabling");
-                        mSensorHelper.unregisterListener(IrGestureSensor.this);
-                        mIrGestureVote.voteForSensors(0);
-                        mEnabled = false;
+        if (mEnabled && !mtempOn) {
+            mtempOn = true;
+            new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (mEnabled && mScreenOn) {
+                            Log.d(TAG, "Disabling");
+                            mSensorHelper.unregisterListener(IrGestureSensor.this);
+                            mIrGestureVote.voteForSensors(0);
+                            mEnabled = false;
+                        }
+                        mtempOn = false;
                     }
-                }
-            },
-            2000
-        );
+                },
+                1000
+            );
+        }
     }
 
     @Override
     public void screenTurnedOff() {
         mScreenOn = false;
-        if (mCMActionsSettings.isIrWakeupEnabled() && !mEnabled) {
-            Log.d(TAG, "Enabling");
-            mSensorHelper.registerListener(mSensor, this);
-            mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_OFF);
-            mEnabled = true;
+        if (mCMActionsSettings.isIrWakeupEnabled() && !mEnabled && !mtempOff) {
+            mtempOff = true;
+            if (mWakeLock == null)
+                mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CMActionsWakeLock");
+            else if (!mWakeLock.isHeld()) {
+                mWakeLock.setReferenceCounted(false);
+                mWakeLock.acquire();
+            }
+            new Timer().schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        if (!mEnabled && !mScreenOn) {
+                            Log.d(TAG, "Enabling");
+                            mSensorHelper.registerListener(mSensor, IrGestureSensor.this);
+                            mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_OFF);
+                            mEnabled = true;
+                        }
+                        mtempOff = false;
+                        mWakeLock.release();
+                    }
+                },
+                1000
+            );
         }
     }
 
