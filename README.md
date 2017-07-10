@@ -19,24 +19,13 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="cm-14.1" />
 
 	  <!-- Device/kernel/vendor-->
-<<<<<<< HEAD
 	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_N" />
-	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="TWRP_N" />
+	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="N_c" />
 
 	  <!-- Need to build TWRP-->
 	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-7.1" />
 	  <remove-project path="bootable/recovery" name="LineageOS/android_bootable_recovery" groups="pdk" />
 	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-7.1" groups="pdk-cw-fs"/>
-
-	  <!-- Some CM project are out of date I update and are relevant-->
-	  <remove-project path="device/qcom/sepolicy" name="LineageOS/android_device_qcom_sepolicy" />
-	  <project path="device/qcom/sepolicy" name="bhb27/android_device_qcom_sepolicy" remote="github" revision="cm-14.1" />
-=======
-	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="N" />
-	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="N" />
-	  <project name="bhb27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="N" />
->>>>>>> b2150f9b4c48723d0cd67f28a7b91b0428afe899
-
 	</manifest>
 
 Them after repo it all use this to build

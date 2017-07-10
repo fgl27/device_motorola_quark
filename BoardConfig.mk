@@ -39,7 +39,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M androidboot.verifiedbootstate=green androidboot.bl_state=0 androidboot.flash.locked=1
+BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M androidboot.selinux=permissive androidboot.verifiedbootstate=green androidboot.bl_state=0 androidboot.flash.locked=1
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_LZ4C_DT := true
 BOARD_KERNEL_PAGESIZE := 4096
@@ -161,7 +161,12 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Snapdragon LLVM Compiler
 TARGET_USE_SDCLANG := true
 
-<<<<<<< HEAD
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
+# Compile libhwui in performance mode
+HWUI_COMPILE_FOR_PERF := true
+
 # TWRP
 TW_THEME := portrait_hdpi
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
@@ -187,10 +192,3 @@ TW_IGNORE_MISC_WIPE_DATA := true
 TARGET_HW_DISK_ENCRYPTION := true
 TW_INCLUDE_CRYPTO := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
-=======
-# Enable real time lockscreen charging current values
-BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
-
-# Compile libhwui in performance mode
-HWUI_COMPILE_FOR_PERF := true
->>>>>>> b2150f9b4c48723d0cd67f28a7b91b0428afe899
