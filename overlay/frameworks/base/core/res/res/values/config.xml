@@ -358,6 +358,10 @@
         <item>"9,1"</item>
     </string-array>
 
+    <!-- Flag specifying that this device will NOT use the "allow_hold_in_ims_call" carrier config
+         option. -->
+    <bool name="config_device_respects_hold_carrier_config">false</bool>
+
     <!-- Configure mobile tcp buffer sizes in the form:
          rat-name:rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max
          If no value is found for the rat-name in use, the system default will be applied.
@@ -496,7 +500,7 @@
     <integer name="config_defaultNotificationLedOn">1000</integer>
 
     <!-- Default LED off time for notification LED in milliseconds. -->
-    <integer name="config_defaultNotificationLedOff">9000</integer>
+    <integer name="config_defaultNotificationLedOff">1000</integer>
 
     <!-- The RadioAccessFamilies supported by the device.
          Empty is viewed as "all".  Only used on devices which
@@ -507,7 +511,9 @@
     <!-- From stock ROM-->
     <integer name="config_bluetooth_operating_voltage_mv">3300</integer>
 
-    <!-- Control whether Night display is available. This should only be enabled on devices
-         with HWC 2.0 or higher. -->
+    <!-- Control whether Night display is available. -->
     <bool name="config_nightDisplayAvailable">true</bool>
+
+    <!-- True if camera app should be pinned via Pinner Service -->
+    <bool name="config_pinnerCameraApp">true</bool>
 </resources>

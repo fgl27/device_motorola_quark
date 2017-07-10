@@ -38,7 +38,6 @@ public class CMActionsSettings {
     private static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
     private static final String GESTURE_IR_WAKEUP_KEY = "gesture_ir_wake_up";
     private static final String GESTURE_IR_SILENCER_KEY = "gesture_ir_silencer";
-    private static final String GESTURE_FLIP_TO_MUTE_KEY = "gesture_flip_to_mute";
     private static final String GESTURE_LIFT_TO_SILENCE_KEY = "gesture_lift_to_silence";
 
     private final Context mContext;
@@ -51,7 +50,6 @@ public class CMActionsSettings {
     private boolean mIrWakeUpEnabled;
     private boolean mIrSilencerEnabled;
     private boolean mPickUpGestureEnabled;
-    private boolean mFlipToMuteEnabled;
     private boolean mLiftToSilenceEnabled;
 
     public CMActionsSettings(Context context, UpdatedStateNotifier updatedStateNotifier) {
@@ -110,10 +108,6 @@ public class CMActionsSettings {
         return mIrSilencerEnabled;
     }
 
-    public boolean isFlipToMuteEnabled() {
-        return mFlipToMuteEnabled;
-    }
-
     public boolean isLiftToSilenceEnabled() {
         return mLiftToSilenceEnabled;
     }
@@ -126,7 +120,6 @@ public class CMActionsSettings {
         mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, false);
         mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, false);
         mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
-        mFlipToMuteEnabled = sharedPreferences.getBoolean(GESTURE_FLIP_TO_MUTE_KEY, false);
         mLiftToSilenceEnabled = sharedPreferences.getBoolean(GESTURE_LIFT_TO_SILENCE_KEY, false);
     }
 
@@ -163,8 +156,6 @@ public class CMActionsSettings {
                 mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, false);
             } else if (GESTURE_IR_SILENCER_KEY.equals(key)) {
                 mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
-            } else if (GESTURE_FLIP_TO_MUTE_KEY.equals(key)) {
-                mFlipToMuteEnabled = sharedPreferences.getBoolean(GESTURE_FLIP_TO_MUTE_KEY, false);
             } else if (GESTURE_LIFT_TO_SILENCE_KEY.equals(key)) {
                 mLiftToSilenceEnabled = sharedPreferences.getBoolean(GESTURE_LIFT_TO_SILENCE_KEY, false);
             } else {

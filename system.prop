@@ -20,6 +20,9 @@ camera2.portability.force_api=1
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
 
+# Data Disable mobile data by default
+ro.com.android.mobiledata=false
+
 # Display
 ro.qualcomm.cabl=0
 ro.opengles.version=196610
@@ -29,10 +32,9 @@ ro.panel.mountflip=3
 # FRP
 ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
 
-# Quark GLES doesn't support secure display persist.hwc.mdpcomp.enable need to be false
-# to allow google play movies and other apps that require a secure display we need to enable this:
+# GLES doesn't support secure display, to allow google play movies
+# and other apps that require a secure display we need to enable this:
 persist.hwc.mdpcomp.enable=false
-persist.mdpcomp.4k2kSplit=1
 
 # GPS
 persist.gps.qc_nlp_in_use=0
@@ -45,8 +47,7 @@ persist.mot.gps.smart_battery=1
 
 # Media
 audio.offload.buffer.size.kb=32
-#Disable offload audio video playback by default
-av.offload.enable=false
+av.offload.enable=true
 av.streaming.offload.enable=true
 audio.offload.multiple.enabled=false
 audio.offload.gapless.enabled=true
@@ -67,6 +68,9 @@ persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
+
+# Play store
+ro.com.google.clientidbase.gmm=android-motorola
 
 # RmNet Data
 persist.rmnet.data.enable=true
@@ -91,21 +95,23 @@ persist.radio.apm_sim_not_pwdn=1
 persist.radio.apn_delay=5000
 persist.radio.dfr_mode_set=1
 persist.radio.relay_oprt_change=1
-persist.data.qmi.adb_logmask=0
 persist.radio.msgtunnel.start=true
 persist.radio.oem_ind_to_both=false
-persist.data.netmgrd.qos.enable=false
+persist.data.netmgrd.qos.enable=true
+persist.data.qmi.adb_logmask=0
 persist.radio.VT_USE_MDM_TIME=1
 
 ro.use_data_netmgrd=true
 ro.data.large_tcp_window_size=true
-persist.data.qmi.adb_logmask=0
+
+# Reboot Shutdown timeout
+ro.build.shutdown_timeout=7
 
 # Enable UIM VCC feature
 persist.qcril_uim_vcc_feature=1
 
-# Play store
-ro.com.google.clientidbase.gmm=android-motorola
+# Storage
+ro.sys.sdcardfs=false
 
 # SSR
 persist.sys.qc.sub.rdump.max=20
@@ -113,22 +119,22 @@ persist.sys.qc.sub.rdump.on=1
 persist.sys.qc.sub.rstrtlvl=3
 persist.sys.ssr.restart_level=1
 
-# Storage
-ro.sys.sdcardfs=true
-
 # Time
 persist.timed.enable=true
+
+# tethering Allow without provisioning app
+net.tethering.noprovisioning=true
 
 # USB
 ro.usb.mtp=2ea4
 ro.usb.mtp_adb=2ea5
-ro.usb.mtp_cdrom=2ea8
 ro.usb.ptp=2ea6
 ro.usb.ptp_adb=2ea7
 ro.usb.bpt=2ea0
 ro.usb.bpt_adb=2ea1
 ro.usb.bpteth=2ea2
 ro.usb.bpteth_adb=2ea3
+ro.usb.mtp_cdrom=2ea8
 
 # WLAN
 wifi.interface=wlan0
@@ -136,27 +142,5 @@ wlan.driver.ath=0
 wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
 ro.disableWifiApFirmwareReload=true
 
-# Allow tethering without provisioning app
-net.tethering.noprovisioning=true
-
-# Disable mobile data by default (only affect first boot once user enable it in settings this is not used anymore)
-ro.com.android.mobiledata=false
-
-# Motorola Moto MAXX Hardware Info
-ro.device.chipset=Qualcomm Snapdragon 805
-ro.device.cpu=Quad-core 2.7 GHz Krait 450
-ro.device.gpu=Qualcomm Adreno 420
-ro.device.rear_cam=21 MP
-ro.device.front_cam=2 MP
-ro.device.screen_res=1440x2560 pixels (~565 ppi)
-
-# wi-fi call
-#persist.dbg.wfc_avail_ovr=1
-
 # ena root by default app only
 persist.sys.root_access=1
-
-# Dalvik
-dalvik.vm.boot-dex2oat-threads=4
-dalvik.vm.dex2oat-threads=4
-dalvik.vm.image-dex2oat-threads=4

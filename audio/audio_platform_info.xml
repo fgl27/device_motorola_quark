@@ -51,20 +51,10 @@
     </backend_names>
 
     <pcm_ids>
-        <usecase name="USECASE_VOICE_CALL" type="in" id="20"/>
-        <usecase name="USECASE_VOICE_CALL" type="out" id="20"/>
-        <usecase name="USECASE_VOICE2_CALL" type="in" id="25"/>
-        <usecase name="USECASE_VOICE2_CALL" type="out" id="25"/>
-        <usecase name="USECASE_VOLTE_CALL" type="in" id="21"/>
-        <usecase name="USECASE_VOLTE_CALL" type="out" id="21"/>
-        <usecase name="USECASE_QCHAT_CALL" type="in" id="33"/>
-        <usecase name="USECASE_QCHAT_CALL" type="out" id="33"/>
-        <usecase name="USECASE_VOWLAN_CALL" type="in" id="-1"/>
-        <usecase name="USECASE_VOWLAN_CALL" type="out" id="-1"/>
+        <!-- empty -->
     </pcm_ids>
 
-    <config_params>
-        <!-- If sound card name is not known, remove this entry -->
-        <param key="snd_card_name" value="apq8084-taiko-tfa9890_stereo_codec-snd-card"/>
-    </config_params>
+    <device_names>
+        <!-- empty -->
+    </device_names>
 </audio_platform_info>

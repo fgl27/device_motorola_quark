@@ -21,11 +21,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.util.Log;
 
-import java.lang.System;
-
 public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     private static final String TAG = "CMActions-StowSensor";
-    private static final int IN_POCKET_MIN_TIME = 5000;
+
     private final CMActionsSettings mCMActionsSettings;
     private final SensorHelper mSensorHelper;
     private final SensorAction mSensorAction;
@@ -33,7 +31,6 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
 
     private boolean mEnabled;
     private boolean mLastStowed;
-    private long isStowedTime;
 
     public StowSensor(CMActionsSettings cmActionsSettings, SensorHelper sensorHelper,
                 SensorAction action) {
@@ -55,8 +52,7 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
 
     @Override
     public void screenTurnedOff() {
-        if (!mCMActionsSettings.isIrWakeupEnabled() &&
-            mCMActionsSettings.isPickUpEnabled() && !mEnabled) {
+        if (mCMActionsSettings.isPickUpEnabled() && !mEnabled) {
             Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mSensor, this);
             mEnabled = true;
@@ -66,18 +62,12 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         boolean thisStowed = (event.values[0] != 0);
+        Log.d(TAG, "event: " + thisStowed);
         DozePulseAction.setCanDoze(!thisStowed);
-        if(thisStowed){
-            isStowedTime = System.currentTimeMillis();
-        } else if (mLastStowed && !thisStowed) {
-            long inPocketTime = System.currentTimeMillis() - isStowedTime;
-            if(inPocketTime >= IN_POCKET_MIN_TIME){
-                Log.d(TAG, "Triggered after " + inPocketTime / 1000 + " seconds");
-                mSensorAction.action();
-            }
+        if (mLastStowed && ! thisStowed) {
+            mSensorAction.action();
         }
         mLastStowed = thisStowed;
-        Log.d(TAG, "event: " + thisStowed);
     }
 
     @Override

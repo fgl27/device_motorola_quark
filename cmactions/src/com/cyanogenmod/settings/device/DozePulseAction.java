@@ -18,17 +18,16 @@ package com.cyanogenmod.settings.device;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.UserHandle;
 import android.util.Log;
 
 public class DozePulseAction implements SensorAction, ScreenStateNotifier {
     private static final String TAG = "CMActions";
-    private static boolean sCanDoze = true;
-    private static final int DELAY_BEFORE_FIRST_DOZE_IN_MS = 3000;
-    private static final int DELAY_BETWEEN_DOZES_IN_MS = 10000;
-    private final Context mContext;
+    private static final int DELAY_BETWEEN_DOZES_IN_MS = 1500;
 
+    private static boolean sCanDoze = true;
+    private final Context mContext;
     private long mLastDoze;
-    private long mLastScreenOff;
 
     public DozePulseAction(Context context) {
         mContext = context;
@@ -40,13 +39,14 @@ public class DozePulseAction implements SensorAction, ScreenStateNotifier {
 
     @Override
     public void screenTurnedOff() {
-        mLastScreenOff = System.currentTimeMillis();
+        mLastDoze = System.currentTimeMillis();
     }
 
     public void action() {
          if (mayDoze()) {
             Log.d(TAG, "Sending doze.pulse intent");
-            mContext.sendBroadcast(new Intent("com.android.systemui.doze.pulse"));
+            mContext.sendBroadcastAsUser(new Intent("com.android.systemui.doze.pulse"),
+                new UserHandle(UserHandle.USER_CURRENT));
         }
     }
 
@@ -65,15 +65,13 @@ public class DozePulseAction implements SensorAction, ScreenStateNotifier {
         }
 
         long now = System.currentTimeMillis();
-        if ((now - mLastScreenOff) < DELAY_BEFORE_FIRST_DOZE_IN_MS) {
-            Log.d(TAG, "Denying doze due to DELAY_BEFORE_FIRST_DOZE_IN_MS");
-            return false;
-        } else if ((now - mLastDoze) < DELAY_BETWEEN_DOZES_IN_MS) {
-            Log.d(TAG, "Denying doze due to DELAY_BETWEEN_DOZES");
+        if (now - mLastDoze > DELAY_BETWEEN_DOZES_IN_MS) {
+            Log.d(TAG, "Allowing doze");
+            mLastDoze = now;
+            return true;
+        } else {
+            Log.d(TAG, "Denying doze (time)");
             return false;
         }
-        Log.d(TAG, "Allowing doze");
-        mLastDoze = now;
-        return true;
     }
 }

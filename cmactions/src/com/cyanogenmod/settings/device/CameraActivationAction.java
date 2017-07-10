@@ -69,7 +69,10 @@ public class CameraActivationAction implements SensorAction {
     private void turnScreenOn() {
         PowerManager.WakeLock wl = mPowerManager.newWakeLock(
             PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, TAG);
-        wl.acquire(TURN_SCREEN_ON_WAKE_LOCK_MS);
+        if (wl != null && !wl.isHeld()) {
+            wl.setReferenceCounted(false);
+            wl.acquire(TURN_SCREEN_ON_WAKE_LOCK_MS);
+        }
     }
 
     private void launchCamera() {

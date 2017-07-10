@@ -1,0 +1,8 @@
+allow sdcardd mnt_user_file:dir search;
+allow sdcardd mnt_user_file:lnk_file read;
+allow sdcardd storage_file:lnk_file read;
+allow sdcardd media_rw_data_file:lnk_file { getattr read };
+
+
+
+

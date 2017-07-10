@@ -39,7 +39,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M androidboot.selinux=permissive androidboot.verifiedbootstate=green androidboot.bl_state=0 androidboot.flash.locked=1
+BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M androidboot.verifiedbootstate=green androidboot.bl_state=0 androidboot.flash.locked=1
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_LZ4C_DT := true
 BOARD_KERNEL_PAGESIZE := 4096
@@ -55,7 +55,6 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 TARGET_INIT_VENDOR_LIB := libinit_quark
 TARGET_RECOVERY_DEVICE_MODULES := libinit_quark
 TARGET_NR_SVC_SUPP_GIDS := 28
-TARGET_UNIFIED_DEVICE := true
 
 # Audio
 AUDIO_FEATURE_ENABLED_ANC_HEADSET := true
@@ -68,6 +67,9 @@ AUDIO_FEATURE_LOW_LATENCY_PRIMARY := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 
+#blobs
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
@@ -76,7 +78,6 @@ BOARD_HAS_QCA_BT_ROME := true
 # Camera
 BOARD_GLOBAL_CFLAGS += -DCAMERA_VENDOR_L_COMPAT
 TARGET_HAS_LEGACY_CAMERA_HAL1 := true
-TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # CMHW
@@ -86,8 +87,7 @@ BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 USE_OPENGL_RENDERER := true
-SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
-VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 TARGET_USE_COMPAT_GRALLOC_ALIGN := true
@@ -159,11 +159,9 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Snapdragon LLVM Compiler
-#TARGET_USE_SDCLANG := true
+TARGET_USE_SDCLANG := true
 
-# Time
-BOARD_USES_QC_TIME_SERVICES := true
-
+<<<<<<< HEAD
 # TWRP
 TW_THEME := portrait_hdpi
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
@@ -189,3 +187,10 @@ TW_IGNORE_MISC_WIPE_DATA := true
 TARGET_HW_DISK_ENCRYPTION := true
 TW_INCLUDE_CRYPTO := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+=======
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
+# Compile libhwui in performance mode
+HWUI_COMPILE_FOR_PERF := true
+>>>>>>> b2150f9b4c48723d0cd67f28a7b91b0428afe899

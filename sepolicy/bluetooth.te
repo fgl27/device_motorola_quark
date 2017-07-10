@@ -1,3 +1,1 @@
 allow bluetooth wcnss_filter:unix_stream_socket connectto;
-
-allowxperm bluetooth self:udp_socket ioctl priv_sock_ioctls;

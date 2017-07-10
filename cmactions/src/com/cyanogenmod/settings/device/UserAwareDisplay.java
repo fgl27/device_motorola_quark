@@ -33,11 +33,11 @@ import static com.cyanogenmod.settings.device.IrGestureManager.*;
 public class UserAwareDisplay implements ScreenStateNotifier {
     private static final String TAG = "CMActions-UAD";
 
-    private static final int DELAYED_OFF_MS = 3000;
+    private static final int DELAYED_OFF_MS = 9000;
     private static final int KEYGUARD_POLL_MS = 1000;
 
     private static final int IR_GESTURES_FOR_SCREEN_ON = (1 << IR_GESTURE_OBJECT_DETECTED) |
-            (1 << IR_GESTURE_GESTURE_OBJECT_NOT_DETECTED);
+            (1 << IR_GESTURE_OBJECT_NOT_DETECTED);
     private static final int IR_GESTURES_FOR_SCREEN_OFF = 0;
 
     private final CMActionsSettings mCMActionsSettings;
@@ -47,8 +47,8 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private final KeyguardManager mKeyguardManager;
     private final Sensor mIrGestureSensor;
     private final Sensor mStowSensor;
-    private final WakeLock mWakeLock;
-    private final WakeLock mDelayedOffWakeLock;
+    private WakeLock mWakeLock;
+    private WakeLock mDelayedOffWakeLock;
     private Handler mHandler;
 
     private boolean mEnabled;
@@ -152,18 +152,33 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
     private synchronized void enableScreenLock() {
         if (! mScreenIsLocked) {
-            Log.d(TAG, "Acquiring screen wakelock");
             mScreenIsLocked = true;
-            mWakeLock.acquire();
+            if (mWakeLock == null)
+                mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
+            else if (!mWakeLock.isHeld()) {
+                mWakeLock.setReferenceCounted(false);
+                mWakeLock.acquire();
+                Log.d(TAG, "Acquiring screen wakelock");
+            }
         }
     }
 
     private synchronized void disableScreenLock() {
         if (mScreenIsLocked) {
             mScreenIsLocked = false;
-            mDelayedOffWakeLock.acquire(DELAYED_OFF_MS);
-            mWakeLock.release();
-            Log.d(TAG, "Released screen wakelock");
+            if (mDelayedOffWakeLock == null)
+                mDelayedOffWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, TAG);
+            else if (!mDelayedOffWakeLock.isHeld()) {
+                mDelayedOffWakeLock.setReferenceCounted(false);
+                mDelayedOffWakeLock.acquire(DELAYED_OFF_MS);
+                Log.d(TAG, " Acquiring screen DelayedOffWakeLock");
+            }
+            if (mWakeLock == null)
+                mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
+            else if (mWakeLock.isHeld()) {
+                mWakeLock.release();
+                Log.d(TAG, "Released screen wakelock");
+            }
         }
     }
 
@@ -174,7 +189,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
             if (gesture == IR_GESTURE_OBJECT_DETECTED) {
                 setObjectIsDetected(true);
-            } else if (gesture == IR_GESTURE_GESTURE_OBJECT_NOT_DETECTED) {
+            } else if (gesture == IR_GESTURE_OBJECT_NOT_DETECTED) {
                 setObjectIsDetected(false);
             }
         }
