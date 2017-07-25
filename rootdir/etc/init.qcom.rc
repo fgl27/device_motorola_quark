@@ -529,6 +529,7 @@ service qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
+   shutdown critical
 
 service mpdecision /vendor/bin/mpdecision --avg_comp --min_cores=4
     user root
