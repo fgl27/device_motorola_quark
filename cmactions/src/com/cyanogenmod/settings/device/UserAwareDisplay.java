@@ -33,12 +33,8 @@ import static com.cyanogenmod.settings.device.IrGestureManager.*;
 public class UserAwareDisplay implements ScreenStateNotifier {
     private static final String TAG = "CMActions-UAD";
 
+    private static final int DELAYED_OFF_MS = 3000;
     private static final int KEYGUARD_POLL_MS = 1000;
-    private static final int DELAYED_BRIGHT_SCREEN_TIMEOUT = 2000; // Screen kept on after screen lock disabled
-    private static final int DELAYED_OFF_MS = 6000;
-    private static final int SCREEN_BRIGHT_LOCK_TIMEOUT = 170000; // Screen on time limit when "user aware display" enabled
-    private static final int SCREEN_DIM_LOCK_TIMEOUT = SCREEN_BRIGHT_LOCK_TIMEOUT + 10000; // // A few more seconds with low brightness before the device goes to sleep
-
 
     private static final int IR_GESTURES_FOR_SCREEN_ON = (1 << IR_GESTURE_OBJECT_DETECTED) |
             (1 << IR_GESTURE_OBJECT_NOT_DETECTED);
@@ -156,35 +152,18 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
     private synchronized void enableScreenLock() {
         if (! mScreenIsLocked) {
-            Log.d(TAG, "Acquiring screen wakelock with timeout and low brightness at the end");
+            Log.d(TAG, "Acquiring screen wakelock");
             mScreenIsLocked = true;
             mWakeLock.acquire();
-            // Screen will not stay on full brightness indefinitely as they are some false positive situation
-            // (eg: flower pot at 20 centimeters from the IR sensors that trigger user-aware display) that
-            // could drain the battery until the phones shuts down. So there is a time out for the wakelock.
-            mWakeLock.acquire(SCREEN_BRIGHT_LOCK_TIMEOUT);
-            // After the full brightness wakelock expires, the phone will stay on low brightness a few more seconds
-            mDelayedOffWakeLock.acquire(SCREEN_DIM_LOCK_TIMEOUT);
         }
     }
 
     private synchronized void disableScreenLock() {
         if (mScreenIsLocked) {
             mScreenIsLocked = false;
-            // Release the "mWakelock" wakelock that might be still active because of enableScreenLock() method
-            if (mWakeLock.isHeld()) {
-                mWakeLock.release();
-                Log.d(TAG, "Released screen wakelock");
-            }            
-            // Same for "mDelayedOffWakelock"
-            if (mDelayedOffWakeLock.isHeld()) {
-                mDelayedOffWakeLock.release();
-                Log.d(TAG, "Released low brightness screen wakelock");
-            }
-            // Keep the screen awake a few seconds for user comfort
-            Log.d(TAG, "Acquiring screen wakelock during " + DELAYED_BRIGHT_SCREEN_TIMEOUT + " ms plus " + DELAYED_OFF_MS + " ms of low brightness at the end");
-            mWakeLock.acquire(DELAYED_BRIGHT_SCREEN_TIMEOUT);
-            mDelayedOffWakeLock.acquire(DELAYED_OFF_MS);            
+            mDelayedOffWakeLock.acquire(DELAYED_OFF_MS);
+            mWakeLock.release();
+            Log.d(TAG, "Released screen wakelock");
         }
     }
 
