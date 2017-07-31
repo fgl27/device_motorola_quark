@@ -28,6 +28,7 @@ ro.com.android.mobiledata=false
 ro.qualcomm.cabl=0
 ro.opengles.version=196610
 ro.sf.lcd_density=560
+debug.hwui.use_buffer_age=false
 
 # FRP
 ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
