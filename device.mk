@@ -185,10 +185,6 @@ PRODUCT_PACKAGES += \
     libgenlock \
     memtrack.apq8084
 
-# Flip Cover App
-PRODUCT_PACKAGES += \
-    FlipFlap
-
 # IDC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/atmel_mxt_ts.idc:system/usr/idc/atmel_mxt_ts.idc
