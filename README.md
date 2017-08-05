@@ -16,6 +16,8 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 
 	  <!-- Common qcom to build dtb and some etc lib-->
 	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="cm-14.1" />
+	  <!-- FlipFlap common Lid/Flip Cover app for AOSP-->
+	  <project name="LineageOS/android_packages_apps_FlipFlap" path="packages/apps/FlipFlap" remote="github" revision="cm-14.1" />
 	  <!-- Strings for CMActions-->
 	  <project name="LineageOS/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="github" revision="cm-14.1" />
 	  <!-- Device/kernel/vendor-->
