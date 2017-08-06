@@ -26,7 +26,8 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-7.1" />
 	  <remove-project path="bootable/recovery" name="LineageOS/android_bootable_recovery" groups="pdk" />
 	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-7.1" groups="pdk-cw-fs"/>
-	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-7.1" groups="pdk-cw-fs"/>
+
+	  <!-- Use stock google toolchain if the below doesn't work-->
 	  <remote name = "bitbucket"
 		   fetch = "https://bitbucket.org/" />
 	  <project path="prebuilts/gcc/linux-x86/arm/uber_arm-eabi-4.9" name="matthewdalex/arm-eabi-4.9" remote="bitbucket" revision="master" clone-depth="1" />
