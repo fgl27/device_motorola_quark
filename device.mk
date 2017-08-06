@@ -19,7 +19,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 LOCAL_PATH := device/motorola/quark
 
 # Screen density
-PRODUCT_AAPT_CONFIG := normal large xlarge hdpi xhdpi
+PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
 PRODUCT_AAPT_PREBUILT_DPI := 560dpi xxxhdpi xxhdpi xhdpi hdpi
 
@@ -102,15 +102,15 @@ PRODUCT_COPY_FILES += \
     device/motorola/quark/permissions/com.motorola.targetnotif.xml:system/etc/permissions/com.motorola.targetnotif.xml \
     device/motorola/quark/permissions/com.motorola.zap.xml:system/etc/permissions/com.motorola.zap.xml
 
-#$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
 # Dalvik size for 3GB xxxhdpi frameworks may change I prefer setting it here
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapstartsize=8m \
-    dalvik.vm.heapgrowthlimit=256m \
-    dalvik.vm.heapsize=512m \
-    dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=512k \
-    dalvik.vm.heapmaxfree=8m
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    dalvik.vm.heapstartsize=8m \
+#    dalvik.vm.heapgrowthlimit=256m \
+#    dalvik.vm.heapsize=512m \
+#    dalvik.vm.heaptargetutilization=0.75 \
+#    dalvik.vm.heapminfree=512k \
+#    dalvik.vm.heapmaxfree=8m
 
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 

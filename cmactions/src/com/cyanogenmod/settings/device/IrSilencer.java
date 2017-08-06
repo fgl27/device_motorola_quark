@@ -165,7 +165,7 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
             mIrGestureVote.voteForSensors(IR_GESTURES_FOR_RINGING);
             irEnable = true;
         } else if (!enable && irEnable) {
-            mSensorHelper.registerListener(mSensor, this);
+            mSensorHelper.unregisterListener(this);
             mIrGestureVote.voteForSensors(0);
             irEnable = false;
         }
