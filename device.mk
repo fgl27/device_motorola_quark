@@ -183,7 +183,8 @@ PRODUCT_PACKAGES += \
     gralloc.apq8084 \
     hwcomposer.apq8084 \
     libgenlock \
-    memtrack.apq8084
+    memtrack.apq8084 \
+    hdmi_cec.apq8084
 
 # IDC
 PRODUCT_COPY_FILES += \
@@ -258,6 +259,7 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
+    libOmxVdpp \
     libOmxVidcCommon \
     libstagefrighthw
 
