@@ -25,6 +25,7 @@
         <value>5</value>
     </array>
     <array name="cpu.speeds">
+        <value>268800</value>
         <value>300000</value>
         <value>422400</value>
         <value>652800</value>
@@ -42,10 +43,15 @@
         <value>2419200</value>
         <value>2572800</value>
         <value>2649600</value>
+        <value>2688000</value>
+        <value>2764800</value>
+        <value>2841600</value>
+        <value>2880000</value>
     </array>
     <item name="cpu.idle">6</item>
     <item name="cpu.awake">8</item>
     <array name="cpu.active">
+        <value>64</value>
         <value>71</value>
         <value>83</value>
         <value>97</value>
@@ -63,6 +69,10 @@
         <value>405</value>
         <value>413</value>
         <value>414</value>
+        <value>420</value>
+        <value>432</value>
+        <value>444</value>
+        <value>450</value>
     </array>
     <item name="battery.capacity">3900</item>
     <allow-in-power-save package="com.google.android.gms" />
