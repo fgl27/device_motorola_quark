@@ -47,7 +47,7 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 LZMA_RAMDISK_TARGETS := boot,recovery
 TARGET_KERNEL_SOURCE := kernel/motorola/apq8084
-TARGET_KERNEL_CONFIG := quark_defconfig
+TARGET_KERNEL_CONFIG := twrp_defconfig
 # if toolchain is not available, use stock one but may be need to change Kernel branch to N
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/uber_arm-eabi-4.9/bin
 # stock toolchain
