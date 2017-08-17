@@ -47,7 +47,7 @@ BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
 LZMA_RAMDISK_TARGETS := boot,recovery
 TARGET_KERNEL_SOURCE := kernel/motorola/apq8084
-TARGET_KERNEL_CONFIG := quark_defconfig
+TARGET_KERNEL_CONFIG := twrp_defconfig
 # if toolchain is not available, use stock one but may be need to change Kernel branch to N
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/uber_arm-eabi-4.9/bin
 # stock toolchain
@@ -185,7 +185,7 @@ TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 63
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_NO_EXFAT_FUSE := true
-TW_EXTRA_LANGUAGES := true
+#TW_EXTRA_LANGUAGES := true
 TW_EXCLUDE_SUPERSU := true
 TW_INCLUDE_NTFS_3G := true
 TW_IGNORE_MISC_WIPE_DATA := true
@@ -195,3 +195,20 @@ TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/cryptfs_hw
 TARGET_HW_DISK_ENCRYPTION := true
 TW_INCLUDE_CRYPTO := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+
+# MultiROM config. MultiROM also uses parts of TWRP config
+#MR_INPUT_TYPE := type_b
+MR_INIT_DEVICES := device/motorola/quark/multirom/mr_init_devices.c
+MR_DEVICE_HOOKS := device/motorola/quark/multirom/mr_hooks.c
+MR_DEVICE_HOOKS_VER := 4
+MR_DPI := xxhdpi
+MR_DPI_FONT := 500
+MR_FSTAB := device/motorola/quark/rootdir/etc/fstab.qcom
+MR_ENCRYPTION := true
+TARGET_RECOVERY_IS_MULTIROM := true
+MR_NO_KEXEC := enabled
+MR_ALLOW_NKK71_NOKEXEC_WORKAROUND := true
+MR_DEVICE_VARIANTS := quark quark_umts quark_lra
+MR_CONTINUOUS_FB_UPDATE := true
+MR_USE_MROM_FSTAB := true
+MR_KEXEC_MEM_MIN := 0x20000000

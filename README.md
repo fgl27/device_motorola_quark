@@ -22,10 +22,14 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_N" />
 	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="N_c" />
 
-	  <!-- Need to build TWRP-->
+	  <!-- Need to build MULTI_ROM_TWRP-->
 	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-7.1" />
 	  <remove-project path="bootable/recovery" name="LineageOS/android_bootable_recovery" groups="pdk" />
-	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-7.1" groups="pdk-cw-fs"/>
+	  <project path="bootable/recovery" name="bhb27/android_bootable_recovery" remote="github" revision="android-7.1-mrom" groups="pdk-cw-fs"/>
+	  <project name="nkk71/libbootimg" path="system/extras/libbootimg" remote="github" revision="master" />
+	  <project name="nkk71/multirom" path="system/extras/multirom" remote="github" revision="master" />
+	  <project name="multirom-leeco/multirom_adbd" path="system/extras/multirom/adbd" remote="github" revision="master" />
+	  <project name="bhb27/kexec-tools" path="system/extras/multirom/kexec-tools" remote="github" revision="master" />
 
 	  <!-- Use stock google toolchain if the below doesn't work-->
 	  <remote name = "bitbucket"
