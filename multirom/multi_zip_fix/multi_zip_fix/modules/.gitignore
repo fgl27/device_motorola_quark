@@ -1,0 +1,3 @@
+# ignore all modules minus .gitignore file
+*
+!.gitignore
