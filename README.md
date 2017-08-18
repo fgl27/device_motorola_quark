@@ -49,10 +49,10 @@ Multi ROM zip
 	. build/envsetup.sh
 	make clean
 	lunch cm_quark-eng
-	make -j4 multirom trampoline 2>&1 | tee trampoline.txt
-	make -j4 multirom_zip 2>&1 | tee multirom_zip.txt
+	make -j8 trampoline 2>&1 | tee trampoline.txt
+	make -j8 multirom_zip 2>&1 | tee multirom_zip.txt
 
-were **-j4** is the number of thread available, and **twrp.txt** is a log file to check for build errors
+were **-j8** is the number of thread available, and **twrp.txt** is a log file to check for build errors
 
 The Motorola Moto Maxx (codenamed _"quark"_) is a high-end smart-phone from Motorola mobility.
 It was announced on November 2014.

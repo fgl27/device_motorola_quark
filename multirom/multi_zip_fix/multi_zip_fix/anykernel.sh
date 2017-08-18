@@ -348,7 +348,7 @@ dump_boot;
 # begin ramdisk changes
 
 remove_line "sbin/post_init_rr.sh" "mount -o ro,remount /system;"
-replace_string fstab.qcom "rw,barrier" "ro,barrier" "rw,barrier"
+remove_line "sbin/restart.sh" "mount -o ro,remount /system;"
 # end ramdisk changes
 
 write_boot;
