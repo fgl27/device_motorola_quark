@@ -4,7 +4,7 @@ Copyright 2016 - The CyanogenMod Project
 
 Copyright 2017 - The LineageOS   Project
 
-**I use this tree to build TWRP in Nougat cm-14.x and cm-14.x base source**
+**I use this tree to build MultiROM TWRP in Nougat cm-14.x and cm-14.x base source**
 **Do not use this tree to build a ROM**
 This tree works prefect in ResurrectionRemix Nougat
 
@@ -19,7 +19,7 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="cm-14.1" />
 
 	  <!-- Device/kernel/vendor-->
-	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_N" />
+	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="MULTI_TWRP" />
 	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="N_c" />
 
 	  <!-- Need to build MULTI_ROM_TWRP-->
@@ -42,7 +42,7 @@ Them after repo it all use this to build Multi ROM TWRP
 	. build/envsetup.sh
 	make clean
 	lunch cm_quark-eng
-	time make recoveryimage -j4  2>&1 | tee twrp.txt
+	time make recoveryimage -j8 2>&1 | tee twrp.txt
 
 Multi ROM zip
 
