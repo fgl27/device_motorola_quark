@@ -212,3 +212,7 @@ MR_DEVICE_VARIANTS := quark quark_umts quark_lra
 MR_CONTINUOUS_FB_UPDATE := true
 MR_USE_MROM_FSTAB := true
 MR_KEXEC_MEM_MIN := 0x20000000
+
+include device/motorola/quark/multirom/MR_REC_VERSION.mk
+MR_REC_VERSION := $(shell date -u +%Y%m%d)-01
+BOARD_MKBOOTIMG_ARGS += --board mrom$(MR_REC_VERSION)
