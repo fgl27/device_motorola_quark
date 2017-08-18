@@ -84,7 +84,6 @@ fi;
 
 echo 'post_init: run OK for device =' $device '- fsgid =' $fsgid '- radio =' $radio '- cid =' $cid > /dev/kmsg;
 
-mount -o ro,remount /system;
 umount /system;
 
 exit
