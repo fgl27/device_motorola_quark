@@ -53,6 +53,7 @@ audio.offload.multiple.enabled=false
 audio.offload.gapless.enabled=true
 audio.offload.pcm.16bit.enable=true
 audio.offload.pcm.24bit.enable=true
+audio.offload.video=true
 
 # NITZ
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
