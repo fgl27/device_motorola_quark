@@ -51,6 +51,8 @@ Multi ROM zip
 	lunch cm_quark-eng
 	make -j8 trampoline 2>&1 | tee trampoline.txt
 	make -j8 multirom_zip 2>&1 | tee multirom_zip.txt
+	make -j8 multirom_uninstaller 2>&1 | tee multirom_uninstaller.txt
+
 
 were **-j8** is the number of thread available, and **twrp.txt** is a log file to check for build errors
 
