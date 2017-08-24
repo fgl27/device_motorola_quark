@@ -2,6 +2,17 @@
 
 mount -o rw,remount /system
 
+contains() {
+    string="$1"
+    substring="$2"
+    if test "${string#*$substring}" != "$string"
+    then
+        return 0    # $substring is in $string
+    else
+        return 1    # $substring is not in $string
+    fi
+}
+
 #dirty flash checker
 romVersion=`getprop ro.modversion`' '`getprop ro.build.user`;
 if [ ! -e /data/temprom/ ]; then
@@ -83,6 +94,17 @@ else
 fi;
 
 echo 'post_init: run OK for device =' $device '- fsgid =' $fsgid '- radio =' $radio '- cid =' $cid > /dev/kmsg;
+
+multirom=`cat fstab.qcom | grep 'name/system'`;
+mUmount=0;
+contains "$multirom" "#" && mUmount=1;
+
+if  [ "$mUmount" == 0 ]; then
+	mount -o ro,remount /system;
+	echo 'post_init: mount ro OK' $multirom > /dev/kmsg;
+else
+	echo 'post_init: not mount ro OK' $multirom > /dev/kmsg;
+fi
 
 umount /system;
 
