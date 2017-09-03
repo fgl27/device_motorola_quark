@@ -268,16 +268,16 @@ on post-fs-data
     mkdir /data/ss-ram-dumps/bp-dumps 0750 radio log
 
     # Create directory used by power_supply_logger
-    mkdir /data/power_supply_logger 0750 mot_pwric log
+    mkdir /data/power_supply_logger 0750 oem_5001 log
 
     # Permissions for Factory Test of Charging Paths
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_auto_enable
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_ibatt
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_itrick
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_iusb
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_usb_suspend
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_fail_clear
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_usb_otg_ctl
+    chown oem_5001 oem_5001 /sys/class/power_supply/battery/device/force_chg_auto_enable
+    chown oem_5001 oem_5001 /sys/class/power_supply/battery/device/force_chg_ibatt
+    chown oem_5001 oem_5001 /sys/class/power_supply/battery/device/force_chg_itrick
+    chown oem_5001 oem_5001 /sys/class/power_supply/battery/device/force_chg_iusb
+    chown oem_5001 oem_5001 /sys/class/power_supply/battery/device/force_chg_usb_suspend
+    chown oem_5001 oem_5001 /sys/class/power_supply/battery/device/force_chg_fail_clear
+    chown oem_5001 oem_5001 /sys/class/power_supply/battery/device/force_chg_usb_otg_ctl
     mkdir /data/validity 0771 fingerp fingerp
     copy /system/etc/ValidityPersistentData /data/validity/ValidityPersistentData
     chown fingerp fingerp /data/validity/ValidityPersistentData
@@ -481,11 +481,11 @@ on boot
     mkdir /data/aplogd 0750 log log
 
     # create the necessary data dirs for tpapi with proper permission
-    mkdir /dev/tpapi 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi/etc 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi/etc/tpa 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi/etc/tpa/persistent 02770 mot_tpapi mot_tpapi
+    mkdir /dev/tpapi 02770 oem_5007 oem_5007
+    mkdir /data/tpapi 02770 oem_5007 oem_5007
+    mkdir /data/tpapi/etc 02770 oem_5007 oem_5007
+    mkdir /data/tpapi/etc/tpa 02770 oem_5007 oem_5007
+    mkdir /data/tpapi/etc/tpa/persistent 02770 oem_5007 oem_5007
 
     # Quiet binder logs
     write /sys/module/binder/parameters/debug_mask 0x5
@@ -533,14 +533,14 @@ on property:persist.env.fastdorm.enabled=true
 
 service atvc_core /vendor/bin/dbvc_atvc_property_set
     class core
-    user mot_atvc
-    group mot_tpapi
+    user oem_5012
+    group oem_5007
     oneshot
 
 service atvc /vendor/bin/dbvc_atvc_property_set
     class late_start
-    user mot_atvc
-    group mot_tpapi
+    user oem_5012
+    group oem_5007
     oneshot
 
 service thermal-engine /vendor/bin/thermal-engine
