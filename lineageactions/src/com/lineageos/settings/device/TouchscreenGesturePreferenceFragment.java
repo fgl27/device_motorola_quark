@@ -15,6 +15,7 @@
  */
 package com.lineageos.settings.device;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.preference.Preference;
@@ -22,6 +23,9 @@ import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.Preference.OnPreferenceChangeListener;
 import android.support.v14.preference.PreferenceFragment;
 import android.support.v14.preference.SwitchPreference;
+
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class TouchscreenGesturePreferenceFragment extends PreferenceFragment implements
 Preference.OnPreferenceChangeListener {
@@ -33,6 +37,8 @@ Preference.OnPreferenceChangeListener {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         addPreferencesFromResource(R.xml.gesture_panel);
+        final ActionBar actionBar = getActivity().getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         mSwitchAmbientDisplay = (SwitchPreference) findPreference(SWITCH_AMBIENT_DISPLAY);
         mSwitchAmbientDisplay.setOnPreferenceChangeListener(this);
@@ -58,5 +64,14 @@ Preference.OnPreferenceChangeListener {
             Settings.Secure.putInt(getActivity().getContentResolver(), Settings.Secure.DOZE_ENABLED, DozeValue ? 1 : 0);
         }
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            getActivity().onBackPressed();
+            return true;
+        }
+        return false;
     }
 }
