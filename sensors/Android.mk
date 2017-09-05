@@ -16,11 +16,9 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(USE_SENSOR_MULTI_HAL),true)
-
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := sensors.$(TARGET_DEVICE)
+LOCAL_MODULE := sensors.$(TARGET_BOARD_PLATFORM)
 
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_PROPRIETARY_MODULE := true
@@ -40,7 +38,5 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_STRIP_MODULE := false
 
 include $(BUILD_SHARED_LIBRARY)
-
-endif # USE_SENSOR_MULTI_HAL
 
 include $(call all-makefiles-under, $(LOCAL_PATH))

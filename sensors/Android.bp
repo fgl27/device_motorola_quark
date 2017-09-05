@@ -1,5 +1,5 @@
 cc_library_static {
-    name: "multihal",
+    name: "multihal-samsung",
     vendor: true,
     srcs: [
         "multihal.cpp",
