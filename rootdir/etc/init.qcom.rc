@@ -56,7 +56,7 @@ on init
     write /proc/self/coredump_filter "0x7f"
 
     # Symbols required for motorola blobs
-    export LD_SHIM_LIBS /system/bin/thermal-engine|libshims_thermal.so:/system/vendor/lib/libqc-opt.so|libshim_qcopt.so
+    export LD_SHIM_LIBS /system/vendor/lib/libqc-opt.so|libshim_qcopt.so
 
 on charger
     trigger early-fs

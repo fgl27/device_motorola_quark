@@ -15,12 +15,6 @@
 
 LOCAL_PATH := $(call my-dir)
 
-include $(CLEAR_VARS)
-LOCAL_SRC_FILES := thermal.c
-LOCAL_MODULE := libshims_thermal
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_SHARED_LIBRARY)
-
 # libqc-opt
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := icu51.c
