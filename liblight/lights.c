@@ -20,19 +20,15 @@
 
 #include <cutils/log.h>
 
-#include <fcntl.h>
 #include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <pthread.h>
-#include <unistd.h>
 
 #include <sys/ioctl.h>
-#include <sys/stat.h>
 #include <sys/types.h>
 
 #include <hardware/lights.h>
@@ -59,9 +55,6 @@ char const*const LED_BLINK
 char const*const LED_BRIGHTNESS
         = "/sys/class/leds/charging/brightness";
 
-char const*const LED_TRIGER
-        = "/sys/class/leds/charging/trigger";
-
 /**
  * device methods
  */
@@ -75,29 +68,6 @@ void init_globals(void)
     memset(&g_battery, 0, sizeof(g_battery));
     memset(&g_notification, 0, sizeof(g_notification));
     memset(&g_attention, 0, sizeof(g_attention));
-}
-
-static int read_file2(const char* fname, char *data, int max_size)
-{
-    int fd, rc;
-
-    if (max_size < 1)
-        return 0;
-
-    fd = open(fname, O_RDONLY);
-    if (fd < 0) {
-        ALOGE("failed to open '%s'\n", fname);
-        return 0;
-    }
-
-    rc = read(fd, data, max_size - 1);
-    if ((rc > 0) && (rc < max_size))
-        data[rc] = '\0';
-    else
-        data[0] = '\0';
-    close(fd);
-
-    return 1;
 }
 
 static int
@@ -184,9 +154,6 @@ set_speaker_light_locked(struct light_device_t* dev,
 {
     unsigned long onMS, offMS;
     char blink_string[PAGE_SIZE];
-    char buf[256];
-    char *batfull = "[battery-full]";
-    read_file2(LED_TRIGER, buf, sizeof buf);
 
     switch (state->flashMode) {
         case LIGHT_FLASH_TIMED:
@@ -208,10 +175,6 @@ set_speaker_light_locked(struct light_device_t* dev,
 
     int brightness = rgb_to_brightness(state);
     write_int(LED_BRIGHTNESS, brightness);
-
-    if(strstr(buf, batfull) != NULL) {
-        write_str(LED_TRIGER, "battery-full");
-    }
     return 0;
 }
 
