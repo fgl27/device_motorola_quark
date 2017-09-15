@@ -28,6 +28,7 @@
 #include <fcntl.h>
 #include <pthread.h>
 
+#include <cutils/properties.h>
 #include <sys/ioctl.h>
 #include <sys/types.h>
 
@@ -54,6 +55,9 @@ char const*const LED_BLINK
 
 char const*const LED_BRIGHTNESS
         = "/sys/class/leds/charging/brightness";
+
+char const*const LED_TRIGER
+        = "/sys/class/leds/charging/trigger";
 
 /**
  * device methods
@@ -154,6 +158,7 @@ set_speaker_light_locked(struct light_device_t* dev,
 {
     unsigned long onMS, offMS;
     char blink_string[PAGE_SIZE];
+    char value[PROPERTY_VALUE_MAX];
 
     switch (state->flashMode) {
         case LIGHT_FLASH_TIMED:
@@ -175,6 +180,10 @@ set_speaker_light_locked(struct light_device_t* dev,
 
     int brightness = rgb_to_brightness(state);
     write_int(LED_BRIGHTNESS, brightness);
+    if (brightness == 0) {
+        property_get("led.batton", value, NULL);
+        if (strstr(value, "1")) write_str(LED_TRIGER, "battery-full");
+    }
     return 0;
 }
 
