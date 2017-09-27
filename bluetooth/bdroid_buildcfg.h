@@ -47,7 +47,6 @@ inline const char* BtmGetDefaultName()
 #define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
 #define MAX_ACL_CONNECTIONS    16
 #define MAX_L2CAP_CHANNELS    MAX_ACL_CONNECTIONS
-#define BLUETOOTH_QTI_SW TRUE       /* Enable Qcom WBS */
 #define BTIF_HF_WBS_PREFERRED FALSE /* Don't prefer WBS    */
 #define BLE_VND_INCLUDED   TRUE
 
