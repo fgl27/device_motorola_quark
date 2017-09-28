@@ -4,6 +4,11 @@ include $(CLEAR_VARS)
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_SRC_FILES := $(call all-java-files-under, src)
+ifneq ($(RR_VERSION),)
+LOCAL_SRC_FILES += $(call all-java-files-under, src_theme)
+else
+LOCAL_SRC_FILES += $(call all-java-files-under, src_no_theme)
+endif
 
 LOCAL_PACKAGE_NAME := CMActions
 LOCAL_CERTIFICATE := platform
