@@ -98,7 +98,28 @@ on post-fs-data
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
 
-    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+    mkdir /data/misc/bluetooth 0770 bluetooth net_bt
+    mkdir /data/vendor/misc/bluetooth 0770 bluetooth net_bt
+
+    mkdir /data/vendor/netmgr 0770 radio radio
+    chmod 0770 /data/vendor/netmgr
+
+    # Create directory for radio
+    mkdir /data/vendor/radio 0770 system radio
+
+    mkdir /data/vendor/misc 01771 system system
+
+    # Create directory used by display clients
+    mkdir /data/vendor/display 0770 system graphics
+
+    # Change lm related dirs
+    mkdir /data/vendor/lm 0700 root root
+
+    # Create directory used by media clients
+    mkdir /data/vendor/media 0770 mediacodec media
+
+    # Create directory used for camera
+    mkdir /data/vendor/camera 0770 camera camera
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/misc/wifi 0770 wifi wifi
@@ -228,31 +249,31 @@ on early-boot
     setprop qcom.audio.init complete
 
 on boot
-    chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
-    chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
-    chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
-    chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_lpm
-    chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_btwrite
+    chown bluetooth net_bt /sys/module/bluetooth_power/parameters/power
+    chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
+    chown bluetooth net_bt /sys/class/rfkill/rfkill0/state
+    chown bluetooth net_bt /proc/bluetooth/sleep/proto
+    chown bluetooth net_bt /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt /proc/bluetooth/sleep/btwrite
+    chown bluetooth net_bt /sys/module/hci_uart/parameters/ath_lpm
+    chown bluetooth net_bt /sys/module/hci_uart/parameters/ath_btwrite
     chown system system /sys/module/sco/parameters/disable_esco
-    chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
+    chown bluetooth net_bt /sys/module/hci_smd/parameters/hcismd_set
     chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /proc/bluetooth/sleep/proto
-    chown bluetooth bluetooth /dev/ttyHS0
+    chown bluetooth net_bt /dev/ttyHS0
     chmod 0660 /sys/module/hci_uart/parameters/ath_lpm
     chmod 0660 /sys/module/hci_uart/parameters/ath_btwrite
     chmod 0660 /dev/ttyHS0
-    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
+    chown bluetooth net_bt /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
     chmod 0660 /dev/ttyHS2
-    chown bluetooth bluetooth /dev/ttyHS2
+    chown bluetooth net_bt /dev/ttyHS2
 
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/device/extldo
+    chown bluetooth net_bt /sys/class/rfkill/rfkill0/device/extldo
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
 
     # Create QMUX deamon socket area
@@ -260,7 +281,7 @@ on boot
     chmod 2770 /dev/socket/qmux_radio
     mkdir /dev/socket/qmux_audio 0770 media audio
     chmod 2770 /dev/socket/qmux_audio
-    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
+    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth net_bt
     chmod 2770 /dev/socket/qmux_bluetooth
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
@@ -303,6 +324,8 @@ on boot
     # NFC local data and nfcee xml storage
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
+    mkdir /data/vendor/nfc 0770 nfc nfc
+    mkdir /data/vendor/nfc/param 0770 nfc nfc
 
     # Set the console loglevel to KERN_INFO
     # Set the default message loglevel to KERN_INFO
