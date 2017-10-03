@@ -280,6 +280,11 @@ etc/firmware/a420_pm4.fw:vendor/firmware/a420_pm4.fw
 vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal.so
+vendor/lib/libOmxAacDec.so
+vendor/lib/libOmxAmrwbplusDec.so
+vendor/lib/libOmxEvrcDec.so
+vendor/lib/libOmxQcelp13Dec.so
+vendor/lib/libOmxWmaDec.so
 
 # Media firmware
 etc/firmware/venus.b00:vendor/firmware/venus.b00
