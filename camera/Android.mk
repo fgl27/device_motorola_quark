@@ -12,9 +12,10 @@ LOCAL_SHARED_LIBRARIES := \
     android.hidl.token@1.0-utils \
     android.hardware.graphics.bufferqueue@1.0
 
-LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_MODULE_TAGS := optional
+LOCAL_PROPRIETARY_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
 #include $(BUILD_HEAPTRACKED_SHARED_LIBRARY)
