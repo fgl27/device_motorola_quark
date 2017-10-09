@@ -214,6 +214,11 @@ MR_CONTINUOUS_FB_UPDATE := true
 MR_USE_MROM_FSTAB := true
 MR_KEXEC_MEM_MIN := 0x20000000
 
+#MultiROM encryption
+MR_ENCRYPTION := true
+MR_ENCRYPTION_SETUP_SCRIPT := device/motorola/quark/multirom/mr_cp_crypto.sh
+
+# MultiROM display
 MR_QCOM_OVERLAY_HEADER := device/motorola/quark/multirom/mr_qcom_overlay.h
 MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_ABGR_8888
 

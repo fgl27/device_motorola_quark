@@ -5,9 +5,9 @@
 
 QCOM_KEYMASTER_FILES="keymaster.b00 keymaster.b01 keymaster.b02 keymaster.b03 keymaster.mdt"
 QCOM_LIB_FILES="libQSEEComAPI.so"
-QCOM_PATH="$1/device/motorola/quark/recovery/root/sbin/"
+QCOM_PATH="$1/device/motorola/quark/recovery/root/sbin"
 
-cp -a "${QCOM_PATH}/libQSEEComAPI.so" "$2/"
+cp -ra "${QCOM_PATH}/"* "$2/"
 
 # libQSEEComApi depends on libutils. These are build from omni source and libutils
 # is modified to drop libbacktrace dependency
