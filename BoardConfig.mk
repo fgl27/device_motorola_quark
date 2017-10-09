@@ -39,7 +39,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M androidboot.selinux=permissive androidboot.verifiedbootstate=green androidboot.bl_state=0 androidboot.flash.locked=1
+BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_LZ4C_DT := true
 BOARD_KERNEL_PAGESIZE := 4096
@@ -184,6 +184,7 @@ TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 63
 TARGET_RECOVERY_QCOM_RTC_FIX := true
+TW_NO_EXFAT := true
 TW_NO_EXFAT_FUSE := true
 #TW_EXTRA_LANGUAGES := true
 TW_EXCLUDE_SUPERSU := true
@@ -212,6 +213,9 @@ MR_DEVICE_VARIANTS := quark quark_umts quark_lra
 MR_CONTINUOUS_FB_UPDATE := true
 MR_USE_MROM_FSTAB := true
 MR_KEXEC_MEM_MIN := 0x20000000
+
+MR_QCOM_OVERLAY_HEADER := device/motorola/quark/multirom/mr_qcom_overlay.h
+MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_ABGR_8888
 
 include device/motorola/quark/multirom/MR_REC_VERSION.mk
 MR_REC_VERSION := $(shell date -u +%Y%m%d)-01

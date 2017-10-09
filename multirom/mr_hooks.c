@@ -115,7 +115,7 @@ static void set_cpu_governor(void)
 
 static void wait_for_mmc(void)
 {
-    static const char *filename = "/sys/devices/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p41/uevent";
+    static const char *filename = "/sys/devices/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0p40/uevent";
     if(access(filename, R_OK) < 0)
     {
         INFO("Waiting for %s\n", filename);

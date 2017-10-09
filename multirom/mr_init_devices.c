@@ -8,6 +8,7 @@
 const char *mr_init_devices[] =
 {
     "/sys/class/graphics/fb0",
+    "/sys/class/graphics/fb1",
 
     "/sys/block/mmcblk0",
     "/sys/devices/msm_sdcc.1",

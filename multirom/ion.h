@@ -24,48 +24,48 @@ typedef int ion_user_handle_t;
 
 /**
  * enum ion_heap_types - list of all possible types of heaps
- * @ION_HEAP_TYPE_SYSTEM:    memory allocated via vmalloc
+ * @ION_HEAP_TYPE_SYSTEM:	 memory allocated via vmalloc
  * @ION_HEAP_TYPE_SYSTEM_CONTIG: memory allocated via kmalloc
- * @ION_HEAP_TYPE_CARVEOUT:  memory allocated from a prereserved
- *               carveout heap, allocations are physically
- *               contiguous
- * @ION_HEAP_END:       helper for iterating over heaps
+ * @ION_HEAP_TYPE_CARVEOUT:	 memory allocated from a prereserved
+ * 				 carveout heap, allocations are physically
+ * 				 contiguous
+ * @ION_HEAP_END:		helper for iterating over heaps
  */
 enum ion_heap_type {
-    ION_HEAP_TYPE_SYSTEM,
-    ION_HEAP_TYPE_SYSTEM_CONTIG,
-    ION_HEAP_TYPE_CARVEOUT,
-    ION_HEAP_TYPE_CHUNK,
-    ION_HEAP_TYPE_CUSTOM, /* must be last so device specific heaps always
-                 are at the end of this enum */
-    ION_NUM_HEAPS,
+	ION_HEAP_TYPE_SYSTEM,
+	ION_HEAP_TYPE_SYSTEM_CONTIG,
+	ION_HEAP_TYPE_CARVEOUT,
+	ION_HEAP_TYPE_CHUNK,
+	ION_HEAP_TYPE_CUSTOM, /* must be last so device specific heaps always
+				 are at the end of this enum */
+	ION_NUM_HEAPS,
 };
 
-#define ION_HEAP_SYSTEM_MASK        (1 << ION_HEAP_TYPE_SYSTEM)
-#define ION_HEAP_SYSTEM_CONTIG_MASK (1 << ION_HEAP_TYPE_SYSTEM_CONTIG)
-#define ION_HEAP_CARVEOUT_MASK      (1 << ION_HEAP_TYPE_CARVEOUT)
+#define ION_HEAP_SYSTEM_MASK		(1 << ION_HEAP_TYPE_SYSTEM)
+#define ION_HEAP_SYSTEM_CONTIG_MASK	(1 << ION_HEAP_TYPE_SYSTEM_CONTIG)
+#define ION_HEAP_CARVEOUT_MASK		(1 << ION_HEAP_TYPE_CARVEOUT)
 
-#define ION_NUM_HEAP_IDS        sizeof(unsigned int) * 8
+#define ION_NUM_HEAP_IDS		sizeof(unsigned int) * 8
 
 /**
  * allocation flags - the lower 16 bits are used by core ion, the upper 16
  * bits are reserved for use by the heaps themselves.
  */
-#define ION_FLAG_CACHED 1       /* mappings of this buffer should be
-                       cached, ion will do cache
-                       maintenance when the buffer is
-                       mapped for dma */
-#define ION_FLAG_CACHED_NEEDS_SYNC 2    /* mappings of this buffer will created
-                       at mmap time, if this is set
-                       caches must be managed manually */
-#define ION_FLAG_FREED_FROM_SHRINKER 4  /* Skip any possible
-                       heap-specific caching
-                       mechanism (e.g. page
-                       pools). Guarantees that any
-                       buffer storage that came
-                       from the system allocator
-                       will be returned to the
-                       system allocator. */
+#define ION_FLAG_CACHED 1		/* mappings of this buffer should be
+					   cached, ion will do cache
+					   maintenance when the buffer is
+					   mapped for dma */
+#define ION_FLAG_CACHED_NEEDS_SYNC 2	/* mappings of this buffer will created
+					   at mmap time, if this is set
+					   caches must be managed manually */
+#define ION_FLAG_FREED_FROM_SHRINKER 4	/* Skip any possible
+					   heap-specific caching
+					   mechanism (e.g. page
+					   pools). Guarantees that any
+					   buffer storage that came
+					   from the system allocator
+					   will be returned to the
+					   system allocator. */
 
 /**
  * DOC: Ion Userspace API
@@ -77,27 +77,27 @@ enum ion_heap_type {
 
 /**
  * struct ion_allocation_data - metadata passed from userspace for allocations
- * @len:        size of the allocation
- * @align:      required alignment of the allocation
- * @heap_id_mask:   mask of heap ids to allocate from
- * @flags:      flags passed to heap
- * @handle:     pointer that will be populated with a cookie to use to
- *          refer to this allocation
+ * @len:		size of the allocation
+ * @align:		required alignment of the allocation
+ * @heap_id_mask:	mask of heap ids to allocate from
+ * @flags:		flags passed to heap
+ * @handle:		pointer that will be populated with a cookie to use to 
+ *			refer to this allocation
  *
  * Provided by userspace as an argument to the ioctl
  */
 struct ion_allocation_data {
-    size_t len;
-    size_t align;
-    unsigned int heap_id_mask;
-    unsigned int flags;
-    ion_user_handle_t handle;
+	size_t len;
+	size_t align;
+	unsigned int heap_mask;
+	unsigned int flags;
+	ion_user_handle_t handle;
 };
 
 /**
  * struct ion_fd_data - metadata passed to/from userspace for a handle/fd pair
- * @handle: a handle
- * @fd:     a file descriptor representing that handle
+ * @handle:	a handle
+ * @fd:		a file descriptor representing that handle
  *
  * For ION_IOC_SHARE or ION_IOC_MAP userspace populates the handle field with
  * the handle returned from ion alloc, and the kernel returns the file
@@ -105,31 +105,31 @@ struct ion_allocation_data {
  * provides the file descriptor and the kernel returns the handle.
  */
 struct ion_fd_data {
-    ion_user_handle_t handle;
-    int fd;
+	ion_user_handle_t handle;
+	int fd;
 };
 
 /**
  * struct ion_handle_data - a handle passed to/from the kernel
- * @handle: a handle
+ * @handle:	a handle
  */
 struct ion_handle_data {
-    ion_user_handle_t handle;
+	ion_user_handle_t handle;
 };
 
 /**
  * struct ion_custom_data - metadata passed to/from userspace for a custom ioctl
- * @cmd:    the custom ioctl function to call
- * @arg:    additional data to pass to the custom ioctl, typically a user
- *      pointer to a predefined structure
+ * @cmd:	the custom ioctl function to call
+ * @arg:	additional data to pass to the custom ioctl, typically a user
+ *		pointer to a predefined structure
  *
  * This works just like the regular cmd and arg fields of an ioctl.
  */
 struct ion_custom_data {
-    unsigned int cmd;
-    unsigned long arg;
+	unsigned int cmd;
+	unsigned long arg;
 };
-#define ION_IOC_MAGIC       'I'
+#define ION_IOC_MAGIC		'I'
 
 /**
  * DOC: ION_IOC_ALLOC - allocate memory
@@ -137,15 +137,15 @@ struct ion_custom_data {
  * Takes an ion_allocation_data struct and returns it with the handle field
  * populated with the opaque handle for the allocation.
  */
-#define ION_IOC_ALLOC       _IOWR(ION_IOC_MAGIC, 0, \
-                      struct ion_allocation_data)
+#define ION_IOC_ALLOC		_IOWR(ION_IOC_MAGIC, 0, \
+				      struct ion_allocation_data)
 
 /**
  * DOC: ION_IOC_FREE - free memory
  *
  * Takes an ion_handle_data struct and frees the handle.
  */
-#define ION_IOC_FREE        _IOWR(ION_IOC_MAGIC, 1, struct ion_handle_data)
+#define ION_IOC_FREE		_IOWR(ION_IOC_MAGIC, 1, struct ion_handle_data)
 
 /**
  * DOC: ION_IOC_MAP - get a file descriptor to mmap
@@ -155,7 +155,7 @@ struct ion_custom_data {
  * descriptor open in the current address space.  This file descriptor
  * can then be used as an argument to mmap.
  */
-#define ION_IOC_MAP     _IOWR(ION_IOC_MAGIC, 2, struct ion_fd_data)
+#define ION_IOC_MAP		_IOWR(ION_IOC_MAGIC, 2, struct ion_fd_data)
 
 /**
  * DOC: ION_IOC_SHARE - creates a file descriptor to use to share an allocation
@@ -166,7 +166,7 @@ struct ion_custom_data {
  * can then be passed to another process.  The corresponding opaque handle can
  * be retrieved via ION_IOC_IMPORT.
  */
-#define ION_IOC_SHARE       _IOWR(ION_IOC_MAGIC, 4, struct ion_fd_data)
+#define ION_IOC_SHARE		_IOWR(ION_IOC_MAGIC, 4, struct ion_fd_data)
 
 /**
  * DOC: ION_IOC_IMPORT - imports a shared file descriptor
@@ -175,7 +175,7 @@ struct ion_custom_data {
  * descriptor obtained from ION_IOC_SHARE and returns the struct with the handle
  * filed set to the corresponding opaque handle.
  */
-#define ION_IOC_IMPORT      _IOWR(ION_IOC_MAGIC, 5, struct ion_fd_data)
+#define ION_IOC_IMPORT		_IOWR(ION_IOC_MAGIC, 5, struct ion_fd_data)
 
 /**
  * DOC: ION_IOC_SYNC - syncs a shared file descriptors to memory
@@ -185,7 +185,7 @@ struct ion_custom_data {
  * If necessary should be used after touching a cached buffer from the cpu,
  * this will make the buffer in memory coherent.
  */
-#define ION_IOC_SYNC        _IOWR(ION_IOC_MAGIC, 7, struct ion_fd_data)
+#define ION_IOC_SYNC		_IOWR(ION_IOC_MAGIC, 7, struct ion_fd_data)
 
 /**
  * DOC: ION_IOC_CUSTOM - call architecture specific ion ioctl
@@ -193,6 +193,6 @@ struct ion_custom_data {
  * Takes the argument of the architecture specific ioctl to call and
  * passes appropriate userdata for that ioctl
  */
-#define ION_IOC_CUSTOM      _IOWR(ION_IOC_MAGIC, 6, struct ion_custom_data)
+#define ION_IOC_CUSTOM		_IOWR(ION_IOC_MAGIC, 6, struct ion_custom_data)
 
 #endif /* _UAPI_ION_H */
