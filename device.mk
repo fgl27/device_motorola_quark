@@ -355,3 +355,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #android_filesystem_config.h
 PRODUCT_PACKAGES += \
     fs_config_files
+
+# Treble packages
+$(call inherit-product, device/samsung/apq8084-common/treble.mk)
