@@ -48,12 +48,13 @@ persist.mot.gps.smart_battery=1
 
 # Media
 audio.offload.buffer.size.kb=32
-av.offload.enable=true
-av.streaming.offload.enable=true
+audio.offload.disable=0
+av.offload.enable=false
+av.streaming.offload.enable=false
 audio.offload.multiple.enabled=false
-audio.offload.gapless.enabled=true
-audio.offload.pcm.16bit.enable=true
-audio.offload.pcm.24bit.enable=true
+audio.offload.gapless.enabled=false
+audio.offload.pcm.16bit.enable=false
+audio.offload.pcm.24bit.enable=false
 
 # NITZ
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
