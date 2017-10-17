@@ -104,14 +104,20 @@ on property:sys.boot_completed=1
     # Set io ahead for better performance
     setprop sys.io.scheduler bfq
 
-    # Tune LMK
-    write /sys/module/lowmemorykiller/parameters/minfree 44032,48640,53248,57856,62464,71680
+     # enable adreno_idler
+     write /sys/module/adreno_idler/parameters/adreno_idler_active Y
 
     # GPU max clock 500hz
     write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 500000000
 
     # bcl mitigation-freq
     write /sys/devices/qcom,bcl.38/freq_max 1267200
+
+    # lmk
+    write /sys/module/lowmemorykiller/parameters/adj 0,1,3,5,10,15
+    write /sys/module/lowmemorykiller/parameters/minfree 2048,4096,8192,16384,24576,25600
+    write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 27136
 
 service postinitrr_sh /system/bin/sh /sbin/post_init_rr.sh
     class main
