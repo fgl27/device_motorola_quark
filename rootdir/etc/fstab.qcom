@@ -15,4 +15,4 @@
 /dev/block/platform/msm_sdcc.1/by-name/misc         /misc            emmc    defaults                                                                              defaults
 
 /devices/*/xhci-hcd.0.auto/usb*                     auto             auto    defaults                                                                              voldmanaged=usb:auto
-/dev/block/zram0                                    none             swap             defaults                 zramsize=335544320,notrim
+/dev/block/zram0                                    none             swap             defaults                 zramsize=335544320,zramstreams=4,swapprio=10,notrim
