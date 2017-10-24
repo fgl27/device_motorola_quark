@@ -50,8 +50,8 @@ char const*const LCD_FILE
 char const*const BUTTON_FILE
         = "/sys/class/leds/button-backlight/brightness";
 
-char const*const LED_BLINK
-        = "/sys/class/leds/charging/blink";
+char const*const LED_BLINK_BRIGHTNESS
+        = "/sys/class/leds/charging/blink_brightness";
 
 char const*const LED_BRIGHTNESS
         = "/sys/class/leds/charging/brightness";
@@ -193,7 +193,7 @@ set_speaker_light_locked(struct light_device_t* dev,
        if (brightness == 255) brightness = 15; // max_brightness 15 steps of 5
        else if (brightness > 1 && brightness < 255) brightness = 10;
        else brightness = 5;
-       write_int(LED_BRIGHTNESS, brightness);
+       write_int(LED_BLINK_BRIGHTNESS, brightness);
        write_str(LED_TRIGER, "timer");
        write_str(LED_ON, onMSC);
        write_str(LED_OFF, offMSC);
@@ -202,6 +202,7 @@ set_speaker_light_locked(struct light_device_t* dev,
         // prop used to keep battery triger at battery-full case is enable, I activated this from a app at boot if app switch is on
         property_get("led.batton", value, NULL);
         if (strstr(value, "1")) {
+            write_int(LED_BLINK_BRIGHTNESS, statenow);
             write_int(LED_BRIGHTNESS, statenow);// prevent led be enable all the time
             write_str(LED_TRIGER, "battery-full");
         } else write_str(LED_TRIGER, "none");// none alredy set LED_BRIGHTNESS to 0

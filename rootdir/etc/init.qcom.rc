@@ -327,6 +327,8 @@ on boot
     setprop persist.audio.calfile6 /system/etc/acdbdata/Speaker_cal.acdb
 
     # Change ownership and permission for led
+    chown system system /sys/class/leds/charging/blink_brightness
+    chmod 0664 /sys/class/leds/charging/blink_brightness
     chown system system /sys/class/leds/charging/brightness
     chmod 0664 /sys/class/leds/charging/brightness
     chown system system /sys/class/leds/charging/trigger
