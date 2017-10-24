@@ -46,8 +46,8 @@ inline const char* BtmGetDefaultName()
 #define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
 #define MAX_ACL_CONNECTIONS    16
 #define MAX_L2CAP_CHANNELS    MAX_ACL_CONNECTIONS
-#define BTM_WBS_INCLUDED TRUE
-#define BTIF_HF_WBS_PREFERRED FALSE
+#define BLUETOOTH_QTI_SW TRUE       /* Enable Qcom WBS */
+#define BTIF_HF_WBS_PREFERRED FALSE /* Don't prefer WBS    */
 
 /* Defined if the kernel does not have support for CLOCK_BOOTTIME_ALARM */
 #define KERNEL_MISSING_CLOCK_BOOTTIME_ALARM TRUE
