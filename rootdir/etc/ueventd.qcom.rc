@@ -233,6 +233,7 @@
 
 # SECURITY
 /dev/qseecom              0660   system     drmrpc
+/dev/qce                  0660   system     drmrpc
 /dev/sec                  0660   system     drmrpc
 
 # haptic
