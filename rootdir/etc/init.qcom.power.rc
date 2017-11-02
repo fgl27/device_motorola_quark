@@ -114,10 +114,10 @@ on property:sys.boot_completed=1
     write /sys/devices/qcom,bcl.38/freq_max 1267200
 
     # lmk
-    write /sys/module/lowmemorykiller/parameters/adj 0,1,3,5,10,15
-    write /sys/module/lowmemorykiller/parameters/minfree 2048,4096,8192,16384,24576,25600
+    write /sys/module/lowmemorykiller/parameters/adj 0,2,4,7,12,15
+    write /sys/module/lowmemorykiller/parameters/minfree 44032,48640,53248,57856,62464,71680
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
-    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 27136
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 79872
 
 service postinitrr_sh /system/bin/sh /sbin/post_init_rr.sh
     class main
