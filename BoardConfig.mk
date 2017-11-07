@@ -202,3 +202,5 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/bin/thermal-engine|libshims_thermal.so \
     /system/lib/libcutils.so|libshim_cutils_atomic.so
 
+# Binder API version
+TARGET_USES_64_BIT_BINDER := true
