@@ -7,3 +7,4 @@ allow mediaserver adspd_socket:sock_file write;
 allow mediaserver audio_cutback_data_file:dir search;
 allow mediaserver audio_cutback_data_file:sock_file write;
 allow mediaserver cutback_socket:sock_file write;
+allow mediaserver proc:file read;

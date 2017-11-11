@@ -15,7 +15,28 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <style name="CMActions" parent="@android:style/Theme.Material.Settings">
-        <item name="preferenceTheme">@android:style/Theme.Material.Settings</item>
+    <style name="CMActions" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
+    </style>
+
+    <style name="PreferenceTheme" parent="@style/PreferenceThemeOverlay.v14.Material">
+        <item name="preferenceStyle">@style/Preference</item>
+        <item name="@dropdownPreferenceStyle">@style/Preference.DropDown.Material</item>
+        <item name="preferenceFragmentStyle">@style/PreferenceFragmentStyle</item>
+    </style>
+
+    <style name="Preference">
+        <item name="android:layout">@layout/preference_material_settings</item>
+    </style>
+
+    <style name="PreferenceFragmentStyle" parent="@*android:style/PreferenceFragment.Material">
+        <item name="android:layout">@layout/preference_list_fragment</item>
+    </style>
+
+    <style name="settings_pixel_theme">
+        <item name="preferenceTheme">@style/PreferenceTheme</item>
+        <item name="android:colorPrimary">@color/pixel_primary_color</item>
+        <item name="android:colorPrimaryDark">@color/pixel_primary_color</item>
+        <item name="android:colorSecondary">@color/pixel_secondary_color</item>
     </style>
 </resources>
