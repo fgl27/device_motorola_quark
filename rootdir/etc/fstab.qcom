@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /system          ext4              /dev/block/platform/msm_sdcc.1/by-name/system        flags=backup=1
 /data	         f2fs              /dev/block/platform/msm_sdcc.1/by-name/userdata      flags=encryptable=footer;length=-16384
 /cache	         ext4              /dev/block/platform/msm_sdcc.1/by-name/cache
