@@ -418,8 +418,6 @@ on boot
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
     # NFC local data and nfcee xml storage
-    mkdir /data/nfc 0770 nfc nfc
-    mkdir /data/nfc/param 0770 nfc nfc
     mkdir /data/vendor/nfc 0770 nfc nfc
     mkdir /data/vendor/nfc/param 0770 nfc nfc
 
