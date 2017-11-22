@@ -394,3 +394,6 @@ $(call inherit-product, device/motorola/quark/hidl.mk)
 # loggy enable this when debuggin gon permissive
 #PRODUCT_PACKAGES += \
 #    loggy.sh
+
+# Reduce system image size by limiting java debug info.
+PRODUCT_MINIMIZE_JAVA_DEBUG_INFO := true
