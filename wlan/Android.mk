@@ -63,3 +63,19 @@ $(LOCAL_BUILT_MODULE):
 	$(hide) rm -rf $(SYMLINK)
 	$(hide) ln -sf $(TARGET) $(SYMLINK)
 	$(hide) touch $@
+
+include $(CLEAR_VARS)
+LOCAL_MODULE := qca_cld_wlan.ko
+LOCAL_MODULE_CLASS := FAKE
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SYSTEM)/base_rules.mk
+$(LOCAL_BUILT_MODULE): TARGET := /system/lib/modules/wlan.ko
+$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/lib/modules/qca_cld/$(LOCAL_MODULE)
+$(LOCAL_BUILT_MODULE):
+	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
+	$(hide) mkdir -p $(dir $@)
+	$(hide) mkdir -p $(dir $(SYMLINK))
+	$(hide) rm -rf $@
+	$(hide) rm -rf $(SYMLINK)
+	$(hide) ln -sf $(TARGET) $(SYMLINK)
+	$(hide) touch $@

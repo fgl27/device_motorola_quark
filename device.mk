@@ -304,7 +304,8 @@ PRODUCT_PACKAGES += \
     WCNSS_qcom_cfg.ini \
     WCNSS_qcom_wlan_nv.bin \
     wlan_mac.bin \
-    wlan_mac_serial.bin
+    wlan_mac_serial.bin \
+    qca_cld_wlan.ko
 
 
 PRODUCT_COPY_FILES += \

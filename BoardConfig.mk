@@ -53,13 +53,6 @@ TARGET_KERNEL_CONFIG := quark_defconfig
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
-WLAN_MODULES:
-	mkdir -p $(KERNEL_MODULES_OUT)/qca_cld
-	mv $(KERNEL_MODULES_OUT)/wlan.ko $(KERNEL_MODULES_OUT)/qca_cld/qca_cld_wlan.ko
-	ln -sf /system/lib/modules/qca_cld/qca_cld_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
-
-TARGET_KERNEL_MODULES += WLAN_MODULES
-
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_quark
 TARGET_RECOVERY_DEVICE_MODULES := libinit_quark
