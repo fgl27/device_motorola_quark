@@ -1,6 +1,5 @@
 set_prop(rmt_storage, rmtfs_prop)
 allow rmt_storage property_socket:sock_file write;
-allow rmt_storage self:capability dac_override;
 allow rmt_storage ssd_device:blk_file rw_file_perms;
 allow rmt_storage hob_block_device:blk_file rw_file_perms;
 allow rmt_storage ctl_default_prop:property_service set;

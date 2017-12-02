@@ -102,16 +102,7 @@ PRODUCT_COPY_FILES += \
     device/motorola/quark/permissions/com.motorola.targetnotif.xml:system/etc/permissions/com.motorola.targetnotif.xml \
     device/motorola/quark/permissions/com.motorola.zap.xml:system/etc/permissions/com.motorola.zap.xml
 
-$(call inherit-product, frameworks/native/build/phone-xxxhdpi-3072-dalvik-heap.mk)
-# Dalvik size for 3GB xxxhdpi frameworks may change I prefer setting it here
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    dalvik.vm.heapstartsize=8m \
-#    dalvik.vm.heapgrowthlimit=256m \
-#    dalvik.vm.heapsize=512m \
-#    dalvik.vm.heaptargetutilization=0.75 \
-#    dalvik.vm.heapminfree=512k \
-#    dalvik.vm.heapmaxfree=8m
-
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
 
 # Audio
@@ -126,6 +117,7 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessing \
+    libqcomvoiceprocessingdescriptors \
     tinymix
 
 PRODUCT_PACKAGES += \
@@ -181,7 +173,8 @@ PRODUCT_PACKAGES += \
     gralloc.apq8084 \
     hwcomposer.apq8084 \
     libgenlock \
-    memtrack.apq8084
+    memtrack.apq8084 \
+    hdmi_cec.apq8084
 
 # IDC
 PRODUCT_COPY_FILES += \
@@ -256,6 +249,7 @@ PRODUCT_PACKAGES += \
     libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVenc \
+    libOmxVdpp \
     libOmxVidcCommon \
     libstagefrighthw
 
@@ -272,7 +266,8 @@ PRODUCT_PACKAGES += \
     init.recovery.qcom.rc \
     init.mmi.volte.rc \
     post_init_rr.sh \
-    ueventd.qcom.rc
+    ueventd.qcom.rc \
+    post_init_rr_bootc
 
 # RIL
 PRODUCT_COPY_FILES += \
@@ -307,7 +302,8 @@ PRODUCT_PACKAGES += \
     WCNSS_qcom_cfg.ini \
     WCNSS_qcom_wlan_nv.bin \
     wlan_mac.bin \
-    wlan_mac_serial.bin
+    wlan_mac_serial.bin \
+    qca_cld_wlan.ko
 
 
 PRODUCT_COPY_FILES += \
@@ -332,3 +328,7 @@ PRODUCT_PACKAGES += \
 # ro.product.first_api_level indicates the first api level the device has commercially launched on.
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.product.first_api_level=19
+
+# low audio flinger standby delay to reduce power consumption
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.audio.flinger_standbytime_ms=300

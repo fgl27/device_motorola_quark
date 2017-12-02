@@ -1,10 +1,13 @@
 # Audio
-ro.qc.sdk.audio.fluencetype=fluence
+##fluencetype can be "fluence" or "fluencepro" or "none"
+ro.qc.sdk.audio.fluencetype=none
 persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
 use.voice.path.for.pcm.voip=false
 use.dedicated.device.for.voip=false
+af.fast_track_multiplier=1
+audio_hal.period_size=192
 
 # Bluetooth
 bt.max.hfpclient.connections=1
@@ -22,6 +25,11 @@ media.stagefright.less-secure=true
 
 # Data Disable mobile data by default
 ro.com.android.mobiledata=false
+
+# Dalvik
+dalvik.vm.boot-dex2oat-threads=4
+dalvik.vm.dex2oat-threads=4
+dalvik.vm.image-dex2oat-threads=4
 
 # Display
 ro.qualcomm.cabl=0
@@ -47,12 +55,13 @@ persist.mot.gps.smart_battery=1
 
 # Media
 audio.offload.buffer.size.kb=32
-av.offload.enable=true
-av.streaming.offload.enable=true
+audio.offload.disable=0
+av.offload.enable=false
+av.streaming.offload.enable=false
 audio.offload.multiple.enabled=false
-audio.offload.gapless.enabled=true
-audio.offload.pcm.16bit.enable=true
-audio.offload.pcm.24bit.enable=true
+audio.offload.gapless.enabled=false
+audio.offload.pcm.16bit.enable=false
+audio.offload.pcm.24bit.enable=false
 
 # NITZ
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
@@ -111,7 +120,7 @@ ro.build.shutdown_timeout=7
 persist.qcril_uim_vcc_feature=1
 
 # Storage
-ro.sys.sdcardfs=false
+ro.sys.sdcardfs=true
 
 # SSR
 persist.sys.qc.sub.rdump.max=20
@@ -142,5 +151,8 @@ wlan.driver.ath=0
 wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
 ro.disableWifiApFirmwareReload=true
 
-# ena root by default app only
-persist.sys.root_access=1
+# ena root and adb by default app only
+persist.sys.root_access=3
+persist.service.adb.enable=1
+persist.service.debuggable=1
+persist.sys.usb.config=mtp,adb

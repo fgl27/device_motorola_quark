@@ -74,7 +74,8 @@ etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_6_0.fw
-lib/hw/camera.apq8084.so:lib/hw/camera.vendor.apq8084.so
+# patch change strings persist.camera.enable_vpu to enable_vpu vvv and Phone to quark
+lib/hw/camera.apq8084.so:lib/hw/camera.vendor.apq8084.so|7061a28ac591defff5bc1c37cea72475
 lib/libAisAdapter.so
 lib/libAlAisLib.so
 lib/libAlAisTune.so
@@ -151,12 +152,13 @@ vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_vpu_module.so
 vendor/lib/libmmcamera_wavelet_lib.so
 vendor/lib/libmmipl.so
-vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
 vendor/lib/liboemcamera.so
 vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc.so
 vendor/lib/libthermalclient.so
+# (from shamu)
+vendor/lib/libmmjpeg.so
 
 # Chromatix
 vendor/lib/libchromatix_ar0261_common.so
@@ -205,16 +207,14 @@ vendor/lib/libthermalioctl.so
 
 # DRM
 bin/qseecomd
-lib/libdrmdecrypt.so
-vendor/lib/drm/libdrmwvmplugin.so
-vendor/lib/mediadrm/libwvdrmengine.so
-vendor/lib/libdrmfs.so
-vendor/lib/libdrmtime.so
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libwvdrm_L1.so
-vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
+# DRM (from athene)
+vendor/lib/mediadrm/libwvdrmengine.so
+vendor/lib/libdrmfs.so
+vendor/lib/libdrmtime.so
 
 # DRM firmware
 vendor/firmware/widevine.b00
@@ -253,7 +253,7 @@ vendor/lib/liblocationservice.so
 vendor/lib/libquipc_os_api.so
 vendor/lib/libulp2.so
 
-# Graphics
+# Graphics (from shamu)
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -280,7 +280,6 @@ etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
 # Media
-vendor/lib/libDivxDrm.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal.so
@@ -396,46 +395,8 @@ lib/librecoglib.so
 lib/libtrainingcheck.so
 
 # Voice recognition (sourced from shamu)
-etc/permissions/com.motorola.triggerenroll.xml
--priv-app/TriggerEnroll/TriggerEnroll.apk
--priv-app/TriggerTrainingService/TriggerTrainingService.apk
 lib/hw/sound_trigger.primary.apq8084.so
 lib/libsupermodel.so
-vendor/moto/audiomonitor/sensory/lts_en_us_9_5_2b.raw
-vendor/moto/audiomonitor/sensory/nn_de_mfcc_16k_15_big_250_v3_4.raw
-vendor/moto/audiomonitor/sensory/nn_en_uk_mfcc_16k_15_big_250_v2_2.raw
-vendor/moto/audiomonitor/sensory/nn_en_us_mfcc_16k_15_big_250_v5_1_1.raw
-vendor/moto/audiomonitor/sensory/nn_es_es_mfcc_16k_15_big_250_v1_5.raw
-vendor/moto/audiomonitor/sensory/nn_es_us_mfcc_16k_15_big_250_v1_5.raw
-vendor/moto/audiomonitor/sensory/nn_fr_ca_mfcc_16k_15_big_250_v2_5.raw
-vendor/moto/audiomonitor/sensory/nn_fr_fr_mfcc_16k_15_big_250_v2_4.raw
-vendor/moto/audiomonitor/sensory/nn_it_mfcc_16k_15_big_250_v3_5.raw
-vendor/moto/audiomonitor/sensory/nn_pt_mfcc_16k_15_big_250_v1_1.raw
-vendor/moto/audiomonitor/sensory/phonemesearch_dede_1_1.raw
-vendor/moto/audiomonitor/sensory/phonemesearch_enuk_1_1.raw
-vendor/moto/audiomonitor/sensory/phonemesearch_enus_2_0.raw
-vendor/moto/audiomonitor/sensory/phonemesearch_eses_1_2.raw
-vendor/moto/audiomonitor/sensory/phonemesearch_esus_1_2.raw
-vendor/moto/audiomonitor/sensory/phonemesearch_frca_prec1_1_0.raw
-vendor/moto/audiomonitor/sensory/phonemesearch_frfr_1_1.raw
-vendor/moto/audiomonitor/sensory/phonemesearch_it_it_1_0.raw
-vendor/moto/audiomonitor/sensory/phonemesearch_ptbr_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_dede_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_enuk_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_enus_2_0.raw
-vendor/moto/audiomonitor/sensory/svsid_eses_1_2.raw
-vendor/moto/audiomonitor/sensory/svsid_esus_1_2.raw
-vendor/moto/audiomonitor/sensory/svsid_frca_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_frfr_1_1.raw
-vendor/moto/audiomonitor/sensory/svsid_it_it_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_ptbr_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_triggerogn1_dede_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_triggerogn1_enuk_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_triggerogn1_eses_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_triggerogn1_itit_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_triggerogn_enus_3_1.raw
-vendor/moto/audiomonitor/sensory/svsid_triggerogn_frfr_1_0.raw
-vendor/moto/audiomonitor/sensory/svsid_triggerogn_ptbr_2_1.raw
 
 # These binaries were patched
 # lib/hw/sound_trigger.primary.apq8084.so (dependency)

@@ -27,14 +27,13 @@ inline const char* BtmGetDefaultName()
 
 	if (!strcmp("lra", fsg))
 		return "Moto MAXX";
-	if (!strcmp("verizon", fsg))
+	else if (!strcmp("verizon", fsg))
 		return "DROID Turbo";
-	if (!strcmp("singlela", fsg))
+	else if (!strcmp("singlela", fsg))
 		return "Moto MAXX";
-	if (!strcmp("emea", fsg))
+	else if (!strcmp("emea", fsg))
 		return "Moto Turbo";
-
-	return "";
+	else return "Moto MAXX";
 }
 
 #define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
@@ -43,6 +42,13 @@ inline const char* BtmGetDefaultName()
 #define BTA_BLE_SKIP_CONN_UPD  TRUE
 // Enables interleaved scan
 #define BTA_HOST_INTERLEAVE_SEARCH TRUE
+
+#define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
+#define MAX_ACL_CONNECTIONS    16
+#define MAX_L2CAP_CHANNELS    MAX_ACL_CONNECTIONS
+#define BLUETOOTH_QTI_SW TRUE       /* Enable Qcom WBS */
+#define BTIF_HF_WBS_PREFERRED FALSE /* Don't prefer WBS    */
+
 /* Defined if the kernel does not have support for CLOCK_BOOTTIME_ALARM */
 #define KERNEL_MISSING_CLOCK_BOOTTIME_ALARM TRUE
 
