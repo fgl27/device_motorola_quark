@@ -544,12 +544,12 @@ service atvc /vendor/bin/dbvc_atvc_property_set
     oneshot
 
 service thermal-engine /vendor/bin/thermal-engine
-    class main
+    class hal
     user root
     group root
 
 service thermal-com /vendor/bin/thermal-engine --minimode
-    class main
+    class hal
     user root
     disabled
 
