@@ -541,4 +541,7 @@
 
     <!-- Flag indicating which package name can access the persistent data partition -->
     <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
+
+    <!-- BurnIn protection. This should be enabled on devices that have OLED displays -->
+    <bool name="config_enableBurnInProtection">true</bool>
 </resources>
