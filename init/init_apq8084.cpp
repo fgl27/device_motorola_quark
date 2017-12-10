@@ -33,15 +33,23 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+
+#include <android-base/logging.h>
+
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
-#include "log.h"
-#include "util.h"
 
 #include "init_apq8084.h"
+
+using android::init::property_set;
+
+__attribute__ ((weak))
+void init_target_properties()
+{
+}
 
 void property_override(char const prop[], char const value[])
 {
@@ -52,11 +60,6 @@ void property_override(char const prop[], char const value[])
         __system_property_update(pi, value, strlen(value));
     else
         __system_property_add(prop, strlen(prop), value, strlen(value));
-}
-
-__attribute__ ((weak))
-void init_target_properties()
-{
 }
 
 static int read_file2(const char *fname, char *data, int max_size)
