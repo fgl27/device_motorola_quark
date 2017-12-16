@@ -102,6 +102,7 @@ HAVE_ADRENO_SOURCE := false
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(QUARK_PATH)/manifest.xml
+DEVICE_MATRIX_FILE := $(QUARK_PATH)/compatibility_matrix.xml
 
 # Motorola
 TARGET_USES_MOTOROLA_LOG := true
