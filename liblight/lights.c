@@ -188,15 +188,23 @@ set_speaker_light_locked(struct light_device_t* dev,
         brightness = 0xFF;
     }
     if (statenow > 0) { 
-       sprintf(onMSC, "%lu", onMS);
-       sprintf(offMSC, "%lu", offMS);
-       if (brightness == 255) brightness = 15; // max_brightness 15 steps of 5
-       else if (brightness > 1 && brightness < 255) brightness = 10;
-       else brightness = 5;
-       write_int(LED_BLINK_BRIGHTNESS, brightness);
-       write_str(LED_TRIGER, "timer");
-       write_str(LED_ON, onMSC);
-       write_str(LED_OFF, offMSC);
+        sprintf(onMSC, "%lu", onMS);
+        sprintf(offMSC, "%lu", offMS);
+        if (brightness == 255) brightness = 15; // max_brightness 15 steps of 5
+        else if (brightness > 1 && brightness < 255) brightness = 10;
+        else brightness = 5;
+
+        if ((offMS - 0) > 0) {
+            write_int(LED_BRIGHTNESS, 0);
+            write_int(LED_BLINK_BRIGHTNESS, brightness);
+            write_str(LED_TRIGER, "timer");
+            write_str(LED_ON, onMSC);
+            write_str(LED_OFF, offMSC);
+       } else {
+            write_str(LED_TRIGER, "none");
+            write_int(LED_BRIGHTNESS, brightness);
+       }
+
        ALOGE("liblights notification led brightness=%d, timer 0n=%s, off=%s\n", brightness, onMSC, offMSC);
     } else {
         // prop used to keep battery triger at battery-full case is enable, I activated this from a app at boot if app switch is on
