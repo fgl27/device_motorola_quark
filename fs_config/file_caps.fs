@@ -48,3 +48,9 @@ mode: 0755
 user: AID_SYSTEM
 group: AID_SYSTEM
 caps: 0
+
+[vendor/bin/time_daemon]
+mode: 0755
+user: AID_SYSTEM
+group: AID_NET_RAW
+caps: SYS_TIME

@@ -554,9 +554,10 @@ service thermal-com /vendor/bin/thermal-engine --minimode
     disabled
 
 service time_daemon /vendor/bin/time_daemon
+    capabilities SYS_TIME
     class late_start
-    user root
-    group root
+    user system
+    group net_raw
 
 service qseecomd /vendor/bin/qseecomd
     class core
