@@ -89,7 +89,7 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # CMHW
-BOARD_HARDWARE_CLASS += hardware/cyanogen/cmhw
+BOARD_HARDWARE_CLASS += hardware/lineage/lineagehw
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
