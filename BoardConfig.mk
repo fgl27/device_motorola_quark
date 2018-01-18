@@ -16,11 +16,11 @@
 # inherit from the proprietary version
 -include vendor/motorola/quark/BoardConfigVendor.mk 
 
-LOCAL_PATH := device/motorola/quark
+QUARK_PATH := device/motorola/quark
 
 BOARD_VENDOR := motorola-qcom
 
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+TARGET_SPECIFIC_HEADER_PATH := $(QUARK_PATH)/include
 
 # Assert
 TARGET_OTA_ASSERT_DEVICE := quark,quark_lra,quark_umts,quark_verizon,xt1225,xt1250,xt1254
@@ -76,7 +76,7 @@ AUDIO_FEATURE_ENABLED_HWDEP_CAL := true
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(QUARK_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BOARD_HAS_QCA_BT_ROME := true
 
@@ -122,7 +122,7 @@ BOARD_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_10
 BOARD_GLOBAL_CPPFLAGS += -DUSE_RIL_VERSION_10
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/etc/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(QUARK_PATH)/rootdir/etc/fstab.qcom
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
