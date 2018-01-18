@@ -84,11 +84,23 @@ on fs
     wait /dev/block/platform/${ro.boot.bootdevice}
     symlink /dev/block/platform/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    mount_all fstab.qcom
+    mount_all fstab.qcom --early
     restorecon_recursive /persist
+
+    # Start HW service manager early
+    start hwservicemanager
 
     # use /persist as phony PDS partition
     symlink /persist /pds
+
+on late-fs
+    # Start services for bootanim
+    start surfaceflinger
+    start bootanim
+    start configstore-hal-1-0
+    start gralloc-2-0
+
+    mount_all ./fstab.qcom --late
 
 # msm specific files that need to be created on /data
 on post-fs-data
