@@ -219,6 +219,9 @@ PRODUCT_PACKAGES += \
 # Dexopt
 $(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
 
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.apq8084 \
