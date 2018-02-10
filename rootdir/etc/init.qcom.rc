@@ -59,7 +59,7 @@ on init
     write /proc/self/coredump_filter "0x7f"
 
     # Symbols required for motorola blobs
-    export LD_SHIM_LIBS /system/vendor/bin/thermal-engine|libshims_thermal.so:/system/vendor/lib/libqc-opt.so|libshim_qcopt.so
+    export LD_SHIM_LIBS /system/vendor/bin/thermal-engine|libshims_thermal.so:/system/vendor/lib/libqc-opt.so|libshim_qcopt.so:/system/lib/libcutils.so|libshim_cutils_atomic.so
 
     # start mdm_helper early (required since Oreo)
     start mdm_helper
