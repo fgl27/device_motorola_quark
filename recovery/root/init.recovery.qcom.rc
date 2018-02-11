@@ -35,7 +35,6 @@ on init
 
     # I-O/fsync/crc for better read/write performance
     write /sys/block/mmcblk0/queue/scheduler bfq
-    write /sys/module/sync/parameters/fsync_enabled N
     write /sys/module/mmc_core/parameters/crc 0
 
     # Configure the cpu-boost module
