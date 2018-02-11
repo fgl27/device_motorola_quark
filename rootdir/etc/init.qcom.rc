@@ -202,11 +202,6 @@ on post-fs-data
     chown radio radio /sys/devices/cycapsense_prog.1/cycapsense_fw
     chmod 0660 /sys/devices/cycapsense_prog.1/cycapsense_fw
 
-    # Start zram
-    swapon_all fstab.qcom
-    write /proc/sys/vm/page-cluster 0
-    write /proc/sys/vm/swappiness 25
-
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -379,6 +374,11 @@ on boot
     chown system system /proc/fs/esdfs/packages
 
 on property:sys.boot_completed=1
+
+    # Start zram
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 25
+    swapon_all fstab.qcom
 
     # Post boot services
     rm /data/system/default_values
