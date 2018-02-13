@@ -172,10 +172,10 @@ PRODUCT_PACKAGES += \
     charger \
     charger_res_images
 
-# CMActions
+# LineageActions
 PRODUCT_PACKAGES += \
-    libjni_CMActions \
-    CMActions
+    LineageActions \
+    libjni_LineageActions
 
 # CNE
 PRODUCT_COPY_FILES += \
