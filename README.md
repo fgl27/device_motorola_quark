@@ -25,6 +25,15 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 
 	</manifest>
 
+Building after sync:
+
+	. build/envsetup.sh 
+	make clean
+	lunch cm_quark-userdebug
+	time mka bacon -j4 2>&1 | tee quark.txt
+
+Were the nunber after -j is the number of cores you wanna use for this task, quark.txt contains the build "log", read it in case the build fails searching for errors
+
 The Motorola Moto Maxx (codenamed _"quark"_) is a high-end smartphone from Motorola mobility.
 It was announced on November 2014.
 
