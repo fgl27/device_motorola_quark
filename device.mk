@@ -290,7 +290,7 @@ PRODUCT_PACKAGES += \
     init.mmi.volte.rc \
     post_init_rr.sh \
     ueventd.qcom.rc \
-    post_init_rr_bootc
+    post_init_rr_bootc.sh
 
 # RIL
 PRODUCT_COPY_FILES += \
