@@ -376,6 +376,8 @@ on boot
     # ESDFS
     chown system system /proc/fs/esdfs/packages
 
+    mkdir /persist/time 0770 system system
+
 on property:sys.boot_completed=1
 
     # Start zram
