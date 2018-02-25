@@ -56,7 +56,7 @@ on init
     write /proc/self/coredump_filter "0x7f"
 
     # Symbols required for motorola blobs
-    export LD_SHIM_LIBS /system/bin/thermal-engine|libshims_thermal.so:/system/vendor/lib/libqc-opt.so|libshim_qcopt.so
+    export LD_SHIM_LIBS /system/vendor/bin/thermal-engine|libshims_thermal.so:/system/vendor/lib/libqc-opt.so|libshim_qcopt.so
 
 on charger
     trigger early-fs
@@ -68,9 +68,11 @@ on charger
 
 on moto-charger
     setprop ro.board.platform apq8084
-    write /sys/class/leds/charging/trigger "battery-full"
     start qcom-post-boot
     start thermal-com
+    write /sys/android_touch/doubletap2wake 1
+    write /sys/android_touch/sweep2wake 15
+    write /sys/class/leds/charging/trigger "battery-full"
     start charge_only_mode
 
 on fs
@@ -201,11 +203,6 @@ on post-fs-data
     # Permissions CapSense firmware update
     chown radio radio /sys/devices/cycapsense_prog.1/cycapsense_fw
     chmod 0660 /sys/devices/cycapsense_prog.1/cycapsense_fw
-
-    # Start zram
-    swapon_all fstab.qcom
-    write /proc/sys/vm/page-cluster 0
-    write /proc/sys/vm/swappiness 25
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -373,12 +370,18 @@ on boot
     write /sys/bus/msm_subsys/devices/subsys3/restart_level related
     write /sys/bus/msm_subsys/devices/subsys4/restart_level related
 
+    insmod /system/lib/modules/wireguard.ko
     insmod /system/lib/modules/touchx.ko
 
     # ESDFS
     chown system system /proc/fs/esdfs/packages
 
 on property:sys.boot_completed=1
+
+    # Start zram
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 25
+    swapon_all fstab.qcom
 
     # Post boot services
     rm /data/system/default_values

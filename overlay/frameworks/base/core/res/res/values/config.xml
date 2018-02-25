@@ -51,6 +51,7 @@
         <item>1</item>
         <item>5</item>
         <item>7</item>
+        <item>9</item>
     </integer-array>
 
     <!-- This string array should be overridden by the device to present a list of network
@@ -363,7 +364,6 @@
     <string-array translatable="false" name="config_globalActionsList">
         <item>power</item>
         <item>restart</item>
-        <item>settings</item>
         <item>airplane</item>
         <item>silent</item>
     </string-array>
@@ -529,4 +529,19 @@
     <!-- If enabled, capacitive keys will only light up when pressed.
          Otherwise, the buttons will light up whenever the user interacts with the device -->
     <bool name="config_buttonLightOnKeypressOnly">false</bool>
+
+    <!-- Default list of files pinned by the Pinner Service -->
+    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+        <item>"/data/dalvik-cache/arm/system@framework@boot.oat"</item>
+        <item>"/data/dalvik-cache/arm/system@framework@boot.art"</item>
+        <item>"/data/dalvik-cache/arm/system@framework@services.jar@classes.dex"</item>
+        <item>"/data/dalvik-cache/arm/system@priv-app@SystemUI@SystemUI.apk@classes.dex"</item>
+        <item>"/data/dalvik-cache/arm/system@priv-app@Settings@Settings.apk@classes.dex"</item>
+   </string-array>
+
+    <!-- Flag indicating which package name can access the persistent data partition -->
+    <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
+
+    <!-- BurnIn protection. This should be enabled on devices that have OLED displays -->
+    <bool name="config_enableBurnInProtection">true</bool>
 </resources>
