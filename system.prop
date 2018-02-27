@@ -151,8 +151,8 @@ wlan.driver.ath=0
 wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
 ro.disableWifiApFirmwareReload=true
 
-# ena root and adb by default app only
-persist.sys.root_access=3
-persist.service.adb.enable=1
-persist.service.debuggable=1
+# ena root by default app only
+persist.sys.root_access=1
+
+# Set usb to adb and mtp
 persist.sys.usb.config=mtp,adb
