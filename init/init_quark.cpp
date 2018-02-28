@@ -183,6 +183,28 @@ void vendor_load_properties()
         property_set("ro.com.google.clientidbase.ms", "android-verizon");
         property_set("ro.com.google.clientidbase.am", "android-verizon");
         property_set("ro.com.google.clientidbase.yt", "android-verizon");
+
+	// commented out vzw volte config, as the binary don't work
+        //property_set("persist.data.iwlan.enable", "true");
+        //property_set("persist.radio.calls.on.ims", "true");
+        //property_set("persist.data.netmgrd.qos.enable", "true");
+        //property_set("persist.data.iwlan.enable", "true");
+        //property_set("persist.dbg.volte_avail_ovr", "1");
+        //property_set("persist.radio.jbims", "1");
+        //property_set("persist.radio.VT_ENABLE", "1");
+        //property_set("persist.radio.VT_HYBRID_ENABLE", "1");
+        //property_set("persist.radio.ROTATION_ENABLE", "1");
+        //property_set("persist.radio.RATE_ADAPT_ENABLE", "1");
+        //property_set("persist.rcs.supported", "1");
+        //property_set("persist.ims.enableADBLogs", "1");
+        //property_set("persist.ims.enableDebugLogs", "1");
+        //property_set("persist.cne.feature", "1");
+        //property_set("persist.sys.cnd.iwlan", "1");
+        //property_set("persist.radio.domain.ps", "0");
+        //property_set("persist.radio.REVERSE_QMI", "0");
+        //property_set("persist.rmnet.mux", "enabled");
+        //property_set("persist.cne.logging.qxdm", "3974");
+
         INFO("Set properties for \"verizon\"!\n");
     } else if (fsgid =="verizon_gsm") {
         // XT1254 - Droid Turbo, but set as gsm phone
