@@ -201,6 +201,5 @@ TARGET_BOOTANIMATION_HALF_RES := true
 # Shims
 TARGET_LD_SHIM_LIBS := \
     /system/vendor/bin/thermal-engine|libshims_thermal.so \
-    /system/vendor/lib/libqc-opt.so|libshim_qcopt.so \
     /system/lib/libcutils.so|libshim_cutils_atomic.so
 
