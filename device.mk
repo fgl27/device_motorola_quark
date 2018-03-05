@@ -223,10 +223,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     keystore.apq8084
 
-# Location
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/flp.conf:system/etc/flp.conf
-
 # Lights
 PRODUCT_PACKAGES += \
     lights.apq8084
