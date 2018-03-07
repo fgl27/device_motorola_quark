@@ -4,7 +4,9 @@ $(call inherit-product, device/motorola/quark/full_quark.mk)
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
+    $(LOCAL_PATH)/overlay-lineage
 
 PRODUCT_RELEASE_NAME := Moto MAXX
 PRODUCT_NAME := cm_quark
