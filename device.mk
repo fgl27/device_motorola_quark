@@ -141,6 +141,9 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libqcomvoiceprocessingdescriptors \
+    libgenlock \
+    libqdutils \
+    libqservice \
     tinymix
 
 PRODUCT_PACKAGES += \
