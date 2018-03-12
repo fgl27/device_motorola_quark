@@ -512,29 +512,29 @@ service thermal-com /system/vendor/bin/thermal-engine --minimode
     user root
     disabled
 
-service time_daemon /system/bin/time_daemon
+service time_daemon /system/vendor/bin/time_daemon
     class late_start
     user root
     group root
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
     group root
 
-service mpdecision /system/bin/mpdecision --avg_comp --min_cores=4
+service mpdecision /system/vendor/bin/mpdecision --avg_comp --min_cores=4
     user root
     disabled
 
-service mdm_helper /system/bin/mdm_helper
+service mdm_helper /system/vendor/bin/mdm_helper
     class core
 
-service mdm_helper_proxy /system/bin/mdm_helper_proxy
+service mdm_helper_proxy /system/vendor/bin/mdm_helper_proxy
     class core
     user system
     group system
 
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
@@ -578,7 +578,7 @@ service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
     user root
     oneshot
 
-service ril-daemon /system/bin/rild
+service ril-daemon /system/vendor/bin/rild
     class main
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
@@ -590,7 +590,7 @@ service ril-daemon /system/bin/rild
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
 
-service irsc_util /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/vendor/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
@@ -650,7 +650,7 @@ service btsnoop /system/bin/btsnoop
     oneshot
 
 # QMUX must be in multiple groups to support external process connections
-service qmuxd /system/bin/qmuxd
+service qmuxd /system/vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps qcom_diag
@@ -665,7 +665,7 @@ service netmgrd /system/bin/netmgrd
 on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service p2p_supplicant /system/bin/wpa_supplicant \
+service p2p_supplicant /system/vendor/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
     -I/system/etc/wifi/p2p_supplicant_overlay.conf -N \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -681,7 +681,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service wpa_supplicant /system/bin/wpa_supplicant \
+service wpa_supplicant /system/vendor/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -I/system/etc/wifi/wpa_supplicant_overlay.conf \
     -O/data/misc/wifi/sockets -dd \
@@ -701,7 +701,7 @@ service gpsone_daemon /system/bin/gpsone_daemon
     group gps inet net_raw
     disabled
 
-service hostapd /system/bin/hostapd -dd /data/misc/wifi/hostapd.conf
+service hostapd /system/vendor/bin/hostapd -dd /data/misc/wifi/hostapd.conf
     class late_start
     user root
     group root
