@@ -317,6 +317,7 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += \
     hostapd \
+    libnetcmdiface \
     wpa_supplicant \
     wpa_supplicant.conf
 
