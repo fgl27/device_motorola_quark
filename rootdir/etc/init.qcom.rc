@@ -515,6 +515,12 @@ service time_daemon /system/vendor/bin/time_daemon
     user root
     group root
 
+service wcnss-service /system/vendor/bin/wcnss_service
+    class late_start
+    user system
+    group system wifi qcom_diag radio
+    oneshot
+
 service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
