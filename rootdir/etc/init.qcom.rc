@@ -300,6 +300,9 @@ on boot
     chown bluetooth net_bt /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
+    setprop wifi.interface wlan0
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
     chmod 0660 /dev/ttyHS2
     chown bluetooth net_bt /dev/ttyHS2
 
