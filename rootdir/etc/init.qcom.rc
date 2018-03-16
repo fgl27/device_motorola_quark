@@ -585,15 +585,6 @@ service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
     user root
     oneshot
 
-service ril-daemon /system/vendor/bin/rild
-    class main
-    socket rild stream 660 root radio
-    socket rild-debug stream 660 radio system
-    socket cutback stream 660 media radio
-    socket wpa_wlan0 dgram 660 wifi wifi
-    user root
-    group radio cache inet misc audio sdcard_rw log qcom_diag net_raw diag wifi
-
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
 
