@@ -190,3 +190,19 @@ $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wcd9320; \
 		$(TARGET_OUT)/etc/firmware/wcd9320/wcd9320_mad_audio.bin)
 
 endif
+
+include $(CLEAR_VARS)
+
+BT_FW_FILES := \
+    nvm_tlv.bin nvm_tlv_1.3.bin nvm_tlv_2.1.bin nvm_tlv_3.0.bin \
+    rampatch_tlv.img rampatch_tlv_1.3.tlv rampatch_tlv_2.1.tlv \
+    rampatch_tlv_3.0.tlv
+
+BT_FW_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(BT_FW_FILES)))
+$(BT_FW_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "BT FW symlinks: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/vendor/firmware/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(BT_FW_SYMLINKS)
