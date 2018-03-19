@@ -123,3 +123,5 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/sbin/post_init_rr_bootc.sh
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
 include $(BUILD_PREBUILT)
+
+BOARD_ROOT_EXTRA_SYMLINKS := /data/ssh:var/run/ssh
