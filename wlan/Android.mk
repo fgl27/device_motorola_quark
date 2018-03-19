@@ -1,81 +1,27 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := WCNSS_qcom_cfg.ini
-LOCAL_MODULE_CLASS := FAKE
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_SYSTEM)/base_rules.mk
-$(LOCAL_BUILT_MODULE): TARGET := /system/etc/wifi/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE):
-	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
-	$(hide) mkdir -p $(dir $@)
-	$(hide) mkdir -p $(dir $(SYMLINK))
-	$(hide) rm -rf $@
-	$(hide) rm -rf $(SYMLINK)
-	$(hide) ln -sf $(TARGET) $(SYMLINK)
-	$(hide) touch $@
+SEC_WIFI_FILES := \
+	WCNSS_qcom_cfg.ini WCNSS_qcom_wlan_nv.bin
+
+SEC_WIFI_SYMLINKS := $(addprefix $(TARGET_OUT)/etc/firmware/wlan/qca_cld/,$(notdir $(SEC_WIFI_FILES)))
+$(SEC_WIFI_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "SEC WIFI symlink: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/etc/wifi/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(SEC_WIFI_SYMLINKS)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := WCNSS_qcom_wlan_nv.bin
-LOCAL_MODULE_CLASS := FAKE
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_SYSTEM)/base_rules.mk
-$(LOCAL_BUILT_MODULE): TARGET := /system/etc/wifi/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE):
-	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
-	$(hide) mkdir -p $(dir $@)
-	$(hide) mkdir -p $(dir $(SYMLINK))
-	$(hide) rm -rf $@
-	$(hide) rm -rf $(SYMLINK)
-	$(hide) ln -sf $(TARGET) $(SYMLINK)
-	$(hide) touch $@
+SEC_PERSIST_FILES := \
+	wlan_mac.bin wlan_mac_serial.bin
 
-include $(CLEAR_VARS)
-LOCAL_MODULE := wlan_mac.bin
-LOCAL_MODULE_CLASS := FAKE
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_SYSTEM)/base_rules.mk
-$(LOCAL_BUILT_MODULE): TARGET := /persist/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE):
-	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
-	$(hide) mkdir -p $(dir $@)
-	$(hide) mkdir -p $(dir $(SYMLINK))
-	$(hide) rm -rf $@
-	$(hide) rm -rf $(SYMLINK)
-	$(hide) ln -sf $(TARGET) $(SYMLINK)
-	$(hide) touch $@
+SEC_PERSIST_SYMLINKS := $(addprefix $(TARGET_OUT)/etc/firmware/wlan/qca_cld/,$(notdir $(SEC_PERSIST_FILES)))
+$(SEC_PERSIST_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "SEC PERSIST symlink: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /persist/$(notdir $@) $@
 
-include $(CLEAR_VARS)
-LOCAL_MODULE := wlan_mac_serial.bin
-LOCAL_MODULE_CLASS := FAKE
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_SYSTEM)/base_rules.mk
-$(LOCAL_BUILT_MODULE): TARGET := /persist/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE):
-	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
-	$(hide) mkdir -p $(dir $@)
-	$(hide) mkdir -p $(dir $(SYMLINK))
-	$(hide) rm -rf $@
-	$(hide) rm -rf $(SYMLINK)
-	$(hide) ln -sf $(TARGET) $(SYMLINK)
-	$(hide) touch $@
-
-include $(CLEAR_VARS)
-LOCAL_MODULE := qca_cld_wlan.ko
-LOCAL_MODULE_CLASS := FAKE
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_SYSTEM)/base_rules.mk
-$(LOCAL_BUILT_MODULE): TARGET := /system/lib/modules/wlan.ko
-$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT)/lib/modules/qca_cld/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE):
-	$(hide) echo "Symlink: $(SYMLINK) -> $(TARGET)"
-	$(hide) mkdir -p $(dir $@)
-	$(hide) mkdir -p $(dir $(SYMLINK))
-	$(hide) rm -rf $@
-	$(hide) rm -rf $(SYMLINK)
-	$(hide) ln -sf $(TARGET) $(SYMLINK)
-	$(hide) touch $@
+ALL_DEFAULT_INSTALLED_MODULES += $(SEC_PERSIST_SYMLINKS)
