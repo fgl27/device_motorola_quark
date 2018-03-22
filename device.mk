@@ -29,10 +29,6 @@ PRODUCT_AAPT_PREBUILT_DPI := 560dpi xxxhdpi xxhdpi xhdpi hdpi
 PRODUCT_PACKAGES += \
     rcs_config.sh
 
-# ETC scripts
-PRODUCT_PACKAGES += \
-    init.qcom.bt.sh
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1440
