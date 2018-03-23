@@ -557,6 +557,12 @@ on property:wc_transport.start_hci=true
 on property:wc_transport.start_hci=false
     stop start_hci_filter
 
+on property:init.svc.thermal-engine=running
+    write /sys/module/msm_thermal/parameters/enabled N
+
+on property:init.svc.thermal-engine=stopped
+    write /sys/module/msm_thermal/parameters/enabled Y
+
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
