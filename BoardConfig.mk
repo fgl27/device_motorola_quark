@@ -101,7 +101,7 @@ TARGET_USE_COMPAT_GRALLOC_ALIGN := true
 HAVE_ADRENO_SOURCE := false
 
 # HIDL
-DEVICE_MANIFEST_FILE := $(QUARK_PATH)/manifest.xml
+DEVICE_MANIFEST_FILE += $(QUARK_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(QUARK_PATH)/compatibility_matrix.xml
 
 # Motorola
