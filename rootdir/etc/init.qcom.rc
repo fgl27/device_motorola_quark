@@ -539,6 +539,7 @@ service mdm_helper_proxy /system/vendor/bin/mdm_helper_proxy
     class core
     user system
     group system
+    group system
 
 service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     class late_start
