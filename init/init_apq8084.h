@@ -32,5 +32,6 @@
 
 void init_target_properties();
 void property_override(char const prop[], char const value[]);
+void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[]);
 
 #endif /* __INIT_APQ8084__H__ */
