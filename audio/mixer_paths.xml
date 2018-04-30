@@ -748,10 +748,10 @@
 		<ctl name="AIF2_CAP Mixer SLIM TX9" value="1" />
 		<ctl name="AIF2_CAP Mixer SLIM TX10" value="1" />
 		<ctl name="SLIM_0_TX Channels" value="Two" />
-		<ctl name="SLIM TX7 MUX" value="DEC4" />
-		<ctl name="SLIM TX8 MUX" value="DEC3" />
-		<ctl name="SLIM TX9 MUX" value="DEC4" />
-		<ctl name="SLIM TX10 MUX" value="DEC3" />
+		<ctl name="SLIM TX7 MUX" value="DEC3" />
+		<ctl name="SLIM TX8 MUX" value="DEC4" />
+		<ctl name="SLIM TX9 MUX" value="DEC3" />
+		<ctl name="SLIM TX10 MUX" value="DEC4" />
 		<ctl name="DEC4 MUX" value="ADC3" />
 		<ctl name="DEC3 MUX" value="ADC4" />
 		<ctl name="ADC1 Volume" value="0" />
