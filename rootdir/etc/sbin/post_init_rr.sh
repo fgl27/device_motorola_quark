@@ -41,6 +41,10 @@ if [ -e /system/app/Adaway/lib/arm/libtcpdump_exec.so ]; then
 	chmod 755 /system/app/Adaway/lib/arm/libtcpdump_exec.so
 fi
 
+if [ -e /system/vendor/etc/hdrhax ]; then
+	chmod 777 /system/vendor/etc/hdrhax
+fi
+
 # give su root:root to adb su work need for CM-SU
 if [ -e /system/xbin/su ]; then
 	chown root:root /system/xbin/su
