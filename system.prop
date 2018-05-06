@@ -20,8 +20,6 @@ ro.qualcomm.bluetooth.sap=false
 
 # Camera
 camera2.portability.force_api=1
-media.stagefright.legacyencoder=true
-media.stagefright.less-secure=true
 
 # Data Disable mobile data by default
 ro.com.android.mobiledata=false
