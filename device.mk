@@ -146,7 +146,6 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     cplay \
     tinycap \
-    tinymix \
     tinypcminfo \
     tinyplay
 
