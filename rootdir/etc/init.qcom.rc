@@ -546,7 +546,7 @@ service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
     disabled
 
 # Stop mdm_helper_proxy in case of shutdown
-on property:sys.shutdown.requested=*
+on property:sys.powerctl=*
     stop mdm_helper_proxy
 
 # Start mdm_helper_proxy
