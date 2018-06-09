@@ -34,6 +34,8 @@ Building after sync:
 
 Were the nunber after -j is the number of cores you wanna use for this task, quark.txt contains the build "log", read it in case the build fails searching for errors
 
+This link ([New_build_machine](https://github.com/bhb27/scripts/blob/master/etc/new_machine.md#apt-get-install-start)) may help to setup a build machine in case you don't know how to.
+
 The Motorola Moto Maxx (codenamed _"quark"_) is a high-end smartphone from Motorola mobility.
 It was announced on November 2014.
 
