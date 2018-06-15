@@ -51,7 +51,3 @@
 /system/bin/charge_only_mode            u:object_r:charge_only_mode_exec:s0
 /system/bin/dbvc_atvc_property_set      u:object_r:atvc_exec:s0
 /system/bin/stm401                      u:object_r:stm401_exec:s0
-
-/system/bin/imsdatadaemon               u:object_r:ims_exec:s0
-/system/bin/imsqmidaemon                u:object_r:ims_exec:s0
-/system/bin/ims_rtp_daemon              u:object_r:ims_exec:s0
