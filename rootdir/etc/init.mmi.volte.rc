@@ -41,35 +41,3 @@ service imsdatadaemon /system/bin/imsdatadaemon
 
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
-
-service ims_rtp_daemon /system/bin/ims_rtp_daemon
-   class main
-   user system
-   socket ims_rtpd stream 0660 system radio
-   group radio diag qcom_diag log inet net_raw net_admin
-   disabled
-
-on property:sys.ims.DATA_DAEMON_STATUS=1
-   start ims_rtp_daemon
-
-service imscmservice /system/bin/imscmservice
-   class main
-   user system
-   group radio diag diag log qcom_diag net_raw net_admin
-
-# Config volte related prioperties
-service config-rcs-on /system/bin/sh /system/bin/rcs_config.sh on
-    user root
-    oneshot
-    disabled
-
-service config-rcs-off /system/bin/sh /system/bin/rcs_config.sh off
-    user root
-    oneshot
-    disabled
-
-on property:sys.ims.rcs=1
-   start config-rcs-on
-
-on property:sys.ims.rcs=0
-   start config-rcs-off
