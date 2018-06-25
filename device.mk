@@ -289,7 +289,7 @@ PRODUCT_PACKAGES += \
 
 # RIL Shim
 PRODUCT_PACKAGES += \
-    libqsap_shim
+    libqsapshim
 
 # Thermal
 PRODUCT_COPY_FILES += \
