@@ -194,3 +194,6 @@ ifeq ($(HOST_OS),linux)
     WITH_DEXPREOPT := true
   endif
 endif
+
+# Boot animation
+TARGET_BOOTANIMATION_HALF_RES := true
