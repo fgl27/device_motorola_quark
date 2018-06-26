@@ -532,16 +532,6 @@ service mpdecision /system/vendor/bin/mpdecision --avg_comp --min_cores=4
     user root
     disabled
 
-service sshd /system/bin/start-ssh
-    class late_start
-    priority -5
-    user root
-    group root
-    disabled
-
-on property:ro.build.type=eng
-    start sshd
-
 service mdm_helper /system/vendor/bin/mdm_helper
     class core
 
