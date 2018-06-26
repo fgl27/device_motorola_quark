@@ -363,4 +363,4 @@ PRODUCT_PACKAGES += \
     fs_config_files
 
 # Treble packages
-$(call inherit-product, device/samsung/apq8084-common/treble.mk)
+$(call inherit-product, device/motorola/quark/treble.mk)
