@@ -37,6 +37,9 @@
        { 00755, AID_SYSTEM,         AID_RADIO,          (1ULL << CAP_NET_BIND_SERVICE), "system/bin/ims_rtp_daemon" },
        { 00755, AID_SYSTEM,         AID_SYSTEM,         (1ULL << CAP_NET_RAW), "system/bin/imsdatadaemon" },
        { 00755, AID_SYSTEM,         AID_SYSTEM,         (1ULL << CAP_NET_RAW), "system/bin/ims_rtp_daemon" },
+       { 00755, AID_WIFI,           AID_WIFI,           (1ULL << CAP_NET_ADMIN), "+[system/vendor/bin/hw/android.hardware.wifi@1.0-service" },
+       { 00755, AID_WIFI,           AID_WIFI,           (1ULL << CAP_NET_RAW), "+[system/vendor/bin/hw/android.hardware.wifi@1.0-service" },
+       { 00755, AID_WIFI,           AID_WIFI,           (1ULL << CAP_SYS_MODULE), "+[system/vendor/bin/hw/android.hardware.wifi@1.0-service" },
 #ifdef NO_ANDROID_FILESYSTEM_CONFIG_DEVICE_DIRS
        { 00000, AID_ROOT,      AID_ROOT,      0, "system/etc/fs_config_dirs" },
 #endif
