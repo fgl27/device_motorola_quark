@@ -55,7 +55,7 @@ on init
     chmod 0440 /sys/fs/pstore/annotate-ramoops
 
     # Configure coredump
-    write /proc/sys/kernel/core_pattern "|/system/bin/coredump %e %p %t"
+    write /proc/sys/kernel/core_pattern "|/system/vendor/bin/coredump %e %p %t"
     write /proc/self/coredump_filter "0x7f"
 
     # start mdm_helper early (required since Oreo)
@@ -491,19 +491,19 @@ on property:ro.bluetooth.ftm_enabled=true
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
-service atvc_core /system/bin/dbvc_atvc_property_set
+service atvc_core /system/vendor/bin/dbvc_atvc_property_set
     class core
     user mot_atvc
     group mot_tpapi
     oneshot
 
-service atvc /system/bin/dbvc_atvc_property_set
+service atvc /system/vendor/bin/dbvc_atvc_property_set
     class late_start
     user mot_atvc
     group mot_tpapi
     oneshot
 
-service batt_health /system/bin/batt_health
+service batt_health /system/vendor/bin/batt_health
     class late_start
     user mot_pwric
     group log mot_pwric cache net_admin
@@ -553,7 +553,7 @@ service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
 on property:init.svc.surfaceflinger=stopped
     stop ppd
 
-service charge_only_mode /system/bin/charge_only_mode
+service charge_only_mode /system/vendor/bin/charge_only_mode
     user root
     group graphics system input
     disabled
@@ -565,7 +565,7 @@ service adspd /system/bin/adspd /dev/ttyHS3
     group audio input diag
 
 #start Sensor daemon
-service stm401 /system/bin/stm401 boot
+service stm401 /system/vendor/bin/stm401 boot
     disabled
     user compass
     group compass misc input
@@ -574,12 +574,12 @@ service stm401 /system/bin/stm401 boot
 on property:hw.touch.ready=1
     start stm401
 
-service mmi-usb-sh /system/bin/sh /init.mmi.usb.sh
+service mmi-usb-sh /system/vendor/bin/sh /init.mmi.usb.sh
     class core
     user root
     oneshot
 
-service mmi-boot-sh /system/bin/sh /init.mmi.boot.sh
+service mmi-boot-sh /system/vendor/bin/sh /init.mmi.boot.sh
     class core
     user root
     oneshot
@@ -597,12 +597,12 @@ service irsc_util /system/vendor/bin/irsc_util "/vendor/etc/sec_config"
     user root
     oneshot
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage /system/vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
 
-service rfs_access /system/bin/rfs_access
+service rfs_access /system/vendor/bin/rfs_access
    class core
    user system
    group system net_raw
@@ -619,7 +619,7 @@ on property:init.svc.thermal-engine=running
 on property:init.svc.thermal-engine=stopped
     write /sys/module/msm_thermal/parameters/enabled Y
 
-service start_hci_filter /system/bin/wcnss_filter
+service start_hci_filter /system/vendor/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth qcom_diag
@@ -631,7 +631,7 @@ service qmuxd /system/vendor/bin/qmuxd
     user root
     group radio audio bluetooth gps qcom_diag
 
-service netmgrd /system/bin/netmgrd
+service netmgrd /system/vendor/bin/netmgrd
     class main
     user root
     group root wifi wakelock radio inet
@@ -669,7 +669,7 @@ service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service gpsone_daemon /system/bin/gpsone_daemon
+service gpsone_daemon /system/vendor/bin/gpsone_daemon
     class late_start
     user gps
     group gps inet net_raw
@@ -679,11 +679,11 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service atfwd /system/bin/ATFWD-daemon
+service atfwd /system/vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
 
-service cnd /system/bin/cnd
+service cnd /system/vendor/bin/cnd
     class late_start
     socket cnd stream 660 root inet
