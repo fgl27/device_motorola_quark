@@ -42,67 +42,67 @@ PRODUCT_CHARACTERISTICS := nosdcard
 
 # Permissions
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
-    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
-    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
-    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
-    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml \
-    frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
-    frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml \
-    frameworks/native/data/etc/android.software.voice_recognizers.xml:system/etc/permissions/android.software.voice_recognizers.xml
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/vendor/etc/permissions/android.hardware.audio.low_latency.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/vendor/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/vendor/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/vendor/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/vendor/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/vendor/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/vendor/etc/permissions/android.hardware.nfc.hce.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/vendor/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/vendor/etc/permissions/android.hardware.sensor.compass.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/vendor/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/vendor/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/vendor/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/vendor/etc/permissions/android.hardware.sensor.stepcounter.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/vendor/etc/permissions/android.hardware.sensor.stepdetector.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/vendor/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/vendor/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/vendor/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/vendor/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/vendor/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/vendor/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/vendor/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/vendor/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/vendor/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/com.nxp.mifare.xml:system/vendor/etc/permissions/com.nxp.mifare.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/vendor/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/vendor/etc/permissions/android.hardware.opengles.aep.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/vendor/etc/permissions/android.hardware.vulkan.level.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/vendor/etc/permissions/android.hardware.vulkan.version.xml \
+    frameworks/native/data/etc/android.software.midi.xml:system/vendor/etc/permissions/android.software.midi.xml \
+    frameworks/native/data/etc/android.software.webview.xml:system/vendor/etc/permissions/android.software.webview.xml \
+    frameworks/native/data/etc/android.software.voice_recognizers.xml:system/vendor/etc/permissions/android.software.voice_recognizers.xml
 
 # Motorola-specific permissions
 PRODUCT_COPY_FILES += \
-    device/motorola/quark/permissions/com.motorola.actions.xml:system/etc/permissions/com.motorola.actions.xml \
-    device/motorola/quark/permissions/com.motorola.android.dm.service.xml:system/etc/permissions/com.motorola.android.dm.service.xml \
-    device/motorola/quark/permissions/com.motorola.android.encryption_library.xml:system/etc/permissions/com.motorola.android.encryption_library.xml \
-    device/motorola/quark/permissions/com.motorola.android.settings.shared.xml:system/etc/permissions/com.motorola.android.settings.shared.xml \
-	device/motorola/quark/permissions/com.motorola.android.tcmd.xml:system/etc/permissions/com.motorola.android.tcmd.xml \
-    device/motorola/quark/permissions/com.motorola.aon.quickpeek.xml:system/etc/permissions/com.motorola.aon.quickpeek.xml \
-    device/motorola/quark/permissions/com.motorola.aov.xml:system/etc/permissions/com.motorola.aov.xml \
-    device/motorola/quark/permissions/com.motorola.camera.xml:system/etc/permissions/com.motorola.camera.xml \
-    device/motorola/quark/permissions/com.motorola.camerabgproc_library.xml:system/etc/permissions/com.motorola.camerabgproc_library.xml \
-	device/motorola/quark/permissions/com.motorola.commandcenter.library.xml:system/etc/permissions/com.motorola.commandcenter.library.xml \
-	device/motorola/quark/permissions/com.motorola.device.xml:system/etc/permissions/com.motorola.device.xml \
-	device/motorola/quark/permissions/com.motorola.email.xml:system/etc/permissions/com.motorola.email.xml \
-    device/motorola/quark/permissions/com.motorola.frameworks.core.addon.xml:system/etc/permissions/com.motorola.frameworks.core.addon.xml \
-    device/motorola/quark/permissions/com.motorola.gallery.xml:system/etc/permissions/com.motorola.gallery.xml \
-    device/motorola/quark/permissions/com.motorola.haptic.xml:system/etc/permissions/com.motorola.haptic.xml \
-	device/motorola/quark/permissions/com.motorola.moto.xml:system/etc/permissions/com.motorola.moto.xml \
-    device/motorola/quark/permissions/com.motorola.motodisplay.pd.screenoff.xml:system/etc/permissions/com.motorola.motodisplay.pd.screenoff.xml \
-    device/motorola/quark/permissions/com.motorola.motosignature.xml:system/etc/permissions/com.motorola.motosignature.xml \
-	device/motorola/quark/permissions/com.motorola.sensorhub.stm401.xml:system/etc/permissions/com.motorola.sensorhub.stm401.xml \
-    device/motorola/quark/permissions/com.motorola.slpc.xml:system/etc/permissions/com.motorola.slpc.xml \
-    device/motorola/quark/permissions/com.motorola.software.bodyguard.xml:system/etc/permissions/com.motorola.software.bodyguard.xml \
-    device/motorola/quark/permissions/com.motorola.software.droid_line.xml:system/etc/permissions/com.motorola.software.droid_line.xml \
-    device/motorola/quark/permissions/com.motorola.software.folio.xml:system/etc/permissions/com.motorola.software.folio.xml \
-	device/motorola/quark/permissions/com.motorola.software.guideme.xml:system/etc/permissions/com.motorola.software.guideme.xml \
-    device/motorola/quark/permissions/com.motorola.software.smartnotifications.xml:system/etc/permissions/com.motorola.software.smartnotifications.xml \
-    device/motorola/quark/permissions/com.motorola.targetnotif.xml:system/etc/permissions/com.motorola.targetnotif.xml \
-    device/motorola/quark/permissions/com.motorola.zap.xml:system/etc/permissions/com.motorola.zap.xml
+    device/motorola/quark/permissions/com.motorola.actions.xml:system/vendor/etc/permissions/com.motorola.actions.xml \
+    device/motorola/quark/permissions/com.motorola.android.dm.service.xml:system/vendor/etc/permissions/com.motorola.android.dm.service.xml \
+    device/motorola/quark/permissions/com.motorola.android.encryption_library.xml:system/vendor/etc/permissions/com.motorola.android.encryption_library.xml \
+    device/motorola/quark/permissions/com.motorola.android.settings.shared.xml:system/vendor/etc/permissions/com.motorola.android.settings.shared.xml \
+	device/motorola/quark/permissions/com.motorola.android.tcmd.xml:system/vendor/etc/permissions/com.motorola.android.tcmd.xml \
+    device/motorola/quark/permissions/com.motorola.aon.quickpeek.xml:system/vendor/etc/permissions/com.motorola.aon.quickpeek.xml \
+    device/motorola/quark/permissions/com.motorola.aov.xml:system/vendor/etc/permissions/com.motorola.aov.xml \
+    device/motorola/quark/permissions/com.motorola.camera.xml:system/vendor/etc/permissions/com.motorola.camera.xml \
+    device/motorola/quark/permissions/com.motorola.camerabgproc_library.xml:system/vendor/etc/permissions/com.motorola.camerabgproc_library.xml \
+	device/motorola/quark/permissions/com.motorola.commandcenter.library.xml:system/vendor/etc/permissions/com.motorola.commandcenter.library.xml \
+	device/motorola/quark/permissions/com.motorola.device.xml:system/vendor/etc/permissions/com.motorola.device.xml \
+	device/motorola/quark/permissions/com.motorola.email.xml:system/vendor/etc/permissions/com.motorola.email.xml \
+    device/motorola/quark/permissions/com.motorola.frameworks.core.addon.xml:system/vendor/etc/permissions/com.motorola.frameworks.core.addon.xml \
+    device/motorola/quark/permissions/com.motorola.gallery.xml:system/vendor/etc/permissions/com.motorola.gallery.xml \
+    device/motorola/quark/permissions/com.motorola.haptic.xml:system/vendor/etc/permissions/com.motorola.haptic.xml \
+	device/motorola/quark/permissions/com.motorola.moto.xml:system/vendor/etc/permissions/com.motorola.moto.xml \
+    device/motorola/quark/permissions/com.motorola.motodisplay.pd.screenoff.xml:system/vendor/etc/permissions/com.motorola.motodisplay.pd.screenoff.xml \
+    device/motorola/quark/permissions/com.motorola.motosignature.xml:system/vendor/etc/permissions/com.motorola.motosignature.xml \
+	device/motorola/quark/permissions/com.motorola.sensorhub.stm401.xml:system/vendor/etc/permissions/com.motorola.sensorhub.stm401.xml \
+    device/motorola/quark/permissions/com.motorola.slpc.xml:system/vendor/etc/permissions/com.motorola.slpc.xml \
+    device/motorola/quark/permissions/com.motorola.software.bodyguard.xml:system/vendor/etc/permissions/com.motorola.software.bodyguard.xml \
+    device/motorola/quark/permissions/com.motorola.software.droid_line.xml:system/vendor/etc/permissions/com.motorola.software.droid_line.xml \
+    device/motorola/quark/permissions/com.motorola.software.folio.xml:system/vendor/etc/permissions/com.motorola.software.folio.xml \
+	device/motorola/quark/permissions/com.motorola.software.guideme.xml:system/vendor/etc/permissions/com.motorola.software.guideme.xml \
+    device/motorola/quark/permissions/com.motorola.software.smartnotifications.xml:system/vendor/etc/permissions/com.motorola.software.smartnotifications.xml \
+    device/motorola/quark/permissions/com.motorola.targetnotif.xml:system/vendor/etc/permissions/com.motorola.targetnotif.xml \
+    device/motorola/quark/permissions/com.motorola.zap.xml:system/vendor/etc/permissions/com.motorola.zap.xml
 
 #$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 #$(call inherit-product, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
@@ -154,9 +154,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Audio configuration
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml	
+    $(LOCAL_PATH)/audio/audio_platform_info.xml:system/vendor/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/audio/audio_policy.conf:system/vendor/etc/audio_policy.conf \
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/vendor/etc/mixer_paths.xml	
 
 # Camera
 PRODUCT_PACKAGES += \
