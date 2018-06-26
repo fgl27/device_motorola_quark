@@ -108,9 +108,10 @@
 #define AID_NET_BT_STACK  3008  /* bluetooth: access config files */
 #define AID_READPROC      3009  /* Allow /proc read access */
 #define AID_WAKELOCK      3010  /* Allow system wakelock read/write access */
+#define AID_UHID          3011  /* Allow read/write to /dev/uhid node */
 
-#define AID_SENSORS       3011 /* access to /dev/socket/sensor_ctl_socket & QCCI/QCSI */
-#define AID_QCOM_DIAG     3012  /* can read/write /dev/diag */
+#define AID_SENSORS       3012 /* access to /dev/socket/sensor_ctl_socket & QCCI/QCSI */
+#define AID_QCOM_DIAG     3013  /* can read/write /dev/diag */
 
 /* The range 5000-5999 is also reserved for OEM, and must never be used here. */
 #define AID_OEM_RESERVED_2_START 5000
@@ -152,6 +153,7 @@
 #define AID_ISOLATED_END   99999 /* end of uids for fully isolated sandboxed processes */
 
 #define AID_USER        100000  /* offset for uid ranges for each user */
+#define AID_USER_OFFSET 100000 /* offset for uid ranges for each user */
 
 #define AID_SHARED_GID_START 50000 /* start of gids for apps in each user to share */
 #define AID_SHARED_GID_END   59999 /* start of gids for apps in each user to share */
