@@ -156,3 +156,6 @@ persist.sys.root_access=1
 
 # Set usb to adb and mtp
 persist.sys.usb.config=mtp,adb
+
+# Vendor security patch level
+ro.vendor.build.security_patch=2018-01-01
