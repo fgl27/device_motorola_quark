@@ -499,4 +499,20 @@
 
     <!-- BurnIn protection. This should be enabled on devices that have OLED displays -->
     <bool name="config_enableBurnInProtection">true</bool>
+    <!-- Values for GPS configuration -->
+    <string-array translatable="false" name="config_gpsParameters">
+        <item>XTRA_SERVER_1=https://xtrapath1.izatcloud.net/xtra2.bin</item>
+        <item>XTRA_SERVER_2=https://xtrapath2.izatcloud.net/xtra2.bin</item>
+        <item>XTRA_SERVER_3=https://xtrapath3.izatcloud.net/xtra2.bin</item>
+        <item>NTP_SERVER=time.gpsonextra.net</item>
+        <item>SUPL_ES=0</item>
+        <item>SUPL_HOST=supl.telusmobility.com</item>
+        <item>SUPL_PORT=7275</item>
+        <item>SUPL_MODE=1</item>
+        <item>LPP_PROFILE=2</item>
+    </string-array>
+
+    <!-- Power Management: Specifies whether to decouple the interactive
+         state of the device from the display on/off state. -->
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
 </resources>
