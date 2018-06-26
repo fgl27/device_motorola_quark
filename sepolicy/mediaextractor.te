@@ -1,4 +1,0 @@
-allow mediaextractor fuse:file r_file_perms;
-allow mediaextractor sdcard_posix:file r_file_perms;
-allow mediaextractor sdcardfs:file r_file_perms;
-allow mediaextractor vfat:file r_file_perms;

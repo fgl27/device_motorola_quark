@@ -1,4 +1,4 @@
-type charge_only_mode, domain, domain_deprecated;
+type charge_only_mode, domain;
 type charge_only_mode_exec, exec_type, file_type;
 init_daemon_domain(charge_only_mode)
 
@@ -27,7 +27,7 @@ r_dir_file(charge_only_mode, sysfs_thermal);
 r_dir_file(charge_only_mode, sysfs)
 
 allow charge_only_mode sysfs_batteryinfo:file r_file_perms;
-allow charge_only_mode batteryproperties_service:service_manager { add find };
+#allow charge_only_mode batteryproperties_service:service_manager { add find };
 
 # charge_only_mode needs to tell init to continue the boot
 # process when running in charger mode.

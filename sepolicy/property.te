@@ -1,6 +1,6 @@
 # Motorola service properties
 type atvc_prop, property_type;
-type mmi_prop, property_type;
+#type mmi_prop, property_type;
 type adspd_prop, property_type;
 type rmtfs_prop, property_type;
 type hw_rev_prop, property_type;

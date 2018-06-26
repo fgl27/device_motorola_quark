@@ -6,6 +6,3 @@ allow thermal-engine sysfs_battery_supply:lnk_file read;
 allow thermal-engine sysfs:dir search;
 allow thermal-engine sysfs:file read;
 allow thermal-engine thermal-engine:capability { chown };
-
-allow thermal-engine sysfs_spmi_dev:dir r_dir_perms;
-allow thermal-engine sysfs_spmi_dev:lnk_file r_file_perms;
