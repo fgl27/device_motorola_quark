@@ -33,23 +33,19 @@
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-
-#include <android-base/logging.h>
-
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
 #include "vendor_init.h"
 #include "property_service.h"
+#include <utils/Log.h>
+#include <android-base/properties.h>
+#include <android-base/logging.h>
 
 #include "init_apq8084.h"
 
+using android::base::GetProperty;
 using android::init::property_set;
-
-__attribute__ ((weak))
-void init_target_properties()
-{
-}
 
 void property_override(char const prop[], char const value[])
 {
@@ -62,10 +58,9 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+__attribute__ ((weak))
+void init_target_properties()
 {
-    property_override(system_prop, value);
-    property_override(vendor_prop, value);
 }
 
 static int read_file2(const char *fname, char *data, int max_size)
@@ -77,7 +72,7 @@ static int read_file2(const char *fname, char *data, int max_size)
 
     fd = open(fname, O_RDONLY);
     if (fd < 0) {
-        LOG(ERROR) << "failed to open " << fname << std::endl;
+        ALOGE("failed to open '%s'\n", fname);
         return 0;
     }
 
@@ -97,7 +92,7 @@ static void init_alarm_boot_properties()
     char const *power_off_alarm_file = "/persist/alarm/powerOffAlarmSet";
     char boot_reason[64];
     char power_off_alarm[64];
-    std::string tmp = property_get("ro.boot.alarmboot");
+    std::string tmp = GetProperty("ro.boot.alarmboot", "");
 
     if (read_file2(boot_reason_file, boot_reason, sizeof(boot_reason))
             && read_file2(power_off_alarm_file, power_off_alarm, sizeof(power_off_alarm))) {
@@ -138,7 +133,7 @@ void vendor_load_properties()
     init_target_properties();
     init_alarm_boot_properties();
 
-    platform = property_get("ro.board.platform");
+    platform = GetProperty("ro.board.platform", "");
     if (platform != ANDROID_TARGET)
         return;
 
@@ -153,11 +148,11 @@ void vendor_load_properties()
     // Fsgid: XT1250 America = lra (america for verizon), lra_gsm (america for gsm network)
     // Fsgid: XT1254 Verizon = verizon (america verizon), verizon_gsm (america for gsm network)
 
-    fsgid = property_get("ro.boot.fsg-id");
-    carrier = property_get("ro.boot.carrier");
-    sku = property_get("ro.boot.hardware.sku");
-    radio = property_get("ro.boot.radio");
-    cid = property_get("ro.boot.cid");
+    fsgid = GetProperty("ro.boot.fsg-id", "");
+    carrier = GetProperty("ro.boot.carrier", "");
+    sku = GetProperty("ro.boot.hardware.sku", "");
+    radio = GetProperty("ro.boot.radio", "");
+    cid = GetProperty("ro.boot.cid", "");
 
     if (fsgid != "emea" && fsgid != "singlela" && fsgid != "lra" && fsgid != "lra_gsm" && fsgid != "verizon" && fsgid != "verizon_gsm") {
         if (sku == "XT1225" || (radio == "0x5" && cid == "0xC")) {
@@ -192,29 +187,7 @@ void vendor_load_properties()
         property_set("ro.com.google.clientidbase.ms", "android-verizon");
         property_set("ro.com.google.clientidbase.am", "android-verizon");
         property_set("ro.com.google.clientidbase.yt", "android-verizon");
-
-	// commented out vzw volte config, as the binary don't work
-        //property_set("persist.data.iwlan.enable", "true");
-        //property_set("persist.radio.calls.on.ims", "true");
-        //property_set("persist.data.netmgrd.qos.enable", "true");
-        //property_set("persist.data.iwlan.enable", "true");
-        //property_set("persist.dbg.volte_avail_ovr", "1");
-        //property_set("persist.radio.jbims", "1");
-        //property_set("persist.radio.VT_ENABLE", "1");
-        //property_set("persist.radio.VT_HYBRID_ENABLE", "1");
-        //property_set("persist.radio.ROTATION_ENABLE", "1");
-        //property_set("persist.radio.RATE_ADAPT_ENABLE", "1");
-        //property_set("persist.rcs.supported", "1");
-        //property_set("persist.ims.enableADBLogs", "1");
-        //property_set("persist.ims.enableDebugLogs", "1");
-        //property_set("persist.cne.feature", "1");
-        //property_set("persist.sys.cnd.iwlan", "1");
-        //property_set("persist.radio.domain.ps", "0");
-        //property_set("persist.radio.REVERSE_QMI", "0");
-        //property_set("persist.rmnet.mux", "enabled");
-        //property_set("persist.cne.logging.qxdm", "3974");
-
-        INFO("Set properties for \"verizon\"!\n");
+        ALOGI("Set properties for \"verizon\"!\n");
     } else if (fsgid =="verizon_gsm") {
         // XT1254 - Droid Turbo, but set as gsm phone
         property_override("ro.build.product", "quark");
@@ -229,7 +202,7 @@ void vendor_load_properties()
         property_set("ro.com.google.clientidbase.ms", "android-verizon");
         property_set("ro.com.google.clientidbase.am", "android-verizon");
         property_set("ro.com.google.clientidbase.yt", "android-verizon");
-        INFO("Set properties for \"verizon_gsm\"!\n");
+        ALOGI("Set properties for \"verizon_gsm\"!\n");
     } else if (fsgid =="lra") {
         // XT1250 - Moto MAXX
         property_override("ro.build.product", "quark");
@@ -244,7 +217,7 @@ void vendor_load_properties()
         property_set("ro.cdma.home.operator.isnan", "1");
         property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
-        INFO("Set properties for \"lra\"!\n");
+        ALOGI("Set properties for \"lra\"!\n");
     } else if (fsgid =="lra_gsm") {
         // XT1250 - Moto MAXX, but set as gsm phone
         property_override("ro.build.product", "quark");
@@ -259,7 +232,7 @@ void vendor_load_properties()
 	property_set("ro.com.google.clientidbase.ms", "android-motorola");
 	property_set("ro.com.google.clientidbase.am", "android-motorola");
 	property_set("ro.com.google.clientidbase.yt", "android-motorola");
-        INFO("Set properties for \"lra_gsm\"!\n");
+        ALOGI("Set properties for \"lra_gsm\"!\n");
     } else if (fsgid =="emea") {
         // XT1225 - Moto Turbo
         property_override("ro.build.product", "quark_umts");
@@ -274,7 +247,7 @@ void vendor_load_properties()
 	property_set("ro.com.google.clientidbase.ms", "android-motorola");
 	property_set("ro.com.google.clientidbase.am", "android-motorola");
 	property_set("ro.com.google.clientidbase.yt", "android-motorola");
-        INFO("Set properties for \"emea\"!\n");
+        ALOGI("Set properties for \"emea\"!\n");
     } else {
         // XT1225 - Moto MAXX (default)
         property_override("ro.build.product", "quark_umts");
@@ -289,6 +262,6 @@ void vendor_load_properties()
 	property_set("ro.com.google.clientidbase.ms", "android-motorola");
 	property_set("ro.com.google.clientidbase.am", "android-motorola");
 	property_set("ro.com.google.clientidbase.yt", "android-motorola");
-        INFO("Set properties for \"singlela\"!\n");
+        ALOGI("Set properties for \"singlela\"!\n");
     }
 }
