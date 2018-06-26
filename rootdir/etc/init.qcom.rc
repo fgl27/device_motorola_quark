@@ -453,6 +453,11 @@ on property:sys.boot_completed=1
     write /proc/sys/vm/swappiness 25
     swapon_all fstab.qcom
 
+    # disable debug logging
+    write /sys/module/rmnet_usb/parameters/dump_ctrl_msg 0
+    write /sys/module/mhi_uci/parameters/mhi_uci_dump 0
+    write /sys/kernel/debug/clk/debug_suspend 0
+
     # Post boot services
     rm /data/system/default_values
     start mpdecision
