@@ -518,12 +518,6 @@ service time_daemon /system/vendor/bin/time_daemon
     user root
     group root
 
-service wcnss-service /system/vendor/bin/wcnss_service
-    class late_start
-    user system
-    group system wifi qcom_diag radio
-    oneshot
-
 service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
@@ -588,7 +582,7 @@ service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
 
-service irsc_util /system/vendor/bin/irsc_util "/etc/sec_config"
+service irsc_util /system/vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
@@ -669,13 +663,6 @@ service gpsone_daemon /system/bin/gpsone_daemon
     class late_start
     user gps
     group gps inet net_raw
-    disabled
-
-service hostapd /system/vendor/bin/hostapd -dd /data/misc/wifi/hostapd.conf
-    class late_start
-    user root
-    group root
-    oneshot
     disabled
 
 on property:ro.data.large_tcp_window_size=true
