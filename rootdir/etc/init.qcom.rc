@@ -519,33 +519,33 @@ service thermal-com /system/vendor/bin/thermal-engine --minimode
     user root
     disabled
 
-service time_daemon /system/vendor/bin/time_daemon
+service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
 
-service qseecomd /system/vendor/bin/qseecomd
+service qseecomd /system/bin/qseecomd
     class core
     user root
     group root
 
-service mpdecision /system/vendor/bin/mpdecision --avg_comp --min_cores=4
+service mpdecision /system/bin/mpdecision --avg_comp --min_cores=4
     user root
     disabled
 
-service mdm_helper /system/vendor/bin/mdm_helper
+service mdm_helper /system/bin/mdm_helper
     class core
     onrestart setprop ro.service.mdm_helper_restarted "true"
     group root system radio oem_2950 wakelock
     disabled
 
-service mdm_helper_proxy /system/vendor/bin/mdm_helper_proxy
+service mdm_helper_proxy /system/bin/mdm_helper_proxy
     class core
     user system
     group system
     disabled
 
-service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
@@ -592,7 +592,7 @@ service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
 
-service irsc_util /system/vendor/bin/irsc_util "/vendor/etc/sec_config"
+service irsc_util /system/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
@@ -626,7 +626,7 @@ service start_hci_filter /system/bin/wcnss_filter
     disabled
 
 # QMUX must be in multiple groups to support external process connections
-service qmuxd /system/vendor/bin/qmuxd
+service qmuxd /system/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps qcom_diag
