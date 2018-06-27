@@ -125,6 +125,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.text_large_cache_height=2048
 
 # Audio
+USE_XML_AUDIO_POLICY_CONF := 1
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.apq8084 \
