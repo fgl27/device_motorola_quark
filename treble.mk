@@ -42,10 +42,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl
 
-# GPS
-PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl
-
 # IR Blaster
 PRODUCT_PACKAGES += \
     android.hardware.ir@1.0-impl
@@ -57,10 +53,6 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl
-
-# NFC packages
-PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.0-impl
 
 # Power HAL
 PRODUCT_PACKAGES += \
@@ -80,7 +72,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-service.lineage
+    android.hardware.vibrator@1.0-impl
 
 # Wifi
 PRODUCT_PACKAGES += \
