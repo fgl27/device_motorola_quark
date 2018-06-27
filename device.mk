@@ -310,7 +310,7 @@ PRODUCT_PACKAGES += \
 
 # Thermal
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine-quark.conf:system/etc/thermal-engine-quark.conf
+    $(LOCAL_PATH)/configs/thermal-engine-quark.conf:system/vendor/etc/thermal-engine-quark.conf
 
 # Torch
 PRODUCT_PACKAGES += \
