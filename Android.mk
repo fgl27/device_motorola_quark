@@ -141,19 +141,6 @@ $(CMN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 
 ALL_DEFAULT_INSTALLED_MODULES += $(CMN_SYMLINKS)
 
-include $(CLEAR_VARS)
-ACBD_FILES := \
-    Bluetooth_cal.acdb  General_cal.acdb  Global_cal.acdb  Handset_cal.acdb  Hdmi_cal.acdb  Headset_cal.acdb  Speaker_cal.acdb
-
-ACBD_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/,$(notdir $(ACBD_FILES)))
-$(ACBD_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
-	@echo "ACBD Audio Files: $@"
-	@mkdir -p $(dir $@)
-	@rm -rf $@
-	$(hide) ln -sf /system/vendor/etc/acdbdata/$(notdir $@) $@
-
-ALL_DEFAULT_INSTALLED_MODULES += $(ACBD_SYMLINKS)
-
 # Create links for audcal data files
 $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wcd9320; \
 	ln -sf /data/misc/audio/wcd9320_anc.bin \
@@ -162,4 +149,5 @@ $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wcd9320; \
 		$(TARGET_OUT)/etc/firmware/wcd9320/wcd9320_mbhc.bin; \
 	ln -sf /data/misc/audio/wcd9320_mad_audio.bin \
 		$(TARGET_OUT)/etc/firmware/wcd9320/wcd9320_mad_audio.bin)
+
 endif
