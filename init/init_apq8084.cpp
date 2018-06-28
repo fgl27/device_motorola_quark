@@ -172,9 +172,12 @@ void vendor_load_properties()
         // XT1254 - Droid Turbo
         property_override("ro.build.product", "quark");
         property_override("ro.product.device", "quark");
+        property_override("ro.vendor.product.device", "quark");
         property_override("ro.product.model", "DROID Turbo");
+        property_override("ro.vendor.product.model", "DROID Turbo");
         property_override("ro.build.description", "quark_verizon-user 6.0.1 MCG24.251-5 9 release-keys");
         property_override("ro.build.fingerprint", "motorola/quark_verizon/quark:6.0.1/MCG24.251-5/9:user/release-keys");
+        property_override("ro.vendor.build.fingerprint", "motorola/quark_verizon/quark:6.0.1/MCG24.251-5/9:user/release-keys");
         property_set("ro.fsg-id", "verizon");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnCdmaDevice", "1");
@@ -192,9 +195,12 @@ void vendor_load_properties()
         // XT1254 - Droid Turbo, but set as gsm phone
         property_override("ro.build.product", "quark");
         property_override("ro.product.device", "quark");
+        property_override("ro.vendor.product.device", "quark");
         property_override("ro.product.model", "DROID Turbo");
+        property_override("ro.vendor.product.model", "DROID Turbo");
         property_override("ro.build.description", "quark_verizon-user 6.0.1 MCG24.251-5 9 release-keys");
         property_override("ro.build.fingerprint", "motorola/quark_verizon/quark:6.0.1/MCG24.251-5/9:user/release-keys");
+        property_override("ro.vendor.build.fingerprint", "motorola/quark_verizon/quark:6.0.1/MCG24.251-5/9:user/release-keys");
         property_set("ro.fsg-id", "verizon");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnGsmDevice", "1");
@@ -207,9 +213,12 @@ void vendor_load_properties()
         // XT1250 - Moto MAXX
         property_override("ro.build.product", "quark");
         property_override("ro.product.device", "quark");
+        property_override("ro.vendor.product.device", "quark");
         property_override("ro.product.model", "Moto MAXX");
+        property_override("ro.vendor.product.model", "Moto MAXX");
         property_override("ro.build.description", "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys");
         property_override("ro.build.fingerprint", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys");
+        property_override("ro.vendor.build.fingerprint", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys");
         property_set("ro.fsg-id", "lra");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnCdmaDevice", "1");
@@ -222,9 +231,12 @@ void vendor_load_properties()
         // XT1250 - Moto MAXX, but set as gsm phone
         property_override("ro.build.product", "quark");
         property_override("ro.product.device", "quark");
+        property_override("ro.vendor.product.device", "quark");
         property_override("ro.product.model", "Moto MAXX");
+        property_override("ro.vendor.product.model", "Moto MAXX");
         property_override("ro.build.description", "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys");
         property_override("ro.build.fingerprint", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys");
+        property_override("ro.vendor.build.fingerprint", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys");
         property_set("ro.fsg-id", "lra");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
@@ -237,9 +249,12 @@ void vendor_load_properties()
         // XT1225 - Moto Turbo
         property_override("ro.build.product", "quark_umts");
         property_override("ro.product.device", "quark_umts");
+        property_override("ro.vendor.product.device", "quark_umts");
         property_override("ro.product.model", "Moto Turbo");
+        property_override("ro.vendor.product.model", "Moto Turbo");
         property_override("ro.build.description", "quark_reteu-user 6.0.1 MPG24.107-70.2 2 release-keys");
         property_override("ro.build.fingerprint", "motorola/quark_reteu/quark_umts:6.0.1/MPG24.107-70.2/2:user/release-keys");
+        property_override("ro.vendor.build.fingerprint", "motorola/quark_reteu/quark_umts:6.0.1/MPG24.107-70.2/2:user/release-keys");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
         property_set("ro.fsg-id", "emea");
@@ -252,9 +267,12 @@ void vendor_load_properties()
         // XT1225 - Moto MAXX (default)
         property_override("ro.build.product", "quark_umts");
         property_override("ro.product.device", "quark_umts");
+        property_override("ro.vendor.product.device", "quark_umts");
         property_override("ro.product.model", "Moto MAXX");
+        property_override("ro.vendor.product.model", "Moto MAXX");
         property_override("ro.build.description", "quark_retbr-user 6.0.1 MPGS24.107-70.2-2 2 release-keys");
         property_override("ro.build.fingerprint", "motorola/quark_retbr/quark_umts:6.0.1/MPGS24.107-70.2-2/2:user/release-keys");
+        property_override("ro.vendor.build.fingerprint", "motorola/quark_retbr/quark_umts:6.0.1/MPGS24.107-70.2-2/2:user/release-keys");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
         property_set("ro.fsg-id", "singlela");
