@@ -319,13 +319,6 @@ PRODUCT_COPY_FILES += \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_cfg.ini:system/vendor/firmware/WCNSS_qcom_cfg.ini \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_wlan_nv.bin:system/vendor/firmware/WCNSS_qcom_wlan_nv.bin
 
-# Sensors
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensors/_hals.conf:system/vendor/etc/sensors/_hals.conf
-
-PRODUCT_PACKAGES += \
-    sensors.apq8084
-
 # shims
 PRODUCT_PACKAGES += \
     libshims_thermal \
