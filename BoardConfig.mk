@@ -193,10 +193,5 @@ endif
 # Boot animation
 TARGET_BOOTANIMATION_HALF_RES := true
 
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /system/vendor/bin/thermal-engine|libshims_thermal.so \
-    /system/vendor/lib/libqc-opt.so|libshim_qcopt.so
-
 # Binder API version
 TARGET_USES_64_BIT_BINDER := true
