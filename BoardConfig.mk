@@ -21,7 +21,7 @@ QUARK_PATH := device/motorola/quark
 BOARD_VENDOR := motorola-qcom
 
 TARGET_SPECIFIC_HEADER_PATH := $(QUARK_PATH)/include
-TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(QUARK_PATH)/android_filesystem_config.h
+TARGET_FS_CONFIG_GEN += $(QUARK_PATH)/configs/config.fs
 
 # Assert
 # TODO remove device ,,
