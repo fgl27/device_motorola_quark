@@ -26,11 +26,6 @@ media.stagefright.less-secure=true
 # Data Disable mobile data by default
 ro.com.android.mobiledata=false
 
-# Dalvik
-dalvik.vm.boot-dex2oat-threads=4
-dalvik.vm.dex2oat-threads=4
-dalvik.vm.image-dex2oat-threads=4
-
 # Display
 ro.qualcomm.cabl=0
 ro.opengles.version=196610
