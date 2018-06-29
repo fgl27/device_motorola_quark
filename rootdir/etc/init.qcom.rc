@@ -536,7 +536,7 @@ service mpdecision /system/bin/mpdecision --avg_comp --min_cores=4
 service mdm_helper /system/bin/mdm_helper
     class core
     onrestart setprop ro.service.mdm_helper_restarted "true"
-    group root system radio qcom_diag wakelock
+    group root system radio oem_2950 wakelock
     disabled
 
 service mdm_helper_proxy /system/bin/mdm_helper_proxy
@@ -622,14 +622,14 @@ on property:init.svc.thermal-engine=stopped
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth qcom_diag
+    group bluetooth oem_2950
     disabled
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps qcom_diag
+    group radio audio bluetooth gps oem_2950 log
 
 service netmgrd /system/bin/netmgrd
     class main

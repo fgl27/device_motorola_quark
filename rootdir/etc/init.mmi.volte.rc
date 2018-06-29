@@ -29,14 +29,14 @@ service imsqmidaemon /system/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
-    group radio log qcom_diag net_raw net_admin
+    group radio log oem_2950 net_raw net_admin
 
 # imsdatadaemon starts with root and UID will be downgraded to SYSTEM.
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
-    group system wifi radio inet log qcom_diag net_raw net_admin
+    group system wifi radio inet log oem_2950 net_raw net_admin
     disabled
 
 on property:sys.ims.QMI_DAEMON_STATUS=1
