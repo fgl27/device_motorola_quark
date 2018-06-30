@@ -1,0 +1,2 @@
+[AID_QCOM_DIAG]
+value:2950

@@ -23,6 +23,12 @@ BOARD_VENDOR := motorola-qcom
 TARGET_SPECIFIC_HEADER_PATH := $(QUARK_PATH)/include
 TARGET_FS_CONFIG_GEN += $(QUARK_PATH)/configs/config.fs
 
+# RR source has AID_QCOM_DIAG on system/core
+ifeq ($(RR_VERSION),)
+TARGET_FS_CONFIG_GEN += $(QUARK_PATH)/configs/config_extra.fs
+endif
+
+
 # Assert
 # TODO remove device ,,
 TARGET_OTA_ASSERT_DEVICE := quark,quark_lra,quark_umts,quark_verizon,xt1225,xt1250,,xt1254
