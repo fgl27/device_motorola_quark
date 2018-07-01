@@ -65,7 +65,6 @@ etc/firmware/rampatch_tlv.img
 etc/firmware/rampatch_tlv_1.3.tlv
 etc/firmware/rampatch_tlv_2.1.tlv
 etc/firmware/rampatch_tlv_3.0.tlv
-vendor/lib/libbt-vendor.so
 vendor/lib/libbtnv.so
 
 # Camera
@@ -84,6 +83,7 @@ lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
+# libmot_sensorlistener (Athene)
 lib/libmot_sensorlistener.so
 lib/libqomx_core.so
 vendor/lib/libactuator_lc898122_camcorder.so
@@ -211,8 +211,9 @@ vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libWVStreamControlAPI_L1.so
-# DRM (from athene)
+# DRM (angler OPR6.170623.017)
 vendor/lib/mediadrm/libwvdrmengine.so
+# DRM (Athene)
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 
@@ -229,7 +230,6 @@ etc/permissions/org.simalliance.openmobileapi.xml
 
 # GPS
 bin/gpsone_daemon
-etc/permissions/com.qualcomm.location.xml
 etc/gps.conf
 etc/izat.conf
 etc/quipc.conf
@@ -240,18 +240,11 @@ lib/libloc_api_v02.so
 lib/libloc_core.so
 lib/libloc_ds_api.so
 lib/libloc_eng.so
--priv-app/com.qualcomm.location/com.qualcomm.location.apk
--priv-app/com.qualcomm.services.location/com.qualcomm.services.location.apk
 vendor/etc/gnss/gnss-fsh.bin
 vendor/lib/hw/flp.default.so
-vendor/lib/libalarmservice_jni.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
-vendor/lib/libloc_ext.so
-vendor/lib/liblocationservice.so
-vendor/lib/libquipc_os_api.so
-vendor/lib/libulp2.so
 
 # Graphics (from shamu)
 vendor/lib/egl/eglSubDriverAndroid.so
