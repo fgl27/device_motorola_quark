@@ -9,3 +9,6 @@ type display_sysfs, sysfs_type, file_type;
 type vib_sysfs, sysfs_type, file_type;
 type sysfs_power_supply, file_type, sysfs_type;
 type sysfs_hal_gralloc, sysfs_type, fs_type;
+
+#type for devstart
+type sysfs_audio, sysfs_type, fs_type;
