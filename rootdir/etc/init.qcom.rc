@@ -26,7 +26,7 @@
 #
 
 import init.qcom.usb.rc
-import init.qcom.power.rc
+import /vendor/etc/init/init.qcom.power.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -84,7 +84,7 @@ on fs
     wait /dev/block/platform/${ro.boot.bootdevice}
     symlink /dev/block/platform/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    mount_all fstab.qcom
+    mount_all /vendor/etc/fstab.qcom
     restorecon_recursive /persist
 
     # use /persist as phony PDS partition
@@ -455,7 +455,7 @@ on property:sys.boot_completed=1
     # Start zram
     write /proc/sys/vm/page-cluster 0
     write /proc/sys/vm/swappiness 25
-    swapon_all fstab.qcom
+    swapon_all /vendor/etc/fstab.qcom
 
     # disable debug logging
     write /sys/module/rmnet_usb/parameters/dump_ctrl_msg 0
