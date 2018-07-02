@@ -449,6 +449,9 @@ on boot
 
 on property:sys.boot_completed=1
 
+    #Oreo workaround
+    restart ril-daemon
+
     # Start zram
     write /proc/sys/vm/page-cluster 0
     write /proc/sys/vm/swappiness 25
