@@ -450,6 +450,8 @@ on boot
 on property:sys.boot_completed=1
 
     #Oreo workaround
+    restart mdm_helper
+    restart mdm_helper_proxy
     restart ril-daemon
 
     # Start zram
@@ -465,7 +467,6 @@ on property:sys.boot_completed=1
     # Post boot services
     rm /data/system/default_values
     start mpdecision
-    start batt_health
 
 # corefile limit and ETB enabling
 on property:persist.debug.trace=1
@@ -505,12 +506,6 @@ service atvc /system/bin/dbvc_atvc_property_set
     user mot_atvc
     group mot_tpapi
     oneshot
-
-service batt_health /system/bin/batt_health
-    class late_start
-    user mot_pwric
-    group log mot_pwric cache net_admin
-    disabled
 
 service thermal-engine /system/vendor/bin/thermal-engine
     class main
