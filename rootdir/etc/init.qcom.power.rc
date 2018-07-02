@@ -98,12 +98,6 @@ on property:sys.boot_completed=1
    #sync_threshold use stock value
    write /sys/module/cpu_boost/parameters/sync_threshold 1728000
 
-    #Set io ahead for better performance,
-    write /sys/block/mmcblk0/queue/read_ahead_kb 512
-
-    # Set io ahead for better performance
-    setprop sys.io.scheduler bfq
-
      # enable adreno_idler
      write /sys/module/adreno_idler/parameters/adreno_idler_active Y
 
