@@ -42,6 +42,10 @@ In **system/core/** cherry-pick
 
 https://github.com/bhb27/system_core/commit/2ae38319deb341f5a87c60f19ed7efca19e9c103
 
+In **system/qcom/** cherry-pick
+
+https://github.com/bhb27/android_system_qcom/commit/6b839a2decf5cce326d0933d0402ad5fb86e526f
+
 In **hardware/qcom/bt-caf** revert
 
 https://github.com/LineageOS/android_hardware_qcom_bt/commit/ddaccd2176683b6de272e7d2718557dbe9b9fe1b

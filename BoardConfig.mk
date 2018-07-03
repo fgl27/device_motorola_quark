@@ -198,7 +198,3 @@ TARGET_BOOTANIMATION_HALF_RES := true
 
 # Binder API version
 TARGET_USES_64_BIT_BINDER := true
-
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /system/lib/libmdmcutback.so|libqsap_shim.so

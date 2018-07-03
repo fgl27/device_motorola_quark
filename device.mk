@@ -291,10 +291,6 @@ PRODUCT_PACKAGES += \
     libcurl \
     libxml2
 
-# RIL Shim
-PRODUCT_PACKAGES += \
-    libqsap_shim
-
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-quark.conf:system/vendor/etc/thermal-engine-quark.conf
