@@ -32,7 +32,7 @@
         <version>2.4</version>
         <interface>
             <name>ICameraProvider</name>
-            <instance>legacy/0</instance>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl">
@@ -119,19 +119,6 @@
         <version>2.0</version>
         <interface>
             <name>ILight</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.media.omx</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IOmx</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IOmxStore</name>
             <instance>default</instance>
         </interface>
     </hal>

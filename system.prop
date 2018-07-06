@@ -22,6 +22,9 @@ ro.qualcomm.bluetooth.sap=false
 camera2.portability.force_api=1
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
+debug.hwui.use_buffer_age=false
+camera.disable_treble=true
+persist.media.treble_omx=false
 
 # Data Disable mobile data by default
 ro.com.android.mobiledata=false
