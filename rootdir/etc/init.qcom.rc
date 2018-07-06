@@ -533,9 +533,15 @@ service mdm_helper_proxy /system/bin/mdm_helper_proxy
     disabled
 
 service qcamerasvr /system/bin/mm-qcamera-daemon
-    class late_start
+    class main
     user camera
     group camera system inet input graphics
+
+on property:init.svc.media=restarting
+    restart qcamerasvr
+
+on property:init.svc.servicemanager=restarting
+    restart qcamerasvr
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd
