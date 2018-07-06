@@ -15,7 +15,8 @@ allow init qmuxd_socket:sock_file write;
 allow init smem_log_device:chr_file { write ioctl };
 allow init thermal_device:chr_file { write ioctl };
 
-allow init self:socket { read write create ioctl };
+allow init self:socket { read write create ioctl bind };
+allow init self:socket { read write create ioctl bind };
 allow init socket_device:sock_file { create setattr };
 
 allow init diag_device:chr_file { ioctl };
@@ -30,3 +31,13 @@ allow init hostapd_exec:file { getattr };
 allow init idmap_exec:file { getattr };
 allow init ppp_exec:file { getattr };
 allow init servicemanager:binder { call };
+allow init ksbridgehsic_device:chr_file { write getattr };
+allow init property_socket:sock_file { write getattr };
+allow init rpmb_device:blk_file { write getattr };
+allow init ssd_device:blk_file { write getattr };
+allow init tee_device:chr_file { write getattr };
+allow init block_device:blk_file { write };
+allow init efsbridgehsic_device:chr_file { getattr write };
+allow init hsic_device:chr_file { getattr write };
+allow init video_device:chr_file { getattr write };
+allow init ion_device:chr_file { getattr write };

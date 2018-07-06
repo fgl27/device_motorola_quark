@@ -6,3 +6,4 @@ allow stm401 sensors_device:chr_file rw_file_perms;
 
 set_prop(stm401, system_prop)
 allow stm401 property_socket:sock_file write;
+allow stm401 firmware_file:file { read write open getattr };
