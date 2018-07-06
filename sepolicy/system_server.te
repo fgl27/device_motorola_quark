@@ -4,10 +4,9 @@ allow system_server system_ndebug_socket:fifo_file { getattr unlink };
 allow system_server system_wpa_socket:fifo_file unlink;
 allow system_server wpa_socket:fifo_file unlink;
 allow system_server esoc_device:chr_file { open read };
-allow system_server frp_block_device:blk_file { read write ioctl open };
+allow system_server frp_block_device:blk_file { read write open };
 allow system_server rild:unix_dgram_socket sendto;
 allow system_server logd:dir { read write getattr open };
 allow system_server netmgrd_socket:dir r_dir_perms;
 unix_socket_connect(system_server, netmgrd, netmgrd)
-allow system_server self:socket ioctl;
 allowxperm system_server self:socket ioctl msm_sock_ipc_ioctls;

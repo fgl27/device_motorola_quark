@@ -34,10 +34,6 @@ In **frameworks/native/** cherry-pick
 
 https://github.com/bhb27/frameworks_native/commit/01df205b39e2465a36deaf11f76f8a63da414c3d
 
-In **system/sepolicy/** do
-
-git fetch https://github.com/LineageOS/android_system_sepolicy refs/changes/47/205947/1 && git cherry-pick FETCH_HEAD
-
 In **system/core/** cherry-pick
 
 https://github.com/bhb27/system_core/commit/2ae38319deb341f5a87c60f19ed7efca19e9c103

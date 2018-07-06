@@ -1,2 +1,2 @@
 allow installd fuse:dir { setattr search};
-allow installd firmware_file:filesystem { quotaget search};
+allow installd firmware_file:filesystem { quotaget };
