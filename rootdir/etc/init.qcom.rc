@@ -58,10 +58,6 @@ on init
     write /proc/sys/kernel/core_pattern "|/system/bin/coredump %e %p %t"
     write /proc/self/coredump_filter "0x7f"
 
-    # start mdm_helper early (required since Oreo)
-    start mdm_helper
-    start mdm_helper_proxy
-
 on charger
     trigger early-fs
     trigger fs
@@ -264,11 +260,14 @@ on post-fs-data
     chmod 0660 /sys/devices/cycapsense_prog.1/cycapsense_fw
 
 on early-boot
+    # start mdm_helper early (required since Oreo) but not too early or the boot will fail in kernel drivers/esoc/esoc-mdm-drv.c#L184
+    start mdm_helper
+    start mdm_helper_proxy
+
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
     # Allow subsystem (modem etc) debugging
-    write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
     write /sys/kernel/boot_adsp/boot 1
 
     # Annotate panics with helpful information
