@@ -59,27 +59,30 @@
         <ListPreference
             android:key="gesture_camera_action"
             android:defaultValue="0"
+            android:icon="@drawable/empty_icon"
             android:title="@string/camera_gesture_title"
             android:dialogTitle="@string/camera_gesture_title"
-            android:summary="@string/camera_gesture_summary"
+            android:summary="%s"
             android:entries="@array/action_entries"
             android:entryValues="@array/action_values" />
 
         <ListPreference
             android:key="gesture_chop_chop"
             android:defaultValue="0"
+            android:icon="@drawable/empty_icon"
             android:title="@string/chop_chop_gesture_title"
             android:dialogTitle="@string/chop_chop_gesture_title"
-            android:summary="@string/chop_chop_gesture_summary"
+            android:summary="%s"
             android:entries="@array/action_entries"
             android:entryValues="@array/action_values" />
 
         <ListPreference
             android:key="gesture_feedback_intensity"
             android:defaultValue="0"
+            android:icon="@drawable/empty_icon"
             android:title="@string/feedback_intensity_title"
             android:dialogTitle="@string/feedback_intensity_title"
-            android:summary="@string/feedback_intensity_summary"
+            android:summary="%s"
             android:entries="@array/feedback_intensity_entries"
             android:entryValues="@array/feedback_intensity_values" />
 
