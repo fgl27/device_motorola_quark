@@ -440,9 +440,6 @@ on boot
     insmod /system/lib/modules/wireguard.ko
     insmod /system/lib/modules/touchx.ko
 
-    # ESDFS
-    chown system system /proc/fs/esdfs/packages
-
     mkdir /persist/alarm 0770 system system
     mkdir /persist/time 0770 system system
 
