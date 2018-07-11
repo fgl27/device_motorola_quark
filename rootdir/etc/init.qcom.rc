@@ -536,13 +536,23 @@ service mdm_helper /system/bin/mdm_helper
     class core
     onrestart setprop ro.service.mdm_helper_restarted "true"
     group root system radio oem_2950 wakelock
-    disabled
 
 service mdm_helper_proxy /system/bin/mdm_helper_proxy
     class core
     user system
-    group system
+    group system wakelock
     disabled
+
+# Stop mdm_helper_proxy in case of shutdown
+on property:sys.shutdown.requested=*
+    stop mdm_helper_proxy
+
+# Start mdm_helper_proxy
+on property:ro.mdm_helper_proxy_req=true
+    start mdm_helper_proxy
+
+on property:init.svc.ril-daemon=running
+    setprop ro.mdm_helper_proxy_req true
 
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class main
