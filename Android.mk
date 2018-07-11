@@ -24,7 +24,7 @@ ADSP_IMAGES := \
     adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 adsp.b05 adsp.b06 \
     adsp.b07 adsp.b08 adsp.b09 adsp.b10 adsp.b11 adsp.b12 adsp.mdm adsp.mdt
 
-ADSP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(ADSP_IMAGES)))
+ADSP_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(ADSP_IMAGES)))
 $(ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "ADSP firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -36,7 +36,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(ADSP_SYMLINKS)
 ISDBTMM_IMAGES := \
     isdbtmm.b00 isdbtmm.b01 isdbtmm.b02 isdbtmm.b03 isdbtmm.mdt
 
-ISDBTMM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(ISDBTMM_IMAGES)))
+ISDBTMM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(ISDBTMM_IMAGES)))
 $(ISDBTMM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "IS DBT MM firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -60,7 +60,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(FIRMWARE_KEYMASTER_SYMLINKS)
 PLAYREADY_IMAGES := \
     playready.b00 playready.b01 playready.b02 playready.b03 playready.mdt
 
-PLAYREADY_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(PLAYREADY_IMAGES)))
+PLAYREADY_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(PLAYREADY_IMAGES)))
 $(PLAYREADY_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Playready firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -72,7 +72,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(PLAYREADY_SYMLINKS)
 PROV_MODEM_IMAGES := \
     prov.b00 prov.b01 prov.b02 prov.b03 prov.mdt
 
-PROV_MODEM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(PROV_MODEM_IMAGES)))
+PROV_MODEM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(PROV_MODEM_IMAGES)))
 $(PROV_MODEM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Prov firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -84,7 +84,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(PROV_MODEM_SYMLINKS)
 QCA6714_IMAGES := \
     bdwlan11.bin bdwlan20.bin qwlan11.bin qwlan20.bin otp11.bin otp20.bin utf11.bin utf20.bin
 
-QCA6714_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(QCA6714_IMAGES)))
+QCA6714_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(QCA6714_IMAGES)))
 $(QCA6714_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "QCA6714 firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -96,7 +96,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(QCA6714_SYMLINKS)
 SAMPLEAPP_IMAGES := \
     sampleapp.b00 sampleapp.b01 sampleapp.b02 sampleapp.b03 sampleapp.mdt
 
-SAMPLEAPP_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(SAMPLEAPP_IMAGES)))
+SAMPLEAPP_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(SAMPLEAPP_IMAGES)))
 $(SAMPLEAPP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Sample APP firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -108,7 +108,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(SAMPLEAPP_SYMLINKS)
 SECUREMM_IMAGES := \
     securemm.b00 securemm.b01 securemm.b02 securemm.b03 securemm.mdt
 
-SECUREMM_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(SECUREMM_IMAGES)))
+SECUREMM_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(SECUREMM_IMAGES)))
 $(SECUREMM_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Secure MM firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -120,7 +120,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(SECUREMM_SYMLINKS)
 TQS_IMAGES := \
     tqs.b00 tqs.b01 tqs.b02 tqs.b03 tqs.mdt
 
-TQS_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(TQS_IMAGES)))
+TQS_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(TQS_IMAGES)))
 $(TQS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "TQS firmware link: $@"
 	@mkdir -p $(dir $@)
@@ -132,7 +132,7 @@ ALL_DEFAULT_INSTALLED_MODULES += $(TQS_SYMLINKS)
 CMN_IMAGES := \
     cmnlib.b00 cmnlib.b01 cmnlib.b02 cmnlib.b03 cmnlib.mdt
 
-CMN_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(CMN_IMAGES)))
+CMN_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(CMN_IMAGES)))
 $(CMN_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Widevine firmware link: $@"
 	@mkdir -p $(dir $@)
