@@ -46,7 +46,7 @@ public class IrGestureManager {
 
     static
     {
-       System.load("/system/lib/libjni_LineageActions.so");
+       System.load("/system/vendor/lib/libjni_LineageActions.so");
     }
 
     public IrGestureManager() {
