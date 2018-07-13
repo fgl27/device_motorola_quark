@@ -35,43 +35,6 @@
 
 using namespace android;
 
-static Mutex gCameraWrapperLock;
-static camera_module_t *gVendorModule = 0;
-
-static int camera_device_open(const hw_module_t *module, const char *name,
-        hw_device_t **device);
-static int camera_get_number_of_cameras(void);
-static int camera_get_camera_info(int camera_id, struct camera_info *info);
-
-static struct hw_module_methods_t camera_module_methods =
-{
-    .open = camera_device_open,
-};
-
-camera_module_t HAL_MODULE_INFO_SYM =
-{
-    .common =
-    {
-         .tag = HARDWARE_MODULE_TAG,
-         .module_api_version = CAMERA_MODULE_API_VERSION_1_0,
-         .hal_api_version = HARDWARE_HAL_API_VERSION,
-         .id = CAMERA_HARDWARE_MODULE_ID,
-         .name = "Moto MAXX Camera Wrapper",
-         .author = "The CyanogenMod Project",
-         .methods = &camera_module_methods,
-         .dso = NULL, /* remove compilation warnings */
-         .reserved = {0}, /* remove compilation warnings */
-    },
-    .get_number_of_cameras = camera_get_number_of_cameras,
-    .get_camera_info = camera_get_camera_info,
-    .set_callbacks = NULL, /* remove compilation warnings */
-    .get_vendor_tag_ops = NULL, /* remove compilation warnings */
-    .open_legacy = NULL, /* remove compilation warnings */
-    .set_torch_mode = NULL, /* remove compilation warnings */
-    .init = NULL, /* remove compilation warnings */
-    .reserved = {0}, /* remove compilation warnings */
-};
-
 struct wrapper_camera_device_t
 {
     camera_device_t base;
@@ -85,6 +48,17 @@ struct wrapper_camera_device_t
 })
 
 #define CAMERA_ID(device) (((wrapper_camera_device_t *)(device))->id)
+
+static Mutex gCameraWrapperLock;
+static camera_module_t *gVendorModule = 0;
+
+static camera_notify_callback gUserNotifyCb = NULL;
+static camera_data_callback gUserDataCb = NULL;
+static camera_data_timestamp_callback gUserDataCbTimestamp = NULL;
+static camera_request_memory gUserGetMemory = NULL;
+static void *gUserCameraDevice = NULL;
+
+static char **fixed_set_params = NULL;
 
 static int check_vendor_module()
 {
@@ -100,7 +74,7 @@ static int check_vendor_module()
     return rv;
 }
 
-static char *camera_fixup_getparams(int id __attribute__((unused)), const char *settings)
+static char *camera_fixup_getparams(int id, const char *settings)
 {
     CameraParameters params;
     params.unflatten(String8(settings));
@@ -145,6 +119,28 @@ static int camera_set_preview_window(struct camera_device *device, struct previe
     return VENDOR_CALL(device, set_preview_window, window);
 }
 
+void camera_notify_cb(int32_t msg_type, int32_t ext1, int32_t ext2,
+        void * __attribute__((unused)) user) {
+    gUserNotifyCb(msg_type, ext1, ext2, gUserCameraDevice);
+}
+
+void camera_data_cb(int32_t msg_type, const camera_memory_t *data,
+        unsigned int index, camera_frame_metadata_t *metadata,
+        void * __attribute__((unused)) user) {
+    gUserDataCb(msg_type, data, index, metadata, gUserCameraDevice);
+}
+
+void camera_data_cb_timestamp(nsecs_t timestamp, int32_t msg_type,
+        const camera_memory_t *data, unsigned index,
+        void * __attribute__((unused)) user) {
+    gUserDataCbTimestamp(timestamp, msg_type, data, index, gUserCameraDevice);
+}
+
+camera_memory_t* camera_get_memory(int fd, size_t buf_size, uint_t num_bufs,
+        void * __attribute__((unused)) user) {
+    return gUserGetMemory(fd, buf_size, num_bufs, gUserCameraDevice);
+}
+
 static void camera_set_callbacks(struct camera_device *device, camera_notify_callback notify_cb, camera_data_callback data_cb,
         camera_data_timestamp_callback data_cb_timestamp, camera_request_memory get_memory, void *user)
 {
@@ -153,7 +149,14 @@ static void camera_set_callbacks(struct camera_device *device, camera_notify_cal
 
     ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device, (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
 
-    VENDOR_CALL(device, set_callbacks, notify_cb, data_cb, data_cb_timestamp, get_memory, user);
+    gUserNotifyCb = notify_cb;
+    gUserDataCb = data_cb;
+    gUserDataCbTimestamp = data_cb_timestamp;
+    gUserGetMemory = get_memory;
+    gUserCameraDevice = user;
+
+    VENDOR_CALL(device, set_callbacks, camera_notify_cb, camera_data_cb,
+            camera_data_cb_timestamp, camera_get_memory, user);
 }
 
 static void camera_enable_msg_type(struct camera_device *device, int32_t msg_type)
@@ -466,7 +469,7 @@ static int camera_device_open(const hw_module_t *module, const char *name, hw_de
         memset(camera_ops, 0, sizeof(*camera_ops));
 
         camera_device->base.common.tag = HARDWARE_DEVICE_TAG;
-        camera_device->base.common.version = CAMERA_DEVICE_API_VERSION_1_0;
+        camera_device->base.common.version = HARDWARE_DEVICE_API_VERSION(1, 0);
         camera_device->base.common.module = (hw_module_t *)(module);
         camera_device->base.common.close = camera_device_close;
         camera_device->base.ops = camera_ops;
@@ -530,3 +533,29 @@ static int camera_get_camera_info(int camera_id, struct camera_info *info)
         return 0;
     return gVendorModule->get_camera_info(camera_id, info);
 }
+
+static struct hw_module_methods_t camera_module_methods = {
+    .open = camera_device_open,
+};
+
+camera_module_t HAL_MODULE_INFO_SYM = {
+    .common = {
+         .tag = HARDWARE_MODULE_TAG,
+         .module_api_version = CAMERA_MODULE_API_VERSION_1_0,
+         .hal_api_version = HARDWARE_HAL_API_VERSION,
+         .id = CAMERA_HARDWARE_MODULE_ID,
+         .name = "APQ8084 Camera Wrapper",
+         .author = "The LineageOS Project",
+         .methods = &camera_module_methods,
+         .dso = NULL,
+         .reserved = {0},
+    },
+    .get_number_of_cameras = camera_get_number_of_cameras,
+    .get_camera_info = camera_get_camera_info,
+    .set_callbacks = NULL,
+    .get_vendor_tag_ops = NULL,
+    .open_legacy = NULL,
+    .set_torch_mode = NULL,
+    .init = NULL,
+    .reserved = {0},
+};
