@@ -110,6 +110,7 @@ vendor/lib/libmmcamera2_wnr_module.so
 vendor/lib/libmmcamera_ar0261.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_hdr_lib.so
+#Hex edit sed -i 's|/system/build.prop|/vendor/etc/hdrhax|g' quark/proprietary/vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imx214.so
 vendor/lib/libmmcamera_imx220.so
@@ -201,6 +202,7 @@ vendor/lib/libcneqmiutils.so
 
 # CPU
 bin/mpdecision
+#Hex sed -i 's|/system/etc|/vendor/etc|g' quark/proprietary/vendor/bin/thermal-engine
 bin/thermal-engine:vendor/bin/thermal-engine
 vendor/lib/libqc-opt.so
 vendor/lib/libthermalioctl.so
@@ -263,10 +265,12 @@ vendor/lib/libgsl.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
+vendor/lib/libscale.so
+
+# Renderscript (Google bullhead - OPR4.170623.006)
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
-vendor/lib/libscale.so
 
 # Graphics firmware
 etc/firmware/a420_pfp.fw
