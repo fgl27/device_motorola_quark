@@ -18,3 +18,4 @@ allow rild cutback_socket:sock_file { create setattr getattr write unlink };
 
 allow rild wpa_socket:sock_file write;
 allow rild wpa:unix_dgram_socket sendto;
+allow rild cutback_data_file:sock_file { create setattr unlink };

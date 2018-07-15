@@ -10,3 +10,5 @@ allow system_server logd:dir { read write getattr open };
 allow system_server netmgrd_socket:dir r_dir_perms;
 unix_socket_connect(system_server, netmgrd, netmgrd)
 allowxperm system_server self:socket ioctl msm_sock_ipc_ioctls;
+allow system_server block_device:blk_file { getattr };
+allow system_server sensors_device:chr_file { ioctl open read };
