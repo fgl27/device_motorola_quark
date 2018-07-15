@@ -124,6 +124,10 @@ PRODUCT_PACKAGES += \
     libqservice \
     tinymix
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)rootdir/etc/init.qcom.devwait.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devwait.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.devstart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devstart.sh
+
 PRODUCT_PACKAGES += \
     mbhc.bin \
     wcd9310_anc.bin
