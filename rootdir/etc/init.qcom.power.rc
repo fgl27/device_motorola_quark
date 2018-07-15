@@ -108,7 +108,8 @@ on property:sys.boot_completed=1
     write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 500000000
 
     # bcl mitigation-freq
-    write /sys/devices/qcom,bcl.38/freq_max 1267200
+    write /sys/devices/qcom,bcl.38/freq_max 1728000
+    write /sys/devices/qcom,bcl.38/hotplug_mask 0
 
     # lmk
     write /sys/module/lowmemorykiller/parameters/minfree 44032,48640,53248,57856,62464,71680
