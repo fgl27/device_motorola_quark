@@ -1,31 +1,18 @@
 # Android fstab file.
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
-#
+#<src>                                              <mnt_point>  <type>  <mnt_flags and options>                                                            <fs_mgr_flags>
+/dev/block/platform/msm_sdcc.1/by-name/system       /system      ext4    ro,barrier=1                                                                       wait,recoveryonly
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data        ext4    rw,nosuid,nodev,noatime,nodiratime,noauto_da_alloc,nobarrier,journal_async_commit  latemount,wait,check,formattable,nonremovable,encryptable=footer,length=-16384
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data        f2fs    rw,nosuid,nodev,noatime,nodiratime,nobarrier,inline_xattr,inline_data              latemount,wait,check,formattable,nonremovable,encryptable=footer,length=-16384
+/dev/block/platform/msm_sdcc.1/by-name/cache        /cache       ext4    rw,nosuid,nodev,noatime,nodiratime,data=writeback,noauto_da_alloc,barrier=1        wait,check,formattable
+/dev/block/platform/msm_sdcc.1/by-name/cache        /cache       f2fs    rw,nosuid,nodev,noatime,nodiratime,inline_xattr                                    wait,check,formattable
+/dev/block/platform/msm_sdcc.1/by-name/mdm1m9kefs3  /fsg         ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:firmware_file:s0                      wait,recoveryonly,check,notrim
+/dev/block/platform/msm_sdcc.1/by-name/modem        /firmware    ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:firmware_file:s0                      wait,check,notrim
+/dev/block/platform/msm_sdcc.1/by-name/persist      /persist     ext4    rw,nosuid,nodev,barrier=1,defcontext=u:object_r:persist_file:s0                    wait,check,notrim
+/dev/block/platform/msm_sdcc.1/by-name/boot         /boot        emmc    defaults                                                                           recoveryonly
+/dev/block/platform/msm_sdcc.1/by-name/recovery     /recovery    emmc    defaults                                                                           recoveryonly
+/dev/block/platform/msm_sdcc.1/by-name/misc         /misc        emmc    defaults                                                                           defaults
 
-# NOTE: /system partition is now early-mounted and the fstab entry is specified in device tree (duplicated below for recovery image purposes only):
-
-#<src>                                              <mnt_point>     <type>  <mnt_flags and options>                                         <fs_mgr_flags>
-/dev/block/platform/msm_sdcc.1/by-name/system       /system         ext4    ro,barrier=1                                                    wait,recoveryonly
-/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           ext4    rw,nosuid,nodev,noatime,noauto_da_alloc,nobarrier               wait,check,formattable,latemount,encryptable=footer,length=-16384
-/dev/block/platform/msm_sdcc.1/by-name/userdata     /data           f2fs    rw,nosuid,nodev,noatime,inline_xattr                            wait,formattable,latemount,encryptable=footer,length=-16384
-/dev/block/platform/msm_sdcc.1/by-name/cache        /cache          ext4    rw,noatime,nosuid,nodev,barrier=1,data=ordered                  wait,check,formattable
-/dev/block/platform/msm_sdcc.1/by-name/cache        /cache          f2fs    rw,nosuid,nodev,noatime,inline_xattr                            wait,check,formattable
-/dev/block/platform/msm_sdcc.1/by-name/modem        /firmware       ext4    ro,barrier=1,context=u:object_r:firmware_file:s0                wait
-/dev/block/platform/msm_sdcc.1/by-name/persist      /persist        ext4    rw,nosuid,nodev,barrier=1                                       wait,check,notrim
-/dev/block/platform/msm_sdcc.1/by-name/boot         /boot           emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/recovery     /recovery       emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/misc         /misc           emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/modem        /modem          emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/mdm1m9kefs1  /mdm1m9kefs1    emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/mdm1m9kefs2  /mdm1m9kefs2    emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/mdm1m9kefs3  /mdm1m9kefs3    emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/mdm1m9kefsc  /mdm1m9kefsc    emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/sbl1         /sbl1           emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/tz           /tz             emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/rpm          /rpm            emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/sdi          /sdi            emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/aboot        /aboot          emmc    defaults                                                        defaults
-/dev/block/platform/msm_sdcc.1/by-name/logo         /logo           emmc    defaults                                                        defaults
-/devices/*/xhci-hcd.0.auto/usb*                     auto            auto    defaults                                                        voldmanaged=usb:auto
-/dev/block/zram0                                    none            swap    defaults                                                        zramsize=25%,notrim
+/devices/*/xhci-hcd.0.auto/usb*                     auto         auto    defaults                                                                           voldmanaged=usb:auto
+/dev/block/zram0                                    none         swap    defaults                                                                           zramsize=25%,notrim
