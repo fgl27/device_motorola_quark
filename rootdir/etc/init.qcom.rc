@@ -403,13 +403,13 @@ on boot
     mkdir /data/adspd/1 0770 audio audio
 
     # ACDB file path
-    setprop persist.audio.calfile0 /system/etc/acdbdata/Bluetooth_cal.acdb
-    setprop persist.audio.calfile1 /system/etc/acdbdata/General_cal.acdb
-    setprop persist.audio.calfile2 /system/etc/acdbdata/Global_cal.acdb
-    setprop persist.audio.calfile3 /system/etc/acdbdata/Handset_cal.acdb
-    setprop persist.audio.calfile4 /system/etc/acdbdata/Hdmi_cal.acdb
-    setprop persist.audio.calfile5 /system/etc/acdbdata/Headset_cal.acdb
-    setprop persist.audio.calfile6 /system/etc/acdbdata/Speaker_cal.acdb
+    setprop persist.audio.calfile0 /vendor/etc/acdbdata/Bluetooth_cal.acdb
+    setprop persist.audio.calfile1 /vendor/etc/acdbdata/General_cal.acdb
+    setprop persist.audio.calfile2 /vendor/etc/acdbdata/Global_cal.acdb
+    setprop persist.audio.calfile3 /vendor/etc/acdbdata/Handset_cal.acdb
+    setprop persist.audio.calfile4 /vendor/etc/acdbdata/Hdmi_cal.acdb
+    setprop persist.audio.calfile5 /vendor/etc/acdbdata/Headset_cal.acdb
+    setprop persist.audio.calfile6 /vendor/etc/acdbdata/Speaker_cal.acdb
 
     # Change ownership and permission for led
     chown system system /sys/class/leds/charging/blink_brightness
