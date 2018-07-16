@@ -501,48 +501,48 @@ on property:ro.bluetooth.ftm_enabled=true
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
-service atvc_core /system/bin/dbvc_atvc_property_set
+service atvc_core /vendor/bin/dbvc_atvc_property_set
     class core
     user mot_atvc
     group mot_tpapi
     oneshot
 
-service atvc /system/bin/dbvc_atvc_property_set
+service atvc /vendor/bin/dbvc_atvc_property_set
     class late_start
     user mot_atvc
     group mot_tpapi
     oneshot
 
-service thermal-engine /system/vendor/bin/thermal-engine
+service thermal-engine /vendor/bin/thermal-engine
     class main
     user root
     group root
 
-service thermal-com /system/vendor/bin/thermal-engine --minimode
+service thermal-com /vendor/bin/thermal-engine --minimode
     class main
     user root
     disabled
 
-service time_daemon /system/bin/time_daemon
+service time_daemon /vendor/bin/time_daemon
     class late_start
     user root
     group root
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
 
-service mpdecision /system/bin/mpdecision --avg_comp --min_cores=4
+service mpdecision /vendor/bin/mpdecision --avg_comp --min_cores=4
     user root
     disabled
 
-service mdm_helper /system/bin/mdm_helper
+service mdm_helper /vendor/bin/mdm_helper
     class core
     onrestart setprop ro.service.mdm_helper_restarted "true"
     group root system radio oem_2950 wakelock
 
-service mdm_helper_proxy /system/bin/mdm_helper_proxy
+service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
     class core
     user system
     group system wakelock
@@ -559,7 +559,7 @@ on property:ro.mdm_helper_proxy_req=true
 on property:init.svc.ril-daemon=running
     setprop ro.mdm_helper_proxy_req true
 
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /vendor/bin/mm-qcamera-daemon
     class main
     user camera
     group camera system inet input graphics
@@ -573,19 +573,19 @@ on property:init.svc.servicemanager=restarting
 on property:init.svc.surfaceflinger=stopped
     stop ppd
 
-service charge_only_mode /system/bin/charge_only_mode
+service charge_only_mode /vendor/bin/charge_only_mode
     user root
     group graphics system input
     disabled
 
-service adspd /system/bin/adspd /dev/ttyHS3
+service adspd /vendor/bin/adspd /dev/ttyHS3
     class late_start
     socket adspdsock stream 0660 system audio
     user audio
     group audio input diag
 
 #start Sensor daemon
-service stm401 /system/bin/stm401 boot
+service stm401 /vendor/bin/stm401 boot
     disabled
     user compass
     group compass misc input
@@ -612,17 +612,17 @@ service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
 
-service irsc_util /system/bin/irsc_util "/vendor/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
 
-service rfs_access /system/bin/rfs_access
+service rfs_access /vendor/bin/rfs_access
    class core
    user system
    group system net_raw
@@ -639,19 +639,19 @@ on property:init.svc.thermal-engine=running
 on property:init.svc.thermal-engine=stopped
     write /sys/module/msm_thermal/parameters/enabled Y
 
-service start_hci_filter /system/bin/wcnss_filter
+service start_hci_filter /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth oem_2950
     disabled
 
 # QMUX must be in multiple groups to support external process connections
-service qmuxd /system/bin/qmuxd
+service qmuxd /vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth wakelock gps oem_2950 log
 
-service netmgrd /system/bin/netmgrd
+service netmgrd /vendor/bin/netmgrd
     class main
     user root
     group root wifi wakelock radio inet
@@ -689,7 +689,7 @@ service wpa_supplicant /system/vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service gpsone_daemon /system/bin/gpsone_daemon
+service gpsone_daemon /vendor/bin/gpsone_daemon
     class late_start
     user gps
     group gps inet net_raw
@@ -699,6 +699,6 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service cnd /system/bin/cnd
+service cnd /vendor/bin/cnd
     class late_start
     socket cnd stream 660 root inet
