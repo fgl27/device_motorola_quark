@@ -1,4 +1,2 @@
 allow netmgrd netmgrd:capability { dac_override };
-allow init self:netlink_socket { create bind read write };
-allow init init:netlink_socket { create bind read write };
-allow init init:netlink_route_socket { create bind read write };
+allow netmgrd sysfs:dir { open read };

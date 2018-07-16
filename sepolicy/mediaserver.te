@@ -10,3 +10,4 @@ allow mediaserver cutback_socket:sock_file write;
 allow mediaserver proc:file read;
 allow mediaserver init:unix_dgram_socket sendto;
 allow mediaserver system_data_file:sock_file write;
+allow mediaserver hal_configstore_default:binder call;
