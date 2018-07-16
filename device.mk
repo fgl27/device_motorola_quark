@@ -273,9 +273,9 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
     init.mmi.volte.rc \
-    post_init_rr.sh \
     ueventd.qcom.rc \
-    post_init_rr_bootc.sh
+    post.init.rr.sh \
+    post.init.rr.bootc.sh
 
 # RIL
 PRODUCT_COPY_FILES += \

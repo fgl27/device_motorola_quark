@@ -94,18 +94,18 @@ include $(BUILD_PREBUILT)
 
 # Rom init script
 include $(CLEAR_VARS)
-LOCAL_MODULE       := post_init_rr.sh
+LOCAL_MODULE       := post.init.rr.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/sbin/post_init_rr.sh
+LOCAL_SRC_FILES    := etc/sbin/post.init.rr.sh
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := post_init_rr_bootc.sh
+LOCAL_MODULE       := post.init.rr.bootc.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/sbin/post_init_rr_bootc.sh
+LOCAL_SRC_FILES    := etc/sbin/post.init.rr.bootc.sh
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
 include $(BUILD_PREBUILT)
 

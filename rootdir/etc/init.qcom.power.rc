@@ -117,14 +117,14 @@ on property:sys.boot_completed=1
     # lmk
     write /sys/module/lowmemorykiller/parameters/minfree 44032,48640,53248,57856,62464,71680
 
-service postinitrr_sh /system/bin/sh /sbin/post_init_rr.sh
+service postinitrr_sh /system/bin/sh /sbin/post.init.rr.sh
     class main
     user root
     seclabel u:r:sudaemon:s0
     disabled
     oneshot
 
-service postinitrr_sh_c /system/bin/sh /sbin/post_init_rr_bootc.sh
+service postinitrr_sh_c /system/bin/sh /sbin/post.init.rr.bootc.sh
     class main
     user root
     seclabel u:r:sudaemon:s0
