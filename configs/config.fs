@@ -28,13 +28,13 @@ user: AID_SYSTEM
 group: AID_SYSTEM
 caps: 0
 
-[/system/app/Adaway/lib/arm/libblank_webserver_exec.so]
+[/vendor/app/Adaway/lib/arm/libblank_webserver_exec.so]
 mode: 0755
 user: AID_SYSTEM
 group: AID_SYSTEM
 caps: 0
 
-[/system/app/Adaway/lib/arm/libtcpdump_exec.so]
+[/vendor/app/Adaway/lib/arm/libtcpdump_exec.so]
 mode: 0755
 user: AID_SYSTEM
 group: AID_SYSTEM
