@@ -458,9 +458,6 @@ on boot
     write /sys/bus/msm_subsys/devices/subsys3/restart_level related
     write /sys/bus/msm_subsys/devices/subsys4/restart_level related
 
-    insmod /system/lib/modules/wireguard.ko
-    insmod /system/lib/modules/touchx.ko
-
     mkdir /persist/alarm 0770 system system
     mkdir /persist/time 0770 system system
 

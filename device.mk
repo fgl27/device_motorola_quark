@@ -270,7 +270,6 @@ PRODUCT_PACKAGES += \
     init.mmi.usb.sh \
     init.qcom.rc \
     init.qcom.power.rc \
-    init.qcom.wifi.sh \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
     init.mmi.volte.rc \
