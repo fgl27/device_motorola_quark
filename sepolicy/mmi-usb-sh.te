@@ -1,0 +1,12 @@
+type mmi-usb-sh, domain;
+type mmi-usb-sh_exec, exec_type, file_type;
+
+init_daemon_domain(mmi-usb-sh)
+
+allow mmi-usb-sh shell_exec:file rx_file_perms;
+
+# execute toybox/toolbox
+allow mmi-usb-sh toolbox_exec:file rx_file_perms;
+
+# Set the sys.qcom.devup property
+set_prop(mmi-usb-sh, system_prop)

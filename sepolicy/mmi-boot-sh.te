@@ -1,0 +1,12 @@
+type mmi-boot-sh, domain;
+type mmi-boot-sh_exec, exec_type, file_type;
+
+init_daemon_domain(mmi-boot-sh)
+
+allow mmi-boot-sh shell_exec:file rx_file_perms;
+
+# execute toybox/toolbox
+allow mmi-boot-sh toolbox_exec:file rx_file_perms;
+
+# Set the sys.qcom.devup property
+set_prop(mmi-boot-sh, system_prop)

@@ -1,0 +1,12 @@
+type mmi-touch-sh, domain;
+type mmi-touch-sh_exec, exec_type, file_type;
+
+init_daemon_domain(mmi-touch-sh)
+
+allow mmi-touch-sh shell_exec:file rx_file_perms;
+
+# execute toybox/toolbox
+allow mmi-touch-sh toolbox_exec:file rx_file_perms;
+
+# Set the sys.qcom.devup property
+set_prop(mmi-touch-sh, system_prop)
