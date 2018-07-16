@@ -45,7 +45,6 @@ https://github.com/bhb27/android_system_qcom/commit/6b839a2decf5cce326d0933d0402
 In **hardware/qcom/bt-caf** revert
 
 https://github.com/LineageOS/android_hardware_qcom_bt/commit/ddaccd2176683b6de272e7d2718557dbe9b9fe1b
-https://github.com/LineageOS/android_hardware_qcom_bt/commit/90fd648335032144de1900fcda33c96458eb2606
 
 ## Building after sync and fix the source:
 
