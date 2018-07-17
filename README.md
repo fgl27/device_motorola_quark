@@ -1,6 +1,6 @@
 # Device configuration for Moto MAXX (Quark)
 
-Copyright 2016 to today - Felipe Leon Project
+Copyright 2016 to 2018 - Felipe Leon Project
 
 Copyright 2016 - The CyanogenMod Project
 
@@ -8,7 +8,7 @@ Copyright 2017 - 2018 - The LineageOS   Project
 
 ## I use this tree to build in Oreo lineage-15.x base source
 
-This tree works prefect in LineageOS or ResurrectionRemix Oreo soruces
+This tree works prefect in LineageOS or ResurrectionRemix Oreo source
 
 How to build this...
 The below may be out of data check XDA thread to make shore the described tree (Device/kernel/vendor) below are the one be used today...
@@ -16,11 +16,13 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<manifest>
-
+	
 	  <!-- Common qcom to build dtb and some etc lib-->
 	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="lineage-15.1" />
-	  <!-- Strings for CMActions-->
+	
+	  <!-- Strings for LineageActions strings-->
 	  <project name="LineageOS/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="github" revision="lineage-15.1" />
+	
 	  <!-- Device/kernel/vendor-->
 	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="O" />
 	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="O" />
@@ -42,11 +44,15 @@ In **system/qcom/** cherry-pick
 
 https://github.com/bhb27/android_system_qcom/commit/6b839a2decf5cce326d0933d0402ad5fb86e526f
 
+In **device/qcom/sepolicy** cherry-pick
+
+https://github.com/bhb27/android_device_qcom_sepolicy/commit/9e6706a3e54be8f8de9bf7f1dc9cdf4bb560e68b
+
 In **hardware/qcom/bt-caf** revert
 
 https://github.com/LineageOS/android_hardware_qcom_bt/commit/ddaccd2176683b6de272e7d2718557dbe9b9fe1b
 
-## Building after sync and fix the source:
+## Building after repo sync and fix the source (fix the source after repo sync):
 
 	. build/envsetup.sh 
 	make clean
