@@ -129,7 +129,6 @@ void vendor_load_properties()
     std::string cid;
     std::string camera_enable_vpu;
 
-
     init_target_properties();
     init_alarm_boot_properties();
 
@@ -167,6 +166,9 @@ void vendor_load_properties()
             fsgid = "verizon";
         }
     }
+
+    //Used by init.mmi.usb.sh
+    property_set("persist.usb.serialno", GetProperty("ro.serialno", ""));
 
     if (fsgid =="verizon") {
         // XT1254 - Droid Turbo
