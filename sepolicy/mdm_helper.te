@@ -4,3 +4,6 @@ allow mdm_helper persist_file:dir { open read getattr search };
 allow mdm_helper persist_file:file { open read write getattr };
 allow mdm_helper sysfs:dir { open read };
 allow mdm_helper sysfs:file read;
+allow mdm_helper efs_boot_dev:blk_file rw_file_perms;
+allow mdm_helper block_device:dir { getattr write search };
+allow mdm_helper modem_hob_block_device:blk_file rw_file_perms;

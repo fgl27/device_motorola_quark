@@ -4,3 +4,5 @@ allow untrusted_app sysfs:file { getattr open read };
 allow untrusted_app system_data_file:file { getattr open read };
 # Void crash for some apps trying to read they own data file
 allow untrusted_app app_data_file:file { getattr open read };
+# Moto Camera
+allow untrusted_app opengles_prop:file { getattr open };
