@@ -591,17 +591,17 @@ service stm401 /vendor/bin/stm401 boot
 on property:hw.touch.ready=1
     start stm401
 
-service mmi-usb-sh /system/bin/sh /init.mmi.usb.sh
+service mmi-usb-sh /vendor/bin/init.mmi.usb.sh
     class core
     user root
     oneshot
 
-service mmi-boot-sh /system/bin/sh /init.mmi.boot.sh
+service mmi-boot-sh /vendor/bin/init.mmi.boot.sh
     class core
     user root
     oneshot
 
-service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh atmel
+service mmi-touch-sh /vendor/bin/init.mmi.touch.sh atmel
     class disabled
     user root
     oneshot

@@ -1,4 +1,4 @@
-#!/system/bin/sh
+#!/vendor/bin/sh
 /system/bin/log -t init.mmi.boot -p i "init.mmi.boot run"
 function advance_system_time()
 {
