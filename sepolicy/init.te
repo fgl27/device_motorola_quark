@@ -1,5 +1,4 @@
 #allow init block_device:blk_file { create_file_perms setattr };
-#allow init hob_block_device:blk_file { create_file_perms setattr };
 allow init shell_data_file:fifo_file getattr;
 allow init sysfs_mpdecision:file getattr;
 

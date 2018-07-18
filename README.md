@@ -46,7 +46,7 @@ https://github.com/bhb27/android_system_qcom/commit/6b839a2decf5cce326d0933d0402
 
 In **device/qcom/sepolicy** cherry-pick
 
-https://github.com/bhb27/android_device_qcom_sepolicy/commit/9e6706a3e54be8f8de9bf7f1dc9cdf4bb560e68b
+https://github.com/bhb27/android_device_qcom_sepolicy/commit/c548bf97b5fbe58ea8389ce82e97d9d9f20c48c3
 
 In **hardware/qcom/bt-caf** revert
 
