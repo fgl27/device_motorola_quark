@@ -4,8 +4,6 @@ PATH=/sbin:/system/sbin:/system/bin:/system/xbin
 export PATH
 /system/bin/log -t init.mmi.usb.sh -p i "init.mmi.usb.sh run"
 # Init USB
-serialno=`getprop persist.usb.serialno`
-echo "$serialno" > /sys/class/android_usb/android0/iSerial
 
 chown root.system /sys/devices/platform/msm_hsusb/gadget/wakeup
 chmod 220 /sys/devices/platform/msm_hsusb/gadget/wakeup

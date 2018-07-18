@@ -167,9 +167,6 @@ void vendor_load_properties()
         }
     }
 
-    //Used by init.mmi.usb.sh
-    property_set("persist.usb.serialno", GetProperty("ro.serialno", ""));
-
     if (fsgid =="verizon") {
         // XT1254 - Droid Turbo
         property_override("ro.build.product", "quark");
