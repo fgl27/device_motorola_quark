@@ -48,10 +48,6 @@ In **device/qcom/sepolicy** cherry-pick
 
 https://github.com/bhb27/android_device_qcom_sepolicy/commit/c548bf97b5fbe58ea8389ce82e97d9d9f20c48c3
 
-In **hardware/qcom/bt-caf** revert
-
-https://github.com/LineageOS/android_hardware_qcom_bt/commit/ddaccd2176683b6de272e7d2718557dbe9b9fe1b
-
 ## Building after repo sync and fix the source (fix the source after repo sync):
 
 	. build/envsetup.sh 
