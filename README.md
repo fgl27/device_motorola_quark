@@ -32,18 +32,6 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 
 ### Fix the source to build for Quark
 
-In **frameworks/native/** cherry-pick
-
-https://github.com/bhb27/frameworks_native/commit/01df205b39e2465a36deaf11f76f8a63da414c3d
-
-In **system/core/** cherry-pick
-
-https://github.com/bhb27/system_core/commit/2ae38319deb341f5a87c60f19ed7efca19e9c103
-
-In **system/qcom/** cherry-pick
-
-https://github.com/bhb27/android_system_qcom/commit/6b839a2decf5cce326d0933d0402ad5fb86e526f
-
 In **device/qcom/sepolicy** cherry-pick
 
 https://github.com/bhb27/android_device_qcom_sepolicy/commit/c548bf97b5fbe58ea8389ce82e97d9d9f20c48c3
