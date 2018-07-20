@@ -1,8 +1,8 @@
 # Device configuration for Moto MAXX (Quark)
 
-Copyright 2016 to 2018 - Felipe Leon Project
+Copyright 2015 to Today - Felipe Leon Project
 
-Copyright 2016 - The CyanogenMod Project
+Copyright 2015 to 2016 - The CyanogenMod Project
 
 Copyright 2017 - 2018 - The LineageOS   Project
 
