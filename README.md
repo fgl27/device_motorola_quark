@@ -36,10 +36,6 @@ In **device/qcom/sepolicy** cherry-pick
 
 https://github.com/bhb27/android_device_qcom_sepolicy/commit/c548bf97b5fbe58ea8389ce82e97d9d9f20c48c3
 
-In **frameworks/native/** cherry-pick
-
-https://github.com/bhb27/frameworks_native/commit/01df205b39e2465a36deaf11f76f8a63da414c3d
-
 ## Building after repo sync and fix the source (fix the source after repo sync):
 
 	. build/envsetup.sh 
