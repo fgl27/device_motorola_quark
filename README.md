@@ -30,17 +30,7 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 
 	</manifest>
 
-### Fix the source to build for Quark
-
-In **device/qcom/sepolicy** cherry-pick
-
-https://github.com/bhb27/android_device_qcom_sepolicy/commit/c548bf97b5fbe58ea8389ce82e97d9d9f20c48c3
-
-In **system/extras/su** (Only needed in RR) revert
-
-ae77c1a8aa19484d8d8196e55254f2c6f01d1aad
-
-## Building after repo sync and fix the source (fix the source after repo sync):
+## Building after repo sync:
 
 	. build/envsetup.sh 
 	make clean
