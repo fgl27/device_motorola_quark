@@ -25,6 +25,31 @@
 /dev/socket/adspdsock                   u:object_r:adspd_socket:s0
 
 ###################################
+# Dev block nodes
+#
+/dev/block/mmcblk0p26                                 u:object_r:cid_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/cid           u:object_r:cid_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/frp           u:object_r:frp_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/mdm1dhob      u:object_r:modem_hob_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/mdm1hob       u:object_r:modem_hob_block_device:s0
+/dev/block/platform/msm_sdcc\.1/by-name/persist       u:object_r:persist_block_device:s0
+/dev/block/bootdevice/by-name/modem                   u:object_r:modem_efs_partition_device:s0
+/dev/block/bootdevice/by-name/boot                    u:object_r:boot_block_device:s0
+/dev/block/bootdevice/by-name/cache                   u:object_r:cache_block_device:s0
+/dev/block/bootdevice/by-name/cid                     u:object_r:cid_block_device:s0
+/dev/block/bootdevice/by-name/frp                     u:object_r:frp_block_device:s0
+/dev/block/bootdevice/by-name/mdm1dhob                u:object_r:modem_hob_block_device:s0
+/dev/block/bootdevice/by-name/mdm1hob                 u:object_r:modem_hob_block_device:s0
+/dev/block/bootdevice/by-name/mdm1m9kefs1             u:object_r:efs_boot_dev:s0
+/dev/block/bootdevice/by-name/mdm1m9kefs2             u:object_r:efs_boot_dev:s0
+/dev/block/bootdevice/by-name/mdm1m9kefs3             u:object_r:efs_boot_dev:s0
+/dev/block/bootdevice/by-name/mdm1m9kefsc             u:object_r:efs_boot_dev:s0
+/dev/block/bootdevice/by-name/persist                 u:object_r:persist_block_device:s0
+/dev/block/bootdevice/by-name/recovery                u:object_r:recovery_block_device:s0
+/dev/block/bootdevice/by-name/system                  u:object_r:system_block_device:s0
+/dev/block/bootdevice/by-name/userdata                u:object_r:userdata_block_device:s0
+
+###################################
 # sysfs files
 #
 /sys/devices/fd900000.qcom,mdss_mdp/qcom,mdss_fb_primary.163/leds/lcd-backlight/brightness u:object_r:sysfs_leds:s0
