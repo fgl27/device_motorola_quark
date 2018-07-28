@@ -53,6 +53,7 @@ bin/charge_only_mode:vendor/bin/charge_only_mode
 # Bluetooth
 bin/btnvtool:vendor/bin/btnvtool
 bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
+# wcnss_filter From samsung apq8084-common
 bin/wcnss_filter:vendor/bin/wcnss_filter
 etc/firmware/nvm_tlv.bin:vendor/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin:vendor/firmware/nvm_tlv_1.3.bin
@@ -202,6 +203,7 @@ vendor/lib/libcneqmiutils.so
 bin/mpdecision:vendor/bin/mpdecision
 #Hex sed -i 's|/system/etc|/vendor/etc|g' quark/proprietary/vendor/bin/thermal-engine
 bin/thermal-engine:vendor/bin/thermal-engine
+# libqc-opt.so from bacon
 vendor/lib/libqc-opt.so
 vendor/lib/libthermalioctl.so
 
@@ -320,9 +322,10 @@ vendor/lib/libqmi_encdec.so
 # qcrilmsgtunnel.apk from athene
 -app/qcrilmsgtunnel/qcrilmsgtunnel.apk:vendor/app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/efsks:vendor/bin/efsks
-# sed -i 's|/system/bin/ks|/vendor/bin/ks|g' quark/proprietary/bin/mdm_helper*
 bin/ks:vendor/bin/ks
 bin/netmgrd:vendor/bin/netmgrd
+# mdm_help and mdm_helper_proxy from shamu
+# sed -i 's|/system/bin/ks|/vendor/bin/ks|g' quark/proprietary/bin/mdm_helper*
 bin/mdm_helper:vendor/bin/mdm_helper
 bin/mdm_helper_proxy:vendor/bin/mdm_helper_proxy
 bin/qcks:vendor/bin/qcks
@@ -337,6 +340,7 @@ etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
 lib/libadropbox.so
+#libmdmcutback.so and libmdmdetect from athene
 lib/libmdmcutback.so
 lib/libmdmdetect.so
 lib/libmotext_inf.so
