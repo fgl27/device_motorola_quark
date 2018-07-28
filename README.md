@@ -21,8 +21,8 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="lineage-15.1" />
 
 	  <!-- Device/kernel/vendor-->
-	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_N" />
-	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="N_c" />
+	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_O" />
+	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="O_c" />
 
 	  <!-- Need to build TWRP-->
 	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-8.1" />
