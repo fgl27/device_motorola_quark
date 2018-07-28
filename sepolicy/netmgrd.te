@@ -1,1 +1,2 @@
 allow netmgrd netmgrd:capability { dac_override };
+allow netmgrd sysfs:dir { open read };

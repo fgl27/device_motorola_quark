@@ -1,10 +1,12 @@
-Device configuration for Moto MAXX (Quark)
-==============================
-Copyright 2016 - The CyanogenMod Project
+# Device configuration for Moto MAXX (Quark)
 
-Copyright 2017 - The LineageOS   Project
+Copyright 2015 to Today - Felipe Leon Project
 
-**I use this tree to build TWRP in Nougat cm-14.x and cm-14.x base source**
+Copyright 2015 to 2016 - The CyanogenMod Project
+
+Copyright 2017 - 2018 - The LineageOS   Project
+
+**I use this tree to build TWRP in Oreo lineage-15.x base source
 **Do not use this tree to build a ROM**
 This tree works prefect in ResurrectionRemix Nougat
 
@@ -16,21 +18,17 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	<manifest>
 
 	  <!-- Common qcom to build dtb and some etc lib-->
-	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="cm-14.1" />
+	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="lineage-15.1" />
 
 	  <!-- Device/kernel/vendor-->
 	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_N" />
 	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="N_c" />
 
 	  <!-- Need to build TWRP-->
-	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-7.1" />
+	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-8.1" />
 	  <remove-project path="bootable/recovery" name="LineageOS/android_bootable_recovery" groups="pdk" />
-	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-7.1" groups="pdk-cw-fs"/>
+	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-8.1" groups="pdk-cw-fs"/>
 
-	  <!-- Use stock google toolchain if the below doesn't work-->
-	  <remote name = "bitbucket"
-		   fetch = "https://bitbucket.org/" />
-	  <project path="prebuilts/gcc/linux-x86/arm/uber_arm-eabi-4.9" name="matthewdalex/arm-eabi-4.9" remote="bitbucket" revision="master" clone-depth="1" />
 	</manifest>
 
 Them after repo it all use this to build

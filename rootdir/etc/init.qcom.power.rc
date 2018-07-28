@@ -142,19 +142,20 @@ on property:sys.boot_completed=1
     write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 500000000
 
     # bcl mitigation-freq
-    write /sys/devices/qcom,bcl.38/freq_max 1267200
+    write /sys/devices/qcom,bcl.38/freq_max 1728000
+    write /sys/devices/qcom,bcl.38/hotplug_mask 0
 
     # lmk
     write /sys/module/lowmemorykiller/parameters/minfree 44032,48640,53248,57856,62464,71680
 
-service postinitrr_sh /system/bin/sh /sbin/post_init_rr.sh
+service postinitrr_sh /system/bin/sh /sbin/post.init.rr.sh
     class main
     user root
     seclabel u:r:sudaemon:s0
     disabled
     oneshot
 
-service postinitrr_sh_c /system/bin/sh /sbin/post_init_rr_bootc.sh
+service postinitrr_sh_c /system/bin/sh /sbin/post.init.rr.bootc.sh
     class main
     user root
     seclabel u:r:sudaemon:s0

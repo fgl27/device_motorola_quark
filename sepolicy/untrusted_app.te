@@ -1,6 +1,2 @@
-# Turbo Toast app need to read kernel charging state
-allow untrusted_app sysfs:file { getattr open read };
-# Void crash for some SU apps when selinux is enforced and app doesn’t have su permission yet
-allow untrusted_app system_data_file:file { getattr open read };
-# Void crash for some apps trying to read they own data file
-allow untrusted_app app_data_file:file { getattr open read };
+# Moto Camera
+allow untrusted_app opengles_prop:file { getattr open };

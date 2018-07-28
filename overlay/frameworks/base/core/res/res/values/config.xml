@@ -47,10 +47,11 @@
     <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
          [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
     <integer-array translatable="false" name="config_tether_upstream_types">
-        <item>0</item>
         <item>1</item>
+        <item>0</item>
         <item>5</item>
         <item>7</item>
+        <item>9</item>
     </integer-array>
 
     <!-- This string array should be overridden by the device to present a list of network
@@ -81,9 +82,6 @@
 
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
-
-    <!-- Is the battery LED intrusive? Used to decide if there should be a disable option -->
-    <bool name="config_intrusiveBatteryLed">false</bool>
 
     <!-- Screen brightness used to dim the screen while dozing in a very low power state.
          May be less than the minimum allowed brightness setting
@@ -188,12 +186,6 @@
     </integer-array>
 
     <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
-    <integer-array name="config_safeModeDisabledVibePattern">
-        <item>0</item>
-        <item>117</item>
-    </integer-array>
-
-    <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
     <integer-array name="config_safeModeEnabledVibePattern">
         <item>0</item>
         <item>94</item>
@@ -214,18 +206,11 @@
     <!-- Is the device capable of hot swapping an UICC Card -->
     <bool name="config_hotswapCapable">true</bool>
 
-    <!-- When true use the linux /dev/input/event subsystem to detect the switch changes
-        on the headphone/microphone jack. When false use the older uevent framework. -->
-    <bool name="config_useDevInputEventForAudioJack">true</bool>
-
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
 
     <!-- Boolean indicating whether the wifi chipset has background scan support -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
-
-    <!-- Boolean indicating whether Hotspot 2.0/Passpoint and ANQP queries is enabled -->
-    <bool translatable="false" name="config_wifi_hotspot2_enabled">true</bool>
 
     <!-- Whether WiFi display is supported by this device.
          There are many prerequisites for this feature to work correctly.
@@ -259,37 +244,6 @@
                   autodetected from the Configuration. -->
     <bool name="config_showNavigationBar">false</bool>
 
-    <!-- Hardware keys present on the device, stored as a bit field.
-         This integer should equal the sum of the corresponding value for each
-         of the following keys present:
-             1 - Home
-             2 - Back
-             4 - Menu
-             8 - Assistant (search)
-            16 - App switch
-            32 - Camera
-            64 - Volume rocker
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareKeys">83</integer>
-
-    <!-- Hardware keys present on the device with the ability to wake, stored as a bit field.
-         This integer should equal the sum of the corresponding value for each
-         of the following keys present:
-             1 - Home
-             2 - Back
-             4 - Menu
-             8 - Assistant (search)
-            16 - App switch
-            32 - Camera
-            64 - Volume rocker
-         For example, a device with Home, Back and Menu keys would set this
-         config to 7. -->
-    <integer name="config_deviceHardwareWakeKeys">64</integer>
-
-    <integer name="config_buttonBrightnessSettingDefault">255</integer>
-    <bool name="config_deviceHasVariableButtonBrightness">false</bool>
-
     <!-- Control the behavior when the user long presses the home button.
             0 - Nothing
             1 - Menu key
@@ -317,22 +271,6 @@
          policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
     -->
     <integer name="config_doubleTapOnHomeBehavior">8</integer>
-
-    <!-- Control the behavior when the user long presses the menu button.
-            0 - Nothing
-            1 - Menu key
-            2 - Recent apps view in SystemUI
-            3 - Launch assist intent
-            4 - Voice Search
-            5 - In-app Search
-            6 - Launch camera
-            7 - Sleep
-            8 - Last app
-            9 - Toggle split screen
-         This needs to match the constants in
-         policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-    -->
-    <integer name="config_longPressOnMenuBehavior">3</integer>
 
     <!-- Control the behavior when the user long presses the app switch button.
             0 - Nothing
@@ -363,7 +301,6 @@
     <string-array translatable="false" name="config_globalActionsList">
         <item>power</item>
         <item>restart</item>
-        <item>settings</item>
         <item>airplane</item>
         <item>silent</item>
     </string-array>
@@ -404,15 +341,6 @@
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
      <string name="config_wifi_tcp_buffers">524288,6291456,8291456,524288,6291456,8291456</string>
 
-    <integer-array name="config_onlySingleDcAllowed">
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>12</item>
-    </integer-array>
-
    <!-- Boolean indicating if restoring network selection should be skipped -->
     <!-- The restoring is handled by modem if it is true-->
     <bool translatable="false" name="skip_restoring_network_selection">true</bool>
@@ -420,11 +348,6 @@
     <!-- Base "touch slop" value used by ViewConfiguration as a
          movement threshold where scrolling should begin. -->
     <dimen name="config_viewConfigurationTouchSlop">24dp</dimen>
-
-    <!--  Maximum number of supported users -->
-    <integer name="config_multiuserMaximumUsers">4</integer>
-    <!--  Whether Multiuser UI should be shown -->
-    <bool name="config_enableMultiUserUI">true</bool>
 
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
@@ -464,36 +387,6 @@
     -->
     <bool name="config_powerDecoupleAutoSuspendModeFromDisplay">true</bool>
 
-    <!-- Power Management: Specifies whether to decouple the interactive state of the
-         device from the display on/off state.
-
-         When false, setInteractive(..., true) will be called before the display is turned on
-         and setInteractive(..., false) will be called after the display is turned off.
-         This mode provides best compatibility for devices that expect the interactive
-         state to be tied to the display state.
-
-         When true, setInteractive(...) will be called independently of whether the display
-         is being turned on or off.  This mode enables the power manager to reduce
-         clocks and disable the touch controller while the display is on.
-
-         This resource should be set to "true" when a doze component has been specified
-         to maximize power savings but not all devices support it.
-
-         Refer to power.h for details.
-    -->
-    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
-
-    <!-- Package name providing network location support. Used only when
-         config_enableNetworkLocationOverlay is false. -->
-    <string name="config_networkLocationProviderPackageName" translatable="false">com.qualcomm.location</string>
-
-    <!-- Package name providing fused location support. Used only when
-         config_enableFusedLocationOverlay is false. -->
-    <string name="config_fusedLocationProviderPackageName" translatable="false">com.qualcomm.location</string>
-
-    <!-- Component name of the combo network location provider. -->
-    <string name="config_comboNetworkLocationProvider" translatable="false">com.qualcomm.location</string>
-
     <!-- The default iface on which to monitor data use -->
     <string name="config_datause_iface" translatable="false">rmnet_usb0</string>
 
@@ -523,25 +416,25 @@
     <!-- Control whether Night display is available. -->
     <bool name="config_nightDisplayAvailable">true</bool>
 
-    <!-- True if camera app should be pinned via Pinner Service -->
-    <bool name="config_pinnerCameraApp">true</bool>
-
-    <!-- If enabled, capacitive keys will only light up when pressed.
-         Otherwise, the buttons will light up whenever the user interacts with the device -->
-    <bool name="config_buttonLightOnKeypressOnly">false</bool>
-
-    <!-- Default list of files pinned by the Pinner Service -->
-    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
-        <item>"/data/dalvik-cache/arm/system@framework@boot.oat"</item>
-        <item>"/data/dalvik-cache/arm/system@framework@boot.art"</item>
-        <item>"/data/dalvik-cache/arm/system@framework@services.jar@classes.dex"</item>
-        <item>"/data/dalvik-cache/arm/system@priv-app@SystemUI@SystemUI.apk@classes.dex"</item>
-        <item>"/data/dalvik-cache/arm/system@priv-app@Settings@Settings.apk@classes.dex"</item>
-   </string-array>
-
     <!-- Flag indicating which package name can access the persistent data partition -->
     <string name="config_persistentDataPackageName" translatable="false">com.google.android.gms</string>
 
     <!-- BurnIn protection. This should be enabled on devices that have OLED displays -->
     <bool name="config_enableBurnInProtection">true</bool>
+    <!-- Values for GPS configuration -->
+    <string-array translatable="false" name="config_gpsParameters">
+        <item>XTRA_SERVER_1=https://xtrapath1.izatcloud.net/xtra2.bin</item>
+        <item>XTRA_SERVER_2=https://xtrapath2.izatcloud.net/xtra2.bin</item>
+        <item>XTRA_SERVER_3=https://xtrapath3.izatcloud.net/xtra2.bin</item>
+        <item>NTP_SERVER=time.gpsonextra.net</item>
+        <item>SUPL_ES=0</item>
+        <item>SUPL_HOST=supl.telusmobility.com</item>
+        <item>SUPL_PORT=7275</item>
+        <item>SUPL_MODE=1</item>
+        <item>LPP_PROFILE=2</item>
+    </string-array>
+
+    <!-- Power Management: Specifies whether to decouple the interactive
+         state of the device from the display on/off state. -->
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
 </resources>

@@ -1,1 +1,2 @@
 allow cnd netmgrd:dir search;
+allow cnd self:capability { chown dac_override fsetid net_raw setgid setuid };

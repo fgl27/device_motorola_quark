@@ -1,8 +1,9 @@
-type stm401, domain, domain_deprecated, mlstrustedsubject;
-type stm401_exec, exec_type, file_type;
+type stm401, domain;
+type stm401_exec, exec_type, vendor_file_type, file_type;
 init_daemon_domain(stm401)
 
 allow stm401 sensors_device:chr_file rw_file_perms;
 
 set_prop(stm401, system_prop)
 allow stm401 property_socket:sock_file write;
+allow stm401 firmware_file:file { read open getattr };

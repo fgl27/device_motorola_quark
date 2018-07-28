@@ -1,5 +1,6 @@
 # ADSP
-bin/adspd
+# sed -i 's|/system/etc/firmware/|/vendor/etc/firmware/|g' quark/proprietary/vendor/bin/adspd
+bin/adspd:vendor/bin/adspd
 lib/libadspd-jni-c55.so
 lib/libadspd.so
 
@@ -8,7 +9,7 @@ lib/libadspd.so
 lib/libadsp2.so
 
 # Audio
-bin/adsprpcd
+bin/adsprpcd:vendor/bin/adsprpcd
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
@@ -21,59 +22,55 @@ vendor/lib/libcsd-client.so
 lib/libdetectmodem.so
 
 # ACDB
-etc/acdbdata/Bluetooth_cal.acdb
-etc/acdbdata/General_cal.acdb
-etc/acdbdata/Global_cal.acdb
-etc/acdbdata/Handset_cal.acdb
-etc/acdbdata/Hdmi_cal.acdb
-etc/acdbdata/Headset_cal.acdb
-etc/acdbdata/Speaker_cal.acdb
-
-# ATFWD
--priv-app/atfwd/atfwd.apk
-bin/ATFWD-daemon
+etc/acdbdata/Bluetooth_cal.acdb:vendor/etc/acdbdata/Bluetooth_cal.acdb
+etc/acdbdata/General_cal.acdb:vendor/etc/acdbdata/General_cal.acdb
+etc/acdbdata/Global_cal.acdb:vendor/etc/acdbdata/Global_cal.acdb
+etc/acdbdata/Handset_cal.acdb:vendor/etc/acdbdata/Handset_cal.acdb
+etc/acdbdata/Hdmi_cal.acdb:vendor/etc/acdbdata/Hdmi_cal.acdb
+etc/acdbdata/Headset_cal.acdb:vendor/etc/acdbdata/Headset_cal.acdb
+etc/acdbdata/Speaker_cal.acdb:vendor/etc/acdbdata/Speaker_cal.acdb
 
 # Audio firmware
-etc/firmware/aonvr1.bin
-etc/firmware/aonvr2.bin
-etc/firmware/left.tfa9890.music.config
-etc/firmware/left.tfa9890.music.eq
-etc/firmware/left.tfa9890.ringtone.config
-etc/firmware/left.tfa9890.ringtone.eq
-etc/firmware/left.tfa9890.speaker
-etc/firmware/left.tfa9890.voice.config
-etc/firmware/left.tfa9890.voice.eq
-etc/firmware/left.tfa9890_music_table.preset
-etc/firmware/left.tfa9890_n1b12.patch
-etc/firmware/left.tfa9890_n1c2.patch
-etc/firmware/left.tfa9890_ringtone_table.preset
-etc/firmware/left.tfa9890_voice_table.preset
-etc/firmware/VRGain.bin
+system/etc/firmware/aonvr1.bin:vendor/etc/firmware/aonvr1.bin
+system/etc/firmware/aonvr2.bin:vendor/etc/firmware/aonvr2.bin
+etc/firmware/left.tfa9890.music.config:vendor/firmware/left.tfa9890.music.config
+etc/firmware/left.tfa9890.music.eq:vendor/firmware/left.tfa9890.music.eq
+etc/firmware/left.tfa9890.ringtone.config:vendor/firmware/left.tfa9890.ringtone.config
+etc/firmware/left.tfa9890.ringtone.eq:vendor/firmware/left.tfa9890.ringtone.eq
+etc/firmware/left.tfa9890.speaker:vendor/firmware/left.tfa9890.speaker
+etc/firmware/left.tfa9890.voice.config:vendor/firmware/left.tfa9890.voice.config
+etc/firmware/left.tfa9890.voice.eq:vendor/firmware/left.tfa9890.voice.eq
+etc/firmware/left.tfa9890_music_table.preset:vendor/firmware/left.tfa9890_music_table.preset
+etc/firmware/left.tfa9890_n1b12.patch:vendor/firmware/left.tfa9890_n1b12.patch
+etc/firmware/left.tfa9890_n1c2.patch:vendor/firmware/left.tfa9890_n1c2.patch
+etc/firmware/left.tfa9890_ringtone_table.preset:vendor/firmware/left.tfa9890_ringtone_table.preset
+etc/firmware/left.tfa9890_voice_table.preset:vendor/firmware/left.tfa9890_voice_table.preset
+etc/firmware/VRGain.bin:vendor/firmware/VRGain.bin
 
 # Battery
-bin/charge_only_mode
+bin/charge_only_mode:vendor/bin/charge_only_mode
 
 # Bluetooth
-bin/btnvtool
-bin/hci_qcomm_init
-bin/wcnss_filter
-etc/firmware/nvm_tlv.bin
-etc/firmware/nvm_tlv_1.3.bin
-etc/firmware/nvm_tlv_2.1.bin
-etc/firmware/nvm_tlv_3.0.bin
-etc/firmware/rampatch_tlv.img
-etc/firmware/rampatch_tlv_1.3.tlv
-etc/firmware/rampatch_tlv_2.1.tlv
-etc/firmware/rampatch_tlv_3.0.tlv
-vendor/lib/libbt-vendor.so
+bin/btnvtool:vendor/bin/btnvtool
+bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
+# wcnss_filter From samsung apq8084-common
+bin/wcnss_filter:vendor/bin/wcnss_filter
+etc/firmware/nvm_tlv.bin:vendor/firmware/nvm_tlv.bin
+etc/firmware/nvm_tlv_1.3.bin:vendor/firmware/nvm_tlv_1.3.bin
+etc/firmware/nvm_tlv_2.1.bin:vendor/firmware/nvm_tlv_2.1.bin
+etc/firmware/nvm_tlv_3.0.bin:vendor/firmware/nvm_tlv_3.0.bin
+etc/firmware/rampatch_tlv.img:vendor/firmware/rampatch_tlv.img
+etc/firmware/rampatch_tlv_1.3.tlv:vendor/firmware/rampatch_tlv_1.3.tlv
+etc/firmware/rampatch_tlv_2.1.tlv:vendor/firmware/rampatch_tlv_2.1.tlv
+etc/firmware/rampatch_tlv_3.0.tlv:vendor/firmware/rampatch_tlv_3.0.tlv
 vendor/lib/libbtnv.so
 
 # Camera
-bin/mm-qcamera-daemon
-etc/firmware/cpp_firmware_v1_1_1.fw
-etc/firmware/cpp_firmware_v1_1_6.fw
-etc/firmware/cpp_firmware_v1_2_0.fw
-etc/firmware/cpp_firmware_v1_6_0.fw
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
+etc/firmware/cpp_firmware_v1_1_1.fw:vendor/firmware/cpp_firmware_v1_1_1.fw
+etc/firmware/cpp_firmware_v1_1_6.fw:vendor/firmware/cpp_firmware_v1_1_6.fw
+etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw
+etc/firmware/cpp_firmware_v1_6_0.fw:vendor/firmware/cpp_firmware_v1_6_0.fw
 # patch change strings persist.camera.enable_vpu to enable_vpu vvv and Phone to quark
 lib/hw/camera.apq8084.so:lib/hw/camera.vendor.apq8084.so|7061a28ac591defff5bc1c37cea72475
 lib/libAisAdapter.so
@@ -84,6 +81,7 @@ lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
+# libmot_sensorlistener (Athene)
 lib/libmot_sensorlistener.so
 lib/libqomx_core.so
 vendor/lib/libactuator_lc898122_camcorder.so
@@ -110,6 +108,7 @@ vendor/lib/libmmcamera2_wnr_module.so
 vendor/lib/libmmcamera_ar0261.so
 vendor/lib/libmmcamera_faceproc.so
 vendor/lib/libmmcamera_hdr_lib.so
+#Hex edit sed -i 's|/system/build.prop|/vendor/etc/hdrhax|g' quark/proprietary/vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imglib.so
 vendor/lib/libmmcamera_imx214.so
 vendor/lib/libmmcamera_imx220.so
@@ -189,10 +188,11 @@ vendor/lib/libchromatix_imx220_video_uhd.so
 vendor/lib/libchromatix_imx220_video_uhd_cpp.so
 
 # CNE
-bin/cnd
--priv-app/CNEService/CNEService.apk
-etc/permissions/cneapiclient.xml
-etc/permissions/com.quicinc.cne.xml
+# sed -i 's|/system/bin/cnd|/vendor/bin/cnd|g' quark/proprietary/vendor/lib/libcne.so
+bin/cnd:vendor/bin/cnd
+-priv-app/CNEService/CNEService.apk:vendor/app/CNEService/CNEService.apk
+etc/permissions/cneapiclient.xml:vendor/etc/permissions/cneapiclient.xml
+etc/permissions/com.quicinc.cne.xml:vendor/etc/permissions/com.quicinc.cne.xml
 -framework/cneapiclient.jar
 -framework/com.quicinc.cne.jar
 vendor/lib/libcne.so
@@ -200,19 +200,22 @@ vendor/lib/libcneapiclient.so
 vendor/lib/libcneqmiutils.so
 
 # CPU
-bin/mpdecision
+bin/mpdecision:vendor/bin/mpdecision
+#Hex sed -i 's|/system/etc|/vendor/etc|g' quark/proprietary/vendor/bin/thermal-engine
 bin/thermal-engine:vendor/bin/thermal-engine
+# libqc-opt.so from bacon
 vendor/lib/libqc-opt.so
 vendor/lib/libthermalioctl.so
 
 # DRM
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
 vendor/lib/libssd.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libWVStreamControlAPI_L1.so
-# DRM (from athene)
+# DRM (angler OPR6.170623.017)
 vendor/lib/mediadrm/libwvdrmengine.so
+# DRM (Athene)
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 
@@ -224,12 +227,11 @@ vendor/firmware/widevine.b03
 vendor/firmware/widevine.mdt
 
 # Frameworks
-etc/permissions/org.simalliance.openmobileapi.xml
+etc/permissions/org.simalliance.openmobileapi.xml:vendor/etc/permissions/org.simalliance.openmobileapi.xml
 -framework/org.simalliance.openmobileapi.jar
 
 # GPS
-bin/gpsone_daemon
-etc/permissions/com.qualcomm.location.xml
+bin/gpsone_daemon:vendor/bin/gpsone_daemon
 etc/gps.conf
 etc/izat.conf
 etc/quipc.conf
@@ -240,18 +242,11 @@ lib/libloc_api_v02.so
 lib/libloc_core.so
 lib/libloc_ds_api.so
 lib/libloc_eng.so
--priv-app/com.qualcomm.location/com.qualcomm.location.apk
--priv-app/com.qualcomm.services.location/com.qualcomm.services.location.apk
 vendor/etc/gnss/gnss-fsh.bin
 vendor/lib/hw/flp.default.so
-vendor/lib/libalarmservice_jni.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
-vendor/lib/libloc_ext.so
-vendor/lib/liblocationservice.so
-vendor/lib/libquipc_os_api.so
-vendor/lib/libulp2.so
 
 # Graphics (from shamu)
 vendor/lib/egl/eglSubDriverAndroid.so
@@ -270,14 +265,16 @@ vendor/lib/libgsl.so
 vendor/lib/libllvm-glnext.so
 vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
+vendor/lib/libscale.so
+
+# Renderscript (Google bullhead - OPR4.170623.006)
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
-vendor/lib/libscale.so
 
 # Graphics firmware
-etc/firmware/a420_pfp.fw
-etc/firmware/a420_pm4.fw
+etc/firmware/a420_pfp.fw:vendor/firmware/a420_pfp.fw
+etc/firmware/a420_pm4.fw:vendor/firmware/a420_pm4.fw
 
 # Media
 vendor/lib/libI420colorconvert.so
@@ -285,24 +282,26 @@ vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal.so
 
 # Media firmware
-etc/firmware/venus.b00
-etc/firmware/venus.b01
-etc/firmware/venus.b02
-etc/firmware/venus.b03
-etc/firmware/venus.b04
-etc/firmware/venus.mbn
-etc/firmware/venus.mdt
+etc/firmware/venus.b00:vendor/firmware/venus.b00
+etc/firmware/venus.b01:vendor/firmware/venus.b01
+etc/firmware/venus.b02:vendor/firmware/venus.b02
+etc/firmware/venus.b03:vendor/firmware/venus.b03
+etc/firmware/venus.b04:vendor/firmware/venus.b04
+etc/firmware/venus.mbn:vendor/firmware/venus.mbn
+etc/firmware/venus.mdt:vendor/firmware/venus.mdt
 
 # Motorola
-bin/batt_health
-bin/dbvc_atvc_property_set
-bin/hardware_revisions.sh
+bin/batt_health:vendor/bin/batt_health
+bin/dbvc_atvc_property_set:vendor/bin/dbvc_atvc_property_set
+bin/hardware_revisions.sh:vendor/bin/hardware_revisions.sh
 
 # NFC
-etc/firmware/BCM20795A1_001.002.012.0003.0078_Generic_I2C_NCD_Signed_configdata.ncd
+etc/firmware/BCM20795A1_001.002.012.0003.0078_Generic_I2C_NCD_Signed_configdata.ncd:vendor/firmware/BCM20795A1_001.002.012.0003.0078_Generic_I2C_NCD_Signed_configdata.ncd
+#bcm20795_firmware.ncd From shamu 
+etc/firmware/bcm20795_firmware.ncd:vendor/firmware/ystem/vendor/firmware/bcm20795_firmware.ncd
 
 # Qualcomm framework
-bin/irsc_util
+bin/irsc_util:vendor/bin/irsc_util
 vendor/lib/libdsutils.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libidl.so
@@ -320,23 +319,28 @@ vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_encdec.so
 
 # Radio
--app/qcrilmsgtunnel/qcrilmsgtunnel.apk
-bin/efsks
-bin/ks
-bin/netmgrd
-bin/mdm_helper
-bin/mdm_helper_proxy
-bin/qcks
-bin/qmi_motext_hook
-bin/qmuxd
-bin/radish
-bin/rfs_access
-bin/rmt_storage
-etc/permissions/qcnvitems.xml
-etc/permissions/qcrilhook.xml
+# qcrilmsgtunnel.apk from athene
+-app/qcrilmsgtunnel/qcrilmsgtunnel.apk:vendor/app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+bin/efsks:vendor/bin/efsks
+bin/ks:vendor/bin/ks
+bin/netmgrd:vendor/bin/netmgrd
+# mdm_help and mdm_helper_proxy from shamu
+# sed -i 's|/system/bin/ks|/vendor/bin/ks|g' quark/proprietary/bin/mdm_helper*
+bin/mdm_helper:vendor/bin/mdm_helper
+bin/mdm_helper_proxy:vendor/bin/mdm_helper_proxy
+bin/qcks:vendor/bin/qcks
+# sed -i 's|/system/bin/qmi_motext_hook|/vendor/bin/qmi_motext_hook|g' quark/proprietary/lib/libmotext_inf.so
+bin/qmi_motext_hook:vendor/bin/qmi_motext_hook
+bin/qmuxd:vendor/bin/qmuxd
+bin/radish:vendor/bin/radish
+bin/rfs_access:vendor/bin/rfs_access
+bin/rmt_storage:vendor/bin/rmt_storage
+etc/permissions/qcnvitems.xml:vendor/etc/permissions/qcnvitems.xml
+etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
 lib/libadropbox.so
+#libmdmcutback.so and libmdmdetect from athene
 lib/libmdmcutback.so
 lib/libmdmdetect.so
 lib/libmotext_inf.so
@@ -351,41 +355,42 @@ vendor/lib/librpmb.so
 vendor/lib/libxml.so
 
 # Sensors
-bin/stm401
-etc/firmware/cy8c20247_24lkxi.hex
-etc/firmware/sensorhubfw.bin
-etc/firmware/sensorhubfw_p1.bin
-etc/firmware/sensorhubver_p1.txt
-etc/firmware/sensorhubver.txt
+# sed -i 's|/system/etc/firmware/|/vendor/etc/firmware/|g' quark/proprietary/vendor/bin/stm401
+bin/stm401:vendor/bin/stm401
+etc/firmware/cy8c20247_24lkxi.hex:vendor/firmware/cy8c20247_24lkxi.hex
+etc/firmware/sensorhubfw.bin:vendor/etc/firmware/sensorhubfw.bin
+etc/firmware/sensorhubfw_p1.bin:vendor/etc/firmware/sensorhubfw_p1.bin
+etc/firmware/sensorhubver_p1.txt:vendor/etc/firmware/sensorhubver_p1.txt
+etc/firmware/sensorhubver.txt:vendor/etc/firmware/sensorhubver.txt
 lib/hw/sensorhub.apq8084.so
 lib/hw/sensors.apq8084.so
 vendor/lib/libsensor1.so
 
 # Time services
--app/TimeService/TimeService.apk
-bin/time_daemon
+-app/TimeService/TimeService.apk:vendor/app/TimeService/TimeService.apk
+bin/time_daemon:vendor/bin/time_daemon
 vendor/lib/libTimeService.so
 -vendor/lib/libtime_genoff.so
 
 # Touch frimware
-etc/firmware/atmel-a432-14102602-0103aa-quark.tdat
+etc/firmware/atmel-a432-14102602-0103aa-quark.tdat:vendor/firmware/atmel-a432-14102602-0103aa-quark.tdat
 
 # Video processing firmware
-etc/firmware/vpu.b00
-etc/firmware/vpu.b01
-etc/firmware/vpu.b02
-etc/firmware/vpu.b03
-etc/firmware/vpu.b04
-etc/firmware/vpu.b05
-etc/firmware/vpu.b06
-etc/firmware/vpu.b07
-etc/firmware/vpu.b08
-etc/firmware/vpu.b09
-etc/firmware/vpu.b10
-etc/firmware/vpu.b11
-etc/firmware/vpu.b12
-etc/firmware/vpu.mbn
-etc/firmware/vpu.mdt
+etc/firmware/vpu.b00:vendor/firmware/vpu.b00
+etc/firmware/vpu.b01:vendor/firmware/vpu.b01
+etc/firmware/vpu.b02:vendor/firmware/vpu.b02
+etc/firmware/vpu.b03:vendor/firmware/vpu.b03
+etc/firmware/vpu.b04:vendor/firmware/vpu.b04
+etc/firmware/vpu.b05:vendor/firmware/vpu.b05
+etc/firmware/vpu.b06:vendor/firmware/vpu.b06
+etc/firmware/vpu.b07:vendor/firmware/vpu.b07
+etc/firmware/vpu.b08:vendor/firmware/vpu.b08
+etc/firmware/vpu.b09:vendor/firmware/vpu.b09
+etc/firmware/vpu.b10:vendor/firmware/vpu.b10
+etc/firmware/vpu.b11:vendor/firmware/vpu.b11
+etc/firmware/vpu.b12:vendor/firmware/vpu.b12
+etc/firmware/vpu.mbn:vendor/firmware/vpu.mbn
+etc/firmware/vpu.mdt:vendor/firmware/vpu.mdt
 
 # Voice recognition
 lib/hw/audio.motvr.default.so
@@ -402,10 +407,10 @@ lib/libsupermodel.so
 # lib/hw/sound_trigger.primary.apq8084.so (dependency)
 
 # Carrier related (sourced from shamu)
--app/VZWAPNLib/VZWAPNLib.apk
+-app/VZWAPNLib/VZWAPNLib.apk:vendor/app/VZWAPNLib/VZWAPNLib.apk
 -framework/com.verizon.hardware.telephony.ehrpd.jar
 -framework/com.verizon.hardware.telephony.lte.jar
--priv-app/AppDirectedSMSProxy/AppDirectedSMSProxy.apk
--priv-app/BuaContactAdapter/BuaContactAdapter.apk
--priv-app/MotoSignatureApp/MotoSignatureApp.apk
--priv-app/VZWAPNService/VZWAPNService.apk
+-priv-app/AppDirectedSMSProxy/AppDirectedSMSProxy.apk:vendor/app/AppDirectedSMSProxy/AppDirectedSMSProxy.apk
+-priv-app/BuaContactAdapter/BuaContactAdapter.apk:vendor/app/BuaContactAdapter/BuaContactAdapter.apk
+-priv-app/MotoSignatureApp/MotoSignatureApp.apk:vendor/app/MotoSignatureApp/MotoSignatureApp.apk
+-priv-app/VZWAPNService/VZWAPNService.apk:vendor/app/VZWAPNService/VZWAPNService.apk

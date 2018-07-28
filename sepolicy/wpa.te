@@ -1,3 +1,4 @@
+type wpa, domain, mlstrustedsubject;
 allow wpa wpa_socket:fifo_file { write unlink };
 allow wpa cutback_data_file:dir r_dir_perms;
 allow wpa cutback_socket:sock_file write;

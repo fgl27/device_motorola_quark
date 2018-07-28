@@ -16,15 +16,10 @@
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES := thermal.c
-LOCAL_MODULE := libshims_thermal
+LOCAL_SRC_FILES := libqsap_shim.c
+LOCAL_SHARED_LIBRARIES := libqsap_sdk liblog
+LOCAL_C_INCLUDES := $(TOP)/system/qcom/softap/sdk
+LOCAL_MODULE := libqsap_shim
 LOCAL_MODULE_TAGS := optional
-include $(BUILD_SHARED_LIBRARY)
-
-# libqc-opt
-include $(CLEAR_VARS)
-LOCAL_SRC_FILES := icu51.c
-LOCAL_SHARED_LIBRARIES := libicuuc libicui18n
-LOCAL_MODULE := libshim_qcopt
-LOCAL_MODULE_TAGS := optional
+LOCAL_PROPRIETARY_MODULE := true
 include $(BUILD_SHARED_LIBRARY)

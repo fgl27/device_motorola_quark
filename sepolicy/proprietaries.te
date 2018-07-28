@@ -1,4 +1,13 @@
 # This contains SELinux permissions exceptions for proprietaries (cannot be fixed properly until 6.0 libraries arrive)
 
 allow mm-qcamerad system_file:file execmod;
+allow mm-qcamerad vendor_file:file execmod;
+
 allow mediaserver system_file:file execmod;
+allow mediaserver vendor_file:file execmod;
+
+allow atfwd system_file:file execmod;
+allow atfwd vendor_file:file execmod;
+
+allow radio system_file:file execmod;
+allow radio vendor_file:file execmod;

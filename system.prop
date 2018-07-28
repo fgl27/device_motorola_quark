@@ -26,16 +26,11 @@ media.stagefright.less-secure=true
 # Data Disable mobile data by default
 ro.com.android.mobiledata=false
 
-# Dalvik
-dalvik.vm.boot-dex2oat-threads=4
-dalvik.vm.dex2oat-threads=4
-dalvik.vm.image-dex2oat-threads=4
-
 # Display
 ro.qualcomm.cabl=0
 ro.opengles.version=196610
 ro.sf.lcd_density=560
-ro.panel.mountflip=3
+ro.sf.hwrotation=180
 
 # FRP
 ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
@@ -151,8 +146,14 @@ wlan.driver.ath=0
 wlan.driver.config=/data/misc/wifi/WCNSS_qcom_cfg.ini
 ro.disableWifiApFirmwareReload=true
 
-# ena root and adb by default app only
-persist.sys.root_access=3
-persist.service.adb.enable=1
-persist.service.debuggable=1
+# ena root by default app only
+persist.sys.root_access=1
+
+# Set usb to adb and mtp
 persist.sys.usb.config=mtp,adb
+
+# Vendor security patch level
+ro.vendor.build.security_patch=2018-01-01
+
+# To make addon SU to work
+ro.lineage.version=15.1-zipdate-hacked-quark

@@ -1,5 +1,5 @@
-type adspd, domain, domain_deprecated, mlstrustedsubject;
-type adspd_exec, exec_type, file_type;
+type adspd, domain;
+type adspd_exec, exec_type, vendor_file_type, file_type;
 init_daemon_domain(adspd)
 
 set_prop(adspd, adspd_prop)
@@ -19,4 +19,7 @@ allow adspd system_prop:property_service set;
 allow adspd adspd_socket:sock_file { read write };
 
 # TODO: Just use generic sysfs for now
-allow adspd sysfs:file write;
+allow adspd sysfs:file { open read write };
+
+allow adspd firmware_file:file { getattr open read };
+allow adspd sysfs:dir { open read };

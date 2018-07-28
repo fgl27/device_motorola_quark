@@ -3,3 +3,4 @@ allow priv_app device:dir { open read };
 # system to firmware folder
 allow priv_app firmware_file:dir { search };
 allow priv_app firmware_file:file { getattr open read };
+allow priv_app proc_interrupts:file open;

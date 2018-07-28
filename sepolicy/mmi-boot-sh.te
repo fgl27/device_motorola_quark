@@ -1,0 +1,17 @@
+type mmi-boot-sh, domain;
+type mmi-boot-sh_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(mmi-boot-sh)
+
+# Shell script needs to execute /vendor/bin/sh
+allow mmi-boot-sh vendor_shell_exec:file rx_file_perms;
+allow mmi-boot-sh vendor_toolbox_exec:file rx_file_perms;
+
+# Set the props property
+set_prop(mmi-boot-sh, system_prop)
+set_prop(mmi-boot-sh, manufacturedate_prop)
+set_prop(mmi-boot-sh, hw_rev_prop)
+
+allow mmi-boot-sh proc:file { open write };
+allow mmi-boot-sh system_file:file execute_no_trans;
+allow mmi-boot-sh toolbox_exec:file { execute execute_no_trans getattr open read };

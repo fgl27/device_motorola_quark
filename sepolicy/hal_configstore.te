@@ -1,0 +1,1 @@
+allow cameraserver hal_configstore_default:binder { call };

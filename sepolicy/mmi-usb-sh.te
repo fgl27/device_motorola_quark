@@ -1,0 +1,18 @@
+type mmi-usb-sh, domain;
+type mmi-usb-sh_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(mmi-usb-sh)
+
+# Shell script needs to execute /vendor/bin/sh
+allow mmi-usb-sh vendor_shell_exec:file rx_file_perms;
+allow mmi-usb-sh vendor_toolbox_exec:file rx_file_perms;
+
+# Set the props property
+set_prop(mmi-usb-sh, system_prop)
+set_prop(mmi-usb-sh, rmnet_mux_prop)
+
+allow mmi-usb-sh rmnet_mux_prop:file { getattr open read };
+allow mmi-usb-sh sysfs:file { open read write };
+allow mmi-usb-sh toolbox_exec:file { execute execute_no_trans getattr open read };
+allow mmi-usb-sh self:capability chown;
+allow mmi-usb-sh sysfs_hsic_modem_wait:file { getattr setattr };

@@ -89,7 +89,7 @@ write_int(char const* path, int value)
     fd = open(path, O_RDWR);
     if (fd >= 0) {
         char buffer[20];
-        int bytes = sprintf(buffer, "%d\n", value);
+        int bytes = snprintf(buffer, sizeof(buffer), "%d\n", value);
         int amt = write(fd, buffer, bytes);
         close(fd);
         return amt == -1 ? -errno : 0;
@@ -122,6 +122,16 @@ write_str(char const* path, char *value)
         }
         return -errno;
     }
+}
+
+static void
+handle_battery_full(int brightness)
+{
+    // prop used to keep battery triger at battery-full case is enable, I activated this from a app at boot if app switch is on
+    char value[PROPERTY_VALUE_MAX];
+    property_get("led.batton", value, NULL);
+    write_str(LED_TRIGER, strstr(value, "1") ? "battery-full" : "none");
+    write_int(LED_BRIGHTNESS, brightness);
 }
 
 static int
@@ -162,52 +172,42 @@ static int
 set_speaker_light_locked(struct light_device_t* dev,
         struct light_state_t const* state)
 {
+    unsigned int brightness = 0;
     unsigned long onMS, offMS;
-    char onMSC[PAGE_SIZE];
-    char offMSC[PAGE_SIZE];
-    char value[PROPERTY_VALUE_MAX];
-    unsigned int brightness;
-    int statenow;
 
     switch (state->flashMode) {
         case LIGHT_FLASH_TIMED:
             onMS = state->flashOnMS;
             offMS = state->flashOffMS;
             break;
-        case LIGHT_FLASH_NONE:
         default:
             onMS = 0;
             offMS = 0;
             break;
     }
 
-    statenow = rgb_to_brightness(state);
-    // If a brightness has been applied by the user
-    brightness = (g_notification.color & 0xFF000000) >> 24;
-    if (brightness == 0x00) {
-        brightness = 0xFF;
-    }
-    if (statenow > 0) { 
-       sprintf(onMSC, "%lu", onMS);
-       sprintf(offMSC, "%lu", offMS);
-       if (brightness == 255) brightness = 15; // max_brightness 15 steps of 5
-       else if (brightness > 1 && brightness < 255) brightness = 10;
-       else brightness = 5;
-       write_int(LED_BLINK_BRIGHTNESS, brightness);
-       write_str(LED_TRIGER, "timer");
-       write_str(LED_ON, onMSC);
-       write_str(LED_OFF, offMSC);
-       ALOGE("liblights notification led brightness=%d, timer 0n=%s, off=%s\n", brightness, onMSC, offMSC);
-    } else {
-        // prop used to keep battery triger at battery-full case is enable, I activated this from a app at boot if app switch is on
-        property_get("led.batton", value, NULL);
-        if (strstr(value, "1")) {
-            write_int(LED_BLINK_BRIGHTNESS, statenow);
-            write_int(LED_BRIGHTNESS, statenow);// prevent led be enable all the time
-            write_str(LED_TRIGER, "battery-full");
-        } else write_str(LED_TRIGER, "none");// none alredy set LED_BRIGHTNESS to 0
-    }
+    if (onMS > 0) {
 
+        brightness = (g_notification.color & 0xFF000000) >> 24;
+        if (brightness == 0x00) {
+            brightness = 0xFF;
+        }
+
+        if (brightness > 170) brightness = 15; // max_brightness 15 steps of 5
+        else if (brightness > 85) brightness = 10;
+        else brightness = 5;
+
+        if ((offMS - 0) > 0) {
+            write_int(LED_BRIGHTNESS, 0);
+            write_int(LED_BLINK_BRIGHTNESS, brightness);
+            write_str(LED_TRIGER, "timer");
+            write_int(LED_ON, onMS);
+            write_int(LED_OFF, offMS);
+        } else handle_battery_full(brightness);// Always on led
+
+    } else handle_battery_full(0);//led off
+
+    ALOGI("liblights notification led brightness=%d, timer 0n=%ld, off=%ld\n", brightness, onMS, offMS);
     return 0;
 }
 
@@ -303,6 +303,9 @@ static int open_lights(const struct hw_module_t* module, char const* name,
 
     struct light_device_t *dev = malloc(sizeof(struct light_device_t));
     memset(dev, 0, sizeof(*dev));
+
+    if(!dev)
+        return -ENOMEM;
 
     dev->common.tag = HARDWARE_DEVICE_TAG;
     dev->common.version = 0;
