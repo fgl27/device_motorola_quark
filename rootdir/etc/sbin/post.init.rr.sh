@@ -37,6 +37,11 @@ if [ -e /system/xbin/su ]; then
 	chown root:root /system/xbin/su
 fi
 
+# enable su by default
+if [ ! -e /data/property/persist.sys.root_access ]; then
+	echo 1 > /data/property/persist.sys.root_access
+fi
+
 # Init clean start
 fsgid=`getprop ro.boot.fsg-id`
 device=`getprop ro.boot.hardware.sku`
