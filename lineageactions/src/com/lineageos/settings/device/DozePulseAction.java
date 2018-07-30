@@ -34,8 +34,7 @@ public class DozePulseAction implements SensorAction, ScreenStateNotifier {
     }
 
     @Override
-    public void screenTurnedOn() {
-    }
+    public void screenTurnedOn() {}
 
     @Override
     public void screenTurnedOff() {
@@ -43,7 +42,7 @@ public class DozePulseAction implements SensorAction, ScreenStateNotifier {
     }
 
     public void action() {
-         if (mayDoze()) {
+        if (mayDoze()) {
             Log.d(TAG, "Sending doze.pulse intent");
             mContext.sendBroadcastAsUser(new Intent("com.android.systemui.doze.pulse"),
                 new UserHandle(UserHandle.USER_CURRENT));

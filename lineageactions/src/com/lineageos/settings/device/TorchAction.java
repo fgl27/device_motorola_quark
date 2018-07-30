@@ -39,9 +39,9 @@ public class TorchAction implements SensorAction {
         mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
         mVibratorPeriod = vibratorPeriod;
         try {
-            for (final String cameraId : mCameraManager.getCameraIdList()) {
+            for (final String cameraId: mCameraManager.getCameraIdList()) {
                 CameraCharacteristics characteristics =
-                        mCameraManager.getCameraCharacteristics(cameraId);
+                    mCameraManager.getCameraCharacteristics(cameraId);
                 int cOrientation = characteristics.get(CameraCharacteristics.LENS_FACING);
                 if (cOrientation == CameraCharacteristics.LENS_FACING_BACK) {
                     mRearCameraId = cameraId;

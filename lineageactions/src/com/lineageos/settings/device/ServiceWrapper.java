@@ -53,13 +53,11 @@ public class ServiceWrapper extends android.app.Service {
         return null;
     }
 
-    public void setCallback(ServiceCallback callback) {
-    }
+    public void setCallback(ServiceCallback callback) {}
 
     public void start() {
         Log.i(TAG, "start");
     }
 
-    public void stop() {
-    }
+    public void stop() {}
 }

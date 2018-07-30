@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.LinkedList;
 
 public class LineageActionsService extends IntentService implements ScreenStateNotifier,
-        UpdatedStateNotifier {
+UpdatedStateNotifier {
     private static final String TAG = "LineageActions";
 
     private final Context mContext;
@@ -39,9 +39,9 @@ public class LineageActionsService extends IntentService implements ScreenStateN
     private final ScreenReceiver mScreenReceiver;
     private final SensorHelper mSensorHelper;
 
-    private final List<ScreenStateNotifier> mScreenStateNotifiers = new LinkedList<ScreenStateNotifier>();
-    private final List<UpdatedStateNotifier> mUpdatedStateNotifiers =
-                        new LinkedList<UpdatedStateNotifier>();
+    private final List < ScreenStateNotifier > mScreenStateNotifiers = new LinkedList < ScreenStateNotifier > ();
+    private final List < UpdatedStateNotifier > mUpdatedStateNotifiers =
+        new LinkedList < UpdatedStateNotifier > ();
 
     public LineageActionsService(Context context) {
         super("CMActionService");
@@ -71,7 +71,7 @@ public class LineageActionsService extends IntentService implements ScreenStateN
         mUpdatedStateNotifiers.add(new CameraActivationSensor(cmActionsSettings, cameraAction, mSensorHelper));
         mUpdatedStateNotifiers.add(new ChopChopSensor(cmActionsSettings, chopChopAction, mSensorHelper));
         mUpdatedStateNotifiers.add(new IrSilencer(cmActionsSettings, context, mSensorHelper,
-                mIrGestureManager));
+            mIrGestureManager));
         mUpdatedStateNotifiers.add(new LiftToSilence(cmActionsSettings, context, mSensorHelper));
 
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
@@ -80,8 +80,7 @@ public class LineageActionsService extends IntentService implements ScreenStateN
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
-    }
+    protected void onHandleIntent(Intent intent) {}
 
     @Override
     public void screenTurnedOn() {
@@ -91,14 +90,14 @@ public class LineageActionsService extends IntentService implements ScreenStateN
             mWakeLock.setReferenceCounted(false);
             mWakeLock.acquire();
         }
-        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
+        for (ScreenStateNotifier screenStateNotifier: mScreenStateNotifiers) {
             screenStateNotifier.screenTurnedOn();
         }
     }
 
     @Override
     public void screenTurnedOff() {
-        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
+        for (ScreenStateNotifier screenStateNotifier: mScreenStateNotifiers) {
             screenStateNotifier.screenTurnedOff();
         }
         if (mWakeLock == null)
@@ -114,7 +113,7 @@ public class LineageActionsService extends IntentService implements ScreenStateN
         } else {
             screenTurnedOff();
         }
-        for (UpdatedStateNotifier notifier : mUpdatedStateNotifiers) {
+        for (UpdatedStateNotifier notifier: mUpdatedStateNotifiers) {
             notifier.updateState();
         }
     }

@@ -33,7 +33,7 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     private boolean mLastStowed;
 
     public StowSensor(LineageActionsSettings cmActionsSettings, SensorHelper sensorHelper,
-                SensorAction action) {
+        SensorAction action) {
         mLineageActionsSettings = cmActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
@@ -64,13 +64,12 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
         boolean thisStowed = (event.values[0] != 0);
         Log.d(TAG, "event: " + thisStowed);
         DozePulseAction.setCanDoze(!thisStowed);
-        if (mLastStowed && ! thisStowed) {
+        if (mLastStowed && !thisStowed) {
             mSensorAction.action();
         }
         mLastStowed = thisStowed;
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 }

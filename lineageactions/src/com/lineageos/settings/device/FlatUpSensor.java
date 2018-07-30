@@ -33,7 +33,7 @@ public class FlatUpSensor implements ScreenStateNotifier {
     private boolean mLastFlatUp;
 
     public FlatUpSensor(LineageActionsSettings cmActionsSettings, SensorHelper sensorHelper,
-                SensorAction action) {
+        SensorAction action) {
         mLineageActionsSettings = cmActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
@@ -73,7 +73,6 @@ public class FlatUpSensor implements ScreenStateNotifier {
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 }

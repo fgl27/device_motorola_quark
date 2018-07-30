@@ -61,7 +61,7 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
     private static final String ALARM_DONE_ACTION = "com.android.deskclock.ALARM_DONE";
 
     public IrSilencer(LineageActionsSettings cmActionsSettings, Context context,
-                SensorHelper sensorHelper, IrGestureManager irGestureManager) {
+        SensorHelper sensorHelper, IrGestureManager irGestureManager) {
         mContext = context;
         mTelecomManager = (TelecomManager) mContext.getSystemService(Context.TELECOM_SERVICE);
         mTelephonyManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
@@ -104,7 +104,7 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
                     mTelecomManager.silenceRinger();
                 } else {
                     Log.d(TAG, "Ignoring silence gesture: " + now + " is too close to " +
-                            mPhoneRingStartedMs + ", delay=" + SILENCE_DELAY_MS);
+                        mPhoneRingStartedMs + ", delay=" + SILENCE_DELAY_MS);
                 }
             } else if (mAlarmRinging) {
                 long now = System.currentTimeMillis();
@@ -114,7 +114,7 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
                         new UserHandle(UserHandle.USER_CURRENT));
                 } else {
                     Log.d(TAG, "Ignoring silence gesture: " + now + " is too close to " +
-                            mAlarmRingStartedMs + ", delay=" + SILENCE_DELAY_MS);
+                        mAlarmRingStartedMs + ", delay=" + SILENCE_DELAY_MS);
                 }
             }
         }
@@ -135,27 +135,26 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
     }
 
     @Override
-    public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
 
     private BroadcastReceiver mAlarmStateReceiver = new BroadcastReceiver() {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-           if (!mLineageActionsSettings.isIrSilencerEnabled())
-              return;
+            if (!mLineageActionsSettings.isIrSilencerEnabled())
+                return;
 
-           String action = intent.getAction();
-           if (ALARM_ALERT_ACTION.equals(action)) {
-               Log.d(TAG, "Alarm ringing started");
-               irEnabler(true);
-               mAlarmRinging = true;
-               mAlarmRingStartedMs = System.currentTimeMillis();
-           } else {
-               Log.d(TAG, "Alarm ringing stopped");
-               irEnabler(false);
-               mAlarmRinging = false;
-           }
+            String action = intent.getAction();
+            if (ALARM_ALERT_ACTION.equals(action)) {
+                Log.d(TAG, "Alarm ringing started");
+                irEnabler(true);
+                mAlarmRinging = true;
+                mAlarmRingStartedMs = System.currentTimeMillis();
+            } else {
+                Log.d(TAG, "Alarm ringing stopped");
+                irEnabler(false);
+                mAlarmRinging = false;
+            }
         }
     };
 

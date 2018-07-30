@@ -34,7 +34,7 @@ public class ProximitySensor implements ScreenStateNotifier, SensorEventListener
     private boolean mSawNear = false;
 
     public ProximitySensor(LineageActionsSettings LineageActionsSettings, SensorHelper sensorHelper,
-                SensorAction action) {
+        SensorAction action) {
         mLineageActionsSettings = LineageActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
@@ -71,7 +71,5 @@ public class ProximitySensor implements ScreenStateNotifier, SensorEventListener
     }
 
     @Override
-    public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
 }
-

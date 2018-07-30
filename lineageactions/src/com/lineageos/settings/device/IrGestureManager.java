@@ -25,28 +25,27 @@ public class IrGestureManager {
     private static final String TAG = "LineageActions-IRGestureManager";
 
     // Something occludes the sensor
-    public static final int IR_GESTURE_OBJECT_DETECTED             = 1;
+    public static final int IR_GESTURE_OBJECT_DETECTED = 1;
     // No occlusion
-    public static final int IR_GESTURE_OBJECT_NOT_DETECTED         = 2;
+    public static final int IR_GESTURE_OBJECT_NOT_DETECTED = 2;
     // Swiping above the phone (send doze)
-    public static final int IR_GESTURE_SWIPE                       = 3;
+    public static final int IR_GESTURE_SWIPE = 3;
     // Hand wave in front of the phone (send doze)
-    public static final int IR_GESTURE_APPROACH                    = 4;
+    public static final int IR_GESTURE_APPROACH = 4;
     // Gestures not tracked
-    public static final int IR_GESTURE_COVER                       = 5;
-    public static final int IR_GESTURE_DEPART                      = 6;
-    public static final int IR_GESTURE_HOVER                       = 7;
-    public static final int IR_GESTURE_HOVER_PULSE                 = 8;
-    public static final int IR_GESTURE_PROXIMITY_NONE              = 9;
-    public static final int IR_GESTURE_HOVER_FIST                  = 10;
-    public static final int IR_GESTURE_LAST                        = IR_GESTURE_HOVER_FIST;
+    public static final int IR_GESTURE_COVER = 5;
+    public static final int IR_GESTURE_DEPART = 6;
+    public static final int IR_GESTURE_HOVER = 7;
+    public static final int IR_GESTURE_HOVER_PULSE = 8;
+    public static final int IR_GESTURE_PROXIMITY_NONE = 9;
+    public static final int IR_GESTURE_HOVER_FIST = 10;
+    public static final int IR_GESTURE_LAST = IR_GESTURE_HOVER_FIST;
 
-    private int mVotes[] = new int[IR_GESTURE_LAST+1];
+    private int mVotes[] = new int[IR_GESTURE_LAST + 1];
     private int mGestures;
 
-    static
-    {
-       System.load("/system/vendor/lib/libjni_LineageActions.so");
+    static {
+        System.load("/system/vendor/lib/libjni_LineageActions.so");
     }
 
     public IrGestureManager() {
@@ -63,7 +62,7 @@ public class IrGestureManager {
     private synchronized int voteDelta(int flags, int delta) {
         int gestures = 0;
         for (int i = 0; i <= IR_GESTURE_LAST; i++) {
-            if ((flags & (1<<i)) != 0) {
+            if ((flags & (1 << i)) != 0) {
                 mVotes[i] += delta;
             }
             if (mVotes[i] > 0) {
@@ -82,7 +81,7 @@ public class IrGestureManager {
             if (!nativeSetIrDisabled(irDisabled)) {
                 Log.e(TAG, "Failed setting IR disabled " + irDisabled);
             }
-            if (! nativeSetIrWakeConfig(mGestures)) {
+            if (!nativeSetIrWakeConfig(mGestures)) {
                 Log.e(TAG, "Failed setting IR gestures " + mGestures);
             }
         }

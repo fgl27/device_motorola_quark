@@ -55,7 +55,7 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
             mSensorHelper.registerListener(mSensor, this);
             mSensorHelper.registerListener(mProx, mProxListener);
             mIsEnabled = true;
-        } else if (! mLineageActionsSettings.isChopChopGestureEnabled() && mIsEnabled) {
+        } else if (!mLineageActionsSettings.isChopChopGestureEnabled() && mIsEnabled) {
             Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(this);
             mSensorHelper.unregisterListener(mProxListener);
@@ -80,8 +80,7 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
     private SensorEventListener mProxListener = new SensorEventListener() {
         @Override
@@ -90,7 +89,6 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 }

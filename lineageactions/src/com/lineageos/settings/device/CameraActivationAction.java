@@ -114,13 +114,13 @@ public class CameraActivationAction implements SensorAction {
     }
 
     private ActivityInfo getBestActivityInfo(Intent intent, ActivityInfo match) {
-        List <ResolveInfo> activities = mPackageManager.queryIntentActivities(intent, 0);
+        List < ResolveInfo > activities = mPackageManager.queryIntentActivities(intent, 0);
         ActivityInfo best = null;
         if (activities.size() > 0) {
             best = activities.get(0).activityInfo;
             if (match != null) {
                 String packageName = match.applicationInfo.packageName;
-                for (int i = activities.size()-1; i >= 0; i--) {
+                for (int i = activities.size() - 1; i >= 0; i--) {
                     ActivityInfo activityInfo = activities.get(i).activityInfo;
                     if (packageName.equals(activityInfo.applicationInfo.packageName)) {
                         best = activityInfo;

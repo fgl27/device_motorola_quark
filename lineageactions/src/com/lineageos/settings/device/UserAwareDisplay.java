@@ -37,7 +37,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private static final int KEYGUARD_POLL_MS = 1000;
 
     private static final int IR_GESTURES_FOR_SCREEN_ON = (1 << IR_GESTURE_OBJECT_DETECTED) |
-            (1 << IR_GESTURE_OBJECT_NOT_DETECTED);
+        (1 << IR_GESTURE_OBJECT_NOT_DETECTED);
     private static final int IR_GESTURES_FOR_SCREEN_OFF = 0;
 
     private final LineageActionsSettings mLineageActionsSettings;
@@ -57,7 +57,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private boolean mIsStowed;
 
     public UserAwareDisplay(LineageActionsSettings cmActionsSettings, SensorHelper sensorHelper,
-                IrGestureManager irGestureManager, Context context) {
+        IrGestureManager irGestureManager, Context context) {
         mLineageActionsSettings = cmActionsSettings;
         mSensorHelper = sensorHelper;
         mIrGestureVote = new IrGestureVote(irGestureManager);
@@ -105,7 +105,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     }
 
     private void enableSensors() {
-        if (! mEnabled) {
+        if (!mEnabled) {
             Log.d(TAG, "Enabling");
 
             mEnabled = true;
@@ -141,7 +141,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     }
 
     private synchronized void updateScreenLock() {
-        boolean isLocked = mObjectIsDetected && ! mIsStowed;
+        boolean isLocked = mObjectIsDetected && !mIsStowed;
 
         if (isLocked) {
             enableScreenLock();
@@ -151,7 +151,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     }
 
     private synchronized void enableScreenLock() {
-        if (! mScreenIsLocked) {
+        if (!mScreenIsLocked) {
             mScreenIsLocked = true;
             if (mWakeLock == null)
                 mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
@@ -195,8 +195,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 
     private SensorEventListener mStowListener = new SensorEventListener() {
@@ -206,14 +205,13 @@ public class UserAwareDisplay implements ScreenStateNotifier {
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 
     private Runnable mCheckKeyguard = new Runnable() {
         @Override
         public void run() {
-            if (! mKeyguardManager.inKeyguardRestrictedInputMode()) {
+            if (!mKeyguardManager.inKeyguardRestrictedInputMode()) {
                 enableSensors();
             } else {
                 scheduleKeyguardPoll();

@@ -41,7 +41,7 @@ public class LiftToSilence extends PhoneStateListener implements SensorEventList
     private boolean mLastFlatUp;
 
     public LiftToSilence(LineageActionsSettings LineageActionsSettings, Context context,
-                SensorHelper sensorHelper) {
+        SensorHelper sensorHelper) {
         mLineageActionsSettings = LineageActionsSettings;
         mSensorHelper = sensorHelper;
         mFlatUpSensor = sensorHelper.getFlatUpSensor();
@@ -89,8 +89,7 @@ public class LiftToSilence extends PhoneStateListener implements SensorEventList
     }
 
     @Override
-    public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
 
     private SensorEventListener mStowListener = new SensorEventListener() {
         @Override
@@ -99,7 +98,6 @@ public class LiftToSilence extends PhoneStateListener implements SensorEventList
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 }

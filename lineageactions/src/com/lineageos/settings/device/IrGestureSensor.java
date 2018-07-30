@@ -45,7 +45,7 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     private boolean mEnabled, mScreenOn, mtempOn, mtempOff;
 
     public IrGestureSensor(LineageActionsSettings LineageActionsSettings, SensorHelper sensorHelper,
-                SensorAction action, IrGestureManager irGestureManager, Context context) {
+        SensorAction action, IrGestureManager irGestureManager, Context context) {
         mLineageActionsSettings = LineageActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
@@ -120,7 +120,6 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     }
 
     @Override
-    public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
 
 }
