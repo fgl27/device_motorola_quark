@@ -37,6 +37,9 @@ if [ -e /system/xbin/su ]; then
 	chown root:root /system/xbin/su
 fi
 
+# remove this in the future
+rm /data/property/persist.sys.root_access
+
 # Init clean start
 fsgid=`getprop ro.boot.fsg-id`
 device=`getprop ro.boot.hardware.sku`
