@@ -18,10 +18,4 @@ else
 	echo 1 > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel
 fi
 
-# enable su by default
-if [ ! -e /data/property/persist.sys.root_access ]; then
-	echo 1 > /data/property/persist.sys.root_access
-fi
-
-
 exit
