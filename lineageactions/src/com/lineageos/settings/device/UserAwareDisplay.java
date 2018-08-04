@@ -121,7 +121,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
             SetUserAwareTimer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    if (mEnabled && mScreenOn) {
+                    if (!mEnabled && mScreenOn) {
                         //Log.d(TAG, "Enabling");
 
                         mEnabled = true;
@@ -154,7 +154,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
             SetUserAwareTimer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    if (mEnabled && mScreenOn) {
+                    if (mEnabled && !mScreenOn) {
                         //Log.d(TAG, "Disabling");
                         mSensorHelper.unregisterListener(mStowListener);
                         mSensorHelper.unregisterListener(mIrGestureListener);
