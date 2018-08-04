@@ -16,9 +16,12 @@
 
 package com.lineageos.settings.device;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
 import android.util.Log;
 
 public class ProximitySensor implements ScreenStateNotifier, SensorEventListener {
@@ -33,13 +36,19 @@ public class ProximitySensor implements ScreenStateNotifier, SensorEventListener
 
     private boolean mSawNear = false;
 
+    private final PowerManager mPowerManager;
+    private WakeLock mWakeLock;
+
     public ProximitySensor(LineageActionsSettings LineageActionsSettings, SensorHelper sensorHelper,
-        SensorAction action) {
+        SensorAction action, Context context) {
         mLineageActionsSettings = LineageActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
 
         mSensor = sensorHelper.getProximitySensor();
+
+        mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
     }
 
     @Override
@@ -54,9 +63,17 @@ public class ProximitySensor implements ScreenStateNotifier, SensorEventListener
     @Override
     public void screenTurnedOff() {
         if (mLineageActionsSettings.isIrWakeupEnabled() && !mEnabled) {
+            if (mWakeLock == null)
+                mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
+
+            if (!mWakeLock.isHeld()) {
+                mWakeLock.setReferenceCounted(false);
+                mWakeLock.acquire();
+            }
             Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mSensor, this);
             mEnabled = true;
+            mWakeLock.release();
         }
     }
 

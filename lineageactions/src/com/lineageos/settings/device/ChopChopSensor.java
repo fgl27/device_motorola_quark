@@ -65,18 +65,20 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+
         if (mProxIsCovered) {
             Log.d(TAG, "proximity sensor covered, ignoring chop-chop");
             return;
         }
+
         long now = System.currentTimeMillis();
+
         if (now - mLastAction > DELAY_BETWEEN_CHOP_CHOP_IN_MS) {
             Log.d(TAG, "Allowing chop chop");
             mLastAction = now;
             mAction.action();
-        } else {
-            Log.d(TAG, "Denying chop chop");
-        }
+        } else Log.d(TAG, "Denying chop chop");
+
     }
 
     @Override

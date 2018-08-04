@@ -62,12 +62,9 @@ public class IrGestureManager {
     private synchronized int voteDelta(int flags, int delta) {
         int gestures = 0;
         for (int i = 0; i <= IR_GESTURE_LAST; i++) {
-            if ((flags & (1 << i)) != 0) {
-                mVotes[i] += delta;
-            }
-            if (mVotes[i] > 0) {
-                gestures |= (1 << i);
-            }
+            if ((flags & (1 << i)) != 0) mVotes[i] += delta;
+
+            if (mVotes[i] > 0) gestures |= (1 << i);
         }
 
         return gestures;
@@ -78,12 +75,10 @@ public class IrGestureManager {
             boolean irDisabled = (gestures == 0);
             mGestures = gestures;
 
-            if (!nativeSetIrDisabled(irDisabled)) {
-                Log.e(TAG, "Failed setting IR disabled " + irDisabled);
-            }
-            if (!nativeSetIrWakeConfig(mGestures)) {
-                Log.e(TAG, "Failed setting IR gestures " + mGestures);
-            }
+            if (!nativeSetIrDisabled(irDisabled)) Log.e(TAG, "Failed setting IR disabled " + irDisabled);
+
+            if (!nativeSetIrWakeConfig(mGestures)) Log.e(TAG, "Failed setting IR gestures " + mGestures);
+
         }
     }
 

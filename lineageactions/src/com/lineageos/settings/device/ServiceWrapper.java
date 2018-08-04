@@ -33,9 +33,9 @@ public class ServiceWrapper extends android.app.Service {
     }
 
     public class LocalBinder extends Binder {
+        // Return this instance of the service so clients can call public
+        // methods
         ServiceWrapper getService() {
-            // Return this instance of the service so clients can call public
-            // methods
             return ServiceWrapper.this;
         }
     }

@@ -16,9 +16,12 @@
 
 package com.lineageos.settings.device;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
 import android.util.Log;
 
 public class StowSensor implements ScreenStateNotifier, SensorEventListener {
@@ -32,13 +35,19 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     private boolean mEnabled;
     private boolean mLastStowed;
 
+    private final PowerManager mPowerManager;
+    private WakeLock mWakeLock;
+
     public StowSensor(LineageActionsSettings cmActionsSettings, SensorHelper sensorHelper,
-        SensorAction action) {
+        SensorAction action, Context context) {
         mLineageActionsSettings = cmActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
 
         mSensor = sensorHelper.getStowSensor();
+
+        mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
     }
 
     @Override
@@ -52,10 +61,19 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
 
     @Override
     public void screenTurnedOff() {
+
         if (mLineageActionsSettings.isPickUpEnabled() && !mEnabled) {
+            if (mWakeLock == null)
+                mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
+
+            if (!mWakeLock.isHeld()) {
+                mWakeLock.setReferenceCounted(false);
+                mWakeLock.acquire();
+            }
             Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mSensor, this);
             mEnabled = true;
+            mWakeLock.release();
         }
     }
 

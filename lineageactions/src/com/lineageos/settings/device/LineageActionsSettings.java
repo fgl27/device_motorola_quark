@@ -138,29 +138,25 @@ public class LineageActionsSettings {
             public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
                 boolean updated = true;
 
-                if (GESTURE_USER_AWARE_DISPLAY_KEY.equals(key)) {
+                if (GESTURE_USER_AWARE_DISPLAY_KEY.equals(key))
                     mUserAwareDisplayEnabled = sharedPreferences.getBoolean(GESTURE_USER_AWARE_DISPLAY_KEY, false);
-                } else if (GESTURE_CAMERA_ACTION_KEY.equals(key)) {
+                else if (GESTURE_CAMERA_ACTION_KEY.equals(key))
                     mCameraGestureAction = getIntPreference(sharedPreferences, GESTURE_CAMERA_ACTION_KEY);
-                } else if (GESTURE_CHOP_CHOP_KEY.equals(key)) {
+                else if (GESTURE_CHOP_CHOP_KEY.equals(key))
                     mChopChopAction = getIntPreference(sharedPreferences, GESTURE_CHOP_CHOP_KEY);
-                } else if (GESTURE_FEEDBACK_INTENSITY_KEY.equals(key)) {
+                else if (GESTURE_FEEDBACK_INTENSITY_KEY.equals(key))
                     mFeedbackIntensity = getIntPreference(sharedPreferences, GESTURE_FEEDBACK_INTENSITY_KEY);
-                } else if (GESTURE_IR_WAKEUP_KEY.equals(key)) {
+                else if (GESTURE_IR_WAKEUP_KEY.equals(key))
                     mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, false);
-                } else if (GESTURE_PICK_UP_KEY.equals(key)) {
+                else if (GESTURE_PICK_UP_KEY.equals(key))
                     mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, false);
-                } else if (GESTURE_IR_SILENCER_KEY.equals(key)) {
+                else if (GESTURE_IR_SILENCER_KEY.equals(key))
                     mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
-                } else if (GESTURE_LIFT_TO_SILENCE_KEY.equals(key)) {
+                else if (GESTURE_LIFT_TO_SILENCE_KEY.equals(key))
                     mLiftToSilenceEnabled = sharedPreferences.getBoolean(GESTURE_LIFT_TO_SILENCE_KEY, false);
-                } else {
-                    updated = false;
-                }
+                else updated = false;
 
-                if (updated) {
-                    mUpdatedStateNotifier.updateState();
-                }
+                if (updated) mUpdatedStateNotifier.updateState();
             }
         };
 
@@ -173,20 +169,14 @@ public class LineageActionsSettings {
 
         @Override
         public void action() {
-            if (mIsCamera) {
-                action(mCameraGestureAction);
-            } else {
-                action(mChopChopAction);
-            }
+            if (mIsCamera) action(mCameraGestureAction);
+            else action(mChopChopAction);
         }
 
         private void action(int action) {
             int vibratorPeriod = mFeedbackIntensity * 80;
-            if (action == ACTION_LAUNCH_CAMERA) {
-                new CameraActivationAction(mContext, vibratorPeriod).action();
-            } else if (action == ACTION_TORCH) {
-                new TorchAction(mContext, vibratorPeriod).action();
-            }
+            if (action == ACTION_LAUNCH_CAMERA) new CameraActivationAction(mContext, vibratorPeriod).action();
+            else if (action == ACTION_TORCH) new TorchAction(mContext, vibratorPeriod).action();
         }
     };
 }

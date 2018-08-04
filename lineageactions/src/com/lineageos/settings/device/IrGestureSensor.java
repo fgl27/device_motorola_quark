@@ -20,7 +20,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.os.PowerManager;
-import android.util.Log;
+import android.os.PowerManager.WakeLock;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -39,7 +39,7 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     private final Sensor mSensor;
 
     private final PowerManager mPowerManager;
-    private PowerManager.WakeLock mWakeLock;
+    private WakeLock mWakeLock;
 
     private boolean mEnabled, mScreenOn;
 
@@ -56,7 +56,7 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
         mIrGestureVote.voteForSensors(0);
 
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-        mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "LineageActionsWakeLock");
+        mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
     }
 
     @Override
@@ -92,8 +92,9 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
 
         if (mLineageActionsSettings.isIrWakeupEnabled() && !mEnabled) {
             if (mWakeLock == null)
-                mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "LineageActionsWakeLock");
-            else if (!mWakeLock.isHeld()) {
+                mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
+
+            if (!mWakeLock.isHeld()) {
                 mWakeLock.setReferenceCounted(false);
                 mWakeLock.acquire();
             }

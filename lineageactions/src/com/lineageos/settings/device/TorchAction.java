@@ -71,15 +71,13 @@ public class TorchAction implements SensorAction {
     private class MyTorchCallback extends CameraManager.TorchCallback {
         @Override
         public void onTorchModeChanged(String cameraId, boolean enabled) {
-            if (!cameraId.equals(mRearCameraId))
-                return;
+            if (!cameraId.equals(mRearCameraId)) return;
             mTorchEnabled = enabled;
         }
 
         @Override
         public void onTorchModeUnavailable(String cameraId) {
-            if (!cameraId.equals(mRearCameraId))
-                return;
+            if (!cameraId.equals(mRearCameraId)) return;
             mTorchEnabled = false;
         }
     }

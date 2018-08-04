@@ -21,14 +21,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
 import android.provider.Settings;
-import android.util.Log;
 
 import java.util.List;
 import java.util.LinkedList;
 
 public class LineageActionsService extends IntentService implements ScreenStateNotifier,
 UpdatedStateNotifier {
-    private static final String TAG = "LineageActions";
+    private static final String TAG = "LineageActionsService";
 
     private final Context mContext;
 
@@ -47,8 +46,6 @@ UpdatedStateNotifier {
         super("CMActionService");
         mContext = context;
 
-        Log.d(TAG, "Starting");
-
         LineageActionsSettings cmActionsSettings = new LineageActionsSettings(context, this);
         mSensorHelper = new SensorHelper(context);
         mScreenReceiver = new ScreenReceiver(context, this);
@@ -58,9 +55,9 @@ UpdatedStateNotifier {
         mScreenStateNotifiers.add(mDozePulseAction);
 
         // Actionable sensors get screen on/off notifications
-        mScreenStateNotifiers.add(new FlatUpSensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
+        mScreenStateNotifiers.add(new FlatUpSensor(cmActionsSettings, mSensorHelper, mDozePulseAction, context));
         mScreenStateNotifiers.add(new IrGestureSensor(cmActionsSettings, mSensorHelper, mDozePulseAction, mIrGestureManager, context));
-        mScreenStateNotifiers.add(new StowSensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
+        mScreenStateNotifiers.add(new StowSensor(cmActionsSettings, mSensorHelper, mDozePulseAction, context));
         mScreenStateNotifiers.add(new UserAwareDisplay(cmActionsSettings, mSensorHelper, mIrGestureManager, context));
 
         // Other actions that are always enabled
@@ -86,35 +83,29 @@ UpdatedStateNotifier {
     public void screenTurnedOn() {
         if (mWakeLock == null)
             mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CMActionsWakeLock");
-        else if (!mWakeLock.isHeld()) {
+
+        if (!mWakeLock.isHeld()) {
             mWakeLock.setReferenceCounted(false);
             mWakeLock.acquire();
         }
-        for (ScreenStateNotifier screenStateNotifier: mScreenStateNotifiers) {
-            screenStateNotifier.screenTurnedOn();
-        }
+
+        for (ScreenStateNotifier screenStateNotifier: mScreenStateNotifiers) screenStateNotifier.screenTurnedOn();
+
     }
 
     @Override
     public void screenTurnedOff() {
-        for (ScreenStateNotifier screenStateNotifier: mScreenStateNotifiers) {
-            screenStateNotifier.screenTurnedOff();
-        }
-        if (mWakeLock == null)
-            mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CMActionsWakeLock");
-        else if (mWakeLock.isHeld()) {
-            mWakeLock.release();
-        }
+        for (ScreenStateNotifier screenStateNotifier: mScreenStateNotifiers) screenStateNotifier.screenTurnedOff();
+
+        if (mWakeLock == null) mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CMActionsWakeLock");
+
+        if (mWakeLock.isHeld()) mWakeLock.release();
     }
 
     public void updateState() {
-        if (mPowerManager.isInteractive()) {
-            screenTurnedOn();
-        } else {
-            screenTurnedOff();
-        }
-        for (UpdatedStateNotifier notifier: mUpdatedStateNotifiers) {
-            notifier.updateState();
-        }
+        if (mPowerManager.isInteractive()) screenTurnedOn();
+        else screenTurnedOff();
+
+        for (UpdatedStateNotifier notifier: mUpdatedStateNotifiers) notifier.updateState();
     }
 }
