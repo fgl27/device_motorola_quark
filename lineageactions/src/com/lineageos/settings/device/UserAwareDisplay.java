@@ -133,7 +133,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
                         mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_ON);
                     }
                 }
-            }, 10000);
+            }, 5000);
         }
     }
 
