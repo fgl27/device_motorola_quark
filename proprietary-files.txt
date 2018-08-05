@@ -341,6 +341,7 @@ etc/permissions/qcrilhook.xml:vendor/etc/permissions/qcrilhook.xml
 -framework/qcrilhook.jar
 lib/libadropbox.so
 #libmdmcutback.so and libmdmdetect from athene
+#sed -i 's|libqsap_sdk.so|libqsapshim.so|g' quark/proprietary/lib/libmdmcutback.so
 lib/libmdmcutback.so
 lib/libmdmdetect.so
 lib/libmotext_inf.so
@@ -394,6 +395,7 @@ etc/firmware/vpu.mdt:vendor/firmware/vpu.mdt
 
 # Voice recognition
 lib/hw/audio.motvr.default.so
+#sed -i 's|/system/etc/|/vendor/etc/|g' quark/proprietary/vendor/lib/soundfx/libspeakerbundle.so
 lib/libspeakerbundle.so:lib/soundfx/libspeakerbundle.so
 lib/libmotaudioutils.so
 lib/librecoglib.so
