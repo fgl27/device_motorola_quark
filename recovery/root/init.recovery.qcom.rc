@@ -3,24 +3,6 @@ on fs
     symlink /dev/block/platform/${ro.boot.bootdevice} /dev/block/bootdevice
 
 on init
-    # dencryption files from device
-    mkdir /firmware
-    mkdir /vendor/firmware
-    mkdir /vendor/firmware/keymaster
-    wait /dev/block/platform/msm_sdcc.1/by-name/modem
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/modem /firmware
-    symlink /firmware/image/keymaster.b00 /vendor/firmware/keymaster/keymaster.b00
-    symlink /firmware/image/keymaster.b01 /vendor/firmware/keymaster/keymaster.b01
-    symlink /firmware/image/keymaster.b02 /vendor/firmware/keymaster/keymaster.b02
-    symlink /firmware/image/keymaster.b03 /vendor/firmware/keymaster/keymaster.b03
-    symlink /firmware/image/keymaster.mdt /vendor/firmware/keymaster/keymaster.mdt
-    symlink /firmware/image/cmnlib.b00 /vendor/firmware/cmnlib.b00
-    symlink /firmware/image/cmnlib.b01 /vendor/firmware/cmnlib.b01
-    symlink /firmware/image/cmnlib.b02 /vendor/firmware/cmnlib.b02
-    symlink /firmware/image/cmnlib.b03 /vendor/firmware/cmnlib.b03
-    symlink /firmware/image/cmnlib.mdt /vendor/firmware/cmnlib.mdt
-    symlink /sbin/libQSEEComAPI.so /vendor/lib/libQSEEComAPI.so
-
     # low Brightness durring boot 25% of max
     write /sys/class/leds/lcd-backlight/brightness 63
 
@@ -81,12 +63,3 @@ on init
     write /sys/module/blu_plug/parameters/enabled 1
     write /sys/module/cpu_boost/parameters/hotplug_boost 0
 
-# encryption support
-service qseecomd /sbin/qseecomd
-    class core
-    seclabel u:r:init:s0
-    disabled
-    user root
-
-on property:ro.crypto.state=encrypted
-    start qseecomd
