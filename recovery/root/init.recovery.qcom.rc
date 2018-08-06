@@ -1,6 +1,13 @@
 on fs
     wait /dev/block/platform/${ro.boot.bootdevice}
     symlink /dev/block/platform/${ro.boot.bootdevice} /dev/block/bootdevice
+    chmod 0660 /dev/qseecom
+    chown system drmrpc /dev/qseecom
+    chmod 0664 /dev/ion
+    chown system system /dev/ion
+    install_keyring
+    start hwservicemanager
+    start servicemanager
 
 on init
     # dencryption files from device
@@ -81,12 +88,38 @@ on init
     write /sys/module/blu_plug/parameters/enabled 1
     write /sys/module/cpu_boost/parameters/hotplug_boost 0
 
-# encryption support
-service qseecomd /sbin/qseecomd
-    class core
-    seclabel u:r:init:s0
+on property:ro.crypto.state=encrypted
+    start sbinqseecomd
+    
+service hwservicemanager /sbin/hwservicemanager
+    user root
+    group root
+    disabled
+    onrestart setprop hwservicemanager.ready false
+    seclabel u:r:recovery:s0
+
+service sbinqseecomd /sbin/qseecomd
     disabled
     user root
+    group root
+    seclabel u:r:recovery:s0
 
-on property:ro.crypto.state=encrypted
-    start qseecomd
+service servicemanager /sbin/servicemanager
+    disabled
+    user root
+    group root readproc
+    seclabel u:r:recovery:s0
+
+# keystore is started and stopped on demand by TWRP
+service keystore /sbin/keystore /tmp/misc/keystore
+    disabled
+    user root
+    group root drmrpc readproc
+    seclabel u:r:recovery:s0
+
+service keystore_auth /sbin/keystore_auth
+    disabled
+    oneshot
+    user system
+    group root
+    seclabel u:r:recovery:s0
