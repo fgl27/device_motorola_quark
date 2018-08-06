@@ -16,9 +16,12 @@
 
 package com.lineageos.settings.device;
 
+import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
 import android.util.Log;
 
 public class FlatUpSensor implements ScreenStateNotifier {
@@ -32,13 +35,19 @@ public class FlatUpSensor implements ScreenStateNotifier {
     private boolean mEnabled;
     private boolean mLastFlatUp;
 
+    private final PowerManager mPowerManager;
+    private WakeLock mWakeLock;
+
     public FlatUpSensor(LineageActionsSettings cmActionsSettings, SensorHelper sensorHelper,
-                SensorAction action) {
+        SensorAction action, Context context) {
         mLineageActionsSettings = cmActionsSettings;
         mSensorHelper = sensorHelper;
         mSensorAction = action;
 
         mFlatUpSensor = sensorHelper.getFlatUpSensor();
+
+        mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
     }
 
     @Override
@@ -52,11 +61,21 @@ public class FlatUpSensor implements ScreenStateNotifier {
 
     @Override
     public void screenTurnedOff() {
+
         if (mLineageActionsSettings.isPickUpEnabled() && !mEnabled) {
+            if (mWakeLock == null)
+                mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
+
+            if (!mWakeLock.isHeld()) {
+                mWakeLock.setReferenceCounted(false);
+                mWakeLock.acquire();
+            }
             Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mFlatUpSensor, mFlatUpListener);
             mEnabled = true;
+            mWakeLock.release();
         }
+
     }
 
     private SensorEventListener mFlatUpListener = new SensorEventListener() {
@@ -73,7 +92,6 @@ public class FlatUpSensor implements ScreenStateNotifier {
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 }

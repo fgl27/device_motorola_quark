@@ -43,7 +43,7 @@ Preference.OnPreferenceChangeListener {
         mSwitchAmbientDisplay = (SwitchPreference) findPreference(SWITCH_AMBIENT_DISPLAY);
         mSwitchAmbientDisplay.setOnPreferenceChangeListener(this);
 
-       updateState();
+        updateState();
     }
 
     @Override

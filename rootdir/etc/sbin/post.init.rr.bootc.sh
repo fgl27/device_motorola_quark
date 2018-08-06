@@ -10,8 +10,8 @@ echo 805306368 > /sys/block/zram0/disksize
 mkswap /dev/block/zram0
 swapon /dev/block/zram0
 
+#set gpu max pwr level
 pwl=`cat /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/num_pwrlevels`;
-
 if [ "$pwl" == "9" ]; then
 	echo 3 > /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel
 else

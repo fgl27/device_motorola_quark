@@ -16,6 +16,7 @@
 
 package com.lineageos.settings.device;
 
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -23,10 +24,10 @@ import android.hardware.SensorEventListener;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+//import android.util.Log;
 
-import android.app.KeyguardManager;
-
-import android.util.Log;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static com.lineageos.settings.device.IrGestureManager.*;
 
@@ -37,7 +38,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private static final int KEYGUARD_POLL_MS = 1000;
 
     private static final int IR_GESTURES_FOR_SCREEN_ON = (1 << IR_GESTURE_OBJECT_DETECTED) |
-            (1 << IR_GESTURE_OBJECT_NOT_DETECTED);
+        (1 << IR_GESTURE_OBJECT_NOT_DETECTED);
     private static final int IR_GESTURES_FOR_SCREEN_OFF = 0;
 
     private final LineageActionsSettings mLineageActionsSettings;
@@ -49,15 +50,19 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     private final Sensor mStowSensor;
     private WakeLock mWakeLock;
     private WakeLock mDelayedOffWakeLock;
+    private WakeLock mDisableWakeLock;
     private Handler mHandler;
 
     private boolean mEnabled;
     private boolean mScreenIsLocked;
     private boolean mObjectIsDetected;
     private boolean mIsStowed;
+    private boolean mScreenOn;
+
+    private Timer SetUserAwareTimer = new Timer();
 
     public UserAwareDisplay(LineageActionsSettings cmActionsSettings, SensorHelper sensorHelper,
-                IrGestureManager irGestureManager, Context context) {
+        IrGestureManager irGestureManager, Context context) {
         mLineageActionsSettings = cmActionsSettings;
         mSensorHelper = sensorHelper;
         mIrGestureVote = new IrGestureVote(irGestureManager);
@@ -67,6 +72,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
         mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
         mDelayedOffWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, TAG);
+        mDisableWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
         mHandler = new Handler();
 
         mIrGestureSensor = sensorHelper.getIrGestureSensor();
@@ -76,6 +82,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
     @Override
     public void screenTurnedOn() {
+        mScreenOn = true;
         if (mLineageActionsSettings.isUserAwareDisplayEnabled()) {
             if (mKeyguardManager.inKeyguardRestrictedInputMode()) {
                 scheduleKeyguardPoll();
@@ -91,6 +98,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
     @Override
     public void screenTurnedOff() {
+        mScreenOn = false;
         disableKeyguardPolling();
         disableSensors();
         disableScreenLock();
@@ -105,43 +113,74 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     }
 
     private void enableSensors() {
-        if (! mEnabled) {
-            Log.d(TAG, "Enabling");
+        SetUserAwareTimer.cancel();
+        SetUserAwareTimer.purge();
+        SetUserAwareTimer = new Timer();
 
-            mEnabled = true;
-            mObjectIsDetected = false;
-            mIsStowed = false;
+        if (!mEnabled) {
+            SetUserAwareTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if (!mEnabled && mScreenOn) {
+                        //Log.d(TAG, "Enabling");
 
-            mSensorHelper.registerListener(mIrGestureSensor, mIrGestureListener);
-            mSensorHelper.registerListener(mStowSensor, mStowListener);
-            mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_ON);
+                        mEnabled = true;
+                        mObjectIsDetected = false;
+                        mIsStowed = false;
+
+                        mSensorHelper.registerListener(mIrGestureSensor, mIrGestureListener);
+                        mSensorHelper.registerListener(mStowSensor, mStowListener);
+                        mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_ON);
+                    }
+                }
+            }, 5000);
         }
     }
 
     private void disableSensors() {
+        SetUserAwareTimer.cancel();
+        SetUserAwareTimer.purge();
+        SetUserAwareTimer = new Timer();
         if (mEnabled) {
-            Log.d(TAG, "Disabling");
-            mSensorHelper.unregisterListener(mStowListener);
-            mSensorHelper.unregisterListener(mIrGestureListener);
-            mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_OFF);
-            mEnabled = false;
+
+            if (mDisableWakeLock == null)
+                mDisableWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, TAG);
+
+            if (!mDisableWakeLock.isHeld()) {
+                mDisableWakeLock.setReferenceCounted(false);
+                mDisableWakeLock.acquire();
+            }
+
+            SetUserAwareTimer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if (mEnabled && !mScreenOn) {
+                        //Log.d(TAG, "Disabling");
+                        mSensorHelper.unregisterListener(mStowListener);
+                        mSensorHelper.unregisterListener(mIrGestureListener);
+                        mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_OFF);
+                        mEnabled = false;
+                    }
+                    mDisableWakeLock.release();
+                }
+            }, 2000);
         }
     }
 
     private synchronized void setIsStowed(boolean isStowed) {
-        Log.d(TAG, "Stowed: " + isStowed);
+        //Log.d(TAG, "Stowed: " + isStowed);
         mIsStowed = isStowed;
         updateScreenLock();
     }
 
     private synchronized void setObjectIsDetected(boolean objectIsDetected) {
-        Log.d(TAG, "IR object is detected: " + objectIsDetected);
+        //Log.d(TAG, "IR object is detected: " + objectIsDetected);
         mObjectIsDetected = objectIsDetected;
         updateScreenLock();
     }
 
     private synchronized void updateScreenLock() {
-        boolean isLocked = mObjectIsDetected && ! mIsStowed;
+        boolean isLocked = mObjectIsDetected && !mIsStowed;
 
         if (isLocked) {
             enableScreenLock();
@@ -151,14 +190,15 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     }
 
     private synchronized void enableScreenLock() {
-        if (! mScreenIsLocked) {
+        if (!mScreenIsLocked) {
             mScreenIsLocked = true;
             if (mWakeLock == null)
                 mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
-            else if (!mWakeLock.isHeld()) {
+
+            if (!mWakeLock.isHeld()) {
                 mWakeLock.setReferenceCounted(false);
                 mWakeLock.acquire();
-                Log.d(TAG, "Acquiring screen wakelock");
+                //Log.d(TAG, "Acquiring screen wakelock");
             }
         }
     }
@@ -168,16 +208,19 @@ public class UserAwareDisplay implements ScreenStateNotifier {
             mScreenIsLocked = false;
             if (mDelayedOffWakeLock == null)
                 mDelayedOffWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, TAG);
-            else if (!mDelayedOffWakeLock.isHeld()) {
+
+            if (!mDelayedOffWakeLock.isHeld()) {
                 mDelayedOffWakeLock.setReferenceCounted(false);
                 mDelayedOffWakeLock.acquire(DELAYED_OFF_MS);
-                Log.d(TAG, " Acquiring screen DelayedOffWakeLock");
+                //Log.d(TAG, " Acquiring screen DelayedOffWakeLock");
             }
+
             if (mWakeLock == null)
                 mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
-            else if (mWakeLock.isHeld()) {
+
+            if (mWakeLock.isHeld()) {
                 mWakeLock.release();
-                Log.d(TAG, "Released screen wakelock");
+                //Log.d(TAG, "Released screen wakelock");
             }
         }
     }
@@ -195,8 +238,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 
     private SensorEventListener mStowListener = new SensorEventListener() {
@@ -206,14 +248,13 @@ public class UserAwareDisplay implements ScreenStateNotifier {
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 
     private Runnable mCheckKeyguard = new Runnable() {
         @Override
         public void run() {
-            if (! mKeyguardManager.inKeyguardRestrictedInputMode()) {
+            if (!mKeyguardManager.inKeyguardRestrictedInputMode()) {
                 enableSensors();
             } else {
                 scheduleKeyguardPoll();

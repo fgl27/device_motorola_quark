@@ -21,14 +21,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
 import android.provider.Settings;
-import android.util.Log;
 
 import java.util.List;
 import java.util.LinkedList;
 
 public class LineageActionsService extends IntentService implements ScreenStateNotifier,
-        UpdatedStateNotifier {
-    private static final String TAG = "LineageActions";
+UpdatedStateNotifier {
+    private static final String TAG = "LineageActionsService";
 
     private final Context mContext;
 
@@ -39,15 +38,13 @@ public class LineageActionsService extends IntentService implements ScreenStateN
     private final ScreenReceiver mScreenReceiver;
     private final SensorHelper mSensorHelper;
 
-    private final List<ScreenStateNotifier> mScreenStateNotifiers = new LinkedList<ScreenStateNotifier>();
-    private final List<UpdatedStateNotifier> mUpdatedStateNotifiers =
-                        new LinkedList<UpdatedStateNotifier>();
+    private final List < ScreenStateNotifier > mScreenStateNotifiers = new LinkedList < ScreenStateNotifier > ();
+    private final List < UpdatedStateNotifier > mUpdatedStateNotifiers =
+        new LinkedList < UpdatedStateNotifier > ();
 
     public LineageActionsService(Context context) {
         super("CMActionService");
         mContext = context;
-
-        Log.d(TAG, "Starting");
 
         LineageActionsSettings cmActionsSettings = new LineageActionsSettings(context, this);
         mSensorHelper = new SensorHelper(context);
@@ -58,9 +55,9 @@ public class LineageActionsService extends IntentService implements ScreenStateN
         mScreenStateNotifiers.add(mDozePulseAction);
 
         // Actionable sensors get screen on/off notifications
-        mScreenStateNotifiers.add(new FlatUpSensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
+        mScreenStateNotifiers.add(new FlatUpSensor(cmActionsSettings, mSensorHelper, mDozePulseAction, context));
         mScreenStateNotifiers.add(new IrGestureSensor(cmActionsSettings, mSensorHelper, mDozePulseAction, mIrGestureManager, context));
-        mScreenStateNotifiers.add(new StowSensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
+        mScreenStateNotifiers.add(new StowSensor(cmActionsSettings, mSensorHelper, mDozePulseAction, context));
         mScreenStateNotifiers.add(new UserAwareDisplay(cmActionsSettings, mSensorHelper, mIrGestureManager, context));
 
         // Other actions that are always enabled
@@ -71,7 +68,7 @@ public class LineageActionsService extends IntentService implements ScreenStateN
         mUpdatedStateNotifiers.add(new CameraActivationSensor(cmActionsSettings, cameraAction, mSensorHelper));
         mUpdatedStateNotifiers.add(new ChopChopSensor(cmActionsSettings, chopChopAction, mSensorHelper));
         mUpdatedStateNotifiers.add(new IrSilencer(cmActionsSettings, context, mSensorHelper,
-                mIrGestureManager));
+            mIrGestureManager));
         mUpdatedStateNotifiers.add(new LiftToSilence(cmActionsSettings, context, mSensorHelper));
 
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
@@ -80,42 +77,35 @@ public class LineageActionsService extends IntentService implements ScreenStateN
     }
 
     @Override
-    protected void onHandleIntent(Intent intent) {
-    }
+    protected void onHandleIntent(Intent intent) {}
 
     @Override
     public void screenTurnedOn() {
         if (mWakeLock == null)
             mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CMActionsWakeLock");
-        else if (!mWakeLock.isHeld()) {
+
+        if (!mWakeLock.isHeld()) {
             mWakeLock.setReferenceCounted(false);
             mWakeLock.acquire();
         }
-        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
-            screenStateNotifier.screenTurnedOn();
-        }
+
+        for (ScreenStateNotifier screenStateNotifier: mScreenStateNotifiers) screenStateNotifier.screenTurnedOn();
+
     }
 
     @Override
     public void screenTurnedOff() {
-        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {
-            screenStateNotifier.screenTurnedOff();
-        }
-        if (mWakeLock == null)
-            mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CMActionsWakeLock");
-        else if (mWakeLock.isHeld()) {
-            mWakeLock.release();
-        }
+        for (ScreenStateNotifier screenStateNotifier: mScreenStateNotifiers) screenStateNotifier.screenTurnedOff();
+
+        if (mWakeLock == null) mWakeLock = mPowerManager.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "CMActionsWakeLock");
+
+        if (mWakeLock.isHeld()) mWakeLock.release();
     }
 
     public void updateState() {
-        if (mPowerManager.isInteractive()) {
-            screenTurnedOn();
-        } else {
-            screenTurnedOff();
-        }
-        for (UpdatedStateNotifier notifier : mUpdatedStateNotifiers) {
-            notifier.updateState();
-        }
+        if (mPowerManager.isInteractive()) screenTurnedOn();
+        else screenTurnedOff();
+
+        for (UpdatedStateNotifier notifier: mUpdatedStateNotifiers) notifier.updateState();
     }
 }

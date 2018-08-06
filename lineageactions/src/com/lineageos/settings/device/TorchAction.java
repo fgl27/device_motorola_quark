@@ -39,9 +39,9 @@ public class TorchAction implements SensorAction {
         mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
         mVibratorPeriod = vibratorPeriod;
         try {
-            for (final String cameraId : mCameraManager.getCameraIdList()) {
+            for (final String cameraId: mCameraManager.getCameraIdList()) {
                 CameraCharacteristics characteristics =
-                        mCameraManager.getCameraCharacteristics(cameraId);
+                    mCameraManager.getCameraCharacteristics(cameraId);
                 int cOrientation = characteristics.get(CameraCharacteristics.LENS_FACING);
                 if (cOrientation == CameraCharacteristics.LENS_FACING_BACK) {
                     mRearCameraId = cameraId;
@@ -71,15 +71,13 @@ public class TorchAction implements SensorAction {
     private class MyTorchCallback extends CameraManager.TorchCallback {
         @Override
         public void onTorchModeChanged(String cameraId, boolean enabled) {
-            if (!cameraId.equals(mRearCameraId))
-                return;
+            if (!cameraId.equals(mRearCameraId)) return;
             mTorchEnabled = enabled;
         }
 
         @Override
         public void onTorchModeUnavailable(String cameraId) {
-            if (!cameraId.equals(mRearCameraId))
-                return;
+            if (!cameraId.equals(mRearCameraId)) return;
             mTorchEnabled = false;
         }
     }

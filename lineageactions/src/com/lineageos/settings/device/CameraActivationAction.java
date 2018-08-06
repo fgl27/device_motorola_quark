@@ -29,18 +29,19 @@ import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.os.Vibrator;
 import android.provider.MediaStore;
-import android.util.Log;
 
 public class CameraActivationAction implements SensorAction {
-    private static final String TAG = "LineageActions";
+    private static final String TAG = "CameraActivationAction";
 
-    private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
+    private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 1000;
 
     private final Context mContext;
     private final KeyguardManager mKeyguardManager;
     private final PackageManager mPackageManager;
     private final PowerManager mPowerManager;
     private final int mVibratorPeriod;
+    private WakeLock mWakeLock;
+    private Vibrator mVibrator;
 
     public CameraActivationAction(Context context, int vibratorPeriod) {
         mContext = context;
@@ -48,30 +49,33 @@ public class CameraActivationAction implements SensorAction {
         mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         mPackageManager = context.getPackageManager();
         mVibratorPeriod = vibratorPeriod;
+
+        mWakeLock = mPowerManager.newWakeLock(
+            PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, TAG);
+
+        mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
     }
 
     @Override
     public void action() {
         vibrate();
         turnScreenOn();
-        if (mKeyguardManager.inKeyguardRestrictedInputMode()) {
-            launchSecureCamera();
-        } else {
-            launchCamera();
-        }
+        if (mKeyguardManager.inKeyguardRestrictedInputMode()) launchSecureCamera();
+        else launchCamera();
+
     }
 
     private void vibrate() {
-        Vibrator v = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(mVibratorPeriod);
+        mVibrator.vibrate(mVibratorPeriod);
     }
 
     private void turnScreenOn() {
-        PowerManager.WakeLock wl = mPowerManager.newWakeLock(
+        if (mWakeLock == null) mWakeLock = mPowerManager.newWakeLock(
             PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, TAG);
-        if (wl != null && !wl.isHeld()) {
-            wl.setReferenceCounted(false);
-            wl.acquire(TURN_SCREEN_ON_WAKE_LOCK_MS);
+
+        if (!mWakeLock.isHeld()) {
+            mWakeLock.setReferenceCounted(false);
+            mWakeLock.acquire(TURN_SCREEN_ON_WAKE_LOCK_MS);
         }
     }
 
@@ -105,26 +109,21 @@ public class CameraActivationAction implements SensorAction {
 
     private ActivityInfo getBestActivityInfo(Intent intent) {
         ResolveInfo resolveInfo = mPackageManager.resolveActivity(intent, 0);
-        if (resolveInfo != null) {
-            return resolveInfo.activityInfo;
-        } else {
-            // If the resolving failed, just find our own best match
-            return getBestActivityInfo(intent, null);
-        }
+        if (resolveInfo != null) return resolveInfo.activityInfo;
+        else return getBestActivityInfo(intent, null); // If the resolving failed, just find our own best match
+
     }
 
     private ActivityInfo getBestActivityInfo(Intent intent, ActivityInfo match) {
-        List <ResolveInfo> activities = mPackageManager.queryIntentActivities(intent, 0);
+        List < ResolveInfo > activities = mPackageManager.queryIntentActivities(intent, 0);
         ActivityInfo best = null;
         if (activities.size() > 0) {
             best = activities.get(0).activityInfo;
             if (match != null) {
                 String packageName = match.applicationInfo.packageName;
-                for (int i = activities.size()-1; i >= 0; i--) {
+                for (int i = activities.size() - 1; i >= 0; i--) {
                     ActivityInfo activityInfo = activities.get(i).activityInfo;
-                    if (packageName.equals(activityInfo.applicationInfo.packageName)) {
-                        best = activityInfo;
-                    }
+                    if (packageName.equals(activityInfo.applicationInfo.packageName)) best = activityInfo;
                 }
             }
         }

@@ -41,7 +41,7 @@ public class LiftToSilence extends PhoneStateListener implements SensorEventList
     private boolean mLastFlatUp;
 
     public LiftToSilence(LineageActionsSettings LineageActionsSettings, Context context,
-                SensorHelper sensorHelper) {
+        SensorHelper sensorHelper) {
         mLineageActionsSettings = LineageActionsSettings;
         mSensorHelper = sensorHelper;
         mFlatUpSensor = sensorHelper.getFlatUpSensor();
@@ -52,11 +52,9 @@ public class LiftToSilence extends PhoneStateListener implements SensorEventList
 
     @Override
     public void updateState() {
-        if (mLineageActionsSettings.isLiftToSilenceEnabled()) {
-            mTelephonyManager.listen(this, LISTEN_CALL_STATE);
-        } else {
-            mTelephonyManager.listen(this, 0);
-        }
+        if (mLineageActionsSettings.isLiftToSilenceEnabled()) mTelephonyManager.listen(this, LISTEN_CALL_STATE);
+        else mTelephonyManager.listen(this, 0);
+
     }
 
     @Override
@@ -79,18 +77,15 @@ public class LiftToSilence extends PhoneStateListener implements SensorEventList
     public synchronized void onSensorChanged(SensorEvent event) {
         boolean thisFlatUp = (event.values[0] != 0);
 
-        Log.d(TAG, "event: " + thisFlatUp + " mLastFlatUp=" + mLastFlatUp + " mIsStowed=" +
-            mIsStowed);
+        Log.d(TAG, "event: " + thisFlatUp + " mLastFlatUp=" + mLastFlatUp + " mIsStowed=" + mIsStowed);
 
-        if (mLastFlatUp && !thisFlatUp && !mIsStowed) {
-            mTelecomManager.silenceRinger();
-        }
+        if (mLastFlatUp && !thisFlatUp && !mIsStowed) mTelecomManager.silenceRinger();
+
         mLastFlatUp = thisFlatUp;
     }
 
     @Override
-    public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
 
     private SensorEventListener mStowListener = new SensorEventListener() {
         @Override
@@ -99,7 +94,6 @@ public class LiftToSilence extends PhoneStateListener implements SensorEventList
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 }

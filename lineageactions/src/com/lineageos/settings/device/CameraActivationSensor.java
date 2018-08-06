@@ -56,7 +56,7 @@ public class CameraActivationSensor implements SensorEventListener, UpdatedState
             mSensorHelper.registerListener(mSensor, this);
             mSensorHelper.registerListener(mProx, mProxListener);
             mIsEnabled = true;
-        } else if (! mLineageActionsSettings.isCameraGestureEnabled() && mIsEnabled) {
+        } else if (!mLineageActionsSettings.isCameraGestureEnabled() && mIsEnabled) {
             Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(this);
             mSensorHelper.unregisterListener(mProxListener);
@@ -75,8 +75,7 @@ public class CameraActivationSensor implements SensorEventListener, UpdatedState
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
     private SensorEventListener mProxListener = new SensorEventListener() {
         @Override
@@ -85,7 +84,6 @@ public class CameraActivationSensor implements SensorEventListener, UpdatedState
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 }

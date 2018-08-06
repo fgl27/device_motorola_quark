@@ -55,7 +55,7 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
             mSensorHelper.registerListener(mSensor, this);
             mSensorHelper.registerListener(mProx, mProxListener);
             mIsEnabled = true;
-        } else if (! mLineageActionsSettings.isChopChopGestureEnabled() && mIsEnabled) {
+        } else if (!mLineageActionsSettings.isChopChopGestureEnabled() && mIsEnabled) {
             Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(this);
             mSensorHelper.unregisterListener(mProxListener);
@@ -65,23 +65,24 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+
         if (mProxIsCovered) {
             Log.d(TAG, "proximity sensor covered, ignoring chop-chop");
             return;
         }
+
         long now = System.currentTimeMillis();
+
         if (now - mLastAction > DELAY_BETWEEN_CHOP_CHOP_IN_MS) {
             Log.d(TAG, "Allowing chop chop");
             mLastAction = now;
             mAction.action();
-        } else {
-            Log.d(TAG, "Denying chop chop");
-        }
+        } else Log.d(TAG, "Denying chop chop");
+
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
     private SensorEventListener mProxListener = new SensorEventListener() {
         @Override
@@ -90,7 +91,6 @@ public class ChopChopSensor implements SensorEventListener, UpdatedStateNotifier
         }
 
         @Override
-        public void onAccuracyChanged(Sensor mSensor, int accuracy) {
-        }
+        public void onAccuracyChanged(Sensor mSensor, int accuracy) {}
     };
 }
