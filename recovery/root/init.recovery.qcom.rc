@@ -10,6 +10,7 @@ on fs
     start servicemanager
 
 on init
+    setprop ro.board.platform apq8084
     # dencryption files from device
     mkdir /firmware
     mkdir /vendor/firmware
