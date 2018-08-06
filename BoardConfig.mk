@@ -221,15 +221,8 @@ TW_INCLUDE_NTFS_3G := true
 TW_IGNORE_MISC_WIPE_DATA := true
 TW_OREO_MR1_F2FS := true
 
-
 # Encryption
 TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/cryptfs_hw
 TARGET_HW_DISK_ENCRYPTION := true
 TW_INCLUDE_CRYPTO := true
 TARGET_KEYMASTER_WAIT_FOR_QSEE := true
-TW_CRYPTO_USE_KEYMASTER_V1 := false
-TW_CRYPTO_USE_SYSTEM_VOLD := \
-    qseecomd \
-    keymaster-3-0 \
-    hwservicemanager
-TW_INCLUDE_CRYPTO_FBE := true
