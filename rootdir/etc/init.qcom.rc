@@ -655,6 +655,10 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
+# Kill button-backlight on shutdown
+on property:sys.shutdown.requested=*
+    write /sys/class/leds/button-backlight/brightness 0
+
 service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
