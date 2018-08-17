@@ -550,6 +550,10 @@ service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
 on property:sys.powerctl=*
     stop mdm_helper_proxy
 
+# Kill button-backlight on shutdown
+on property:sys.shutdown.requested=*
+    write /sys/class/leds/button-backlight/brightness 0
+
 # Start mdm_helper_proxy
 on property:ro.mdm_helper_proxy_req=true
     start mdm_helper_proxy
