@@ -149,6 +149,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 TARGET_RECOVERY_DENSITY := xhdpi
 
+# Security Patch Level
+VENDOR_SECURITY_PATCH := 2018-01-01
+
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 
