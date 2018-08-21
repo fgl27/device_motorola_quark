@@ -1,13 +1,13 @@
 # Audio
 ##fluencetype can be "fluence" or "fluencepro" or "none"
-ro.qc.sdk.audio.fluencetype=none
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
+ro.vendor.audio.sdk.fluencetype=none
+persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicerec=false
+persist.vendor.audio.fluence.speaker=true
 use.voice.path.for.pcm.voip=false
 use.dedicated.device.for.voip=false
 af.fast_track_multiplier=1
-audio_hal.period_size=192
+vendor.audio_hal.period_size=192
 
 # Bluetooth
 bt.max.hfpclient.connections=1
@@ -46,14 +46,14 @@ ro.qc.sdk.izat.service_mask=0x0
 persist.mot.gps.smart_battery=1
 
 # Media
-audio.offload.buffer.size.kb=32
+vendor.audio.offload.buffer.size.kb=32
 audio.offload.disable=0
 av.offload.enable=false
 av.streaming.offload.enable=false
-audio.offload.multiple.enabled=false
-audio.offload.gapless.enabled=false
-audio.offload.pcm.16bit.enable=false
-audio.offload.pcm.24bit.enable=false
+vendor.audio.offload.multiple.enabled=false
+vendor.audio.offload.gapless.enabled=false
+vendor.audio.offload.pcm.16bit.enable=false
+vendor.audio.offload.pcm.24bit.enable=false
 
 # NITZ
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
