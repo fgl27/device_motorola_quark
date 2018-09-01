@@ -167,6 +167,9 @@ PRODUCT_PACKAGES += \
     camera.apq8084
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
+
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/hacks/hdrhax:$(TARGET_COPY_OUT_VENDOR)/etc/hdrhax
 
 # Charger
