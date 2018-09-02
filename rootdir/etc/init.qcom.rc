@@ -80,7 +80,9 @@ on fs
     wait /dev/block/platform/${ro.boot.bootdevice}
     symlink /dev/block/platform/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    mount_all fstab.qcom
+    # Start HW service manager early
+    start hwservicemanager
+    mount_all /fstab.qcom --early
     restorecon_recursive /persist
 
     # use /persist as phony PDS partition
@@ -89,6 +91,29 @@ on fs
     # Boot the audio
     write /sys/kernel/boot_adsp/boot 1
     setprop qcom.audio.init complete
+
+on late-fs
+    # Start services for bootanim
+    start servicemanager
+    start surfaceflinger
+    start bootanim
+
+    # Make sure HW service manager started and start required HAL services
+    wait_for_prop hwservicemanager.ready true
+    start configstore-hal-1-0
+    start gralloc-2-0
+
+    # Wait for hwservicemanager ready since fsck might be triggered in mount_all --late
+    # In such case, init won't responce the property_set from hwservicemanager and then
+    # cause services for bootanim not running.
+    wait_for_prop hwservicemanager.ready true
+    # Mount RW partitions which need run fsck
+    mount_all /fstab.qcom --late
+
+    # boot time fs tune
+    write /sys/block/mmcblk0/queue/iostats 0
+    write /sys/block/mmcblk0/queue/iosched/slice_idle 0
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
 
 # msm specific files that need to be created on /data
 on post-fs-data
