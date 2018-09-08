@@ -38,16 +38,16 @@ inline const char* BtmGetDefaultName()
 
 #define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
 
-#define MAX_ACL_CONNECTIONS    16
-#define MAX_L2CAP_CHANNELS    16
-
+// skips conn update at conn completion
+#define BTA_BLE_SKIP_CONN_UPD  TRUE
 // Enables interleaved scan
 #define BTA_HOST_INTERLEAVE_SEARCH TRUE
 
-#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
-
-#define BLE_VND_INCLUDED   TRUE
-#define BLE_PRIVACY_SPT    FALSE
+#define BTA_SKIP_BLE_READ_REMOTE_FEAT FALSE
+#define MAX_ACL_CONNECTIONS    16
+#define MAX_L2CAP_CHANNELS    MAX_ACL_CONNECTIONS
+#define BLUETOOTH_QTI_SW TRUE       /* Enable Qcom WBS */
 #define BTIF_HF_WBS_PREFERRED FALSE /* Don't prefer WBS    */
+#define BLE_VND_INCLUDED   TRUE
 
 #endif
