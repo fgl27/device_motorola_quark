@@ -30,7 +30,25 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 
 	</manifest>
 
-## Building after repo sync:
+### Fix the source to build for Quark
+
+In **hardware/qcom/bt-caf** revert
+https://github.com/LineageOS/android_hardware_qcom_bt/commit/ddaccd2176683b6de272e7d2718557dbe9b9fe1b
+This commit prevent enabling Bluetooth after disabling it, making necessary to change wcnss_filter bin/ but not perfect replacement is in place
+
+	cd hardware/qcom/bt-caf
+	git revert ddaccd2176683b6de272e7d2718557dbe9b9fe1b
+	cd -
+
+In **system/extras/su** (Only needed in RR) revert
+https://github.com/LineageOS/android_system_extras_su/commit/ae77c1a8aa19484d8d8196e55254f2c6f01d1aad
+This commint prevent enabling SU by default
+
+	cd system/extras/su
+	git revert ddaccd2176683b6de272e7d2718557dbe9b9fe1b
+	cd -
+
+## Building after repo sync and fix the source (fix the source always after repo sync):
 
 	. build/envsetup.sh 
 	make clean
@@ -65,7 +83,7 @@ Storage | 64 GB
 MicroSD | No
 Battery | Non-removable Li-Po 3900 mAh battery
 Display | 1440 x 2560 pixels, 5.2 inches (~565 ppi pixel density)
-Camera  | 21 MP (5248 x 3936), autofocus, dual-LED flash
+Camera  | 21 MP (5248 x 3936), auto focus, dual-LED flash
 
 
 ![MOTO MAXX](https://raw.githubusercontent.com/bhb27/scripts/f45458e4bc40dcc6d71ed933d49dad01a3b63f4b/etc/images/moto-maxx.jpg "MOTO MAXX")
