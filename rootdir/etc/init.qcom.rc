@@ -115,9 +115,12 @@ on late-fs
     write /sys/block/mmcblk0/queue/iosched/slice_idle 0
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
 
-# msm specific files that need to be created on /data
 on post-fs-data
 
+    # Remove old mpdecision data
+    rm /data/system/perfd/default_values
+
+    # msm specific files that need to be created on /data
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -492,10 +495,6 @@ on property:sys.boot_completed=1
     write /sys/module/mhi_uci/parameters/mhi_uci_dump 0
     write /sys/kernel/debug/clk/debug_suspend 0
 
-    # Post boot services
-    rm /data/system/default_values
-    start mpdecision
-
 # corefile limit and ETB enabling
 on property:persist.debug.trace=1
     mkdir /data/core 0777 root root
@@ -556,9 +555,10 @@ service qseecomd /vendor/bin/qseecomd
     group root
    shutdown critical
 
-service mpdecision /vendor/bin/mpdecision --avg_comp --min_cores=4
+service mpdecision /vendor/bin/mpdecision --avg_comp --min_cores=1
+    class main
     user root
-    disabled
+    group root readproc
 
 service mdm_helper /vendor/bin/mdm_helper
     class core
