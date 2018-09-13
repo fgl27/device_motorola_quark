@@ -154,6 +154,3 @@ persist.sys.usb.config=mtp,adb
 
 # Vendor security patch level
 ro.vendor.build.security_patch=2018-01-01
-
-# To make addon SU to work
-ro.lineage.version=15.1-zipdate-hacked-quark
