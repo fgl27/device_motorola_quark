@@ -17,9 +17,6 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	<?xml version="1.0" encoding="UTF-8"?>
 	<manifest>
 	
-	  <!-- Common qcom to build dtb and some etc lib-->
-	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="lineage-15.1" />
-	
 	  <!-- Strings for LineageActions strings-->
 	  <project name="LineageOS/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="github" revision="lineage-15.1" />
 	
