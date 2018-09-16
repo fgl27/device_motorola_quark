@@ -6,7 +6,8 @@ Copyright 2017 - 2018 - The LineageOS   Project
 
 ## I use this tree to build in Oreo lineage-15.x base source
 
-This tree works prefect in LineageOS or ResurrectionRemix Oreo source
+This tree works prefect in [LineageOS 15.1](https://github.com/LineageOS/android/tree/lineage-15.1)
+ and [ResurrectionRemix Oreo](https://github.com/ResurrectionRemix/platform_manifest/tree/oreo) sources
 
 ### How to build this...
 
@@ -25,7 +26,7 @@ Pull the below repos using **"/home/user/source/.repo/local_manifests/roomservic
 
 	</manifest>
 
-If yours source **"/home/user/source/.repo/manifests/default.xml"** doesn't have the remote github add the below **<manifest\>** line in **"/home/user/source/.repo/local_manifests/roomservice.xml"** file.
+If yours source **"/home/user/source/.repo/manifests/default.xml"** doesn't have the remote github add the below under **<manifest\>** line in **"/home/user/source/.repo/local_manifests/roomservice.xml"** file.
 
 	  <remote  name="github"
 	           fetch="https://github.com/" />
