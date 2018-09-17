@@ -682,7 +682,7 @@ service qmuxd /vendor/bin/qmuxd
 service netmgrd /vendor/bin/netmgrd
     class main
     user root
-    group root wifi wakelock radio inet
+    group root system wifi wakelock radio inet oem_2950
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.
