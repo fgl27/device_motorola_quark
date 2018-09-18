@@ -289,6 +289,7 @@ PRODUCT_PACKAGES += \
     init.mmi.boot.sh \
     init.mmi.touch.sh \
     init.mmi.usb.sh \
+    init.program_bdaddr.sh \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \

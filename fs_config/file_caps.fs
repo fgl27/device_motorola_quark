@@ -54,3 +54,9 @@ mode: 0755
 user: AID_SYSTEM
 group: AID_NET_RAW
 caps: SYS_TIME
+
+[vendor/bin/btnvtool]
+mode: 0755
+user: AID_BLUETOOTH
+group: AID_BLUETOOTH
+caps: 0

@@ -70,3 +70,5 @@
 /(vendor|system/vendor)/bin/charge_only_mode            u:object_r:charge_only_mode_exec:s0
 /(vendor|system/vendor)/bin/dbvc_atvc_property_set      u:object_r:atvc_exec:s0
 /(vendor|system/vendor)/bin/stm401                      u:object_r:stm401_exec:s0
+/(vendor|system/vendor)/bin/init\.program_bdaddr\.sh    u:object_r:bluetooth_loader_exec:s0
+/(vendor|system/vendor)/bin/awk                         u:object_r:awktool_exec:s0

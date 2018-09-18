@@ -51,6 +51,8 @@ on early-init
     chmod 0444 /proc/cmdline
 
 on init
+    start program_bdaddr
+
     # We are mounting system(/vendor) early
     start servicemanager
     start hwservicemanager
@@ -726,3 +728,10 @@ on property:ro.data.large_tcp_window_size=true
 service vendor.cnd /vendor/bin/cnd
     class late_start
     socket cnd stream 660 root inet
+
+service program_bdaddr /vendor/bin/init.program_bdaddr.sh
+    user bluetooth
+    group bluetooth
+    seclabel u:r:bluetooth_loader:s0
+    disabled
+    oneshot
