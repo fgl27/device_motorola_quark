@@ -53,7 +53,6 @@ on early-init
 on init
     # vold needs keymaster that needs qseecomd
     start vendor.qseecomd
-    symlink /sdcard /storage/sdcard0
 
     # pstore
     chown system log /sys/fs/pstore/annotate-ramoops
