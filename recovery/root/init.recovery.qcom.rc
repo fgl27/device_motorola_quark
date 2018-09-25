@@ -89,6 +89,9 @@ on init
     write /sys/module/blu_plug/parameters/enabled 1
     write /sys/module/cpu_boost/parameters/hotplug_boost 0
 
+on property:twrp.mount_to_decrypt=1
+    start sbinqseecomd
+    
 on property:ro.crypto.state=encrypted
     start sbinqseecomd
     
