@@ -124,6 +124,7 @@ TARGET_OMX_LEGACY_RESCALING := true
 
 # Radio
 BOARD_USES_CUTBACK_IN_RILD := true
+TARGET_RIL_VARIANT := caf
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(QUARK_PATH)/rootdir/etc/fstab.qcom

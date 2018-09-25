@@ -80,7 +80,9 @@ on fs
     wait /dev/block/platform/${ro.boot.bootdevice}
     symlink /dev/block/platform/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    mount_all fstab.qcom
+    # Start HW service manager early
+    start hwservicemanager
+    mount_all /fstab.qcom --early
     restorecon_recursive /persist
 
     # use /persist as phony PDS partition
@@ -90,9 +92,35 @@ on fs
     write /sys/kernel/boot_adsp/boot 1
     setprop qcom.audio.init complete
 
-# msm specific files that need to be created on /data
+on late-fs
+    # Start services for bootanim
+    start servicemanager
+    start surfaceflinger
+    start bootanim
+
+    # Make sure HW service manager started and start required HAL services
+    wait_for_prop hwservicemanager.ready true
+    start configstore-hal-1-0
+    start gralloc-2-0
+
+    # Wait for hwservicemanager ready since fsck might be triggered in mount_all --late
+    # In such case, init won't responce the property_set from hwservicemanager and then
+    # cause services for bootanim not running.
+    wait_for_prop hwservicemanager.ready true
+    # Mount RW partitions which need run fsck
+    mount_all /fstab.qcom --late
+
+    # boot time fs tune
+    write /sys/block/mmcblk0/queue/iostats 0
+    write /sys/block/mmcblk0/queue/iosched/slice_idle 0
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+
 on post-fs-data
 
+    # Remove old mpdecision data
+    rm /data/system/perfd/default_values
+
+    # msm specific files that need to be created on /data
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -338,6 +366,10 @@ on boot
     mkdir /dev/socket/qmux_gps 0770 gps gps
     chmod 2770 /dev/socket/qmux_gps
 
+    #Create NETMGR daemon socket area
+    mkdir /dev/socket/netmgr 0750 radio radio
+    chmod 2770 /dev/socket/netmgr
+
     #Create PERFD deamon related dirs
     mkdir /data/misc/perfd 0755 root system
     chmod 2755 /data/misc/perfd
@@ -467,10 +499,6 @@ on property:sys.boot_completed=1
     write /sys/module/mhi_uci/parameters/mhi_uci_dump 0
     write /sys/kernel/debug/clk/debug_suspend 0
 
-    # Post boot services
-    rm /data/system/default_values
-    start mpdecision
-
 # corefile limit and ETB enabling
 on property:persist.debug.trace=1
     mkdir /data/core 0777 root root
@@ -529,10 +557,12 @@ service qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
+   shutdown critical
 
-service mpdecision /vendor/bin/mpdecision --avg_comp --min_cores=4
+service mpdecision /vendor/bin/mpdecision --avg_comp --min_cores=2 --no_sleep
+    class main
     user root
-    disabled
+    group root readproc
 
 service mdm_helper /vendor/bin/mdm_helper
     class core
@@ -546,8 +576,12 @@ service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
     disabled
 
 # Stop mdm_helper_proxy in case of shutdown
-on property:sys.shutdown.requested=*
+on property:sys.powerctl=*
     stop mdm_helper_proxy
+
+# Kill button-backlight on shutdown
+on property:sys.shutdown.requested=*
+    write /sys/class/leds/button-backlight/brightness 0
 
 # Start mdm_helper_proxy
 on property:ro.mdm_helper_proxy_req=true
@@ -618,6 +652,7 @@ service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
+    shutdown critical
 
 service rfs_access /vendor/bin/rfs_access
    class core
@@ -651,7 +686,7 @@ service qmuxd /vendor/bin/qmuxd
 service netmgrd /vendor/bin/netmgrd
     class main
     user root
-    group root wifi wakelock radio inet
+    group root system wifi wakelock radio inet oem_2950
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.

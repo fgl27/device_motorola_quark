@@ -1,9 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
 <carrier_config_list>
     <carrier_config>
+        <!-- Allow user to add APNs -->
+        <boolean name="allow_adding_apns_bool" value="true" />
+        <!-- Control whether users can edit APNs in Settings -->
+        <boolean name="apn_expand_bool" value="true" />
+        <!-- Disables dialing "*228" (OTASP provisioning) on CDMA carriers where it is not supported or is
+             potentially harmful by locking the SIM to 3G. -->
         <boolean name="disable_cdma_activation_code_bool" value="true" />
-    </carrier_config>
-    <carrier_config mcc="311" mnc="480">
+        <!-- Show APN Settings for some CDMA carriers -->
+        <boolean name="show_apn_setting_cdma_bool" value="true" />
+        <!-- Flag indicating if the phone is a world phone -->
         <boolean name="world_phone_bool" value="true" />
+        <!-- APN fields that user is not allowed to modify -->
+        <string-array name="read_only_apn_fields_string_array" num="0"/>
+        <!-- APN types that user is not allowed to modify -->
+        <string-array name="read_only_apn_types_string_array" num="0" />
     </carrier_config>
 </carrier_config_list>
