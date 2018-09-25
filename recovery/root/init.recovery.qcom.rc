@@ -115,7 +115,7 @@ service servicemanager /sbin/servicemanager
     seclabel u:r:recovery:s0
 
 # keystore is started and stopped on demand by TWRP
-service keystore /sbin/keystore /tmp/misc/keystore
+service keystore /sbin/keystore /data/misc/keystore
     disabled
     user root
     group root drmrpc readproc
