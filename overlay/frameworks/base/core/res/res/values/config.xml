@@ -410,9 +410,6 @@
          format is UMTS|LTE|... -->
     <string name="config_radio_access_family">GPRS|EDGE|UMTS|HSDPA|HSUPA|HSPA|LTE|HSPAP|GSM|TD_SCDMA|WCDMA|LTE_CA|CDMA|EVDO</string>
 
-    <!-- From stock ROM-->
-    <integer name="config_bluetooth_operating_voltage_mv">3300</integer>
-
     <!-- Control whether Night display is available. -->
     <bool name="config_nightDisplayAvailable">true</bool>
 

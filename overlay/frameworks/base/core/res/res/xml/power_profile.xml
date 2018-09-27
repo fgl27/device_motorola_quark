@@ -1,29 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <device name="Android">
+    <!-- All values are in mA except as noted -->
+
+    <!-- Nothing -->
     <item name="none">0</item>
+
+    <!-- Additional power used when screen is turned on at minimum brightness -->
     <item name="screen.on">135</item>
+    <!-- Additional power used when screen is at maximum brightness, compared to
+         screen at minimum brightness -->
     <item name="screen.full">340</item>
-    <item name="bluetooth.active">30</item>
-    <item name="bluetooth.on">3</item>
-    <item name="wifi.on">10</item>
-    <item name="wifi.active">50</item>
-    <item name="wifi.scan">100</item>
-    <item name="dsp.audio">25</item>
-    <item name="dsp.video">180</item>
-    <item name="gps.on">70</item>
-    <item name="camera.avg">272.57</item>
+
+    <!-- Average power used by the camera flash module when on -->
     <item name="camera.flashlight">149.28</item>
+    <!-- Average power use by the camera subsystem for a typical camera
+         application. Intended as a rough estimate for an application running a
+         preview and capturing approximately 10 full-resolution pictures per
+         minute. -->
+    <item name="camera.avg">272.57</item>
+    <!-- Additional power used when audio decoding/encoding via DSP -->
+    <item name="dsp.audio">25</item>
+    <!-- Additional power used when video decoding via DSP -->
+    <item name="dsp.video">180</item>
+    <!-- Additional power used when GPS is acquiring a signal -->
+    <item name="gps.on">70</item>
+
+    <!-- Additional power used when cellular radio is transmitting/receiving -->
     <item name="radio.active">120</item>
-    <item name="radio.scanning">1</item>
-    <array name="radio.on">
+    <!-- The current consumed by the radio when it is scanning for a signal -->
+    <item name="radio.scanning">10</item>
+    <!-- Current consumed by the radio at different signal strengths, when paging -->
+    <!-- Current consumed by the radio at different signal strengths, when paging -->
+    <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
         <value>30</value>
         <value>30</value>
         <value>25</value>
-        <value>15</value>
         <value>10</value>
         <value>5</value>
         <value>5</value>
     </array>
+
+   <!-- Average current draw (mA) of the Bluetooth controller when idle -->
+    <item name="bluetooth.controller.idle">1</item>
+   <!-- Average current draw (mA) of the Bluetooth controller when receiving -->
+    <item name="bluetooth.controller.rx">25</item>
+   <!-- Average current draw (mA) of the Bluetooth controller when transmitting -->
+    <item name="bluetooth.controller.tx">25</item>
+   <!-- Average operating voltage (mV) of the Bluetooth controller -->
+    <item name="bluetooth.controller.voltage">3300</item>
+
+    <!-- Additional power used when Wi-Fi is turned on but not receiving,
+         transmitting, or scanning -->
+    <item name="wifi.on">10</item>
+    <!-- Additional power used when transmitting or receiving over Wi-Fi -->
+    <item name="wifi.active">50</item>
+    <!-- Additional power used when Wi-Fi is scanning for access points -->
+    <item name="wifi.scan">100</item>
+
+   <!-- Average current draw (mA) of the Wi-Fi controller when idle -->
+    <item name="wifi.controller.idle">1</item>
+   <!-- Average current draw (mA) of the Wi-Fi controller when receiving -->
+    <item name="wifi.controller.rx">113</item>
+   <!-- Average current draw (mA) of the Wi-Fi controller when transmitting -->
+    <item name="wifi.controller.tx">450</item>
+   <!-- Average operating voltage (mV) of the Wi-Fi controller -->
+    <item name="wifi.controller.voltage">3300</item>
+
+    <!-- This is the battery capacity in mAh -->
+    <item name="battery.capacity">3900</item>
+
+    <!-- Power consumption when CPU is suspended -->
+    <item name="cpu.idle">6</item>
+    <!-- Additional power consumption when CPU is in a kernel idle loop -->
+    <item name="cpu.awake">8</item>
+
+    <!-- Different CPU speeds as reported in
+         /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies -->
     <array name="cpu.speeds">
         <value>300000</value>
         <value>422400</value>
@@ -43,8 +95,8 @@
         <value>2572800</value>
         <value>2649600</value>
     </array>
-    <item name="cpu.idle">6</item>
-    <item name="cpu.awake">8</item>
+
+    <!-- Additional power used by CPUs when running at different speeds. -->
     <array name="cpu.active">
         <value>71</value>
         <value>83</value>
@@ -64,7 +116,9 @@
         <value>413</value>
         <value>414</value>
     </array>
-    <item name="battery.capacity">3900</item>
+
+    <!-- These are the standard packages that are white-listed to always have internet
+         access while in power save mode, even if they aren't in the foreground. -->
     <allow-in-power-save package="com.google.android.gms" />
     <allow-in-data-usage-save package="com.google.android.gms" />
     <allow-in-power-save package="com.android.providers.downloads.ui" />
