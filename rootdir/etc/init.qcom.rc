@@ -35,15 +35,6 @@ on early-init
     # Set boot up stage I/O scheduler
     write /sys/block/mmcblk0/queue/scheduler noop
 
-    # Set permissions for persist partition
-    mkdir /persist 0771 system system
-
-    # Create modem FSG mount point
-    mkdir /fsg 0755 root root
-
-    # Create firmware mount point
-    mkdir /firmware 0771 system system
-
     # Low Brightness at early-init
     write /sys/class/leds/lcd-backlight/brightness 63
 
