@@ -29,8 +29,7 @@ ro.qualcomm.cabl=0
 ro.opengles.version=196610
 ro.sf.lcd_density=560
 debug.hwui.use_buffer_age=false
-# Motorola disable smooth streaming
-#mm.enable.smoothstreaming=true
+mm.enable.sec.smoothstreaming=true
 #3183219 is decimal sum of supported codecs in AAL
 #codecs: DivX DivXHD AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
 mm.enable.qcom_parser=3183219
