@@ -424,6 +424,9 @@ on boot
     # When GPU woken by touch events, keep it on until first app render
     write /sys/class/kgsl/kgsl-3d0/wake_timeout 250
 
+    # Set permissions so radio can read
+    chmod 0444 /proc/cmdline
+
     # Audio DSP permissions
     chown audio audio /dev/ttyHS3
     chown audio audio /sys/devices/c55_ctrl/gpio_ap_int/edge
