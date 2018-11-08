@@ -27,6 +27,7 @@ import android.util.Log;
 public class CameraActivationSensor implements SensorEventListener, UpdatedStateNotifier {
     private static final String TAG = "LineageActions-CameraSensor";
 
+    private static final int DELAY_BETWEEN_ACTION_IN_MS = 1500;
     private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
 
     private final LineageActionsSettings mLineageActionsSettings;
@@ -35,6 +36,8 @@ public class CameraActivationSensor implements SensorEventListener, UpdatedState
 
     private final Sensor mSensor;
     private final Sensor mProx;
+
+    private long mLastAction;
 
     private boolean mIsEnabled;
     private boolean mProxIsCovered;
@@ -47,6 +50,7 @@ public class CameraActivationSensor implements SensorEventListener, UpdatedState
 
         mSensor = sensorHelper.getCameraActivationSensor();
         mProx = sensorHelper.getProximitySensor();
+        mLastAction = System.currentTimeMillis();
     }
 
     @Override
@@ -66,12 +70,19 @@ public class CameraActivationSensor implements SensorEventListener, UpdatedState
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        Log.d(TAG, "activate camera");
+
         if (mProxIsCovered) {
             Log.d(TAG, "proximity sensor covered, ignoring activate camera");
             return;
         }
-        mAction.action();
+
+        long now = System.currentTimeMillis();
+
+        if (now - mLastAction > DELAY_BETWEEN_ACTION_IN_MS) {
+            Log.d(TAG, "activate camera");
+            mLastAction = now;
+            mAction.action();
+        }
     }
 
     @Override
