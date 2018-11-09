@@ -496,6 +496,8 @@ on boot
     mkdir /persist/alarm 0770 system system
     mkdir /persist/time 0770 system system
 
+    chown system system /sys/android_touch/doubletap2wake
+
 on property:sys.boot_completed=1
     # disable debug logging
     write /sys/module/rmnet_usb/parameters/dump_ctrl_msg 0
