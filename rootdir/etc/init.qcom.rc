@@ -562,7 +562,7 @@ service qseecomd /vendor/bin/qseecomd
     group root
    shutdown critical
 
-service mpdecision /vendor/bin/mpdecision --avg_comp --min_cores=2 --no_sleep
+service mpdecision /vendor/bin/mpdecision --avg_comp
     class main
     user root
     group root readproc
