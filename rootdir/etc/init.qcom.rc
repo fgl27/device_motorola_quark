@@ -47,6 +47,9 @@ on early-init
     # Low Brightness at early-init
     write /sys/class/leds/lcd-backlight/brightness 63
 
+    # Set permissions so radio can read
+    chmod 0444 /proc/cmdline
+
 on init
     symlink /sdcard /storage/sdcard0
 
@@ -423,9 +426,6 @@ on boot
 
     # When GPU woken by touch events, keep it on until first app render
     write /sys/class/kgsl/kgsl-3d0/wake_timeout 250
-
-    # Set permissions so radio can read
-    chmod 0444 /proc/cmdline
 
     # Audio DSP permissions
     chown audio audio /dev/ttyHS3
