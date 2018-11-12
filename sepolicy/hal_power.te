@@ -1,1 +1,0 @@
-allow hal_power_default sysfs:file { open write };
