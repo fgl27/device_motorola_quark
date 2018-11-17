@@ -22,7 +22,7 @@ user: AID_BLUETOOTH
 group: AID_BLUETOOTH
 caps: BLOCK_SUSPEND
 
-[vendor/etc/hdrha]
+[vendor/etc/hdrhax]
 mode: 0755
 user: AID_SYSTEM
 group: AID_SYSTEM
