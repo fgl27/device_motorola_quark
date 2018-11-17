@@ -1,6 +1,6 @@
 #!/vendor/bin/sh
 
-PATH=/sbin:/system/sbin:/system/bin:/system/xbin
+PATH=/sbin:/system/sbin:/system/bin:/system/xbin:/vendor/bin
 export PATH
 /system/bin/log -t init.mmi.usb.sh -p i "init.mmi.usb.sh run"
 # Init USB
