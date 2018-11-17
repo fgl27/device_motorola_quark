@@ -200,10 +200,11 @@ vendor/lib/libcneapiclient.so
 vendor/lib/libcneqmiutils.so
 
 # CPU
+# mpdecision from samsung apq8084
 bin/mpdecision:vendor/bin/mpdecision
 #Hex sed -i 's|/system/etc|/vendor/etc|g' quark/proprietary/vendor/bin/thermal-engine
 bin/thermal-engine:vendor/bin/thermal-engine
-# libqc-opt.so from bacon
+# libqc-opt.so from bacon from samsung apq8084
 vendor/lib/libqc-opt.so
 vendor/lib/libthermalioctl.so
 
