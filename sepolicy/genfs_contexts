@@ -1,0 +1,2 @@
+# sysfs
+genfscon sysfs /android_touch    u:object_r:sysfs_android_touch:s0

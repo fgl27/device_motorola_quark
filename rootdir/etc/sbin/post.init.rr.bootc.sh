@@ -5,6 +5,8 @@ echo 'post_init_c: run OK' > /dev/kmsg;
 # Start zram
 echo 0 > /proc/sys/vm/page-cluster
 echo 25 > /proc/sys/vm/swappiness
+echo 4 > /sys/block/zram0/max_comp_streams
+echo lz4 > /sys/block/zram0/comp_algorithm
 #size is 25% = 768 = 768 * 1024 * 1024 = 805306368
 echo 805306368 > /sys/block/zram0/disksize
 mkswap /dev/block/zram0

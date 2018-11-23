@@ -16,12 +16,9 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	<?xml version="1.0" encoding="UTF-8"?>
 	<manifest>
 
-	  <!-- Common qcom to build dtb and some etc lib-->
-	  <project name="LineageOS/android_device_qcom_common" path="device/qcom/common" remote="github" revision="lineage-15.1" />
-
 	  <!-- Device/kernel/vendor-->
-	  <project name="bhb27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_O" />
-	  <project name="bhb27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="O_c" />
+	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_O" />
+	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="O_c" />
 
 	  <!-- Need to build TWRP-->
 	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-8.1" />
@@ -39,7 +36,7 @@ Them after repo it all use this to build
 
 Were the number after -j is the number of cores you wanna use for this task, **twrp.txt** contains the build "output", read it in case the build fails searching for errors
 
-This link ([New_build_machine](https://github.com/bhb27/scripts/blob/master/etc/new_machine.md#apt-get-install-start)) may help to setup a build machine in case you don't know how to.
+This link ([New_build_machine](https://github.com/fgl27/scripts/blob/master/etc/new_machine.md#apt-get-install-start)) may help to setup a build machine in case you don't know how to.
 
 The Motorola Moto Maxx (codenamed _"quark"_) is a high-end smartphone from Motorola mobility.
 It was announced on November 2014.
@@ -58,4 +55,4 @@ Display | 1440 x 2560 pixels, 5.2 inches (~565 ppi pixel density)
 Camera  | 21 MP (5248 x 3936), autofocus, dual-LED flash
 
 
-![MOTO MAXX](https://raw.githubusercontent.com/bhb27/scripts/f45458e4bc40dcc6d71ed933d49dad01a3b63f4b/etc/images/moto-maxx.jpg "MOTO MAXX")
+![MOTO MAXX](https://raw.githubusercontent.com/fgl27/scripts/f45458e4bc40dcc6d71ed933d49dad01a3b63f4b/etc/images/moto-maxx.jpg "MOTO MAXX")

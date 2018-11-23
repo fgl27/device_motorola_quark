@@ -155,7 +155,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.power</name>
-        <transport arch="32">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IPower</name>
@@ -244,6 +244,15 @@
         <version>1.0</version>
         <interface>
             <name>ISupplicant</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>vendor.lineage.power</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ILineagePower</name>
             <instance>default</instance>
         </interface>
     </hal>

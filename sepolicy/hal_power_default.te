@@ -1,0 +1,2 @@
+allow hal_power_default sysfs_android_touch:file { open write };
+allow hal_power_default sysfs_android_touch:dir search;

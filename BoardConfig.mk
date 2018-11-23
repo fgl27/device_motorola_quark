@@ -17,8 +17,11 @@ QUARK_PATH := device/motorola/quark
 
 BOARD_VENDOR := motorola-qcom
 
-TARGET_SPECIFIC_HEADER_PATH := $(QUARK_PATH)/include
-TARGET_FS_CONFIG_GEN += $(QUARK_PATH)/configs/config.fs
+# AIDs and CAPS
+TARGET_FS_CONFIG_GEN := \
+    $(QUARK_PATH)/fs_config/config.fs \
+    $(QUARK_PATH)/fs_config/mot_aids.fs \
+    $(QUARK_PATH)/fs_config/file_caps.fs
 
 # RR source has AID_QCOM_DIAG on system/core
 ifeq ($(RR_VERSION),)
@@ -111,8 +114,10 @@ TARGET_USES_MOTOROLA_LOG := true
 
 # Power
 BOARD_CHARGER_ENABLE_SUSPEND := true
-TARGET_POWERHAL_VARIANT := qcom
+TARGET_HAS_LEGACY_POWER_STATS := true
 TARGET_HAS_NO_WIFI_STATS := true
+TARGET_USES_INTERACTION_BOOST := true
+TARGET_TAP_TO_WAKE_NODE := "/sys/android_touch/doubletap2wake"
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
