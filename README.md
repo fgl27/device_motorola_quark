@@ -1,17 +1,15 @@
 # Device configuration for Moto MAXX (Quark)
 
-Copyright 2015 to Today - Felipe Leon Project
+Copyright 2015 to Today - Felipe Leon Project<br/>
+Copyright 2015 to 2016 - The CyanogenMod Project<br/>
+Copyright 2017 - 2018 - The LineageOS Project
 
-Copyright 2015 to 2016 - The CyanogenMod Project
-
-Copyright 2017 - 2018 - The LineageOS   Project
-
-**I use this tree to build TWRP in Oreo lineage-15.x base source
+**I use this tree to build TWRP in Oreo lineage-15.x base source**<br/>
 **Do not use this tree to build a ROM**
 
 How to build this...
-The below may be out of data check XDA thread to make shore the descrived tree below are the one be used today...
-Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
+
+Pull the below repos creating a file **"/home/user/source_folder/.repo/local_manifests/roomservice.xml"** and pasting the bellow
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<manifest>
@@ -20,12 +18,21 @@ Use the below in /home/user/source/.repo/local_manifests/roomservice.xml
 	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_O" />
 	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="O_c" />
 
-	  <!-- Need to build TWRP-->
+	  <!-- omnirom TWRP repos-->
 	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-8.1" />
 	  <remove-project path="bootable/recovery" name="LineageOS/android_bootable_recovery" groups="pdk" />
 	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-8.1" groups="pdk-cw-fs"/>
 
+	  <!-- motorola f2fs repo needed to support -r (reserved_bytes ) option of f2fs-->
+	  <remove-project path="external/f2fs-tools" name="LineageOS/android_external_f2fs-tools" groups="pdk" />
+	  <project name="fgl27/motorola-external-f2fs-tools" path="external/f2fs-tools" remote="github" revision="oreo-8.1.0" />
+
 	</manifest>
+
+If yours source file **"/home/user/source_folder/.repo/manifests/default.xml"** doesn't have the remote github add the below under **<manifest\>** line in previously created file **"/home/user/source_folder/.repo/local_manifests/roomservice.xml"**.
+
+	  <remote  name="github"
+	           fetch="https://github.com/" />
 
 Them after repo it all use this to build
 
@@ -34,11 +41,11 @@ Them after repo it all use this to build
 	lunch cm_quark-eng
 	time make recoveryimage -j4  2>&1 | tee twrp.txt
 
-Were the number after -j is the number of cores you wanna use for this task, **twrp.txt** contains the build "output", read it in case the build fails searching for errors
+Were the **first number** after **-j** is the number of cores you wanna use for this task and **2>&1 | tee twrp.txt** will export the build "output" to  a file **quark.txt**, read it in case the build fails searching for the reason of the fail.
 
-This link ([New_build_machine](https://github.com/fgl27/scripts/blob/master/etc/new_machine.md#apt-get-install-start)) may help to setup a build machine in case you don't know how to.
+This link ([New_build_machine](https://github.com/fgl27/scripts/blob/master/etc/new_machine.md#apt-get-install-start)) may help to setup a build machine in case you don't know how to, but that is very personalized for me so carefully read it.
 
-The Motorola Moto Maxx (codenamed _"quark"_) is a high-end smartphone from Motorola mobility.
+The Motorola Moto Maxx (codenamed _"quark"_) is a high-end smartphone from Motorola mobility.<br/>
 It was announced on November 2014.
 
 Basic   | Spec Sheet
@@ -52,7 +59,7 @@ Storage | 64 GB
 MicroSD | No
 Battery | Non-removable Li-Po 3900 mAh battery
 Display | 1440 x 2560 pixels, 5.2 inches (~565 ppi pixel density)
-Camera  | 21 MP (5248 x 3936), autofocus, dual-LED flash
+Camera  | 21 MP (5248 x 3936), auto focus, dual-LED flash
 
 
 ![MOTO MAXX](https://raw.githubusercontent.com/fgl27/scripts/f45458e4bc40dcc6d71ed933d49dad01a3b63f4b/etc/images/moto-maxx.jpg "MOTO MAXX")
