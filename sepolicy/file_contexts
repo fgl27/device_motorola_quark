@@ -18,6 +18,7 @@
 /dev/stm401_ms                          u:object_r:sensors_device:s0
 /dev/ttyHS3                             u:object_r:adsp_serial_device:s0
 /dev/ttyHS0                             u:object_r:hci_attach_dev:s0
+/dev/rfkill                             u:object_r:rfkill_device:s0
 
 ###################################
 # Dev socket nodes
