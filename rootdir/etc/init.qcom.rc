@@ -616,7 +616,7 @@ service charge_only_mode /vendor/bin/charge_only_mode
     disabled
 
 service adspd /vendor/bin/adspd /dev/ttyHS3
-    class late_start
+    class main
     socket adspdsock stream 0660 system audio
     user audio
     group audio input diag
