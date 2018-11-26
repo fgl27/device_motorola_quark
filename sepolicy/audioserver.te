@@ -7,3 +7,5 @@ allow audioserver sysfs:dir { open read };
 allow audioserver audioserver:socket { create read };
 allow audioserver qmuxd:unix_stream_socket { connectto };
 allow audioserver sysfs:file { open read };
+allow audioserver self:socket create_socket_perms;
+allowxperm audioserver self:socket ioctl msm_sock_ipc_ioctls;
