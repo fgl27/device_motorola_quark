@@ -29,9 +29,8 @@ TARGET_FS_CONFIG_GEN := \
 
 # RR source has AID_QCOM_DIAG on system/core
 ifeq ($(RR_VERSION),)
-TARGET_FS_CONFIG_GEN += $(QUARK_PATH)/configs/config_extra.fs
+TARGET_FS_CONFIG_GEN += $(QUARK_PATH)/fs_config/config_extra.fs
 endif
-
 
 # Assert
 # TODO remove device ,,
