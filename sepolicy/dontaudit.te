@@ -30,7 +30,6 @@ dontaudit sudaemon spcomlib_prop:file *;
 dontaudit sudaemon sys_usb_configfs_prop:file *;
 dontaudit sudaemon sys_usb_controller_prop:file *;
 dontaudit sudaemon sys_usb_tethering_prop:file *;
-dontaudit sudaemon theme_prop:file *;
 dontaudit sudaemon uicc_prop:file *;
 dontaudit sudaemon usf_prop:file *;
 dontaudit sudaemon vendor_rild_libpath_prop:file *;
