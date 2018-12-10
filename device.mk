@@ -20,9 +20,6 @@ LOCAL_PATH := device/motorola/quark
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# Inherit some common stuff.
-$(call inherit-product, vendor/rr/config/common_full_phone.mk)
-
 # Inherit from quark device
 $(call inherit-product, vendor/motorola/quark/quark-vendor.mk)
 
