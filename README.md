@@ -67,7 +67,7 @@ This commit's prevent enabling SU by default using just a prop
 
 Were the **first number** after **-j** is the number of cores you wanna use for this task and **2>&1 | tee quark.txt** will export the build "output" to  a file **quark.txt**, read it in case the build fails searching for the reason of the fail.
 
-This link ([New_build_machine](https://github.com/fgl27/scripts/blob/master/etc/new_machine.md#apt-get-install-start)) may help to setup a build machine in case you don't know how to, but that is very personalized for me so carefully read it.
+This link ([Setup_new_build_machine](https://github.com/fgl27/scripts/blob/master/etc/new_machine.md#for-general-android-app-build-machine--adb-shell-and-fastboot-for-debugging)) may help to setup a build machine in case you don't know how to, but that is very personalized for me so carefully read it.
 
 The Motorola Moto Maxx (codenamed _"quark"_) is a high-end smartphone from Motorola mobility.<br/>
 It was announced on November 2014.
