@@ -4,10 +4,7 @@ Copyright 2015 to Today - Felipe Leon Project<br/>
 Copyright 2015 to 2016 - The CyanogenMod Project<br/>
 Copyright 2017 - 2018 - The LineageOS Project
 
-## I use this tree to build in Oreo lineage-15.x base source
-
-This tree works prefect in [LineageOS 15.1](https://github.com/LineageOS/android/tree/lineage-15.1)
- and [ResurrectionRemix Oreo](https://github.com/ResurrectionRemix/platform_manifest/tree/oreo) sources
+### This is a WIP P branch
 
 ### How to build this...
 
@@ -17,12 +14,15 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 	<manifest>
 	
 	  <!-- Strings for LineageActions app-->
-	  <project name="LineageOS/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="github" revision="lineage-15.1" />
+	  <project name="LineageOS/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="github" revision="lineage-16.0" />
+
+	  <!-- Radio ralated lib-->
+	  <project name="LineageOS/android_system_qcom" path="system/qcom" remote="github" revision="lineage-16.0" />
 	
 	  <!-- Device/kernel/vendor-->
-	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="O" />
-	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="O" />
-	  <project name="fgl27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="O" />
+	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="P" />
+	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="P" />
+	  <project name="fgl27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="P" />
 
 	</manifest>
 
@@ -37,15 +37,21 @@ In **hardware/qcom/bt-caf** [revert](https://github.com/LineageOS/android_hardwa
 This commit prevent enabling Bluetooth after disabling it, making necessary to use **wcnss_filter** binary from another device, but a perfect **wcnss_filter** replacement doesn't exist for Quark.
 
 	cd hardware/qcom/bt-caf
-	git revert ddaccd2176683b6de272e7d2718557dbe9b9fe1b --no-edit
+	git revert fa98f0564a17ba5a8e1defa17a2fc73bcfd8f3de --no-edit
 	cd -
 
-In **system/extras/su** (Not demanding) revert [1](https://github.com/LineageOS/android_system_extras_su/commit/bffcdefa59834186b75987541930dbfa92d15a21) and [2](https://github.com/LineageOS/android_system_extras_su/commit/ae77c1a8aa19484d8d8196e55254f2c6f01d1aad).<br/>
-This commit's prevent enabling SU by default using just a prop
+In **hardware/qcom/display-caf/apq8084** do
 
-	cd system/extras/su
-	git revert bffcdefa59834186b75987541930dbfa92d15a21 --no-edit
-	git revert ae77c1a8aa19484d8d8196e55254f2c6f01d1aad --no-edit
+	cd hardware/qcom/display-caf/apq8084/
+	git fetch https://github.com/LineageOS/android_hardware_qcom_display refs/changes/98/233598/1 && git cherry-pick FETCH_HEAD
+	git fetch https://github.com/LineageOS/android_hardware_qcom_display refs/changes/00/233600/2 && git cherry-pick FETCH_HEAD
+	git fetch https://github.com/LineageOS/android_hardware_qcom_display refs/changes/04/233604/1 && git cherry-pick FETCH_HEAD
+	cd -
+
+In **hardware/qcom/media-caf/apq8084** do
+
+	cd hardware/qcom/media-caf/apq8084/
+	git fetch https://github.com/LineageOS/android_hardware_qcom_media refs/changes/02/233602/2 && git cherry-pick FETCH_HEAD
 	cd -
 
 ## Building after repo sync and fixing the source (fixing the source is always necessary to redo after a "repo sync"):
