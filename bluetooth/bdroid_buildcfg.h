@@ -35,6 +35,7 @@ inline const char* BtmGetDefaultName()
 		return "Moto Turbo";
 	else return "Moto MAXX";
 }
+#undef PROPERTY_VALUE_MAX
 
 #define BTM_DEF_LOCAL_NAME BtmGetDefaultName()
 
