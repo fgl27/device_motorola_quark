@@ -9,6 +9,7 @@ LOCAL_PACKAGE_NAME := LineageActions
 LOCAL_CERTIFICATE := platform
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_USE_AAPT2 := true
+LOCAL_PRIVATE_PLATFORM_APIS := true
 
 LOCAL_STATIC_ANDROID_LIBRARIES := \
     android-support-v14-preference \
@@ -20,7 +21,7 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 LOCAL_RESOURCE_DIR := \
     $(LOCAL_PATH)/res \
-    $(ANDROID_BUILD_TOP)/packages/resources/devicesettings/res
+    $(TOP)/packages/resources/devicesettings/res
 
 ifneq ($(INCREMENTAL_BUILDS),)
     LOCAL_PROGUARD_ENABLED := disabled
