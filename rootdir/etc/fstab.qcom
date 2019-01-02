@@ -3,8 +3,8 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 #<src>                                              <mnt_point> <type>  <mnt_flags and options>                                                   <fs_mgr_flags>
 /dev/block/platform/msm_sdcc.1/by-name/system       /system     ext4    ro,barrier=1                                                              wait,recoveryonly
-/dev/block/platform/msm_sdcc.1/by-name/userdata     /data       ext4    rw,nosuid,nodev,noatime,noauto_da_alloc,nobarrier                         wait,check,formattable,latemount,nonremovable,encryptable=footer,length=-16384
-/dev/block/platform/msm_sdcc.1/by-name/userdata     /data       f2fs    rw,nosuid,nodev,noatime,inline_xattr                                      wait,check,formattable,latemount,nonremovable,encryptable=footer,length=-16384
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data       ext4    rw,nosuid,nodev,noatime,noauto_da_alloc,nobarrier                         wait,check,formattable,nonremovable,encryptable=footer,length=-16384
+/dev/block/platform/msm_sdcc.1/by-name/userdata     /data       f2fs    rw,nosuid,nodev,noatime,inline_xattr                                      wait,check,formattable,nonremovable,encryptable=footer,length=-16384
 /dev/block/platform/msm_sdcc.1/by-name/cache        /cache      ext4    rw,nosuid,nodev,noatime,data=writeback,noauto_da_alloc,barrier=1          wait,check,formattable
 /dev/block/platform/msm_sdcc.1/by-name/cache        /cache      f2fs    rw,nosuid,nodev,noatime,inline_xattr                                      wait,check,formattable
 /dev/block/platform/msm_sdcc.1/by-name/mdm1m9kefs3  /fsg        ext4    ro,nosuid,nodev,barrier=0,context=u:object_r:firmware_file:s0             wait,check,notrim
