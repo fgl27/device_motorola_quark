@@ -357,5 +357,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
-# Treble packages
-$(call inherit-product, device/motorola/quark/treble.mk)
+# HIDL packages
+$(call inherit-product, device/motorola/quark/hidl.mk)
