@@ -12,7 +12,7 @@ audio_hal.period_size=192
 # Bluetooth
 bt.max.hfpclient.connections=1
 
-qcom.bluetooth.soc=rome
+vendor.qcom.bluetooth.soc=rome
 qcom.bt.le_dev_pwr_class=1
 
 ro.bluetooth.hfp.ver=1.6

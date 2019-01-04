@@ -666,10 +666,10 @@ service rfs_access /vendor/bin/rfs_access
    user system
    group system net_raw
 
-on property:wc_transport.start_hci=true
+on property:vendor.wc_transport.start_hci=true
     start start_hci_filter
 
-on property:wc_transport.start_hci=false
+on property:vendor.wc_transport.start_hci=false
     stop start_hci_filter
 
 on property:init.svc.thermal-engine=running
