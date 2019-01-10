@@ -30,7 +30,4 @@
     <!-- Default state of tap to wake -->
     <bool name="def_double_tap_to_wake">false</bool>
 
-    <!-- Time format,default value is 24 : 24 format,other value is 12 format -->
-    <string name="def_time_format" translatable="false">24</string>
-
 </resources>
