@@ -54,6 +54,12 @@ In **hardware/qcom/media-caf/apq8084** do
 	git fetch https://github.com/LineageOS/android_hardware_qcom_media refs/changes/02/233602/2 && git cherry-pick FETCH_HEAD
 	cd -
 
+In **hardware/interfaces/** do
+
+	cd hardware/interfaces/
+	git fetch https://github.com/LineageOS/android_hardware_interfaces refs/changes/94/238694/1 && git cherry-pick FETCH_HEAD
+	cd -
+
 ## Building after repo sync and fixing the source (fixing the source is always necessary to redo after a "repo sync"):
 
 	. build/envsetup.sh 
