@@ -214,9 +214,6 @@ TARGET_BOOTANIMATION_HALF_RES := true
 # Binder API version
 TARGET_USES_64_BIT_BINDER := true
 
-# Snapdragon LLVM Compiler
-TARGET_USE_SDCLANG := true
-
 # Shims
 TARGET_LD_SHIM_LIBS := \
    /system/lib/hw/camera.vendor.apq8084.so|libshims_fence.so
