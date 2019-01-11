@@ -670,10 +670,10 @@ service rfs_access /vendor/bin/rfs_access
    user system
    group system net_raw
 
-on property:vendor.wc_transport.start_hci=true
+on property:wc_transport.start_hci=true
     start start_hci_filter
 
-on property:vendor.wc_transport.start_hci=false
+on property:wc_transport.start_hci=false
     stop start_hci_filter
 
 on property:init.svc.thermal-engine=running
@@ -685,7 +685,7 @@ on property:init.svc.thermal-engine=stopped
 service start_hci_filter /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth oem_2950 system wakelock
+    group bluetooth oem_2950
     disabled
     writepid /dev/cpuset/system-background/tasks 
 

@@ -148,4 +148,9 @@ $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wcd9320; \
 	ln -sf /data/misc/audio/mbhc.bin \
 		$(TARGET_OUT)/etc/firmware/wcd9320/wcd9320_mbhc.bin)
 
+# Create link for libbt-vendor
+$(shell mkdir -p $(TARGET_OUT_VENDOR)/lib; \
+	ln -sf /system/vendor/lib/libbt-vendor.$(TARGET_BOARD_PLATFORM).so \
+		$(TARGET_OUT_VENDOR)/lib/libbt-vendor.so)
+
 endif
