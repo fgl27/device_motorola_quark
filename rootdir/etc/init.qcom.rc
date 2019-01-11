@@ -649,11 +649,11 @@ service vendor.rfs_access /vendor/bin/rfs_access
    user system
    group system net_raw
 
-on property:vendor.wc_transport.start_hci=true
-    start vendor.start_hci_filter
+on property:wc_transport.start_hci=true
+    start start_hci_filter
 
-on property:vendor.wc_transport.start_hci=false
-    stop vendor.start_hci_filter
+on property:wc_transport.start_hci=false
+    stop start_hci_filter
 
 on property:init.svc.vendor.thermal-engine=running
     write /sys/module/msm_thermal/parameters/enabled N
@@ -661,7 +661,7 @@ on property:init.svc.vendor.thermal-engine=running
 on property:init.svc.vendor.thermal-engine=stopped
     write /sys/module/msm_thermal/parameters/enabled Y
 
-service vendor.start_hci_filter /vendor/bin/wcnss_filter
+service start_hci_filter /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
     group bluetooth oem_2950
