@@ -109,12 +109,4 @@ LOCAL_SRC_FILES    := etc/sbin/post.init.rr.bootc.sh
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)/sbin
 include $(BUILD_PREBUILT)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE		:= init.program_bdaddr.sh
-LOCAL_MODULE_TAGS	:= optional eng
-LOCAL_MODULE_CLASS	:= EXECUTABLES
-LOCAL_SRC_FILES		:= etc/init.program_bdaddr.sh
-LOCAL_MODULE_PATH	:= $(TARGET_OUT_VENDOR_EXECUTABLES)
-include $(BUILD_PREBUILT)
-
 BOARD_ROOT_EXTRA_SYMLINKS := /data/ssh:var/run/ssh
