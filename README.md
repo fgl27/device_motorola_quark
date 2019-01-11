@@ -33,13 +33,6 @@ If yours source file **"/home/user/source_folder/.repo/manifests/default.xml"** 
 
 ### Fix the source to build for Quark
 
-In **hardware/qcom/bt-caf** [revert](https://github.com/LineageOS/android_hardware_qcom_bt/commit/ddaccd2176683b6de272e7d2718557dbe9b9fe1b).<br/>
-This commit prevent enabling Bluetooth after disabling it, making necessary to use **wcnss_filter** binary from another device, but a perfect **wcnss_filter** replacement doesn't exist for Quark.
-
-	cd hardware/qcom/bt-caf
-	git revert fa98f0564a17ba5a8e1defa17a2fc73bcfd8f3de --no-edit
-	cd -
-
 In **hardware/qcom/display-caf/apq8084** do
 
 	cd hardware/qcom/display-caf/apq8084/
