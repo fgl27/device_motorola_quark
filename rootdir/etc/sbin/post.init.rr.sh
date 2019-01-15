@@ -98,4 +98,9 @@ fi
 
 umount /system;
 
+# workaround to make camera and flashlight to work after boot
+sleep 5
+stop media;
+start media;
+
 exit
