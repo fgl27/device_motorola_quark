@@ -93,12 +93,6 @@ on fs
     write /sys/kernel/boot_adsp/boot 1
     setprop qcom.audio.init complete
 
-on late-fs
-    # boot time fs tune
-    write /sys/block/mmcblk0/queue/iostats 0
-    write /sys/block/mmcblk0/queue/iosched/slice_idle 0
-    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
-
 on post-fs-data
 
     # Remove old mpdecision data
@@ -333,6 +327,23 @@ on boot
     setprop wifi.interface wlan0
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
+    # add a cpuset for the camera daemon
+    # we want all the cores for camera
+    mkdir /dev/cpuset/camera-daemon
+    write /dev/cpuset/camera-daemon/mems 0
+    chown system system /dev/cpuset/camera-daemon
+    chown system system /dev/cpuset/camera-daemon/tasks
+    chmod 0664 /dev/cpuset/camera-daemon/tasks
+
+    # update foreground cpuset now that processors are up
+    # reserve CPU 3 for the top app and camera-daemon
+    write /dev/cpuset/foreground/cpus 0-2
+    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/system-background/cpus 0-2
+    write /dev/cpuset/top-app/cpus 0-3
+    write /dev/cpuset/camera-daemon/cpus 0-3
+    write /dev/cpuset/restricted/cpus 0-1
+
     chmod 0660 /dev/ttyHS2
     chown bluetooth bluetooth /dev/ttyHS2
 
@@ -538,23 +549,27 @@ service vendor.thermal-com /vendor/bin/thermal-engine --minimode
     class hal
     user root
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.time_daemon /vendor/bin/time_daemon
     capabilities SYS_TIME
     class late_start
     user system
     group net_raw
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
-   shutdown critical
+    shutdown critical
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.mpdecision /vendor/bin/mpdecision --avg_comp
     class main
     user root
     group root readproc
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.mdm_helper /vendor/bin/mdm_helper
     class core
@@ -586,6 +601,7 @@ service vendor.qcamerasvr /vendor/bin/mm-qcamera-daemon
     class main
     user camera
     group camera system inet input graphics
+    writepid /dev/cpuset/camera-daemon/tasks
 
 on property:init.svc.media=restarting
     restart vendor.qcamerasvr
@@ -674,11 +690,13 @@ service vendor.qmuxd /vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth wakelock gps oem_2950 log
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.netmgrd /vendor/bin/netmgrd
     class main
     user root
     group root system wifi wakelock radio inet oem_2950
+    writepid /dev/cpuset/system-background/tasks
 
 # Adjust socket buffer to enlarge TCP receive window for high bandwidth
 # but only if ro.data.large_tcp_window_size property is set.
@@ -698,6 +716,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.gpsone_daemon /vendor/bin/gpsone_daemon
     class late_start
@@ -711,4 +730,7 @@ on property:ro.data.large_tcp_window_size=true
 
 service vendor.cnd /vendor/bin/cnd
     class late_start
+    user system
+    group system wifi inet radio wakelock net_admin
     socket cnd stream 660 root inet
+    writepid /dev/cpuset/system-background/tasks
