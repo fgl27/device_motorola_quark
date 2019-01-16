@@ -29,6 +29,12 @@ ro.qualcomm.cabl=0
 ro.opengles.version=196610
 ro.sf.lcd_density=560
 debug.hwui.use_buffer_age=false
+# Motorola disable smooth streaming
+#mm.enable.smoothstreaming=true
+#3183219 is decimal sum of supported codecs in AAL
+#codecs: DivX DivXHD AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
+mm.enable.qcom_parser=3183219
+persist.mm.enable.prefetch=true
 
 # FRP
 ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
@@ -36,6 +42,7 @@ ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
 # GLES doesn't support secure display, to allow google play movies
 # and other apps that require a secure display we need to enable this:
 persist.hwc.mdpcomp.enable=false
+debug.mdpcomp.logs=0
 
 # GPS
 persist.gps.qc_nlp_in_use=0
