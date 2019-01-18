@@ -12,3 +12,4 @@ allow mediaserver init:unix_dgram_socket sendto;
 allow mediaserver system_data_file:sock_file write;
 allow mediaserver hal_configstore_default:binder call;
 allow mediaserver hal_configstore_ISurfaceFlingerConfigs:hwservice_manager find;
+allow mediaserver default_android_service:service_manager add;

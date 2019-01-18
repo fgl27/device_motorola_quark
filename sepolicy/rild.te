@@ -20,3 +20,4 @@ allow rild wpa_socket:sock_file write;
 allow rild wpa:unix_dgram_socket sendto;
 allow rild cutback_data_file:sock_file { create setattr unlink };
 allow rild vendor_file:file execute_no_trans;
+allow rild proc_bootinfo:file r_file_perms;

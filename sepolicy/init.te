@@ -63,3 +63,8 @@ allow init adsp_serial_device:chr_file { ioctl };
 allow init input_device:chr_file ioctl;
 allow init sensors_device:chr_file { ioctl };
 allow init self:netlink_socket { create bind read write };
+allow init sysfs_bluetooth_writable:file setattr;
+allow init sysfs_devices_system_cpu:file write;
+allow init sysfs_msm_power:file { open write };
+allow init sysfs_thermal:file write;
+allow init sysfs_wlan_fwpath:file setattr;

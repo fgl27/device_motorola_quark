@@ -4,3 +4,6 @@ allow priv_app device:dir { open read };
 allow priv_app firmware_file:dir { search };
 allow priv_app firmware_file:file { getattr open read };
 allow priv_app proc_interrupts:file open;
+
+allow priv_app sysfs_android_usb:file open;
+allow priv_app proc_bus_pci:file { open read };
