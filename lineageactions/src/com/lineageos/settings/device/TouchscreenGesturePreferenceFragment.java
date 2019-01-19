@@ -30,9 +30,9 @@ import android.view.MenuItem;
 public class TouchscreenGesturePreferenceFragment extends PreferenceFragment implements
 Preference.OnPreferenceChangeListener {
 
-    private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
     private static final String SWITCH_AMBIENT_DISPLAY = "ambient_display_switch";
-    private SwitchPreference mSwitchAmbientDisplay;
+    private static final String SWITCH_ALWAYS_ON_DISPLAY = "always_on_display_switch";
+    private SwitchPreference mSwitchAmbientDisplay, mSwitchAlwaysOnDisplay;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -42,6 +42,9 @@ Preference.OnPreferenceChangeListener {
 
         mSwitchAmbientDisplay = (SwitchPreference) findPreference(SWITCH_AMBIENT_DISPLAY);
         mSwitchAmbientDisplay.setOnPreferenceChangeListener(this);
+
+        mSwitchAlwaysOnDisplay = (SwitchPreference) findPreference(SWITCH_ALWAYS_ON_DISPLAY);
+        mSwitchAlwaysOnDisplay.setOnPreferenceChangeListener(this);
 
         updateState();
     }
@@ -55,13 +58,22 @@ Preference.OnPreferenceChangeListener {
     private void updateState() {
         if (mSwitchAmbientDisplay != null)
             mSwitchAmbientDisplay.setChecked(LineageActionsSettings.isDozeEnabled(getActivity().getContentResolver()));
+
+        if (mSwitchAlwaysOnDisplay != null) {
+            if (!LineageActionsSettings.alwaysOnDisplayAvailable(getActivity()))
+                getPreferenceScreen().removePreference(mSwitchAlwaysOnDisplay);
+            else mSwitchAlwaysOnDisplay.setChecked(LineageActionsSettings.isAlwaysOnEnabled(getActivity().getContentResolver()));
+        }
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mSwitchAmbientDisplay) {
-            boolean DozeValue = (Boolean) objValue;
-            Settings.Secure.putInt(getActivity().getContentResolver(), Settings.Secure.DOZE_ENABLED, DozeValue ? 1 : 0);
+            Settings.Secure.putInt(getActivity().getContentResolver(), Settings.Secure.DOZE_ENABLED, (Boolean) objValue ? 1 : 0);
+        }
+
+        if (preference == mSwitchAlwaysOnDisplay) {
+            Settings.Secure.putInt(getActivity().getContentResolver(), Settings.Secure.DOZE_ALWAYS_ON, (Boolean) objValue ? 1 : 0);
         }
         return true;
     }

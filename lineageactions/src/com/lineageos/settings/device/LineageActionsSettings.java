@@ -19,9 +19,9 @@ package com.lineageos.settings.device;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
+import com.android.internal.hardware.AmbientDisplayConfiguration;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
-
 import android.util.Log;
 
 public class LineageActionsSettings {
@@ -94,11 +94,23 @@ public class LineageActionsSettings {
     }
 
     public boolean isIrWakeupEnabled() {
-        return isDozeEnabled() && mIrWakeUpEnabled;
+        return (isDozeEnabled() || isAlwaysOnEnabled()) && mIrWakeUpEnabled;
     }
 
     public boolean isPickUpEnabled() {
-        return isDozeEnabled() && mPickUpGestureEnabled;
+        return (isDozeEnabled() || isAlwaysOnEnabled()) && mPickUpGestureEnabled;
+    }
+
+    public static boolean isAlwaysOnEnabled(ContentResolver contentResolver) {
+        return (Settings.Secure.getInt(contentResolver, Settings.Secure.DOZE_ALWAYS_ON, 0) != 0);
+    }
+
+    public boolean isAlwaysOnEnabled() {
+        return isAlwaysOnEnabled(mContext.getContentResolver());
+    }
+    
+    public static boolean alwaysOnDisplayAvailable(Context context) {
+        return new AmbientDisplayConfiguration(context).alwaysOnAvailable();
     }
 
     public boolean isIrSilencerEnabled() {
