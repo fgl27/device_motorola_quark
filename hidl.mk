@@ -43,6 +43,12 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service
 
+# Health HAL
+PRODUCT_PACKAGES += \
+    android.hardware.health@2.0-impl \
+    android.hardware.health@2.0-service \
+    android.hardware.health@2.0-service.override
+
 # IR Blaster
 PRODUCT_PACKAGES += \
     android.hardware.ir@1.0-impl
