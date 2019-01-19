@@ -598,7 +598,7 @@ on property:init.svc.ril-daemon=running
     setprop ro.mdm_helper_proxy_req true
 
 service vendor.qcamerasvr /vendor/bin/mm-qcamera-daemon
-    class main
+    class late_start
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/camera-daemon/tasks
