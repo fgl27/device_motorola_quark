@@ -15,3 +15,4 @@ type proc_bus_pci, fs_type, proc_type;
 type mpdecision_socket, file_type;
 type sysfs_ssr_recovery, fs_type, sysfs_type;
 type wcnss_prop, property_type;
+type sysfs_block_iosched, fs_type, sysfs_type;

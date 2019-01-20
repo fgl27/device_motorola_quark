@@ -8,3 +8,5 @@ allow thermal-engine sysfs:file read;
 allow thermal-engine thermal-engine:capability { chown };
 allow thermal-engine init:unix_stream_socket connectto;
 allow thermal-engine sysfs_leds:file rw_file_perms;
+allow thermal-engine sysfs_batteryinfo:dir search;
+allow thermal-engine sysfs_batteryinfo:file { getattr open read write };

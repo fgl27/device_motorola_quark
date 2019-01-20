@@ -13,3 +13,6 @@ allow mediaserver system_data_file:sock_file write;
 allow mediaserver hal_configstore_default:binder call;
 allow mediaserver hal_configstore_ISurfaceFlingerConfigs:hwservice_manager find;
 allow mediaserver default_android_service:service_manager add;
+allow mediaserver audio_device:chr_file { open read write ioctl };
+allow mediaserver sensorservice_service:service_manager { find };
+binder_call(mediaserver, sensorservice_service);
