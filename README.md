@@ -33,38 +33,33 @@ If yours source file **"/home/user/source_folder/.repo/manifests/default.xml"** 
 
 ### Fix the source to build for Quark
 
-In **hardware/qcom/display-caf/apq8084** do
+From source main folder do
 
 	cd hardware/qcom/display-caf/apq8084/
-	git fetch https://github.com/LineageOS/android_hardware_qcom_display refs/changes/98/233598/1 && git cherry-pick FETCH_HEAD
-	git fetch https://github.com/LineageOS/android_hardware_qcom_display refs/changes/00/233600/2 && git cherry-pick FETCH_HEAD
-	git fetch https://github.com/LineageOS/android_hardware_qcom_display refs/changes/04/233604/1 && git cherry-pick FETCH_HEAD
+	git pull https://github.com/fgl27/android_hardware_qcom_display/ lineage-16.0-caf-8084 --no-edit
 	cd -
-
-In **hardware/qcom/media-caf/apq8084** do
 
 	cd hardware/qcom/media-caf/apq8084/
-	git fetch https://github.com/LineageOS/android_hardware_qcom_media refs/changes/02/233602/2 && git cherry-pick FETCH_HEAD
+	git pull https://github.com/fgl27/android_hardware_qcom_media/ lineage-16.0-caf-8084 --no-edit
 	cd -
 
-In **hardware/interfaces/** do
+	cd system/connectivity/wificond/
+	git pull https://github.com/fgl27/android_frameworks_opt_net_wifi/ lineage-16.0 --no-edit
+	cd -
 
-	cd hardware/interfaces/
-	git fetch https://github.com/LineageOS/android_hardware_interfaces refs/changes/94/238694/1 && git cherry-pick FETCH_HEAD
+	cd frameworks/opt/net/wifi/
+	git pull https://github.com/fgl27/system_connectivity_wificond/ Pie --no-edit
 	cd -
 
 ## Building after repo sync and fixing the source (fixing the source is always necessary to redo after a "repo sync"):
 
+	export WITH_SU=true
 	. build/envsetup.sh 
 	make clean
 
 ### Lunch the device in LineageOS
 
 	lunch lineage_quark-userdebug
-
-### Lunch the device in ResurrectionRemix
-
-	lunch rr_quark-userdebug
 
 ### Start the build
 
