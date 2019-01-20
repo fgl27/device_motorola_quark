@@ -326,6 +326,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqsapshim
 
+#Time
+PRODUCT_PACKAGES += \
+    libcommon_time_client
+
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-quark.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-quark.conf
