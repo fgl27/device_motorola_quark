@@ -141,7 +141,12 @@ PRODUCT_PACKAGES += \
     libgenlock \
     libqdutils \
     libqservice \
-    tinymix
+    libtinyxml \
+    cplay \
+    tinycap \
+    tinymix \
+    tinypcminfo \
+    tinyplay
 
 PRODUCT_PACKAGES += \
     mbhc.bin \
