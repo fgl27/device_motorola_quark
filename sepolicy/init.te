@@ -63,15 +63,63 @@ allow init adsp_serial_device:chr_file { ioctl };
 allow init input_device:chr_file ioctl;
 allow init sensors_device:chr_file { ioctl };
 allow init self:netlink_socket { create bind read write };
-allow init sysfs_bluetooth_writable:file setattr;
-allow init sysfs_devices_system_cpu:file write;
-allow init sysfs_msm_power:file { open write };
-allow init sysfs_thermal:file write;
-allow init sysfs_wlan_fwpath:file setattr;
-allow init sysfs_cpu_boost:file { open write };
-allow init sysfs_kgsl:file { open write };
-allow init sysfs_lowmemorykiller:file write;
-allow init sysfs_msm_perf:file { open write };
-allow init sysfs_ssr_recovery:file { open write };
-allow init sysfs_block_iosched:file { open write };
-allow init proc_bootinfo:file { open read };
+allow init sysfs_block_iosched:dir relabelfrom;
+allow init sysfs_block_iosched:file relabelfrom;
+allow adspd sysfs_c55_ctrl:dir rw_dir_perms;
+allow init sysfs_binder:file write;
+
+#Init.rc chmod
+allow init {
+    sysfs_bluetooth_writable
+    sysfs_devices_system_cpu
+    sysfs_msm_power
+    sysfs_thermal
+    sysfs_wlan_fwpath
+    sysfs_cpu_boost
+    sysfs_kgsl
+    sysfs_lowmemorykiller
+    sysfs_msm_perf
+    sysfs_ssr_recovery
+    sysfs_block_iosched
+    proc_bootinfo
+    sysfs_leds_brightness
+    sysfs_usb_lun
+    sysfs_android_touch
+    sysfs_cycapsense_fw
+    sysfs_msm_subsys
+    sysfs_c55_ctrl
+    sysfs_stm401
+    sysfs_graphics_fb0
+    sysfs_atmel_mxt_ts
+    sysfs_binder
+    sysfs_usb_mass_storage
+    sysfs_state_notifier
+    sysfs_rmnet_usb
+    sysfs_adreno_idler
+    sysfs_net
+    sysfs_cpufreq
+}:file setattr;
+
+allow init {
+    sysfs_c55_ctrl
+    sysfs_devices_system_cpu
+    sysfs_msm_perf
+    sysfs_msm_power
+    sysfs_rmnet_usb
+    sysfs_ssr_recovery
+    sysfs_block_iosched
+    sysfs_state_notifier
+    sysfs_leds_brightness
+    sysfs_cpufreq
+    sysfs_adreno_idler
+    sysfs_cpu_boost
+    sysfs_kgsl
+    sysfs_thermal
+    sysfs_lowmemorykiller
+    sysfs_usb_lun
+    sysfs_binder
+}:file rw_file_perms;
+
+#Give all untill we add all paths to "genfs_contexts"
+allow init sysfs:file create_file_perms;
+allow init sysfs:dir create_dir_perms;

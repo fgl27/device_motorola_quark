@@ -170,6 +170,9 @@ include device/qcom/sepolicy-legacy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += \
     device/motorola/quark/sepolicy
+    
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
+    device/motorola/quark/sepolicy/private
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
