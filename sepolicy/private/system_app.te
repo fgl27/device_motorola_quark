@@ -1,0 +1,1 @@
+allow system_app storaged:binder call;

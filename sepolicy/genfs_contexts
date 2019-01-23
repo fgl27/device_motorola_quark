@@ -10,6 +10,7 @@ genfscon sysfs /class/graphics/fb0                                              
 genfscon sysfs /class/leds/button-backlight/brightness                                            u:object_r:sysfs_leds_brightness:s0
 genfscon sysfs /class/leds/charging                                                               u:object_r:sysfs_leds_brightness:s0
 genfscon sysfs /class/leds/lcd-backlight                                                          u:object_r:sysfs_leds_brightness:s0
+genfscon sysfs /devices/pwmleds.83/leds/button-backlight                                          u:object_r:sysfs_leds_brightness:s0
 genfscon sysfs /class/rfkill/rfkill0                                                              u:object_r:sysfs_bluetooth_writable:s0
 genfscon sysfs /devices/bt_qca6174.0/rfkill/rfkill0                                               u:object_r:sysfs_bluetooth_writable:s0
 genfscon sysfs /devices/c55_ctrl                                                                  u:object_r:sysfs_c55_ctrl:s0
@@ -39,7 +40,7 @@ genfscon sysfs /module/msm_thermal                                              
 genfscon sysfs /module/rmnet_usb/parameters/dump_ctrl_msg                                         u:object_r:sysfs_rmnet_usb:s0
 genfscon sysfs /module/state_notifier/parameters                                                  u:object_r:sysfs_state_notifier:s0
 genfscon sysfs /module/stm401/parameters                                                          u:object_r:sysfs_stm401:s0
-genfscon sysfs /devices/system/cpu/cpu0/cpufreq                                                   u:object_r:sysfs_cpufreq:s0
+
 
 # proc
 genfscon proc /bootinfo                                                                           u:object_r:proc_bootinfo:s0

@@ -5,3 +5,4 @@ allow qmuxd sysfs_qmuxd:dir rw_dir_perms;
 #Give all untill we find all the paths
 allow qmuxd sysfs:file rw_file_perms;
 allow qmuxd sysfs:dir rw_dir_perms;
+allow qmuxd sysfs_net:file rw_file_perms;

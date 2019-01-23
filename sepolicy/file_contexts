@@ -53,12 +53,14 @@
 ###################################
 # sysfs files
 #
-/sys/devices/fd900000.qcom,mdss_mdp/qcom,mdss_fb_primary.163/leds/lcd-backlight/brightness u:object_r:sysfs_leds:s0
-/sys/devices/leds-qpnp-e76c1000/leds/charging/brightness       u:object_r:sysfs_leds:s0
-/sys/devices/leds-qpnp-e76c1000/leds/charging/blink_brightness u:object_r:sysfs_leds:s0
-/sys/devices/leds-qpnp-e76c1000/leds/charging/trigger          u:object_r:sysfs_leds:s0
-/sys/devices/virtual/graphics/fb[0-1]/msm_.*                   u:object_r:sysfs_hal_gralloc:s0
-/sys/devices/fd900000.qcom,mdss_mdp/caps                       u:object_r:sysfs_hal_gralloc:s0
+/sys/devices/fd900000.qcom,mdss_mdp/qcom,mdss_fb_primary.163/leds/lcd-backlight/brightness  u:object_r:sysfs_leds:s0
+/sys/devices/leds-qpnp-e76c1000/leds/charging/brightness                                    u:object_r:sysfs_leds:s0
+/sys/devices/leds-qpnp-e76c1000/leds/charging/blink_brightness                              u:object_r:sysfs_leds:s0
+/sys/devices/leds-qpnp-e76c1000/leds/charging/trigger                                       u:object_r:sysfs_leds:s0
+/sys/devices/virtual/graphics/fb[0-1]/msm_.*                                                u:object_r:sysfs_hal_gralloc:s0
+/sys/devices/fd900000.qcom,mdss_mdp/caps                                                    u:object_r:sysfs_hal_gralloc:s0
+/sys/devices/system/cpu/cpu[0-9]+/cpufreq/*                                                 u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/qcom,cpubw\.[0-9]+/devfreq/qcom,cpubw\.[0-9]+/cur_freq                         u:object_r:sysfs_devfreq:s0
 
 ###################################
 # vendor files

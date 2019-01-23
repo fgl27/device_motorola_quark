@@ -2,3 +2,7 @@ allow system_app display_sysfs:file rw_file_perms;
 allow system_app sensors_device:chr_file { getattr open read write ioctl };
 allow system_app shell_data_file:dir search;
 #allow system_app cne_service:service_manager { add };
+allow system_app perfprofd:binder call;
+allow system_app proc_pagetypeinfo:file read;
+allow system_app sysfs_android_touch:dir search;
+allow system_app sysfs_zram:dir search;

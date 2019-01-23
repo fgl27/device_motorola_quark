@@ -5,3 +5,5 @@ allow mpdecision socket_device:dir w_dir_perms;
 allow mpdecision socket_device:sock_file create_file_perms;
 allow mpdecision sysfs_cpufreq:dir rw_dir_perms;
 allow mpdecision sysfs_cpufreq:file rw_file_perms;
+allow mpdecision sysfs_memory:dir rw_file_perms;
+allow mpdecision sysfs_memory:file rw_file_perms;
