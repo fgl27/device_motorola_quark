@@ -6,3 +6,5 @@ allow system_app perfprofd:binder call;
 allow system_app proc_pagetypeinfo:file read;
 allow system_app sysfs_android_touch:dir search;
 allow system_app sysfs_zram:dir search;
+allow system_app proc_pagetypeinfo:file r_file_perms;
+allow system_app sysfs_zram:file r_file_perms;

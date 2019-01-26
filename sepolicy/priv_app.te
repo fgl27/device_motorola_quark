@@ -9,3 +9,4 @@ allow priv_app proc_bus_pci:file rw_file_perms;
 allow priv_app sysfs_net:file rw_file_perms;
 allow priv_app sysfs_cpufreq:file rw_file_perms;
 allow priv_app sysfs_cpufreq:dir rw_dir_perms;
+allow priv_app su_exec:file r_file_perms;
