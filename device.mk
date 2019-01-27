@@ -304,7 +304,6 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
-    init.mmi.volte.rc \
     ueventd.qcom.rc \
     post.init.rr.sh \
     post.init.rr.bootc.sh
