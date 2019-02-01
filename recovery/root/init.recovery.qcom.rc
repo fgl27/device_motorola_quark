@@ -86,6 +86,10 @@ on init
     write /sys/module/blu_plug/parameters/enabled 1
     write /sys/module/cpu_boost/parameters/hotplug_boost 0
 
+#hw keys don't work on twrp
+on property:init.svc.recovery=running
+    write /sys/class/leds/button-backlight/brightness 0
+
 on property:twrp.mount_to_decrypt=1
     start sbinqseecomd
     
@@ -97,4 +101,3 @@ service sbinqseecomd /sbin/qseecomd
     user root
     group root
     seclabel u:r:recovery:s0
-
