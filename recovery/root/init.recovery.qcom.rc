@@ -5,9 +5,6 @@ on fs
     chown system drmrpc /dev/qseecom
     chmod 0664 /dev/ion
     chown system system /dev/ion
-    install_keyring
-    start hwservicemanager
-    start servicemanager
 
 on init
     setprop ro.board.platform apq8084
@@ -94,13 +91,6 @@ on property:twrp.mount_to_decrypt=1
     
 on property:ro.crypto.state=encrypted
     start sbinqseecomd
-    
-service hwservicemanager /sbin/hwservicemanager
-    user root
-    group root
-    disabled
-    onrestart setprop hwservicemanager.ready false
-    seclabel u:r:recovery:s0
 
 service sbinqseecomd /sbin/qseecomd
     disabled
@@ -108,22 +98,3 @@ service sbinqseecomd /sbin/qseecomd
     group root
     seclabel u:r:recovery:s0
 
-service servicemanager /sbin/servicemanager
-    disabled
-    user root
-    group root readproc
-    seclabel u:r:recovery:s0
-
-# keystore is started and stopped on demand by TWRP
-service keystore /sbin/keystore /data/misc/keystore
-    disabled
-    user root
-    group root drmrpc readproc
-    seclabel u:r:recovery:s0
-
-service keystore_auth /sbin/keystore_auth
-    disabled
-    oneshot
-    user system
-    group root
-    seclabel u:r:recovery:s0
