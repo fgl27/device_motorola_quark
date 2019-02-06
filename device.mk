@@ -91,32 +91,32 @@ PRODUCT_COPY_FILES += \
 
 # Motorola-specific permissions
 PRODUCT_COPY_FILES += \
-    device/motorola/quark/permissions/com.motorola.actions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.actions.xml \
-    device/motorola/quark/permissions/com.motorola.android.dm.service.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.dm.service.xml \
-    device/motorola/quark/permissions/com.motorola.android.encryption_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.encryption_library.xml \
-    device/motorola/quark/permissions/com.motorola.android.settings.shared.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.settings.shared.xml \
-    device/motorola/quark/permissions/com.motorola.aon.quickpeek.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.aon.quickpeek.xml \
-    device/motorola/quark/permissions/com.motorola.aov.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.aov.xml \
-    device/motorola/quark/permissions/com.motorola.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.camera.xml \
-    device/motorola/quark/permissions/com.motorola.camerabgproc_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.camerabgproc_library.xml \
-    device/motorola/quark/permissions/com.motorola.commandcenter.library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.commandcenter.library.xml \
-     device/motorola/quark/permissions/com.motorola.device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.device.xml \
-    device/motorola/quark/permissions/com.motorola.email.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.email.xml \
-    device/motorola/quark/permissions/com.motorola.frameworks.core.addon.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.frameworks.core.addon.xml \
-    device/motorola/quark/permissions/com.motorola.gallery.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.gallery.xml \
-    device/motorola/quark/permissions/com.motorola.haptic.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.haptic.xml \
-    device/motorola/quark/permissions/com.motorola.moto.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.moto.xml \
-    device/motorola/quark/permissions/com.motorola.motodisplay.pd.screenoff.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.motodisplay.pd.screenoff.xml \
-    device/motorola/quark/permissions/com.motorola.motosignature.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.motosignature.xml \
-    device/motorola/quark/permissions/com.motorola.sensorhub.stm401.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.sensorhub.stm401.xml \
-    device/motorola/quark/permissions/com.motorola.slpc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.slpc.xml \
-    device/motorola/quark/permissions/com.motorola.software.bodyguard.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.bodyguard.xml \
-    device/motorola/quark/permissions/com.motorola.software.droid_line.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.droid_line.xml \
-    device/motorola/quark/permissions/com.motorola.software.folio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.folio.xml \
-	device/motorola/quark/permissions/com.motorola.software.guideme.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.guideme.xml \
-    device/motorola/quark/permissions/com.motorola.software.smartnotifications.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.smartnotifications.xml \
-    device/motorola/quark/permissions/com.motorola.targetnotif.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.targetnotif.xml \
-    device/motorola/quark/permissions/com.motorola.zap.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.zap.xml
+    $(LOCAL_PATH)/permissions/com.motorola.actions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.actions.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.android.dm.service.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.dm.service.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.android.encryption_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.encryption_library.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.android.settings.shared.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.settings.shared.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.aon.quickpeek.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.aon.quickpeek.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.aov.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.aov.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.camera.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.camerabgproc_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.camerabgproc_library.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.commandcenter.library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.commandcenter.library.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.device.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.email.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.email.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.frameworks.core.addon.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.frameworks.core.addon.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.gallery.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.gallery.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.haptic.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.haptic.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.moto.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.moto.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.motodisplay.pd.screenoff.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.motodisplay.pd.screenoff.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.motosignature.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.motosignature.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.sensorhub.stm401.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.sensorhub.stm401.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.slpc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.slpc.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.software.bodyguard.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.bodyguard.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.software.droid_line.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.droid_line.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.software.folio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.folio.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.software.guideme.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.guideme.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.software.smartnotifications.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.smartnotifications.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.targetnotif.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.targetnotif.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.zap.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.zap.xml
 
 #$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 

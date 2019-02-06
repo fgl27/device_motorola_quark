@@ -167,11 +167,8 @@ VENDOR_SECURITY_PATCH := 2018-01-01
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
-    device/motorola/quark/sepolicy
-    
-BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
-    device/motorola/quark/sepolicy/private
+BOARD_SEPOLICY_DIRS += $(QUARK_PATH)/sepolicy
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(QUARK_PATH)/sepolicy/private
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
