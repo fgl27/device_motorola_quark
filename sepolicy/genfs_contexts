@@ -29,8 +29,6 @@ genfscon sysfs /devices/msm_hsic_host/usb1/1-1/1-1:1.8/net/rmnet_usb0           
 genfscon sysfs /devices/msm_sdcc.1/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/iosched            u:object_r:sysfs_block_iosched:s0
 genfscon sysfs /devices/pci0000:00/0000:00:00.0/0000:01:00.0/net                                  u:object_r:sysfs_net:s0
 genfscon sysfs /devices/virtual/hsicctl/hsicctl0                                                  u:object_r:sysfs_net:s0
-genfscon sysfs /devices/virtual/net                                                               u:object_r:sysfs_net:s0
-genfscon sysfs /devices/virtual/net/wlan0/address                                                 u:object_r:sysfs_net:s0
 genfscon sysfs /module/adreno_idler/parameters                                                    u:object_r:sysfs_adreno_idler:s0
 genfscon sysfs /module/binder/parameters                                                          u:object_r:sysfs_binder:s0
 genfscon sysfs /module/bcmdhd/parameters/firmware_path                                            u:object_r:sysfs_wlan_fwpath:s0
