@@ -1,3 +1,0 @@
-# sysfs
-genfscon sysfs /devices/virtual/net                                                               u:object_r:sysfs_net:s0
-genfscon sysfs /devices/virtual/net/wlan0/address                                                 u:object_r:sysfs_net:s0
