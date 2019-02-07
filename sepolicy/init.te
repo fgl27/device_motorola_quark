@@ -118,6 +118,7 @@ allow init {
     sysfs_lowmemorykiller
     sysfs_usb_lun
     sysfs_binder
+    sysfs_android_touch
 }:file rw_file_perms;
 
 #Give all untill we add all paths to "genfs_contexts"
