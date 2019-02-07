@@ -61,6 +61,8 @@
 /sys/devices/fd900000.qcom,mdss_mdp/caps                                                    u:object_r:sysfs_hal_gralloc:s0
 /sys/devices/system/cpu/cpu[0-9]+/cpufreq/*                                                 u:object_r:sysfs_devices_system_cpu:s0
 /sys/devices/qcom,cpubw\.[0-9]+/devfreq/qcom,cpubw\.[0-9]+/cur_freq                         u:object_r:sysfs_devfreq:s0
+/sys/bus/esoc/devices/esoc0/esoc_name                                                       u:object_r:sysfs_esoc:s0
+/sys/bus/msm_subsys/devices/subsys2/name                                                    u:object_r:sysfs_ssr:s0
 
 ###################################
 # vendor files

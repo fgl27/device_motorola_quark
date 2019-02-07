@@ -1,11 +1,8 @@
 # sysfs
 genfscon sysfs /android_touch                                                                     u:object_r:sysfs_android_touch:s0
 genfscon sysfs /block/mmcblk0/queue/scheduler                                                     u:object_r:sysfs_block_iosched:s0
-genfscon sysfs /bus/esoc/devices/esoc0/esoc_name                                                  u:object_r:sysfs_qmuxd:s0
 genfscon sysfs /bus/i2c/drivers/atmel_mxt_ts/1-004a                                               u:object_r:sysfs_atmel_mxt_ts:s0
 genfscon sysfs /bus/msm_subsys/devices                                                            u:object_r:sysfs_msm_subsys:s0
-genfscon sysfs /bus/esoc/devices/esoc0                                                            u:object_r:sysfs_netmgrd:s0
-genfscon sysfs /bus/msm_subsys/devices/subsys2/                                                   u:object_r:sysfs_netmgrd:s0
 genfscon sysfs /class/android_usb/android0/f_mass_storage/lun/file                                u:object_r:sysfs_usb_lun:s0
 genfscon sysfs /class/android_usb/f_mass_storage                                                  u:object_r:sysfs_usb_mass_storage:s0
 genfscon sysfs /class/graphics/fb0                                                                u:object_r:sysfs_graphics_fb0:s0
