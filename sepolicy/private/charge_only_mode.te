@@ -1,8 +1,0 @@
-type charge_only_mode, domain;
-type charge_only_mode_exec, exec_type, file_type;
-typeattribute charge_only_mode coredomain;
-
-init_daemon_domain(charge_only_mode)
-
-# Allow charge_only_mode to serve health HAL
-hal_server_domain(charge_only_mode, hal_health)
