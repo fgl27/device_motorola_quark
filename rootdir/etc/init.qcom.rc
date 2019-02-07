@@ -614,6 +614,8 @@ on property:init.svc.surfaceflinger=stopped
     stop ppd
 
 service vendor.charge_only_mode /vendor/bin/charge_only_mode
+    class charger
+    critical
     user root
     group graphics system input
     disabled

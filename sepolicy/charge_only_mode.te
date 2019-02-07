@@ -6,11 +6,13 @@ allow charge_only_mode self:capability { sys_boot dac_override dac_read_search s
 
 allow charge_only_mode chargeonly_data_file:dir rw_dir_perms;
 allow charge_only_mode chargeonly_data_file:file rw_file_perms;
-allow charge_only_mode graphics_device:dir { search r_dir_perms };
+allow charge_only_mode graphics_device:dir r_dir_perms;
 allow charge_only_mode graphics_device:chr_file rw_file_perms;
-allow charge_only_mode input_device:dir { r_dir_perms search };
-allow charge_only_mode input_device:chr_file { read open r_file_perms };
-allow charge_only_mode tty_device:chr_file { read write open ioctl rw_file_perms };
+allow charge_only_mode input_device:dir r_dir_perms;
+allow charge_only_mode input_device:chr_file r_file_perms;
+allow charge_only_mode tty_device:chr_file rw_file_perms;
+allow charge_only_mode ashmem_device:chr_file execute;
+allow charge_only_mode self:process execmem;
 allow charge_only_mode sysfs:file { read write open };
 allow charge_only_mode sysfs_wake_lock:file { read write open };
 allow charge_only_mode sysfs_battery_supply:dir search;
@@ -18,11 +20,19 @@ allow charge_only_mode sysfs_battery_supply:file { read open };
 allow charge_only_mode sysfs_usb_supply:dir search;
 allow charge_only_mode sysfs_usb_supply:file { read open };
 allow charge_only_mode sysfs_usb:file write;
+allow charge_only_mode proc_sysrq:file rw_file_perms;
 
 r_dir_file(charge_only_mode, sysfs_battery_supply)
 r_dir_file(charge_only_mode, sysfs_usb_supply)
 r_dir_file(charge_only_mode, sysfs_thermal);
 r_dir_file(charge_only_mode, sysfs)
+
+# charge_only_mode needs to tell init to continue the boot
+# process when running in charger mode.
+set_prop(charge_only_mode, system_prop)
+set_prop(charge_only_mode, exported_system_prop)
+set_prop(charge_only_mode, exported2_system_prop)
+set_prop(charge_only_mode, exported3_system_prop)
 
 allow charge_only_mode sysfs_batteryinfo:file r_file_perms;
 #allow charge_only_mode batteryproperties_service:service_manager { add find };
@@ -30,3 +40,34 @@ allow charge_only_mode sysfs_batteryinfo:file r_file_perms;
 # charge_only_mode needs to tell init to continue the boot
 # process when running in charger mode.
 set_prop(charge_only_mode, system_prop)
+
+# Write to /dev/kmsg
+allow charge_only_mode kmsg_device:chr_file rw_file_perms;
+
+# Read access to pseudo filesystems.
+allow charge_only_mode sysfs_type:dir search;
+r_dir_file(charge_only_mode, rootfs)
+r_dir_file(charge_only_mode, cgroup)
+
+# Read access to system files for passthrough HALs in
+# /{system,vendor,odm}/lib[64]/hw/
+r_dir_file(charge_only_mode, system_file)
+
+allow charge_only_mode self:global_capability_class_set { sys_tty_config };
+allow charge_only_mode self:global_capability_class_set sys_boot;
+
+allow charge_only_mode self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+
+# Read/write to /sys/power/state
+allow charge_only_mode sysfs_power:file rw_file_perms;
+
+# TODO: added to match above sysfs rule. Remove me?
+allow charge_only_mode sysfs_usb:file write;
+
+r_dir_file(charge_only_mode, sysfs_batteryinfo)
+
+# Read /sys/fs/pstore/console-ramoops
+# Don't worry about overly broad permissions for now, as there's
+# only one file in /sys/fs/pstore
+allow charge_only_mode pstorefs:dir r_dir_perms;
+allow charge_only_mode pstorefs:file r_file_perms;
