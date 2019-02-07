@@ -52,7 +52,7 @@ on early-init
 
 on init
     # vold needs keymaster that needs qseecomd
-    start vendor.qseecomd
+    start qseecomd
 
     # pstore
     chown system log /sys/fs/pstore/annotate-ramoops
@@ -73,11 +73,11 @@ on charger
 on moto-charger
     setprop ro.board.platform apq8084
     start qcom-post-boot
-    start vendor.thermal-com
+    start thermal-com
     write /sys/android_touch/doubletap2wake 1
     write /sys/android_touch/sweep2wake 15
     write /sys/class/leds/charging/trigger "battery-full"
-    start vendor.charge_only_mode
+    start charge_only_mode
 
 on fs
     wait /dev/block/platform/${ro.boot.bootdevice}
@@ -529,55 +529,55 @@ on property:ro.bluetooth.ftm_enabled=true
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
-service vendor.atvc_core /vendor/bin/dbvc_atvc_property_set
+service atvc_core /vendor/bin/dbvc_atvc_property_set
     class core
     user oem_5012
     group oem_5007
     oneshot
 
-service vendor.atvc /vendor/bin/dbvc_atvc_property_set
+service atvc /vendor/bin/dbvc_atvc_property_set
     class late_start
     user oem_5012
     group oem_5007
     oneshot
 
-service vendor.thermal-engine /vendor/bin/thermal-engine
+service thermal-engine /vendor/bin/thermal-engine
     class hal
     user root
     group root
 
-service vendor.thermal-com /vendor/bin/thermal-engine --minimode
+service thermal-com /vendor/bin/thermal-engine --minimode
     class hal
     user root
     disabled
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.time_daemon /vendor/bin/time_daemon
+service time_daemon /vendor/bin/time_daemon
     capabilities SYS_TIME
     class late_start
     user system
     group net_raw
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.qseecomd /vendor/bin/qseecomd
+service qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
     shutdown critical
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.mpdecision /vendor/bin/mpdecision --avg_comp
+service mpdecision /vendor/bin/mpdecision --avg_comp
     class main
     user root
     group root readproc
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.mdm_helper /vendor/bin/mdm_helper
+service mdm_helper /vendor/bin/mdm_helper
     class core
     onrestart setprop ro.service.mdm_helper_restarted "true"
     group root system radio oem_2950 wakelock
 
-service vendor.mdm_helper_proxy /vendor/bin/mdm_helper_proxy
+service mdm_helper_proxy /vendor/bin/mdm_helper_proxy
     class core
     user system
     group system wakelock
@@ -585,7 +585,7 @@ service vendor.mdm_helper_proxy /vendor/bin/mdm_helper_proxy
 
 # Stop mdm_helper_proxy in case of shutdown
 on property:sys.powerctl=*
-    stop vendor.mdm_helper_proxy
+    stop mdm_helper_proxy
 
 # Kill button-backlight on shutdown
 on property:sys.shutdown.requested=*
@@ -593,60 +593,60 @@ on property:sys.shutdown.requested=*
 
 # Start mdm_helper_proxy
 on property:ro.mdm_helper_proxy_req=true
-    start vendor.mdm_helper_proxy
+    start mdm_helper_proxy
 
 on property:init.svc.ril-daemon=running
     setprop ro.mdm_helper_proxy_req true
 
-service vendor.qcamerasvr /vendor/bin/mm-qcamera-daemon
+service qcamerasvr /vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/camera-daemon/tasks
 
 on property:init.svc.media=restarting
-    restart vendor.qcamerasvr
+    restart qcamerasvr
 
 on property:init.svc.servicemanager=restarting
-    restart vendor.qcamerasvr
+    restart qcamerasvr
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd
 
-service vendor.charge_only_mode /vendor/bin/charge_only_mode
+service charge_only_mode /vendor/bin/charge_only_mode
     class charger
     critical
     user root
     group graphics system input
     disabled
 
-service vendor.adspd /vendor/bin/adspd /dev/ttyHS3
+service adspd /vendor/bin/adspd /dev/ttyHS3
     class main
     socket adspdsock stream 0660 system audio
     user audio
     group audio input diag
 
 #start Sensor daemon
-service vendor.stm401 /vendor/bin/stm401 boot
+service stm401 /vendor/bin/stm401 boot
     disabled
     user compass
     group compass misc input
     oneshot
 
 on property:hw.touch.ready=1
-    start vendor.stm401
+    start stm401
 
-service vendor.mmi-usb-sh /vendor/bin/init.mmi.usb.sh
+service mmi-usb-sh /vendor/bin/init.mmi.usb.sh
     class core
     user root
     oneshot
 
-service vendor.mmi-boot-sh /vendor/bin/init.mmi.boot.sh
+service mmi-boot-sh /vendor/bin/init.mmi.boot.sh
     class core
     user root
     oneshot
 
-service vendor.mmi-touch-sh /vendor/bin/init.mmi.touch.sh atmel
+service mmi-touch-sh /vendor/bin/init.mmi.touch.sh atmel
     class disabled
     user root
     oneshot
@@ -654,7 +654,7 @@ service vendor.mmi-touch-sh /vendor/bin/init.mmi.touch.sh atmel
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
 
-service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
@@ -665,7 +665,7 @@ service rmt_storage /vendor/bin/rmt_storage
     group system wakelock
     shutdown critical
 
-service vendor.rfs_access /vendor/bin/rfs_access
+service rfs_access /vendor/bin/rfs_access
    class core
    user system
    group system net_raw
@@ -676,10 +676,10 @@ on property:wc_transport.start_hci=true
 on property:wc_transport.start_hci=false
     stop start_hci_filter
 
-on property:init.svc.vendor.thermal-engine=running
+on property:init.svc.thermal-engine=running
     write /sys/module/msm_thermal/parameters/enabled N
 
-on property:init.svc.vendor.thermal-engine=stopped
+on property:init.svc.thermal-engine=stopped
     write /sys/module/msm_thermal/parameters/enabled Y
 
 service start_hci_filter /vendor/bin/wcnss_filter
@@ -689,13 +689,13 @@ service start_hci_filter /vendor/bin/wcnss_filter
     disabled
 
 # QMUX must be in multiple groups to support external process connections
-service vendor.qmuxd /vendor/bin/qmuxd
+service qmuxd /vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth wakelock gps oem_2950 log
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.netmgrd /vendor/bin/netmgrd
+service netmgrd /vendor/bin/netmgrd
     class main
     user root
     group root system wifi wakelock radio inet oem_2950
@@ -721,7 +721,7 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     oneshot
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.gpsone_daemon /vendor/bin/gpsone_daemon
+service gpsone_daemon /vendor/bin/gpsone_daemon
     class late_start
     user gps
     group gps inet net_raw
@@ -731,7 +731,7 @@ on property:ro.data.large_tcp_window_size=true
     # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
-service vendor.cnd /vendor/bin/cnd
+service cnd /vendor/bin/cnd
     class late_start
     user system
     group system wifi inet radio wakelock net_admin
