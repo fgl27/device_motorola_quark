@@ -14,3 +14,4 @@ allow system_server block_device:blk_file { getattr };
 allow system_server sensors_device:chr_file { ioctl open read };
 allow system_server default_android_service:service_manager { add find };
 allow system_server sysfs_leds_brightness:file rw_file_perms;
+allow system_server default_android_hwservice:hwservice_manager find;

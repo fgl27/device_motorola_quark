@@ -31,3 +31,4 @@ type sysfs_rmnet_usb, fs_type, sysfs_type;
 type sysfs_adreno_idler, fs_type, sysfs_type;
 type sysfs_cpufreq, fs_type, sysfs_type;
 type sysfs_qmuxd, fs_type, sysfs_type;
+type sysfs_netmgrd, fs_type, sysfs_type;

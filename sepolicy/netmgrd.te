@@ -1,2 +1,3 @@
 allow netmgrd netmgrd:capability { dac_override };
-allow netmgrd sysfs:dir { open read };
+allow netmgrd sysfs_netmgrd:dir rw_dir_perms;
+allow netmgrd sysfs_netmgrd:file rw_file_perms;
