@@ -1,10 +1,12 @@
 # Device configuration for Moto MAXX (Quark)
 
-Copyright 2015 to Today - Felipe Leon Project<br/>
+Copyright 2015 to Today - Felipe Leon Project :sunglasses:<br/>
 Copyright 2015 to 2016 - The CyanogenMod Project<br/>
 Copyright 2017 - 2018 - The LineageOS Project
 
-### This is a WIP P branch
+## I use this tree to build in Oreo lineage-16.x base sources
+
+This tree works prefect on [ResurrectionRemix Pie](https://github.com/ResurrectionRemix/platform_manifest/tree/pie) source also in [LineageOS 16.0](https://github.com/LineageOS/android/tree/lineage-16.0) but I don't run or build LineageOS regularly so it may not build, but the fixes are usually very simple if you can't fix it **mention** @fgl27 on one of the XDA threads links in [device_motorola_quark/wiki](https://github.com/fgl27/device_motorola_quark/wiki)
 
 ### How to build this...
 
@@ -61,11 +63,15 @@ From source main folder do
 
 	lunch lineage_quark-userdebug
 
+### Lunch the device in ResurrectionRemix
+
+	lunch rr_quark-userdebug
+
 ### Start the build
 
 	time mka bacon -j8 2>&1 | tee quark.txt
 
-Were the **first number** after **-j** is the number of cores you wanna use for this task and **2>&1 | tee quark.txt** will export the build "output" to  a file **quark.txt**, read it in case the build fails searching for the reason of the fail.
+Were the **first number** after **-j** is the number of cores you wanna use for this task and **2>&1 | tee quark.txt** will export the build "output" to a file **quark.txt**, read it in case the build fails searching for the reason of the fail.
 
 This link ([Setup_new_build_machine](https://github.com/fgl27/scripts/blob/master/etc/new_machine.md#for-general-android-app-build-machine--adb-shell-and-fastboot-for-debugging)) may help to setup a build machine in case you don't know how to, but that is very personalized for me so carefully read it.
 
