@@ -37,20 +37,32 @@ If yours source file **"/home/user/source_folder/.repo/manifests/default.xml"** 
 
 From source main folder do
 
-	cd hardware/qcom/display-caf/apq8084/
-	git pull https://github.com/fgl27/android_hardware_qcom_display/ lineage-16.0-caf-8084 --no-edit
-	cd -
-
-	cd hardware/qcom/media-caf/apq8084/
-	git pull https://github.com/fgl27/android_hardware_qcom_media/ lineage-16.0-caf-8084 --no-edit
-	cd -
-
 	cd system/connectivity/wificond/
-	git pull https://github.com/fgl27/android_frameworks_opt_net_wifi/ lineage-16.0 --no-edit
+	git pull https://github.com/fgl27/system_connectivity_wificond/ Pie --no-edit
 	cd -
 
 	cd frameworks/opt/net/wifi/
-	git pull https://github.com/fgl27/system_connectivity_wificond/ Pie --no-edit
+	git pull https://github.com/fgl27/android_frameworks_opt_net_wifi/ lineage-16.0 --no-edit
+	git fetch https://github.com/LineageOS/android_frameworks_opt_net_wifi refs/changes/73/237173/3 && git cherry-pick FETCH_HEAD
+	cd -
+
+	cd frameworks/av
+	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/06/237206/1 && git cherry-pick FETCH_HEAD
+	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/27/238927/2 && git cherry-pick FETCH_HEAD
+	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/28/238928/2 && git cherry-pick FETCH_HEAD
+	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/29/238929/2 && git cherry-pick FETCH_HEAD
+	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/31/238931/2 && git cherry-pick FETCH_HEAD
+	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/32/238932/2 && git cherry-pick FETCH_HEAD
+	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/42/239642/1 && git cherry-pick FETCH_HEAD
+	cd -
+
+	cd device/qcom/sepolicy-legacy
+	git fetch https://github.com/LineageOS/android_device_qcom_sepolicy-legacy refs/changes/41/239741/3 && git cherry-pick FETCH_HEAD
+	cd -
+
+	cd frameworks/base
+	git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/29/237129/7 && git cherry-pick FETCH_HEAD
+	git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/72/237172/5 && git cherry-pick FETCH_HEAD
 	cd -
 
 ## Building after repo sync and fixing the source (fixing the source is always necessary to redo after a "repo sync"):
