@@ -63,6 +63,9 @@ audio.offload.pcm.16bit.enable=false
 audio.offload.pcm.24bit.enable=false
 audio.deep_buffer.media=true
 
+# Memory optimizations
+ro.vendor.qti.sys.fw.bservice_enable=true
+
 # NITZ
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
 #rild.libargs=-d /dev/smd0
