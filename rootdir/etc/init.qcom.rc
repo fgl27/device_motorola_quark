@@ -671,10 +671,10 @@ service rfs_access /vendor/bin/rfs_access
    group system net_raw
 
 on property:vendor.wc_transport.start_hci=true
-    start vendor.start_hci_filter
+    start start_hci_filter
 
 on property:vendor.wc_transport.start_hci=false
-    stop vendor.start_hci_filter
+    stop start_hci_filter
 
 on property:init.svc.thermal-engine=running
     write /sys/module/msm_thermal/parameters/enabled N
@@ -682,11 +682,12 @@ on property:init.svc.thermal-engine=running
 on property:init.svc.thermal-engine=stopped
     write /sys/module/msm_thermal/parameters/enabled Y
 
-service vendor.start_hci_filter /vendor/bin/wcnss_filter
+service start_hci_filter /vendor/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth oem_2950
+    group bluetooth oem_2950 system wakelock
     disabled
+    writepid /dev/cpuset/system-background/tasks 
 
 # QMUX must be in multiple groups to support external process connections
 service qmuxd /vendor/bin/qmuxd
