@@ -37,16 +37,12 @@ If yours source file **"/home/user/source_folder/.repo/manifests/default.xml"** 
 
 From source main folder do
 
-	cd hardware/qcom/display-caf/apq8084/
-	git fetch https://github.com/fgl27/android_hardware_qcom_display lineage-16.0-caf-8084 && git cherry-pick 6718ff4b192c0f21dc64ce7c3a3dca187736f605^..868d3001a9e60ba45c5413eba9ea1494f522425a
-	cd -
-
 	cd system/connectivity/wificond/
 	git fetch https://github.com/fgl27/system_connectivity_wificond/ Pie && git cherry-pick f695a663f751814ab35e30791693d784649fad4e^..31b7bd81e031bbe9505c82bc15670e4281b00d34
 	cd -
 
 	cd frameworks/opt/net/wifi/
-	git fetch https://github.com/fgl27/android_frameworks_opt_net_wifi/ lineage-16.0 && git cherry-pick d9810f5343c626cfd4223c71aa37980a23a34256
+	git fetch https://github.com/fgl27/android_frameworks_opt_net_wifi/ lineage-16.0 && git cherry-pick d9810f5343c626cfd4223c71aa37980a23a34256^..9a61195fd803c43ad1924ee513d73873f57c1918
 	git fetch https://github.com/LineageOS/android_frameworks_opt_net_wifi refs/changes/73/237173/3 && git cherry-pick FETCH_HEAD
 	cd -
 
