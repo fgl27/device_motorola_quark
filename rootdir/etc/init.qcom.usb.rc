@@ -52,6 +52,7 @@ on boot
     # avoid USB crash
     setprop persist.adb.nonblocking_ffs 0
     setprop ro.adb.nonblocking_ffs 0   
+    setprop sys.mtp.device_type 2
 
 # Following are the parameters required for usb functionality. They provide configurable options like
 # product_id/vendor id and allows specifying required functions:
