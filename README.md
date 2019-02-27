@@ -37,17 +37,20 @@ If yours source file **"/home/user/source_folder/.repo/manifests/default.xml"** 
 
 From source main folder do
 
+### This will remove wifi logs spams, technically not need but improve log reading and background performance
+
 	cd system/connectivity/wificond/
 	git fetch https://github.com/fgl27/system_connectivity_wificond/ Pie && git cherry-pick f695a663f751814ab35e30791693d784649fad4e^..31b7bd81e031bbe9505c82bc15670e4281b00d34
 	cd -
 
 	cd frameworks/opt/net/wifi/
 	git fetch https://github.com/fgl27/android_frameworks_opt_net_wifi/ lineage-16.0 && git cherry-pick d9810f5343c626cfd4223c71aa37980a23a34256^..9a61195fd803c43ad1924ee513d73873f57c1918
-	git fetch https://github.com/LineageOS/android_frameworks_opt_net_wifi refs/changes/73/237173/3 && git cherry-pick FETCH_HEAD
 	cd -
 
+### This is only needed in LineageOS,they will fix wifi display support
+
 	cd frameworks/av
-	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/06/237206/1 && git cherry-pick FETCH_HEAD
+
 	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/27/238927/2 && git cherry-pick FETCH_HEAD
 	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/28/238928/2 && git cherry-pick FETCH_HEAD
 	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/29/238929/2 && git cherry-pick FETCH_HEAD
@@ -58,11 +61,6 @@ From source main folder do
 
 	cd device/qcom/sepolicy-legacy
 	git fetch https://github.com/LineageOS/android_device_qcom_sepolicy-legacy refs/changes/41/239741/3 && git cherry-pick FETCH_HEAD
-	cd -
-
-	cd frameworks/base
-	git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/29/237129/7 && git cherry-pick FETCH_HEAD
-	git fetch https://github.com/LineageOS/android_frameworks_base refs/changes/72/237172/5 && git cherry-pick FETCH_HEAD
 	cd -
 
 ## Building after repo sync and fixing the source (fixing the source is always necessary to redo after a "repo sync"):
