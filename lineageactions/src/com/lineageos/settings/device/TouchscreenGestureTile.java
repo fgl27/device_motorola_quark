@@ -21,15 +21,30 @@ package com.lineageos.settings.device;
 
 import android.content.Intent;
 import android.service.quicksettings.TileService;
+import android.service.quicksettings.Tile;
 
 import com.lineageos.settings.device.TouchscreenGesturePreferenceActivity;
 
 public class TouchscreenGestureTile extends TileService {
 
+    private Tile mTile;
+
     @Override
     public void onClick() {
         if (isLocked()) unlockAndRun();
         else launch();
+    }
+
+    @Override
+    public void onTileAdded() {
+        super.onTileAdded();
+        setinactive();
+    }
+
+    @Override
+    public void onStartListening() {
+        super.onStartListening();
+        setinactive();
     }
 
     private void unlockAndRun() {
@@ -42,7 +57,16 @@ public class TouchscreenGestureTile extends TileService {
     }
 
     private void launch() {
-        startActivityAndCollapse(new Intent(this, TouchscreenGesturePreferenceActivity.class));
+        Intent start = new Intent(Intent.ACTION_VIEW);
+        start.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        start.setClass(this, TouchscreenGesturePreferenceActivity.class);
+        startActivityAndCollapse(start);
+    }
+
+    private void setinactive() {
+        mTile = getQsTile();
+        mTile.setState(mTile.STATE_INACTIVE);
+        mTile.updateTile();
     }
 
 }
