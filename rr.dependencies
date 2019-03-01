@@ -1,0 +1,26 @@
+[
+  {
+    "remote": "github",
+    "repository": "fgl27/proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "branch": "P"
+  },
+  {
+    "remote": "github",
+    "repository": "fgl27/BHB27Kernel",
+    "target_path": "kernel/motorola/apq8084",
+    "branch": "P"
+  },
+  {
+    "remote": "github",
+    "repository": "LineageOS/android_packages_resources_devicesettings",
+    "target_path": "packages/resources/devicesettings",
+    "branch": "lineage-16.0"
+  },
+  {
+    "remote": "github",
+    "repository": "LineageOS/android_system_qcom",
+    "target_path": "system/qcom",
+    "branch": "lineage-16.0"
+  }
+]
