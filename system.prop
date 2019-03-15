@@ -128,9 +128,6 @@ persist.sys.qc.sub.rdump.on=1
 persist.sys.qc.sub.rstrtlvl=3
 persist.sys.ssr.restart_level=1
 
-# Storage
-ro.storaged.event.interval=999999
-
 # Time
 persist.timed.enable=true
 
