@@ -49,6 +49,9 @@ on boot
     setprop usb.mtp.pid ${ro.usb.mtp}
     setprop usb.mtp.config mtp,usbnet
     setprop sys.usb.ffs.aio_compat 1
+    # avoid USB crash
+    setprop persist.adb.nonblocking_ffs 0
+    setprop ro.adb.nonblocking_ffs 0   
 
 # Following are the parameters required for usb functionality. They provide configurable options like
 # product_id/vendor id and allows specifying required functions:
