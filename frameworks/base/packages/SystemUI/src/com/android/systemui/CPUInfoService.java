@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The Android Open Source Project
+ * Copyright (C) 2017 The OmniROM Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,15 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.android.systemui;
 
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
+import android.graphics.Rect;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -43,8 +45,10 @@ public class CPUInfoService extends Service {
     private Thread mCurCPUThread;
     private final String TAG = "CPUInfoService";
     private int mNumCpus = 1;
-    private String[] mCurrFreq = null;
-    private String[] mCurrGov = null;
+    private String[] mCurrFreq=null;
+    private String[] mCurrGov=null;
+
+    private static final String NUM_OF_CPUS_PATH = "/sys/devices/system/cpu/present";
 
     private class CPUView extends View {
         private Paint mOnlinePaint;
@@ -56,41 +60,35 @@ public class CPUInfoService extends Service {
         private int mNeededWidth;
         private int mNeededHeight;
 
-        private String mBAT;
-        private String mGPU;
-        private String mRAM;
         private boolean mDataAvail;
-
-        private int LinesOffset = 3; // +1 for it initial line mBAT, mGPU and mRAM etc etc
+        private String mCPUTemp;
 
         private Handler mCurCPUHandler = new Handler() {
             public void handleMessage(Message msg) {
-                if (msg.obj == null) {
+                if(msg.obj==null){
                     return;
                 }
-                if (msg.what == 1) {
+                if(msg.what==1){
                     String msgData = (String) msg.obj;
                     try {
-                        String[] parts = msgData.split(";");
-                        mBAT = parts[0];
-                        mRAM = parts[1];
-                        mGPU = parts[2];
+                        String[] parts=msgData.split(";");
+                        mCPUTemp=parts[0];
 
-                        String[] cpuParts = parts[3].split("\\|");
-                        for (int i = 0; i < cpuParts.length; i++) {
-                            String cpuInfo = cpuParts[i];
-                            String cpuInfoParts[] = cpuInfo.split(":");
-                            if (cpuInfoParts.length == 2) {
-                                mCurrFreq[i] = cpuInfoParts[0];
-                                mCurrGov[i] = cpuInfoParts[1];
+                        String[] cpuParts=parts[1].split("\\|");
+                        for(int i=0; i<cpuParts.length; i++){
+                            String cpuInfo=cpuParts[i];
+                            String cpuInfoParts[]=cpuInfo.split(":");
+                            if(cpuInfoParts.length==2){
+                                mCurrFreq[i]=cpuInfoParts[0];
+                                mCurrGov[i]=cpuInfoParts[1];
                             } else {
-                                mCurrFreq[i] = "0";
-                                mCurrGov[i] = "";
+                                mCurrFreq[i]="0";
+                                mCurrGov[i]="";
                             }
                         }
                         mDataAvail = true;
                         updateDisplay();
-                    } catch (ArrayIndexOutOfBoundsException e) {
+                    } catch(ArrayIndexOutOfBoundsException e) {
                         Log.e(TAG, "illegal data " + msgData);
                     }
                 }
@@ -121,8 +119,8 @@ public class CPUInfoService extends Service {
             float descent = mOnlinePaint.descent();
             mFH = (int)(descent - mAscent + .5f);
 
-            final String maxWidthStr = " CORE:0 ondemandplus:2880 MHz U 100% T 30°C "; // probably biggest possible
-            mMaxWidth = (int) mOnlinePaint.measureText(maxWidthStr);
+            final String maxWidthStr="cpuX interactive 0000000";
+            mMaxWidth = (int)mOnlinePaint.measureText(maxWidthStr);
 
             updateDisplay();
         }
@@ -141,13 +139,13 @@ public class CPUInfoService extends Service {
         @Override
         protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
             setMeasuredDimension(resolveSize(mNeededWidth, widthMeasureSpec),
-                resolveSize(mNeededHeight, heightMeasureSpec));
+                    resolveSize(mNeededHeight, heightMeasureSpec));
         }
 
         private String getCPUInfoString(int i) {
-            String freq = mCurrFreq[i];
-            String gov = mCurrGov[i];
-            return "CORE:" + i + " " + gov + ": " + freq;
+            String freq=mCurrFreq[i];
+            String gov=mCurrGov[i];
+            return "cpu"+i+": "+gov+": "+freq;
         }
 
         @Override
@@ -157,37 +155,41 @@ public class CPUInfoService extends Service {
                 return;
             }
 
-            int x = (getWidth() - 1) - mPaddingRight - mMaxWidth;
-            int y = ((mPaddingTop - (int) mAscent) - 1);
+            final int W = mNeededWidth;
+            final int RIGHT = getWidth()-1;
 
-            canvas.drawText("BAT: " + mBAT, x, y, mOnlinePaint);
-            y += mFH;
-            canvas.drawText("RAM: " + mRAM, x, y, mOnlinePaint);
-            y += mFH;
-            canvas.drawText("GPU: " + mGPU, x, y, mOnlinePaint);
+            int x = RIGHT - mPaddingRight;
+            int top = mPaddingTop + 2;
+            int bottom = mPaddingTop + mFH - 2;
+
+            int y = mPaddingTop - (int)mAscent;
+
+            canvas.drawText("temp: "+mCPUTemp, RIGHT-mPaddingRight-mMaxWidth,
+                y-1, mOnlinePaint);
             y += mFH;
 
-            for (int i = 0; i < mCurrFreq.length; i++) {
-                String s = getCPUInfoString(i);
-                String freq = mCurrFreq[i];
-                if (!freq.equals("0")) {
-                    canvas.drawText(s, x, y, mOnlinePaint);
+            for(int i=0; i<mCurrFreq.length; i++){
+                String s=getCPUInfoString(i);
+                String freq=mCurrFreq[i];
+                if(!freq.equals("0")){
+                    canvas.drawText(s, RIGHT-mPaddingRight-mMaxWidth,
+                        y-1, mOnlinePaint);
                 } else {
-                    canvas.drawText(s, x, y, mOfflinePaint);
+                    canvas.drawText(s, RIGHT-mPaddingRight-mMaxWidth,
+                        y-1, mOfflinePaint);
                 }
                 y += mFH;
             }
-
         }
 
         void updateDisplay() {
             if (!mDataAvail) {
                 return;
             }
-            final int NW = mNumCpus + LinesOffset;
+            final int NW = mNumCpus + 1;
 
             int neededWidth = mPaddingLeft + mPaddingRight + mMaxWidth;
-            int neededHeight = mPaddingTop + mPaddingBottom + (mFH * (NW));
+            int neededHeight = mPaddingTop + mPaddingBottom + mFH * NW;
             if (neededWidth != mNeededWidth || neededHeight != mNeededHeight) {
                 mNeededWidth = neededWidth;
                 mNeededHeight = neededHeight;
@@ -197,7 +199,11 @@ public class CPUInfoService extends Service {
             }
         }
 
-        public Handler getHandler() {
+        private String toMHz(String mhzString) {
+            return new StringBuilder().append(Integer.valueOf(mhzString) / 1000).append(" MHz").toString();
+        }
+
+        public Handler getHandler(){
             return mCurCPUHandler;
         }
     }
@@ -206,31 +212,14 @@ public class CPUInfoService extends Service {
         private boolean mInterrupt = false;
         private Handler mHandler;
 
-        //Common paths
-        private String CURRENT_CPU = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
-        private String CPU_ROOT = "/sys/devices/system/cpu/cpu";
-        private String CPU_CUR_TAIL = "/cpufreq/scaling_cur_freq";
-        private String CPU_UTI_TAIL = "/cpufreq/cpu_utilization";
-        private String CPU_GOV_TAIL = "/cpufreq/scaling_governor";
-        private String BATTERY_PARAMETERS = "/sys/class/power_supply/battery";
-        private String BAT_VOLTS = BATTERY_PARAMETERS + "/voltage_now";
-        private String BAT_AMP = BATTERY_PARAMETERS + "/current_avg";
-        private String BAT_TEMP = BATTERY_PARAMETERS + "/temp";
-        private String TEMP = "/sys/class/thermal/thermal_zone"; //apq8084 zones bat=0, cpu_soq=1, core0-3=6-9, gpu=10
-        //Bellow are the apq8084/quark path others devices may be different path all together or just the end eg qcom,cpubw.**
-        private String GPU_FREQ = "/sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk";
-        private String GPU_GOV = "/sys/class/kgsl/kgsl-3d0/devfreq/governor";
-        private String GPU_BUSY = "/sys/class/kgsl/kgsl-3d0/gpubusy";
-        private String RAM_CUR_FREQ = "/sys/class/devfreq/qcom,cpubw.35/cur_freq";
-        private String RAM_GOV = "/sys/class/devfreq/qcom,cpubw.35/governor";
+        private static final String CURRENT_CPU = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq";
+        private static final String CPU_ROOT = "/sys/devices/system/cpu/cpu";
+        private static final String CPU_CUR_TAIL = "/cpufreq/scaling_cur_freq";
+        private static final String CPU_GOV_TAIL = "/cpufreq/scaling_governor";
+        private static final String CPU_TEMP = "/sys/class/thermal/thermal_zone0/temp";
 
-        private String currFreq, currGov;
-        private StringBuffer sb;
-
-        private int mBatAmperage = 0;
-
-        public CurCPUThread(Handler handler, int numCpus) {
-            mHandler = handler;
+        public CurCPUThread(Handler handler, int numCpus){
+            mHandler=handler;
             mNumCpus = numCpus;
         }
 
@@ -243,38 +232,26 @@ public class CPUInfoService extends Service {
             try {
                 while (!mInterrupt) {
                     sleep(500);
-                    sb = new StringBuffer();
+                    StringBuffer sb=new StringBuffer();
 
-                    //TEMP Battery and CPU SOCKET
-                    mBatAmperage = Integer.valueOf(CPUInfoService.readOneLine(BAT_AMP)) / 1000;
-                    sb.append((Integer.valueOf(CPUInfoService.readOneLine(BAT_VOLTS)) / 1000) + "mV " +
-                        (mBatAmperage > 0 ? "+" : "") + mBatAmperage + "mA " +
-                        (Integer.valueOf(CPUInfoService.readOneLine(BAT_TEMP)) / 10) + "°C;");
+                    String cpuTemp = CPUInfoService.readOneLine(CPU_TEMP);
+                    sb.append(cpuTemp == null ? "0" : cpuTemp);
+                    sb.append(";");
 
-                    //RAM
-                    sb.append(CPUInfoService.readOneLine(RAM_GOV) + ": " +
-                        ((int) Math.rint(Integer.valueOf(CPUInfoService.readOneLine(RAM_CUR_FREQ)) / 15.255) + "MHz;"));
+                    for(int i=0; i<mNumCpus; i++){
+                        final String freqFile=CPU_ROOT+i+CPU_CUR_TAIL;
+                        String currFreq = CPUInfoService.readOneLine(freqFile);
+                        final String govFile=CPU_ROOT+i+CPU_GOV_TAIL;
+                        String currGov = CPUInfoService.readOneLine(govFile);
 
-                    //GPU
-                    sb.append(CPUInfoService.readOneLine(GPU_GOV) + ": " +
-                        ((Integer.valueOf(CPUInfoService.readOneLine(GPU_FREQ)) / 1000000) + "MHz ") +
-                        (CPUInfoService.readOneLine(TEMP + "10/temp") + "°C") +
-                        CPUInfoService.getGPUBusy(GPU_BUSY));
-
-                    //CPU CORES
-                    for (int i = 0; i < mNumCpus; i++) {
-                        currFreq = CPUInfoService.readOneLine(CPU_ROOT + i + CPU_CUR_TAIL);
-                        if (currFreq == "0") currGov = "";
-                        else {
-                            currGov = CPUInfoService.readOneLine(CPU_ROOT + i + CPU_GOV_TAIL);
-                            currFreq = (Integer.valueOf(currFreq) / 1000) + "MHz " +
-                                (CPUInfoService.readOneLine(TEMP + (i + 6) + "/temp") + "°C ") +
-                                (CPUInfoService.readOneLine(CPU_ROOT + i + CPU_UTI_TAIL) + "%");
+                        if(currFreq==null){
+                            currFreq="0";
+                            currGov="";
                         }
-                        sb.append(currFreq + ":" + currGov + "|");
-                    }
 
-                    sb.deleteCharAt(sb.length() - 1);
+                        sb.append(currFreq+":"+currGov+"|");
+                    }
+                    sb.deleteCharAt(sb.length()-1);
                     mHandler.sendMessage(mHandler.obtainMessage(1, sb.toString()));
                 }
             } catch (InterruptedException e) {
@@ -286,7 +263,7 @@ public class CPUInfoService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        mNumCpus = Runtime.getRuntime().availableProcessors();
+        mNumCpus = getNumOfCpus();
         mCurrFreq = new String[mNumCpus];
         mCurrGov = new String[mNumCpus];
 
@@ -295,10 +272,10 @@ public class CPUInfoService extends Service {
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.TYPE_SECURE_SYSTEM_OVERLAY,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE|
             WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
             PixelFormat.TRANSLUCENT);
-        params.gravity = Gravity.START | Gravity.TOP;
+        params.gravity = Gravity.RIGHT | Gravity.TOP;
         params.setTitle("CPU Info");
 
         mCurCPUThread = new CurCPUThread(mView.getHandler(), mNumCpus);
@@ -306,7 +283,7 @@ public class CPUInfoService extends Service {
 
         Log.d(TAG, "started CurCPUThread");
 
-        WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+        WindowManager wm = (WindowManager)getSystemService(WINDOW_SERVICE);
         wm.addView(mView, params);
     }
 
@@ -317,10 +294,11 @@ public class CPUInfoService extends Service {
             mCurCPUThread.interrupt();
             try {
                 mCurCPUThread.join();
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException e) {
+            }
         }
         Log.d(TAG, "stopped CurCPUThread");
-        ((WindowManager) getSystemService(WINDOW_SERVICE)).removeView(mView);
+        ((WindowManager)getSystemService(WINDOW_SERVICE)).removeView(mView);
         mView = null;
     }
 
@@ -331,7 +309,7 @@ public class CPUInfoService extends Service {
 
     private static String readOneLine(String fname) {
         BufferedReader br;
-        String line = "0";
+        String line = null;
         try {
             br = new BufferedReader(new FileReader(fname), 512);
             try {
@@ -340,19 +318,28 @@ public class CPUInfoService extends Service {
                 br.close();
             }
         } catch (Exception e) {
-            return "0";
+            return null;
         }
         return line;
     }
 
-    public static String getGPUBusy(String path) {
-        String[] val = CPUInfoService.readOneLine(path).trim().split("\\s+");
-        if (val.length == 2) {
+    private static int getNumOfCpus() {
+        int numOfCpu = 1;
+        String numOfCpus = readOneLine(NUM_OF_CPUS_PATH);
+        String[] cpuCount = numOfCpus.split("-");
+        if (cpuCount.length > 1) {
+            try {
+                int cpuStart = Integer.parseInt(cpuCount[0]);
+                int cpuEnd = Integer.parseInt(cpuCount[1]);
 
-            float arg1 = Float.valueOf(val[0]);
-            float arg2 = Float.valueOf(val[1]);
+                numOfCpu = cpuEnd - cpuStart + 1;
 
-            return arg2 == 0 ? " 0%;" : (" " + Math.round((arg1 / arg2 * 100) + 0.5f) + "%;");
-        } else return ";";
+                if (numOfCpu < 0)
+                    numOfCpu = 1;
+            } catch (NumberFormatException ex) {
+                numOfCpu = 1;
+            }
+        }
+        return numOfCpu;
     }
 }
