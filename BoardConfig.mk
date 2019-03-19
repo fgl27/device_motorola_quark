@@ -173,6 +173,8 @@ BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(QUARK_PATH)/sepolicy/private
 #Address build errors on lineage
 ifneq ($(QUARK_RR_ROM_VERSION),)
 BOARD_SEPOLICY_DIRS += $(QUARK_PATH)/sepolicy/rr
+#cpu_info
+JAVA_SOURCE_OVERLAYS := com.android.systemui|$(QUARK_PATH)/frameworks|**/*.java
 endif
 
 # Wifi
