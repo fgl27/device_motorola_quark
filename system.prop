@@ -37,6 +37,7 @@ mm.enable.sec.smoothstreaming=true
 #codecs: DivX DivXHD AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
 mm.enable.qcom_parser=3183219
 persist.mm.enable.prefetch=true
+debug.sf.enable_gl_backpressure=1
 
 # FRP
 ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
