@@ -124,3 +124,7 @@ allow init {
 #Give all untill we add all paths to "genfs_contexts"
 allow init sysfs:file create_file_perms;
 allow init sysfs:dir create_dir_perms;
+
+#MultiROM
+allow init vendor_file:lnk_file create;
+allow init proc_filesystems:file { getattr setattr };
