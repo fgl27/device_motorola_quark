@@ -1,2 +1,5 @@
 allow mediaprovider cache_private_backup_file:dir r_dir_perms;
 allow mediaprovider cache_recovery_file:dir r_dir_perms;
+allow mediaprovider system_file:file setattr;
+allow mediaprovider unlabeled:dir { r_dir_perms setattr };
+allow mediaprovider unlabeled:file { getattr setattr };
