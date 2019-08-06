@@ -310,6 +310,10 @@ PRODUCT_PACKAGES += \
     post.init.rr.sh \
     post.init.rr.bootc.sh
 
+# Recorder
+PRODUCT_PACKAGES += \
+    Recorder
+
 # RIL
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/dsi_config.xml:system/etc/data/dsi_config.xml \
