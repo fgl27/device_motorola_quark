@@ -44,7 +44,7 @@
 #include "vendor_init.h"
 
 using android::base::GetProperty;
-using android::init::property_set;
+using android::base::SetProperty;
 
 void property_override(char const prop[], char const value[])
 {
@@ -66,7 +66,7 @@ void property_overrride_triple(char const product_prop[], char const system_prop
 
 void property_change_base(char const type[], char const device[], char const model[], char const description[], char const fingerprint[], char const clientidbase[])
 {
-    property_set("ro.fsg-id", type);
+    SetProperty("ro.fsg-id", type);
 
     property_overrride_triple("ro.product.device", "ro.build.product", "ro.vendor.product.device", device);
 
@@ -77,25 +77,25 @@ void property_change_base(char const type[], char const device[], char const mod
 
     property_overrride_triple("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.vendor.build.fingerprint", fingerprint);
 
-    property_set("ro.com.google.clientidbase.ms", clientidbase);
-    property_set("ro.com.google.clientidbase.am", clientidbase);
-    property_set("ro.com.google.clientidbase.yt", clientidbase);
+    SetProperty("ro.com.google.clientidbase.ms", clientidbase);
+    SetProperty("ro.com.google.clientidbase.am", clientidbase);
+    SetProperty("ro.com.google.clientidbase.yt", clientidbase);
 }
 
-void property_set_base_gsm(char const type[])
+void SetProperty_base_gsm(char const type[])
 {
-    property_set("ro.telephony.default_network", type);
-    property_set("telephony.lteOnGsmDevice", "1");
-    property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
+    SetProperty("ro.telephony.default_network", type);
+    SetProperty("telephony.lteOnGsmDevice", "1");
+    SetProperty("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
 }
 
-void property_set_base_cdma()
+void SetProperty_base_cdma()
 {
-    property_set("ro.telephony.default_network", "10");
-    property_set("telephony.lteOnCdmaDevice", "1");
-    property_set("ro.telephony.default_cdma_sub", "0");
-    property_set("ro.telephony.get_imsi_from_sim", "true");
-    property_set("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
+    SetProperty("ro.telephony.default_network", "10");
+    SetProperty("telephony.lteOnCdmaDevice", "1");
+    SetProperty("ro.telephony.default_cdma_sub", "0");
+    SetProperty("ro.telephony.get_imsi_from_sim", "true");
+    SetProperty("ro.cdma.data_retry_config", "max_retries=infinite,0,0,10000,10000,100000,10000,10000,10000,10000,140000,540000,960000");
 }
 
 static int read_file2(const char *fname, char *data, int max_size)
@@ -145,9 +145,9 @@ static void init_alarm_boot_properties()
          */
         if ((boot_reason[0] == '3' || tmp == "true")
                 && power_off_alarm[0] == '1')
-            property_set("ro.alarm_boot", "true");
+            SetProperty("ro.alarm_boot", "true");
         else
-            property_set("ro.alarm_boot", "false");
+            SetProperty("ro.alarm_boot", "false");
     }
 }
 
@@ -163,7 +163,7 @@ void vendor_load_properties()
 
     init_alarm_boot_properties();
     // Init a dummy BT MAC address, will be overwritten later
-    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
+    SetProperty("ro.boot.btmacaddr", "00:00:00:00:00:00");
 
     // Multi device support, list of known radios, cid and fsgid:
     // Radio: XT1225 Retail  = 0x5
@@ -200,43 +200,43 @@ void vendor_load_properties()
         // XT1254 - Droid Turbo
         property_change_base("verizon", "quark", "DROID Turbo", "quark_verizon-user 6.0.1 MCG24.251-5 9 release-keys", "motorola/quark_verizon/quark:6.0.1/MCG24.251-5/9:user/release-keys", "android-verizon");
 
-        property_set_base_cdma();
+        SetProperty_base_cdma();
 
-        property_set("ro.cdma.home.operator.numeric", "311480");
-        property_set("ro.cdma.home.operator.alpha", "Verizon");
-        property_set("ro.cdma.homesystem", "64,65,76,77,78,79,80,81,82,83");
+        SetProperty("ro.cdma.home.operator.numeric", "311480");
+        SetProperty("ro.cdma.home.operator.alpha", "Verizon");
+        SetProperty("ro.cdma.homesystem", "64,65,76,77,78,79,80,81,82,83");
 
     } else if (fsgid =="verizon_gsm") {
         // XT1254 - Droid Turbo, but set as gsm phone
 
         property_change_base("verizon", "quark", "DROID Turbo", "quark_verizon-user 6.0.1 MCG24.251-5 9 release-keys", "motorola/quark_verizon/quark:6.0.1/MCG24.251-5/9:user/release-keys", "android-verizon");
 
-        property_set_base_gsm("10");
+        SetProperty_base_gsm("10");
     } else if (fsgid =="lra") {
         // XT1250 - Moto MAXX
 
         property_change_base("lra", "quark", "Moto MAXX", "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys", "android-motorola");
 
-        property_set_base_cdma();
+        SetProperty_base_cdma();
 
-        property_set("ro.cdma.home.operator.isnan", "1");
+        SetProperty("ro.cdma.home.operator.isnan", "1");
     } else if (fsgid =="lra_gsm") {
         // XT1250 - Moto MAXX, but set as gsm phone
 
         property_change_base("lra", "quark", "Moto MAXX", "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys", "android-motorola");
 
-        property_set_base_gsm("9");
+        SetProperty_base_gsm("9");
     } else if (fsgid =="emea") {
         // XT1225 - Moto Turbo
 
         property_change_base("emea", "quark_umts", "Moto Turbo", "quark_reteu-user 6.0.1 MPG24.107-70.2 2 release-keys", "motorola/quark_reteu/quark_umts:6.0.1/MPG24.107-70.2/2:user/release-keys", "android-motorola");
 
-        property_set_base_gsm("9");
+        SetProperty_base_gsm("9");
     } else {
         // XT1225 - Moto MAXX (default)
 
         property_change_base("singlela", "quark_umts", "Moto MAXX", "quark_retbr-user 6.0.1 MPGS24.107-70.2-2 2 release-keys", "motorola/quark_retbr/quark_umts:6.0.1/MPGS24.107-70.2-2/2:user/release-keys", "android-motorola");
 
-        property_set_base_gsm("9");
+        SetProperty_base_gsm("9");
     }
 }
