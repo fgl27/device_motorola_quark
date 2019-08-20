@@ -16,3 +16,4 @@ allow mediaserver default_android_service:service_manager add;
 allow mediaserver audio_device:chr_file { open read write ioctl };
 allow mediaserver sensorservice_service:service_manager { find };
 binder_call(mediaserver, sensorservice_service);
+allow mediaserver hal_lineage_camera_motor_hwservice:hwservice_manager find;

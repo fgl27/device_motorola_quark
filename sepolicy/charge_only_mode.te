@@ -6,18 +6,18 @@ allow charge_only_mode self:capability { sys_boot dac_override dac_read_search s
 
 allow charge_only_mode chargeonly_data_file:dir rw_dir_perms;
 allow charge_only_mode chargeonly_data_file:file rw_file_perms;
-allow charge_only_mode graphics_device:dir r_dir_perms;
+allow charge_only_mode graphics_device:dir rw_dir_perms;
 allow charge_only_mode graphics_device:chr_file rw_file_perms;
-allow charge_only_mode input_device:dir r_dir_perms;
+allow charge_only_mode input_device:dir rw_dir_perms;
 allow charge_only_mode input_device:chr_file r_file_perms;
 allow charge_only_mode tty_device:chr_file rw_file_perms;
 allow charge_only_mode ashmem_device:chr_file execute;
 allow charge_only_mode self:process execmem;
 allow charge_only_mode sysfs:file { read write open };
 allow charge_only_mode sysfs_wake_lock:file { read write open };
-allow charge_only_mode sysfs_battery_supply:dir search;
+allow charge_only_mode sysfs_battery_supply:dir rw_dir_perms;
 allow charge_only_mode sysfs_battery_supply:file { read open };
-allow charge_only_mode sysfs_usb_supply:dir search;
+allow charge_only_mode sysfs_usb_supply:dir rw_dir_perms;
 allow charge_only_mode sysfs_usb_supply:file { read open };
 allow charge_only_mode sysfs_usb:file write;
 allow charge_only_mode proc_sysrq:file rw_file_perms;
@@ -45,7 +45,7 @@ set_prop(charge_only_mode, system_prop)
 allow charge_only_mode kmsg_device:chr_file rw_file_perms;
 
 # Read access to pseudo filesystems.
-allow charge_only_mode sysfs_type:dir search;
+allow charge_only_mode sysfs_type:dir rw_dir_perms;
 r_dir_file(charge_only_mode, rootfs)
 r_dir_file(charge_only_mode, cgroup)
 
@@ -69,5 +69,9 @@ r_dir_file(charge_only_mode, sysfs_batteryinfo)
 # Read /sys/fs/pstore/console-ramoops
 # Don't worry about overly broad permissions for now, as there's
 # only one file in /sys/fs/pstore
-allow charge_only_mode pstorefs:dir r_dir_perms;
+allow charge_only_mode pstorefs:dir rw_dir_perms;
 allow charge_only_mode pstorefs:file r_file_perms;
+
+allow charge_only_mode sysfs_leds_brightness:file create_file_perms;
+allow charge_only_mode sysfs_leds:file create_file_perms;
+allow charge_only_mode system_data_file:dir create_dir_perms;
