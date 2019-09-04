@@ -332,6 +332,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libqsapshim
 
+# Soong
+PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
+
 #Time
 PRODUCT_PACKAGES += \
     libcommon_time_client
