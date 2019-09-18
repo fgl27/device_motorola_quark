@@ -86,10 +86,10 @@ on post-fs-data
 
     # msm specific files that need to be created on /data
     mkdir /data/tombstones 0771 system system
-    mkdir /tombstones/modem 0771 system system
-    mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
-    mkdir /tombstones/dsps 0771 system system
+    mkdir /data/tombstones/modem 0771 system system
+    mkdir /data/tombstones/lpass 0771 system system
+    mkdir /data/tombstones/wcnss 0771 system system
+    mkdir /data/tombstones/dsps 0771 system system
 
     mkdir /data/misc/bluetooth 0770 bluetooth net_bt
     mkdir /data/vendor/misc/bluetooth 0770 bluetooth net_bt
