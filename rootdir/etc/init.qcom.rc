@@ -609,6 +609,7 @@ service charge_only_mode /vendor/bin/charge_only_mode
     critical
     user root
     group graphics system input
+    capabilities SYS_BOOT
     disabled
 
 service adspd /vendor/bin/adspd /dev/ttyHS3
