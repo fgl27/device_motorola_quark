@@ -123,7 +123,6 @@ TARGET_ADDITIONAL_GRALLOC_10_USAGE_BITS := 0x02000000U | 0x02002000U
 
 # HIDL
 DEVICE_MANIFEST_FILE += $(QUARK_PATH)/manifest.xml
-DEVICE_MATRIX_FILE := $(QUARK_PATH)/compatibility_matrix.xml
 
 # Healthd
 BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
