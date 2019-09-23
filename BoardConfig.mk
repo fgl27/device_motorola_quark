@@ -161,12 +161,12 @@ VENDOR_SECURITY_PATCH := 2018-01-01
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += $(QUARK_PATH)/sepolicy
+BOARD_VENDOR_SEPOLICY_DIRS += $(QUARK_PATH)/sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(QUARK_PATH)/sepolicy/private
 
 #Address build errors on lineage
 ifneq ($(QUARK_RR_ROM_VERSION),)
-BOARD_SEPOLICY_DIRS += $(QUARK_PATH)/sepolicy/rr
+BOARD_VENDOR_SEPOLICY_DIRS += $(QUARK_PATH)/sepolicy/rr
 endif
 
 # Wifi
