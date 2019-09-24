@@ -125,9 +125,6 @@ DEVICE_MANIFEST_FILE += $(QUARK_PATH)/manifest.xml
 
 # Healthd
 BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
-# Exclude deprecated healthd from framework manifest
-DEVICE_FRAMEWORK_MANIFEST_FILE += \
-    system/libhidl/vintfdata/manifest_healthd_exclude.xml
 
 # Motorola
 TARGET_USES_MOTOROLA_LOG := true
