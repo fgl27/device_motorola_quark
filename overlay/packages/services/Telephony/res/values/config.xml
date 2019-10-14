@@ -24,9 +24,6 @@
     <!-- This device implements a noise suppression device for in call audio-->
     <bool name="has_in_call_noise_suppression">true</bool>
 
-    <!-- Show enabled lte option for lte device -->
-    <bool name="config_enabled_lte" translatable="false">true</bool>
-
     <!-- Show APN Settings for some CDMA carriers -->
     <bool name="config_show_apn_setting_cdma">true</bool>
 
