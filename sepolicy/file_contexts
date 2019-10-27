@@ -7,6 +7,7 @@
 /data/cam_socket([0-9])*                u:object_r:camera_socket:s0
 /data/power_supply_logger(/.*)?         u:object_r:battery_data_file:s0
 /data/system/dropbox-add(/.*)?          u:object_r:adspd_data_file:s0
+/data/vendor/mediadrm(/.*)?             u:object_r:mediadrm_vendor_data_file:s0
 
 ###################################
 # Dev nodes
@@ -73,6 +74,7 @@
 /(vendor|system/vendor)/bin/charge_only_mode            u:object_r:charge_only_mode_exec:s0
 /(vendor|system/vendor)/bin/dbvc_atvc_property_set      u:object_r:atvc_exec:s0
 /(vendor|system/vendor)/bin/stm401                      u:object_r:stm401_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.2-service\.clearkey    u:object_r:hal_drm_clearkey_exec:s0
 
 ###################################
 # ROOT folders

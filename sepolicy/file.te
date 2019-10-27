@@ -31,3 +31,4 @@ type sysfs_rmnet_usb, fs_type, sysfs_type;
 type sysfs_adreno_idler, fs_type, sysfs_type;
 type sysfs_cpufreq, fs_type, sysfs_type;
 type var_file, fs_type, sysfs_type;
+type mediadrm_vendor_data_file,  file_type, data_file_type;
