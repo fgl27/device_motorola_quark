@@ -24,6 +24,9 @@ camera2.portability.force_api=1
 # Data Disable mobile data by default
 ro.com.android.mobiledata=false
 
+# Disable more Codec2.0 components
+debug.stagefright.ccodec=0
+
 # Display
 ro.qualcomm.cabl=0
 ro.opengles.version=196610
