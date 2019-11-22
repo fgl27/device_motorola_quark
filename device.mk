@@ -368,10 +368,6 @@ PRODUCT_PACKAGES += \
 # HIDL packages
 $(call inherit-product, device/motorola/quark/hidl.mk)
 
-# Enforce RRO
-PRODUCT_ENFORCE_RRO_TARGETS := *
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(LOCAL_PATH)/overlay-lineage/lineage-sdk
-
 # loggy enable this when debuggin gon permissive
 #PRODUCT_PACKAGES += \
 #    loggy.sh
