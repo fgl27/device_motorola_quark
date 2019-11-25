@@ -25,6 +25,14 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+subsystem adsp
+    devname uevent_devpath
+    dirname /dev/adsp
+
+subsystem msm_camera
+    devname uevent_devpath
+    dirname /dev/msm_camera
+
 # the DIAG device node is not world writable/readable.
 /dev/diag                 0660   system     oem_2950
 /dev/ttydiag0             0660   system     oem_2950
