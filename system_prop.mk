@@ -46,6 +46,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
     ro.sf.lcd_density=560 \
     debug.hwui.use_buffer_age=false \
+    debug.hwui.renderer=opengl \
     mm.enable.sec.smoothstreaming=true \
     mm.enable.qcom_parser=3183219 \
     persist.mm.enable.prefetch=true \
