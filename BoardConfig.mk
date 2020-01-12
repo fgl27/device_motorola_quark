@@ -22,7 +22,7 @@ BOARD_VENDOR := motorola-qcom
 
 # AIDs and CAPS
 TARGET_ALLOW_LEGACY_AIDS := true
-TARGET_FS_CONFIG_GEN := \
+TARGET_FS_CONFIG_GEN += \
     $(QUARK_PATH)/fs_config/config.fs \
     $(QUARK_PATH)/fs_config/mot_aids.fs \
     $(QUARK_PATH)/fs_config/file_caps.fs
