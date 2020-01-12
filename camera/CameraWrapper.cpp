@@ -25,7 +25,7 @@
 // #define LOG_PARAMETERS
 
 #define LOG_TAG "CameraWrapper"
-#include <cutils/log.h>
+#include <log/log.h>
 
 #include <hardware/hardware.h>
 #include <hardware/camera.h>
