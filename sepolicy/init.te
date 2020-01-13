@@ -23,7 +23,7 @@ allow init diag_device:chr_file { write };
 
 #allow init blkid_exec:file { getattr };
 allow init clatd_exec:file { getattr };
-allow init dex2oat_exec:file { getattr };
+#allow init dex2oat_exec:file { getattr };
 allow init dnsmasq_exec:file { getattr };
 allow init hostapd_exec:file { getattr };
 allow init idmap_exec:file { getattr };
@@ -45,7 +45,7 @@ allow init hal_graphics_allocator_default:fd use;
 allow init hal_wifi_supplicant_default:unix_dgram_socket sendto;
 allow init ion_device:chr_file ioctl;
 allow init ksbridgehsic_device:chr_file ioctl;
-allow init netd_socket:sock_file write;
+#allow init netd_socket:sock_file write;
 allow init netd:unix_stream_socket connectto;
 allow init rtc_device:chr_file ioctl;
 allow init self:netlink_kobject_uevent_socket { bind create read setopt };
