@@ -30,3 +30,4 @@ type sysfs_state_notifier, fs_type, sysfs_type;
 type sysfs_rmnet_usb, fs_type, sysfs_type;
 type sysfs_adreno_idler, fs_type, sysfs_type;
 type sysfs_cpufreq, fs_type, sysfs_type;
+type var_file, fs_type, sysfs_type;
