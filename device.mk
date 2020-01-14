@@ -118,10 +118,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/permissions/com.motorola.targetnotif.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.targetnotif.xml \
     $(LOCAL_PATH)/permissions/com.motorola.zap.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.zap.xml
 
-# APEX
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/ld.config.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/swcodec/ld.config.txt
-
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \

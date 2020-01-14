@@ -730,6 +730,3 @@ service cnd /vendor/bin/cnd
     group system wifi inet radio wakelock net_admin
     socket cnd stream 660 root inet
     writepid /dev/cpuset/system-background/tasks
-
-on property:apexd.status=ready
-    mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
