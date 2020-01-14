@@ -118,16 +118,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/permissions/com.motorola.targetnotif.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.targetnotif.xml \
     $(LOCAL_PATH)/permissions/com.motorola.zap.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.zap.xml
 
-#$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapstartsize=16m \
-    dalvik.vm.heapgrowthlimit=256m \
-    dalvik.vm.heapsize=512m \
-    dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=2m \
-    dalvik.vm.heapmaxfree=8m
-
 # APEX
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/ld.config.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/swcodec/ld.config.txt
@@ -156,10 +146,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     mbhc.bin \
     wcd9310_anc.bin
-
-# Art
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-swap=false
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
@@ -328,6 +314,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librmnetctl
 
+# System Properties
+include $(LOCAL_PATH)/system_prop.mk
+
 # Shippig API
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_k.mk)
 
@@ -386,9 +375,6 @@ PRODUCT_COPY_FILES += \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/WCNSS_qcom_cfg.ini \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_wlan_nv.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/WCNSS_qcom_wlan_nv.bin
 
-# low audio flinger standby delay to reduce power consumption
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.audio.flinger_standbytime_ms=300
 
 #android_filesystem_config.h
 PRODUCT_PACKAGES += \
