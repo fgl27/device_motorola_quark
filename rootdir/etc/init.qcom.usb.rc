@@ -34,6 +34,13 @@ on fs
     mkdir /dev/usb-ffs/adb 0770 shell shell
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
     write /sys/class/android_usb/android0/f_ffs/aliases adb
+    setprop usb.mtp.pid ${ro.usb.mtp}
+    setprop usb.mtp.config mtp,usbnet
+    setprop sys.usb.ffs.aio_compat 1
+    # avoid USB crash
+    setprop persist.adb.nonblocking_ffs 0
+    setprop ro.adb.nonblocking_ffs 0
+    setprop sys.usb.mtp.device_type 2
 
 on boot
     write /sys/class/android_usb/android0/iSerial ${ro.serialno}
@@ -46,13 +53,6 @@ on boot
     mkdir /dev/bus/usb 0755 root root
     chown system system /sys/class/android_usb/android0/secure
     chmod 0660 /sys/class/android_usb/android0/secure
-    setprop usb.mtp.pid ${ro.usb.mtp}
-    setprop usb.mtp.config mtp,usbnet
-    setprop sys.usb.ffs.aio_compat 1
-    # avoid USB crash
-    setprop persist.adb.nonblocking_ffs 0
-    setprop ro.adb.nonblocking_ffs 0   
-    setprop sys.usb.mtp.device_type 2
 
 # Following are the parameters required for usb functionality. They provide configurable options like
 # product_id/vendor id and allows specifying required functions:
