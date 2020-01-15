@@ -48,7 +48,7 @@ allow init ksbridgehsic_device:chr_file ioctl;
 #allow init netd_socket:sock_file write;
 allow init netd:unix_stream_socket connectto;
 allow init rtc_device:chr_file ioctl;
-allow init self:netlink_kobject_uevent_socket { bind create read setopt };
+allow init self:netlink_kobject_uevent_socket { bind create read getopt setopt };
 allow init self:netlink_route_socket { create bind getattr nlmsg_read nlmsg_write read setopt write };
 allow init self:netlink_xfrm_socket { bind create };
 allow init self:rawip_socket { create getopt setopt };
@@ -119,7 +119,14 @@ allow init {
     sysfs_usb_lun
     sysfs_binder
     sysfs_android_touch
+    sysfs_wlan_fwpath
 }:file rw_file_perms;
+
+allow init {
+    firmware_file
+    var_file
+    persist_file
+}:dir mounton;
 
 #Give all untill we add all paths to "genfs_contexts"
 allow init sysfs:file create_file_perms;
