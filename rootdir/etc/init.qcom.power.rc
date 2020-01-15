@@ -39,12 +39,7 @@ on init
     chmod 0644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 2649600
 
-on boot
-    start postinitrr_sh
-
 on property:sys.boot_completed=1
-
-    start postinitrr_sh_c
 
     # Configure the hardware properly
     write /sys/module/lpm_levels/enable_low_power/l2 4
@@ -103,9 +98,6 @@ on property:sys.boot_completed=1
      # enable adreno_idler
      write /sys/module/adreno_idler/parameters/adreno_idler_active Y
 
-    # GPU max clock 500hz
-    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 500000000
-
     # bcl mitigation-freq
     write /sys/devices/qcom,bcl.38/freq_max 1728000
     write /sys/devices/qcom,bcl.38/hotplug_mask 0
@@ -113,16 +105,8 @@ on property:sys.boot_completed=1
     # lmk
     write /sys/module/lowmemorykiller/parameters/minfree 44032,48640,53248,57856,62464,71680
 
-service postinitrr_sh /system/bin/sh /sbin/post.init.rr.sh
-    class main
-    user root
-    seclabel u:r:sudaemon:s0
-    disabled
-    oneshot
+    # Zram
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 25
+    swapon_all /vendor/etc/fstab.qcom
 
-service postinitrr_sh_c /system/bin/sh /sbin/post.init.rr.bootc.sh
-    class main
-    user root
-    seclabel u:r:sudaemon:s0
-    disabled
-    oneshot
