@@ -223,8 +223,7 @@ PRODUCT_COPY_FILES += \
 # IPv6 tethering
 PRODUCT_PACKAGES += \
     ebtables \
-    ethertypes \
-    libqsap_sdk
+    ethertypes
 
 # IRSC
 PRODUCT_COPY_FILES += \
@@ -321,7 +320,8 @@ PRODUCT_PACKAGES += \
 
 # RIL Shim
 PRODUCT_PACKAGES += \
-    libqsapshim
+    libqsapshim \
+    libqsap_sdk
 
 # Soong
 PRODUCT_SOONG_NAMESPACES += $(LOCAL_PATH)
