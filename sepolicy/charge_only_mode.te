@@ -75,3 +75,10 @@ allow charge_only_mode pstorefs:file r_file_perms;
 allow charge_only_mode sysfs_leds_brightness:file create_file_perms;
 allow charge_only_mode sysfs_leds:file create_file_perms;
 allow charge_only_mode system_data_file:dir create_dir_perms;
+
+# charge_only_mode needs to tell init to continue the boot
+# process when running in charger mode.
+set_prop(charge_only_mode, system_prop)
+set_prop(charge_only_mode, exported_system_prop)
+set_prop(charge_only_mode, exported2_system_prop)
+set_prop(charge_only_mode, exported3_system_prop)
