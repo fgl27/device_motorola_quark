@@ -1,1 +1,2 @@
 allow netd cutback_socket:sock_file write;
+allow netd device:file { open write };

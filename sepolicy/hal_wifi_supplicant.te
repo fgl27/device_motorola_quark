@@ -4,3 +4,5 @@ allow hal_wifi_supplicant_default proc_net:file write;
 allow hal_wifi_default persist_file:file { open read write };
 allow hal_wifi_supplicant_default init:unix_dgram_socket sendto;
 allow hal_wifi_supplicant_default rfkill_device:chr_file { open read write };
+allow hal_wifi_default default_prop:property_service set;
+allow hal_wifi_default vendor_wifi_prop:property_service set;

@@ -120,6 +120,8 @@ allow init {
     sysfs_binder
     sysfs_android_touch
     sysfs_wlan_fwpath
+    proc_bootinfo
+    proc
 }:file rw_file_perms;
 
 allow init {

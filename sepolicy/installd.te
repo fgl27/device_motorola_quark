@@ -1,2 +1,3 @@
 allow installd fuse:dir { setattr search};
 allow installd firmware_file:filesystem { quotaget };
+allow installd device:file { open write };

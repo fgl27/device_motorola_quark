@@ -10,3 +10,8 @@ allow netmgrd sysfs_net:file rw_file_perms;
 #Give all untill we fix all the paths
 allow netmgrd sysfs:file rw_file_perms;
 allow netmgrd sysfs:dir rw_dir_perms;
+
+allow netmgrd dnsresolver_service:service_manager find;
+allow netmgrd netd_service:service_manager find;
+allow netmgrd servicemanager:binder call;
+

@@ -1,0 +1,6 @@
+allow flags_health_check adspd_prop:file { getattr open };
+allow flags_health_check alarm_boot_prop:file { getattr open };
+allow flags_health_check alarm_handled_prop:file { getattr open };
+allow flags_health_check alarm_instance_prop:file { getattr open };
+allow flags_health_check apexd_prop:file { getattr open };
+allow flags_health_check atvc_prop:file { getattr open };

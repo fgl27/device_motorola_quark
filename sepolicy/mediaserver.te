@@ -17,3 +17,11 @@ allow mediaserver audio_device:chr_file { open read write ioctl };
 allow mediaserver sensorservice_service:service_manager { find };
 binder_call(mediaserver, sensorservice_service);
 allow mediaserver hal_lineage_camera_motor_hwservice:hwservice_manager find;
+allow mediaserver cameraproxy_service:service_manager {add find};
+allow mediaserver cameraserver_service:service_manager {add find};
+allow mediaserver device:dir { open read };
+allow mediaserver fwk_camera_hwservice:hwservice_manager {add find};
+allow mediaserver hal_camera_hwservice:hwservice_manager {add find};
+allow mediaserver hidl_base_hwservice:hwservice_manager {add find};
+allow mediaserver sensor_privacy_service:service_manager {add find};
+
