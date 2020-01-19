@@ -9,6 +9,7 @@ LOCAL_C_INCLUDES := \
     system/media/camera/include
 
 LOCAL_SHARED_LIBRARIES := \
+    libnativewindow \
     libhardware \
     liblog \
     libcamera_client \
