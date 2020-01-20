@@ -153,4 +153,9 @@ $(shell mkdir -p $(TARGET_OUT_VENDOR)/lib; \
 	ln -sf /system/vendor/lib/libbt-vendor.$(TARGET_BOARD_PLATFORM).so \
 		$(TARGET_OUT_VENDOR)/lib/libbt-vendor.so)
 
+# Create links for product/media/audio some old apps use the old path if file not there the app crash
+$(shell mkdir -p $(TARGET_OUT)/media; \
+	ln -sf ../product/media/audio/ \
+		$(TARGET_OUT)/media/audio)
+
 endif
