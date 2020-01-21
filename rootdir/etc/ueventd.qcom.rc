@@ -231,7 +231,7 @@
 # I2C
 /dev/i2c-*                0660   root       system
 # Validity Sensor
-/dev/vfsspi               0660   fingerp    fingerp
+/dev/vfsspi               0660   input      input
 
 # SECURITY
 /dev/qseecom              0660   system     drmrpc
