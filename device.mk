@@ -230,6 +230,13 @@ PRODUCT_PACKAGES += \
     memtrack.apq8084 \
     hdmi_cec.apq8084
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.apq8084 \
+    libgps.utils \
+    libloc_core \
+    libloc_eng
+
 # IDC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/atmel_mxt_ts.idc:system/usr/idc/atmel_mxt_ts.idc
