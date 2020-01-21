@@ -731,3 +731,8 @@ service cnd /vendor/bin/cnd
     group system wifi inet radio wakelock net_admin
     socket cnd stream 660 root inet
     writepid /dev/cpuset/system-background/tasks
+
+service loggy /vendor/bin/loggy.sh
+   class core
+   user root
+   oneshot
