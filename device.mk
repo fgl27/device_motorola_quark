@@ -373,5 +373,5 @@ PRODUCT_ENFORCE_RRO_TARGETS := *
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += $(LOCAL_PATH)/overlay-lineage/lineage-sdk
 
 # loggy enable this when debuggin gon permissive
-PRODUCT_PACKAGES += \
-    loggy.sh
+#PRODUCT_PACKAGES += \
+#    loggy.sh
