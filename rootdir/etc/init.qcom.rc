@@ -24,9 +24,8 @@
 # OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-
-import init.qcom.usb.rc
-import init.qcom.power.rc
+import /system/vendor/etc/init/hw/init.qcom.usb.rc
+import /system/vendor/etc/init/hw/init.qcom.power.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
