@@ -65,7 +65,11 @@ PRODUCT_PACKAGES += \
 # Lights
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl
-    
+
+# LiveDisplay
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-sysfs
+
 # Netutils
 PRODUCT_PACKAGES += \
     android.system.net.netd@1.0 \

@@ -105,9 +105,6 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
     /system/vendor/bin/mm-qcamera-daemon=22 \
     /vendor/bin/mm-qcamera-daemon=22
-    
-# CMHW
-BOARD_HARDWARE_CLASS += hardware/lineage/lineagehw
 
 # Display
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
