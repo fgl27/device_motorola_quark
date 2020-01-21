@@ -54,21 +54,19 @@ on init
     write /proc/self/coredump_filter "0x7f"
 
 on charger
-    trigger early-fs
-    trigger fs
-    trigger post-fs
-    trigger post-fs-data
-    trigger moto-charger
-    class_stop main
-
-on moto-charger
-    setprop ro.board.platform apq8084
-    start qcom-post-boot
-    start thermal-com
+    write /sys/class/leds/lcd-backlight/brightness 63
     write /sys/android_touch/doubletap2wake 1
     write /sys/android_touch/sweep2wake 15
     write /sys/class/leds/charging/trigger "battery-full"
-    start charge_only_mode
+    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/system /system ro barrier=1
+    start thermal-com
+
+service charger /charger
+    class charger
+    group log
+    seclabel u:r:charger:s0
+    capabilities SYS_BOOT
+    writepid /dev/cpuset/system-background/tasks
 
 on fs
     wait /dev/block/platform/${ro.boot.bootdevice}
@@ -603,14 +601,6 @@ on property:init.svc.servicemanager=restarting
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd
-
-service charge_only_mode /vendor/bin/charge_only_mode
-    class charger
-    critical
-    user root
-    group graphics system input
-    capabilities SYS_BOOT
-    disabled
 
 service adspd /vendor/bin/adspd /dev/ttyHS3
     class main
