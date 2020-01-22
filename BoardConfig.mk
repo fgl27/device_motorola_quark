@@ -50,11 +50,8 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := krait
 
 # Kernel
-<<<<<<< HEAD
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M androidboot.selinux=permissive
-=======
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M loop.max_part=7
->>>>>>> aee89e81f93cec46081764f6c68a10d64fde9552
+BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M loop.max_part=7 
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_LZ4C_DT := true
