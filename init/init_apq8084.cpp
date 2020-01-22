@@ -27,22 +27,23 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+
+#include <utils/Log.h>
+#include <android-base/logging.h>
+#include <android-base/properties.h>
+
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
-#include "vendor_init.h"
 #include "property_service.h"
-#include <utils/Log.h>
-#include <android-base/properties.h>
-#include <android-base/logging.h>
-
-#include "init_apq8084.h"
+#include "vendor_init.h"
 
 using android::base::GetProperty;
 using android::init::property_set;
@@ -56,11 +57,6 @@ void property_override(char const prop[], char const value[])
         __system_property_update(pi, value, strlen(value));
     else
         __system_property_add(prop, strlen(prop), value, strlen(value));
-}
-
-__attribute__ ((weak))
-void init_target_properties()
-{
 }
 
 static int read_file2(const char *fname, char *data, int max_size)
@@ -129,14 +125,9 @@ void vendor_load_properties()
     std::string cid;
     std::string camera_enable_vpu;
 
-    init_target_properties();
     init_alarm_boot_properties();
     // Init a dummy BT MAC address, will be overwritten later
     property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
-
-    platform = GetProperty("ro.board.platform", "");
-    if (platform != ANDROID_TARGET)
-        return;
 
     // Multi device support, list of known radios, cid and fsgid:
     // Radio: XT1225 Retail  = 0x5
@@ -242,9 +233,9 @@ void vendor_load_properties()
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnGsmDevice", "1");
         property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
-	property_set("ro.com.google.clientidbase.ms", "android-motorola");
-	property_set("ro.com.google.clientidbase.am", "android-motorola");
-	property_set("ro.com.google.clientidbase.yt", "android-motorola");
+        property_set("ro.com.google.clientidbase.ms", "android-motorola");
+        property_set("ro.com.google.clientidbase.am", "android-motorola");
+        property_set("ro.com.google.clientidbase.yt", "android-motorola");
         ALOGI("Set properties for \"lra_gsm\"!\n");
     } else if (fsgid =="emea") {
         // XT1225 - Moto Turbo
@@ -260,9 +251,9 @@ void vendor_load_properties()
         property_set("telephony.lteOnGsmDevice", "1");
         property_set("ro.fsg-id", "emea");
         property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
-	property_set("ro.com.google.clientidbase.ms", "android-motorola");
-	property_set("ro.com.google.clientidbase.am", "android-motorola");
-	property_set("ro.com.google.clientidbase.yt", "android-motorola");
+        property_set("ro.com.google.clientidbase.ms", "android-motorola");
+        property_set("ro.com.google.clientidbase.am", "android-motorola");
+        property_set("ro.com.google.clientidbase.yt", "android-motorola");
         ALOGI("Set properties for \"emea\"!\n");
     } else {
         // XT1225 - Moto MAXX (default)
@@ -278,9 +269,9 @@ void vendor_load_properties()
         property_set("telephony.lteOnGsmDevice", "1");
         property_set("ro.fsg-id", "singlela");
         property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
-	property_set("ro.com.google.clientidbase.ms", "android-motorola");
-	property_set("ro.com.google.clientidbase.am", "android-motorola");
-	property_set("ro.com.google.clientidbase.yt", "android-motorola");
+        property_set("ro.com.google.clientidbase.ms", "android-motorola");
+        property_set("ro.com.google.clientidbase.am", "android-motorola");
+        property_set("ro.com.google.clientidbase.yt", "android-motorola");
         ALOGI("Set properties for \"singlela\"!\n");
     }
 }

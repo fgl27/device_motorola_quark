@@ -31,7 +31,6 @@ cc_library_static {
         "libutils"
     ],
     cflags: [
-        "-Wall",
-        "-DANDROID_TARGET=\"$(TARGET_BOARD_PLATFORM)\"",
+        "-Wall"
     ]
 }
