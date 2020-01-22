@@ -16,12 +16,11 @@
 
 LOCAL_PATH := device/motorola/quark
 
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-
-# Inherit some common stuff.
-$(call inherit-product, vendor/rr/config/common_full_phone.mk)
 
 # Inherit from quark device
 $(call inherit-product, vendor/motorola/quark/quark-vendor.mk)
@@ -92,37 +91,37 @@ PRODUCT_COPY_FILES += \
 
 # Motorola-specific permissions
 PRODUCT_COPY_FILES += \
-    device/motorola/quark/permissions/com.motorola.actions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.actions.xml \
-    device/motorola/quark/permissions/com.motorola.android.dm.service.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.dm.service.xml \
-    device/motorola/quark/permissions/com.motorola.android.encryption_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.encryption_library.xml \
-    device/motorola/quark/permissions/com.motorola.android.settings.shared.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.settings.shared.xml \
-    device/motorola/quark/permissions/com.motorola.aon.quickpeek.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.aon.quickpeek.xml \
-    device/motorola/quark/permissions/com.motorola.aov.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.aov.xml \
-    device/motorola/quark/permissions/com.motorola.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.camera.xml \
-    device/motorola/quark/permissions/com.motorola.camerabgproc_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.camerabgproc_library.xml \
-    device/motorola/quark/permissions/com.motorola.commandcenter.library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.commandcenter.library.xml \
-     device/motorola/quark/permissions/com.motorola.device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.device.xml \
-    device/motorola/quark/permissions/com.motorola.email.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.email.xml \
-    device/motorola/quark/permissions/com.motorola.frameworks.core.addon.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.frameworks.core.addon.xml \
-    device/motorola/quark/permissions/com.motorola.gallery.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.gallery.xml \
-    device/motorola/quark/permissions/com.motorola.haptic.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.haptic.xml \
-    device/motorola/quark/permissions/com.motorola.moto.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.moto.xml \
-    device/motorola/quark/permissions/com.motorola.motodisplay.pd.screenoff.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.motodisplay.pd.screenoff.xml \
-    device/motorola/quark/permissions/com.motorola.motosignature.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.motosignature.xml \
-    device/motorola/quark/permissions/com.motorola.sensorhub.stm401.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.sensorhub.stm401.xml \
-    device/motorola/quark/permissions/com.motorola.slpc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.slpc.xml \
-    device/motorola/quark/permissions/com.motorola.software.bodyguard.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.bodyguard.xml \
-    device/motorola/quark/permissions/com.motorola.software.droid_line.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.droid_line.xml \
-    device/motorola/quark/permissions/com.motorola.software.folio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.folio.xml \
-	device/motorola/quark/permissions/com.motorola.software.guideme.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.guideme.xml \
-    device/motorola/quark/permissions/com.motorola.software.smartnotifications.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.smartnotifications.xml \
-    device/motorola/quark/permissions/com.motorola.targetnotif.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.targetnotif.xml \
-    device/motorola/quark/permissions/com.motorola.zap.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.zap.xml
+    $(LOCAL_PATH)/permissions/com.motorola.actions.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.actions.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.android.dm.service.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.dm.service.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.android.encryption_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.encryption_library.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.android.settings.shared.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.android.settings.shared.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.aon.quickpeek.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.aon.quickpeek.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.aov.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.aov.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.camera.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.camera.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.camerabgproc_library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.camerabgproc_library.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.commandcenter.library.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.commandcenter.library.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.device.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.device.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.email.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.email.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.frameworks.core.addon.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.frameworks.core.addon.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.gallery.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.gallery.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.haptic.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.haptic.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.moto.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.moto.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.motodisplay.pd.screenoff.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.motodisplay.pd.screenoff.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.motosignature.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.motosignature.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.sensorhub.stm401.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.sensorhub.stm401.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.slpc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.slpc.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.software.bodyguard.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.bodyguard.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.software.droid_line.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.droid_line.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.software.folio.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.folio.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.software.guideme.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.guideme.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.software.smartnotifications.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.software.smartnotifications.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.targetnotif.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.targetnotif.xml \
+    $(LOCAL_PATH)/permissions/com.motorola.zap.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/com.motorola.zap.xml
 
 #$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapstartsize=16m \
     dalvik.vm.heapgrowthlimit=256m \
     dalvik.vm.heapsize=512m \
     dalvik.vm.heaptargetutilization=0.75 \
@@ -144,7 +143,11 @@ PRODUCT_PACKAGES += \
     libgenlock \
     libqdutils \
     libqservice \
-    tinymix
+    libtinyxml \
+    cplay \
+    tinycap \
+    tinypcminfo \
+    tinyplay
 
 PRODUCT_PACKAGES += \
     mbhc.bin \
@@ -156,10 +159,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio/audio_effects.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.conf \
+    $(LOCAL_PATH)/audio/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_platform_info.xml \
-    $(LOCAL_PATH)/audio/audio_policy.conf:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml
+    $(LOCAL_PATH)/audio/audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_configuration.xml \
+    $(LOCAL_PATH)/audio/mixer_paths.xml:$(TARGET_COPY_OUT_VENDOR)/etc/mixer_paths.xml \
+
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/a2dp_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/a2dp_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_policy_volumes.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:$(TARGET_COPY_OUT_VENDOR)/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/r_submix_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:$(TARGET_COPY_OUT_VENDOR)/etc/usb_audio_policy_configuration.xml
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+     libbt-vendor.apq8084
 
 # Browser
 PRODUCT_PACKAGES += \
@@ -167,7 +181,11 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.apq8084
+    camera.apq8084 \
+    libshims_fence
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/external_camera_config.xml:$(TARGET_COPY_OUT_VENDOR)/etc/external_camera_config.xml
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/hacks/hdrhax:$(TARGET_COPY_OUT_VENDOR)/etc/hdrhax
@@ -199,6 +217,9 @@ PRODUCT_PACKAGES += \
 
 # Dexopt
 $(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
+
+PRODUCT_DEXPREOPT_SPEED_APPS += \
+    SystemUI
 
 # Display
 PRODUCT_PACKAGES += \
@@ -259,8 +280,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
     frameworks/native/data/etc/android.hardware.nfc.hcef.xml:system/etc/permissions/android.hardware.nfc.hcef.xml \
     $(LOCAL_PATH)/configs/nfcee_access.xml:system/etc/nfcee_access.xml \
-    $(LOCAL_PATH)/configs/libnfc-brcm.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm.conf \
-    $(LOCAL_PATH)/configs/libnfc-brcm-20795a10.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-brcm-20795a10.conf
+    $(LOCAL_PATH)/configs/libnfc-nci.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci.conf \
+    $(LOCAL_PATH)/configs/libnfc-nci-20795a10.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-nci-20795a10.conf
 
 # OMX
 PRODUCT_PACKAGES += \
@@ -285,7 +306,6 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
-    init.mmi.volte.rc \
     ueventd.qcom.rc \
     post.init.rr.sh \
     post.init.rr.bootc.sh
@@ -300,6 +320,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librmnetctl
 
+# Shippig API
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_k.mk)
+
 # Support
 PRODUCT_PACKAGES += \
     libcurl \
@@ -308,6 +331,10 @@ PRODUCT_PACKAGES += \
 # RIL Shim
 PRODUCT_PACKAGES += \
     libqsapshim
+
+#Time
+PRODUCT_PACKAGES += \
+    libcommon_time_client
 
 # Thermal
 PRODUCT_COPY_FILES += \
@@ -340,17 +367,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/p2p_supplicant_overlay.conf \
+    $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 PRODUCT_COPY_FILES += \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_cfg.dat:$(TARGET_COPY_OUT_VENDOR)/firmware/WCNSS_cfg.dat \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/WCNSS_qcom_cfg.ini \
     kernel/motorola/apq8084/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_qcom_wlan_nv.bin:$(TARGET_COPY_OUT_VENDOR)/firmware/WCNSS_qcom_wlan_nv.bin
-
-# ro.product.first_api_level indicates the first api level the device has commercially launched on.
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.first_api_level=19
 
 # low audio flinger standby delay to reduce power consumption
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -360,5 +383,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
-# Treble packages
-$(call inherit-product, device/motorola/quark/treble.mk)
+# HIDL packages
+$(call inherit-product, device/motorola/quark/hidl.mk)

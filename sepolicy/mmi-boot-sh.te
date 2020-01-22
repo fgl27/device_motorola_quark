@@ -15,3 +15,5 @@ set_prop(mmi-boot-sh, hw_rev_prop)
 allow mmi-boot-sh proc:file { open write };
 allow mmi-boot-sh system_file:file execute_no_trans;
 allow mmi-boot-sh toolbox_exec:file { execute execute_no_trans getattr open read };
+
+allow mmi-boot-sh proc_cmdline:file { open read };

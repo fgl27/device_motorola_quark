@@ -1,18 +1,18 @@
 # Audio
 ##fluencetype can be "fluence" or "fluencepro" or "none"
-ro.qc.sdk.audio.fluencetype=none
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
+ro.vendor.audio.sdk.fluencetype=none
+persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicerec=false
+persist.vendor.audio.fluence.speaker=true
 use.voice.path.for.pcm.voip=false
 use.dedicated.device.for.voip=false
 af.fast_track_multiplier=1
-audio_hal.period_size=192
+vendor.audio_hal.period_size=192
 
 # Bluetooth
 bt.max.hfpclient.connections=1
 
-qcom.bluetooth.soc=rome
+vendor.qcom.bluetooth.soc=rome
 qcom.bt.le_dev_pwr_class=1
 
 ro.bluetooth.hfp.ver=1.6
@@ -28,7 +28,12 @@ ro.com.android.mobiledata=false
 ro.qualcomm.cabl=0
 ro.opengles.version=196610
 ro.sf.lcd_density=560
-ro.sf.hwrotation=180
+debug.hwui.use_buffer_age=false
+mm.enable.sec.smoothstreaming=true
+#3183219 is decimal sum of supported codecs in AAL
+#codecs: DivX DivXHD AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
+mm.enable.qcom_parser=3183219
+persist.mm.enable.prefetch=true
 
 # FRP
 ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
@@ -36,6 +41,7 @@ ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
 # GLES doesn't support secure display, to allow google play movies
 # and other apps that require a secure display we need to enable this:
 persist.hwc.mdpcomp.enable=false
+debug.mdpcomp.logs=0
 
 # GPS
 persist.gps.qc_nlp_in_use=0
@@ -47,14 +53,18 @@ ro.qc.sdk.izat.service_mask=0x0
 persist.mot.gps.smart_battery=1
 
 # Media
-audio.offload.buffer.size.kb=32
+vendor.audio.offload.buffer.size.kb=32
 audio.offload.disable=0
 av.offload.enable=false
 av.streaming.offload.enable=false
-audio.offload.multiple.enabled=false
-audio.offload.gapless.enabled=false
+vendor.audio.offload.multiple.enabled=false
+vendor.audio.offload.gapless.enabled=false
 audio.offload.pcm.16bit.enable=false
 audio.offload.pcm.24bit.enable=false
+audio.deep_buffer.media=true
+
+# Memory optimizations
+ro.vendor.qti.sys.fw.bservice_enable=true
 
 # NITZ
 rild.libpath=/system/vendor/lib/libril-qc-qmi-1.so
@@ -112,9 +122,6 @@ ro.build.shutdown_timeout=7
 # Enable UIM VCC feature
 persist.qcril_uim_vcc_feature=1
 
-# Storage
-ro.sys.sdcardfs=true
-
 # SSR
 persist.sys.qc.sub.rdump.max=20
 persist.sys.qc.sub.rdump.on=1
@@ -149,6 +156,3 @@ persist.sys.root_access=1
 
 # Set usb to adb and mtp
 persist.sys.usb.config=mtp,adb
-
-# Vendor security patch level
-ro.vendor.build.security_patch=2018-01-01

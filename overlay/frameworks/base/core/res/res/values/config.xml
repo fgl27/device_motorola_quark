@@ -272,39 +272,6 @@
     -->
     <integer name="config_doubleTapOnHomeBehavior">8</integer>
 
-    <!-- Control the behavior when the user long presses the app switch button.
-            0 - Nothing
-            1 - Menu key
-            2 - Recent apps view in SystemUI
-            3 - Launch assist intent
-            4 - Voice Search
-            5 - In-app Search
-            6 - Launch camera
-            7 - Sleep
-            8 - Last app
-            9 - Toggle split screen
-         This needs to match the constants in
-         services/core/java/com/android/server/policy/policy/impl/PhoneWindowManager.java
-    -->
-
-    <!-- Defines the default set of global actions. Actions may still be disabled or hidden based
-         on the current state of the device.
-         Each item must be one of the following strings:
-         "power" = Power off
-         "settings" = An action to launch settings
-         "airplane" = Airplane mode toggle
-         "bugreport" = Take bug report, if available
-         "silent" = silent mode
-         "users" = list of users
-         "restart" = restart device
-         -->
-    <string-array translatable="false" name="config_globalActionsList">
-        <item>power</item>
-        <item>restart</item>
-        <item>airplane</item>
-        <item>silent</item>
-    </string-array>
-
     <!-- An Array of "[ConnectivityManager connectionType],
          [# simultaneous connection types]"  -->
     <string-array translatable="false" name="radioAttributes">
@@ -365,7 +332,7 @@
 
     <!-- If true, the doze component is not started until after the screen has been
          turned off and the screen off animation has been performed. -->
-    <bool name="config_dozeAfterScreenOff">true</bool>
+    <bool name="config_dozeAfterScreenOffByDefault">true</bool>
 
     <!-- Power Management: Specifies whether to decouple the auto-suspend state of the
          device from the display on/off state.
@@ -426,7 +393,6 @@
         <item>XTRA_SERVER_1=https://xtrapath1.izatcloud.net/xtra3grc.bin</item>
         <item>XTRA_SERVER_2=https://xtrapath2.izatcloud.net/xtra3grc.bin</item>
         <item>XTRA_SERVER_3=https://xtrapath3.izatcloud.net/xtra3grc.bin</item>
-        <item>NTP_SERVER=north-america.pool.ntp.org</item>
         <item>SUPL_MODE=0</item>
         <item>SUPL_VER=0x20000</item>
         <item>LPP_PROFILE=0</item>
@@ -441,6 +407,28 @@
          state of the device from the display on/off state. -->
     <bool name="config_powerDecoupleInteractiveModeFromDisplay">false</bool>
 
+    <!-- Colon separated list of package names that should be granted DND access -->
+    <string name="config_defaultDndAccessPackages" translatable="false">com.google.android.GoogleCamera:com.google.intelligence.sense:com.motorola.camera</string>
+
     <!-- Whether device supports double tap to wake -->
     <bool name="config_supportDoubleTapWake">true</bool>
+
+    <!-- Whether to allow process with media UID to access CameraServiceProxy -->
+    <bool name="config_allowMediaUidForCameraServiceProxy">true</bool>
+
+    <!-- Default list of files pinned by the Pinner Service -->
+    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
+        <item>"/system/framework/arm/boot-framework.oat"</item>
+        <item>"/system/framework/boot-framework.vdex"</item>
+        <item>"/system/framework/oat/arm/services.odex"</item>
+        <item>"/system/framework/oat/arm/services.vdex"</item>
+        <item>"/system/framework/arm/boot.oat"</item>
+        <item>"/system/framework/boot.vdex"</item>
+        <item>"/system/framework/arm/boot-core-libart.oat"</item>
+        <item>"/system/framework/boot-core-libart.vdex"</item>
+        <item>"/system/lib/libsurfaceflinger.so"</item>
+    </string-array>
+
+    <!-- Should the pinner service pin the Home application? -->
+    <bool name="config_pinnerHomeApp">true</bool>
 </resources>

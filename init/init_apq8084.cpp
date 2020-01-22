@@ -131,6 +131,8 @@ void vendor_load_properties()
 
     init_target_properties();
     init_alarm_boot_properties();
+    // Init a dummy BT MAC address, will be overwritten later
+    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
 
     platform = GetProperty("ro.board.platform", "");
     if (platform != ANDROID_TARGET)

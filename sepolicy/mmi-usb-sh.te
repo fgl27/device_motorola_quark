@@ -16,3 +16,6 @@ allow mmi-usb-sh sysfs:file { open read write };
 allow mmi-usb-sh toolbox_exec:file { execute execute_no_trans getattr open read };
 allow mmi-usb-sh self:capability chown;
 allow mmi-usb-sh sysfs_hsic_modem_wait:file { getattr setattr };
+allow mmi-usb-sh self:file getattr;
+allow mmi-usb-sh sysfs_net:dir rw_dir_perms;
+allow mmi-usb-sh sysfs_net:file create_file_perms;

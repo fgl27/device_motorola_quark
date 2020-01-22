@@ -1,2 +1,12 @@
 allow netmgrd netmgrd:capability { dac_override };
-allow netmgrd sysfs:dir { open read };
+allow netmgrd sysfs_esoc:dir rw_dir_perms;
+allow netmgrd sysfs_esoc:file rw_file_perms;
+allow netmgrd sysfs_ssr:dir rw_dir_perms;
+allow netmgrd sysfs_ssr:file rw_file_perms;
+allow netmgrd sysfs_ssr_toggle:file rw_file_perms;
+allow netmgrd sysfs_ssr_toggle:dir rw_dir_perms;
+allow netmgrd sysfs_net:file rw_file_perms;
+
+#Give all untill we fix all the paths
+allow netmgrd sysfs:file rw_file_perms;
+allow netmgrd sysfs:dir rw_dir_perms;

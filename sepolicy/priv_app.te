@@ -1,6 +1,12 @@
 # camera app
-allow priv_app device:dir { open read };
+allow priv_app device:dir rw_dir_perms;
 # system to firmware folder
-allow priv_app firmware_file:dir { search };
-allow priv_app firmware_file:file { getattr open read };
+allow priv_app firmware_file:dir rw_dir_perms;
+allow priv_app firmware_file:file rw_file_perms;
 allow priv_app proc_interrupts:file open;
+allow priv_app sysfs_android_usb:file open;
+allow priv_app proc_bus_pci:file rw_file_perms;
+allow priv_app sysfs_net:file rw_file_perms;
+allow priv_app sysfs_cpufreq:file rw_file_perms;
+allow priv_app sysfs_cpufreq:dir rw_dir_perms;
+allow priv_app su_exec:file r_file_perms;

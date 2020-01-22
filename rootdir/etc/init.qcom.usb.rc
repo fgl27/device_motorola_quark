@@ -48,6 +48,7 @@ on boot
     chmod 0660 /sys/class/android_usb/android0/secure
     setprop usb.mtp.pid ${ro.usb.mtp}
     setprop usb.mtp.config mtp,usbnet
+    setprop sys.usb.ffs.aio_compat 1
 
 # Following are the parameters required for usb functionality. They provide configurable options like
 # product_id/vendor id and allows specifying required functions:

@@ -39,9 +39,6 @@
          pulsating and RGB control would set this config to 75. -->
     <integer name="config_deviceLightCapabilities">40</integer>
 
-    <!-- BurnIn protection. This should be enabled on devices that have OLED displays -->
-    <bool name="config_enableBurnInProtection">true</bool>
-
     <!-- Hardware keys present on the device, stored as a bit field.
          This integer should equal the sum of the corresponding value for each
          of the following keys present:
@@ -69,4 +66,72 @@
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
     <integer name="config_deviceHardwareWakeKeys">64</integer>
+
+    <!-- Control the behavior when the user long presses the home button.
+            0 - Nothing
+            1 - Menu key
+            2 - Recent apps view in SystemUI
+            3 - Launch assist intent
+            4 - Voice Search
+            5 - In-app Search
+            6 - Launch camera
+            7 - Sleep
+            8 - Last app
+            9 - Toggle split screen
+         This needs to match the enums in
+         sdk/src/java/org/lineageos/internal/util/DeviceKeysConstants.java.
+    -->
+    <integer name="config_longPressOnHomeBehavior">0</integer>
+
+    <!-- Control the behavior when the user double-taps the home button.
+            0 - Nothing
+            1 - Menu key
+            2 - Recent apps view in SystemUI
+            3 - Launch assist intent
+            4 - Voice Search
+            5 - In-app Search
+            6 - Launch camera
+            7 - Sleep
+            8 - Last app
+            9 - Toggle split screen
+         This needs to match the enums in
+         sdk/src/java/org/lineageos/internal/util/DeviceKeysConstants.java.
+    -->
+    <integer name="config_doubleTapOnHomeBehavior">0</integer>
+
+    <!-- Control the behavior when the user long presses the menu button.
+            0 - Nothing
+            1 - Menu key
+            2 - Recent apps view in SystemUI
+            3 - Launch assist intent
+            4 - Voice Search
+            5 - In-app Search
+            6 - Launch camera
+            7 - Sleep
+            8 - Last app
+            9 - Toggle split screen
+         This needs to match the enums in
+         sdk/src/java/org/lineageos/internal/util/DeviceKeysConstants.java.
+    -->
+    <integer name="config_longPressOnMenuBehavior">0</integer>
+
+    <!-- Control the behavior when the user long presses the app switch button.
+            0 - Nothing
+            1 - Menu key
+            2 - Recent apps view in SystemUI
+            3 - Launch assist intent
+            4 - Voice Search
+            5 - In-app Search
+            6 - Launch camera
+            7 - Sleep
+            8 - Last app
+            9 - Toggle split screen
+         This needs to match the enums in
+         sdk/src/java/org/lineageos/internal/util/DeviceKeysConstants.java.
+    -->
+    <integer name="config_longPressOnAppSwitchBehavior">0</integer>
+
+    <!-- Whether device needs to wait for Qualcomm MPCTL service to start
+         before setting power profiles on boot. -->
+    <bool name="config_waitForMpctlOnBoot">true</bool>
 </resources>

@@ -1,1 +1,12 @@
-allow platform_app qemu_hw_mainkeys_prop:file { getattr open read };
+allow platform_app default_android_service:service_manager find;
+allow platform_app sysfs_batteryinfo:dir r_dir_perms;
+allow platform_app sysfs_batteryinfo:file r_file_perms;
+allow platform_app sysfs_cpufreq:dir r_dir_perms;
+allow platform_app sysfs_cpufreq:file r_file_perms;
+allow platform_app sysfs_cpufreq:lnk_file r_file_perms;
+allow platform_app sysfs_devfreq:dir r_dir_perms;
+allow platform_app sysfs_devfreq:file r_file_perms;
+allow platform_app sysfs_devfreq:lnk_file r_file_perms;
+allow platform_app sysfs_devices_system_cpu:dir r_dir_perms;
+allow platform_app sysfs_devices_system_cpu:file r_file_perms;
+allow platform_app sysfs_devices_system_cpu:lnk_file r_file_perms;

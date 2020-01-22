@@ -1,7 +1,9 @@
-allow mpdecision system_data_file:dir w_dir_perms;
+allow mpdecision system_data_file:dir rw_file_perms;
 type_transition mpdecision system_data_file:file mpctl_data_file;
-
 allow mpdecision self:capability sys_nice;
-
-allow mpdecision socket_device:dir w_dir_perms;
+allow mpdecision socket_device:dir rw_file_perms;
 allow mpdecision socket_device:sock_file create_file_perms;
+allow mpdecision sysfs_cpufreq:dir rw_dir_perms;
+allow mpdecision sysfs_cpufreq:file rw_file_perms;
+allow mpdecision sysfs_memory:dir rw_dir_perms;
+allow mpdecision sysfs_memory:file rw_file_perms;

@@ -1,3 +1,13 @@
 allow qmuxd diag_device:chr_file { ioctl open read write };
-allow qmuxd sysfs:dir { open read };
-allow qmuxd sysfs:file read;
+allow qmuxd sysfs_net:dir search;
+allow qmuxd sysfs_esoc:file rw_file_perms;
+allow qmuxd sysfs_esoc:dir rw_dir_perms;
+allow qmuxd sysfs_ssr:file rw_file_perms;
+allow qmuxd sysfs_ssr:dir rw_dir_perms;
+allow qmuxd sysfs_ssr_toggle:file rw_file_perms;
+allow qmuxd sysfs_ssr_toggle:dir rw_dir_perms;
+allow qmuxd sysfs_net:file rw_file_perms;
+
+#Give all untill we fix all the paths
+allow qmuxd sysfs:file rw_file_perms;
+allow qmuxd sysfs:dir rw_dir_perms;

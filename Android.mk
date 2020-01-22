@@ -22,7 +22,7 @@ include $(CLEAR_VARS)
 
 ADSP_IMAGES := \
     adsp.b00 adsp.b01 adsp.b02 adsp.b03 adsp.b04 adsp.b05 adsp.b06 \
-    adsp.b07 adsp.b08 adsp.b09 adsp.b10 adsp.b11 adsp.b12 adsp.mdm adsp.mdt
+    adsp.b07 adsp.b08 adsp.b10 adsp.b11 adsp.b12 adsp.mdt
 
 ADSP_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/,$(notdir $(ADSP_IMAGES)))
 $(ADSP_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
@@ -146,8 +146,11 @@ $(shell mkdir -p $(TARGET_OUT)/etc/firmware/wcd9320; \
 	ln -sf /data/misc/audio/wcd9320_anc.bin \
 		$(TARGET_OUT)/etc/firmware/wcd9320/wcd9320_anc.bin;\
 	ln -sf /data/misc/audio/mbhc.bin \
-		$(TARGET_OUT)/etc/firmware/wcd9320/wcd9320_mbhc.bin; \
-	ln -sf /data/misc/audio/wcd9320_mad_audio.bin \
-		$(TARGET_OUT)/etc/firmware/wcd9320/wcd9320_mad_audio.bin)
+		$(TARGET_OUT)/etc/firmware/wcd9320/wcd9320_mbhc.bin)
+
+# Create link for libbt-vendor
+$(shell mkdir -p $(TARGET_OUT_VENDOR)/lib; \
+	ln -sf /system/vendor/lib/libbt-vendor.$(TARGET_BOARD_PLATFORM).so \
+		$(TARGET_OUT_VENDOR)/lib/libbt-vendor.so)
 
 endif

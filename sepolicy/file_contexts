@@ -18,6 +18,7 @@
 /dev/stm401_ms                          u:object_r:sensors_device:s0
 /dev/ttyHS3                             u:object_r:adsp_serial_device:s0
 /dev/ttyHS0                             u:object_r:hci_attach_dev:s0
+/dev/rfkill                             u:object_r:rfkill_device:s0
 
 ###################################
 # Dev socket nodes
@@ -32,7 +33,6 @@
 /dev/block/platform/msm_sdcc\.1/by-name/frp           u:object_r:frp_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/mdm1dhob      u:object_r:modem_hob_block_device:s0
 /dev/block/platform/msm_sdcc\.1/by-name/mdm1hob       u:object_r:modem_hob_block_device:s0
-/dev/block/platform/msm_sdcc\.1/by-name/persist       u:object_r:persist_block_device:s0
 /dev/block/bootdevice/by-name/modem                   u:object_r:modem_efs_partition_device:s0
 /dev/block/bootdevice/by-name/boot                    u:object_r:boot_block_device:s0
 /dev/block/bootdevice/by-name/cache                   u:object_r:cache_block_device:s0
@@ -52,12 +52,16 @@
 ###################################
 # sysfs files
 #
-/sys/devices/fd900000.qcom,mdss_mdp/qcom,mdss_fb_primary.163/leds/lcd-backlight/brightness u:object_r:sysfs_leds:s0
-/sys/devices/leds-qpnp-e76c1000/leds/charging/brightness       u:object_r:sysfs_leds:s0
-/sys/devices/leds-qpnp-e76c1000/leds/charging/blink_brightness u:object_r:sysfs_leds:s0
-/sys/devices/leds-qpnp-e76c1000/leds/charging/trigger          u:object_r:sysfs_leds:s0
-/sys/devices/virtual/graphics/fb[0-1]/msm_.*                   u:object_r:sysfs_hal_gralloc:s0
-/sys/devices/fd900000.qcom,mdss_mdp/caps                       u:object_r:sysfs_hal_gralloc:s0
+/sys/devices/fd900000.qcom,mdss_mdp/qcom,mdss_fb_primary.163/leds/lcd-backlight/brightness  u:object_r:sysfs_leds:s0
+/sys/devices/leds-qpnp-e76c1000/leds/charging/brightness                                    u:object_r:sysfs_leds:s0
+/sys/devices/leds-qpnp-e76c1000/leds/charging/blink_brightness                              u:object_r:sysfs_leds:s0
+/sys/devices/leds-qpnp-e76c1000/leds/charging/trigger                                       u:object_r:sysfs_leds:s0
+/sys/devices/virtual/graphics/fb[0-1]/msm_.*                                                u:object_r:sysfs_hal_gralloc:s0
+/sys/devices/fd900000.qcom,mdss_mdp/caps                                                    u:object_r:sysfs_hal_gralloc:s0
+/sys/devices/system/cpu/cpu[0-9]+/cpufreq/*                                                 u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/qcom,cpubw\.[0-9]+/devfreq/qcom,cpubw\.[0-9]+/cur_freq                         u:object_r:sysfs_devfreq:s0
+/sys/bus/esoc/devices/esoc0/esoc_name                                                       u:object_r:sysfs_esoc:s0
+/sys/bus/msm_subsys/devices/subsys2/name                                                    u:object_r:sysfs_ssr:s0
 
 ###################################
 # vendor files
