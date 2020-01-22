@@ -253,6 +253,7 @@ TW_EXCLUDE_SUPERSU := true
 TW_INCLUDE_NTFS_3G := true
 TW_IGNORE_MISC_WIPE_DATA := true
 TW_OREO_MR1_F2FS := true
+TW_USE_TOOLBOX := true
 
 # Encryption
 TARGET_CRYPTFS_HW_PATH := vendor/qcom/opensource/cryptfs_hw

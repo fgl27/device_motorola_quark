@@ -19,7 +19,6 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="P_c" />
 
 	  <!-- omnirom TWRP repos-->
-	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-9.0" />
 	  <remove-project path="bootable/recovery" name="LineageOS/android_bootable_recovery" groups="pdk" />
 	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-9.0" groups="pdk-cw-fs"/>
 
