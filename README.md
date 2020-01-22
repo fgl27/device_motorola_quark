@@ -15,17 +15,18 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 	<manifest>
 
 	  <!-- Device/kernel/vendor-->
-	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="TWRP_O" />
-	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="O_c" />
+	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="P_TWRP" />
+	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="P_c" />
 
 	  <!-- omnirom TWRP repos-->
-	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-8.1" />
+	  <project path="external/busybox" name="omnirom/android_external_busybox" remote="github" revision="android-9.0" />
 	  <remove-project path="bootable/recovery" name="LineageOS/android_bootable_recovery" groups="pdk" />
-	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-8.1" groups="pdk-cw-fs"/>
+	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-9.0" groups="pdk-cw-fs"/>
 
-	  <!-- motorola f2fs repo needed to support -r (reserved_bytes ) option of f2fs-->
+	  <!-- motorola f2fs repo needed to support -r (reserved_bytes ) option of f2fs
+	  https://github.com/MotorolaMobilityLLC/motorola-external-f2fs-tools/commit/1eab4d420c95c795de76ce4c839b54c701aa33c3 -->
 	  <remove-project path="external/f2fs-tools" name="LineageOS/android_external_f2fs-tools" groups="pdk" />
-	  <project name="fgl27/motorola-external-f2fs-tools" path="external/f2fs-tools" remote="github" revision="oreo-8.1.0" />
+	  <project name="MotorolaMobilityLLC/motorola-external-f2fs-tools" path="external/f2fs-tools" remote="github" revision="pie-9.0.0-release" />
 
 	</manifest>
 
@@ -37,8 +38,8 @@ If yours source file **"/home/user/source_folder/.repo/manifests/default.xml"** 
 Them after repo it all use this to build
 
 	. build/envsetup.sh
+	lunch lineage_quark-eng
 	make clean
-	lunch cm_quark-eng
 	time make recoveryimage -j4  2>&1 | tee twrp.txt
 
 Were the **first number** after **-j** is the number of cores you wanna use for this task and **2>&1 | tee twrp.txt** will export the build "output" to  a file **quark.txt**, read it in case the build fails searching for the reason of the fail.
