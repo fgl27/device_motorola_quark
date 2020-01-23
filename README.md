@@ -4,9 +4,9 @@ Copyright 2015 to Today - Felipe Leon Project :sunglasses:<br/>
 Copyright 2015 to 2016 - The CyanogenMod Project<br/>
 Copyright 2017 - 2018 - The LineageOS Project
 
-## I use this tree to build in Oreo lineage-16.x base sources
+## I use this tree to build Lineage-17.x base sources
 
-This tree works prefect on [ResurrectionRemix Pie](https://github.com/ResurrectionRemix/platform_manifest/tree/pie) source also in [LineageOS 16.0](https://github.com/LineageOS/android/tree/lineage-16.0) but I don't run or build LineageOS regularly so it may not build, but the fixes are usually very simple if you can't fix it **mention** @fgl27 on one of the XDA threads links in [device_motorola_quark/wiki](https://github.com/fgl27/device_motorola_quark/wiki)
+This tree must works to build on [LineageOS 17.1](https://github.com/LineageOS/android/tree/lineage-17.1), but in case it doesn't the fixes are usually very simple if you can't fix it **mention** @fgl27 on one of the XDA threads links in [device_motorola_quark/wiki](https://github.com/fgl27/device_motorola_quark/wiki)
 
 ### How to build this...
 
@@ -14,16 +14,13 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 
 	<?xml version="1.0" encoding="UTF-8"?>
 	<manifest>
-	
-	  <!-- Strings for LineageActions app-->
-	  <project name="LineageOS/android_packages_resources_devicesettings" path="packages/resources/devicesettings" remote="github" revision="lineage-16.0" />
 
 	  <!-- Radio ralated lib-->
-	  <project name="LineageOS/android_system_qcom" path="system/qcom" remote="github" revision="lineage-16.0" />
+	  <project name="LineageOS/android_system_qcom" path="system/qcom" remote="github" revision="lineage-17.1" />
 	
 	  <!-- Device/kernel/vendor-->
-	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="P" />
-	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="P" />
+	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="Q" />
+	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="Q" />
 	  <project name="fgl27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="P" />
 
 	</manifest>
@@ -37,35 +34,20 @@ If yours source file **"/home/user/source_folder/.repo/manifests/default.xml"** 
 
 From source main folder do
 
-### This will remove wifi logs spams, technically not need but improve log reading and background performance
-
-	cd system/connectivity/wificond/
-	git fetch https://github.com/fgl27/system_connectivity_wificond/ Pie && git cherry-pick f695a663f751814ab35e30791693d784649fad4e^..31b7bd81e031bbe9505c82bc15670e4281b00d34
-	cd -
-
-	cd frameworks/opt/net/wifi/
-	git fetch https://github.com/fgl27/android_frameworks_opt_net_wifi/ lineage-16.0 && git cherry-pick d9810f5343c626cfd4223c71aa37980a23a34256^..9a61195fd803c43ad1924ee513d73873f57c1918
-	cd -
-
-### This is only needed in LineageOS,they will fix wifi display support
-
-	cd frameworks/av
-
-	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/27/238927/2 && git cherry-pick FETCH_HEAD
-	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/28/238928/2 && git cherry-pick FETCH_HEAD
-	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/29/238929/2 && git cherry-pick FETCH_HEAD
-	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/31/238931/2 && git cherry-pick FETCH_HEAD
-	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/32/238932/2 && git cherry-pick FETCH_HEAD
-	git fetch https://github.com/LineageOS/android_frameworks_av refs/changes/42/239642/1 && git cherry-pick FETCH_HEAD
-	cd -
+### Temp fix build error
 
 	cd device/qcom/sepolicy-legacy
-	git fetch https://github.com/LineageOS/android_device_qcom_sepolicy-legacy refs/changes/41/239741/3 && git cherry-pick FETCH_HEAD
+	git fetch "https://github.com/LineageOS/android_device_qcom_sepolicy" refs/changes/11/261511/2 && git cherry-pick FETCH_HEAD
+	cd -
+
+### Temp fix gps crash
+
+	cd hardware/interfaces
+	git fetch "https://github.com/LineageOS/android_hardware_interfaces" refs/changes/24/259824/2 && git cherry-pick FETCH_HEAD
 	cd -
 
 ## Building after repo sync and fixing the source (fixing the source is always necessary to redo after a "repo sync"):
 
-	export WITH_SU=true
 	. build/envsetup.sh 
 	make clean
 
@@ -73,17 +55,13 @@ From source main folder do
 
 	lunch lineage_quark-userdebug
 
-### Lunch the device in ResurrectionRemix
-
-	lunch rr_quark-userdebug
-
 ### Start the build
 
 	time mka bacon -j8 2>&1 | tee quark.txt
 
 Were the **first number** after **-j** is the number of cores you wanna use for this task and **2>&1 | tee quark.txt** will export the build "output" to a file **quark.txt**, read it in case the build fails searching for the reason of the fail.
 
-This link ([Setup_new_build_machine](https://github.com/fgl27/scripts/blob/master/etc/new_machine.md#for-general-android-app-build-machine--adb-shell-and-fastboot-for-debugging)) may help to setup a build machine in case you don't know how to, but that is very personalized for me so carefully read it.
+This link ([Build for shamu](https://wiki.lineageos.org/devices/shamu/build)) may help to setup a build machine in case you don't know how to, be aware that shamu is a device that is not this use that page as a way to setup the built environment only.
 
 The Motorola Moto Maxx (codenamed _"quark"_) is a high-end smartphone from Motorola mobility.<br/>
 It was announced on November 2014.
