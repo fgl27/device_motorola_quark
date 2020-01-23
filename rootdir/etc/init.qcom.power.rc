@@ -110,3 +110,7 @@ on property:sys.boot_completed=1
     write /proc/sys/vm/swappiness 25
     swapon_all /vendor/etc/fstab.qcom
 
+    # GPU max clock 600hz from kernel: arch/arm/boot/dts/qcom/apq8084-gpu.dtsi -> qcom,gpu-pwrlevels
+    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 600000000
+    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel 2
+
