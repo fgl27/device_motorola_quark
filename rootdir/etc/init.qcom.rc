@@ -52,13 +52,20 @@ on init
     write /proc/sys/kernel/core_pattern "|/system/bin/coredump %e %p %t"
     write /proc/self/coredump_filter "0x7f"
 
+#Workaround charge_only_mode is not starting the screen is on all the time on charge mode
+#set brightness and enable led to indicate when full charge has be achived
 on charger
-    trigger early-fs
-    trigger fs
-    trigger post-fs
-    trigger post-fs-data
-    trigger moto-charger
-    class_stop main
+    setprop ro.board.platform apq8084
+    write /sys/class/leds/lcd-backlight/brightness 0
+    write /sys/class/leds/charging/trigger "battery-full"
+    start thermal-com
+
+service charger /charger
+    class charger
+    user system
+    group system graphics input
+    capabilities SYS_BOOT
+    seclabel u:r:charger:s0
 
 on moto-charger
     setprop ro.board.platform apq8084
