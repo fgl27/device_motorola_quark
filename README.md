@@ -46,6 +46,20 @@ From source main folder do
 	git fetch "https://github.com/LineageOS/android_hardware_interfaces" refs/changes/24/259824/2 && git cherry-pick FETCH_HEAD
 	cd -
 
+### Temp fix wfd crash
+
+	cd frameworks/av
+	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/98/266398/1 && git cherry-pick FETCH_HEAD
+	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/99/266399/1 && git cherry-pick FETCH_HEAD
+	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/00/266400/1 && git cherry-pick FETCH_HEAD
+	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/01/266401/1 && git cherry-pick FETCH_HEAD
+	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/02/266402/1 && git cherry-pick FETCH_HEAD
+	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/03/266403/1 && git cherry-pick FETCH_HEAD
+	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/04/266404/1 && git cherry-pick FETCH_HEAD
+	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/05/266405/1 && git cherry-pick FETCH_HEAD
+	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/06/266406/1 && git cherry-pick FETCH_HEAD
+	cd -
+
 ## Building after repo sync and fixing the source (fixing the source is always necessary to redo after a "repo sync"):
 
 	. build/envsetup.sh 
