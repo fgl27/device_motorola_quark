@@ -11,6 +11,8 @@ on charger
     #trigger post-fs-data
     #trigger moto-charger
     #class_stop main
+    trigger init-set-cpu
+    trigger boot_completed-power
     trigger lowpower-charger
 
 service charger /charger
@@ -29,21 +31,6 @@ on moto-charger
     write /sys/class/leds/charging/trigger "battery-full"
     start charge_only_mode
 
-on lowpower-charger
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/module/lpm_levels/enable_low_power/l2 4
-    write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/suspend_enabled 1
-    write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled 1
-    write /sys/module/msm_pm/modes/cpu0/retention/idle_enabled 1
-    # GPU max clock 600hz from kernel: arch/arm/boot/dts/qcom/apq8084-gpu.dtsi -> qcom,gpu-pwrlevels
-    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 300000000
-    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel 6
-
 service charge_only_mode /vendor/bin/charge_only_mode
     class charger
     user system
@@ -51,7 +38,27 @@ service charge_only_mode /vendor/bin/charge_only_mode
     capabilities SYS_BOOT
     disabled
 
+on lowpower-charger
+    #disable two cores set cpu/gpu freq lower
+    chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1497600
+    chmod 0644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1497600
+    chmod 0644 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1497600
+    chmod 0644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1497600
+    # GPU max clock 600hz from kernel: arch/arm/boot/dts/qcom/apq8084-gpu.dtsi -> qcom,gpu-pwrlevels
+    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 300000000
+    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel 6
+    #offline cpu can't be changed offline after changes
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+
 on init
+    trigger init-set-cpu
+
+on init-set-cpu
     # Boot with interactive governor.
     chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
@@ -80,7 +87,9 @@ on init
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 2649600
 
 on property:sys.boot_completed=1
+    trigger boot_completed-power
 
+on boot_completed-power
     # Configure the hardware properly
     write /sys/module/lpm_levels/enable_low_power/l2 4
     write /sys/module/msm_pm/modes/cpu0/power_collapse/suspend_enabled 1
@@ -148,6 +157,7 @@ on property:sys.boot_completed=1
     # Zram
     write /proc/sys/vm/page-cluster 0
     write /proc/sys/vm/swappiness 25
+    write /sys/block/zram0/max_comp_streams 4
     swapon_all /vendor/etc/fstab.qcom
 
     # GPU max clock 600hz from kernel: arch/arm/boot/dts/qcom/apq8084-gpu.dtsi -> qcom,gpu-pwrlevels
