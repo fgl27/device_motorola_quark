@@ -52,30 +52,6 @@ on init
     write /proc/sys/kernel/core_pattern "|/system/bin/coredump %e %p %t"
     write /proc/self/coredump_filter "0x7f"
 
-#Workaround charge_only_mode is not starting the screen is on all the time on charge mode
-#set brightness and enable led to indicate when full charge has be achived
-on charger
-    setprop ro.board.platform apq8084
-    write /sys/class/leds/lcd-backlight/brightness 0
-    write /sys/class/leds/charging/trigger "battery-full"
-    start thermal-com
-
-service charger /charger
-    class charger
-    user system
-    group system graphics input
-    capabilities SYS_BOOT
-    seclabel u:r:charger:s0
-
-on moto-charger
-    setprop ro.board.platform apq8084
-    start qcom-post-boot
-    start thermal-com
-    write /sys/android_touch/doubletap2wake 1
-    write /sys/android_touch/sweep2wake 15
-    write /sys/class/leds/charging/trigger "battery-full"
-    start charge_only_mode
-
 on fs
     wait /dev/block/platform/${ro.boot.bootdevice}
     symlink /dev/block/platform/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -609,14 +585,6 @@ on property:init.svc.servicemanager=restarting
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd
-
-service charge_only_mode /vendor/bin/charge_only_mode
-    class charger
-    critical
-    user root
-    group graphics system input
-    capabilities SYS_BOOT
-    disabled
 
 service adspd /vendor/bin/adspd /dev/ttyHS3
     class main

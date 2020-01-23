@@ -1,7 +1,37 @@
 on charger
-    #low power governing
+    setprop ro.board.platform apq8084
+    #Workaround charge_only_mode is not starting the screen is on all the time on charge mode
+    #set brightness and enable led to indicate when full charge has be achived
+    write /sys/class/leds/lcd-backlight/brightness 0
+    write /sys/class/leds/charging/trigger "battery-full"
+    start thermal-com
+    #trigger early-fs
+    #trigger fs
+    #trigger post-fs
+    #trigger post-fs-data
+    #trigger moto-charger
+    #class_stop main
+    trigger lowpower-charger
+
+service charger /charger
+    class charger
+    user system
+    group system graphics input
+    capabilities SYS_BOOT
+    seclabel u:r:charger:s0
+
+on moto-charger
+    setprop ro.board.platform apq8084
+    start qcom-post-boot
+    start thermal-com
+    write /sys/android_touch/doubletap2wake 1
+    write /sys/android_touch/sweep2wake 15
+    write /sys/class/leds/charging/trigger "battery-full"
+    start charge_only_mode
+
+on lowpower-charger
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpu1/online 0
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
     write /sys/module/lpm_levels/enable_low_power/l2 4
@@ -10,6 +40,16 @@ on charger
     write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/suspend_enabled 1
     write /sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled 1
     write /sys/module/msm_pm/modes/cpu0/retention/idle_enabled 1
+    # GPU max clock 600hz from kernel: arch/arm/boot/dts/qcom/apq8084-gpu.dtsi -> qcom,gpu-pwrlevels
+    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 300000000
+    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel 6
+
+service charge_only_mode /vendor/bin/charge_only_mode
+    class charger
+    user system
+    group graphics system input
+    capabilities SYS_BOOT
+    disabled
 
 on init
     # Boot with interactive governor.
