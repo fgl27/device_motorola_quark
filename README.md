@@ -21,7 +21,7 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 	  <!-- Device/kernel/vendor-->
 	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="Q" />
 	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="Q" />
-	  <project name="fgl27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="P" />
+	  <project name="fgl27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="Q" />
 
 	</manifest>
 
