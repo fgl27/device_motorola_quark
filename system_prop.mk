@@ -181,6 +181,3 @@ PRODUCT_PROPERTY_OVERRIDES += persist.sys.root_access=1
 # Set usb to adb and mtp
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.usb.config=mtp,adb
 
-# Use over_under_clock power profile
-PRODUCT_PROPERTY_OVERRIDES += ro.power_profile.override=power_profile_ou
-
