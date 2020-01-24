@@ -88,3 +88,8 @@
 #
 /fsg(/.*)?             u:object_r:firmware_file:s0
 /var(/.*)?             u:object_r:var_file:s0
+
+###################################
+# Superuser's control sockets
+#
+/dev/socket/su-daemon(/.*)?             u:object_r:superuser_device:s0
