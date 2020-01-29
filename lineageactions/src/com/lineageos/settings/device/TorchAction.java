@@ -55,7 +55,7 @@ public class TorchAction implements SensorAction {
 
     @Override
     public void action() {
-        mVibrator.vibrate(mVibratorPeriod);
+        if (mVibratorPeriod > 0) mVibrator.vibrate(mVibratorPeriod);
         if (mRearCameraId != null) {
             try {
                 mCameraManager.setTorchMode(mRearCameraId, !mTorchEnabled);

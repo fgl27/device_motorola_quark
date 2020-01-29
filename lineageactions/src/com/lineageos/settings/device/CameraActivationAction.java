@@ -66,7 +66,7 @@ public class CameraActivationAction implements SensorAction {
     }
 
     private void vibrate() {
-        mVibrator.vibrate(mVibratorPeriod);
+       if (mVibratorPeriod > 0) mVibrator.vibrate(mVibratorPeriod);
     }
 
     private void turnScreenOn() {
