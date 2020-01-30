@@ -1,0 +1,2 @@
+allow app_zygote app_data_file:dir getattr;
+allow app_zygote ion_device:chr_file r_file_perms;

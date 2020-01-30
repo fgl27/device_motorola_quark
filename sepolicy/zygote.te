@@ -1,4 +1,3 @@
 allow zygote zygote:capability { sys_nice };
 allow zygote proc_cmdline:file { getattr open read };
-allow app_zygote app_data_file:dir getattr;
-allow app_zygote ion_device:chr_file { getattr open read };
+allow zygote system_file:file rw_file_perms;
