@@ -216,6 +216,20 @@ PRODUCT_PACKAGES += \
     memtrack.apq8084 \
     hdmi_cec.apq8084
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.apq8084 \
+    libgps.utils \
+    libloc_core \
+    libloc_eng
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gps/etc/flp.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/flp.conf \
+    $(LOCAL_PATH)/gps/etc/gps.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/gps.conf \
+    $(LOCAL_PATH)/gps/etc/izat.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/izat.conf \
+    $(LOCAL_PATH)/gps/etc/sap.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/sap.conf \
+    $(LOCAL_PATH)/gps/etc/quipc.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/quipc.conf
+
 # IDC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/atmel_mxt_ts.idc:system/usr/idc/atmel_mxt_ts.idc

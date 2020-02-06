@@ -710,3 +710,8 @@ service loggy /vendor/bin/loggy.sh
    class core
    user root
    oneshot
+
+#loc_launcher will start as root and set its uid to gps
+service loc_launcher /vendor/bin/loc_launcher
+    class late_start
+    group gps inet net_raw diag oem_2950 net_admin wifi
