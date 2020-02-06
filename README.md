@@ -34,19 +34,7 @@ If yours source file **"/home/user/source_folder/.repo/manifests/default.xml"** 
 
 From source main folder do
 
-### Temp fix build error
-
-	cd device/qcom/sepolicy-legacy
-	git fetch "https://github.com/LineageOS/android_device_qcom_sepolicy" refs/changes/11/261511/2 && git cherry-pick FETCH_HEAD
-	cd -
-
-### Temp fix gps crash
-
-	cd hardware/interfaces
-	git fetch "https://github.com/LineageOS/android_hardware_interfaces" refs/changes/24/259824/2 && git cherry-pick FETCH_HEAD
-	cd -
-
-### Temp fix wfd crash
+### Re-enable wfd
 
 	cd frameworks/av
 	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/98/266398/1 && git cherry-pick FETCH_HEAD
