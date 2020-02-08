@@ -50,7 +50,7 @@ on lowpower-charger
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1497600
     # GPU max clock 600hz from kernel: arch/arm/boot/dts/qcom/apq8084-gpu.dtsi -> qcom,gpu-pwrlevels
     write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 300000000
-    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel 6
+    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel 3
     #offline cpu can't be changed offline after changes
     write /sys/devices/system/cpu/cpu2/online 0
     write /sys/devices/system/cpu/cpu3/online 0
@@ -162,5 +162,7 @@ on boot_completed-power
 
     # GPU max clock 600hz from kernel: arch/arm/boot/dts/qcom/apq8084-gpu.dtsi -> qcom,gpu-pwrlevels
     write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 600000000
-    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel 2
+    write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel 0
 
+    # Enable state_notifier
+    write /sys/module/state_notifier/parameters/enabled 1

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <device name="Android">
+    <!-- This is the power profile for devies with over/undr clocked CPU -->
     <!-- All values are in mA except as noted -->
 
     <!-- Nothing -->
@@ -80,6 +81,7 @@
     <!-- Different CPU speeds as reported in
          /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies -->
     <array name="cpu.core_speeds.cluster0">
+        <value>268800</value>
         <value>300000</value>
         <value>422400</value>
         <value>652800</value>
@@ -97,10 +99,15 @@
         <value>2419200</value>
         <value>2572800</value>
         <value>2649600</value>
+        <value>2688000</value>
+        <value>2764800</value>
+        <value>2841600</value>
+        <value>2880000</value>
     </array>
 
     <!-- Additional power used by CPUs when running at different speeds. -->
     <array name="cpu.core_power.cluster0">
+        <value>64</value>
         <value>71</value>
         <value>83</value>
         <value>97</value>
@@ -118,6 +125,10 @@
         <value>405</value>
         <value>413</value>
         <value>414</value>
+        <value>420</value>
+        <value>432</value>
+        <value>444</value>
+        <value>450</value>
     </array>
 
     <!-- These are the standard packages that are white-listed to always have internet
