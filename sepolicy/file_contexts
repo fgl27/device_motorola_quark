@@ -80,7 +80,6 @@
 ###################################
 # ROOT folders
 #
-/firmware(/.*)?        u:object_r:firmware_file:s0
 /fsg(/.*)?             u:object_r:firmware_file:s0
 /var(/.*)?             u:object_r:var_file:s0
 
