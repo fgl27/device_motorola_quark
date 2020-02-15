@@ -47,9 +47,6 @@ etc/firmware/left.tfa9890_ringtone_table.preset:vendor/firmware/left.tfa9890_rin
 etc/firmware/left.tfa9890_voice_table.preset:vendor/firmware/left.tfa9890_voice_table.preset
 etc/firmware/VRGain.bin:vendor/firmware/VRGain.bin
 
-# Battery
-bin/charge_only_mode:vendor/bin/charge_only_mode
-
 # Bluetooth
 bin/btnvtool:vendor/bin/btnvtool
 bin/hci_qcomm_init:vendor/bin/hci_qcomm_init

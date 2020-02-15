@@ -1,16 +1,10 @@
 on charger
     setprop ro.board.platform apq8084
-    #Workaround charge_only_mode is not starting the screen is on all the time on charge mode
-    #set brightness and enable led to indicate when full charge has be achived
-    write /sys/class/leds/lcd-backlight/brightness 0
+    write /sys/class/leds/lcd-backlight/brightness 125
     write /sys/class/leds/charging/trigger "battery-full"
+    write /sys/android_touch/doubletap2wake 1
+    write /sys/android_touch/sweep2wake 15
     start thermal-com
-    #trigger early-fs
-    #trigger fs
-    #trigger post-fs
-    #trigger post-fs-data
-    #trigger moto-charger
-    #class_stop main
     trigger init-set-cpu
     trigger boot_completed-power
     trigger lowpower-charger
@@ -21,22 +15,6 @@ service charger /charger
     group system graphics input
     capabilities SYS_BOOT
     seclabel u:r:charger:s0
-
-on moto-charger
-    setprop ro.board.platform apq8084
-    start qcom-post-boot
-    start thermal-com
-    write /sys/android_touch/doubletap2wake 1
-    write /sys/android_touch/sweep2wake 15
-    write /sys/class/leds/charging/trigger "battery-full"
-    start charge_only_mode
-
-service charge_only_mode /vendor/bin/charge_only_mode
-    class charger
-    user system
-    group graphics system input
-    capabilities SYS_BOOT
-    disabled
 
 on lowpower-charger
     #disable two cores set cpu/gpu freq lower
