@@ -179,7 +179,11 @@ PRODUCT_COPY_FILES += \
 # Charger
 PRODUCT_PACKAGES += \
     charger \
-    charger_res_images
+    charger_res_images \
+    animation \
+    battery_fail \
+    battery_scale \
+    font_log
 
 # LineageActions
 PRODUCT_PACKAGES += \

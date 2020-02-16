@@ -1,0 +1,18 @@
+# https://github.com/LineageOS/android_system_core/blob/lineage-17.1/healthd/healthd_mode_charger.cpp#L91
+
+# animation: num_cycles, first_frame_repeats, animation_file
+animation: 3 2 charger/battery_scale
+
+# fail: fail_file
+fail: charger/battery_fail
+
+# percent_display: text_percent_pos_x, text_percent_pos_y, color_r, color_g, color_b, color_a, font_file
+percent_display: c 945 255 225 255 255 charger/font_log
+
+# frame: disp_time min_level max_level
+frame: 500 0 19
+frame: 500 0 39
+frame: 500 0 59
+frame: 500 0 79
+frame: 500 80 99
+frame: 500 0 100
