@@ -9,6 +9,7 @@
              potentially harmful by locking the SIM to 3G. -->
         <boolean name="disable_cdma_activation_code_bool" value="true" />
         <!-- Show APN Settings for some CDMA carriers -->
+        <boolean name="show_cdma_choices_bool" value="true" />
         <boolean name="show_apn_setting_cdma_bool" value="true" />
         <!-- Flag indicating if the phone is a world phone -->
         <boolean name="world_phone_bool" value="true" />
