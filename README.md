@@ -48,6 +48,12 @@ From source main folder do
 	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/06/266406/1 && git cherry-pick FETCH_HEAD
 	cd -
 
+### Workaround for old CDMA devices
+
+	cd frameworks/base/
+	git fetch "https://github.com/LineageOS/android_frameworks_base" refs/changes/89/271789/8 && git cherry-pick FETCH_HEAD
+	cd -
+
 ## Building after repo sync and fixing the source (fixing the source is always necessary to redo after a "repo sync"):
 
 	. build/envsetup.sh 
