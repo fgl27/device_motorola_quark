@@ -42,3 +42,4 @@ genfscon sysfs /module/stm401/parameters                                        
 genfscon proc /bootinfo                                                                           u:object_r:proc_bootinfo:s0
 genfscon proc /sys/kernel/boot_reason                                                             u:object_r:proc_bootinfo:s0
 genfscon proc /bus/pci/devices                                                                    u:object_r:proc_bus_pci:s0
+genfscon proc /sys/vm/swappiness                      u:object_r:proc_swap:s0
