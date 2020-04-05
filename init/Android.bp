@@ -20,14 +20,12 @@ cc_library_static {
     srcs: ["init_apq8084.cpp"],
     include_dirs: [
         "system/core/base/include",
-        "system/core/liblog/include",
         "system/core/libutils/include",
         "system/core/init",
         "external/selinux/libselinux/include"
     ],
     shared_libs: [
         "libbase",
-        "liblog",
         "libutils"
     ],
     cflags: [
