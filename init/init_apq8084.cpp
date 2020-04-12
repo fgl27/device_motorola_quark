@@ -82,9 +82,9 @@ void property_change_base(char const type[], char const device[], char const mod
     property_set("ro.com.google.clientidbase.yt", clientidbase);
 }
 
-void property_set_base_gsm()
+void property_set_base_gsm(char const type[])
 {
-    property_set("ro.telephony.default_network", "9");
+    property_set("ro.telephony.default_network", type);
     property_set("telephony.lteOnGsmDevice", "1");
     property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
 }
@@ -211,9 +211,7 @@ void vendor_load_properties()
 
         property_change_base("verizon", "quark", "DROID Turbo", "quark_verizon-user 6.0.1 MCG24.251-5 9 release-keys", "motorola/quark_verizon/quark:6.0.1/MCG24.251-5/9:user/release-keys", "android-verizon");
 
-        property_set("ro.telephony.default_network", "10");
-        property_set("telephony.lteOnGsmDevice", "1");
-        property_set("ro.gsm.data_retry_config", "default_randomization=2000,max_retries=infinite,1000,1000,80000,125000,485000,905000");
+        property_set_base_gsm("10");
     } else if (fsgid =="lra") {
         // XT1250 - Moto MAXX
 
@@ -227,18 +225,18 @@ void vendor_load_properties()
 
         property_change_base("lra", "quark", "Moto MAXX", "quark_lra-user 4.4.4 KXG21.50-11 8 release-keys", "motorola/quark_lra/quark:4.4.4/KXG21.50-11/8:user/release-keys", "android-motorola");
 
-        property_set_base_gsm();
+        property_set_base_gsm("9");
     } else if (fsgid =="emea") {
         // XT1225 - Moto Turbo
 
         property_change_base("emea", "quark_umts", "Moto Turbo", "quark_reteu-user 6.0.1 MPG24.107-70.2 2 release-keys", "motorola/quark_reteu/quark_umts:6.0.1/MPG24.107-70.2/2:user/release-keys", "android-motorola");
 
-        property_set_base_gsm();
+        property_set_base_gsm("9");
     } else {
         // XT1225 - Moto MAXX (default)
 
         property_change_base("singlela", "quark_umts", "Moto MAXX", "quark_retbr-user 6.0.1 MPGS24.107-70.2-2 2 release-keys", "motorola/quark_retbr/quark_umts:6.0.1/MPGS24.107-70.2-2/2:user/release-keys", "android-motorola");
 
-        property_set_base_gsm();
+        property_set_base_gsm("9");
     }
 }
