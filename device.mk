@@ -248,6 +248,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/sensorprocessor.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sensorprocessor.kl \
     $(LOCAL_PATH)/keylayout/atmel_mxt_ts.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/atmel_mxt_ts.kl
 
+# IRQ balancer
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/irqbalance.conf
+
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.apq8084

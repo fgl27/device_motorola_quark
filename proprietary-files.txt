@@ -199,6 +199,7 @@ vendor/lib/libcneqmiutils.so
 # CPU
 # mpdecision from samsung apq8084
 bin/mpdecision:vendor/bin/mpdecision
+bin/msm_irqbalance:vendor/bin/msm_irqbalance|C5A6AC6F7A28B2DAB1B97715EC4F5C185E08BBC7
 #Hex sed -i 's|/system/etc|/vendor/etc|g' quark/proprietary/vendor/bin/thermal-engine
 bin/thermal-engine:vendor/bin/thermal-engine
 # libqc-opt.so from bacon from samsung apq8084

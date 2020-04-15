@@ -525,6 +525,12 @@ service thermal-com /vendor/bin/thermal-engine --minimode
     disabled
     writepid /dev/cpuset/system-background/tasks
 
+service msm_irqbalance /system/vendor/bin/msm_irqbalance -f /system/vendor/etc/irqbalance.conf
+    socket msm_irqbalance seqpacket 660 root system
+    class core
+    user root
+    group root
+
 service time_daemon /vendor/bin/time_daemon
     capabilities SYS_TIME
     class late_start
