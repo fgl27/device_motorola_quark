@@ -66,6 +66,11 @@
 /sys/bus/msm_subsys/devices/subsys2/name                                                    u:object_r:sysfs_ssr:s0
 
 ###################################
+# System files
+#
+/system/etc/motorola/qcril.db                              u:object_r:radio_data_file:s0
+
+###################################
 # vendor files
 #
 /(vendor|system/vendor)/bin/init\.mmi\.touch\.sh        u:object_r:mmi-touch-sh_exec:s0
