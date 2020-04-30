@@ -16,11 +16,11 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 
 	  <!-- Device/kernel/vendor-->
 	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="P_TWRP" />
-	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="P_c" />
+	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="Q_c" />
 
 	  <!-- omnirom TWRP repos-->
 	  <remove-project path="bootable/recovery" name="LineageOS/android_bootable_recovery" groups="pdk" />
-	  <project path="bootable/recovery" name="omnirom/android_bootable_recovery" remote="github" revision="android-9.0" groups="pdk-cw-fs"/>
+	  <project path="bootable/recovery" name="TeamWin/android_bootable_recovery" remote="github" revision="android-9.0" groups="pdk-cw-fs"/>
 
 	  <!-- motorola f2fs repo needed to support -r (reserved_bytes ) option of f2fs
 	  https://github.com/MotorolaMobilityLLC/motorola-external-f2fs-tools/commit/1eab4d420c95c795de76ce4c839b54c701aa33c3 -->
