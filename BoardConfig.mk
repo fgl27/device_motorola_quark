@@ -191,6 +191,9 @@ BOARD_ROOT_EXTRA_FOLDERS := firmware fsg persist
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_FLASH_BLOCK_SIZE := 131072
 
+# APEX
+TARGET_FLATTEN_APEX := true
+
 # Enable real time lockscreen charging current values
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
