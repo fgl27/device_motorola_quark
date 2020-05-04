@@ -1,1 +1,3 @@
 allow charger device:dir read;
+
+r_dir_file(charger, sysfs_batteryinfo)
