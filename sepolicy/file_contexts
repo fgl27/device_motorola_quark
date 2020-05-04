@@ -81,6 +81,7 @@
 /(vendor|system/vendor)/bin/stm401                      u:object_r:stm401_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.2-service\.clearkey    u:object_r:hal_drm_clearkey_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.1-service\.quark  u:object_r:hal_vibrator_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.2-service\.quark  u:object_r:hal_power_default_exec:s0
 
 ###################################
 # ROOT folders
