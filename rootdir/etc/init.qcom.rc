@@ -40,6 +40,10 @@ on early-init
     # Set permissions so radio can read
     chmod 0444 /proc/cmdline
 
+    # Make dmesg readable
+    chown root system /dev/kmsg
+    chmod 0620 /dev/kmsg
+
 on init
     # vold needs keymaster that needs qseecomd
     start qseecomd
@@ -74,10 +78,6 @@ on fs
     # Boot the audio
     write /sys/kernel/boot_adsp/boot 1
     setprop qcom.audio.init complete
-
-on post-fs
-    # Allow writing to the kernel trace log.
-    chmod 0222 /sys/kernel/debug/tracing/trace_marker  
 
 on post-fs-data
 
