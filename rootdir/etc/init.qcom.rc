@@ -548,8 +548,7 @@ service qseecomd /vendor/bin/qseecomd
 service mpdecision /vendor/bin/mpdecision --avg_comp
     class main
     user root
-    group root readproc
-    writepid /dev/cpuset/system-background/tasks
+    group root system readproc diag
 
 service mdm_helper /vendor/bin/mdm_helper
     class core
