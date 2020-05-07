@@ -595,7 +595,8 @@ service adspd /vendor/bin/adspd /dev/ttyHS3
     class main
     socket adspdsock stream 0660 system audio
     user audio
-    group audio input diag
+    group media audio input diag
+    writepid /dev/cpuset/system-background/tasks
 
 #start Sensor daemon
 service stm401 /vendor/bin/stm401 boot
