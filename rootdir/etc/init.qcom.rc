@@ -722,3 +722,6 @@ service loggy /vendor/bin/loggy.sh
 service loc_launcher /vendor/bin/loc_launcher
     class late_start
     group gps inet net_raw diag oem_2950 net_admin wifi
+
+on property:apexd.status=ready
+    mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
