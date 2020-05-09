@@ -46,7 +46,7 @@ on early-init
 
 on init
     # vold needs keymaster that needs qseecomd
-    start qseecomd
+    start vendor.qseecomd
 
     # pstore
     chown system log /sys/fs/pstore/annotate-ramoops
@@ -538,7 +538,7 @@ service time_daemon /vendor/bin/time_daemon
     group net_raw
     writepid /dev/cpuset/system-background/tasks
 
-service qseecomd /vendor/bin/qseecomd
+service vendor.qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
