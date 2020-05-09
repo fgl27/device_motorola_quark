@@ -5,7 +5,7 @@ on charger
     write /sys/android_touch/doubletap2wake 1
     write /sys/android_touch/sweep2wake 15
     start thermal-com
-    trigger init-set-cpu
+    trigger init-set-cpu-perm
     trigger boot_completed-power
     trigger lowpower-charger
 
@@ -17,60 +17,28 @@ service charger /charger
     seclabel u:r:charger:s0
 
 on lowpower-charger
-    #disable two cores set cpu/gpu freq lower
-    chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1497600
-    chmod 0644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 1497600
-    chmod 0644 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1497600
-    chmod 0644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 1497600
     # GPU max clock 600hz from kernel: arch/arm/boot/dts/qcom/apq8084-gpu.dtsi -> qcom,gpu-pwrlevels
     write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 300000000
     write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_pwrlevel 3
-    #offline cpu can't be changed offline after changes
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
+    start qcom-post_boot_charger
 
 on init
-    trigger init-set-cpu
+    trigger init-set-cpu-perm
+    start qcom-post_boot
 
-on init-set-cpu
+on init-set-cpu-perm
+    chown root system /sys/devices/system/cpu/cpu0/online
     chown root system /sys/devices/system/cpu/cpu1/online
     chown root system /sys/devices/system/cpu/cpu2/online
     chown root system /sys/devices/system/cpu/cpu3/online
+    chmod 0664 /sys/devices/system/cpu/cpu0/online
     chmod 0664 /sys/devices/system/cpu/cpu1/online
     chmod 0664 /sys/devices/system/cpu/cpu2/online
     chmod 0664 /sys/devices/system/cpu/cpu3/online
 
-    chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 2649600
-
-    # init: Command 'write /sys/devices/system/cpu/cpu1/online 1' action=init-set-cpu (/system/vendor/etc/init/hw/init.qcom.power.rc:54) took 4ms and failed: Unable to write to file '/sys/devices/system/cpu/cpu1/online': Unable to write file contents: Invalid argument
-    #The log is normal, means that the core was alredy online aka 1, don't remove the lines
-    write /sys/devices/system/cpu/cpu1/online 1
-    chmod 0644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
-    chmod 0644 /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 
-    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_max_freq 2649600
-
-    write /sys/devices/system/cpu/cpu2/online 1
-    chmod 0644 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor 
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
-    chmod 0644 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2649600
-
-    write /sys/devices/system/cpu/cpu3/online 1
-    chmod 0644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor 
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
-    chmod 0644 /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 
-    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_max_freq 2649600
-
 on property:sys.boot_completed=1
-    trigger init-set-cpu
+    trigger init-set-cpu-perm
+    start qcom-post_boot
     trigger boot_completed-power
 
 on boot_completed-power

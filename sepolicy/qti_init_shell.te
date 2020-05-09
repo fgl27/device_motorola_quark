@@ -9,3 +9,5 @@ allow qti_init_shell storage_file:dir { getattr };
 allow qti_init_shell kernel:process { setsched };
 allow qti_init_shell bluetooth_data_file:file { getattr };
 #allow qti_init_shell bluetooth_loader_exec:file { open read };
+allow qti_init_shell kmsg_device:chr_file { open write };
+allow qti_init_shell sysfs_devices_system_cpu:file setattr;

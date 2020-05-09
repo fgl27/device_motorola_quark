@@ -623,6 +623,20 @@ service mmi-touch-sh /vendor/bin/init.mmi.touch.sh atmel
     user root
     oneshot
 
+service qcom-post_boot /vendor/bin/init.qcom.post_boot.sh
+    class late_start
+    user root
+    group root system wakelock graphics
+    disabled
+    oneshot
+
+service qcom-post_boot_charger /vendor/bin/init.qcom.post_boot.sh 1
+    class late_start
+    user root
+    group root system wakelock graphics
+    disabled
+    oneshot
+
 on property:hw.aov.c55_ready=1
     start mmi-touch-sh
 
