@@ -45,9 +45,6 @@ on early-init
     chmod 0620 /dev/kmsg
 
 on init
-    # vold needs keymaster that needs qseecomd
-    start vendor.qseecomd
-
     # pstore
     chown system log /sys/fs/pstore/annotate-ramoops
     chmod 0440 /sys/fs/pstore/annotate-ramoops
@@ -288,6 +285,8 @@ on early-boot
     #esoc0 (mdm)
     write /sys/bus/msm_subsys/devices/subsys4/restart_level "related"
     write /sys/bus/msm_subsys/devices/subsys4/recovery_policy "skip_restart"
+
+    start vendor.qseecomd
 
 on boot
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
