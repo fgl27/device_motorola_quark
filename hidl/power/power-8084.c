@@ -55,17 +55,17 @@ static int first_display_off_hint;
 static int current_power_profile = PROFILE_BALANCED;
 
 // clang-format off
-/* power save mode: min 2 CPUs, max 1.7 GHz */
+/* power save mode: min 2 CPUs, max 1.73 GHz */
 static int profile_power_save[] = {
     0x0A03,
     CPUS_ONLINE_MIN_2,
-    CPU0_MAX_FREQ_NONTURBO_MAX + 4,
-    CPU1_MAX_FREQ_NONTURBO_MAX + 4,
-    CPU2_MAX_FREQ_NONTURBO_MAX + 4,
-    CPU3_MAX_FREQ_NONTURBO_MAX + 4
+    CPU0_MAX_FREQ_NONTURBO_MAX + 6,
+    CPU1_MAX_FREQ_NONTURBO_MAX + 6,
+    CPU2_MAX_FREQ_NONTURBO_MAX + 6,
+    CPU3_MAX_FREQ_NONTURBO_MAX + 6
 };
 
-/* efficiency mode: min 2 CPUs, max 2.4 GHz */
+/* efficiency mode: min 2 CPUs, max 2.42 GHz */
 static int profile_bias_power[] = {
     0x0A03,
     CPUS_ONLINE_MIN_2,
@@ -217,31 +217,31 @@ static int process_video_decode_hint(void* metadata) {
 }
 
 // clang-format off
-/* fling boost: min 3 CPUs, min 1.3 GHz */
+/* fling boost: min 3 CPUs, min 1.73 GHz */
 static int resources_interaction_fling_boost[] = {
-    CPUS_ONLINE_MIN_3,
-    CPU0_MIN_FREQ_NONTURBO_MAX + 3,
-    CPU1_MIN_FREQ_NONTURBO_MAX + 3,
-    CPU2_MIN_FREQ_NONTURBO_MAX + 3,
-    CPU3_MIN_FREQ_NONTURBO_MAX + 3
-};
-
-/* interactive boost: min 2 CPUs, min 1.2 GHz */
-static int resources_interaction_boost[] = {
-    CPUS_ONLINE_MIN_2,
-    CPU0_MIN_FREQ_NONTURBO_MAX + 2,
-    CPU1_MIN_FREQ_NONTURBO_MAX + 2,
-    CPU2_MIN_FREQ_NONTURBO_MAX + 2,
-    CPU3_MIN_FREQ_NONTURBO_MAX + 2
-};
-
-/* fling boost: min 3 CPUs, min 1.5 GHz */
-static int resources_interaction_fling_boost_perf[] = {
     CPUS_ONLINE_MIN_3,
     CPU0_MIN_FREQ_NONTURBO_MAX + 5,
     CPU1_MIN_FREQ_NONTURBO_MAX + 5,
     CPU2_MIN_FREQ_NONTURBO_MAX + 5,
     CPU3_MIN_FREQ_NONTURBO_MAX + 5
+};
+
+/* interactive boost: min 2 CPUs, min 1.57 GHz */
+static int resources_interaction_boost[] = {
+    CPUS_ONLINE_MIN_2,
+    CPU0_MIN_FREQ_NONTURBO_MAX + 4,
+    CPU1_MIN_FREQ_NONTURBO_MAX + 4,
+    CPU2_MIN_FREQ_NONTURBO_MAX + 4,
+    CPU3_MIN_FREQ_NONTURBO_MAX + 4
+};
+
+/* fling boost: min 3 CPUs, min 1.95 GHz */
+static int resources_interaction_fling_boost_perf[] = {
+    CPUS_ONLINE_MIN_3,
+    CPU0_MIN_FREQ_NONTURBO_MAX + 6,
+    CPU1_MIN_FREQ_NONTURBO_MAX + 6,
+    CPU2_MIN_FREQ_NONTURBO_MAX + 6,
+    CPU3_MIN_FREQ_NONTURBO_MAX + 6
 };
 
 /* fling boost: min 3 CPUs, max freq */
