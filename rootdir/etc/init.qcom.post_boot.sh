@@ -25,7 +25,6 @@ else
         echo "interactive" > /sys/devices/system/cpu/cpu"$i"/cpufreq/scaling_governor
         chown -h root.system /sys/devices/system/cpu/cpu"$i"/cpufreq/scaling_max_freq
         chmod -h 664 /sys/devices/system/cpu/cpu"$i"/cpufreq/scaling_max_freq
-        echo 2649600 > /sys/devices/system/cpu/cpu"$i"/cpufreq/scaling_max_freq
     done
 fi;
 
