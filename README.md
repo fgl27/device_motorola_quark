@@ -17,6 +17,9 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 
 	  <!-- Radio ralated lib-->
 	  <project name="LineageOS/android_system_qcom" path="system/qcom" remote="github" revision="lineage-17.1" />
+
+	  <!-- timekeep service-->
+	  <project name="LineageOS/android_hardware_sony_timekeep" path="hardware/sony/timekeep" remote="github" revision="lineage-17.1" />
 	
 	  <!-- Device/kernel/vendor-->
 	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="Q" />
