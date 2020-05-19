@@ -99,8 +99,7 @@ on boot_completed-power
      # enable adreno_idler
      write /sys/module/adreno_idler/parameters/adreno_idler_active Y
 
-    # bcl mitigation-freq
-    write /sys/devices/qcom,bcl.38/freq_max 1728000
+    # bcl prevent hotplug control
     write /sys/devices/qcom,bcl.38/hotplug_mask 0
 
     # lmk
