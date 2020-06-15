@@ -159,13 +159,15 @@ Only the three quirks included above are recognized at this point:
         <MediaCodec name="OMX.qcom.video.decoder.hevc" type="video/hevc" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
+            <Quirk name="requires-timestamp-reorder" />
+            <Quirk name="video-controller-check-enable" />
             <Limit name="size" min="64x64" max="4096x2160" />
             <Limit name="alignment" value="2x2" />
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="972000" />
             <Limit name="bitrate" range="1-100000000" />
-            <Limit name="concurrent-instances" max="13" />
             <Feature name="adaptive-playback" />
+            <Limit name="concurrent-instances" max="13" />
         </MediaCodec>
     </Decoders>
     <Include href="media_codecs_google_video.xml" />
