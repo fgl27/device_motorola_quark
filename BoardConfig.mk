@@ -155,11 +155,6 @@ include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_VENDOR_SEPOLICY_DIRS += $(QUARK_PATH)/sepolicy
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(QUARK_PATH)/sepolicy/private
 
-#Address build errors on lineage
-ifneq ($(QUARK_RR_ROM_VERSION),)
-BOARD_VENDOR_SEPOLICY_DIRS += $(QUARK_PATH)/sepolicy/rr
-endif
-
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
