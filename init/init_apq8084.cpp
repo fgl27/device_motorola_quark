@@ -162,8 +162,6 @@ void vendor_load_properties()
     std::string camera_enable_vpu;
 
     init_alarm_boot_properties();
-    // Init a dummy BT MAC address, will be overwritten later
-    SetProperty("ro.boot.btmacaddr", "00:00:00:00:00:00");
 
     // Multi device support, list of known radios, cid and fsgid:
     // Radio: XT1225 Retail  = 0x5
