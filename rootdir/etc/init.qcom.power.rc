@@ -99,8 +99,8 @@ on boot_completed-power
      # enable adreno_idler
      write /sys/module/adreno_idler/parameters/adreno_idler_active Y
 
-    # hotplug control, disable core 2 and 3 when mitigating freq
-    write /sys/devices/qcom,bcl.38/hotplug_mask 12
+    # bcl prevent hotplug control
+    write /sys/devices/qcom,bcl.38/hotplug_mask 0
 
     # lmk
     write /sys/module/lowmemorykiller/parameters/minfree 44032,48640,53248,57856,62464,71680
