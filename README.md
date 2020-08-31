@@ -15,23 +15,27 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 	<?xml version="1.0" encoding="UTF-8"?>
 	<manifest>
 
-	  <!-- Radio ralated lib-->
-	  <project name="LineageOS/android_system_qcom" path="system/qcom" remote="github" revision="lineage-17.1" />
+		<remote  name="lineage"
+		   fetch="https://github.com/"
+		   revision="refs/heads/lineage-17.1"
+		   sync-c="true"
+		   sync-j="4" />
+		   
+		<remote  name="fgl27"
+		   fetch="https://github.com/"
+		   sync-c="true"
+		   sync-j="4"
+		   revision="refs/heads/Q" />
+		   
+		<!-- Device/kernel/vendor-->
+		<project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="fgl27" />
+		<project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="fgl27"/>
+		<project name="fgl27/proprietary_vendor_motorola" path="vendor/motorola" remote="fgl27" />
 
-	  <!-- timekeep service-->
-	  <project name="LineageOS/android_hardware_sony_timekeep" path="hardware/sony/timekeep" remote="github" revision="lineage-17.1" />
-	
-	  <!-- Device/kernel/vendor-->
-	  <project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="github" revision="Q" />
-	  <project name="fgl27/BHB27Kernel" path="kernel/motorola/apq8084" remote="github" revision="Q" />
-	  <project name="fgl27/proprietary_vendor_motorola" path="vendor/motorola" remote="github" revision="Q" />
+		<!-- Radio ralated lib-->
+		<project name="LineageOS/android_system_qcom" path="system/qcom" remote="lineage" />
 
 	</manifest>
-
-If yours source file **"/home/user/source_folder/.repo/manifests/default.xml"** doesn't have the remote github add the below under **<manifest\>** line in previously created file **"/home/user/source_folder/.repo/local_manifests/roomservice.xml"**.
-
-	  <remote  name="github"
-	           fetch="https://github.com/" />
 
 ### Fix the source to build for Quark
 
