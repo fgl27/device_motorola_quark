@@ -55,10 +55,10 @@ static int first_display_off_hint;
 static int current_power_profile = PROFILE_BALANCED;
 
 // clang-format off
-/* power save mode: min 2 CPUs, max 1.73 GHz */
+/* power save mode: max 2 CPUs, max 1.73 GHz */
 static int profile_power_save[] = {
     0x0A03,
-    CPUS_ONLINE_MIN_2,
+    CPUS_ONLINE_MAX_LIMIT_2,
     CPU0_MAX_FREQ_NONTURBO_MAX + 6,
     CPU1_MAX_FREQ_NONTURBO_MAX + 6,
     CPU2_MAX_FREQ_NONTURBO_MAX + 6,
