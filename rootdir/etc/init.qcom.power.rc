@@ -96,11 +96,8 @@ on boot_completed-power
     #Set io for better performance
     setprop sys.io.scheduler bfq
 
-     # enable adreno_idler
-     write /sys/module/adreno_idler/parameters/adreno_idler_active Y
-
-    # bcl prevent hotplug control
-    write /sys/devices/qcom,bcl.38/hotplug_mask 0
+    # enable adreno_idler
+    write /sys/module/adreno_idler/parameters/adreno_idler_active Y
 
     # lmk
     write /sys/module/lowmemorykiller/parameters/minfree 44032,48640,53248,57856,62464,71680
