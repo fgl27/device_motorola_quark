@@ -49,17 +49,20 @@ TARGET_CPU_VARIANT := generic
 TARGET_CPU_VARIANT_RUNTIME := krait
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=none androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 vmalloc=400M loop.max_part=7
-#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
-BOARD_KERNEL_IMAGE_NAME := zImage
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_LZ4C_DT := true
-BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x00000100
-LZMA_RAMDISK_TARGETS := recovery
-TARGET_KERNEL_SOURCE := kernel/motorola/apq8084
+BOARD_KERNEL_CMDLINE := console=none
+BOARD_KERNEL_CMDLINE += androidboot.hardware=qcom ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE += utags.blkdev=/dev/block/platform/msm_sdcc.1/by-name/utags
+BOARD_KERNEL_CMDLINE += utags.backup=/dev/block/platform/msm_sdcc.1/by-name/utagsBackup
+BOARD_KERNEL_CMDLINE += coherent_pool=8M vmalloc=400M
+#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_KERNEL_IMAGE_NAME := zImage-dtb
+BOARD_KERNEL_PAGESIZE :=  4096
+BOARD_KERNEL_TAGS_OFFSET := 0x01000000
+BOARD_RAMDISK_OFFSET     := 0x00000100
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 TARGET_KERNEL_CONFIG := quark_defconfig
+TARGET_KERNEL_SOURCE := kernel/motorola/apq8084
 
 # IPA
 USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR := true
