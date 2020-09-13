@@ -33,4 +33,4 @@ type sysfs_cpufreq, fs_type, sysfs_type;
 type var_file, fs_type, sysfs_type;
 type mediadrm_vendor_data_file,  file_type, data_file_type;
 type proc_swap, fs_type;
-type sysfs_timekeep, fs_type, sysfs_type;
+

@@ -203,6 +203,7 @@ on post-fs-data
     mkdir /data/misc/wifi/hostapd 0770 system wifi
 
     # Create /data/time folder for time-services
+    mkdir /data/time/ 0700 system system
     symlink /data/time /data/vendor/time
 
     mkdir /data/audio/ 0770 media audio
@@ -545,6 +546,13 @@ service thermal-com /vendor/bin/thermal-engine --minimode
     class hal
     user root
     disabled
+    writepid /dev/cpuset/system-background/tasks
+
+service time_daemon /vendor/bin/time_daemon
+    capabilities SYS_TIME
+    class late_start
+    user system
+    group net_raw
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.qseecomd /vendor/bin/qseecomd

@@ -371,6 +371,9 @@ lib/hw/sensors.apq8084.so
 vendor/lib/libsensor1.so
 
 # Time services
+-app/TimeService/TimeService.apk:vendor/app/TimeService/TimeService.apk
+bin/time_daemon:vendor/bin/time_daemon
+vendor/lib/libTimeService.so
 -vendor/lib/libtime_genoff.so
 
 # Touch frimware
