@@ -20,11 +20,11 @@ public class AppTile extends TileService {
         Context context = this.getApplicationContext();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        boolean enable = !sharedPreferences.getBoolean(Constants.SWITCH_SERVICE_ENABLE, false);
+        boolean enable = !sharedPreferences.getBoolean(Constants.SERVICE_ENABLE, false);
         AppPreferenceFragment.StartSysService(context, enable, null);
 
         setState(enable);
-        sharedPreferences.edit().putBoolean(Constants.SWITCH_SERVICE_ENABLE, enable).commit();
+        sharedPreferences.edit().putBoolean(Constants.SERVICE_ENABLE, enable).commit();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class AppTile extends TileService {
 
     private void setState() {
         setState(
-                PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext()).getBoolean(Constants.SWITCH_SERVICE_ENABLE, false)
+                PreferenceManager.getDefaultSharedPreferences(this.getApplicationContext()).getBoolean(Constants.SERVICE_ENABLE, false)
         );
     }
 

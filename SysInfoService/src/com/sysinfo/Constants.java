@@ -28,11 +28,11 @@ public final class Constants {
     final static String RAM_GOV = "/sys/class/devfreq/qcom,cpubw.35/governor";
 
     //The preferences from settings_options.xml
-    final static String SWITCH_SERVICE_POSITION = "service_position";
-    final static String SWITCH_SERVICE_ENABLE = "service_enable";
-    final static String SWITCH_SERVICE_BACKGROUND = "service_background";
+    final static String SERVICE_ENABLE = "service_enable";
+    final static String SERVICE_POSITION = "service_position";
+    final static String SERVICE_BACKGROUND_OPACITY = "service_background_opacity";
+    final static String SERVICE_BACKGROUND_COLOR = "service_background_color";
+    final static String SERVICE_TEXT_COLOR = "service_text_color";
+    final static String SERVICE_TEXT_OFFLINE_COLOR = "service_text_offline_color";
 
-    //Service actions
-    final static String ACTION_UPDATE_POSITION = "update_position";
-    final static String ACTION_UPDATE_BACKGROUND = "update_background";
 }

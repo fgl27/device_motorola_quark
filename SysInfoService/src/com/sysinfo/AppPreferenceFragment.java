@@ -24,7 +24,10 @@ public class AppPreferenceFragment extends PreferenceFragment implements Prefere
 
     private SwitchPreference mSwitchServiceEnable;
     private ListPreference mServicePosition;
-    private ListPreference mServiceBackground;
+    private ListPreference mServiceBackgroundOpacity;
+    private ListPreference mServiceBackgroundColor;
+    private ListPreference mServiceTextColor;
+    private ListPreference mServiceTextOfflineColor;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -32,14 +35,23 @@ public class AppPreferenceFragment extends PreferenceFragment implements Prefere
         final ActionBar actionBar = getActivity().getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        mSwitchServiceEnable = (SwitchPreference) findPreference(Constants.SWITCH_SERVICE_ENABLE);
+        mSwitchServiceEnable = (SwitchPreference) findPreference(Constants.SERVICE_ENABLE);
         mSwitchServiceEnable.setOnPreferenceChangeListener(this);
 
-        mServicePosition = (ListPreference) findPreference(Constants.SWITCH_SERVICE_POSITION);
+        mServicePosition = (ListPreference) findPreference(Constants.SERVICE_POSITION);
         mServicePosition.setOnPreferenceChangeListener(this);
 
-        mServiceBackground = (ListPreference) findPreference(Constants.SWITCH_SERVICE_BACKGROUND);
-        mServiceBackground.setOnPreferenceChangeListener(this);
+        mServiceBackgroundOpacity = (ListPreference) findPreference(Constants.SERVICE_BACKGROUND_OPACITY);
+        mServiceBackgroundOpacity.setOnPreferenceChangeListener(this);
+
+        mServiceBackgroundColor = (ListPreference) findPreference(Constants.SERVICE_BACKGROUND_COLOR);
+        mServiceBackgroundColor.setOnPreferenceChangeListener(this);
+
+        mServiceTextColor = (ListPreference) findPreference(Constants.SERVICE_TEXT_COLOR);
+        mServiceTextColor.setOnPreferenceChangeListener(this);
+
+        mServiceTextOfflineColor = (ListPreference) findPreference(Constants.SERVICE_TEXT_OFFLINE_COLOR);
+        mServiceTextOfflineColor.setOnPreferenceChangeListener(this);
 
         PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(mPrefListener);
     }
@@ -59,7 +71,7 @@ public class AppPreferenceFragment extends PreferenceFragment implements Prefere
     private void updateState(SharedPreferences sharedPreferences) {
         if (mSwitchServiceEnable != null) {
             mSwitchServiceEnable.setChecked(
-                    sharedPreferences.getBoolean(Constants.SWITCH_SERVICE_ENABLE, false)
+                    sharedPreferences.getBoolean(Constants.SERVICE_ENABLE, false)
             );
         }
     }
@@ -67,19 +79,24 @@ public class AppPreferenceFragment extends PreferenceFragment implements Prefere
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         Context context = getActivity();
+        boolean serviceEnable = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(Constants.SERVICE_ENABLE, false);
 
         if (preference == mSwitchServiceEnable) StartSysService(context, (Boolean) objValue, null);
-        else if (preference == mServicePosition) {
+        else if (preference == mServicePosition && serviceEnable) {
 
-            if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean(Constants.SWITCH_SERVICE_ENABLE, false)) {
-                StartSysService(context, true, Constants.ACTION_UPDATE_POSITION);
-            }
+            StartSysService(context, true, Constants.SERVICE_POSITION);
 
-        } else if (preference == mServiceBackground) {
+        } else if ((preference == mServiceBackgroundOpacity || preference == mServiceBackgroundColor) && serviceEnable) {
 
-            if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean(Constants.SWITCH_SERVICE_ENABLE, false)) {
-                StartSysService(context, true, Constants.ACTION_UPDATE_BACKGROUND);
-            }
+            StartSysService(context, true, Constants.SERVICE_BACKGROUND_OPACITY);
+
+        } else if (preference == mServiceTextColor && serviceEnable) {
+
+            StartSysService(context, true, Constants.SERVICE_TEXT_COLOR);
+
+        } else if (preference == mServiceTextOfflineColor && serviceEnable) {
+
+            StartSysService(context, true, Constants.SERVICE_TEXT_OFFLINE_COLOR);
 
         }
 
@@ -100,7 +117,7 @@ public class AppPreferenceFragment extends PreferenceFragment implements Prefere
                 @Override
                 public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-                    if (Constants.SWITCH_SERVICE_ENABLE.equals(key)) {
+                    if (Constants.SERVICE_ENABLE.equals(key)) {
                         updateState(sharedPreferences);
                     }
 

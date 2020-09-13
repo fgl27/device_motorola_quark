@@ -25,6 +25,9 @@
     <string name="app_name_summary">Displays a on screen overlay with various system status, CPU, GPU, RAM, Battery etc.</string>
     <string name="screen_position">Screen position</string>
     <string name="background_opacity">Background opacity</string>
+    <string name="background_color">Background color</string>
+    <string name="text_color">Text color</string>
+    <string name="text_offline_color">Core offline text color</string>
     <string name="position_top_left">Top left</string>
     <string name="position_top_right">Top right</string>
     <string name="position_top_center">Top Center</string>

@@ -20,7 +20,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     public void onReceive(final Context context, Intent intent) {
         Log.i(TAG, "Booting");
 
-        if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean(Constants.SWITCH_SERVICE_ENABLE, false))
+        if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean(Constants.SERVICE_ENABLE, false))
             context.startService(new Intent(context, SysInfoService.class));
     }
 

@@ -25,7 +25,7 @@
 
         <ListPreference
             android:key="service_position"
-            android:defaultValue="0"
+            android:defaultValue="1"
             android:icon="@drawable/empty_icon"
             android:title="@string/screen_position"
             android:dialogTitle="@string/screen_position"
@@ -34,7 +34,7 @@
             android:entryValues="@array/screen_position_values" />
             
         <ListPreference
-            android:key="service_background"
+            android:key="service_background_opacity"
             android:defaultValue="4"
             android:icon="@drawable/empty_icon"
             android:title="@string/background_opacity"
@@ -42,6 +42,35 @@
             android:summary="%s"
             android:entries="@array/screen_background_entries"
             android:entryValues="@array/screen_background_values" />
+            
+        <ListPreference
+            android:key="service_background_color"
+            android:defaultValue="0"
+            android:icon="@drawable/empty_icon"
+            android:title="@string/background_color"
+            android:dialogTitle="@string/background_color"
+            android:summary="%s"
+            android:entries="@array/colors_entries"
+            android:entryValues="@array/colors_values" />
+            
+        <ListPreference
+            android:key="service_text_color"
+            android:defaultValue="7"
+            android:icon="@drawable/empty_icon"
+            android:title="@string/text_color"
+            android:dialogTitle="@string/text_color"
+            android:summary="%s"
+            android:entries="@array/colors_entries"
+            android:entryValues="@array/colors_values" />
 
+        <ListPreference
+            android:key="service_text_offline_color"
+            android:defaultValue="6"
+            android:icon="@drawable/empty_icon"
+            android:title="@string/text_offline_color"
+            android:dialogTitle="@string/text_offline_color"
+            android:summary="%s"
+            android:entries="@array/colors_entries"
+            android:entryValues="@array/colors_values" />
 
 </PreferenceScreen>

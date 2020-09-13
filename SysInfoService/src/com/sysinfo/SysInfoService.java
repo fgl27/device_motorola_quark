@@ -22,6 +22,7 @@ package com.sysinfo;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -35,6 +36,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import androidx.core.graphics.ColorUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -48,10 +50,13 @@ public class SysInfoService extends Service {
     private View mView;
     private Thread mCurCPUThread;
     private final String TAG = "SysInfoService";
+    private Paint mOnlinePaint;
+    private Paint mOfflinePaint;
+    private int textSize;
+    private final String maxWidthStr = " CORE:0 ondemandplus:2880 MHz U 100% T 30°C "; // probably biggest possible
 
     private class CPUView extends View {
-        private Paint mOnlinePaint;
-        private Paint mOfflinePaint;
+
         private float mAscent;
         private int mFH;
         private int mMaxWidth;
@@ -78,29 +83,28 @@ public class SysInfoService extends Service {
 
         CPUView(Context c) {
             super(c);
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(c);
+
             float density = c.getResources().getDisplayMetrics().density;
             int paddingPx = Math.round(5 * density);
             setPadding(paddingPx, paddingPx, paddingPx, paddingPx);
-            setBackgroundColor(backgroundColor(c));
+            setBackgroundColor(backgroundColor(sharedPreferences));
 
-            final int textSize = Math.round(12 * density);
+            textSize = Math.round(12 * density);
 
-            mOnlinePaint = new Paint();
-            mOnlinePaint.setAntiAlias(true);
-            mOnlinePaint.setTextSize(textSize);
-            mOnlinePaint.setColor(Color.WHITE);
-            mOnlinePaint.setShadowLayer(5.0f, 0.0f, 0.0f, Color.BLACK);
-
-            mOfflinePaint = new Paint();
-            mOfflinePaint.setAntiAlias(true);
-            mOfflinePaint.setTextSize(textSize);
-            mOfflinePaint.setColor(Color.RED);
+            mOnlinePaint = TextColor(
+                    Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_COLOR, "7"))],
+                    textSize
+            );
+            mOfflinePaint = TextColor(
+                    Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_OFFLINE_COLOR, "6"))],
+                    textSize
+            );
 
             mAscent = mOnlinePaint.ascent();
             float descent = mOnlinePaint.descent();
             mFH = (int)(descent - mAscent + .5f);
 
-            final String maxWidthStr = " CORE:0 ondemandplus:2880 MHz U 100% T 30°C "; // probably biggest possible
             mMaxWidth = (int) mOnlinePaint.measureText(maxWidthStr);
         }
 
@@ -285,12 +289,31 @@ public class SysInfoService extends Service {
 
         String action = intent.getAction();
         Context context = this.getApplicationContext();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        if (Objects.equals(action, Constants.ACTION_UPDATE_POSITION)) {
+        if (Objects.equals(action, Constants.SERVICE_POSITION)) {
+
             WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
             wm.updateViewLayout(mView, getViewLayout(context));
-        } else if (Objects.equals(action, Constants.ACTION_UPDATE_BACKGROUND)) {
-            mView.setBackgroundColor(backgroundColor(context));
+
+        } else if (Objects.equals(action, Constants.SERVICE_BACKGROUND_OPACITY) || Objects.equals(action, Constants.SERVICE_BACKGROUND_COLOR)) {
+
+            mView.setBackgroundColor(backgroundColor(sharedPreferences));
+
+        } else if (Objects.equals(action, Constants.SERVICE_TEXT_COLOR)) {
+
+            mOnlinePaint = TextColor(
+                    Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_COLOR, "7"))],
+                    textSize
+            );
+
+        }else if (Objects.equals(action, Constants.SERVICE_TEXT_OFFLINE_COLOR)) {
+
+            mOfflinePaint = TextColor(
+                    Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_OFFLINE_COLOR, "6"))],
+                    textSize
+            );
+
         }
 
         return START_NOT_STICKY;
@@ -348,19 +371,41 @@ public class SysInfoService extends Service {
                 PixelFormat.TRANSLUCENT
         );
         params.gravity =
-                GravityPositions[Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.SWITCH_SERVICE_POSITION, "0"))];
+                GravityPositions[Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.SERVICE_POSITION, "1"))];
         params.setTitle(TAG);
 
         return params;
     }
 
-    private int backgroundColor(Context context) {
-        return Color.argb(
-                (float) (Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.SWITCH_SERVICE_BACKGROUND, "4")) / 10.0f),//alpha
-                0.0f,//r
-                0.0f,//g
-                0.0f//b
+    private final int[] Colors = {
+            Color.BLACK,//0
+            Color.BLUE,//1
+            Color.CYAN,//2
+            Color.GRAY,//3
+            Color.GREEN,//4
+            Color.MAGENTA,//5
+            Color.RED,//6
+            Color.WHITE,//7
+            Color.YELLOW//8
+    };
+
+    private int backgroundColor(SharedPreferences sharedPreferences) {
+        float percentage = (float) (Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_BACKGROUND_OPACITY, "4")) / 10.0f);
+
+        return ColorUtils.setAlphaComponent(
+                Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_BACKGROUND_COLOR, "0"))],
+                (int) (255 * percentage)
         );
+    }
+
+    private Paint TextColor(int color, int textSize) {
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setTextSize(textSize);
+        paint.setColor(color);
+        paint.setShadowLayer(5.0f, 0.0f, 0.0f, Color.BLACK);
+
+        return paint;
     }
 
 
