@@ -28,6 +28,7 @@ public class AppPreferenceFragment extends PreferenceFragment implements Prefere
     private ListPreference mServiceBackgroundColor;
     private ListPreference mServiceTextColor;
     private ListPreference mServiceTextOfflineColor;
+    private ListPreference mServiceTextSize;
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -52,6 +53,9 @@ public class AppPreferenceFragment extends PreferenceFragment implements Prefere
 
         mServiceTextOfflineColor = (ListPreference) findPreference(Constants.SERVICE_TEXT_OFFLINE_COLOR);
         mServiceTextOfflineColor.setOnPreferenceChangeListener(this);
+
+        mServiceTextSize = (ListPreference) findPreference(Constants.SERVICE_TEXT_SIZE);
+        mServiceTextSize.setOnPreferenceChangeListener(this);
 
         PreferenceManager.getDefaultSharedPreferences(getActivity()).registerOnSharedPreferenceChangeListener(mPrefListener);
     }
@@ -97,6 +101,10 @@ public class AppPreferenceFragment extends PreferenceFragment implements Prefere
         } else if (preference == mServiceTextOfflineColor && serviceEnable) {
 
             StartSysService(context, true, Constants.SERVICE_TEXT_OFFLINE_COLOR);
+
+        } else if (preference == mServiceTextSize && serviceEnable) {
+
+            StartSysService(context, true, Constants.SERVICE_TEXT_SIZE);
 
         }
 

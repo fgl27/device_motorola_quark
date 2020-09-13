@@ -53,14 +53,11 @@ public class SysInfoService extends Service {
     private Paint mOnlinePaint;
     private Paint mOfflinePaint;
     private int textSize;
-    private final String maxWidthStr = " CORE:0 ondemandplus:2880 MHz U 100% T 30°C "; // probably biggest possible
+    private int mMaxWidth;
+    private float mAscent;
+    private int mFH;
 
     private class CPUView extends View {
-
-        private float mAscent;
-        private int mFH;
-        private int mMaxWidth;
-
         private int mNeededWidth;
         private int mNeededHeight;
 
@@ -86,26 +83,10 @@ public class SysInfoService extends Service {
             SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(c);
 
             float density = c.getResources().getDisplayMetrics().density;
-            int paddingPx = Math.round(5 * density);
+            int paddingPx = Math.round(2 * density);
             setPadding(paddingPx, paddingPx, paddingPx, paddingPx);
             setBackgroundColor(backgroundColor(sharedPreferences));
-
-            textSize = Math.round(12 * density);
-
-            mOnlinePaint = TextColor(
-                    Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_COLOR, "7"))],
-                    textSize
-            );
-            mOfflinePaint = TextColor(
-                    Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_OFFLINE_COLOR, "6"))],
-                    textSize
-            );
-
-            mAscent = mOnlinePaint.ascent();
-            float descent = mOnlinePaint.descent();
-            mFH = (int)(descent - mAscent + .5f);
-
-            mMaxWidth = (int) mOnlinePaint.measureText(maxWidthStr);
+            UpdateTextSize(sharedPreferences, c, density);
         }
 
         @Override
@@ -132,7 +113,7 @@ public class SysInfoService extends Service {
             super.onDraw(canvas);
             if (!mDataAvail) return;
 
-            int x = (getWidth() - 1) - mPaddingRight - mMaxWidth;
+            int x = mPaddingLeft;
             int y = ((mPaddingTop - (int) mAscent) - 1);
 
             int i, len = msgObj.TopLinesLen;
@@ -307,12 +288,16 @@ public class SysInfoService extends Service {
                     textSize
             );
 
-        }else if (Objects.equals(action, Constants.SERVICE_TEXT_OFFLINE_COLOR)) {
+        } else if (Objects.equals(action, Constants.SERVICE_TEXT_OFFLINE_COLOR)) {
 
             mOfflinePaint = TextColor(
                     Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_OFFLINE_COLOR, "6"))],
                     textSize
             );
+
+        } else if (Objects.equals(action, Constants.SERVICE_TEXT_SIZE)) {
+
+            UpdateTextSize(sharedPreferences, context, context.getResources().getDisplayMetrics().density);
 
         }
 
@@ -408,7 +393,24 @@ public class SysInfoService extends Service {
         return paint;
     }
 
+    private void UpdateTextSize(SharedPreferences sharedPreferences, Context context, float density) {
+        textSize = Math.round((Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_SIZE, "4")) + 8) * density);//default value = 12 * density
 
+        mOnlinePaint = TextColor(
+                Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_COLOR, "7"))],
+                textSize
+        );
+        mOfflinePaint = TextColor(
+                Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_OFFLINE_COLOR, "6"))],
+                textSize
+        );
+
+        mAscent = mOnlinePaint.ascent();
+        float descent = mOnlinePaint.descent();
+        mFH = (int)(descent - mAscent + .5f);
+
+        mMaxWidth = (int) mOnlinePaint.measureText(Constants.MAX_LINE_LEN);
+    }
 
     private static String readOneLine(String fname) {
         BufferedReader br;

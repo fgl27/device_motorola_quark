@@ -26,6 +26,7 @@ public final class Constants {
     final static String GPU_BUSY = "/sys/class/kgsl/kgsl-3d0/gpubusy";
     final static String RAM_CUR_FREQ = "/sys/class/devfreq/qcom,cpubw.35/cur_freq";
     final static String RAM_GOV = "/sys/class/devfreq/qcom,cpubw.35/governor";
+    final static String MAX_LINE_LEN = "CORE:0 ondemandplus: 2880MHz 30°C 100% 12345"; // probably biggest possible
 
     //The preferences from settings_options.xml
     final static String SERVICE_ENABLE = "service_enable";
@@ -34,5 +35,6 @@ public final class Constants {
     final static String SERVICE_BACKGROUND_COLOR = "service_background_color";
     final static String SERVICE_TEXT_COLOR = "service_text_color";
     final static String SERVICE_TEXT_OFFLINE_COLOR = "service_text_offline_color";
+    final static String SERVICE_TEXT_SIZE = "service_text_size";
 
 }

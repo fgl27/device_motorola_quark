@@ -52,7 +52,17 @@
             android:summary="%s"
             android:entries="@array/colors_entries"
             android:entryValues="@array/colors_values" />
-            
+
+        <ListPreference
+            android:key="service_text_size"
+            android:defaultValue="4"
+            android:icon="@drawable/empty_icon"
+            android:title="@string/text_size"
+            android:dialogTitle="@string/text_size"
+            android:summary="%s"
+            android:entries="@array/text_size_entries"
+            android:entryValues="@array/text_size_values" />
+           
         <ListPreference
             android:key="service_text_color"
             android:defaultValue="7"
