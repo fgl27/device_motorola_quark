@@ -321,6 +321,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     librmnetctl
 
+# Shims
+PRODUCT_PACKAGES += \
+    libcutils_shim
+
 # System Properties
 include $(LOCAL_PATH)/system_prop.mk
 

@@ -222,4 +222,6 @@ TARGET_USES_64_BIT_BINDER := true
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
-   /system/lib/hw/camera.vendor.apq8084.so|libshims_fence.so
+   /system/lib/hw/camera.vendor.apq8084.so|libshims_fence.so \
+   /system/vendor/lib/libcne.so|libcutils_shim.so
+
