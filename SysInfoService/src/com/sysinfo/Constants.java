@@ -36,5 +36,12 @@ public final class Constants {
     final static String SERVICE_TEXT_COLOR = "service_text_color";
     final static String SERVICE_TEXT_OFFLINE_COLOR = "service_text_offline_color";
     final static String SERVICE_TEXT_SIZE = "service_text_size";
-
+    
+    //Same default values as in settings_options.xml
+    final static String DEFAULT_POSITION = "1";
+    final static String DEFAULT_BACKGROUND_OPACITY = "4";
+    final static String DEFAULT_BACKGROUND_COLOR = "0";
+    final static String DEFAULT_TEXT_COLOR = "7";
+    final static String DEFAULT_TEXT_OFFLINE_COLOR = "5";
+    final static String DEFAULT_TEXT_SIZE = "4";
 }

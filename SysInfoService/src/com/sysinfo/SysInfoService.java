@@ -284,14 +284,14 @@ public class SysInfoService extends Service {
         } else if (Objects.equals(action, Constants.SERVICE_TEXT_COLOR)) {
 
             mOnlinePaint = TextColor(
-                    Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_COLOR, "7"))],
+                    Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_COLOR, Constants.DEFAULT_TEXT_COLOR))],
                     textSize
             );
 
         } else if (Objects.equals(action, Constants.SERVICE_TEXT_OFFLINE_COLOR)) {
 
             mOfflinePaint = TextColor(
-                    Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_OFFLINE_COLOR, "6"))],
+                    Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_OFFLINE_COLOR, Constants.DEFAULT_TEXT_OFFLINE_COLOR))],
                     textSize
             );
 
@@ -356,7 +356,7 @@ public class SysInfoService extends Service {
                 PixelFormat.TRANSLUCENT
         );
         params.gravity =
-                GravityPositions[Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.SERVICE_POSITION, "1"))];
+                GravityPositions[Integer.valueOf(PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.SERVICE_POSITION, Constants.DEFAULT_POSITION))];
         params.setTitle(TAG);
 
         return params;
@@ -375,10 +375,10 @@ public class SysInfoService extends Service {
     };
 
     private int backgroundColor(SharedPreferences sharedPreferences) {
-        float percentage = (float) (Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_BACKGROUND_OPACITY, "4")) / 10.0f);
+        float percentage = (float) (Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_BACKGROUND_OPACITY, Constants.DEFAULT_BACKGROUND_OPACITY)) / 10.0f);
 
         return ColorUtils.setAlphaComponent(
-                Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_BACKGROUND_COLOR, "0"))],
+                Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_BACKGROUND_COLOR, Constants.DEFAULT_BACKGROUND_COLOR))],
                 (int) (255 * percentage)
         );
     }
@@ -394,14 +394,14 @@ public class SysInfoService extends Service {
     }
 
     private void UpdateTextSize(SharedPreferences sharedPreferences, Context context, float density) {
-        textSize = Math.round((Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_SIZE, "4")) + 8) * density);//default value = 12 * density
+        textSize = Math.round((Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_SIZE, Constants.DEFAULT_TEXT_SIZE)) + 8) * density);//default value = 12 * density
 
         mOnlinePaint = TextColor(
-                Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_COLOR, "7"))],
+                Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_COLOR, Constants.DEFAULT_TEXT_COLOR))],
                 textSize
         );
         mOfflinePaint = TextColor(
-                Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_OFFLINE_COLOR, "6"))],
+                Colors[Integer.valueOf(sharedPreferences.getString(Constants.SERVICE_TEXT_OFFLINE_COLOR, Constants.DEFAULT_TEXT_OFFLINE_COLOR))],
                 textSize
         );
 

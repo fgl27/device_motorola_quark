@@ -75,7 +75,7 @@
 
         <ListPreference
             android:key="service_text_offline_color"
-            android:defaultValue="6"
+            android:defaultValue="5"
             android:icon="@drawable/empty_icon"
             android:title="@string/text_offline_color"
             android:dialogTitle="@string/text_offline_color"
