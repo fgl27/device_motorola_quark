@@ -23,6 +23,7 @@ import androidx.preference.SwitchPreference;
 public class AppPreferenceFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener {
 
     private SwitchPreference mSwitchServiceEnable;
+    private SwitchPreference mSwitchfahrenheit;
     private ListPreference mServicePosition;
     private ListPreference mServiceBackgroundOpacity;
     private ListPreference mServiceBackgroundColor;
@@ -38,6 +39,9 @@ public class AppPreferenceFragment extends PreferenceFragment implements Prefere
 
         mSwitchServiceEnable = (SwitchPreference) findPreference(Constants.SERVICE_ENABLE);
         mSwitchServiceEnable.setOnPreferenceChangeListener(this);
+        
+        mSwitchfahrenheit = (SwitchPreference) findPreference(Constants.SERVICE_FAHRENHEIT_ENABLE);
+        mSwitchfahrenheit.setOnPreferenceChangeListener(this);
 
         mServicePosition = (ListPreference) findPreference(Constants.SERVICE_POSITION);
         mServicePosition.setOnPreferenceChangeListener(this);
@@ -86,7 +90,11 @@ public class AppPreferenceFragment extends PreferenceFragment implements Prefere
         boolean serviceEnable = PreferenceManager.getDefaultSharedPreferences(context).getBoolean(Constants.SERVICE_ENABLE, false);
 
         if (preference == mSwitchServiceEnable) StartSysService(context, (Boolean) objValue, null);
-        else if (preference == mServicePosition && serviceEnable) {
+        else if (preference == mSwitchfahrenheit && serviceEnable) {
+
+            StartSysService(context, true, Constants.SERVICE_FAHRENHEIT_ENABLE);
+
+        } else if (preference == mServicePosition && serviceEnable) {
 
             StartSysService(context, true, Constants.SERVICE_POSITION);
 

@@ -24,6 +24,8 @@
     <string name="app_name">System info overlay</string>
     <string name="app_name_summary">Displays a on screen overlay with various system status, CPU, GPU, RAM, Battery etc.</string>
     <string name="screen_position">Screen position</string>
+    <string name="fahrenheit">Use Fahrenheit</string>
+    <string name="fahrenheit_summary">When enabled the temperatures will be displayed in Fahrenheit</string>
     <string name="background_opacity">Background opacity</string>
     <string name="background_color">Background color</string>
     <string name="text_size">Text size</string>

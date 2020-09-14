@@ -48,14 +48,22 @@ import static android.os.Process.getTotalMemory;
 
 public class SysInfoService extends Service {
     private View mView;
+    
     private Thread mCurCPUThread;
+    
     private final String TAG = "SysInfoService";
+    
+    private boolean useCelsius = true;
+        
     private Paint mOnlinePaint;
     private Paint mOfflinePaint;
-    private int textSize;
-    private int mMaxWidth;
-    private float mAscent;
+
     private int mFH;
+    private int mMaxWidth;
+    private int textSize;
+    
+    private float mAscent;
+
 
     private class CPUView extends View {
         private int mNeededWidth;
@@ -161,6 +169,7 @@ public class SysInfoService extends Service {
         private final Handler mHandler;
         private final int numCpus;
 
+        private int celsiusTemp;
         private int mBatAmperage = 0;
         private String currFreq, currGov;
         private String[] CpuCoreLines;
@@ -186,6 +195,7 @@ public class SysInfoService extends Service {
                     TopLines = new ArrayList<>();
 
                     mBatAmperage = Integer.valueOf(SysInfoService.readOneLine(Constants.BAT_AMP)) / 1000;
+                    celsiusTemp = Integer.valueOf(SysInfoService.readOneLine(Constants.BAT_TEMP)) / 10;
                     TopLinesBuilder = new StringBuilder();
                     TopLinesBuilder
                             .append("BAT: ")
@@ -194,8 +204,8 @@ public class SysInfoService extends Service {
                             .append(mBatAmperage > 0 ? "+" : "")
                             .append(mBatAmperage)
                             .append("mA ")
-                            .append(Integer.valueOf(SysInfoService.readOneLine(Constants.BAT_TEMP)) / 10)
-                            .append("°C ")
+                            .append(useCelsius ? celsiusTemp : celsiusToFahrenheit(celsiusTemp))
+                            .append(useCelsius ? "°C " : "°F ")
                             .append(SysInfoService.readOneLine(Constants.BAT_CAPACITY))
                             .append("%");
                     TopLines.add(TopLinesBuilder.toString());
@@ -212,14 +222,15 @@ public class SysInfoService extends Service {
                     TopLines.add(TopLinesBuilder.toString());
 
                     TopLinesBuilder = new StringBuilder();
+                    celsiusTemp = Integer.valueOf(SysInfoService.readOneLine(Constants.THERMAL_ZONE + "10/temp"));
                     TopLinesBuilder
                             .append("GPU: ")
                             .append(SysInfoService.readOneLine(Constants.GPU_GOV))
                             .append(": ")
                             .append(Integer.valueOf(SysInfoService.readOneLine(Constants.GPU_FREQ)) / 1000000)
                             .append("MHz ")
-                            .append(SysInfoService.readOneLine(Constants.THERMAL_ZONE + "10/temp"))
-                            .append("°C")
+                            .append(useCelsius ? celsiusTemp : celsiusToFahrenheit(celsiusTemp))
+                            .append(useCelsius ? "°C" : "°F")
                             .append(SysInfoService.getGPUBusy(Constants.GPU_BUSY));
                     TopLines.add(TopLinesBuilder.toString());
 
@@ -232,13 +243,14 @@ public class SysInfoService extends Service {
                         else {
 
                             CpuCoreLinesBuilder = new StringBuilder();
+                            celsiusTemp = Integer.valueOf(SysInfoService.readOneLine(Constants.THERMAL_ZONE + (i + 6) + "/temp"));
                             CpuCoreLinesBuilder
                                     .append(SysInfoService.readOneLine(Constants.CPU_ROOT + i + Constants.CPU_GOV_TAIL))
                                     .append(": ")
                                     .append(Integer.valueOf(currFreq) / 1000)
                                     .append("MHz ")
-                                    .append(SysInfoService.readOneLine(Constants.THERMAL_ZONE + (i + 6) + "/temp"))
-                                    .append("°C ")
+                                    .append(useCelsius ? celsiusTemp : celsiusToFahrenheit(celsiusTemp))
+                                    .append(useCelsius ? "°C " : "°F ")
                                     .append(SysInfoService.readOneLine(Constants.CPU_ROOT + i + Constants.CPU_UTI_TAIL))
                                     .append("%");
 
@@ -281,6 +293,10 @@ public class SysInfoService extends Service {
 
             mView.setBackgroundColor(backgroundColor(sharedPreferences));
 
+        } else if (Objects.equals(action, Constants.SERVICE_FAHRENHEIT_ENABLE)) {
+
+            setuseCelsius(sharedPreferences);
+            
         } else if (Objects.equals(action, Constants.SERVICE_TEXT_COLOR)) {
 
             mOnlinePaint = TextColor(
@@ -316,6 +332,9 @@ public class SysInfoService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        Context context = this.getApplicationContext();
+        
+        setuseCelsius(PreferenceManager.getDefaultSharedPreferences(context));
 
         mView = new CPUView(this);
 
@@ -323,7 +342,7 @@ public class SysInfoService extends Service {
         mCurCPUThread.start();
 
         WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
-        wm.addView(mView, getViewLayout(this.getApplicationContext()));
+        wm.addView(mView, getViewLayout(context));
 
         Log.d(TAG, "started CurCPUThread");
     }
@@ -382,6 +401,10 @@ public class SysInfoService extends Service {
                 (int) (255 * percentage)
         );
     }
+    
+    private void setuseCelsius(SharedPreferences sharedPreferences) {
+        useCelsius = !sharedPreferences.getBoolean(Constants.SERVICE_FAHRENHEIT_ENABLE, false);
+    }
 
     private Paint TextColor(int color, int textSize) {
         Paint paint = new Paint();
@@ -437,6 +460,10 @@ public class SysInfoService extends Service {
 
             return arg2 == 0 ? " 0%" : (" " + Math.round((arg1 / arg2 * 100) + 0.5f) + "%");
         } else return "";
+    }
+
+    public static int celsiusToFahrenheit(int celsius) {
+        return (int) ((float)(celsius * 1.8f) + 32);
     }
 
     public static class MessageObj {

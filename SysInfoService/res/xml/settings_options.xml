@@ -23,6 +23,12 @@
             android:title="@string/app_name"
             android:summary="@string/app_name_summary" />
 
+        <SwitchPreference
+            android:key="fahrenheit_enable"
+            android:defaultValue="false"
+            android:title="@string/fahrenheit"
+            android:summary="@string/fahrenheit_summary" />
+
         <ListPreference
             android:key="service_position"
             android:defaultValue="1"

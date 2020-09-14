@@ -30,6 +30,7 @@ public final class Constants {
 
     //The preferences from settings_options.xml
     final static String SERVICE_ENABLE = "service_enable";
+    final static String SERVICE_FAHRENHEIT_ENABLE = "fahrenheit_enable";
     final static String SERVICE_POSITION = "service_position";
     final static String SERVICE_BACKGROUND_OPACITY = "service_background_opacity";
     final static String SERVICE_BACKGROUND_COLOR = "service_background_color";
