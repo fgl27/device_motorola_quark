@@ -20,3 +20,5 @@ allow vendor_init media_data_file:dir create_file_perms;
 allow vendor_init usermodehelper:file create_file_perms;
 allow vendor_init dalvikcache_data_file:dir search;
 allow vendor_init proc_swap:file write;
+allow vendor_init cache_file:dir r_dir_perms;
+allow vendor_init cache_recovery_file:dir r_dir_perms;

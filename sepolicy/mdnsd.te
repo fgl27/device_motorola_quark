@@ -1,0 +1,1 @@
+allow mdnsd var_file:dir r_dir_perms;

@@ -1,19 +1,22 @@
 allow system_app display_sysfs:file rw_file_perms;
 allow system_app sensors_device:chr_file { getattr open read write ioctl };
 allow system_app shell_data_file:dir search;
-#allow system_app cne_service:service_manager { add };
 allow system_app perfprofd:binder call;
-allow system_app proc_pagetypeinfo:file read;
-allow system_app sysfs_android_touch:file r_file_perms;
-allow system_app sysfs_android_touch:dir r_dir_perms;
 allow system_app sysfs_zram:dir search;
-allow system_app proc_pagetypeinfo:file r_file_perms;
-allow system_app sysfs_zram:file r_file_perms;
 allow system_app wificond:binder call;
-allow system_app system_data_file:dir r_dir_perms;
 allow system_app apex_service:service_manager find;
 allow system_app system_suspend_control_service:service_manager find;
 
-#SYSInfoService
-allow system_app sysfs_batteryinfo:dir search;
-allow system_app sysfs_batteryinfo:file read;
+allow system_app {
+    sysfs_batteryinfo
+    system_data_file
+    sysfs_android_touch
+}:dir r_dir_perms;
+
+allow system_app {
+    sysfs_batteryinfo
+    sysfs_zram
+    proc_pagetypeinfo
+    sysfs_android_touch
+}:file r_file_perms;
+

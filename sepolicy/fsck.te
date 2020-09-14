@@ -1,3 +1,5 @@
 allow fsck efs_boot_dev:blk_file { read write getattr open ioctl };
 allow fsck modem_efs_partition_device:blk_file { read write getattr open ioctl };
-#allow fsck persist_block_device:blk_file { read write getattr open ioctl };
+allow fsck self:capability { dac_override dac_read_search };
+allow fsck tmpfs:blk_file r_file_perms;
+allow fsck unlabeled:dir r_file_perms;
