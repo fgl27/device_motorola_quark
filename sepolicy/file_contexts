@@ -89,6 +89,15 @@
 /fsg(/.*)?             u:object_r:firmware_file:s0
 /var(/.*)?             u:object_r:var_file:s0
 
+# Make sure the label are set just the above we get unlabeled denials
+/fsg                   u:object_r:firmware_file:s0
+/var                   u:object_r:var_file:s0
+/persist               u:object_r:persist_file:s0
+# Make sure the label are set just the above we get unlabeled denials
+/fsg/                  u:object_r:firmware_file:s0
+/var/                  u:object_r:var_file:s0
+/persist/              u:object_r:persist_file:s0
+
 ###################################
 # Superuser's control sockets
 #
