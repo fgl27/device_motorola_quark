@@ -70,9 +70,6 @@ on fs
 
 #    mount_all /vendor/etc/fstab.qcom
     restorecon_recursive /persist
-
-    # use /persist as phony PDS partition
-    symlink /persist /pds
     
 on late-fs
     # Start services for bootanim
