@@ -322,7 +322,8 @@ PRODUCT_PACKAGES += \
 
 # Shims
 PRODUCT_PACKAGES += \
-    libcutils_shim
+    libcutils_shim \
+    libaudioclient_shim
 
 # System Properties
 include $(LOCAL_PATH)/system_prop.mk
