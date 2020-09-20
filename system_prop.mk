@@ -53,8 +53,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.cpurend.vsync=false \
     debug.sf.disable_backpressure=1 \
     debug.sf.enable_gl_backpressure=1 \
-    debug.sf.latch_unsignaled=1 \
-    debug.sf.recomputecrop=0
+    debug.sf.latch_unsignaled=1
 
 # FRP
 PRODUCT_PROPERTY_OVERRIDES +=ro.frp.pst=/dev/block/platform/msm_sdcc.1/by-name/frp
