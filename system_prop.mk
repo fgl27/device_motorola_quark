@@ -52,7 +52,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.mm.enable.prefetch=true \
     debug.cpurend.vsync=false \
     debug.sf.disable_backpressure=1 \
-    debug.sf.enable_gl_backpressure=1 \
     debug.sf.latch_unsignaled=1
 
 # FRP
