@@ -393,6 +393,7 @@ PRODUCT_PACKAGES += \
 
 # HIDL packages
 $(call inherit-product, device/motorola/quark/hidl.mk)
+PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
 # loggy enable this when debuggin gon permissive
 #PRODUCT_PACKAGES += \
