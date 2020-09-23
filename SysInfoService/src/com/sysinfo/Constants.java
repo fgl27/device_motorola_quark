@@ -43,6 +43,6 @@ public final class Constants {
     final static String DEFAULT_BACKGROUND_OPACITY = "4";
     final static String DEFAULT_BACKGROUND_COLOR = "0";
     final static String DEFAULT_TEXT_COLOR = "7";
-    final static String DEFAULT_TEXT_OFFLINE_COLOR = "5";
+    final static String DEFAULT_TEXT_OFFLINE_COLOR = "2";
     final static String DEFAULT_TEXT_SIZE = "4";
 }
