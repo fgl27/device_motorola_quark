@@ -123,6 +123,9 @@ DEVICE_MANIFEST_FILE += $(QUARK_PATH)/manifest.xml
 # Healthd
 BACKLIGHT_PATH := "/sys/class/leds/lcd-backlight/brightness"
 
+# Memfd
+TARGET_HAS_MEMFD_BACKPORT := true
+
 # Motorola
 TARGET_USES_MOTOROLA_LOG := true
 
