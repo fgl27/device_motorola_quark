@@ -35,6 +35,9 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 		<!-- Radio ralated lib-->
 		<project name="LineageOS/android_system_qcom" path="system/qcom" remote="lineage" />
 
+		<!-- timekeep service-->
+		<project name="LineageOS/android_hardware_sony_timekeep" path="hardware/sony/timekeep" remote="github" revision="lineage-17.1" />
+	  
 	</manifest>
 
 ### Fix the source to build for Quark

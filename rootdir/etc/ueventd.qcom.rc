@@ -199,6 +199,9 @@
 #nfc permissions
 /dev/bcm2079x-i2c         0660    nfc         nfc
 
+# RTC
+/sys/devices/qpnp-rtc-*   since_epoch 0660 system system
+
 # UIO devices
 /dev/uio0                 0660   system     system
 /dev/uio1                 0660   system     system

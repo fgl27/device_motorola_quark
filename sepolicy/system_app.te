@@ -20,3 +20,9 @@ allow system_app {
     sysfs_android_touch
 }:file r_file_perms;
 
+allow system_app time_data_file:dir { write search };
+allow system_app time_data_file:file { write open getattr };
+
+r_dir_file(system_app, sysfs_timekeep)
+r_dir_file(system_app, sysfs_rtc)
+

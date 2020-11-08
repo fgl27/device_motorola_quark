@@ -64,6 +64,7 @@
 /sys/devices/qcom,cpubw\.[0-9]+/devfreq/qcom,cpubw\.[0-9]+/cur_freq                         u:object_r:sysfs_devfreq:s0
 /sys/bus/esoc/devices/esoc0/esoc_name                                                       u:object_r:sysfs_esoc:s0
 /sys/bus/msm_subsys/devices/subsys2/name                                                    u:object_r:sysfs_ssr:s0
+/sys/devices/qpnp-rtc-[a-z0-9]+/rtc/rtc0(/.*)?                                              u:object_r:sysfs_rtc:s0
 
 ###################################
 # System files
@@ -82,6 +83,7 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.2-service\.clearkey    u:object_r:hal_drm_clearkey_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.1-service\.quark  u:object_r:hal_vibrator_default_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.2-service\.quark  u:object_r:hal_power_default_exec:s0
+/(vendor|system/vendor)/bin/timekeep                        u:object_r:timekeep_exec:s0
 
 ###################################
 # ROOT folders
