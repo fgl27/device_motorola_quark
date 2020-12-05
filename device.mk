@@ -252,10 +252,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/sensorprocessor.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/sensorprocessor.kl \
     $(LOCAL_PATH)/keylayout/atmel_mxt_ts.kl:$(TARGET_COPY_OUT_SYSTEM)/usr/keylayout/atmel_mxt_ts.kl
 
-# Keystore
-PRODUCT_PACKAGES += \
-    keystore.apq8084
-
 # Lights
 PRODUCT_PACKAGES += \
     lights.apq8084
