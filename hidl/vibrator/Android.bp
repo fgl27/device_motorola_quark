@@ -15,6 +15,7 @@
 
 cc_binary {
     name: "android.hardware.vibrator@1.1-service.quark",
+    vintf_fragments: ["android.hardware.vibrator@1.1-service.quark.xml"],
     relative_install_path: "hw",
     init_rc: ["android.hardware.vibrator@1.1-service.quark.rc"],
     srcs: ["service.cpp", "Vibrator.cpp"],
