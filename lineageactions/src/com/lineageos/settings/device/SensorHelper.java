@@ -96,7 +96,7 @@ public class SensorHelper {
     public void registerListener(Sensor sensor, SensorEventListener listener) {
         if (!mSensorManager.registerListener(listener, sensor,
                 SensorManager.SENSOR_DELAY_NORMAL, BATCH_LATENCY_IN_MS * 1000)) {
-            throw new RuntimeException("Failed to registerListener for sensor " + sensor);
+            Log.e(TAG, "Failed to registerListener for sensor " + sensor);
         }
     }
 
