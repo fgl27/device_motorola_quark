@@ -209,6 +209,10 @@ PRODUCT_PACKAGES += \
     regdbdump \
     regulatory.bin
 
+# Data (CAF)
+PRODUCT_SOONG_NAMESPACES += \
+    vendor/qcom/opensource/dataservices
+
 # Dexopt
 $(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
 
