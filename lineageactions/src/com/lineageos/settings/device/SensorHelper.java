@@ -61,7 +61,7 @@ public class SensorHelper {
             }
             writer.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            Log.w(TAG, "Failed to dumpSensorsList ", e);
         }
     }
 
