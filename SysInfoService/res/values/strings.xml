@@ -37,4 +37,7 @@
     <string name="position_bottom_center">Bottom center</string>
     <string name="position_bottom_left">Bottom left</string>
     <string name="position_bottom_right">Bottom right</string>
+    <string name="position_center">Center</string>
+    <string name="position_center_left">Center left</string>
+    <string name="position_center_right">Center right</string>
 </resources>

@@ -321,12 +321,15 @@ public class SysInfoService extends Service {
     }
 
     private final int[] GravityPositions = {
-            Gravity.START | Gravity.TOP,//0
-            Gravity.CENTER | Gravity.TOP,//1
-            Gravity.END | Gravity.TOP,//2
-            Gravity.START | Gravity.BOTTOM,//3
-            Gravity.CENTER | Gravity.BOTTOM,//4
-            Gravity.END | Gravity.BOTTOM//5
+            Gravity.START | Gravity.TOP,    //0
+            Gravity.CENTER | Gravity.TOP,   //1
+            Gravity.END | Gravity.TOP,      //2
+            Gravity.CENTER | Gravity.START, //3
+            Gravity.CENTER,                 //4
+            Gravity.CENTER | Gravity.END,   //5
+            Gravity.START | Gravity.BOTTOM, //6
+            Gravity.CENTER | Gravity.BOTTOM,//7
+            Gravity.END | Gravity.BOTTOM    //8
     };
 
     @Override

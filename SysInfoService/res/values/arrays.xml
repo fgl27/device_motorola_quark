@@ -20,6 +20,9 @@
         <item>@string/position_top_left</item>
         <item>@string/position_top_center</item>
         <item>@string/position_top_right</item>
+        <item>@string/position_center_left</item>
+        <item>@string/position_center</item>
+        <item>@string/position_center_right</item>
         <item>@string/position_bottom_left</item>
         <item>@string/position_bottom_center</item>
         <item>@string/position_bottom_right</item>
@@ -32,6 +35,9 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
     </string-array>
 
     <string-array name="screen_background_entries" translatable="false">
