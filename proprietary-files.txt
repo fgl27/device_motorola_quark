@@ -265,11 +265,6 @@ vendor/lib/libllvm-qcom.so
 vendor/lib/libOpenCL.so
 vendor/lib/libscale.so
 
-# Renderscript (Google bullhead - OPR4.170623.006)
-vendor/lib/librs_adreno_sha1.so
-vendor/lib/librs_adreno.so
-vendor/lib/libRSDriver_adreno.so
-
 # Graphics firmware
 etc/firmware/a420_pfp.fw:vendor/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw:vendor/firmware/a420_pm4.fw
