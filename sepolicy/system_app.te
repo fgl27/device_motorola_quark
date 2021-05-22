@@ -1,7 +1,6 @@
 allow system_app display_sysfs:file rw_file_perms;
 allow system_app sensors_device:chr_file { getattr open read write ioctl };
 allow system_app shell_data_file:dir search;
-allow system_app perfprofd:binder call;
 allow system_app sysfs_zram:dir search;
 allow system_app wificond:binder call;
 allow system_app apex_service:service_manager find;
