@@ -1,5 +1,5 @@
-allow mpdecision system_data_file:dir rw_file_perms;
-type_transition mpdecision system_data_file:file mpctl_data_file;
+allow mpdecision system_data_root_file:dir rw_file_perms;
+type_transition mpdecision system_data_root_file:file mpctl_data_file;
 allow mpdecision self:capability sys_nice;
 allow mpdecision socket_device:dir rw_file_perms;
 allow mpdecision socket_device:sock_file create_file_perms;

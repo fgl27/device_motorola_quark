@@ -2,7 +2,7 @@ allow vendor_init {
   audio_data_file
   camera_data_file
   media_rw_data_file
-  system_data_file
+  system_data_root_file
   radio_data_file
   time_data_file
   tombstone_data_file
