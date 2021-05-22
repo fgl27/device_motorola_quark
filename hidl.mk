@@ -99,7 +99,7 @@ PRODUCT_PACKAGES += \
 
 # Power HAL
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.2-service.quark
+    android.hardware.power-service.quark
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
