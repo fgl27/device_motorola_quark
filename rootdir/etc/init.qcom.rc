@@ -260,9 +260,9 @@ on post-fs-data
     chown oem_5001 oem_5001 /sys/class/power_supply/battery/device/force_chg_usb_suspend
     chown oem_5001 oem_5001 /sys/class/power_supply/battery/device/force_chg_fail_clear
     chown oem_5001 oem_5001 /sys/class/power_supply/battery/device/force_chg_usb_otg_ctl
-    mkdir /data/validity 0771 fingerp fingerp
+    mkdir /data/validity 0771 system oem_5015
     copy /system/etc/ValidityPersistentData /data/validity/ValidityPersistentData
-    chown fingerp fingerp /data/validity/ValidityPersistentData
+    chown system oem_5015 /data/validity/ValidityPersistentData
     chmod 0660 /data/validity/ValidityPersistentData
 
     # Setup folders for diag_mdlog
