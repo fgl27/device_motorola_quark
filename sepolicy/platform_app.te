@@ -10,3 +10,4 @@ allow platform_app sysfs_devfreq:lnk_file r_file_perms;
 allow platform_app sysfs_devices_system_cpu:dir r_dir_perms;
 allow platform_app sysfs_devices_system_cpu:file r_file_perms;
 allow platform_app sysfs_devices_system_cpu:lnk_file r_file_perms;
+get_prop(platform_app, exported_camera_prop)
