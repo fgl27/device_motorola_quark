@@ -22,7 +22,6 @@ allow init debugfs:file { write };
 allow init diag_device:chr_file { write };
 
 #allow init blkid_exec:file { getattr };
-allow init clatd_exec:file { getattr };
 #allow init dex2oat_exec:file { getattr };
 allow init dnsmasq_exec:file { getattr };
 allow init hostapd_exec:file { getattr };
