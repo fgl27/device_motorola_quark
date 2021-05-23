@@ -73,7 +73,7 @@ ndk::ScopedAStatus Power::setMode(Mode type, bool enabled) {
     switch (type) {
 #ifdef TAP_TO_WAKE_NODE
         case Mode::DOUBLE_TAP_TO_WAKE:
-            ::android::base::WriteStringToFile(enabled ? "AUTO" : "OFF", TAP_TO_WAKE_NODE, true);
+            ::android::base::WriteStringToFile(enabled ? "1" : "0", TAP_TO_WAKE_NODE, true);
             break;
 #else
         case Mode::DOUBLE_TAP_TO_WAKE:
