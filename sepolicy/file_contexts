@@ -98,6 +98,5 @@
 /persist               u:object_r:persist_file:s0
 
 ###################################
-# Superuser's control sockets
-#
-/dev/socket/su-daemon(/.*)?             u:object_r:superuser_device:s0
+# executeables
+/system/bin/clean_scratch_files                         u:object_r:clean_scratch_files_exec:s0

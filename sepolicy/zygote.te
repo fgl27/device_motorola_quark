@@ -2,3 +2,5 @@ allow zygote zygote:capability { sys_nice };
 allow zygote proc_cmdline:file { getattr open read };
 allow zygote system_file:file rw_file_perms;
 allow zygote system_file:dir mounton;
+get_prop(zygote, exported_camera_prop);
+get_prop(zygote, bluetooth_prop);

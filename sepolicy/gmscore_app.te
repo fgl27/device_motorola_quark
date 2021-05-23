@@ -1,0 +1,4 @@
+allow gmscore_app adbd_prop:file { getattr open };
+allow gmscore_app adspd_prop:file { getattr open };
+allow gmscore_app alarm_boot_prop:file { getattr open };
+allow gmscore_app proc_bus_pci:file { open read };

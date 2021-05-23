@@ -20,3 +20,6 @@ allow system_server crash_dump:process getpgid;
 # OTA with encrypted f2fs
 allow system_server ota_package_file:dir getattr;
 allow system_server app_zygote:process getpgid;
+get_prop(system_server, exported_camera_prop);
+get_prop(system_server, userspace_reboot_exported_prop);
+get_prop(system_server, userspace_reboot_config_prop);

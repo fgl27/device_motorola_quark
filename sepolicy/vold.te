@@ -4,3 +4,4 @@ allow vold persist_file:dir r_dir_perms;
 allow vold logd:dir { open };
 allow vold logd:lnk_file { getattr read };
 allow vold hal_bootctl_hwservice:hwservice_manager find;
+allow vold sysfs_mmc_host:file write;
