@@ -493,6 +493,9 @@ on property:sys.boot_completed=1
     write /sys/module/rmnet_usb/parameters/dump_ctrl_msg 0
     write /sys/module/mhi_uci/parameters/mhi_uci_dump 0
     write /sys/kernel/debug/clk/debug_suspend 0
+    
+# workaround to make mic work after boot
+    restart audioserver
 
 # corefile limit and ETB enabling
 on property:persist.debug.trace=1
