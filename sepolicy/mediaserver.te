@@ -24,4 +24,5 @@ allow mediaserver fwk_camera_hwservice:hwservice_manager {add find};
 allow mediaserver hal_camera_hwservice:hwservice_manager {add find};
 allow mediaserver hidl_base_hwservice:hwservice_manager {add find};
 allow mediaserver sensor_privacy_service:service_manager {add find};
+get_prop(mediaserver, exported_camera_prop)
 
