@@ -1,0 +1,7 @@
+allow hal_audio_default adspd_socket:sock_file { read write };
+allow hal_audio_default adspd:unix_stream_socket connectto;
+allow hal_audio_default audio_cutback_data_file:dir search;
+allow hal_audio_default self:socket { create ioctl };
+allow hal_audio_default qmuxd_socket:dir { add_name create_dir_perms };
+allow hal_audio_default sysfs:file r_file_perms;
+allow hal_audio_default sysfs:dir r_dir_perms;
