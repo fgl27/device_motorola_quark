@@ -25,7 +25,7 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 		   fetch="https://github.com/"
 		   sync-c="true"
 		   sync-j="4"
-		   revision="refs/heads/Q" />
+		   revision="refs/heads/R" />
 		   
 		<!-- Device/kernel/vendor-->
 		<project name="fgl27/device_motorola_quark" path="device/motorola/quark" remote="fgl27" />
@@ -44,25 +44,24 @@ Pull the below repos creating a file **"/home/user/source_folder/.repo/local_man
 
 From source main folder do
 
-### Re-enable wfd
-
-	cd frameworks/av
-	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/98/266398/1 && git cherry-pick FETCH_HEAD
-	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/99/266399/1 && git cherry-pick FETCH_HEAD
-	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/00/266400/1 && git cherry-pick FETCH_HEAD
-	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/01/266401/1 && git cherry-pick FETCH_HEAD
-	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/02/266402/1 && git cherry-pick FETCH_HEAD
-	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/03/266403/1 && git cherry-pick FETCH_HEAD
-	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/04/266404/1 && git cherry-pick FETCH_HEAD
-	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/05/266405/1 && git cherry-pick FETCH_HEAD
-	git fetch "https://github.com/LineageOS/android_frameworks_av" refs/changes/06/266406/1 && git cherry-pick FETCH_HEAD
-	cd -
-
 ### Workaround for old CDMA devices
 
 	cd frameworks/base/
-	git fetch "https://github.com/LineageOS/android_frameworks_base" refs/changes/89/271789/8 && git cherry-pick FETCH_HEAD
+    git fetch https://github.com/fgl27/android_frameworks_base lineage-18.1 && git cherry-pick 8c5ced0be02cd7d13f927e6310ec8db7e3a69bc2
 	cd -
+
+### Source build fixes
+
+	cd hardware/qcom-caf/apq8084/media/
+    git fetch https://github.com/fgl27/android_hardware_qcom_media lineage-18.1-caf-apq8084 && git cherry-pick efd4fd850c712bc43b2462b2ad3d753a8e0af043^..cfe448c898ee4c0cf7c98b873e789c0fd58e6675
+	cd -
+	
+	cd hardware/qcom-caf/apq8084/display/
+	git fetch https://github.com/fgl27/android_hardware_qcom_display lineage-18.1-caf-apq8084 && git cherry-pick 2488ddb917b4fd36e25ad0fcd2bfe554e0357d42
+	cd -
+	
+    rm -rf hardware/qcom-caf/sm8250/
+    rm -rf vendor/qcom/opensource/power/
 
 ## Building after repo sync and fixing the source (fixing the source is always necessary to redo after a "repo sync"):
 
