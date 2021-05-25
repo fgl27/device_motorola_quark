@@ -311,9 +311,7 @@ PRODUCT_PACKAGES += \
     init.mmi.boot.sh \
     init.mmi.touch.sh \
     init.mmi.usb.sh \
-    init.qcom.post_boot.sh \
-    init.qcom.devstart.sh \
-    init.qcom.devwait.sh
+    init.qcom.post_boot.sh
 
 # RIL
 PRODUCT_COPY_FILES += \
