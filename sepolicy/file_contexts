@@ -54,6 +54,7 @@
 ###################################
 # sysfs files
 #
+/sys/class/input(/.*)?                                                                      u:object_r:sysfs_input:s0
 /sys/devices/fd900000.qcom,mdss_mdp/qcom,mdss_fb_primary.163/leds/lcd-backlight/brightness  u:object_r:sysfs_leds:s0
 /sys/devices/leds-qpnp-e76c1000/leds/charging/brightness                                    u:object_r:sysfs_leds:s0
 /sys/devices/leds-qpnp-e76c1000/leds/charging/blink_brightness                              u:object_r:sysfs_leds:s0

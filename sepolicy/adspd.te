@@ -18,9 +18,10 @@ allow adspd system_prop:property_service set;
 
 allow adspd adspd_socket:sock_file { read write };
 
-# TODO: Just use generic sysfs for now
-allow adspd sysfs:file rw_file_perms;
-
+allow adspd firmware_file:dir { r_dir_perms search};
 allow adspd firmware_file:file r_file_perms;
 allow adspd sysfs:dir r_dir_perms;
-allow adspd firmware_file:dir r_dir_perms;
+allow adspd sysfs:file rw_file_perms;
+allow adspd sysfs_input:dir r_dir_perms;
+allow adspd sysfs_input:file r_file_perms;
+allow adspd sysfs_input:lnk_file read;
