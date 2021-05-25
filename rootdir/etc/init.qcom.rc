@@ -76,10 +76,6 @@ on fs
     write /sys/block/mmcblk0/queue/iosched/slice_idle 0
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
 
-    # Boot the audio
-    write /sys/kernel/boot_adsp/boot 1
-    setprop qcom.audio.init complete
-
 on post-fs-data
 
     # Remove old mpdecision data
@@ -267,6 +263,10 @@ on post-fs-data
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
+
+    # Boot the audio
+    write /sys/kernel/boot_adsp/boot 1
+    setprop qcom.audio.init complete
 
     # Annotate panics with helpful information
     chmod 640 /proc/apanic_annotate
