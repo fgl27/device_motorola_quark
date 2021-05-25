@@ -11,5 +11,8 @@ allow init-qcom-devstart-sh toolbox_exec:file rx_file_perms;
 # Set the sys.qcom.devup property
 set_prop(init-qcom-devstart-sh, system_prop)
 
+# Set the qcom.audio.init property
+set_prop(init-qcom-devstart-sh, default_prop)
+
 # Set boot_adsp to 1
 allow init-qcom-devstart-sh sysfs_boot_adsp:file w_file_perms;
