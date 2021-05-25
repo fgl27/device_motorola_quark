@@ -1,2 +1,3 @@
 # Moto Camera
-allow untrusted_app opengles_prop:file { getattr open };
+get_prop(untrusted_app, opengles_prop)
+get_prop(untrusted_app, exported_camera_prop)

@@ -23,3 +23,4 @@ allow adspd sysfs:file rw_file_perms;
 
 allow adspd firmware_file:file r_file_perms;
 allow adspd sysfs:dir r_dir_perms;
+allow adspd firmware_file:dir r_dir_perms;
