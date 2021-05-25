@@ -300,19 +300,20 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.mmi.boot.sh \
-    init.mmi.touch.sh \
-    init.mmi.usb.sh \
-    init.qcom.post_boot.sh \
     init.qcom.rc \
     init.qcom.power.rc \
     init.qcom.usb.rc \
     init.recovery.qcom.rc \
     ueventd.qcom.rc
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/bin/init.qcom.devwait.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devwait.sh \
-    $(LOCAL_PATH)/rootdir/bin/init.qcom.devstart.sh:$(TARGET_COPY_OUT_VENDOR)/bin/init.qcom.devstart.sh
+# Bin
+PRODUCT_PACKAGES += \
+    init.mmi.boot.sh \
+    init.mmi.touch.sh \
+    init.mmi.usb.sh \
+    init.qcom.post_boot.sh \
+    init.qcom.devstart \
+    init.qcom.devwait
 
 # RIL
 PRODUCT_COPY_FILES += \
