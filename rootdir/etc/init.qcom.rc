@@ -699,11 +699,11 @@ service cnd /vendor/bin/cnd
     socket cnd stream 660 root inet
     writepid /dev/cpuset/system-background/tasks
 
-service loggy /vendor/bin/loggy.sh
-   class late_start
-   user root
-   seclabel u:r:sudaemon:s0
-   oneshot
+#service loggy /vendor/bin/loggy.sh
+#   class late_start
+#   user root
+#   seclabel u:r:sudaemon:s0
+#   oneshot
 
 #loc_launcher will start as root and set its uid to gps
 service loc_launcher /vendor/bin/loc_launcher
