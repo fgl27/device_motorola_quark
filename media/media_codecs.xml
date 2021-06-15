@@ -170,5 +170,5 @@ Only the three quirks included above are recognized at this point:
             <Limit name="concurrent-instances" max="13" />
         </MediaCodec>
     </Decoders>
-    <Include href="media_codecs_google_video.xml" />
+    <Include href="media_codecs_google_video_le.xml" />
 </MediaCodecs>
