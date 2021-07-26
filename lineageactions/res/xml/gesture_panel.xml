@@ -25,7 +25,8 @@
             android:key="gesture_user_aware_display"
             android:defaultValue="false"
             android:title="@string/user_aware_display_title"
-            android:summary="@string/user_aware_display_summary" />
+            android:summary="@string/user_aware_display_summary"
+            android:icon="@drawable/ic_person" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -35,13 +36,15 @@
         <SwitchPreference
             android:key="ambient_display_switch"
             android:title="@string/ambient_display_title"
-            android:summary="@string/ambient_display_summary" />
+            android:summary="@string/ambient_display_summary"
+            android:icon="@drawable/ic_gesture_action_ambient_display" />
 
         <SwitchPreference
             android:key="gesture_pick_up"
             android:defaultValue="false"
             android:title="@string/pick_up_gesture_title"
             android:summary="@string/pick_up_gesture_summary"
+            android:icon="@drawable/ic_pickup"
             android:dependency="ambient_display_switch" />
 
         <SwitchPreference
@@ -49,6 +52,7 @@
             android:defaultValue="false"
             android:title="@string/hand_wave_gesture_title"
             android:summary="@string/hand_wave_gesture_summary"
+            android:icon="@drawable/ic_hand"
             android:dependency="ambient_display_switch" />
     </PreferenceCategory>
 
@@ -59,7 +63,7 @@
         <ListPreference
             android:key="gesture_camera_action"
             android:defaultValue="0"
-            android:icon="@drawable/empty_icon"
+            android:icon="@drawable/ic_settings_twist"
             android:title="@string/camera_gesture_title"
             android:dialogTitle="@string/camera_gesture_title"
             android:summary="%s"
@@ -69,7 +73,7 @@
         <ListPreference
             android:key="gesture_chop_chop"
             android:defaultValue="0"
-            android:icon="@drawable/empty_icon"
+            android:icon="@drawable/ic_settings_chop"
             android:title="@string/chop_chop_gesture_title"
             android:dialogTitle="@string/chop_chop_gesture_title"
             android:summary="%s"
@@ -79,7 +83,7 @@
         <ListPreference
             android:key="gesture_feedback_intensity"
             android:defaultValue="0"
-            android:icon="@drawable/empty_icon"
+            android:icon="@drawable/ic_gesture_feedback"
             android:title="@string/feedback_intensity_title"
             android:dialogTitle="@string/feedback_intensity_title"
             android:summary="%s"
@@ -90,13 +94,15 @@
             android:key="gesture_ir_silencer"
             android:defaultValue="false"
             android:title="@string/hand_wave_silencer_title"
-            android:summary="@string/hand_wave_silencer_summary" />
+            android:summary="@string/hand_wave_silencer_summary"
+            android:icon="@drawable/ic_settings_wave" />
 
         <SwitchPreference
             android:key="gesture_lift_to_silence"
             android:defaultValue="false"
             android:title="@string/lift_to_silence_title"
-            android:summary="@string/lift_to_silence_summary" />
+            android:summary="@string/lift_to_silence_summary"
+            android:icon="@drawable/ic_settings_pick" />
     </PreferenceCategory>
 
 </PreferenceScreen>
