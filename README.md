@@ -62,6 +62,10 @@ From source main folder do
 	
     rm -rf hardware/qcom-caf/sm8250/
     rm -rf vendor/qcom/opensource/power/
+    
+    cd vendor/lineage/
+	git revert f88090b17af333120d3c7ac5eb7b2367e5c78531
+	cd -
 
 ## Building after repo sync and fixing the source (fixing the source is always necessary to redo after a "repo sync"):
 
